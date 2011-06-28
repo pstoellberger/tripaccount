@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F1CD782F13BA405A00D42AA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD782E13BA405A00D42AA3 /* UIKit.framework */; };
+		F1CD783113BA405A00D42AA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD783013BA405A00D42AA3 /* Foundation.framework */; };
+		F1CD783313BA405A00D42AA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */; };
+		F1CD783913BA405B00D42AA3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1CD783713BA405B00D42AA3 /* InfoPlist.strings */; };
+		F1CD783C13BA405B00D42AA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783B13BA405B00D42AA3 /* main.m */; };
+		F1CD783F13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */; };
+		F1CD784213BA405B00D42AA3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CD784013BA405B00D42AA3 /* MainWindow.xib */; };
+		F1CD784513BA405B00D42AA3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD784413BA405B00D42AA3 /* RootViewController.m */; };
+		F1CD784813BA405B00D42AA3 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CD784613BA405B00D42AA3 /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F1CD782A13BA405A00D42AA3 /* Reiseabrechnung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reiseabrechnung.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CD782E13BA405A00D42AA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F1CD783013BA405A00D42AA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F1CD783613BA405B00D42AA3 /* Reiseabrechnung-Info.plist */ = {isa = PBXFileReference; path = "Reiseabrechnung-Info.plist"; sourceTree = "<group>"; };
+		F1CD783813BA405B00D42AA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F1CD783A13BA405B00D42AA3 /* Reiseabrechnung-Prefix.pch */ = {isa = PBXFileReference; path = "Reiseabrechnung-Prefix.pch"; sourceTree = "<group>"; };
+		F1CD783B13BA405B00D42AA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F1CD783D13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.h */ = {isa = PBXFileReference; path = ReiseabrechnungAppDelegate.h; sourceTree = "<group>"; };
+		F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReiseabrechnungAppDelegate.m; sourceTree = "<group>"; };
+		F1CD784113BA405B00D42AA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		F1CD784313BA405B00D42AA3 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		F1CD784413BA405B00D42AA3 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		F1CD784713BA405B00D42AA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1CD782713BA405A00D42AA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1CD782F13BA405A00D42AA3 /* UIKit.framework in Frameworks */,
+				F1CD783113BA405A00D42AA3 /* Foundation.framework in Frameworks */,
+				F1CD783313BA405A00D42AA3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F1CD781F13BA405A00D42AA3 = {
+			isa = PBXGroup;
+			children = (
+				F1CD783413BA405A00D42AA3 /* Reiseabrechnung */,
+				F1CD782D13BA405A00D42AA3 /* Frameworks */,
+				F1CD782B13BA405A00D42AA3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1CD782B13BA405A00D42AA3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1CD782A13BA405A00D42AA3 /* Reiseabrechnung.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1CD782D13BA405A00D42AA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1CD782E13BA405A00D42AA3 /* UIKit.framework */,
+				F1CD783013BA405A00D42AA3 /* Foundation.framework */,
+				F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1CD783413BA405A00D42AA3 /* Reiseabrechnung */ = {
+			isa = PBXGroup;
+			children = (
+				F1CD783D13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.h */,
+				F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */,
+				F1CD784013BA405B00D42AA3 /* MainWindow.xib */,
+				F1CD784313BA405B00D42AA3 /* RootViewController.h */,
+				F1CD784413BA405B00D42AA3 /* RootViewController.m */,
+				F1CD784613BA405B00D42AA3 /* RootViewController.xib */,
+				F1CD783513BA405B00D42AA3 /* Supporting Files */,
+			);
+			path = Reiseabrechnung;
+			sourceTree = "<group>";
+		};
+		F1CD783513BA405B00D42AA3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1CD783613BA405B00D42AA3 /* Reiseabrechnung-Info.plist */,
+				F1CD783713BA405B00D42AA3 /* InfoPlist.strings */,
+				F1CD783A13BA405B00D42AA3 /* Reiseabrechnung-Prefix.pch */,
+				F1CD783B13BA405B00D42AA3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1CD782913BA405A00D42AA3 /* Reiseabrechnung */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Reiseabrechnung" */;
+			buildPhases = (
+				F1CD782613BA405A00D42AA3 /* Sources */,
+				F1CD782713BA405A00D42AA3 /* Frameworks */,
+				F1CD782813BA405A00D42AA3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reiseabrechnung;
+			productName = Reiseabrechnung;
+			productReference = F1CD782A13BA405A00D42AA3 /* Reiseabrechnung.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1CD782113BA405A00D42AA3 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = F1CD782413BA405A00D42AA3 /* Build configuration list for PBXProject "Reiseabrechnung" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F1CD781F13BA405A00D42AA3;
+			productRefGroup = F1CD782B13BA405A00D42AA3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1CD782913BA405A00D42AA3 /* Reiseabrechnung */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1CD782813BA405A00D42AA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1CD783913BA405B00D42AA3 /* InfoPlist.strings in Resources */,
+				F1CD784213BA405B00D42AA3 /* MainWindow.xib in Resources */,
+				F1CD784813BA405B00D42AA3 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1CD782613BA405A00D42AA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1CD783C13BA405B00D42AA3 /* main.m in Sources */,
+				F1CD783F13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m in Sources */,
+				F1CD784513BA405B00D42AA3 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F1CD783713BA405B00D42AA3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1CD783813BA405B00D42AA3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1CD784013BA405B00D42AA3 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1CD784113BA405B00D42AA3 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		F1CD784613BA405B00D42AA3 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1CD784713BA405B00D42AA3 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1CD784913BA405B00D42AA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F1CD784A13BA405B00D42AA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		F1CD784C13BA405B00D42AA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reiseabrechnung/Reiseabrechnung-Prefix.pch";
+				INFOPLIST_FILE = "Reiseabrechnung/Reiseabrechnung-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F1CD784D13BA405B00D42AA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reiseabrechnung/Reiseabrechnung-Prefix.pch";
+				INFOPLIST_FILE = "Reiseabrechnung/Reiseabrechnung-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1CD782413BA405A00D42AA3 /* Build configuration list for PBXProject "Reiseabrechnung" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1CD784913BA405B00D42AA3 /* Debug */,
+				F1CD784A13BA405B00D42AA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Reiseabrechnung" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1CD784C13BA405B00D42AA3 /* Debug */,
+				F1CD784D13BA405B00D42AA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1CD782113BA405A00D42AA3 /* Project object */;
+}
