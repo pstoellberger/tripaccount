@@ -7,19 +7,16 @@
 //
 
 #import "ReiseabrechnungAppDelegate.h"
+#import "RootViewController.h"
 
 @implementation ReiseabrechnungAppDelegate
 
-
 @synthesize window=_window;
-
-@synthesize navigationController=_navigationController;
+@synthesize navController=_navController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    // Add the navigation controller's view to the window and display.
-    self.window.rootViewController = self.navigationController;
+    [self.window addSubview:_navController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -66,7 +63,7 @@
 - (void)dealloc
 {
     [_window release];
-    [_navigationController release];
+	[_navController release];
     [super dealloc];
 }
 

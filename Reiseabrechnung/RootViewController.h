@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Travel.h"
+#import "AlertPrompt.h"
 
 @interface RootViewController : UITableViewController {
+    
+    NSMutableArray *travelArray;
+    AlertPrompt *prompt;
 
 }
 
+@property (nonatomic, retain) NSMutableArray *travelArray;
+@property (nonatomic, retain) IBOutlet UIButton *addButton;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+
+- (void)addTravel:(NSString *)name withCurrency:(NSString *)currency;
 
 @end

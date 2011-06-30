@@ -7,138 +7,100 @@
 //
 
 #import "RootViewController.h"
+#import "TravelViewController.h"
+#import "TravelEditViewController.h"
+#import "AlertPrompt.h"
+#import "Participant.h"
 
 @implementation RootViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+@synthesize travelArray, addButton, tableView=_tableView;
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [travelArray count];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-/*
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
- */
-
-// Customize the number of sections in the table view.
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
+    
+    // Set up the cell...
+    Travel *travel = [travelArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = travel.name;
 
-    // Configure the cell.
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Relinquish ownership any cached data, images, etc that aren't in use.
+    Travel *travel = [travelArray objectAtIndex:indexPath.row];
+    
+    TravelViewController *detailViewController = [[TravelViewController alloc] init];
+    detailViewController.title = travel.name;
+    detailViewController.travel = travel;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];    
+    
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.title = @"Reiseabrechnungen";
+    
+    self.travelArray = [NSMutableArray array];
+    for (int i=0; i<2; i++) {
+        Travel *_travel = [[Travel alloc] init];
+        _travel.name = [@"Travel " stringByAppendingFormat: @"%d", i];
+        _travel.created = [NSDate date];
+        
+        for (int j=0; j<2; j++) {
+            Participant *p = [[Participant alloc] init];
+            p.name = [@"Participant " stringByAppendingFormat: @"%d", j];
+            [_travel.participants addObject:p];
+            [p release];
+        }
+        
+        [travelArray addObject:_travel];
+        [_travel release];
+    }
+    
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(openTravelPopup)];          
+    self.navigationItem.rightBarButtonItem = anotherButton;
+    [anotherButton release];
+}
+
+- (void)viewDidUnload {
     [super viewDidUnload];
-
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
 }
 
-- (void)dealloc
-{
+- (void)openTravelPopup {
+    TravelEditViewController *detailViewController = [[TravelEditViewController alloc] init];
+    detailViewController.rootViewController = self;
+    [self.navigationController presentModalViewController:detailViewController animated:YES];   
+    [detailViewController release];   
+}
+
+- (void)addTravel:(NSString *)name withCurrency:(NSString *)currency {
+    Travel *_travel = [[Travel alloc] init];
+    _travel.name = name;
+    _travel.created = [NSDate date];
+    _travel.currency = currency;
+    [travelArray addObject:_travel];
+    [_travel release];
+    
+    [self.tableView reloadData];
+}
+
+- (void)dealloc {
     [super dealloc];
+    [travelArray release];
 }
 
 @end
