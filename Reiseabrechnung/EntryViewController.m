@@ -7,19 +7,53 @@
 //
 
 #import "EntryViewController.h"
+#import "EntryCell.h"
 
 
 @implementation EntryViewController
 
 @synthesize travel=_travel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+-(void) postConstructWithTravel:(Travel *) travel {
+    _travel = travel;
+    
+    NSManagedObjectContext *context = [travel managedObjectContext];
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:@"Entry" inManagedObjectContext: context];
+    req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    req.predicate = [NSPredicate predicateWithFormat:@"travel = %@", travel];
+    
+    [NSFetchedResultsController deleteCacheWithName:@"Entries"];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Entries"];
+    [req release];
+    
+    self.fetchedResultsController.delegate = self;
+    
+    self.titleKey = @"text";
+    self.subtitleKey = @"amount";
+    
+    [self viewWillAppear:true];
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
+    
+    static NSString *CellIdentifier = @"EntryCell";
+    
+    EntryCell *cell = (EntryCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        NSArray *tlo = [[NSBundle mainBundle] loadNibNamed:@"EntryCell" owner:self options:nil];
+        cell = [tlo objectAtIndex:0];
     }
-    return self;
+    
+    // Set up the cell... 
+    Entry *entry = (Entry *) managedObject;
+    cell.top.text = entry.text;
+    cell.bottom.text = @"someone";
+    cell.right.text = [NSString stringWithFormat:@"%@ %@", entry.amount, entry.currency];
+    
+    return cell;
 }
 
 - (void)dealloc

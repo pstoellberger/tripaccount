@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Travel.h"
+#import "Entry.h"
+#import "EntryCell.h"
+#import "CoreDataTableViewController.h"
 
 
-@interface EntryViewController : UIViewController {
+@interface EntryViewController : CoreDataTableViewController {
 }
 
 @property (nonatomic, retain) Travel *travel;
+
+-(void) postConstructWithTravel:(Travel *) travel;
 
 @end

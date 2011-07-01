@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Travel.h"
+#import "CoreDataTableViewController.h"
 
-@interface ParticipantViewController : UITableViewController {
+@interface ParticipantViewController : CoreDataTableViewController {
 }
 
-@property (nonatomic, retain) Travel *travel;
+@property (nonatomic, retain, readonly) Travel *travel;
+
+-(void) postConstructWithTravel:(Travel *) travel;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "TravelEditViewController.h"
 
-
 @implementation TravelEditViewController
 
 @synthesize doneButton=_doneButton, nameField=_nameField, currencyPicker=_currencyPicker, rootViewController=_rootViewController;

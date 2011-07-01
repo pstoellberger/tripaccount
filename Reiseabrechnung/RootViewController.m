@@ -9,67 +9,63 @@
 #import "RootViewController.h"
 #import "TravelViewController.h"
 #import "TravelEditViewController.h"
-#import "AlertPrompt.h"
-#import "Participant.h"
 
 @implementation RootViewController
 
-@synthesize travelArray, addButton, tableView=_tableView;
+@synthesize managedObjectContext=_managedObjectContext, fetchedResultsController=_fetchedResultsController;;
+@synthesize addButton;
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [travelArray count];
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
     
-    static NSString *CellIdentifier = @"Cell";
+    self = [super initWithStyle:UITableViewStylePlain];
+    if (self) {
+        
+        self.managedObjectContext = context;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        NSFetchRequest *req = [[NSFetchRequest alloc] init];
+        req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: self.managedObjectContext];
+        req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES]];
+    
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Travel"];
+        [req release];
+        
+        self.fetchedResultsController.delegate = self;
+        
+        self.titleKey = @"name";
+        self.subtitleKey = @"name";
+        
     }
-    
-    // Set up the cell...
-    Travel *travel = [travelArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = travel.name;
-
-    return cell;
+    return self;
 }
 
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    Travel *travel = [travelArray objectAtIndex:indexPath.row];
+    Travel *travel = (Travel *) managedObject;
     
-    TravelViewController *detailViewController = [[TravelViewController alloc] init];
+    TravelViewController *detailViewController = [[TravelViewController alloc] initWithTravel:travel];
     detailViewController.title = travel.name;
-    detailViewController.travel = travel;
-    
+
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];    
     
+}
+
+- (void)deleteManagedObject:(NSManagedObject *)managedObject
+{
+    [self.managedObjectContext deleteObject:managedObject];
+    [self saveContext:_managedObjectContext];
+}
+
+- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
+{
+	return YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.title = @"Reiseabrechnungen";
-    
-    self.travelArray = [NSMutableArray array];
-    for (int i=0; i<2; i++) {
-        Travel *_travel = [[Travel alloc] init];
-        _travel.name = [@"Travel " stringByAppendingFormat: @"%d", i];
-        _travel.created = [NSDate date];
-        
-        for (int j=0; j<2; j++) {
-            Participant *p = [[Participant alloc] init];
-            p.name = [@"Participant " stringByAppendingFormat: @"%d", j];
-            [_travel.participants addObject:p];
-            [p release];
-        }
-        
-        [travelArray addObject:_travel];
-        [_travel release];
-    }
     
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(openTravelPopup)];          
     self.navigationItem.rightBarButtonItem = anotherButton;
@@ -78,6 +74,8 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
+    
+    [self saveContext:_managedObjectContext];
 }
 
 - (void)openTravelPopup {
@@ -88,19 +86,17 @@
 }
 
 - (void)addTravel:(NSString *)name withCurrency:(NSString *)currency {
-    Travel *_travel = [[Travel alloc] init];
+    
+    Travel *_travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext: _managedObjectContext];
     _travel.name = name;
     _travel.created = [NSDate date];
     _travel.currency = currency;
-    [travelArray addObject:_travel];
-    [_travel release];
     
-    [self.tableView reloadData];
+    [self saveContext:_managedObjectContext];
 }
 
 - (void)dealloc {
     [super dealloc];
-    [travelArray release];
 }
 
 @end

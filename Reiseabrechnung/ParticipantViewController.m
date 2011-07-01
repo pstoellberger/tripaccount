@@ -14,33 +14,37 @@
 
 @synthesize travel=_travel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(void) postConstructWithTravel:(Travel *) travel {
+    _travel = travel;
+    
+    NSManagedObjectContext *context = [travel managedObjectContext];
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:@"Participant" inManagedObjectContext: context];
+    req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    req.predicate = [NSPredicate predicateWithFormat:@"travel = %@", travel];
+    
+    [NSFetchedResultsController deleteCacheWithName:@"Participants"];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Participants"];
+    [req release];
+    
+    self.fetchedResultsController.delegate = self;
+    
+    self.titleKey = @"name";
+    
+    [self viewWillAppear:true];
+    
+}
+
+- (void)deleteManagedObject:(NSManagedObject *)managedObject
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
+    [_travel.managedObjectContext deleteObject:managedObject];
+    [self saveContext:_travel.managedObjectContext];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_travel.participants count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Set up the cell...
-    Participant *participant = [_travel.participants objectAtIndex:indexPath.row];
-    cell.textLabel.text = participant.name;
-    
-    return cell;
+- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
+{
+	return YES;
 }
 
 - (void)dealloc

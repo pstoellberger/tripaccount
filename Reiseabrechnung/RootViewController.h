@@ -9,17 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "Travel.h"
 #import "AlertPrompt.h"
+#import "Entry.h"
+#import "AlertPrompt.h"
+#import "Participant.h"
+#import "CoreDataTableViewController.h"
 
-@interface RootViewController : UITableViewController {
-    
-    NSMutableArray *travelArray;
-    AlertPrompt *prompt;
+@interface RootViewController : CoreDataTableViewController {
 
 }
 
-@property (nonatomic, retain) NSMutableArray *travelArray;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic, retain) IBOutlet UIButton *addButton;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+
+- (id) initInManagedObjectContext:(NSManagedObjectContext *) context;
 
 - (void)addTravel:(NSString *)name withCurrency:(NSString *)currency;
 

@@ -3,14 +3,16 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Participant.h"
+#import "Travel.h"
 
 
 @implementation Participant
+@dynamic name;
+@dynamic travel;
 
-@synthesize name;
 
 @end
