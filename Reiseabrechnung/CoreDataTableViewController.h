@@ -14,6 +14,7 @@
 	NSString *titleKey;
 	NSString *subtitleKey;
 	NSString *searchKey;
+    NSString *imageKey;
 	NSFetchedResultsController *fetchedResultsController;
 }
 
@@ -26,6 +27,8 @@
 @property (nonatomic, copy) NSString *subtitleKey;
 // key to use when searching the table (should usually be the same as displayKey); if nil, no searching allowed
 @property (nonatomic, copy) NSString *searchKey;
+
+@property (nonatomic, copy) NSString *imageKey;
 
 // gets accessory type (e.g. disclosure indicator) for the given managedObject (default DisclosureIndicator)
 - (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject;
@@ -46,7 +49,5 @@
 // this method does not necessarily have to delete the object from the database
 // (e.g. it might just change the object so that it does not match the fetched results controller's predicate anymore)
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
-
-- (void)saveContext:(NSManagedObjectContext *) context;
 
 @end

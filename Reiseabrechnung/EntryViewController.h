@@ -10,14 +10,12 @@
 #import "Travel.h"
 #import "Entry.h"
 #import "EntryCell.h"
-#import "CoreDataTableViewController.h"
+#import "AbstractTravelSubViewController.h"
 
 
-@interface EntryViewController : CoreDataTableViewController {
+@interface EntryViewController : AbstractTravelSubViewController {
 }
 
 @property (nonatomic, retain) Travel *travel;
-
--(void) postConstructWithTravel:(Travel *) travel;
 
 @end

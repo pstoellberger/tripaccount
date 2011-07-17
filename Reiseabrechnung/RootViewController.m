@@ -9,11 +9,13 @@
 #import "RootViewController.h"
 #import "TravelViewController.h"
 #import "TravelEditViewController.h"
+#import "Currency.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation RootViewController
 
-@synthesize managedObjectContext=_managedObjectContext, fetchedResultsController=_fetchedResultsController;;
-@synthesize addButton;
+@synthesize managedObjectContext=_managedObjectContext, fetchedResultsController=_fetchedResultsController;
+@synthesize addButton=_addButton, editButton=_editButton, doneButton=_doneButton;
 
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
@@ -21,7 +23,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         
-        self.managedObjectContext = context;
+        _managedObjectContext = context;
     
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
         req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: self.managedObjectContext];
@@ -41,20 +43,30 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    Travel *travel = (Travel *) managedObject;
-    
-    TravelViewController *detailViewController = [[TravelViewController alloc] initWithTravel:travel];
-    detailViewController.title = travel.name;
-
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];    
+    if (self.tableView.editing) {
+        
+        TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext withTravel:(Travel *)managedObject];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+        [self.navigationController presentModalViewController:navController animated:YES];   
+        [detailViewController release];
+        [navController release];
+        
+    } else {
+        Travel *travel = (Travel *) managedObject;
+        
+        TravelViewController *detailViewController = [[TravelViewController alloc] initWithTravel:travel];
+        detailViewController.title = travel.name;
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [detailViewController release];    
+    }
     
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject
 {
     [self.managedObjectContext deleteObject:managedObject];
-    [self saveContext:_managedObjectContext];
+    [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
@@ -67,35 +79,78 @@
 
     self.title = @"Reiseabrechnungen";
     
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(openTravelPopup)];          
-    self.navigationItem.rightBarButtonItem = anotherButton;
-    [anotherButton release];
+    self.navigationItem.rightBarButtonItem = self.addButton;
+    self.navigationItem.leftBarButtonItem = self.editButton;
+    
+    self.tableView.allowsSelectionDuringEditing = YES;
+    
+}
+
+- (UIBarButtonItem *) addButton {
+    if (!_addButton) {
+        _addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openTravelPopup)];   
+    }
+    return [_addButton retain];    
+}
+
+- (UIBarButtonItem *) editButton {
+    if (!_editButton) {
+        _editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(changeToEditMode)]; 
+    }
+    return [_editButton retain];    
+}
+
+- (UIBarButtonItem *) doneButton {
+    if (!_doneButton) {
+        _doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditing)];
+    }
+    return [_doneButton retain];       
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     
-    [self saveContext:_managedObjectContext];
+    [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
 - (void)openTravelPopup {
-    TravelEditViewController *detailViewController = [[TravelEditViewController alloc] init];
-    detailViewController.rootViewController = self;
-    [self.navigationController presentModalViewController:detailViewController animated:YES];   
-    [detailViewController release];   
+    TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    [self.navigationController presentModalViewController:navController animated:YES];   
+    [detailViewController release];
+    [navController release];
 }
 
-- (void)addTravel:(NSString *)name withCurrency:(NSString *)currency {
+- (void)changeToEditMode {
+    [self.navigationItem setRightBarButtonItem:self.doneButton animated:YES];
+    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    [self.tableView setEditing:YES animated:YES];
+}
+
+- (void)doneEditing {
+    [self.navigationItem setRightBarButtonItem:self.addButton animated:YES];
+    [self.navigationItem setLeftBarButtonItem:self.editButton animated:YES];
+    [self.tableView setEditing:NO animated:YES];
+}
+
+- (void)addTravel:(NSString *)name withCurrency:(Currency *)newCurrency {
     
-    Travel *_travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext: _managedObjectContext];
+    NSLog(@"%@", self.managedObjectContext);
+    
+    Travel *_travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext: self.managedObjectContext];
     _travel.name = name;
     _travel.created = [NSDate date];
-    _travel.currency = currency;
+    _travel.currency = newCurrency;
     
-    [self saveContext:_managedObjectContext];
+    [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
 - (void)dealloc {
+    [_managedObjectContext release];
+    [_addButton release];
+    [_editButton release];
+    [_doneButton release];
+    
     [super dealloc];
 }
 

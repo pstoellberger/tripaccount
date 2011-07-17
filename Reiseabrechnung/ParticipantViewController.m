@@ -8,7 +8,7 @@
 
 #import "ParticipantViewController.h"
 #import "Participant.h"
-
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation ParticipantViewController
 
@@ -31,15 +31,22 @@
     self.fetchedResultsController.delegate = self;
     
     self.titleKey = @"name";
+    self.imageKey = @"image";
     
     [self viewWillAppear:true];
     
+    [self updateBadgeValue];
+    
+}
+
+- (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject {
+    return UITableViewCellAccessoryNone;
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject
 {
     [_travel.managedObjectContext deleteObject:managedObject];
-    [self saveContext:_travel.managedObjectContext];
+    [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
 }
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject

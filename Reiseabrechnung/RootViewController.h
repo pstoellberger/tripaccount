@@ -15,15 +15,20 @@
 #import "CoreDataTableViewController.h"
 
 @interface RootViewController : CoreDataTableViewController {
-
+    NSManagedObjectContext *_managedObjectContext;
+    UIBarButtonItem *_addButton;
+    UIBarButtonItem *_editButton;
+    UIBarButtonItem *_doneButton;
 }
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic, retain) IBOutlet UIButton *addButton;
+@property (nonatomic, retain, readonly) UIBarButtonItem *addButton;
+@property (nonatomic, retain, readonly) UIBarButtonItem *editButton;
+@property (nonatomic, retain, readonly) UIBarButtonItem *doneButton;
 
-- (id) initInManagedObjectContext:(NSManagedObjectContext *) context;
+- (id)initInManagedObjectContext:(NSManagedObjectContext *) managedObjectContext;
 
-- (void)addTravel:(NSString *)name withCurrency:(NSString *)currency;
+- (void)addTravel:(NSString *)name withCurrency:(Currency *) currency;
 
 @end

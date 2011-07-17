@@ -2,21 +2,22 @@
 //  Travel.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 30/06/2011.
+//  Created by Martin Maier on 01/07/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Travel.h"
+#import "Currency.h"
 #import "Entry.h"
 #import "Participant.h"
 
 
 @implementation Travel
-@dynamic currency;
 @dynamic created;
 @dynamic name;
 @dynamic entries;
 @dynamic participants;
+@dynamic currency;
 
 - (void)addEntriesObject:(Entry *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -74,6 +75,7 @@
     [[self primitiveValueForKey:@"participants"] minusSet:value];
     [self didChangeValueForKey:@"participants" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
 
 
 @end

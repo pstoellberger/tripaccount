@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Travel.h"
-#import "CoreDataTableViewController.h"
+#import "AbstractTravelSubViewController.h"
 
 
-@interface SummaryViewController : CoreDataTableViewController {
+@interface SummaryViewController : UIViewController {
 }
 
 @property (nonatomic, retain) Travel *travel;

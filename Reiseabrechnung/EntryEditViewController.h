@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "TravelViewController.h"
+#import "EditableTableViewCell.h"
+#import "EntryNotManaged.h"
 
 
-@interface EntryEditViewController : UIViewController {
-    
+@interface EntryEditViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+    EntryNotManaged *_entry;
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;
@@ -21,6 +23,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *currencyField;
 @property (nonatomic, retain) IBOutlet UISwitch *dateToggle;
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
+
+@property (nonatomic, retain) IBOutlet UIView *toolbarView;
 
 @property (nonatomic, retain) TravelViewController *rootViewController;
 

@@ -8,7 +8,9 @@
 
 #import "EntryViewController.h"
 #import "EntryCell.h"
-
+#import "ReiseabrechnungAppDelegate.h"
+#import "Currency.h"
+#import "Participant.h"
 
 @implementation EntryViewController
 
@@ -25,8 +27,13 @@
     req.predicate = [NSPredicate predicateWithFormat:@"travel = %@", travel];
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Entries"];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:@"payer.name" cacheName:@"Entries"];
     [req release];
+    
+    [self.fetchedResultsController performFetch:nil];
+    for (Entry *e in [self.fetchedResultsController fetchedObjects]) {
+        NSLog(@"Payer = %@", e.payer.name);
+    }
     
     self.fetchedResultsController.delegate = self;
     
@@ -35,6 +42,11 @@
     
     [self viewWillAppear:true];
     
+    [self updateBadgeValue];
+}
+
+- (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject {
+    return UITableViewCellAccessoryNone;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
@@ -50,10 +62,21 @@
     // Set up the cell... 
     Entry *entry = (Entry *) managedObject;
     cell.top.text = entry.text;
-    cell.bottom.text = @"someone";
-    cell.right.text = [NSString stringWithFormat:@"%@ %@", entry.amount, entry.currency];
+    cell.bottom.text = [NSString stringWithFormat:@"%d people", [entry.receivers count]];
+    cell.right.text = [NSString stringWithFormat:@"%d %@", entry.amount, entry.currency.code];
     
     return cell;
+}
+
+- (void)deleteManagedObject:(NSManagedObject *)managedObject
+{
+    [_travel.managedObjectContext deleteObject:managedObject];
+    [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
+}
+
+- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
+{
+	return YES;
 }
 
 - (void)dealloc

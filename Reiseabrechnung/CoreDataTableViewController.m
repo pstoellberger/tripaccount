@@ -9,19 +9,21 @@
 @implementation CoreDataTableViewController
 
 @synthesize fetchedResultsController;
-@synthesize titleKey, subtitleKey, searchKey;
+@synthesize titleKey, subtitleKey, searchKey, imageKey;
 
 - (void)createSearchBar
 {
 	if (self.searchKey.length) {
 		if (self.tableView && !self.tableView.tableHeaderView) {
 			UISearchBar *searchBar = [[[UISearchBar alloc] init] autorelease];
-			[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+			UISearchDisplayController *controller = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
 			self.searchDisplayController.searchResultsDelegate = self;
 			self.searchDisplayController.searchResultsDataSource = self;
 			self.searchDisplayController.delegate = self;
 			searchBar.frame = CGRectMake(0, 0, 0, 38);
 			self.tableView.tableHeaderView = searchBar;
+            [searchBar release];
+            [controller release];
 		}
 	} else {
 		self.tableView.tableHeaderView = nil;
@@ -124,6 +126,13 @@
 	
 	if (self.titleKey) cell.textLabel.text = [managedObject valueForKey:self.titleKey];
 	if (self.subtitleKey) cell.detailTextLabel.text = [managedObject valueForKey:self.subtitleKey];
+    if (self.imageKey) {
+        if ([managedObject valueForKey:self.imageKey]) {
+            cell.imageView.image = [[UIImage alloc] initWithData:[managedObject valueForKey:self.imageKey]];
+        } else {
+            cell.imageView.image = [[UIImage alloc] initWithContentsOfFile:@"Gallery.png"];
+        }
+    }
 	cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
 	UIImage *thumbnail = [self thumbnailImageForManagedObject:managedObject];
 	if (thumbnail) cell.imageView.image = thumbnail;
@@ -161,19 +170,6 @@
 	[self deleteManagedObject:managedObject];
 }
 
-- (void)saveContext:(NSManagedObjectContext *) context
-{
-    NSError *error = nil;
-    if (context != nil)
-    {
-        if ([context hasChanges] && ![context save:&error])
-        {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
-    }
-}
-
 #pragma mark UIViewController methods
 
 - (void)viewDidLoad
@@ -203,7 +199,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"entries %@ %d", self, [[[[self fetchedResultsControllerForTableView:tableView] sections] objectAtIndex:section] numberOfObjects]);
     return [[[[self fetchedResultsControllerForTableView:tableView] sections] objectAtIndex:section] numberOfObjects];
 }
 

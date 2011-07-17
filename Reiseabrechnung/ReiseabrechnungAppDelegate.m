@@ -8,6 +8,7 @@
 
 #import "ReiseabrechnungAppDelegate.h"
 #import "RootViewController.h"
+#import "Currency.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -20,12 +21,52 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
+    NSArray *currencies = [self.managedObjectContext executeFetchRequest:req error:nil];
+    [req release];
+    
+    if (![currencies lastObject]) {
+        // no currencies -> init
+        Currency *_currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
+        _currency.name = @"Euro";
+        _currency.code = @"EUR";
+        _currency.character = @"€";
+        
+        _currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
+        _currency.name = @"US Dollar";
+        _currency.code = @"USD";
+        _currency.character = @"$";
+        
+        _currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
+        _currency.name = @"Australian Dollar";
+        _currency.code = @"AUD";
+        _currency.character = @"A$";
+        
+        [self.managedObjectContext save:nil];
+    }
+    
     RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
     [self.navController pushViewController:rvc animated:NO];
+    [rvc release];
     
     [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
++ (void)saveContext:(NSManagedObjectContext *) context
+{
+    NSError *error = nil;
+    if (context != nil)
+    {
+        if ([context hasChanges] && ![context save:&error])
+        {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        } 
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -109,7 +150,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database6.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

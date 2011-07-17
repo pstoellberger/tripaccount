@@ -1,5 +1,5 @@
 //
-//  Travel.h
+//  Currency.h
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 01/07/2011.
@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Currency, Entry, Participant;
+@class Entry, Travel;
 
-@interface Travel : NSManagedObject {
+@interface Currency : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSDate * created;
+@property (nonatomic, retain) NSString * character;
+@property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet* entries;
-@property (nonatomic, retain) NSSet* participants;
-@property (nonatomic, retain) Currency * currency;
+@property (nonatomic, retain) Travel * travels;
 
 @end

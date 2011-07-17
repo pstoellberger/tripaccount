@@ -6,12 +6,14 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#include <stdlib.h>
 #import "TravelViewController.h"
 #import "ParticipantViewController.h"
 #import "EntryViewController.h"
 #import "SummaryViewController.h"
 #import "Participant.h"
 #import "EntryEditViewController.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 
 @implementation TravelViewController
@@ -45,13 +47,31 @@
     NSString *firstName = (NSString *) ABRecordCopyValue(person, kABPersonFirstNameProperty);
     NSString *lastName = (NSString *) ABRecordCopyValue(person, kABPersonLastNameProperty);
     
-    [self addPerson:[NSString stringWithFormat:@"%@ %@", firstName, lastName]];
+    UIImage *image = nil;
+    if(ABPersonHasImageData(person)) {
+        image = [UIImage imageWithData:(NSData *)ABPersonCopyImageData(person)];
+    }
+
+    NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    
+    BOOL addPerson = YES;
+    
+    for(Participant *p in _travel.participants) {
+        if ([p.name isEqualToString:fullName]) {
+            addPerson= NO;
+            break;
+        }
+    }
+    
+    if (addPerson) {
+        [self addPerson:fullName withImage:image];
+    }
     
     [firstName release];
     [lastName release];
     
     [[self navigationController] dismissModalViewControllerAnimated:YES];
-    
+
 	return NO;
 }
 
@@ -77,7 +97,7 @@
     [_entryViewController postConstructWithTravel:_travel];
     [_summaryViewController postConstructWithTravel:_travel];
     
-    self.addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(openAddPopup)]; 
+    self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)]; 
     self.navigationItem.rightBarButtonItem = _addButton;
     
     if ([_travel.participants count] == 0) {
@@ -101,8 +121,10 @@
 - (void)openEntryAddPopup {
     EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel];
     detailViewController.rootViewController = self;
-    [self.navigationController presentModalViewController:detailViewController animated:YES];   
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    [self presentModalViewController:navController animated:YES];   
     [detailViewController release];
+    [navController release];
 }
 
 - (void)openParticipantAddPopup {
@@ -112,22 +134,27 @@
     [picker release];
 }
 
-- (void)addPerson:(NSString *)name {
+- (void)addPerson:(NSString *)name withImage:(UIImage *)image {
     Participant *p = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
     p.name = name;
+    if (image) {
+        p.image = UIImagePNGRepresentation(image);
+    }
     p.travel = _travel;
-    [self saveContext];
+    [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
 }
 
-- (void)addEntry:(NSString *)description withAmount:(NSNumber *)amount withCurrency:(NSString *)currency withDate:(NSDate *)date {
+- (void)addEntry:(EntryNotManaged *)nmEntry {
     Entry *_entry = [NSEntityDescription insertNewObjectForEntityForName: @"Entry" inManagedObjectContext: [_travel managedObjectContext]];
-    _entry.text = description;
-    _entry.amount = amount;
-    _entry.currency = currency;
-    _entry.date = date;
-    _entry.currency = currency;
+    _entry.text = nmEntry.text;
+    _entry.amount = nmEntry.amount;
+    _entry.currency = nmEntry.currency;
+    _entry.date = nmEntry.date;
+    _entry.payer= nmEntry.payer;
+    _entry.receivers= nmEntry.receivers;
     _entry.travel = _travel;
-    [self saveContext];
+    
+    [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
@@ -149,20 +176,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = [_travel managedObjectContext];
-    if (managedObjectContext != nil)
-    {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
-        {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
-    }
 }
 
 @end

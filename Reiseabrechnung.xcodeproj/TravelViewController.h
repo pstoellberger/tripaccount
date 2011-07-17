@@ -13,6 +13,7 @@
 #import "ParticipantViewController.h"
 #import "EntryViewController.h"
 #import "SummaryViewController.h"
+#import "EntryNotManaged.h"
 
  
 @interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate> {
@@ -32,10 +33,8 @@
 
 - (void)openParticipantAddPopup;
 - (void)openEntryAddPopup;
-- (void)addEntry:(NSString *)description withAmount:(NSNumber *)amount withCurrency:(NSString *)currency withDate:(NSDate *)date;
-- (void)addPerson:(NSString *)name;
-
-- (void)saveContext;
+- (void)addEntry:(EntryNotManaged *)nmEntry;
+- (void)addPerson:(NSString *)name withImage:(UIImage *)image;
 
 
 @end
