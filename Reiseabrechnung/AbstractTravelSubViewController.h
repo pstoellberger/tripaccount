@@ -12,8 +12,10 @@
 
 
 @interface AbstractTravelSubViewController : CoreDataTableViewController {
-    
+    UIViewController *_containingViewController;
 }
+
+@property (retain, nonatomic) UIViewController *containingViewController;
 
 -(void) postConstructWithTravel:(Travel *) travel;
 -(void) updateBadgeValue;

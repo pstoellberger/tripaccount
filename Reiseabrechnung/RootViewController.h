@@ -19,6 +19,7 @@
     UIBarButtonItem *_addButton;
     UIBarButtonItem *_editButton;
     UIBarButtonItem *_doneButton;
+    UILabel *_tripLabel;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
@@ -27,8 +28,9 @@
 @property (nonatomic, retain, readonly) UIBarButtonItem *editButton;
 @property (nonatomic, retain, readonly) UIBarButtonItem *doneButton;
 
-- (id)initInManagedObjectContext:(NSManagedObjectContext *) managedObjectContext;
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
-- (void)addTravel:(NSString *)name withCurrency:(Currency *) currency;
+- (void)addTravel:(NSString *)name withCurrency:(Currency *)currency;
+- (void)updateNoTripLabel;
 
 @end

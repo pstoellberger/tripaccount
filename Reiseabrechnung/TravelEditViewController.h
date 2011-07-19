@@ -14,26 +14,32 @@
 #import <MapKit/MapKit.h>
 
 
-@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate> {
-    NSArray *currencies;
+@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, UITableViewDelegate> {
+
     UITextField *_descField;
-    UITableViewCell *_locationCell;
+    UITableViewCell *_countryCell;
+    UITableViewCell *_cityCell;
+    UITextField *_cityCellField;
     
     NSManagedObjectContext *_context;
     
     Travel *_travel;
     Currency *_currency;
+    NSArray *_foreignCurrencies;
+    Country *_country;
     NSString *_name;
+    NSString *_city;
     
     CLLocationManager *_locManager;
     MKReverseGeocoder *_geocoder;
 }
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *city;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Currency *currency;
-
-@property (nonatomic, retain) UITextField *descField;
+@property (nonatomic, retain) Country *country;
+@property (nonatomic, retain) NSArray *foreignCurrencies;
 
 @property (nonatomic, retain) CLLocationManager *locManager;
 
@@ -43,7 +49,9 @@
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context;
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel;
 
-- (void)selectCurrency:(Currency *)currency;
+- (void)selectHomeCurrency:(Currency *)currency;
+- (void)selectForeignCurrencies:(NSArray *)currencies;
+- (void)selectCountry:(Country *)country;
 - (void)checkIfDoneIsPossible:(NSString *)newString;
 
 - (Currency *)defaultCurrency;

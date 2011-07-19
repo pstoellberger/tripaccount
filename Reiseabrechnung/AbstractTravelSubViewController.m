@@ -11,12 +11,14 @@
 
 @implementation AbstractTravelSubViewController
 
+@synthesize containingViewController=_containingViewController;
+
 - (void) updateBadgeValue {
     NSUInteger itemCount = [[[self.fetchedResultsController sections] lastObject] numberOfObjects];
     if (itemCount == 0) {
         self.tabBarItem.badgeValue = nil;
     } else {
-        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", [[[self.fetchedResultsController sections] lastObject] numberOfObjects]];
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", [self.fetchedResultsController.fetchedObjects count]];
     }
 }
 

@@ -12,23 +12,20 @@
 #import "EntryNotManaged.h"
 
 
-@interface EntryEditViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface EntryEditViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
+    id _target;
+    SEL _selector;
     EntryNotManaged *_entry;
+    UITextField *_amountField;
+    UITextField *_descField;
+    Entry *_entryManaged;
+    Travel *_travel;
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;
 
-@property (nonatomic, retain) IBOutlet UITextField *descriptionField;
-@property (nonatomic, retain) IBOutlet UITextField *amountField;
-@property (nonatomic, retain) IBOutlet UITextField *currencyField;
-@property (nonatomic, retain) IBOutlet UISwitch *dateToggle;
-@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
-
-@property (nonatomic, retain) IBOutlet UIView *toolbarView;
-
-@property (nonatomic, retain) TravelViewController *rootViewController;
-
-- (id) initWithTravel: (Travel *) travel;
+- (id)initWithTravel: (Travel *) travel target:(id)target action:(SEL)selector;
+- (id)initWithTravel: (Travel *) travel andEntry:(Entry *)entry target:(id)target action:(SEL)selector;
 
 - (IBAction)done:(UIBarButtonItem *)sender;
 - (IBAction)cancel:(UIBarButtonItem *)sender;

@@ -2,7 +2,7 @@
 //  Entry.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 16/07/2011.
+//  Created by Martin Maier on 19/07/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import "Currency.h"
 #import "Participant.h"
 #import "Travel.h"
+#import "Type.h"
 
 
 @implementation Entry
@@ -20,6 +21,7 @@
 @dynamic payer;
 @dynamic receivers;
 @dynamic currency;
+@dynamic type;
 
 
 
@@ -50,6 +52,7 @@
     [[self primitiveValueForKey:@"receivers"] minusSet:value];
     [self didChangeValueForKey:@"receivers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
 
 
 

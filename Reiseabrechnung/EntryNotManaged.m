@@ -7,22 +7,39 @@
 //
 
 #import "EntryNotManaged.h"
+#import "Entry.h"
 
 
 @implementation EntryNotManaged
 
-@synthesize text, currency, date, payer, amount, travel, receivers;
+@synthesize text, currency, date, payer, amount, travel, receivers, type;
 
 - (id)init {
     self = [super init];
     if (self) {
-        text = @"";
-        currency = nil;
-        date = [[NSDate date] retain];
-        payer = nil;
-        amount = 0;
-        travel = nil;
-        receivers = [[NSSet alloc] init];
+        self.text = @"";
+        self.currency = nil;
+        self.date = [[NSDate date] retain];
+        self.payer = nil;
+        self.amount = 0;
+        self.travel = nil;
+        self.receivers = [[NSSet alloc] init];
+        self.type = nil;
+    }
+    return self;
+}
+
+- (id)initWithEntry:(Entry *)entry {
+    self = [super init];
+    if (self) {
+        self.text = entry.text;
+        self.currency = entry.currency;
+        self.date = entry.date;
+        self.payer = entry.payer;
+        self.amount = entry.amount;
+        self.travel = entry.travel;
+        self.receivers = entry.receivers;
+        self.type = entry.type;
     }
     return self;
 }

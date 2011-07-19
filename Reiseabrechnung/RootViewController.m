@@ -20,7 +20,7 @@
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
     
-    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
         _managedObjectContext = context;
@@ -33,9 +33,13 @@
         [req release];
         
         self.fetchedResultsController.delegate = self;
+        [self.fetchedResultsController performFetch:nil];
         
         self.titleKey = @"name";
-        self.subtitleKey = @"name";
+        self.subtitleKey = @"country.name";
+        self.imageKey = @"country.image";
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         
     }
     return self;
@@ -58,7 +62,7 @@
         detailViewController.title = travel.name;
         
         [self.navigationController pushViewController:detailViewController animated:YES];
-        [detailViewController release];    
+        [detailViewController release]; 
     }
     
 }
@@ -84,6 +88,33 @@
     
     self.tableView.allowsSelectionDuringEditing = YES;
     
+    [_tripLabel release];
+    _tripLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 46)];
+    _tripLabel.text = @"No existing trips. \n Click on the \"+\" button to add a trip.";
+    _tripLabel.backgroundColor = [UIColor clearColor];
+    _tripLabel.numberOfLines = 0;
+    _tripLabel.textAlignment = UITextAlignmentCenter;
+    _tripLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:_tripLabel];
+    
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = background;
+    [background release];
+    
+    [self updateNoTripLabel];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [super controllerDidChangeContent:controller];
+    [self updateNoTripLabel];
+}
+
+- (void) updateNoTripLabel {
+    if ([self.fetchedResultsController. fetchedObjects count] == 0) {
+        _tripLabel.hidden = NO;
+    } else {
+        _tripLabel.hidden = YES;
+    }
 }
 
 - (UIBarButtonItem *) addButton {
@@ -140,12 +171,18 @@
     Travel *_travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext: self.managedObjectContext];
     _travel.name = name;
     _travel.created = [NSDate date];
-    _travel.currency = newCurrency;
+    _travel.homeCurrency = newCurrency;
     
     [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
 - (void)dealloc {
+    [_tripLabel release];
     [_managedObjectContext release];
     [_addButton release];
     [_editButton release];

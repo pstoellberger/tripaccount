@@ -9,6 +9,9 @@
 #import "ReiseabrechnungAppDelegate.h"
 #import "RootViewController.h"
 #import "Currency.h"
+#import "Country.h"
+#import "Type.h"
+
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -28,23 +31,65 @@
     [req release];
     
     if (![currencies lastObject]) {
-        // no currencies -> init
-        Currency *_currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
-        _currency.name = @"Euro";
-        _currency.code = @"EUR";
-        _currency.character = @"€";
         
-        _currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
-        _currency.name = @"US Dollar";
-        _currency.code = @"USD";
-        _currency.character = @"$";
+        NSLog(@"Initialising countries...");
+        NSString *pathCountryPlist =[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"plist"];
+        NSDictionary* countryDict = [[NSDictionary alloc] initWithContentsOfFile:pathCountryPlist];
+        NSArray *countries = [countryDict valueForKey:@"countries"];
         
-        _currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
-        _currency.name = @"Australian Dollar";
-        _currency.code = @"AUD";
-        _currency.character = @"A$";
+        NSMutableDictionary *orderCountryDict = [[NSMutableDictionary alloc] init];
         
-        [self.managedObjectContext save:nil];
+        for (NSDictionary *countryItem in countries) {
+            Country *_country = [NSEntityDescription insertNewObjectForEntityForName:@"Country" inManagedObjectContext:self.managedObjectContext];
+            _country.name = [countryItem valueForKey:@"name"];
+            _country.image = [countryItem valueForKey:@"image"];
+            
+            NSString *countryId = [NSString stringWithFormat:@"%@", [countryItem valueForKey:@"id"]];
+            [orderCountryDict setValue:_country forKey:countryId];
+        }
+        [countryDict release];
+        
+        NSLog(@"Initialising currencies...");
+        NSString *pathCurrencyPlist =[[NSBundle mainBundle] pathForResource:@"currencies" ofType:@"plist"];
+        NSDictionary* currencyDict = [[NSDictionary alloc] initWithContentsOfFile:pathCurrencyPlist];
+        NSArray *currencies = [currencyDict valueForKey:@"currencies"];
+
+        for (NSDictionary *currencyItem in currencies) {
+            Currency *_currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
+            _currency.name = [currencyItem valueForKey:@"name"];
+            _currency.code = [currencyItem valueForKey:@"code"];
+            _currency.digits = [currencyItem valueForKey:@"digits"];
+            
+            NSArray *countriesForCurrency = [currencyItem valueForKey:@"countries"];
+            for (id countryItem in countriesForCurrency) {
+                NSString *countryId = [NSString stringWithFormat:@"%@", countryItem];
+                [_currency addCountriesObject:(Country *)[orderCountryDict objectForKey:countryId]];
+            }
+        }
+        [currencyDict release];
+        [orderCountryDict release];
+        
+        [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
+    }
+    
+    NSFetchRequest *reqType = [[NSFetchRequest alloc] init];
+    reqType.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext: self.managedObjectContext];
+    NSArray *types = [self.managedObjectContext executeFetchRequest:reqType error:nil];
+    [reqType release];
+    
+    if (![types lastObject]) {
+        
+        NSLog(@"Initialising types...");
+        
+        NSString *typesPlistPath = [[NSBundle mainBundle] pathForResource:@"types" ofType:@"plist"];
+        NSArray *staticTypeNames = [[NSDictionary dictionaryWithContentsOfFile:typesPlistPath] valueForKey:@"types"];
+        
+        for (NSString *staticTypeName in staticTypeNames) {
+            Type *_type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:self.managedObjectContext];
+            _type.name = staticTypeName;
+        }
+        
+        [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
     }
     
     RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
@@ -150,7 +195,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database6.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

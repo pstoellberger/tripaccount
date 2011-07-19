@@ -11,6 +11,7 @@
 #import "ReiseabrechnungAppDelegate.h"
 #import "Currency.h"
 #import "Participant.h"
+#import "EntryEditViewController.h"
 
 @implementation EntryViewController
 
@@ -63,9 +64,18 @@
     Entry *entry = (Entry *) managedObject;
     cell.top.text = entry.text;
     cell.bottom.text = [NSString stringWithFormat:@"%d people", [entry.receivers count]];
-    cell.right.text = [NSString stringWithFormat:@"%d %@", entry.amount, entry.currency.code];
+    cell.right.text = [NSString stringWithFormat:@"%@ %@", entry.amount, entry.currency.code];
     
     return cell;
+}
+
+- (void)managedObjectSelected:(NSManagedObject *)managedObject {
+    EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel andEntry:(Entry *) managedObject target:self.containingViewController action:@selector(addOrEditEntryWithParameters:andEntry:)];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    navController.navigationBar.barStyle = UIBarStyleBlack;
+    [self.containingViewController presentModalViewController:navController animated:YES];   
+    [detailViewController release];
+    [navController release];
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject
@@ -109,8 +119,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 @end

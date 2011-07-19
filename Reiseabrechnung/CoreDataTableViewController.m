@@ -6,6 +6,10 @@
 
 #import "CoreDataTableViewController.h"
 
+@interface CoreDataTableViewController () 
+- (id) cascadedObject:(NSManagedObject *)managedObject withKey:(NSString *)key;
+@end
+
 @implementation CoreDataTableViewController
 
 @synthesize fetchedResultsController;
@@ -124,20 +128,40 @@
         cell = [[[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:ReuseIdentifier] autorelease];
     }
 	
-	if (self.titleKey) cell.textLabel.text = [managedObject valueForKey:self.titleKey];
-	if (self.subtitleKey) cell.detailTextLabel.text = [managedObject valueForKey:self.subtitleKey];
+	if (self.titleKey) cell.textLabel.text = [self cascadedObject:managedObject withKey:self.titleKey];
+	if (self.subtitleKey) cell.detailTextLabel.text = [self cascadedObject:managedObject withKey:self.subtitleKey];
     if (self.imageKey) {
-        if ([managedObject valueForKey:self.imageKey]) {
-            cell.imageView.image = [[UIImage alloc] initWithData:[managedObject valueForKey:self.imageKey]];
-        } else {
-            cell.imageView.image = [[UIImage alloc] initWithContentsOfFile:@"Gallery.png"];
+        id image = [self cascadedObject:managedObject withKey:self.imageKey];
+        if (image) {
+            if ([image isKindOfClass:[NSData class]]) {
+                cell.imageView.image = [[UIImage alloc] initWithData:image];
+            } else {
+                NSString *pathCountryPlist =[[NSBundle mainBundle] pathForResource:image ofType:@""];
+                cell.imageView.image = [[UIImage alloc] initWithContentsOfFile:pathCountryPlist];
+            }
         }
     }
 	cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
 	UIImage *thumbnail = [self thumbnailImageForManagedObject:managedObject];
 	if (thumbnail) cell.imageView.image = thumbnail;
-	
+    
+    //cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:.2f];
+    
 	return cell;
+}
+
+- (id) cascadedObject:(NSManagedObject *)managedObject withKey:(NSString *)key {
+    NSArray *components = [key componentsSeparatedByString:@"."];
+    id returnValue = managedObject;
+    for (NSString *component in components) {
+        returnValue = [returnValue valueForKey:component];
+    }
+    
+    if ([returnValue isKindOfClass:[NSString class]]) {
+        return NSLocalizedString(returnValue, returnValue);; 
+    } else {
+        return returnValue;
+    }
 }
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject
