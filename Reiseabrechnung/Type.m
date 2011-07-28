@@ -2,18 +2,19 @@
 //  Type.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 19/07/2011.
+//  Created by Martin Maier on 28/07/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Type.h"
+#import "AppDefaults.h"
 #import "Entry.h"
 
 
 @implementation Type
-@dynamic name;
 @dynamic buildIn;
+@dynamic name;
 @dynamic entries;
-
+@dynamic defaults;
 
 @end

@@ -10,12 +10,33 @@
 #import "Travel.h"
 #import "Entry.h"
 #import "EntryCell.h"
-#import "AbstractTravelSubViewController.h"
+#import "CoreDataTableViewController.h"
+#import "EntryNotManaged.h"
+
+@protocol EntryViewControllerDelegate
+- (void)didItemCountChange:(NSUInteger)itemCount;
+@end
 
 
-@interface EntryViewController : AbstractTravelSubViewController {
+@protocol EntryViewControllerEditDelegate
+- (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry;
+@end
+
+@interface EntryViewController : CoreDataTableViewController {
+    int _sortIndex;
+    NSArray *_sortKeyArray;
+    NSFetchRequest *_fetchRequest;
+    
+    id _delegate;
+    id _editDelegate;
 }
 
 @property (nonatomic, retain) Travel *travel;
+@property (nonatomic, retain) NSFetchRequest *fetchRequest;
+@property (nonatomic, assign) id <EntryViewControllerDelegate> delegate;
+@property (nonatomic, assign) id <EntryViewControllerEditDelegate> editDelegate;
+
+- (id)initWithTravel:(Travel *) travel;
+- (void)sortTable:(int)sortIndex;
 
 @end

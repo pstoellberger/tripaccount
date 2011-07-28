@@ -17,13 +17,13 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.text = @"";
+        self.text = nil;
         self.currency = nil;
-        self.date = [[NSDate date] retain];
+        self.date = [NSDate date];
         self.payer = nil;
         self.amount = 0;
         self.travel = nil;
-        self.receivers = [[NSSet alloc] init];
+        self.receivers = [NSSet set];
         self.type = nil;
     }
     return self;

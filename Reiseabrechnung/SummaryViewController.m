@@ -7,15 +7,76 @@
 //
 
 #import "SummaryViewController.h"
-
+#import "Summary.h"
+#import "Participant.h"
+#import "SummaryCell.h"
+#import "UIFactory.h"
 
 @implementation SummaryViewController
 
-@synthesize travel=_travel;
+@synthesize travel=_travel, summaryCell=_summaryCell ;
 
--(void) postConstructWithTravel:(Travel *) travel {
-    _travel = travel;
+- (id)initWithTravel:(Travel *) travel {
+
+    if (self = [super initWithStyle:UITableViewStylePlain]) {
+    
+        _travel = travel;
+        
+        [UIFactory initializeTableViewController:self.tableView];
+        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+
+        self.title = @"Summary";
+        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"138-scales" ofType:@"png"]];
+        
+        [self viewWillAppear:YES];
+    }
+    return self;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_summary.accounts count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *ReuseIdentifier = @"SummaryCell";
+    
+    SummaryCell *cell = (SummaryCell *) [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier];
+    if (cell == nil) {
+        [[NSBundle mainBundle] loadNibNamed:@"SummaryCell" owner:self options:nil];
+        
+        cell = self.summaryCell;
+        [UIFactory initializeCell:cell];
+    }
+    
+    ParticipantKey *key = [[[_summary.accounts keyEnumerator] allObjects] objectAtIndex:indexPath.row]; 
+
+    NSNumber *value = [_summary.accounts objectForKey:key];
+    if (value > 0) {
+        cell.debtor.text = key.payer.name;
+        cell.debtee.text = key.receiver.name;
+    } else {
+        cell.debtor.text = key.receiver.name;
+        cell.debtee.text = key.payer.name;
+    }
+    cell.amount.text = [NSString stringWithFormat:@"%.02f", fabs([value doubleValue])];
+    
+    return cell;
+}
+
+- (void)recalculateSummary {
+    [_summary release];
+    _summary = [[Summary createSummary:self.travel] retain];
+    NSMutableDictionary *dic = _summary.accounts;
+    for (NSString* key in [dic keyEnumerator]) {
+        NSLog(@"%@ %@", key, [dic objectForKey:key]);
+    }    
+}
+
+
+#pragma mark - View lifecycle
 
 - (void)dealloc
 {
@@ -30,7 +91,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {

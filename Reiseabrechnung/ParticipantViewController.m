@@ -14,33 +14,54 @@
 
 @synthesize travel=_travel;
 
--(void) postConstructWithTravel:(Travel *) travel {
-    _travel = travel;
+- (id)initWithTravel:(Travel *) travel {
     
-    NSManagedObjectContext *context = [travel managedObjectContext];
+    if (self = [super initWithStyle:UITableViewStylePlain]) {
+        
+        _travel = travel;
+        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        
+        [UIFactory initializeTableViewController:self.tableView];
+        
+        self.title = @"People";
+        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"112-group" ofType:@"png"]];
+        
+        NSManagedObjectContext *context = [travel managedObjectContext];
+        
+        NSFetchRequest *req = [[NSFetchRequest alloc] init];
+        req.entity = [NSEntityDescription entityForName:@"Participant" inManagedObjectContext: context];
+        req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        req.predicate = [NSPredicate predicateWithFormat:@"travel = %@", travel];
+        
+        [NSFetchedResultsController deleteCacheWithName:@"Participants"];
+        self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Participants"] autorelease];
+        [req release];
+        
+        self.fetchedResultsController.delegate = self;
+        
+        self.titleKey = @"name";
+        self.imageKey = @"image";
+        
+        self.tableView.allowsSelection = NO;
+
+        [self viewWillAppear:YES];
+        
+        [self updateBadgeValue];
+    }
     
-    NSFetchRequest *req = [[NSFetchRequest alloc] init];
-    req.entity = [NSEntityDescription entityForName:@"Participant" inManagedObjectContext: context];
-    req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-    req.predicate = [NSPredicate predicateWithFormat:@"travel = %@", travel];
-    
-    [NSFetchedResultsController deleteCacheWithName:@"Participants"];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Participants"];
-    [req release];
-    
-    self.fetchedResultsController.delegate = self;
-    
-    self.titleKey = @"name";
-    self.imageKey = @"image";
-    
-    [self viewWillAppear:true];
-    
-    [self updateBadgeValue];
-    
+    return self;
 }
 
 - (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject {
     return UITableViewCellAccessoryNone;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
+    UITableViewCell *cell = [super tableView:tableView cellForManagedObject:managedObject];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject
@@ -66,6 +87,24 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
+#pragma mark - BadgeValue update 
+
+- (void)updateBadgeValue {
+    NSUInteger itemCount = [self.fetchedResultsController.fetchedObjects count];
+    if (itemCount == 0) {
+        self.tabBarItem.badgeValue = nil;
+    } else {
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", itemCount];
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [super controllerDidChangeContent:controller];    
+    [self updateBadgeValue];
+}
+
 
 #pragma mark - View lifecycle
 

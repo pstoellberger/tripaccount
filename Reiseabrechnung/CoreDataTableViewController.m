@@ -5,9 +5,10 @@
 //
 
 #import "CoreDataTableViewController.h"
+#import "UIFactory.h"
 
 @interface CoreDataTableViewController () 
-- (id) cascadedObject:(NSManagedObject *)managedObject withKey:(NSString *)key;
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 @end
 
 @implementation CoreDataTableViewController
@@ -18,19 +19,29 @@
 - (void)createSearchBar
 {
 	if (self.searchKey.length) {
-		if (self.tableView && !self.tableView.tableHeaderView) {
-			UISearchBar *searchBar = [[[UISearchBar alloc] init] autorelease];
-			UISearchDisplayController *controller = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+		if (self.tableView) {                        
+			UISearchBar *searchBar = [(UISearchBar *) [[UISearchBar alloc] init] autorelease];
+            searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            searchBar.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 38);
+			[[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] autorelease];
 			self.searchDisplayController.searchResultsDelegate = self;
 			self.searchDisplayController.searchResultsDataSource = self;
 			self.searchDisplayController.delegate = self;
-			searchBar.frame = CGRectMake(0, 0, 0, 38);
-			self.tableView.tableHeaderView = searchBar;
-            [searchBar release];
-            [controller release];
+            searchBar.tintColor = [UIFactory defaultTintColor];
+            
+            UIView *subView = [self createTableHeaderSubView];
+            
+            if (subView) {
+                UIView *comboView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, searchBar.bounds.size.width, searchBar.bounds.size.height + subView.bounds.size.height)];
+                subView.frame = CGRectMake(0, searchBar.bounds.size.height, subView.bounds.size.width, subView.bounds.size.height);
+                [comboView addSubview:subView];
+                [comboView addSubview:searchBar];
+                self.tableView.tableHeaderView = comboView;
+                [comboView release];
+            } else {
+                self.tableView.tableHeaderView = searchBar;
+            }
 		}
-	} else {
-		self.tableView.tableHeaderView = nil;
 	}
 }
 
@@ -84,6 +95,7 @@
 		self.fetchedResultsController.fetchRequest.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:searchPredicate, normalPredicate , nil]];
 		[self performFetchForTableView:tableView];
 	}
+
 	return self.fetchedResultsController;
 }
 
@@ -95,6 +107,7 @@
 
 - (void)setFetchedResultsController:(NSFetchedResultsController *)controller
 {
+  
 	fetchedResultsController.delegate = nil;
 	[fetchedResultsController release];
 	fetchedResultsController = [controller retain];
@@ -114,8 +127,15 @@
 	return nil;
 }
 
-- (void)configureCell:(UITableViewCell *)cell forManagedObject:(NSManagedObject *)managedObject
-{
+- (void)configureCell:(UITableViewCell *)cell forManagedObject:(NSManagedObject *)managedObject {
+}
+             
+- (UIView *)createTableHeaderSubView {
+    return nil;
+}
+
+- (UITableViewCell *)newUIViewCell {
+    return [UITableViewCell alloc];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject
@@ -125,7 +145,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier];
     if (cell == nil) {
 		UITableViewCellStyle cellStyle = self.subtitleKey ? UITableViewCellStyleSubtitle : UITableViewCellStyleDefault;
-        cell = [[[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:ReuseIdentifier] autorelease];
+        UITableViewCell *newCell = [self newUIViewCell];
+        cell = [[newCell initWithStyle:cellStyle reuseIdentifier:ReuseIdentifier] autorelease];
+        // get a class name like this: NSStringFromClass([newCell class])
     }
 	
 	if (self.titleKey) cell.textLabel.text = [self cascadedObject:managedObject withKey:self.titleKey];
@@ -134,10 +156,10 @@
         id image = [self cascadedObject:managedObject withKey:self.imageKey];
         if (image) {
             if ([image isKindOfClass:[NSData class]]) {
-                cell.imageView.image = [[UIImage alloc] initWithData:image];
+                cell.imageView.image = [[[UIImage alloc] initWithData:image] autorelease];
             } else {
                 NSString *pathCountryPlist =[[NSBundle mainBundle] pathForResource:image ofType:@""];
-                cell.imageView.image = [[UIImage alloc] initWithContentsOfFile:pathCountryPlist];
+                cell.imageView.image = [UIImage imageWithContentsOfFile:pathCountryPlist];
             }
         }
     }
@@ -145,9 +167,19 @@
 	UIImage *thumbnail = [self thumbnailImageForManagedObject:managedObject];
 	if (thumbnail) cell.imageView.image = thumbnail;
     
-    //cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:.2f];
-    
+    if (tableView.style == UITableViewStylePlain) {
+        [UIFactory initializeCell:cell];
+    }
+
 	return cell;
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();    
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 - (id) cascadedObject:(NSManagedObject *)managedObject withKey:(NSString *)key {
@@ -243,7 +275,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
-	return [[self fetchedResultsControllerForTableView:tableView] sectionForSectionIndexTitle:title atIndex:index];
+    return [[self fetchedResultsControllerForTableView:tableView] sectionForSectionIndexTitle:title atIndex:index];
 }
 
 #pragma mark NSFetchedResultsControllerDelegate methods
@@ -308,8 +340,7 @@
 
 #pragma mark dealloc
 
-- (void)dealloc
-{
+- (void)dealloc {
 	fetchedResultsController.delegate = nil;
 	[fetchedResultsController release];
 	[searchKey release];

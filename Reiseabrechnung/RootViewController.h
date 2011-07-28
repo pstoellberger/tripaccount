@@ -13,24 +13,23 @@
 #import "AlertPrompt.h"
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
+#import "TravelAddWizard.h"
 
-@interface RootViewController : CoreDataTableViewController {
+@interface RootViewController : UIViewController {
     NSManagedObjectContext *_managedObjectContext;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_editButton;
-    UIBarButtonItem *_doneButton;
-    UILabel *_tripLabel;
+    UITableViewController *_tableViewController;
+    UIView *_helpView;
 }
-
-@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, retain, readonly) UIBarButtonItem *addButton;
 @property (nonatomic, retain, readonly) UIBarButtonItem *editButton;
 @property (nonatomic, retain, readonly) UIBarButtonItem *doneButton;
 
+@property (nonatomic, retain) UITableViewController *tableViewController;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
-- (void)addTravel:(NSString *)name withCurrency:(Currency *)currency;
-- (void)updateNoTripLabel;
+- (void)openTravelEditViewController;
 
 @end

@@ -7,7 +7,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface CoreDataTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchDisplayDelegate>
+@interface CoreDataTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 {
 	NSPredicate *normalPredicate;
 	NSString *currentSearchText;
@@ -30,6 +30,8 @@
 
 @property (nonatomic, copy) NSString *imageKey;
 
+- (NSFetchedResultsController *)fetchedResultsControllerForTableView:(UITableView *)tableView;
+
 // gets accessory type (e.g. disclosure indicator) for the given managedObject (default DisclosureIndicator)
 - (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject;
 
@@ -49,5 +51,13 @@
 // this method does not necessarily have to delete the object from the database
 // (e.g. it might just change the object so that it does not match the fetched results controller's predicate anymore)
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
+
+- (void)performFetchForTableView:(UITableView *)tableView;
+
+- (id) cascadedObject:(NSManagedObject *)managedObject withKey:(NSString *)key;
+
+- (UITableViewCell *)newUIViewCell;
+
+- (UIView *) createTableHeaderSubView;
 
 @end

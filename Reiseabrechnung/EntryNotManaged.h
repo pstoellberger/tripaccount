@@ -20,11 +20,11 @@
 @property (nonatomic, retain) NSNumber * amount;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) Travel * travel;
-@property (nonatomic, retain) Participant * payer;
-@property (nonatomic, retain) NSSet* receivers;
-@property (nonatomic, retain) Currency * currency;
-@property (nonatomic, retain) Type * type;
+@property (nonatomic, retain) Travel *travel;
+@property (nonatomic, retain) Type *type;
+@property (nonatomic, retain) Participant *payer;
+@property (nonatomic, retain) NSSet *receivers;
+@property (nonatomic, retain) Currency *currency;
 
 - (id)initWithEntry:(Entry *)entry;
 

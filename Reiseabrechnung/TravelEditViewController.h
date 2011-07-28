@@ -13,33 +13,29 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
 
+@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, UITableViewDelegate, UINavigationControllerDelegate> {
 
-@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, UITableViewDelegate> {
-
-    UITextField *_descField;
-    UITableViewCell *_countryCell;
-    UITableViewCell *_cityCell;
-    UITextField *_cityCellField;
-    
     NSManagedObjectContext *_context;
     
     Travel *_travel;
-    Currency *_currency;
-    NSArray *_foreignCurrencies;
+    NSArray *_currencies;
     Country *_country;
     NSString *_name;
     NSString *_city;
     
+    NSMutableArray* _cellsToReloadAndFlash;
+    
     CLLocationManager *_locManager;
     MKReverseGeocoder *_geocoder;
+    
+    BOOL _isFirstView;
 }
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *city;
 @property (nonatomic, retain) Travel *travel;
-@property (nonatomic, retain) Currency *currency;
 @property (nonatomic, retain) Country *country;
-@property (nonatomic, retain) NSArray *foreignCurrencies;
+@property (nonatomic, retain) NSArray *currencies;
 
 @property (nonatomic, retain) CLLocationManager *locManager;
 
@@ -49,11 +45,8 @@
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context;
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel;
 
-- (void)selectHomeCurrency:(Currency *)currency;
-- (void)selectForeignCurrencies:(NSArray *)currencies;
+- (void)selectCurrencies:(NSArray *)currencies;
 - (void)selectCountry:(Country *)country;
-- (void)checkIfDoneIsPossible:(NSString *)newString;
-
-- (Currency *)defaultCurrency;
+- (void)checkIfDoneIsPossible;
 
 @end

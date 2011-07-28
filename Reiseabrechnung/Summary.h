@@ -7,10 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Travel.h"
 
-
-@interface Summary : NSObject {
-    
+@interface ParticipantKey : NSObject <NSCopying> {
+    Participant *payer;
+    Participant *receiver;
 }
+@property (nonatomic, retain) Participant *payer;
+@property (nonatomic, retain) Participant *receiver;
 
 @end
+
+@interface Summary : NSObject {
+    NSArray *_results;
+    NSMutableDictionary *_accounts;
+}
+
+@property (nonatomic, retain) NSArray* results;
+@property (nonatomic, retain, readonly) NSMutableDictionary* accounts;
+
++ (Summary *) createSummary:(Travel *) travel;
+
+@end
+

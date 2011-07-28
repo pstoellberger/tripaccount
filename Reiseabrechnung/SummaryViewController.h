@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "Travel.h"
-#import "AbstractTravelSubViewController.h"
+#import "Summary.h"
+#import "SummaryCell.h"
 
 
-@interface SummaryViewController : UIViewController {
+@interface SummaryViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+    Summary *_summary;
+    SummaryCell *_summaryCell;
 }
 
 @property (nonatomic, retain) Travel *travel;
+@property (nonatomic, assign) IBOutlet SummaryCell *summaryCell;
 
--(void) postConstructWithTravel:(Travel *) travel;
+- (id)initWithTravel:(Travel *) travel;
+- (void)recalculateSummary;
 
 @end

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Travel.h"
-#import "AbstractTravelSubViewController.h"
+#import "CoreDataTableViewController.h"
 
-@interface ParticipantViewController : AbstractTravelSubViewController {
+@interface ParticipantViewController : CoreDataTableViewController {
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;
+
+- (void)updateBadgeValue;
 
 @end

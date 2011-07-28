@@ -14,30 +14,50 @@
 #import "UIFactory.h"
 #import "Country.h"
 #import "GenericSelectViewController.h"
+#import "ParticipantHelper.h"
+#import "CountryCell.h"
+#import "TextEditViewController.h"
+#import "AlignedStyle2Cell.h"
+
+static NSIndexPath *_countryIndexPath;
+static NSIndexPath *_cityIndexPath;
+static NSIndexPath *_descriptionIndexPath;
+static NSIndexPath *_currenciesIndexPath;
 
 @interface TravelEditViewController ()
 - (void)startLocating;
+- (void)initIndexPaths;
+- (void)updateAndFlash:(UIViewController *)viewController;
 @end
 
 @implementation TravelEditViewController
 
-@synthesize name=_name, travel=_travel, currency=_currency, country=_country, foreignCurrencies=_foreignCurrencies, city=_city;
+@synthesize name=_name, travel=_travel, country=_country, currencies=_currencies, city=_city;
 
 @synthesize locManager=_locManager;
 
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *)context {
     
+    self = [self initInManagedObjectContext:context withTravel:nil];
+    return self;
+}
+
+- (id) initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel {
+    
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     if (self) {
+        
+        [self initIndexPaths];
+        
+        _isFirstView = YES;
+        
+        _cellsToReloadAndFlash = [[[NSMutableArray alloc] init] retain];
+        
         _context = context;
         
-        self.currency = [self defaultCurrency];
-        self.foreignCurrencies = [[NSArray alloc] init];
-        self.name = nil;
-        self.city = nil;
-        self.country = nil;
+        [UIFactory initializeTableViewController:self.tableView];
         
         self.tableView.delegate = self;
         
@@ -48,269 +68,276 @@
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done:)] autorelease];
         }
         
-        // init location manager
-        self.locManager = [[[CLLocationManager alloc] init] autorelease];
-        if (![CLLocationManager locationServicesEnabled]) {
-            NSLog(@"User has opted out of location services");
+        self.title = @"Add Trip";  
+        
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
+        
+        if (!travel) {
+            
+            self.currencies = [NSArray arrayWithObject:[ReiseabrechnungAppDelegate defaultsObject:context].homeCurrency];
+            self.name = @"";
+            self.city = @"";
+            self.country = nil;
+            
+        } else {
+            
+            self.travel = travel;
+            self.name = travel.name;
+            self.city = travel.city;
+            self.country = travel.country;
+            self.currencies = [travel.currencies allObjects];
+            
+            // init location manager
+            self.locManager = [[[CLLocationManager alloc] init] autorelease];
+            if (![CLLocationManager locationServicesEnabled]) {
+                NSLog(@"User has opted out of location services");
+            }
+            
+            self.locManager.delegate = self;
+            self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
+            
+            self.locManager.distanceFilter = 5.0f; // in meters
+            
+            if (!self.country) {
+                [self startLocating];
+            }
         }
-        
-        self.locManager.delegate = self;
-        self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
-        
-        self.locManager.distanceFilter = 5.0f; // in meters
-        
-        if (!self.country) {
-            [self startLocating];
-        }
-        
     }
     return self;
 }
 
-- (id) initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel {
-    self = [self initInManagedObjectContext:context];
-    if (self) {
-        self.travel = travel;
-        self.name = travel.name;
-        self.city = travel.city;
-        self.country = travel.country;
-        self.currency = travel.homeCurrency;
-        self.foreignCurrencies = [travel.foreignCurrencies allObjects];
-    }
-    return self;
+- (void)initIndexPaths {
+    _descriptionIndexPath = [[NSIndexPath indexPathForRow:0 inSection:0] retain];
+    _countryIndexPath = [[NSIndexPath indexPathForRow:0 inSection:1] retain];
+    _cityIndexPath = [[NSIndexPath indexPathForRow:1 inSection:1] retain];
+    _currenciesIndexPath = [[NSIndexPath indexPathForRow:2 inSection:1] retain];
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    
-//    if (section == 0) {
-//        UIView *containerView = [UIFactory createDefaultTableSectionHeader:self andTableView:tableView andSection:section];       
-//        if(section == 0) {
-//            UIButton *abutton = [UIButton buttonWithType:UIButtonTypeCustom];
-//            UIImage *image = [UIImage imageNamed:@"74-location.png"];
-//            
-//            UISegmentedControl* sc = [[[UISegmentedControl alloc] initWithFrame:CGRectMake(270, 10 , 30, 30)] autorelease];
-//            //UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:@selector(startLocating)];
-//            [sc insertSegmentWithImage:image atIndex:0 animated:NO];
-//            //[sc inse:image atIndex:0 animated:NO];
-//            sc.segmentedControlStyle = UISegmentedControlStyleBar;
-//            sc.momentary = YES;
-//            [self.view addSubview:sc];
-//            //UIImage *strechableButtonImageNormal = [image stretchableImageWithLeftCapWidth:5 topCapHeight:5];
-//            //[abutton setBackgroundImage:image forState:UIControlStateNormal];
-//            abutton.frame = CGRectMake(270, 10 , 40, 40);
-//            [abutton addTarget: self action: @selector(startLocating)forControlEvents: UIControlEventTouchUpInside];
-//            [containerView addSubview:sc];
-//        }
-//        return containerView;
-//    } else {
-//        return nil;
-//    }
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//	if(section == 0)
-//		return 47;
-//	else {
-//		return 47-11;
-//	}
-//    
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section) {
+        case 0: return 1;
+        case 1: return 3;
+    }
+    return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return nil;    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = nil;
     
-    if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-                _countryCell = cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CountryCell"] autorelease];
-                _countryCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                _countryCell.textLabel.text = @"Country";
-                if (self.country) {
-                    _countryCell.textLabel.text = [NSString stringWithFormat:@"%@", self.country.name];
-                    if (self.country.image) {
-                        NSString *pathCountryPlist =[[NSBundle mainBundle] pathForResource:self.country.image ofType:@""];
-                        _countryCell.imageView.image = [[UIImage alloc] initWithContentsOfFile:pathCountryPlist];                       
-                    }
-                }
-                break;
-            case 1:
-                _cityCell = cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"CityEditCell"] autorelease];
-                _cityCell.textLabel.text = @"City";
-                
-                _cityCellField = [[UITextField alloc] initWithFrame:CGRectMake(85, 10, 200, 200)];
-                _cityCellField.delegate = self;
-                _cityCellField.placeholder = @"City (optional)";
-                _cityCellField.text = self.city;
-                
-                [cell.contentView addSubview:_cityCellField];
-                
-                //cell.editing = YES;
-                
-                break;
-            case 2:
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CityDescCell"] autorelease];
-                
-                UIView *descriptionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-                //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-                //label.text = @"Use this button to use your current location";
-                
-                UIImage *image = [UIImage imageNamed:@"74-location.png"];
-                UIButton *abutton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [abutton setBackgroundImage:image forState:UIControlStateNormal];
-                [abutton setFrame:CGRectMake(250, 10, 20, 20)];
-                //[abutton setTitle:@"Use current location" forState:UIControlStateNormal];
-                [descriptionView addSubview:abutton];
-                //[descriptionView addSubview:label];
-                
-                [cell addSubview:descriptionView];
-                break;
+    if ([indexPath isEqual:_countryIndexPath]) {
+        
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"Country";
+        if (self.country) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.country.name];
+            if (self.country.image) {
+                NSString *pathCountryPlist =[[NSBundle mainBundle] pathForResource:self.country.image ofType:@""];
+                cell.imageView.image = [UIImage imageWithContentsOfFile:pathCountryPlist];                       
+            }
         }
-    } else if (indexPath.section == 1) {
         
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"EditableTableViewCell"] autorelease];
+    } else if ([indexPath isEqual:_cityIndexPath]) {
+                
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell.textLabel.text = @"City/State";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = self.city;
+
+    } else if ([indexPath isEqual:_descriptionIndexPath]) {
         
-        _descField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 200, 200)];
-        _descField.delegate = self;
-        _descField.placeholder = @"Description (optional)";
-        _descField.text = self.name;
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell.textLabel.text = @"Description";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = self.name;
         
-        [cell.contentView addSubview:_descField];
+    } else if ([indexPath isEqual:_currenciesIndexPath]) {
         
-        cell.editing = YES;
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"Foreign";
         
-    } else if (indexPath.section == 2) {
-        switch (indexPath.row) {
-            case 0:
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Currency"] autorelease];
-                cell.textLabel.text = @"Home";
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.currency.name];
-                cell.editing = NO;
-                break;
-            case 1:
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Currency"] autorelease];
-                cell.textLabel.text = @"Foreign";
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%d currencies", [self.foreignCurrencies count]];
-                cell.editing = NO;
-                break;
-        };
+        NSString *currenciesString = @"";
+        const unichar cr = '\n';
+        NSString *singleCR = [NSString stringWithCharacters:&cr length:1];
+        for (Currency *currency in self.currencies) {
+            currenciesString = [[currenciesString stringByAppendingString:currency.name] stringByAppendingString:singleCR];
+        }
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n", [currenciesString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
+        cell.detailTextLabel.numberOfLines = 0;
+
+    } else {
+        NSLog(@"no indexpath cell found for %@ ", indexPath);
+    }
+    
+    if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] -1 ) {
+        //[UIFactory addShadowToView:cell];
     }
     
     return cell;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.section) {
-        case 0: 
-            switch(indexPath.row) {
-                case 0: return indexPath;
-                case 1:
-                    [_cityCellField becomeFirstResponder];
-                    return nil;
-            }
-        case 1: 
-            switch(indexPath.row) {
-                case 0: return indexPath;
-                case 1: return indexPath;
-            }
-        case 2:
-            switch(indexPath.row) {
-                case 0: return indexPath;
-                case 1: return indexPath;
-            }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath isEqual:_currenciesIndexPath] && [self.currencies count] > 1) {
+        return 40 + (([self.currencies count]-1) * 19.5);
+    } else {
+        return [UIFactory defaultCellHeight];
     }
-    return indexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == 2) {
-        if (indexPath.row == 0) {
-            NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-            _fetchRequest.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
-            _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]; 
-            
-            GenericSelectViewController *csvc = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
-                                                                                             withMultiSelection:NO
-                                                                                               withFetchRequest:_fetchRequest 
-                                                                                            withSelectedObjects:[NSArray arrayWithObjects:self.currency, nil] 
-                                                                                                         target:self
-                                                                                                         action:@selector(selectHomeCurrency:)];
-            [self.navigationController pushViewController:csvc animated:YES];
-            [csvc release];
-        } else {
-            NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-            _fetchRequest.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
-            _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]; 
-            
-            GenericSelectViewController *csvc = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
-                                                                                             withMultiSelection:YES
-                                                                                               withFetchRequest:_fetchRequest 
-                                                                                            withSelectedObjects:self.foreignCurrencies
-                                                                                                         target:self
-                                                                                                         action:@selector(selectForeignCurrencies:)];
-            [self.navigationController pushViewController:csvc animated:YES];
-            [csvc release];
-        }
-    } else if (indexPath.section == 0 && indexPath.row == 0) {
+    
+    if ([indexPath isEqual:_countryIndexPath]) {
         
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: _context];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]; 
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
                                                                                                          withMultiSelection:NO
                                                                                                            withFetchRequest:_fetchRequest 
+                                                                                                             withSectionKey:@"uppercaseFirstLetterOfName"
                                                                                                         withSelectedObjects:[NSArray arrayWithObjects:self.country, nil]
                                                                                                                      target:self
                                                                                                                      action:@selector(selectCountry:)];
+        selectViewController.imageKey = @"image";
+        selectViewController.searchKey = @"name";
+        
+        [self.navigationController pushViewController:selectViewController animated:YES];
+        [selectViewController release];
+        
+    } else if ([indexPath isEqual:_cityIndexPath]) {
+        
+        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.city target:self selector:@selector(selectCity:)]; 
+        textEditViewController.title = @"City";
+        [self.navigationController pushViewController:textEditViewController animated:YES];
+        [textEditViewController release];            
+        
+        
+    } else if ([indexPath isEqual:_descriptionIndexPath]) {
+        
+        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.name target:self selector:@selector(selectName:)]; 
+        textEditViewController.title = @"Description";
+        [self.navigationController pushViewController:textEditViewController animated:YES];
+        [textEditViewController release];
+        
+    } else if ([indexPath isEqual:_currenciesIndexPath]) {
+        
+        NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+        _fetchRequest.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]; 
+        
+        GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
+                                                                                                         withMultiSelection:YES
+                                                                                                           withFetchRequest:_fetchRequest
+                                                                                                             withSectionKey:@"uppercaseFirstLetterOfName"
+                                                                                                        withSelectedObjects:self.currencies
+                                                                                                                     target:self
+                                                                                                                     action:@selector(selectCurrencies:)];
+        selectViewController.searchKey = @"name";
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (Currency *)defaultCurrency {
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self updateAndFlash:self];
+}
+
+- (void)updateAndFlash:(UIViewController *)viewController {
     
-    NSLocale *theLocale = [NSLocale currentLocale];
-    NSString *code = [theLocale objectForKey:NSLocaleCurrencyCode];
-    
-    NSFetchRequest *req = [[NSFetchRequest alloc] init];
-    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
-    req.predicate = [NSPredicate predicateWithFormat:@"code = %@", code];
-    NSArray *curSet = [_context executeFetchRequest:req error:nil];
-    [req release];
-    
-    if ([curSet lastObject]) {
-        return [curSet lastObject];
-    } else {
-        NSFetchRequest *req = [[NSFetchRequest alloc] init];
-        req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: _context];
-        req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
-        NSArray *travelSet = [_context executeFetchRequest:req error:nil];
-        [req release];
+    if (viewController == self) {
         
-        if ([travelSet lastObject]) {
-            return [travelSet lastObject];
+        [self.tableView beginUpdates];
+        for (id indexPath in _cellsToReloadAndFlash) {
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }
+        [self.tableView endUpdates];
+        
+        for (id indexPath in _cellsToReloadAndFlash) {
+            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];                  
+        }
+        [_cellsToReloadAndFlash removeAllObjects];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
     
-    return nil;
+    if (!self.travel && _isFirstView) {
+        [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
+        [self updateAndFlash:self];
+        _isFirstView = NO;
+    }
 }
 
-- (void)selectForeignCurrencies:(NSArray *)newCurrencies {
-    self.foreignCurrencies = newCurrencies;
-    [self.tableView reloadData];
+- (void)selectCurrencies:(NSArray *)newCurrencies {
+    
+    if (![newCurrencies isEqual:self.currencies]) {
+        self.currencies = newCurrencies;
+        [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
+    }
 }
 
-- (void)selectHomeCurrency:(Currency *)currency {
-    self.currency = currency;
-    [self.tableView reloadData];
+- (void)selectCountry:(Country *)newCountry {
+    
+    if (![newCountry isEqual:self.country]) {
+        
+        self.country = newCountry;
+        self.currencies = [newCountry.currencies allObjects];
+        
+        [_cellsToReloadAndFlash addObject:_countryIndexPath];
+        [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
+    }
 }
 
-- (void)selectCountry:(Country *)country {
-    self.country = country;
-    self.foreignCurrencies = [country.currencies allObjects];
+- (void)selectName:(NSString *)newName {
+    
+    if (![newName isEqualToString:self.name]) {
+        self.name = newName;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        if (!self.country && [newName length] > 0) {
+            NSFetchRequest *req = [[NSFetchRequest alloc] init];
+            req.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: _context];
+            req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+            NSArray *countrySet = [_context executeFetchRequest:req error:nil];
+            [req release];
+            
+            NSArray *nameComponents = [[[newName lowercaseString] componentsSeparatedByString:@" "] arrayByAddingObject:[newName lowercaseString]];
+            for (NSString* nameComponent in nameComponents) {
+                if ([nameComponent length] >= 3) {
+                    for (Country* country in countrySet) {
+                        if ([nameComponent isEqual:[country.name lowercaseString]]) {
+                            [self selectCountry:country];
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        [_cellsToReloadAndFlash addObject:_descriptionIndexPath];
+    }
+}
 
-    [self.tableView reloadData];
+- (void)selectCity:(NSString *)newCity {
+    if (![newCity isEqualToString:self.city]) {
+        self.city = newCity;
+        [_cellsToReloadAndFlash addObject:_cityIndexPath];
+    }
 }
 
 - (IBAction)done:(UIBarButtonItem *)sender {
@@ -319,11 +346,33 @@
         self.travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext:_context];
     }
     
-    self.travel.name = _descField.text;
-    self.travel.homeCurrency = self.currency;
+    self.travel.name = self.name;
     self.travel.country = self.country;
-    self.travel.city = _cityCellField.text;
-    self.travel.foreignCurrencies = [[[NSSet alloc] initWithArray:self.foreignCurrencies] autorelease];
+    self.travel.city = self.city;
+    self.travel.closed = [NSNumber numberWithInt:0];
+    self.travel.currencies = [[[NSSet alloc] initWithArray:self.currencies] autorelease];
+   
+    ABAddressBookRef addressBook = ABAddressBookCreate();
+    
+    if (addressBook) {
+        
+        NSString *deviceName = [[UIDevice currentDevice] name];
+        NSRange range = [deviceName rangeOfString:@"iPhone"];
+        
+        if (range.location > 3) {
+            NSString *userName = [deviceName substringToIndex:range.location - 3];
+            
+            NSArray *martinPerson = (NSArray *) ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
+            if ([martinPerson lastObject]) {
+                Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
+                [ParticipantHelper addParticipant:newPerson toTravel:_travel withABRecord:[martinPerson lastObject]];
+            }
+            [martinPerson release];
+        }
+        
+        CFRelease(addressBook);
+    }
+    
     
     [ReiseabrechnungAppDelegate saveContext:_context];
     
@@ -335,49 +384,17 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0: return 2;
-        case 1: return 1;
-        case 2: return 2;
-    }
-    return 0;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0: return @"Location";
-        case 1: return @"Description";
-        case 2: return @"Currencies";
-    }
-    return nil;    
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)repString {
-    if([repString isEqualToString:@"\n"]) {
-        [textField resignFirstResponder];
-        return NO;
-    }
+- (void)checkIfDoneIsPossible {
     
-    [self checkIfDoneIsPossible:repString];
-    
-    self.name = [textField.text stringByReplacingCharactersInRange:range withString:repString];
-   
-	return YES;
-}
-
-- (void)checkIfDoneIsPossible:(NSString *)newString {
-    if (_countryCell.textLabel.text) {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    } else if ([[newString  stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] > 0) {
+    if (self.country || [self.name length] > 0) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self checkIfDoneIsPossible];
 }
 
 #pragma mark - View lifecycle
@@ -403,8 +420,8 @@
 }
 
 - (void)dealloc {
-    [_currency release];
-    
+    [_cellsToReloadAndFlash release];
+
     [_geocoder release];
     
     [super dealloc];
@@ -463,7 +480,7 @@
     
     [self.tableView reloadData];
 
-    [self checkIfDoneIsPossible:_descField.text];
+    [self checkIfDoneIsPossible];
     
     [self.locManager stopUpdatingLocation];
     [geocoder cancel];

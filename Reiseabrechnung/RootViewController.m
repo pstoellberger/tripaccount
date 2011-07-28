@@ -6,120 +6,43 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "RootViewController.h"
-#import "TravelViewController.h"
+#import "TravelListViewController.h"
+#import "UIFactory.h"
 #import "TravelEditViewController.h"
-#import "Currency.h"
-#import "ReiseabrechnungAppDelegate.h"
+#import "ShadowNavigationController.h"
+#import "HelpView.h"
+#import "InfoViewController.h"
 
 @implementation RootViewController
 
-@synthesize managedObjectContext=_managedObjectContext, fetchedResultsController=_fetchedResultsController;
+@synthesize managedObjectContext=_managedObjectContext;
+@synthesize tableViewController=_tableViewController;
 @synthesize addButton=_addButton, editButton=_editButton, doneButton=_doneButton;
-
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
     
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self) {
-        
+    if (self = [super init]) {
         _managedObjectContext = context;
-    
-        NSFetchRequest *req = [[NSFetchRequest alloc] init];
-        req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: self.managedObjectContext];
-        req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES]];
-    
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Travel"];
-        [req release];
         
-        self.fetchedResultsController.delegate = self;
-        [self.fetchedResultsController performFetch:nil];
+        self.tableViewController = [[[TravelListViewController alloc] initInManagedObjectContext:context withRootViewController:self] autorelease];
+        self.tableViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TOOLBAR_HEIGHT);
+        self.tableViewController.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        self.titleKey = @"name";
-        self.subtitleKey = @"country.name";
-        self.imageKey = @"country.image";
+        [self.view addSubview:self.tableViewController.view];
         
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.title = @"Reiseabrechnungen";
         
+        self.navigationItem.rightBarButtonItem = self.addButton;
+        self.navigationItem.leftBarButtonItem = self.editButton;
     }
     return self;
 }
 
-- (void)managedObjectSelected:(NSManagedObject *)managedObject {
-    
-    if (self.tableView.editing) {
-        
-        TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext withTravel:(Travel *)managedObject];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-        [self.navigationController presentModalViewController:navController animated:YES];   
-        [detailViewController release];
-        [navController release];
-        
-    } else {
-        Travel *travel = (Travel *) managedObject;
-        
-        TravelViewController *detailViewController = [[TravelViewController alloc] initWithTravel:travel];
-        detailViewController.title = travel.name;
-        
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        [detailViewController release]; 
-    }
-    
-}
-
-- (void)deleteManagedObject:(NSManagedObject *)managedObject
-{
-    [self.managedObjectContext deleteObject:managedObject];
-    [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
-}
-
-- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
-{
-	return YES;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.title = @"Reiseabrechnungen";
-    
-    self.navigationItem.rightBarButtonItem = self.addButton;
-    self.navigationItem.leftBarButtonItem = self.editButton;
-    
-    self.tableView.allowsSelectionDuringEditing = YES;
-    
-    [_tripLabel release];
-    _tripLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 46)];
-    _tripLabel.text = @"No existing trips. \n Click on the \"+\" button to add a trip.";
-    _tripLabel.backgroundColor = [UIColor clearColor];
-    _tripLabel.numberOfLines = 0;
-    _tripLabel.textAlignment = UITextAlignmentCenter;
-    _tripLabel.textColor = [UIColor whiteColor];
-    [self.view addSubview:_tripLabel];
-    
-    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    self.view.backgroundColor = background;
-    [background release];
-    
-    [self updateNoTripLabel];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [super controllerDidChangeContent:controller];
-    [self updateNoTripLabel];
-}
-
-- (void) updateNoTripLabel {
-    if ([self.fetchedResultsController. fetchedObjects count] == 0) {
-        _tripLabel.hidden = NO;
-    } else {
-        _tripLabel.hidden = YES;
-    }
-}
-
 - (UIBarButtonItem *) addButton {
     if (!_addButton) {
-        _addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openTravelPopup)];   
+        _addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openTravelEditViewController)];   
     }
     return [_addButton retain];    
 }
@@ -138,42 +61,42 @@
     return [_doneButton retain];       
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
+- (void)openTravelEditViewController {
     
-    [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
-}
-
-- (void)openTravelPopup {
     TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
+    navController.delegate = detailViewController;
+    
     [self.navigationController presentModalViewController:navController animated:YES];   
     [detailViewController release];
     [navController release];
 }
 
-- (void)changeToEditMode {
-    [self.navigationItem setRightBarButtonItem:self.doneButton animated:YES];
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    [self.tableView setEditing:YES animated:YES];
+- (void)openInfoPopup {
+    
+    InfoViewController *infoViewController = [[InfoViewController alloc] init];
+    
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:1.0];
+	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight
+						   forView:[self.navigationController.view superview]
+							 cache:YES];
+    
+	[[self.navigationController.view superview] addSubview:infoViewController.view];
+	[UIView commitAnimations];
 }
 
-- (void)doneEditing {
-    [self.navigationItem setRightBarButtonItem:self.addButton animated:YES];
-    [self.navigationItem setLeftBarButtonItem:self.editButton animated:YES];
-    [self.tableView setEditing:NO animated:YES];
+- (void)openSettingsPopup {
+    
 }
 
-- (void)addTravel:(NSString *)name withCurrency:(Currency *)newCurrency {
-    
-    NSLog(@"%@", self.managedObjectContext);
-    
-    Travel *_travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext: self.managedObjectContext];
-    _travel.name = name;
-    _travel.created = [NSDate date];
-    _travel.homeCurrency = newCurrency;
-    
-    [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -181,12 +104,57 @@
     return YES;
 }
 
+- (void)changeToEditMode {
+    [self.navigationItem setRightBarButtonItem:self.doneButton animated:YES];
+    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    [self.tableViewController.tableView setEditing:YES animated:YES];
+}
+
+- (void)doneEditing {
+    [self.navigationItem setRightBarButtonItem:self.addButton animated:YES];
+    [self.navigationItem setLeftBarButtonItem:self.editButton animated:YES];
+    [self.tableViewController.tableView setEditing:NO animated:YES];
+}
+
+-(void)loadView {
+    [super loadView];
+
+    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height - NAVIGATIONBAR_HEIGHT)];
+    newView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - TOOLBAR_HEIGHT, newView.frame.size.width, TOOLBAR_HEIGHT)];
+    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
+    toolbar.barStyle = UIBarStyleBlack;
+    toolbar.tintColor = [UIFactory defaultTintColor];
+    
+    UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithTitle:@"Info" style:UIBarButtonItemStyleBordered target:self action:@selector(openInfoPopup)];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(openSettingsPopup)];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+    toolbar.items = [NSArray arrayWithObjects:infoButton, flexibleSpace, settingsButton, nil];
+    
+    [infoButton release];
+    [settingsButton release];
+    [flexibleSpace release];
+    
+    [newView addSubview:toolbar];
+    
+    self.view = newView;
+    
+    [toolbar release];
+    [newView release];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    if (!_helpView) {
+        NSString *text = @"Use this button to add a new trip to start tracking your expenses.";
+        _helpView = [[HelpView alloc] initWithFrame:CGRectMake(170, 2, 148, 90) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT uniqueIdentifier:@"travel add button"];
+        [self.view addSubview:_helpView];        
+    }
+}
+
 - (void)dealloc {
-    [_tripLabel release];
-    [_managedObjectContext release];
-    [_addButton release];
-    [_editButton release];
-    [_doneButton release];
     
     [super dealloc];
 }

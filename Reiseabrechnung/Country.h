@@ -2,7 +2,7 @@
 //  Country.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 19/07/2011.
+//  Created by Martin Maier on 24/07/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,7 +16,20 @@
 }
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * image;
-@property (nonatomic, retain) NSSet* currencies;
-@property (nonatomic, retain) NSSet* travels;
+@property (nonatomic, retain) NSSet *currencies;
+@property (nonatomic, retain) NSSet *travels;
+@end
+
+@interface Country (CoreDataGeneratedAccessors)
+
+- (void)addCurrenciesObject:(Currency *)value;
+- (void)removeCurrenciesObject:(Currency *)value;
+- (void)addCurrencies:(NSSet *)values;
+- (void)removeCurrencies:(NSSet *)values;
+
+- (void)addTravelsObject:(Travel *)value;
+- (void)removeTravelsObject:(Travel *)value;
+- (void)addTravels:(NSSet *)values;
+- (void)removeTravels:(NSSet *)values;
 
 @end

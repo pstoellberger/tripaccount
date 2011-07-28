@@ -2,7 +2,7 @@
 //  Travel.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 19/07/2011.
+//  Created by Martin Maier on 26/07/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -17,10 +17,31 @@
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) Currency * homeCurrency;
-@property (nonatomic, retain) NSSet* participants;
-@property (nonatomic, retain) NSSet* foreignCurrencies;
-@property (nonatomic, retain) NSSet* entries;
-@property (nonatomic, retain) Country * country;
+@property (nonatomic, retain) NSNumber * selectedTab;
+@property (nonatomic, retain) NSNumber * selectedRow;
+@property (nonatomic, retain) NSNumber * closed;
+@property (nonatomic, retain) NSString * notes;
+@property (nonatomic, retain) Country *country;
+@property (nonatomic, retain) NSSet *currencies;
+@property (nonatomic, retain) NSSet *participants;
+@property (nonatomic, retain) NSSet *entries;
+@end
+
+@interface Travel (CoreDataGeneratedAccessors)
+
+- (void)addCurrenciesObject:(Currency *)value;
+- (void)removeCurrenciesObject:(Currency *)value;
+- (void)addCurrencies:(NSSet *)values;
+- (void)removeCurrencies:(NSSet *)values;
+
+- (void)addParticipantsObject:(Participant *)value;
+- (void)removeParticipantsObject:(Participant *)value;
+- (void)addParticipants:(NSSet *)values;
+- (void)removeParticipants:(NSSet *)values;
+
+- (void)addEntriesObject:(Entry *)value;
+- (void)removeEntriesObject:(Entry *)value;
+- (void)addEntries:(NSSet *)values;
+- (void)removeEntries:(NSSet *)values;
 
 @end

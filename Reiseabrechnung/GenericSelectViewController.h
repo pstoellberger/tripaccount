@@ -21,10 +21,13 @@
     NSMutableArray *_selectedObjects;
     BOOL _multiSelectionAllowed;
     UISegmentedControl *_segControl;
+    UIView *_segControlView;
+    Class _cellClass;
     
 }
 
 @property (nonatomic, readonly) BOOL multiSelectionAllowed;
+@property (nonatomic, retain) Class cellClass;
 
 - (void)selectAll:(id)sender;
 - (void)selectNone:(id)sender;
@@ -35,5 +38,14 @@
              withSelectedObjects:(NSArray *)selectedObjects
                           target:(id)target 
                           action:(SEL)selector;
+
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
+              withMultiSelection:(BOOL)multiSelection 
+                withFetchRequest:(NSFetchRequest *)fetchRequest
+                  withSectionKey:(NSString *)sectionKey
+             withSelectedObjects:(NSArray *)selectedObjects
+                          target:(id)target 
+                          action:(SEL)selector;
+
 
 @end

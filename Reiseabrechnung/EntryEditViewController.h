@@ -12,14 +12,15 @@
 #import "EntryNotManaged.h"
 
 
-@interface EntryEditViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
+@interface EntryEditViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate> {
     id _target;
     SEL _selector;
+    
     EntryNotManaged *_entry;
-    UITextField *_amountField;
-    UITextField *_descField;
     Entry *_entryManaged;
     Travel *_travel;
+
+    NSMutableArray* _cellsToReloadAndFlash;
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;
