@@ -53,19 +53,12 @@
     
     ParticipantKey *key = [[[_summary.accounts keyEnumerator] allObjects] objectAtIndex:indexPath.row]; 
 
-    NSNumber *value = [_summary.accounts objectForKey:key];
-    if ([value doubleValue] < 0) {
-        cell.debtor.text = key.payer.name;
-        cell.leftImage.image = [UIImage imageWithData:key.payer.image];
-        cell.debtee.text = key.receiver.name;
-        cell.rightImage.image = [UIImage imageWithData:key.receiver.image];
-    } else {
-        cell.debtor.text = key.receiver.name;
-        cell.leftImage.image = [UIImage imageWithData:key.receiver.image];
-        cell.debtee.text = key.payer.name;
-        cell.rightImage.image = [UIImage imageWithData:key.payer.image];
-    }
-    cell.amount.text = [NSString stringWithFormat:@"%.02f EUR", fabs([value doubleValue])];
+    NSNumber *owedAmount = [_summary.accounts objectForKey:key];
+    cell.debtor.text = key.payer.name;
+    cell.leftImage.image = [UIImage imageWithData:key.payer.image];
+    cell.debtee.text = key.receiver.name;
+    cell.rightImage.image = [UIImage imageWithData:key.receiver.image];
+    cell.amount.text = [NSString stringWithFormat:@"%.02f EUR", [owedAmount doubleValue]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     

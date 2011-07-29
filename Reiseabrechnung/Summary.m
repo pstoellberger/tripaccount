@@ -14,7 +14,7 @@
 
 @synthesize payer, receiver;
 
-- (id) initWithPayer:(Participant *)newPayer andReceiver:(Participant *)newReceiver {
+- (id) initWithReceiver:(Participant *)newReceiver andPayer:(Participant *)newPayer {
     self = [super init];
     if (self) {
         self.payer = newPayer;
@@ -34,7 +34,7 @@
     return self.payer.hash + self.receiver.hash;
 }
 - (id)copyWithZone:(NSZone *)zone {
-    return [[ParticipantKey alloc] initWithPayer:self.payer andReceiver:self.receiver];
+    return [[ParticipantKey alloc] initWithReceiver:self.receiver andPayer:self.payer];
 }
 
 @end
@@ -78,22 +78,46 @@
     
     // remove account with zero (-> entries balanced out)
     NSMutableArray *removeArray = [NSMutableArray array];
-    for (id key in [summary.accounts keyEnumerator]) {
+    for (ParticipantKey *key in [summary.accounts keyEnumerator]) {
         if ([[summary.accounts objectForKey:key] doubleValue] == 0) {
             [removeArray addObject:key];
         }
     };
     [summary.accounts removeObjectsForKeys:removeArray];
+  
+    [removeArray removeAllObjects];
+    NSMutableDictionary *addDict = [NSMutableDictionary dictionary];
+    
+    // bring to presentable form (remove negative accounts)
+    for (ParticipantKey *key in [summary.accounts keyEnumerator]) {
+        
+        NSNumber *amount = [summary.accounts objectForKey:key];
+        if ([amount doubleValue] < 0) {
+            
+            [removeArray addObject:key];
+            
+            //interchange payer and receveiver
+            ParticipantKey *newKey = [[ParticipantKey alloc] init];
+            newKey.payer = key.receiver;
+            newKey.receiver = key.payer;
+            
+            [addDict setObject:[NSNumber numberWithDouble:-[amount doubleValue]] forKey:newKey];
+            [newKey release];
+            
+        }
+    };
+    [summary.accounts removeObjectsForKeys:removeArray];
+    [summary.accounts addEntriesFromDictionary:addDict];
     
     return summary;
 }
 
 - (ParticipantKey *)createKey:(Participant *)person1 withPerson:(Participant *)person2 {
     
-    ParticipantKey *key = [[[ParticipantKey alloc] initWithPayer:person1 andReceiver:person2] autorelease];
+    ParticipantKey *key = [[[ParticipantKey alloc] initWithReceiver:person1 andPayer:person2] autorelease];
     
     if ([self getMultiplierFromPerson:person1 withPerson:person2] == -1) {
-        key = [[[ParticipantKey alloc] initWithPayer:person2 andReceiver:person1] autorelease];
+        key = [[[ParticipantKey alloc] initWithReceiver:person2 andPayer:person1] autorelease];
     } 
     return key;
 }
