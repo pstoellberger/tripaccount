@@ -86,6 +86,9 @@
     }
     [self toggleTime:_timeSwitch];
     
+    [UIFactory addGradientToView:_switchSuperView];
+    [UIFactory addGradientToView:_labelSuperView];
+    
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
 }
 

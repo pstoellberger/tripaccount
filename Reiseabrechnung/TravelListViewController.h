@@ -14,12 +14,12 @@
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
 #import "TravelAddWizard.h"
+#import "TravelEditViewController.h"
 
 @interface TravelListViewController : CoreDataTableViewController {
     
     NSManagedObjectContext *_managedObjectContext;
-    UIViewController *_rootViewController;
-    
+
     UIBarButtonItem *_addButton;
     UIBarButtonItem *_editButton;
     UIBarButtonItem *_doneButton;
@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain, readonly) UIViewController *rootViewController;
+@property (nonatomic, retain, readonly) UIViewController <TravelEditViewControllerDelegate> *rootViewController;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext withRootViewController:(UIViewController *)rootViewController;
 

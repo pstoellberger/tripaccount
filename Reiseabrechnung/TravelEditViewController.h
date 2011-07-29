@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
 #import "TravelNotManaged.h"
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
+
+@protocol TravelEditViewControllerDelegate
+- (void)travelDidSave:(Travel *)travel;
+@end
 
 @interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, UITableViewDelegate, UINavigationControllerDelegate> {
 
@@ -38,6 +41,8 @@
 @property (nonatomic, retain) NSArray *currencies;
 
 @property (nonatomic, retain) CLLocationManager *locManager;
+
+@property (nonatomic, assign) id <TravelEditViewControllerDelegate> editDelegate;
 
 - (IBAction)done:(UIBarButtonItem *)sender;
 - (IBAction)cancel:(UIBarButtonItem *)sender;

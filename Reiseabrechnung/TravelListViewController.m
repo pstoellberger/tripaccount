@@ -22,7 +22,7 @@
 
 @synthesize managedObjectContext=_managedObjectContext, fetchedResultsController=_fetchedResultsController, rootViewController=_rootViewController;
 
-- (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext withRootViewController:(UIViewController *)rootViewController {
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext withRootViewController:(UIViewController <TravelEditViewControllerDelegate> *)rootViewController {
     
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
@@ -57,6 +57,7 @@
     if (self.tableView.editing) {
         
         TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext withTravel:(Travel *)managedObject];
+        detailViewController.editDelegate = self.rootViewController;
         UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
         navController.delegate = detailViewController;
         [self.rootViewController.navigationController presentModalViewController:navController animated:YES];   

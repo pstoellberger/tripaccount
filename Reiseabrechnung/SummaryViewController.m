@@ -54,7 +54,7 @@
     ParticipantKey *key = [[[_summary.accounts keyEnumerator] allObjects] objectAtIndex:indexPath.row]; 
 
     NSNumber *value = [_summary.accounts objectForKey:key];
-    if (value > 0) {
+    if ([value doubleValue] < 0) {
         cell.debtor.text = key.payer.name;
         cell.leftImage.image = [UIImage imageWithData:key.payer.image];
         cell.debtee.text = key.receiver.name;

@@ -14,6 +14,7 @@
 #import "UIFactory.h" 
 #import "ShadowNavigationController.h"
 #import "FirstLetterCategory.h"
+#import "DateSortCategory.h"
 #import "AppDefaults.h"
 #import "CurrencyRefresh.h"
 #import "ExchangeRate.h"

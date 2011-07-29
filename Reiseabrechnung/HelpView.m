@@ -93,8 +93,8 @@ static NSString *DICTIONARY_KEY;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         #if TARGET_IPHONE_SIMULATOR
-            [defaults removeObjectForKey:DICTIONARY_KEY];        
-            NSLog(@"Removing userdefaults because we are in the simulator");
+            //[defaults removeObjectForKey:DICTIONARY_KEY];        
+            //NSLog(@"Removing userdefaults because we are in the simulator");
         #endif
         
         NSDictionary *dictionary = [defaults dictionaryForKey:DICTIONARY_KEY];

@@ -33,7 +33,7 @@ static NSIndexPath *_currenciesIndexPath;
 @implementation TravelEditViewController
 
 @synthesize name=_name, travel=_travel, country=_country, currencies=_currencies, city=_city;
-
+@synthesize editDelegate=_editDelegate;
 @synthesize locManager=_locManager;
 
 
@@ -377,6 +377,8 @@ static NSIndexPath *_currenciesIndexPath;
     [ReiseabrechnungAppDelegate saveContext:_context];
     
     [self dismissModalViewControllerAnimated:YES];
+    
+    [self.editDelegate travelDidSave:self.travel];
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {

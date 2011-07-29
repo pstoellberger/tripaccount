@@ -94,12 +94,12 @@
 
 + (void)addShadowToView:(UIView *)view {
 
-    view.layer.shadowColor = [[UIColor blackColor] CGColor];
-    view.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    view.layer.shadowRadius = 3.0f;
-    view.layer.shadowOpacity = 1.0f;
-    view.layer.masksToBounds = NO;
-    view.layer.shouldRasterize = NO;
+//    view.layer.shadowColor = [[UIColor blackColor] CGColor];
+//    view.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+//    view.layer.shadowRadius = 3.0f;
+//    view.layer.shadowOpacity = 1.0f;
+//    view.layer.masksToBounds = NO;
+//    view.layer.shouldRasterize = NO;
 }
 
 + (void)removeShadowFromView:(UIView *)view {
@@ -160,6 +160,18 @@
         }
         eg++;
     }
+}
+
++ (void)addGradientToView:(UIView *)cell {
+ 
+    CAGradientLayer *gradient = [[CAGradientLayer layer] retain];
+    gradient.frame = cell.bounds;
+    gradient.startPoint = CGPointMake(0.5, 0.5);
+    gradient.endPoint = CGPointMake(1, 1);
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:1 alpha:1] CGColor], (id)[[UIColor colorWithWhite:0.8 alpha:1] CGColor], nil];
+    gradient.needsDisplayOnBoundsChange = YES;
+    
+    [cell.layer insertSublayer:gradient atIndex:0];  
 }
 
 + (void)initializeCell:(UITableViewCell *)cell {

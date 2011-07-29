@@ -15,6 +15,11 @@
 #import "HelpView.h"
 #import "InfoViewController.h"
 
+@interface RootViewController ()
+- (void)doneEditing;
+- (void)changeToEditMode;
+@end
+
 @implementation RootViewController
 
 @synthesize managedObjectContext=_managedObjectContext;
@@ -64,12 +69,17 @@
 - (void)openTravelEditViewController {
     
     TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext];
+    detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
     navController.delegate = detailViewController;
     
     [self.navigationController presentModalViewController:navController animated:YES];   
     [detailViewController release];
     [navController release];
+}
+
+- (void)travelDidSave:(Travel *)travel {
+    [self doneEditing];
 }
 
 - (void)openInfoPopup {

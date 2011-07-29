@@ -15,6 +15,8 @@
     IBOutlet UILabel *_timeDescriptionLabel;
     IBOutlet UIDatePicker *_picker;
     IBOutlet UISwitch *_timeSwitch;
+    IBOutlet UIView *_switchSuperView;
+    IBOutlet UIView *_labelSuperView;
     
     SEL _action;
     id _target;

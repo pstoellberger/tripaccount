@@ -13,6 +13,7 @@
 #import "Participant.h"
 #import "EntryEditViewController.h"
 #import "ShadowNavigationController.h"
+#import "DateSortCategory.h"
 
 @interface EntryViewController ()
 - (void)initFetchResultsController:(NSFetchRequest *)req;    
@@ -31,7 +32,8 @@
         _travel = travel;
         _sortIndex = 0;
         
-        _sortKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"type.name", @"currency.name", nil];
+        _sectionKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"type.name", @"dateWithOutTime", nil];
+        _sortKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"type.name", @"date", nil];
 
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -95,6 +97,9 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterMediumStyle;
+    if ([UIFactory dateHasTime:entry.date]) {
+        formatter.timeStyle = NSDateFormatterShortStyle;
+    }
     cell.rightBottom.text = [formatter stringFromDate:entry.date];
     [formatter release];
     
@@ -129,7 +134,7 @@
     req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:[_sortKeyArray objectAtIndex:_sortIndex] ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES], nil];
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
-    self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sortKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
+    self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sectionKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
 }
 
 - (void)sortTable:(int)sortIndex {
@@ -139,6 +144,22 @@
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    NSString *sectionName = [super tableView:tableView titleForHeaderInSection:section];
+    
+    if (_sortIndex == 2) {
+        Entry *entry = (Entry *)[((id <NSFetchedResultsSectionInfo>)[[[self fetchedResultsControllerForTableView:tableView] sections] objectAtIndex:section]).objects objectAtIndex:0];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateStyle = NSDateFormatterMediumStyle;
+        sectionName = [formatter stringFromDate:entry.date];
+        [formatter release];
+    }
+    return sectionName;
+   
+    
+    }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return nil;
@@ -162,7 +183,7 @@
 - (void)dealloc
 {
     [_sortKeyArray release];
-    
+    [_sectionKeyArray release];
     [super dealloc];
 }
 

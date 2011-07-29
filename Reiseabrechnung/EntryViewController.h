@@ -26,6 +26,7 @@
 @interface EntryViewController : CoreDataTableViewController {
     int _sortIndex;
     NSArray *_sortKeyArray;
+    NSArray *_sectionKeyArray;
     NSFetchRequest *_fetchRequest;
     EntryCell *_entryCell;
     

@@ -14,8 +14,9 @@
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
 #import "TravelAddWizard.h"
+#import "TravelEditViewController.h"
 
-@interface RootViewController : UIViewController {
+@interface RootViewController : UIViewController <TravelEditViewControllerDelegate> {
     NSManagedObjectContext *_managedObjectContext;
     UITableViewController *_tableViewController;
     UIView *_helpView;
