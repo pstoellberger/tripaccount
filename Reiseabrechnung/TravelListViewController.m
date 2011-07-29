@@ -120,8 +120,6 @@
             cell.detailTextLabel.text = @"";
         }
     }
-    
-    //[UIFactory initializeTableCell:cell isLastCell:[managedObject isEqual:[self.fetchedResultsController.fetchedObjects lastObject]]];
 
     return cell;
 }
@@ -137,7 +135,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [UIFactory defaultSectionHeaderCellHeight] + 10;
+    if (section == 0) {
+        return [UIFactory defaultSectionHeaderCellHeight] + 8;
+    } else {
+        return [UIFactory defaultSectionHeaderCellHeight] + 5;
+    }
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {

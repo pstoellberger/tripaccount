@@ -56,14 +56,24 @@
     NSNumber *value = [_summary.accounts objectForKey:key];
     if (value > 0) {
         cell.debtor.text = key.payer.name;
+        cell.leftImage.image = [UIImage imageWithData:key.payer.image];
         cell.debtee.text = key.receiver.name;
+        cell.rightImage.image = [UIImage imageWithData:key.receiver.image];
     } else {
         cell.debtor.text = key.receiver.name;
+        cell.leftImage.image = [UIImage imageWithData:key.receiver.image];
         cell.debtee.text = key.payer.name;
+        cell.rightImage.image = [UIImage imageWithData:key.payer.image];
     }
-    cell.amount.text = [NSString stringWithFormat:@"%.02f", fabs([value doubleValue])];
+    cell.amount.text = [NSString stringWithFormat:@"%.02f EUR", fabs([value doubleValue])];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 64;
 }
 
 - (void)recalculateSummary {

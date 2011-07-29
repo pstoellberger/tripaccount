@@ -8,6 +8,7 @@
 
 #import "TextEditViewController.h"
 #import "UIFactory.h"
+#import "GradientCell.h"
 
 @implementation TextEditViewController
 
@@ -76,7 +77,7 @@
     
     self.tableView.scrollEnabled = NO;
     
-    self.textCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"TextEditViewControllerCell"] autorelease];
+    self.textCell = [[[GradientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TextEditViewControllerCell"] autorelease];
     
     self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(25, 12, self.tableView.bounds.size.width - 25 - 20, 40)] autorelease];
     self.textField.delegate = self;

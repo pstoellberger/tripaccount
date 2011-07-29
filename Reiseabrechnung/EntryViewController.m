@@ -20,6 +20,7 @@
 
 @implementation EntryViewController
 
+@synthesize entryCell=_entryCell;
 @synthesize travel=_travel, fetchRequest=_fetchRequest;
 @synthesize delegate=_delegate, editDelegate=_editDelegate;
 
@@ -52,8 +53,6 @@
         self.titleKey = @"text";
         self.subtitleKey = @"amount";
         
-        [self controllerDidChangeContent:self.fetchedResultsController];
-        
         [self viewWillAppear:YES];
     }
     
@@ -62,6 +61,14 @@
 
 - (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject {
     return UITableViewCellAccessoryNone;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return [UIFactory defaultSectionHeaderCellHeight] + 8;
+    } else {
+        return [UIFactory defaultSectionHeaderCellHeight] + 5;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
@@ -82,21 +89,22 @@
     } else {
         cell.top.text = entry.type.name;
     }
-    cell.bottom.text = [NSString stringWithFormat:@"for %d people", [entry.receivers count]];
     cell.right.text = [NSString stringWithFormat:@"%@ %@", entry.amount, entry.currency.code];
+    cell.bottom.participants = [entry.receivers allObjects];
+    cell.image.image = [UIImage imageWithData:entry.payer.image];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    cell.rightBottom.text = [formatter stringFromDate:entry.date];
+    [formatter release];
     
     return cell;
 }
 
+
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel andEntry:(Entry *) managedObject target:self.editDelegate action:@selector(addOrEditEntryWithParameters:andEntry:)];
-    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
-    navController.delegate = detailViewController;
-    [self presentModalViewController:navController animated:YES];   
-    [detailViewController release];
-    [navController release];
-    
+    [self.editDelegate openEditEntryPopup:(Entry *)managedObject];
     [self.tableView deselectRowAtIndexPath:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]  animated:YES];
 }
 
@@ -121,7 +129,7 @@
     req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:[_sortKeyArray objectAtIndex:_sortIndex] ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES], nil];
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
-    self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sortKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];    
+    self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sortKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
 }
 
 - (void)sortTable:(int)sortIndex {
@@ -136,10 +144,15 @@
     return nil;
 }
 
+- (void)setDelegate:(id<EntryViewControllerDelegate>)delegate {
+    [_delegate release];
+    _delegate = delegate;
+    [self.delegate didItemCountChange:[self.fetchedResultsController.fetchedObjects count]];
+}
+
 #pragma mark - BadgeValue update 
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [super controllerDidChangeContent:controller];    
     [self.delegate didItemCountChange:[self.fetchedResultsController.fetchedObjects count]];
 }

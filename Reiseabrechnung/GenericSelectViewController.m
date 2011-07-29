@@ -15,6 +15,7 @@
 @property (retain, readonly) NSMutableArray *selectedObjects;
 - (void)done;
 - (void)updateSegmentedControl;
+- (UIView *)createTableHeaderSubView;
 @end
 
 @implementation GenericSelectViewController

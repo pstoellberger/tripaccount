@@ -31,9 +31,9 @@
 @implementation TravelViewController
 
 @synthesize travel=_travel, tabBarController=_tabBarController, addButton=_addButton, actionButton=_actionButton;
-@synthesize participantViewController=_participantViewController, entryViewController=_entryViewController, summaryViewController=_summaryViewController;
+@synthesize participantViewController=_participantViewController, entrySortViewController=_entrySortViewController, summaryViewController=_summaryViewController;
 
-- (id) initWithTravel:(Travel *) travel {
+- (id)initWithTravel:(Travel *) travel {
     self = [self init];
     if (self) {
         _travel = travel;
@@ -42,14 +42,15 @@
 }
 
 - (void)openAddPopup {
-    if ([[[self tabBarController] selectedViewController] isEqual:_participantViewController]) {
+    if ([[[self tabBarController] selectedViewController] isEqual:self.participantViewController]) {
         [self openParticipantAddPopup];
-    } else if ([[[self tabBarController] selectedViewController] isEqual:_entryViewController]) {
+    } else if ([[[self tabBarController] selectedViewController] isEqual:self.entrySortViewController]) {
         [self openEntryAddPopup];
     }
 }
 
 - (void)openEntryAddPopup {
+    
     EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel target:self action:@selector(addOrEditEntryWithParameters:andEntry:)];
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
     navController.delegate = detailViewController;
@@ -58,7 +59,18 @@
     [navController release];
 }
 
+- (void)openEditEntryPopup:(Entry *)entry {
+    
+    EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel andEntry:entry target:self action:@selector(addOrEditEntryWithParameters:andEntry:)];
+    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
+    navController.delegate = detailViewController;
+    [self presentModalViewController:navController animated:YES];   
+    [detailViewController release];
+    [navController release];    
+}
+
 - (void)openParticipantAddPopup {
+    
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
     picker.navigationBar.barStyle = UIBarStyleBlack;
@@ -105,6 +117,9 @@
 }
 
 - (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry {
+    
+    [self.entrySortViewController.detailViewController.tableView beginUpdates];
+    
     Entry *_entry = nil;
     if (!entry) {
         _entry = [NSEntityDescription insertNewObjectForEntityForName: @"Entry" inManagedObjectContext: [_travel managedObjectContext]];
@@ -120,7 +135,10 @@
     _entry.type = nmEntry.type;
     _entry.travel = _travel;
     
+    
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
+    
+    [self.entrySortViewController.detailViewController.tableView endUpdates];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -194,14 +212,14 @@
     
     self.participantViewController = [[[ParticipantViewController alloc] initWithTravel:_travel] autorelease];
     
-    self.entryViewController = [[[EntrySortViewController alloc] initWithTravel:_travel] autorelease];
-    self.entryViewController.detailViewController.editDelegate = self;
+    self.entrySortViewController = [[[EntrySortViewController alloc] initWithTravel:_travel] autorelease];
+    self.entrySortViewController.detailViewController.editDelegate = self;
     
     self.summaryViewController = [[[SummaryViewController alloc] initWithTravel:_travel] autorelease];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.delegate = self;
-    [self.tabBarController setViewControllers:[NSArray arrayWithObjects:self.participantViewController, self.entryViewController, self.summaryViewController, nil] animated:NO];
+    [self.tabBarController setViewControllers:[NSArray arrayWithObjects:self.participantViewController, self.entrySortViewController, self.summaryViewController, nil] animated:NO];
     self.tabBarController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     self.tabBarController.tabBar.frame = CGRectMake(0, self.tabBarController.view.frame.size.height - TABBAR_HEIGHT, self.view.frame.size.width, TABBAR_HEIGHT);
@@ -214,7 +232,7 @@
     if ([_travel.participants count] <= 1) {
         self.tabBarController.selectedViewController = self.participantViewController;
     } else {
-        self.tabBarController.selectedViewController = self.entryViewController;
+        self.tabBarController.selectedViewController = self.entrySortViewController;
     }
     
     [self.view addSubview:_tabBarController.view];
@@ -238,7 +256,7 @@
 
     self.tabBarController = nil;
     self.participantViewController = nil;
-    self.entryViewController = nil;
+    self.entrySortViewController = nil;
     self.summaryViewController = nil;
     self.addButton = nil;
 }

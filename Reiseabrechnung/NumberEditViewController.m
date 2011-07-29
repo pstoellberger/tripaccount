@@ -10,13 +10,17 @@
 #import <Foundation/Foundation.h>
 #import "NumberEditViewController.h"
 #import "UIFactory.h"
+#import "GradientCell.h"
 
 @implementation NumberEditViewController
 
 @synthesize target=_target, selector=_selector;
 @synthesize textField=_textField, textCell=_textCell, number=_number;
 
-- (id)initWithNumber:(NSNumber *)startNumber target:(id)target selector:(SEL)selector {
+#define TEXTFIELD_LABEL_GAP 15
+#define BORDER_GAP 10
+
+- (id)initWithNumber:(NSNumber *)startNumber withRightLabelText:(NSString *)rightLabelText target:(id)target selector:(SEL)selector {
     
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         
@@ -35,6 +39,27 @@
         [numberFormatter release];
         
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
+        
+        self.tableView.tableHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 80)] autorelease];
+        self.tableView.allowsSelection = NO;
+        
+        if (rightLabelText) {
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+            NSLog(@"%@", label);
+            
+            label.text = rightLabelText;
+            label.font = self.textField.font;
+            [label sizeToFit];
+            
+            label.frame = CGRectMake(self.textCell.contentView.bounds.size.width - label.bounds.size.width - BORDER_GAP, (self.textCell.contentView.bounds.size.height - label.bounds.size.height) / 2, label.bounds.size.width, label.bounds.size.height);
+            label.backgroundColor = [UIColor clearColor];
+            label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+            
+            self.textField.frame = CGRectMake(self.textField.frame.origin.x, self.textField.frame.origin.y, label.frame.origin.x - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.bounds.size.height);
+            
+            [self.textCell.contentView addSubview:label]; 
+        }
+       
         
     }
     return self;    
@@ -103,16 +128,16 @@
     
     self.tableView.scrollEnabled = NO;
     
-    self.textCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"TextEditViewControllerCell"] autorelease];
+    self.textCell = [[[GradientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TextEditViewControllerCell"] autorelease];
  
-    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(25, 12, self.tableView.bounds.size.width - 25 - 20, 40)] autorelease];
-    self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
+    self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
     self.textField.textAlignment = UITextAlignmentRight;
     self.textField.keyboardType = UIKeyboardTypeDecimalPad;
     self.textField.keyboardAppearance = UIKeyboardAppearanceAlert;
-    //self.textField.font.pointSize = 20;
-    
-    [UIFactory initializeCell:self.textCell];
+    self.textField.font = [UIFont systemFontOfSize:25.0];
+    [self.textField sizeToFit];
+    self.textField.frame = CGRectMake(BORDER_GAP, (self.textCell.bounds.size.height - self.textField.bounds.size.height) / 2, self.tableView.bounds.size.width - BORDER_GAP - BORDER_GAP, self.textField.bounds.size.height);
     
     self.textField.delegate = self;
     

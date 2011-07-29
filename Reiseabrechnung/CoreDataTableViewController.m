@@ -6,6 +6,7 @@
 
 #import "CoreDataTableViewController.h"
 #import "UIFactory.h"
+#import "GradientCell.h"
 
 @interface CoreDataTableViewController () 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
@@ -18,8 +19,9 @@
 
 - (void)createSearchBar
 {
-	if (self.searchKey.length) {
-		if (self.tableView) {                        
+    if (self.tableView) {
+        if (self.searchKey.length) {
+            
 			UISearchBar *searchBar = [(UISearchBar *) [[UISearchBar alloc] init] autorelease];
             searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             searchBar.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 38);
@@ -41,8 +43,11 @@
             } else {
                 self.tableView.tableHeaderView = searchBar;
             }
-		}
-	}
+        } else {
+            UIView *subView = [self createTableHeaderSubView];
+            self.tableView.tableHeaderView = subView;
+        }
+    }
 }
 
 - (void)setSearchKey:(NSString *)aKey
@@ -135,7 +140,7 @@
 }
 
 - (UITableViewCell *)newUIViewCell {
-    return [UITableViewCell alloc];
+    return [GradientCell alloc];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject

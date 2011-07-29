@@ -27,13 +27,13 @@
 @property (nonatomic, retain, readonly) IBOutlet Travel *travel;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet ParticipantViewController *participantViewController;
-@property (nonatomic, retain) IBOutlet EntrySortViewController *entryViewController;
+@property (nonatomic, retain) IBOutlet EntrySortViewController *entrySortViewController;
 @property (nonatomic, retain) IBOutlet SummaryViewController *summaryViewController;
 
 @property (nonatomic, retain) UIBarButtonItem *addButton;
 @property (nonatomic, retain) UIBarButtonItem *actionButton;
 
-- (id) initWithTravel:(Travel *) travel;
+- (id)initWithTravel:(Travel *) travel;
 
 - (void)openParticipantAddPopup;
 - (void)openEntryAddPopup;

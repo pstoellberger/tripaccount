@@ -10,20 +10,7 @@
 
 @implementation SummaryCell
 
-@synthesize debtor, debtee, amount;
+@synthesize debtor, debtee, amount, leftImage, rightImage;
 
-+ (SummaryCell *)cellFromNibNamed:(NSString *)nibName {
-    NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:NULL];
-    NSEnumerator *nibEnumerator = [nibContents objectEnumerator];
-    SummaryCell *customCell = nil;
-    NSObject* nibItem = nil;
-    while ((nibItem = [nibEnumerator nextObject]) != nil) {
-        if ([nibItem isKindOfClass:[SummaryCell class]]) {
-            customCell = (SummaryCell *)nibItem;
-            break; // we have a winner
-        }
-    }
-    return customCell;
-}
 
 @end

@@ -239,7 +239,7 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_amountIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount target:self selector:@selector(selectAmount:)]; 
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withRightLabelText:@"EUR" target:self selector:@selector(selectAmount:)]; 
         numberEditViewController.title = @"Amount";
         [self.navigationController pushViewController:numberEditViewController animated:YES];
         [numberEditViewController release]; 
@@ -302,6 +302,7 @@ static NSIndexPath *_dateIndexPath;
                                                                                                         withSelectedObjects:[self.nmEntry.receivers allObjects] 
                                                                                                                      target:self
                                                                                                                      action:@selector(selectReceivers:)];
+        
         selectViewController.imageKey = @"image";
         selectViewController.title = @"Receivers";
         

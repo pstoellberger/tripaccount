@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ParticipantView.h"
+#import "GradientCell.h"
 
-
-@interface EntryCell : UITableViewCell {
+@interface EntryCell : GradientCell {
     
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *top;
-@property (nonatomic, retain) IBOutlet UILabel *bottom;
+@property (nonatomic, retain) IBOutlet ParticipantView *bottom;
 @property (nonatomic, retain) IBOutlet UILabel *right;
+@property (nonatomic, retain) IBOutlet UIImageView *image;
+@property (nonatomic, retain) IBOutlet UILabel *rightBottom;
 
 @end

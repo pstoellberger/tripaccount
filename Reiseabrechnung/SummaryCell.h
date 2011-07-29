@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GradientCell.h"
 
-@interface SummaryCell : UITableViewCell {
-    UILabel *debtor;
-    UILabel *debtee;
-    UILabel *amount;
+@interface SummaryCell : GradientCell {
+
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *debtor;
 @property (nonatomic, retain) IBOutlet UILabel *debtee;
 @property (nonatomic, retain) IBOutlet UILabel *amount;
+@property (nonatomic, retain) IBOutlet UIImageView *leftImage;
+@property (nonatomic, retain) IBOutlet UIImageView *rightImage;
 
-+ (SummaryCell *)cellFromNibNamed:(NSString *)nibName;
 
 @end

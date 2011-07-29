@@ -28,7 +28,7 @@
 
 @property (nonatomic, retain) NSNumber *number;
 
-- (id)initWithNumber:(NSNumber *)startNumber target:(id)target selector:(SEL)selector;
+- (id)initWithNumber:(NSNumber *)startNumber withRightLabelText:(NSString *)rightLabelText target:(id)target selector:(SEL)selector;
 - (void)done;
 
 @end

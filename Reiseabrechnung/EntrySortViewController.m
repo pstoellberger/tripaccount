@@ -76,10 +76,10 @@
     toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     toolbar.tintColor = [UIFactory defaultTintColor];
     [toolbar addSubview:segControl];
-    [newView addSubview:toolbar];
     
     self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height - SORT_TOOLBAR_HEIGHT);
     [newView addSubview:self.detailViewController.view];
+    [newView addSubview:toolbar];
     
     self.view = newView;
 

@@ -20,12 +20,14 @@
 
 @protocol EntryViewControllerEditDelegate
 - (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry;
+- (void)openEditEntryPopup:(Entry *)entry;
 @end
 
 @interface EntryViewController : CoreDataTableViewController {
     int _sortIndex;
     NSArray *_sortKeyArray;
     NSFetchRequest *_fetchRequest;
+    EntryCell *_entryCell;
     
     id _delegate;
     id _editDelegate;
@@ -35,6 +37,9 @@
 @property (nonatomic, retain) NSFetchRequest *fetchRequest;
 @property (nonatomic, assign) id <EntryViewControllerDelegate> delegate;
 @property (nonatomic, assign) id <EntryViewControllerEditDelegate> editDelegate;
+
+@property (nonatomic, assign) IBOutlet EntryCell *entryCell;
+
 
 - (id)initWithTravel:(Travel *) travel;
 - (void)sortTable:(int)sortIndex;
