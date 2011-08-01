@@ -14,7 +14,7 @@
 #import "Participant.h"
 #import "EntryEditViewController.h"
 #import "ReiseabrechnungAppDelegate.h"
-#import "ParticipantHelper.h"
+#import "ParticipantHelperCategory.h"
 #import "UIFactory.h"
 #import "EntrySortViewController.h"
 #import "ShadowNavigationController.h"
@@ -157,7 +157,7 @@
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)abRecordRef{
     
     Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
-    [ParticipantHelper addParticipant:newPerson toTravel:_travel withABRecord:abRecordRef];
+    [Participant addParticipant:newPerson toTravel:_travel withABRecord:abRecordRef];
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
     
     [[self navigationController] dismissModalViewControllerAnimated:YES];

@@ -14,7 +14,7 @@
 #import "UIFactory.h"
 #import "Country.h"
 #import "GenericSelectViewController.h"
-#import "ParticipantHelper.h"
+#import "ParticipantHelperCategory.h"
 #import "CountryCell.h"
 #import "TextEditViewController.h"
 #import "AlignedStyle2Cell.h"
@@ -296,11 +296,31 @@ static NSIndexPath *_currenciesIndexPath;
     
     if (![newCountry isEqual:self.country]) {
         
-        self.country = newCountry;
-        self.currencies = [newCountry.currencies allObjects];
+        NSMutableArray *newCurrencies = [NSMutableArray arrayWithArray:self.currencies];
         
+        if (self.country) {
+            // remove old currencies
+            for (Currency *currency in [self.country.currencies allObjects]) {
+                if (![newCountry.currencies containsObject:currency] && [newCurrencies containsObject:currency]) {
+                    [newCurrencies removeObject:currency];
+                }
+            }
+        }
+        
+        // add new
+        for (Currency *currency in [newCountry.currencies allObjects]) {
+            if (![newCurrencies containsObject:currency]) {
+                [newCurrencies addObject:currency];
+            }
+        }
+        
+        self.country = newCountry;
         [_cellsToReloadAndFlash addObject:_countryIndexPath];
-        [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
+        
+        if (![newCurrencies isEqualToArray:self.currencies]) {
+            self.currencies = newCurrencies;
+            [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
+        }
     }
 }
 
@@ -365,7 +385,7 @@ static NSIndexPath *_currenciesIndexPath;
             NSArray *martinPerson = (NSArray *) ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
             if ([martinPerson lastObject]) {
                 Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
-                [ParticipantHelper addParticipant:newPerson toTravel:_travel withABRecord:[martinPerson lastObject]];
+                [Participant addParticipant:newPerson toTravel:_travel withABRecord:[martinPerson lastObject]];
             }
             [martinPerson release];
         }

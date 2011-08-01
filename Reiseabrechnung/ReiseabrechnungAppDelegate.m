@@ -13,8 +13,6 @@
 #import "Type.h"
 #import "UIFactory.h" 
 #import "ShadowNavigationController.h"
-#import "FirstLetterCategory.h"
-#import "DateSortCategory.h"
 #import "AppDefaults.h"
 #import "CurrencyRefresh.h"
 #import "ExchangeRate.h"
@@ -27,10 +25,32 @@
 @synthesize managedObjectModel=_managedObjectModel;
 @synthesize persistentStoreCoordinator=_persistentStoreCoordinator;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOption {
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
+    [self initializeStartDatabase:[NSBundle mainBundle]];
+    
+    
+    [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
+    
+    //NSLog(@"Updating currencies...");
+    CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:self.managedObjectContext];
+    //[currencyRefresh refreshCurrencies:@"EUR"];
+    [currencyRefresh release];
+    
+    RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
+    self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
+    [rvc release];
+    
+    [self.window addSubview:self.navController.view];
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+    
+}
+
+- (void)initializeStartDatabase:(NSBundle *)bundle {        
     
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
@@ -40,7 +60,7 @@
     if (![currencies lastObject]) {
         
         NSLog(@"Initialising countries...");
-        NSString *pathCountryPlist =[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"plist"];
+        NSString *pathCountryPlist =[bundle pathForResource:@"countries" ofType:@"plist"];
         NSDictionary* countryDict = [[NSDictionary alloc] initWithContentsOfFile:pathCountryPlist];
         NSArray *countries = [countryDict valueForKey:@"countries"];
         
@@ -57,7 +77,7 @@
         [countryDict release];
         
         NSLog(@"Initialising currencies...");
-        NSString *pathCurrencyPlist =[[NSBundle mainBundle] pathForResource:@"currencies" ofType:@"plist"];
+        NSString *pathCurrencyPlist =[bundle pathForResource:@"currencies" ofType:@"plist"];
         NSDictionary* currencyDict = [[NSDictionary alloc] initWithContentsOfFile:pathCurrencyPlist];
         NSArray *currencies = [currencyDict valueForKey:@"currencies"];
         
@@ -85,26 +105,34 @@
             NSEnumerator *ratesForCurrencyEnum = [ratesForCurrency keyEnumerator];
             for (NSString *ratesForCurrencyKey in [ratesForCurrencyEnum allObjects]) {
                 
-                ratesForCurrencyKey = [ratesForCurrencyKey uppercaseString];
-                ExchangeRate *rate = [NSEntityDescription insertNewObjectForEntityForName:@"ExchangeRate" inManagedObjectContext:self.managedObjectContext];
-                rate.counterCurrency = _currency;
-                rate.rate = [ratesForCurrency valueForKey:ratesForCurrencyKey];
-                
-                Currency *baseCurrency = [newCurrencies objectForKey:ratesForCurrencyKey];
-                if (!baseCurrency) {
-                    baseCurrency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
-                    baseCurrency.code = ratesForCurrencyKey;
-                    [newCurrencies setObject:baseCurrency forKey:ratesForCurrencyKey];
+                if ([ratesForCurrencyKey isEqualToString:@"EUR"]) {
+                    ratesForCurrencyKey = [ratesForCurrencyKey uppercaseString];
+                    ExchangeRate *rate = [NSEntityDescription insertNewObjectForEntityForName:@"ExchangeRate" inManagedObjectContext:self.managedObjectContext];
+                    rate.counterCurrency = _currency;
+                    rate.rate = [ratesForCurrency valueForKey:ratesForCurrencyKey];
+                    
+                    Currency *baseCurrency = [newCurrencies objectForKey:ratesForCurrencyKey];
+                    if (!baseCurrency) {
+                        baseCurrency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:self.managedObjectContext];
+                        baseCurrency.code = ratesForCurrencyKey;
+                        [newCurrencies setObject:baseCurrency forKey:ratesForCurrencyKey];
+                    }
+                    rate.baseCurrency = baseCurrency;
+                    
+                    _currency.rate = rate;
                 }
-                rate.baseCurrency = baseCurrency;
-                
-                [_currency addRatesWithCounterCurrencyObject:rate];
             }
         }
         [currencyDict release];
         [orderCountryDict release];
         
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
+    }
+    
+    for (Currency *c in currencies) {
+        if (!c.rate){
+            NSLog(@"no rate %@", c.name);
+        }
     }
     
     NSFetchRequest *reqType = [[NSFetchRequest alloc] init];
@@ -117,14 +145,14 @@
         
         NSLog(@"Initialising types...");
         
-        NSString *typesPlistPath = [[NSBundle mainBundle] pathForResource:@"types" ofType:@"plist"];
+        NSString *typesPlistPath = [bundle pathForResource:@"types" ofType:@"plist"];
         NSArray *staticTypeNames = [[NSDictionary dictionaryWithContentsOfFile:typesPlistPath] valueForKey:@"types"];
         
         for (NSString *staticTypeName in staticTypeNames) {
             Type *_type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:self.managedObjectContext];
             _type.name = staticTypeName;
             
-            if ([_type.name isEqualToString:@"None"]) {
+            if ([_type.name isEqualToString:@"Other"]) {
                 _defaultType = _type;
             }
         }
@@ -142,22 +170,6 @@
         
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
     }
-
-    [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
-    
-    //NSLog(@"Updating currencies...");
-    CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:self.managedObjectContext];
-    //[currencyRefresh refreshCurrencies:@"EUR"];
-    [currencyRefresh release];
-    
-    RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
-    self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
-    [rvc release];
-    
-    [self.window addSubview:self.navController.view];
-    [self.window makeKeyAndVisible];
-    
-    return YES;
 }
 
 - (Currency *)defaultCurrency {
@@ -203,16 +215,22 @@
     return defaultObj;
 }
 
-+ (void)saveContext:(NSManagedObjectContext *) context
-{
++ (void)saveContext:(NSManagedObjectContext *) context {
+    
     NSError *error = nil;
-    if (context != nil)
-    {
-        if ([context hasChanges] && ![context save:&error])
-        {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
+    
+    if (context != nil) {
+        
+        if ([[context persistentStoreCoordinator].persistentStores count] > 0) {
+            
+            if ([context hasChanges] && ![context save:&error]) {
+                
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                abort();
+            } 
+        } else {
+            NSLog(@"No persistent store, saving will be skipped");
+        }
     }
 }
 
@@ -246,8 +264,7 @@
      */
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication *)application {
     /*
      Called when the application is about to terminate.
      Save data if appropriate.
@@ -255,16 +272,14 @@
      */
 }
 
-- (NSManagedObjectContext *)managedObjectContext
-{
-    if (_managedObjectContext != nil)
-    {
+- (NSManagedObjectContext *)managedObjectContext {
+    
+    if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil)
-    {
+    if (coordinator != nil) {
         _managedObjectContext = [[NSManagedObjectContext alloc] init];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
@@ -275,8 +290,7 @@
  Returns the managed object model for the application.
  If the model doesn't already exist, it is created from the application's model.
  */
-- (NSManagedObjectModel *)managedObjectModel
-{
+- (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel != nil)
     {
         return _managedObjectModel;
@@ -290,10 +304,9 @@
  Returns the persistent store coordinator for the application.
  If the coordinator doesn't already exist, it is created and the application's store added to it.
  */
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator != nil)
-    {
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    
+    if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
     
@@ -301,8 +314,7 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
-    {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    

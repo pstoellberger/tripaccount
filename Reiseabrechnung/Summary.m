@@ -9,6 +9,9 @@
 #import "Summary.h"
 #import "Entry.h"
 #import "Participant.h"
+#import "Currency.h"
+#import "ExchangeRate.h"
+#import "CurrencyHelperCategory.h"
 
 @implementation ParticipantKey
 
@@ -63,8 +66,12 @@
     Summary *summary = [[[Summary alloc] init] autorelease];
       
     for (Entry *entry in travel.entries) {
+        
+        // convert to base currency
+        double baseAmount = [entry.currency convertToCurrency:entry.currency.rate.baseCurrency amount:[entry.amount doubleValue]];
+        
         // divide an expense in equal parts
-        double divAmount = [entry.amount doubleValue] / [entry.receivers count];
+        double divAmount = baseAmount / [entry.receivers count];
 
         // add the amount to the 'account' between two people
         for (Participant *receiver in entry.receivers) {
