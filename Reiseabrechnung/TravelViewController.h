@@ -17,6 +17,7 @@
 #import "SummaryViewController.h"
 #import "EntryNotManaged.h"
 #import "EntrySortViewController.h"
+#import "SummarySortViewController.h"
  
 @interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate> {
     Travel *_travel;
@@ -28,7 +29,7 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet ParticipantViewController *participantViewController;
 @property (nonatomic, retain) IBOutlet EntrySortViewController *entrySortViewController;
-@property (nonatomic, retain) IBOutlet SummaryViewController *summaryViewController;
+@property (nonatomic, retain) IBOutlet SummarySortViewController *summarySortViewController;
 
 @property (nonatomic, retain) UIBarButtonItem *addButton;
 @property (nonatomic, retain) UIBarButtonItem *actionButton;

@@ -2,7 +2,7 @@
 //  Participant.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 24/07/2011.
+//  Created by Martin Maier on 01/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,9 +16,11 @@
 }
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSData * image;
+@property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) NSSet *getPayedFor;
 @property (nonatomic, retain) NSSet *pays;
+@property (nonatomic, retain) Travel *lastUsedInTravel;
 @end
 
 @interface Participant (CoreDataGeneratedAccessors)

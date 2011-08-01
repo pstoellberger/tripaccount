@@ -73,7 +73,12 @@ static NSIndexPath *_dateIndexPath;
     if (self) {
         if (!self.nmEntry) {
             self.nmEntry = [[[EntryNotManaged alloc] init] autorelease];
-            self.nmEntry.payer = [travel.participants anyObject];
+            if (travel.lastParticipantUsed) {
+                self.nmEntry.payer = travel.lastParticipantUsed;
+            } else {
+                self.nmEntry.payer = [travel.participants anyObject];
+            }
+            
             self.nmEntry.receivers = travel.participants;
             self.nmEntry.currency = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].homeCurrency;
             self.nmEntry.date = [UIFactory createDateWithoutTimeFromDate:[NSDate date]];
@@ -239,7 +244,7 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_amountIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withRightLabelText:@"EUR" target:self selector:@selector(selectAmount:)]; 
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount currency:self.nmEntry.currency travel:self.travel target:self selector:@selector(selectAmount:)]; 
         numberEditViewController.title = @"Amount";
         [self.navigationController pushViewController:numberEditViewController animated:YES];
         [numberEditViewController release]; 

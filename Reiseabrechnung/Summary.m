@@ -52,7 +52,7 @@
 
 @implementation Summary
 
-@synthesize results=_results, accounts=_accounts;
+@synthesize results=_results, accounts=_accounts, baseCurrency=_baseCurrency;
 
 - (id) init {
     self = [super init];
@@ -64,11 +64,15 @@
 
 + (Summary *) createSummary:(Travel *) travel {
     Summary *summary = [[[Summary alloc] init] autorelease];
+    
+    if (!summary.baseCurrency) {
+        summary.baseCurrency = ((Entry *) [travel.entries anyObject]).currency.rate.baseCurrency;
+    }
       
     for (Entry *entry in travel.entries) {
         
         // convert to base currency
-        double baseAmount = [entry.currency convertToCurrency:entry.currency.rate.baseCurrency amount:[entry.amount doubleValue]];
+        double baseAmount = [entry.currency convertToCurrency:summary.baseCurrency amount:[entry.amount doubleValue]];
         
         // divide an expense in equal parts
         double divAmount = baseAmount / [entry.receivers count];

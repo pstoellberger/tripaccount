@@ -2,7 +2,7 @@
 //  Travel.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 26/07/2011.
+//  Created by Martin Maier on 01/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,16 +14,17 @@
 
 
 @implementation Travel
+@dynamic closed;
 @dynamic city;
-@dynamic created;
-@dynamic name;
 @dynamic selectedTab;
 @dynamic selectedRow;
-@dynamic closed;
 @dynamic notes;
+@dynamic created;
+@dynamic name;
 @dynamic country;
 @dynamic currencies;
 @dynamic participants;
 @dynamic entries;
+@dynamic lastParticipantUsed;
 
 @end

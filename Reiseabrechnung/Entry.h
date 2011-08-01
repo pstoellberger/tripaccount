@@ -2,7 +2,7 @@
 //  Entry.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 26/07/2011.
+//  Created by Martin Maier on 01/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 @private
 }
 @property (nonatomic, retain) NSNumber * amount;
+@property (nonatomic, retain) NSNumber * open;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSNumber * open;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Type *type;
 @property (nonatomic, retain) Participant *payer;

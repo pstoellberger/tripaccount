@@ -15,12 +15,15 @@
 @interface SummaryViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
     Summary *_summary;
     SummaryCell *_summaryCell;
+    Currency *_displayCurrency;
 }
 
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, assign) IBOutlet SummaryCell *summaryCell;
 
-- (id)initWithTravel:(Travel *) travel;
+- (id)initWithTravel:(Travel *) travel andDisplayedCurrency:(Currency *)currency;
 - (void)recalculateSummary;
+
+- (void)changeDisplayedCurrency:(Currency *)currency;
 
 @end

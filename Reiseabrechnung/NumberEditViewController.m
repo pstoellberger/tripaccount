@@ -7,20 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import <Foundation/Foundation.h>
 #import "NumberEditViewController.h"
 #import "UIFactory.h"
 #import "GradientCell.h"
+#import "CurrencyHelperCategory.h"
 
 @implementation NumberEditViewController
 
 @synthesize target=_target, selector=_selector;
-@synthesize textField=_textField, textCell=_textCell, number=_number;
+@synthesize textField=_textField, textCell=_textCell, convertView=_convertView;
+@synthesize travel=_travel, currency=_currency, number=_number;
 
 #define TEXTFIELD_LABEL_GAP 15
 #define BORDER_GAP 10
+#define FOOTER_HEIGHT 155
 
-- (id)initWithNumber:(NSNumber *)startNumber withRightLabelText:(NSString *)rightLabelText target:(id)target selector:(SEL)selector {
+- (id)initWithNumber:(NSNumber *)startNumber currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector {
     
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         
@@ -32,6 +36,9 @@
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         
+        self.travel = travel;
+        self.currency = currency;
+        
         self.number = [[startNumber copy] autorelease];
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         numberFormatter.maximumFractionDigits = 2;
@@ -40,14 +47,14 @@
         
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
         
-        self.tableView.tableHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 80)] autorelease];
         self.tableView.allowsSelection = NO;
         
-        if (rightLabelText) {
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-            NSLog(@"%@", label);
+        if (currency) {
+            self.textField.frame = CGRectMake(BORDER_GAP, (self.textCell.bounds.size.height - self.textField.bounds.size.height) / 2, self.tableView.bounds.size.width - BORDER_GAP - BORDER_GAP, self.textField.bounds.size.height);            
             
-            label.text = rightLabelText;
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+            
+            label.text = currency.code;
             label.font = self.textField.font;
             [label sizeToFit];
             
@@ -58,9 +65,20 @@
             self.textField.frame = CGRectMake(self.textField.frame.origin.x, self.textField.frame.origin.y, label.frame.origin.x - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.bounds.size.height);
             
             [self.textCell.contentView addSubview:label]; 
+        } else {
+            self.tableView.tableHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 80)] autorelease];
         }
-       
         
+        if (currency && [travel.currencies count] > 1) {
+            self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, FOOTER_HEIGHT)];
+            
+            [self.tableView.tableFooterView addSubview:self.convertView];
+
+            if ([self.number doubleValue] != 0) {
+                [self refreshConversion];
+
+            }
+        } 
     }
     return self;    
 }
@@ -75,6 +93,29 @@
 
 - (void)cancel {
     [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (void)refreshConversion {
+    
+    if ([self.number intValue] != 0) {
+        const unichar cr = '\n';
+        NSString *singleCR = [NSString stringWithCharacters:&cr length:1];    
+        
+        NSString *conversionString = @"";
+        for (Currency *c in self.travel.currencies) {
+            
+            if (![c isEqual:self.currency]) {
+                NSString *line = [NSString stringWithFormat:@"%.2f %@", [self.currency convertToCurrency:c amount:[self.number doubleValue]] ,c.code];
+                conversionString = [[conversionString stringByAppendingString:line] stringByAppendingString:singleCR];
+            }
+        }
+        
+        self.convertView.text = [conversionString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        
+        [self.convertView flashScrollIndicators];
+    } else {
+        self.convertView.text = @"";
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -101,7 +142,7 @@
 
     BOOL returnValue = NO;
     
-    NSNumberFormatter *nf = [[NSNumberFormatter alloc] init] ;
+    NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
     NSString *numberString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
     if ([numberString length] == 0) {
@@ -116,6 +157,8 @@
     }
     [nf release];
     
+    [self refreshConversion];
+
     return returnValue;
 }
 
@@ -137,13 +180,22 @@
     self.textField.keyboardAppearance = UIKeyboardAppearanceAlert;
     self.textField.font = [UIFont systemFontOfSize:25.0];
     [self.textField sizeToFit];
-    self.textField.frame = CGRectMake(BORDER_GAP, (self.textCell.bounds.size.height - self.textField.bounds.size.height) / 2, self.tableView.bounds.size.width - BORDER_GAP - BORDER_GAP, self.textField.bounds.size.height);
     
     self.textField.delegate = self;
     
     [self.textCell addSubview:self.textField];
     
     [self.textField becomeFirstResponder];
+    
+    self.convertView = [[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP, CONVERSION_VIEW_GAP, [[UIScreen mainScreen] applicationFrame].size.width - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP, FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)];
+    self.convertView.textAlignment = UITextAlignmentRight;
+    self.convertView.textColor = [UIColor grayColor];
+    self.convertView.editable = NO;
+    self.convertView.font = [UIFont systemFontOfSize:18.0];
+    self.convertView.userInteractionEnabled = YES;
+    self.convertView.contentInset = UIEdgeInsetsMake(0,0,0,0);
+    self.convertView.layer.cornerRadius = 5;
+    self.convertView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
 }
 

@@ -31,7 +31,7 @@
 @implementation TravelViewController
 
 @synthesize travel=_travel, tabBarController=_tabBarController, addButton=_addButton, actionButton=_actionButton;
-@synthesize participantViewController=_participantViewController, entrySortViewController=_entrySortViewController, summaryViewController=_summaryViewController;
+@synthesize participantViewController=_participantViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
 
 - (id)initWithTravel:(Travel *) travel {
     self = [self init];
@@ -123,6 +123,7 @@
     Entry *_entry = nil;
     if (!entry) {
         _entry = [NSEntityDescription insertNewObjectForEntityForName: @"Entry" inManagedObjectContext: [_travel managedObjectContext]];
+        _travel.lastParticipantUsed = nmEntry.payer;
     } else {
         _entry = entry;
     }
@@ -180,15 +181,21 @@
 #pragma mark - UITabBarControllerDelegate
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    if ([viewController isEqual:_summaryViewController]) {
+    if ([viewController isEqual:_summarySortViewController]) {
         self.navigationItem.rightBarButtonItem = self.actionButton;
     } else {
         self.navigationItem.rightBarButtonItem = self.addButton;
     }
+    
+    self.travel.selectedTab = [NSNumber numberWithInt:[tabBarController.viewControllers indexOfObject:viewController]];
+    [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    [_summaryViewController recalculateSummary];
+    
+    if ([_summarySortViewController isEqual:viewController]) {
+        [_summarySortViewController.detailViewController recalculateSummary];
+    }
     return YES;
 }
 
@@ -215,25 +222,20 @@
     self.entrySortViewController = [[[EntrySortViewController alloc] initWithTravel:_travel] autorelease];
     self.entrySortViewController.detailViewController.editDelegate = self;
     
-    self.summaryViewController = [[[SummaryViewController alloc] initWithTravel:_travel] autorelease];
+    self.summarySortViewController = [[[SummarySortViewController alloc] initWithTravel:_travel] autorelease];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.delegate = self;
-    [self.tabBarController setViewControllers:[NSArray arrayWithObjects:self.participantViewController, self.entrySortViewController, self.summaryViewController, nil] animated:NO];
+    [self.tabBarController setViewControllers:[NSArray arrayWithObjects:self.participantViewController, self.entrySortViewController, self.summarySortViewController, nil] animated:NO];
     self.tabBarController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
     self.tabBarController.tabBar.frame = CGRectMake(0, self.tabBarController.view.frame.size.height - TABBAR_HEIGHT, self.view.frame.size.width, TABBAR_HEIGHT);
     
+    self.tabBarController.selectedIndex = [self.travel.selectedTab intValue];
+
     self.addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)] autorelease]; 
     self.navigationItem.rightBarButtonItem = self.addButton;
     
     self.actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openActionPopup)] autorelease]; 
-    
-    if ([_travel.participants count] <= 1) {
-        self.tabBarController.selectedViewController = self.participantViewController;
-    } else {
-        self.tabBarController.selectedViewController = self.entrySortViewController;
-    }
     
     [self.view addSubview:_tabBarController.view];
 
@@ -257,7 +259,7 @@
     self.tabBarController = nil;
     self.participantViewController = nil;
     self.entrySortViewController = nil;
-    self.summaryViewController = nil;
+    self.summarySortViewController = nil;
     self.addButton = nil;
 }
 

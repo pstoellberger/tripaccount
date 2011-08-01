@@ -17,6 +17,13 @@
     NSString *lastName = (NSString *) ABRecordCopyValue(recordRef, kABPersonLastNameProperty);
     NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
+    NSArray *emailList = (NSArray *) ABMultiValueCopyArrayOfAllValues((ABMultiValueRef *) ABRecordCopyValue(recordRef, kABPersonEmailProperty));
+    
+    NSString *email = @"";
+    if ([emailList count] > 0) {
+        email = (NSString *) [emailList objectAtIndex:0];
+    }
+    
     BOOL addPerson = YES;
     
     for(Participant *p in travel.participants) {
@@ -29,6 +36,7 @@
     if (addPerson) {
         person.travel = travel;
         person.name = fullName;
+        person.email = email;
         
         UIImage *image = nil;
         if(ABPersonHasImageData(recordRef)) {

@@ -43,6 +43,7 @@
         
         self.titleKey = @"name";
         self.imageKey = @"image";
+        self.subtitleKey = @"email";
         
         self.tableView.allowsSelection = NO;
 

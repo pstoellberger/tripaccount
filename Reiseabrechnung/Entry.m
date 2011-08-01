@@ -2,7 +2,7 @@
 //  Entry.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 26/07/2011.
+//  Created by Martin Maier on 01/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 
 @implementation Entry
 @dynamic amount;
+@dynamic open;
 @dynamic date;
 @dynamic text;
-@dynamic open;
 @dynamic travel;
 @dynamic type;
 @dynamic payer;

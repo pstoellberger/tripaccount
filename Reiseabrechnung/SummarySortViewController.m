@@ -6,10 +6,11 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "EntrySortViewController.h"
+#import "SummarySortViewController.h"
 #import "UIFactory.h"
+#import "Currency.h"
 
-@implementation EntrySortViewController
+@implementation SummarySortViewController
 
 @synthesize travel=_travel, detailViewController=_detailViewController;
 
@@ -17,20 +18,20 @@
     
     if (self = [super init]) {
         self.travel = travel;
+        _currencyArray = [[self.travel.currencies allObjects] retain];
         
-        EntryViewController *evc = [[EntryViewController alloc] initWithTravel:travel];
+        SummaryViewController *evc = [[SummaryViewController alloc] initWithTravel:travel andDisplayedCurrency:[_currencyArray objectAtIndex:0]];
         self.detailViewController = evc;
-        evc.delegate = self;
         [evc release];
         
-        self.title = @"Expenses";
-        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"80-shopping-cart" ofType:@"png"]];
+        self.title = @"Summary";
+        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"138-scales" ofType:@"png"]];
     }
     return self;
 }
 
 - (void)sortTable:(UISegmentedControl *)sender {
-    [self.detailViewController sortTable:sender.selectedSegmentIndex];
+    [self.detailViewController changeDisplayedCurrency:[_currencyArray objectAtIndex:sender.selectedSegmentIndex]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,8 +62,12 @@
     
     UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT)];
     newView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-
-    NSArray *segArray = [NSArray arrayWithObjects:@"Person", @"Type", @"Date", nil];
+    
+    NSMutableArray *segArray = [NSMutableArray array];
+    for (Currency *currency in _currencyArray) {
+        [segArray addObject:currency.code];
+    }
+    
     UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray]; 
     segControl.frame = CGRectMake(10, 5, [UIScreen mainScreen].bounds.size.width - 20, SORT_TOOLBAR_HEIGHT - 10);
     segControl.selectedSegmentIndex = 0;
@@ -82,19 +87,19 @@
     [newView addSubview:toolbar];
     
     self.view = newView;
-
+    
     [toolbar release];
     [newView release];
     [segControl release];
 }
 
 /*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
+ // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+ - (void)viewDidLoad
+ {
+ [super viewDidLoad];
+ }
+ */
 
 - (void)viewDidUnload {
     [super viewDidUnload];

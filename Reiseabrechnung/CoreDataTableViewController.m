@@ -143,8 +143,8 @@
     return [GradientCell alloc];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
+    
     static NSString *ReuseIdentifier = @"CoreDataTableViewCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier];

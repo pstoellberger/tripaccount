@@ -11,17 +11,19 @@
 #import "Participant.h"
 #import "SummaryCell.h"
 #import "UIFactory.h"
+#import "CurrencyHelperCategory.h"
 
 @implementation SummaryViewController
 
 @synthesize travel=_travel, summaryCell=_summaryCell ;
 
-- (id)initWithTravel:(Travel *) travel {
+- (id)initWithTravel:(Travel *) travel andDisplayedCurrency:(Currency *)currency {
 
     if (self = [super initWithStyle:UITableViewStylePlain]) {
     
         _travel = travel;
-        
+        _displayCurrency = currency;
+
         [UIFactory initializeTableViewController:self.tableView];
         
         self.tableView.delegate = self;
@@ -58,11 +60,16 @@
     cell.leftImage.image = [UIImage imageWithData:key.payer.image];
     cell.debtee.text = key.receiver.name;
     cell.rightImage.image = [UIImage imageWithData:key.receiver.image];
-    cell.amount.text = [NSString stringWithFormat:@"%.02f EUR", [owedAmount doubleValue]];
+    cell.amount.text = [NSString stringWithFormat:@"%.02f %@", [_summary.baseCurrency convertToCurrency:_displayCurrency amount:[owedAmount doubleValue]], _displayCurrency.code];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
     return cell;
+}
+
+- (void)changeDisplayedCurrency:(Currency *)currency {
+    _displayCurrency = currency;
+    [self.tableView reloadData];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -23,8 +23,9 @@
     NSMutableDictionary *_accounts;
 }
 
-@property (nonatomic, retain) NSArray* results;
-@property (nonatomic, retain, readonly) NSMutableDictionary* accounts;
+@property (nonatomic, retain) NSArray *results;
+@property (nonatomic, retain) Currency *baseCurrency;
+@property (nonatomic, retain, readonly) NSMutableDictionary *accounts;
 
 + (Summary *) createSummary:(Travel *) travel;
 
