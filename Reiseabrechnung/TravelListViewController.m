@@ -56,13 +56,15 @@
     
     if (self.tableView.editing) {
         
-        TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext withTravel:(Travel *)managedObject];
-        detailViewController.editDelegate = self.rootViewController;
-        UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
-        navController.delegate = detailViewController;
-        [self.rootViewController.navigationController presentModalViewController:navController animated:YES];   
-        [detailViewController release];
-        [navController release];
+        if ([((Travel *)managedObject).closed intValue] != 1) {
+            TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext withTravel:(Travel *)managedObject];
+            detailViewController.editDelegate = self.rootViewController;
+            UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
+            navController.delegate = detailViewController;
+            [self.rootViewController.navigationController presentModalViewController:navController animated:YES];   
+            [detailViewController release];
+            [navController release];
+        }
         
     } else {
         

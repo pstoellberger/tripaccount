@@ -2,7 +2,7 @@
 //  Currency.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 01/08/2011.
+//  Created by Martin Maier on 02/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -18,11 +18,12 @@
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *countries;
+@property (nonatomic, retain) ExchangeRate *rate;
 @property (nonatomic, retain) AppDefaults *defaults;
 @property (nonatomic, retain) NSSet *ratesWithBaseCurrency;
 @property (nonatomic, retain) NSSet *travels;
-@property (nonatomic, retain) ExchangeRate *rate;
 @property (nonatomic, retain) NSSet *entries;
+@property (nonatomic, retain) NSSet *transfersWithBaseCurrency;
 @end
 
 @interface Currency (CoreDataGeneratedAccessors)
@@ -46,5 +47,10 @@
 - (void)removeEntriesObject:(Entry *)value;
 - (void)addEntries:(NSSet *)values;
 - (void)removeEntries:(NSSet *)values;
+
+- (void)addTransfersWithBaseCurrencyObject:(Travel *)value;
+- (void)removeTransfersWithBaseCurrencyObject:(Travel *)value;
+- (void)addTransfersWithBaseCurrency:(NSSet *)values;
+- (void)removeTransfersWithBaseCurrency:(NSSet *)values;
 
 @end

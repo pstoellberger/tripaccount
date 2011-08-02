@@ -125,7 +125,7 @@
         
         Type *type = (Type *)managedObject;
         if ([type.buildIn intValue] == 1) {
-            NSLog(@"zzzz");
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         } else {
             [self editType:type];
         }    
@@ -133,7 +133,14 @@
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
+    
+    Type *type = (Type *)managedObject;
+    for (Entry *entry in type.entries) {
+        entry.type = [ReiseabrechnungAppDelegate defaultsObject:self.context].defaultType;
+    }
+    
     [self.context deleteObject:managedObject];
+    
     [ReiseabrechnungAppDelegate saveContext:self.context];
 }
 

@@ -86,20 +86,38 @@
 
 - (void)openActionPopup {
     
+    NSString *openOrCloseTrip = @"Close this trip";
+    if ([self.travel.closed intValue] == 1) {
+        openOrCloseTrip = @"Open this trip";
+    }
+    
     UIActionSheet *actionPopup = [[UIActionSheet alloc] initWithTitle: @"Choose your action"
                                                         delegate:self
                                                cancelButtonTitle:@"Cancel"
                                           destructiveButtonTitle:nil
-                                               otherButtonTitles:@"Send summary e-mail", @"Close this trip", nil];
+                                               otherButtonTitles:@"Send summary e-mail", openOrCloseTrip, nil];
     actionPopup.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [actionPopup showInView:self.view];
     [actionPopup release];
 }
 
 - (void)closeTravel {
-    self.travel.closed = [NSNumber numberWithInt:1];
-    [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if ([self.travel.closed intValue] != 1) {
+        // close
+        self.travel.closed = [NSNumber numberWithInt:1];
+        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+        
+    } else {
+        // open
+        self.travel.closed = [NSNumber numberWithInt:0];
+        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+        
+        [_summarySortViewController.detailViewController.tableView reloadData];
+        [_entrySortViewController.detailViewController.tableView reloadData];
+        
+        [self updateStateOfNavigationController:self.tabBarController.selectedViewController];
+    }
 }
 
 - (void)sendSummaryMail {
@@ -151,7 +169,10 @@
         self.navigationItem.rightBarButtonItem = self.actionButton;
     } else {
         self.navigationItem.rightBarButtonItem = self.addButton;
-    }    
+    }
+    
+    self.addButton.enabled = [self.travel.closed intValue] != 1;
+
 }
 
 #pragma mark - UIActionSheetDelegate

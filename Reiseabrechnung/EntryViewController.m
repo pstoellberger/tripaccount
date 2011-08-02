@@ -6,6 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "EntryViewController.h"
 #import "EntryCell.h"
 #import "ReiseabrechnungAppDelegate.h"
@@ -82,6 +83,12 @@
         NSArray *tlo = [[NSBundle mainBundle] loadNibNamed:@"EntryCell" owner:self options:nil];
         cell = [tlo objectAtIndex:0];
         [UIFactory initializeCell:cell];
+        
+        cell.checkMark.layer.cornerRadius = 4;
+        cell.checkMark.layer.masksToBounds = YES;
+        [UIFactory addGradientToView:cell.checkMark color1:[UIColor colorWithRed:0.2 green:0.7 blue:0.2 alpha:1] color2:[UIColor colorWithRed:0 green:0.4 blue:0 alpha:1]];
+        [UIFactory addShadowToView:cell.checkMark];
+        cell.checkMark.alpha = 0.5;
     }
     
     // Set up the cell... 
@@ -103,13 +110,47 @@
     cell.rightBottom.text = [formatter stringFromDate:entry.date];
     [formatter release];
     
+    cell.checkMark.hidden = YES;
+    cell.image.alpha = 1;
+    cell.bottom.alpha = 1;
+    
+    UIColor *textColor = [UIColor blackColor];
+    if ([self.travel.closed intValue] == 1 && [entry.checked intValue] == 1) {
+        cell.checkMark.hidden = NO;
+        textColor = [UIColor grayColor];
+        cell.image.alpha = 0.6;
+        cell.bottom.alpha = 0.6;
+    }
+    
+    cell.right.textColor = textColor;
+    cell.rightBottom.textColor = textColor;
+    cell.top.textColor = textColor;
+    
     return cell;
 }
 
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    [self.editDelegate openEditEntryPopup:(Entry *)managedObject];
+    if ([self.travel.closed intValue] != 1) {
+        
+        [self.editDelegate openEditEntryPopup:(Entry *)managedObject];
+        
+    } else {
+        
+        Entry *entry = (Entry *) managedObject;
+
+        if ([entry.checked intValue] != 1) {
+            entry.checked = [NSNumber numberWithInt:1];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]] withRowAnimation:UITableViewRowAnimationLeft];
+        } else {
+            entry.checked = [NSNumber numberWithInt:0];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]] withRowAnimation:UITableViewRowAnimationRight];
+        }
+        
+        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+    }
+    
     [self.tableView deselectRowAtIndexPath:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]  animated:YES];
 }
 
@@ -121,7 +162,7 @@
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
 {
-	return YES;
+	return [self.travel.closed intValue] != 1;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

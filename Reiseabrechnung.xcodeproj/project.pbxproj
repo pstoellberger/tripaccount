@@ -19,18 +19,23 @@
 		F11FB33E13E6982B00115D12 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1DB58C713D86CB0001E3B4A /* countries.plist */; };
 		F11FB33F13E6982E00115D12 /* currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1DB58C813D86CB0001E3B4A /* currencies.plist */; };
 		F11FB34013E6983F00115D12 /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
-		F11FB34313E6A3D500115D12 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34213E6A3D500115D12 /* Currency.m */; };
 		F11FB34613E6A3D500115D12 /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34513E6A3D500115D12 /* ExchangeRate.m */; };
-		F11FB34713E6A4FE00115D12 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34213E6A3D500115D12 /* Currency.m */; };
 		F11FB34813E6A50000115D12 /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34513E6A3D500115D12 /* ExchangeRate.m */; };
 		F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */; };
-		F11FB35113E6BADE00115D12 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB35013E6BADD00115D12 /* Participant.m */; };
-		F11FB35D13E6BD7600115D12 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB35C13E6BD7600115D12 /* Entry.m */; };
-		F11FB36013E6BD7700115D12 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB35F13E6BD7700115D12 /* Travel.m */; };
 		F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
 		F11FB36A13E6E75800115D12 /* SettingsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36913E6E75700115D12 /* SettingsRootViewController.m */; };
 		F11FB36B13E6E75800115D12 /* SettingsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36913E6E75700115D12 /* SettingsRootViewController.m */; };
 		F127296913E7D85E0095286D /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F127296813E7D85E0095286D /* Type.m */; };
+		F127297013E7EF370095286D /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F127296F13E7EF370095286D /* Participant.m */; };
+		F127297113E7EF370095286D /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F127296F13E7EF370095286D /* Participant.m */; };
+		F127297813E7F01A0095286D /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F127297713E7F01A0095286D /* Transfer.m */; };
+		F127297913E7F01A0095286D /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F127297713E7F01A0095286D /* Transfer.m */; };
+		F127297C13E7F2060095286D /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F127297B13E7F2060095286D /* Currency.m */; };
+		F127297D13E7F2060095286D /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F127297B13E7F2060095286D /* Currency.m */; };
+		F127298413E7F3640095286D /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298313E7F3640095286D /* Travel.m */; };
+		F127298513E7F3640095286D /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298313E7F3640095286D /* Travel.m */; };
+		F127298813E7FCFF0095286D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298713E7FCFF0095286D /* Entry.m */; };
+		F127298913E7FCFF0095286D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298713E7FCFF0095286D /* Entry.m */; };
 		F12C7A9E13D0F7C600668BF0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */; };
 		F12C7A9F13D0F7C600668BF0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9D13D0F7C600668BF0 /* MapKit.framework */; };
 		F12C7AA113D104DF00668BF0 /* mobileTicker_name2-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C7AA013D104DF00668BF0 /* mobileTicker_name2-57x57.png */; };
@@ -382,24 +387,26 @@
 		F111CB1F13D99BE8002C08AC /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
 		F111CB2213D9AE82002C08AC /* AlignedStyle2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlignedStyle2Cell.h; path = Reiseabrechnung/AlignedStyle2Cell.h; sourceTree = "<group>"; };
 		F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlignedStyle2Cell.m; path = Reiseabrechnung/AlignedStyle2Cell.m; sourceTree = "<group>"; };
-		F11FB34113E6A3D500115D12 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
-		F11FB34213E6A3D500115D12 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 		F11FB34413E6A3D500115D12 /* ExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRate.h; sourceTree = "<group>"; };
 		F11FB34513E6A3D500115D12 /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
 		F11FB34913E6B01E00115D12 /* SummarySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarySortViewController.h; sourceTree = "<group>"; };
 		F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarySortViewController.m; sourceTree = "<group>"; };
-		F11FB34F13E6BADD00115D12 /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
-		F11FB35013E6BADD00115D12 /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
-		F11FB35B13E6BD7500115D12 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		F11FB35C13E6BD7600115D12 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		F11FB35E13E6BD7600115D12 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
-		F11FB35F13E6BD7700115D12 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
 		F11FB36513E6E73A00115D12 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
 		F11FB36613E6E73A00115D12 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
 		F11FB36813E6E75700115D12 /* SettingsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsRootViewController.h; sourceTree = "<group>"; };
 		F11FB36913E6E75700115D12 /* SettingsRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsRootViewController.m; sourceTree = "<group>"; };
 		F127296713E7D85E0095286D /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		F127296813E7D85E0095286D /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		F127296E13E7EF370095286D /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
+		F127296F13E7EF370095286D /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
+		F127297613E7F01A0095286D /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
+		F127297713E7F01A0095286D /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
+		F127297A13E7F2060095286D /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		F127297B13E7F2060095286D /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		F127298213E7F3640095286D /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
+		F127298313E7F3640095286D /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
+		F127298613E7FCFF0095286D /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		F127298713E7FCFF0095286D /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F12C7A9D13D0F7C600668BF0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F12C7AA013D104DF00668BF0 /* mobileTicker_name2-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobileTicker_name2-57x57.png"; sourceTree = "<group>"; };
@@ -1051,18 +1058,20 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F127298613E7FCFF0095286D /* Entry.h */,
+				F127298713E7FCFF0095286D /* Entry.m */,
+				F127298213E7F3640095286D /* Travel.h */,
+				F127298313E7F3640095286D /* Travel.m */,
+				F127297A13E7F2060095286D /* Currency.h */,
+				F127297B13E7F2060095286D /* Currency.m */,
+				F127297613E7F01A0095286D /* Transfer.h */,
+				F127297713E7F01A0095286D /* Transfer.m */,
+				F127296E13E7EF370095286D /* Participant.h */,
+				F127296F13E7EF370095286D /* Participant.m */,
 				F127296713E7D85E0095286D /* Type.h */,
 				F127296813E7D85E0095286D /* Type.m */,
-				F11FB35E13E6BD7600115D12 /* Travel.h */,
-				F11FB35F13E6BD7700115D12 /* Travel.m */,
-				F11FB35B13E6BD7500115D12 /* Entry.h */,
-				F11FB35C13E6BD7600115D12 /* Entry.m */,
-				F11FB34F13E6BADD00115D12 /* Participant.h */,
-				F11FB35013E6BADD00115D12 /* Participant.m */,
 				F11FB34413E6A3D500115D12 /* ExchangeRate.h */,
 				F11FB34513E6A3D500115D12 /* ExchangeRate.m */,
-				F11FB34113E6A3D500115D12 /* Currency.h */,
-				F11FB34213E6A3D500115D12 /* Currency.m */,
 				F159EA4A13E19C7B00C2D855 /* AppDefaults.h */,
 				F159EA4B13E19C7B00C2D855 /* AppDefaults.m */,
 				F1F8FAD713DC2D59009BB4D3 /* Country.h */,
@@ -1654,9 +1663,13 @@
 				F14B376F13E6906000351641 /* EntryEditViewController.m in Sources */,
 				F14B377013E6906000351641 /* DateSelectViewController.m in Sources */,
 				F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */,
-				F11FB34713E6A4FE00115D12 /* Currency.m in Sources */,
 				F11FB34813E6A50000115D12 /* ExchangeRate.m in Sources */,
 				F11FB36B13E6E75800115D12 /* SettingsRootViewController.m in Sources */,
+				F127297113E7EF370095286D /* Participant.m in Sources */,
+				F127297913E7F01A0095286D /* Transfer.m in Sources */,
+				F127297D13E7F2060095286D /* Currency.m in Sources */,
+				F127298513E7F3640095286D /* Travel.m in Sources */,
+				F127298913E7FCFF0095286D /* Entry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1706,15 +1719,16 @@
 				F100DEC313E2CC4400BB1E6E /* GradientCell.m in Sources */,
 				F100DEC713E2E5F900BB1E6E /* DateSortCategory.m in Sources */,
 				F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */,
-				F11FB34313E6A3D500115D12 /* Currency.m in Sources */,
 				F11FB34613E6A3D500115D12 /* ExchangeRate.m in Sources */,
 				F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */,
-				F11FB35113E6BADE00115D12 /* Participant.m in Sources */,
-				F11FB35D13E6BD7600115D12 /* Entry.m in Sources */,
-				F11FB36013E6BD7700115D12 /* Travel.m in Sources */,
 				F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */,
 				F11FB36A13E6E75800115D12 /* SettingsRootViewController.m in Sources */,
 				F127296913E7D85E0095286D /* Type.m in Sources */,
+				F127297013E7EF370095286D /* Participant.m in Sources */,
+				F127297813E7F01A0095286D /* Transfer.m in Sources */,
+				F127297C13E7F2060095286D /* Currency.m in Sources */,
+				F127298413E7F3640095286D /* Travel.m in Sources */,
+				F127298813E7FCFF0095286D /* Entry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

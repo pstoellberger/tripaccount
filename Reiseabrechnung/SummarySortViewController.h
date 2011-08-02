@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "SummaryViewController.h"
+#import "ShadowNavigationController.h"
 
-@interface SummarySortViewController : UIViewController {
+@interface SummarySortViewController : ShadowNavigationController {
     Travel *_travel;
     SummaryViewController *_detailViewController;
     NSArray *_currencyArray;

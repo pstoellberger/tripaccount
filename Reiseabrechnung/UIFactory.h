@@ -23,6 +23,7 @@
 + (void)initializeTableViewController:(UITableView *)controller;
 + (void)initializeCell:(UITableViewCell *)cell;
 + (void)addGradientToView:(UIView *)cell;
++ (void)addGradientToView:(UIView *)cell color1:(UIColor *)color1 color2:(UIColor *)color2;
 + (int)defaultSectionHeaderCellHeight;
 + (int)defaultCellHeight;
 + (void)addShadowToView:(UIView *)view;

@@ -10,10 +10,11 @@
 #import "Travel.h"
 #import "Summary.h"
 #import "SummaryCell.h"
+#import "CoreDataTableViewController.h"
 
 
-@interface SummaryViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
-    Summary *_summary;
+@interface SummaryViewController : CoreDataTableViewController {
+
     SummaryCell *_summaryCell;
     Currency *_displayCurrency;
 }

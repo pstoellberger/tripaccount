@@ -2,7 +2,7 @@
 //  Currency.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 01/08/2011.
+//  Created by Martin Maier on 02/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,10 +19,11 @@
 @dynamic code;
 @dynamic name;
 @dynamic countries;
+@dynamic rate;
 @dynamic defaults;
 @dynamic ratesWithBaseCurrency;
 @dynamic travels;
-@dynamic rate;
 @dynamic entries;
+@dynamic transfersWithBaseCurrency;
 
 @end

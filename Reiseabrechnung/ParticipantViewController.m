@@ -73,7 +73,7 @@
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
 {
-	return YES;
+	return [self.travel.closed intValue] != 1;
 }
 
 - (void)dealloc

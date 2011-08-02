@@ -6,12 +6,15 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "SummaryViewController.h"
 #import "Summary.h"
 #import "Participant.h"
 #import "SummaryCell.h"
 #import "UIFactory.h"
 #import "CurrencyHelperCategory.h"
+#import "Transfer.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation SummaryViewController
 
@@ -32,16 +35,23 @@
         self.title = @"Summary";
         self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"138-scales" ofType:@"png"]];
         
+        NSFetchRequest *req = [[NSFetchRequest alloc] init];
+        req.entity = [NSEntityDescription entityForName:@"Transfer" inManagedObjectContext:[travel managedObjectContext]];
+        req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"debtor.name" ascending:YES selector:@selector(caseInsensitiveCompare:)], nil];
+        req.predicate = [NSPredicate predicateWithFormat:@"travel = %@", travel];
+        
+        self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:[travel managedObjectContext] sectionNameKeyPath:nil cacheName:nil] autorelease];
+        [req release];
+        
+        self.fetchedResultsController.delegate = self;
+        [self performFetchForTableView:self.tableView];
+        
         [self viewWillAppear:YES];
     }
     return self;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_summary.accounts count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
     static NSString *ReuseIdentifier = @"SummaryCell";
     
@@ -51,20 +61,64 @@
         
         cell = self.summaryCell;
         [UIFactory initializeCell:cell];
+        
+        cell.paid.transform = CGAffineTransformMakeRotation( -M_PI/4 ); // = 45 degrees
+        cell.paid.layer.cornerRadius = 4;
+        cell.paid.layer.masksToBounds = YES;
+        [UIFactory addGradientToView:cell.paid color1:[UIColor colorWithRed:1 green:0.2 blue:0.2 alpha:1] color2:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]];
+        [UIFactory addShadowToView:cell.paid];
+        cell.paid.alpha = 0.5;
     }
     
-    ParticipantKey *key = [[[_summary.accounts keyEnumerator] allObjects] objectAtIndex:indexPath.row]; 
+    Transfer *transfer = (Transfer *)managedObject;
 
-    NSNumber *owedAmount = [_summary.accounts objectForKey:key];
-    cell.debtor.text = key.payer.name;
-    cell.leftImage.image = [UIImage imageWithData:key.payer.image];
-    cell.debtee.text = key.receiver.name;
-    cell.rightImage.image = [UIImage imageWithData:key.receiver.image];
-    cell.amount.text = [NSString stringWithFormat:@"%.02f %@", [_summary.baseCurrency convertToCurrency:_displayCurrency amount:[owedAmount doubleValue]], _displayCurrency.code];
+    cell.debtor.text = transfer.debtor.name;
+    cell.leftImage.image = [UIImage imageWithData:transfer.debtor.image];
+    cell.debtee.text = transfer.debtee.name;
+    cell.rightImage.image = [UIImage imageWithData:transfer.debtee.image];
+    cell.amount.text = [NSString stringWithFormat:@"%.02f %@", [self.travel.transferBaseCurrency convertToCurrency:_displayCurrency amount:[transfer.amount doubleValue]], _displayCurrency.code];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.paid.hidden = YES;
+    
+    cell.rightImage.alpha = 1;
+    cell.leftImage.alpha = 1;
+    
+    UIColor *textColor = [UIColor blackColor];
+    if ([self.travel.closed intValue] == 1 && [transfer.paid intValue] == 1) {
+        cell.paid.hidden = NO;
+        textColor = [UIColor grayColor];
+        cell.rightImage.alpha = 0.6;
+        cell.leftImage.alpha = 0.6;
+    }
+
+    cell.debtor.textColor = textColor;
+    cell.debtee.textColor = textColor;
+    cell.amount.textColor = textColor;
+    cell.owes.textColor = textColor;
+    cell.to.textColor = textColor;
     
     
-    return cell;
+    return cell;    
+}
+
+- (void)managedObjectSelected:(NSManagedObject *)managedObject {
+   
+    Transfer *transfer = (Transfer *)managedObject;
+    
+    if ([self.travel.closed intValue] == 1) {
+        
+        if ([transfer.paid intValue] == 1) {
+            transfer.paid = [NSNumber numberWithInt:0];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]] withRowAnimation:UITableViewRowAnimationLeft];
+        } else {
+            transfer.paid = [NSNumber numberWithInt:1];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]] withRowAnimation:UITableViewRowAnimationRight];
+        }
+        
+        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+    }
+    
+    [self.tableView deselectRowAtIndexPath:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]  animated:YES];
 }
 
 - (void)changeDisplayedCurrency:(Currency *)currency {
@@ -72,17 +126,33 @@
     [self.tableView reloadData];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 64;
 }
 
 - (void)recalculateSummary {
-    [_summary release];
-    _summary = [[Summary createSummary:self.travel] retain];
-    NSMutableDictionary *dic = _summary.accounts;
-    for (NSString* key in [dic keyEnumerator]) {
-        NSLog(@"%@ %@", key, [dic objectForKey:key]);
-    }    
+
+    if ([self.travel.closed intValue] != 1) {
+        Summary *summary = [[Summary createSummary:self.travel] retain];
+        NSMutableDictionary *dic = summary.accounts;
+        
+        [self.travel removeTransfers:self.travel.transfers];
+        
+        self.travel.transferBaseCurrency = summary.baseCurrency;
+        
+        for (NSString* key in [dic keyEnumerator]) {
+            ParticipantKey *participantKey = (ParticipantKey *)key;
+            
+            Transfer *transfer = [NSEntityDescription insertNewObjectForEntityForName: @"Transfer" inManagedObjectContext: [_travel managedObjectContext]];
+            transfer.debtor = participantKey.payer;
+            transfer.debtee = participantKey.receiver;
+            transfer.amount = [dic objectForKey:key];
+            transfer.travel = self.travel;
+            [self.travel addTransfersObject:transfer];
+        }
+        
+        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+    }
 }
 
 

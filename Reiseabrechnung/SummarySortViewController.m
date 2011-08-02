@@ -82,11 +82,14 @@
     toolbar.tintColor = [UIFactory defaultTintColor];
     [toolbar addSubview:segControl];
     
-    self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height - SORT_TOOLBAR_HEIGHT);
-    [newView addSubview:self.detailViewController.view];
-    [newView addSubview:toolbar];
-    
-    self.view = newView;
+    if ([segArray count] > 1) {
+        self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height - SORT_TOOLBAR_HEIGHT);
+        [newView addSubview:self.detailViewController.view];
+        [newView addSubview:toolbar];
+        self.view = newView;
+    } else {
+        self.view = self.detailViewController.view;
+    }
     
     [toolbar release];
     [newView release];
