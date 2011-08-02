@@ -15,6 +15,7 @@
 #import "TextEditViewController.h"
 #import "NumberEditViewController.h"
 #import "DateSelectViewController.h"
+#import "TypeViewController.h"
 
 static NSIndexPath *_payerIndexPath;
 static NSIndexPath *_amountIndexPath;
@@ -227,7 +228,7 @@ static NSIndexPath *_dateIndexPath;
         
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Participant" inManagedObjectContext:[self.travel managedObjectContext]];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
         _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"travel = %@", self.travel];
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
@@ -260,7 +261,7 @@ static NSIndexPath *_dateIndexPath;
 
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: [self.travel managedObjectContext]];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
         _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"travels contains %@", self.travel];
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
@@ -283,14 +284,14 @@ static NSIndexPath *_dateIndexPath;
         
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext: [self.travel managedObjectContext]];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]; 
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]]; 
         
-        GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
-                                                                                                         withMultiSelection:NO
-                                                                                                           withFetchRequest:_fetchRequest 
-                                                                                                        withSelectedObjects:[NSArray arrayWithObjects: self.nmEntry.type ,nil] 
-                                                                                                                     target:self
-                                                                                                                     action:@selector(selectType:)];
+        TypeViewController *selectViewController = [[TypeViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
+                                                                                       withMultiSelection:NO
+                                                                                         withFetchRequest:_fetchRequest 
+                                                                                      withSelectedObjects:[NSArray arrayWithObjects: self.nmEntry.type ,nil] 
+                                                                                                   target:self
+                                                                                                   action:@selector(selectType:)];
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
 
@@ -298,7 +299,7 @@ static NSIndexPath *_dateIndexPath;
         
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Participant" inManagedObjectContext:[self.travel managedObjectContext]];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
         _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"travel = %@", self.travel];
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]

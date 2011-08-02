@@ -28,6 +28,7 @@
 
 @property (nonatomic, readonly) BOOL multiSelectionAllowed;
 @property (nonatomic, retain) Class cellClass;
+@property (nonatomic, retain) NSManagedObjectContext *context;
 
 - (void)selectAll:(id)sender;
 - (void)selectNone:(id)sender;

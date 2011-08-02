@@ -34,6 +34,7 @@
 @synthesize participantViewController=_participantViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
 
 - (id)initWithTravel:(Travel *) travel {
+    
     self = [self init];
     if (self) {
         _travel = travel;
@@ -42,6 +43,7 @@
 }
 
 - (void)openAddPopup {
+    
     if ([[[self tabBarController] selectedViewController] isEqual:self.participantViewController]) {
         [self openParticipantAddPopup];
     } else if ([[[self tabBarController] selectedViewController] isEqual:self.entrySortViewController]) {
@@ -83,6 +85,7 @@
 }
 
 - (void)openActionPopup {
+    
     UIActionSheet *actionPopup = [[UIActionSheet alloc] initWithTitle: @"Choose your action"
                                                         delegate:self
                                                cancelButtonTitle:@"Cancel"
@@ -142,6 +145,15 @@
     [self.entrySortViewController.detailViewController.tableView endUpdates];
 }
 
+- (void)updateStateOfNavigationController:(UIViewController *)selectedViewController {
+    
+    if ([selectedViewController isEqual:_summarySortViewController]) {
+        self.navigationItem.rightBarButtonItem = self.actionButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = self.addButton;
+    }    
+}
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -181,11 +193,8 @@
 #pragma mark - UITabBarControllerDelegate
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    if ([viewController isEqual:_summarySortViewController]) {
-        self.navigationItem.rightBarButtonItem = self.actionButton;
-    } else {
-        self.navigationItem.rightBarButtonItem = self.addButton;
-    }
+    
+    [self updateStateOfNavigationController:viewController];
     
     self.travel.selectedTab = [NSNumber numberWithInt:[tabBarController.viewControllers indexOfObject:viewController]];
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
@@ -214,6 +223,11 @@
 {
     [super loadView];
     
+    self.addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)] autorelease]; 
+    self.navigationItem.rightBarButtonItem = self.addButton;
+    
+    self.actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openActionPopup)] autorelease]; 
+    
     self.view.frame = CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height - NAVIGATIONBAR_HEIGHT);    
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -231,11 +245,7 @@
     self.tabBarController.tabBar.frame = CGRectMake(0, self.tabBarController.view.frame.size.height - TABBAR_HEIGHT, self.view.frame.size.width, TABBAR_HEIGHT);
     
     self.tabBarController.selectedIndex = [self.travel.selectedTab intValue];
-
-    self.addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)] autorelease]; 
-    self.navigationItem.rightBarButtonItem = self.addButton;
-    
-    self.actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openActionPopup)] autorelease]; 
+    [self updateStateOfNavigationController:self.tabBarController.selectedViewController];
     
     [self.view addSubview:_tabBarController.view];
 

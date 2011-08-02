@@ -2,7 +2,7 @@
 //  Type.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 28/07/2011.
+//  Created by Martin Maier on 02/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 

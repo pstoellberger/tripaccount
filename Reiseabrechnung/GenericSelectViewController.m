@@ -20,7 +20,7 @@
 
 @implementation GenericSelectViewController
 
-@synthesize multiSelectionAllowed=_multiSelectionAllowed, cellClass=_cellClass;
+@synthesize multiSelectionAllowed=_multiSelectionAllowed, cellClass=_cellClass, context=_context;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
               withMultiSelection:(BOOL)multiSelection 
@@ -45,6 +45,8 @@
         _selector = selector;
         _target = target;
         _multiSelectionAllowed = multiSelection;
+        
+        self.context = context;
         
         [UIFactory initializeTableViewController:self.tableView];
         

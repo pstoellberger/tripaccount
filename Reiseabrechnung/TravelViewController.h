@@ -39,6 +39,7 @@
 - (void)openParticipantAddPopup;
 - (void)openEntryAddPopup;
 - (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry;
+- (void)updateStateOfNavigationController:(UIViewController *)selectedViewController;
 
 
 @end

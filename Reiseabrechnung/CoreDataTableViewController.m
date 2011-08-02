@@ -195,7 +195,7 @@
     }
     
     if ([returnValue isKindOfClass:[NSString class]]) {
-        return NSLocalizedString(returnValue, returnValue);; 
+        return NSLocalizedString(returnValue, returnValue);
     } else {
         return returnValue;
     }

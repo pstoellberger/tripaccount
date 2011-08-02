@@ -14,6 +14,7 @@
 #import "ShadowNavigationController.h"
 #import "HelpView.h"
 #import "InfoViewController.h"
+#import "SettingsRootViewController.h"
 
 @interface RootViewController ()
 - (void)doneEditing;
@@ -97,6 +98,10 @@
 }
 
 - (void)openSettingsPopup {
+    
+    SettingsRootViewController *settingsViewController = [[SettingsRootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
+    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:settingsViewController];
+    [self.navigationController presentModalViewController:navController animated:YES];
     
 }
 

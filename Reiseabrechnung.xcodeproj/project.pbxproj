@@ -27,6 +27,10 @@
 		F11FB35113E6BADE00115D12 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB35013E6BADD00115D12 /* Participant.m */; };
 		F11FB35D13E6BD7600115D12 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB35C13E6BD7600115D12 /* Entry.m */; };
 		F11FB36013E6BD7700115D12 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB35F13E6BD7700115D12 /* Travel.m */; };
+		F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
+		F11FB36A13E6E75800115D12 /* SettingsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36913E6E75700115D12 /* SettingsRootViewController.m */; };
+		F11FB36B13E6E75800115D12 /* SettingsRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36913E6E75700115D12 /* SettingsRootViewController.m */; };
+		F127296913E7D85E0095286D /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F127296813E7D85E0095286D /* Type.m */; };
 		F12C7A9E13D0F7C600668BF0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */; };
 		F12C7A9F13D0F7C600668BF0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9D13D0F7C600668BF0 /* MapKit.framework */; };
 		F12C7AA113D104DF00668BF0 /* mobileTicker_name2-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C7AA013D104DF00668BF0 /* mobileTicker_name2-57x57.png */; };
@@ -38,7 +42,6 @@
 		F14B373213E68B5F00351641 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F14B373013E68B5F00351641 /* InfoPlist.strings */; };
 		F14B373413E68B5F00351641 /* UnitTests.h in Resources */ = {isa = PBXBuildFile; fileRef = F14B373313E68B5F00351641 /* UnitTests.h */; };
 		F14B373613E68B5F00351641 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F14B373513E68B5F00351641 /* UnitTests.m */; };
-		F14B373B13E68C9600351641 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5113E19C7C00C2D855 /* Type.m */; };
 		F14B373D13E68CA600351641 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA4B13E19C7B00C2D855 /* AppDefaults.m */; };
 		F14B374213E68CA600351641 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD813DC2D59009BB4D3 /* Country.m */; };
 		F14B374313E68CA600351641 /* FirstLetterCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */; };
@@ -100,7 +103,6 @@
 		F159EA3B13E0DA3E00C2D855 /* darkbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F159EA3A13E0DA3D00C2D855 /* darkbackground.png */; };
 		F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F159EA3F13E19B0E00C2D855 /* MessageUI.framework */; };
 		F159EA4C13E19C7B00C2D855 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA4B13E19C7B00C2D855 /* AppDefaults.m */; };
-		F159EA5213E19C7C00C2D855 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5113E19C7C00C2D855 /* Type.m */; };
 		F159EA5913E1ED7B00C2D855 /* ParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5813E1ED7900C2D855 /* ParticipantView.m */; };
 		F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */; };
@@ -392,6 +394,12 @@
 		F11FB35C13E6BD7600115D12 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		F11FB35E13E6BD7600115D12 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
 		F11FB35F13E6BD7700115D12 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
+		F11FB36513E6E73A00115D12 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
+		F11FB36613E6E73A00115D12 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
+		F11FB36813E6E75700115D12 /* SettingsRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsRootViewController.h; sourceTree = "<group>"; };
+		F11FB36913E6E75700115D12 /* SettingsRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsRootViewController.m; sourceTree = "<group>"; };
+		F127296713E7D85E0095286D /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		F127296813E7D85E0095286D /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F12C7A9D13D0F7C600668BF0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F12C7AA013D104DF00668BF0 /* mobileTicker_name2-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobileTicker_name2-57x57.png"; sourceTree = "<group>"; };
@@ -421,8 +429,6 @@
 		F159EA3F13E19B0E00C2D855 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F159EA4A13E19C7B00C2D855 /* AppDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
 		F159EA4B13E19C7B00C2D855 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
-		F159EA5013E19C7C00C2D855 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		F159EA5113E19C7C00C2D855 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F159EA5713E1ED7700C2D855 /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantView.h; sourceTree = "<group>"; };
 		F159EA5813E1ED7900C2D855 /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantView.m; sourceTree = "<group>"; };
 		F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -776,6 +782,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		F11FB36113E6E6FC00115D12 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F11FB36813E6E75700115D12 /* SettingsRootViewController.h */,
+				F11FB36913E6E75700115D12 /* SettingsRootViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		F14B372D13E68B5F00351641 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,6 +1051,8 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F127296713E7D85E0095286D /* Type.h */,
+				F127296813E7D85E0095286D /* Type.m */,
 				F11FB35E13E6BD7600115D12 /* Travel.h */,
 				F11FB35F13E6BD7700115D12 /* Travel.m */,
 				F11FB35B13E6BD7500115D12 /* Entry.h */,
@@ -1046,8 +1063,6 @@
 				F11FB34513E6A3D500115D12 /* ExchangeRate.m */,
 				F11FB34113E6A3D500115D12 /* Currency.h */,
 				F11FB34213E6A3D500115D12 /* Currency.m */,
-				F159EA5013E19C7C00C2D855 /* Type.h */,
-				F159EA5113E19C7C00C2D855 /* Type.m */,
 				F159EA4A13E19C7B00C2D855 /* AppDefaults.h */,
 				F159EA4B13E19C7B00C2D855 /* AppDefaults.m */,
 				F1F8FAD713DC2D59009BB4D3 /* Country.h */,
@@ -1063,6 +1078,8 @@
 		F1B8211C13BDFC8700FE329B /* EntryEdit */ = {
 			isa = PBXGroup;
 			children = (
+				F11FB36513E6E73A00115D12 /* TypeViewController.h */,
+				F11FB36613E6E73A00115D12 /* TypeViewController.m */,
 				F1CE13D013D587DB0079B234 /* GenericSelectViewController.h */,
 				F1CE13D113D587DB0079B234 /* GenericSelectViewController.m */,
 				F1CD78F813BC930100D42AA3 /* EntryEditViewController.h */,
@@ -1161,6 +1178,7 @@
 				F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */,
 				F159EA2B13E0AF3000C2D855 /* InfoViewController.h */,
 				F159EA3013E0AFCA00C2D855 /* InfoViewController.m */,
+				F11FB36113E6E6FC00115D12 /* Settings */,
 				F1EAFCC413D974A700759FB9 /* TravelAdd */,
 				F1B8211D13BDFC9D00FE329B /* TravelEdit */,
 				F1CD78D213BC705C00D42AA3 /* TravelViewController.h */,
@@ -1595,7 +1613,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F14B373613E68B5F00351641 /* UnitTests.m in Sources */,
-				F14B373B13E68C9600351641 /* Type.m in Sources */,
 				F14B373D13E68CA600351641 /* AppDefaults.m in Sources */,
 				F14B374213E68CA600351641 /* Country.m in Sources */,
 				F14B374313E68CA600351641 /* FirstLetterCategory.m in Sources */,
@@ -1639,6 +1656,7 @@
 				F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */,
 				F11FB34713E6A4FE00115D12 /* Currency.m in Sources */,
 				F11FB34813E6A50000115D12 /* ExchangeRate.m in Sources */,
+				F11FB36B13E6E75800115D12 /* SettingsRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1684,7 +1702,6 @@
 				F159EA2913E08B3C00C2D855 /* ArrowView.m in Sources */,
 				F159EA3113E0AFCA00C2D855 /* InfoViewController.m in Sources */,
 				F159EA4C13E19C7B00C2D855 /* AppDefaults.m in Sources */,
-				F159EA5213E19C7C00C2D855 /* Type.m in Sources */,
 				F159EA5913E1ED7B00C2D855 /* ParticipantView.m in Sources */,
 				F100DEC313E2CC4400BB1E6E /* GradientCell.m in Sources */,
 				F100DEC713E2E5F900BB1E6E /* DateSortCategory.m in Sources */,
@@ -1695,6 +1712,9 @@
 				F11FB35113E6BADE00115D12 /* Participant.m in Sources */,
 				F11FB35D13E6BD7600115D12 /* Entry.m in Sources */,
 				F11FB36013E6BD7700115D12 /* Travel.m in Sources */,
+				F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */,
+				F11FB36A13E6E75800115D12 /* SettingsRootViewController.m in Sources */,
+				F127296913E7D85E0095286D /* Type.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
