@@ -102,10 +102,10 @@
         NSString *singleCR = [NSString stringWithCharacters:&cr length:1];    
         
         NSString *conversionString = @"";
-        for (Currency *c in self.travel.currencies) {
+        for (Currency *currency in self.travel.currencies) {
             
-            if (![c isEqual:self.currency]) {
-                NSString *line = [NSString stringWithFormat:@"%.2f %@", [self.currency convertToCurrency:c amount:[self.number doubleValue]] ,c.code];
+            if (![currency isEqual:self.currency]) {
+                NSString *line = [NSString stringWithFormat:@"%.2f %@", [self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]],currency.code];
                 conversionString = [[conversionString stringByAppendingString:line] stringByAppendingString:singleCR];
             }
         }

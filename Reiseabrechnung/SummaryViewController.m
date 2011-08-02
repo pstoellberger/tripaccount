@@ -76,7 +76,7 @@
     cell.leftImage.image = [UIImage imageWithData:transfer.debtor.image];
     cell.debtee.text = transfer.debtee.name;
     cell.rightImage.image = [UIImage imageWithData:transfer.debtee.image];
-    cell.amount.text = [NSString stringWithFormat:@"%.02f %@", [self.travel.transferBaseCurrency convertToCurrency:_displayCurrency amount:[transfer.amount doubleValue]], _displayCurrency.code];
+    cell.amount.text = [NSString stringWithFormat:@"%.02f %@", [self.travel.transferBaseCurrency convertTravelAmount:self.travel currency:_displayCurrency amount:[transfer.amount doubleValue]], _displayCurrency.code];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.paid.hidden = YES;
     

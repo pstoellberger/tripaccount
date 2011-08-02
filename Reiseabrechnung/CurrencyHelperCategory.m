@@ -8,10 +8,11 @@
 
 #import "CurrencyHelperCategory.h"
 #import "ExchangeRate.h"
+#import "Travel.h"
 
 @implementation Currency (CurrencyHelper)
 
-- (double)convertToCurrency:(Currency *)currency amount:(double)amount {
+- (double)convertTravelAmount:(Travel *)travel currency:(Currency *)currency amount:(double)amount {
     
     NSLog(@"converting %@ to %@", self.name, currency.name);
     
@@ -45,12 +46,26 @@
         // no direct connection found -> convert to a base currency
 
         Currency *euro = self.rate.baseCurrency;
-        double amountInEuro = [self convertToCurrency:euro amount:amount];
-        returnValue = [euro convertToCurrency:currency amount:amountInEuro];
+        double amountInEuro = [self convertTravelAmount:travel currency:euro amount:amount];
+        returnValue = [euro convertTravelAmount:travel currency:currency amount:amountInEuro];
         
     }
     
     return returnValue;
+}
+
+- (ExchangeRate *)travelRate:(Travel *)travel {
+    
+    ExchangeRate *returnRate = nil;
+    for (ExchangeRate *rate in travel.rates) {
+        if ([rate.counterCurrency isEqual:self]) {
+            returnRate = rate;
+        }
+    }
+    if (!returnRate) {
+        NSLog(@"ERROR currency %@ not registered with travel %@", self.name, travel.name);
+    }
+    return returnRate;
 }
 
 - (NSArray *)allBaseCurrencies {

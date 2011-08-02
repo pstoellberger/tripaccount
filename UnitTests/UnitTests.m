@@ -10,6 +10,7 @@
 #import "ReiseabrechnungAppDelegate.h"
 #import "CurrencyHelperCategory.h"
 #import "ExchangeRate.h"
+#import "Travel.h"
 
 @implementation UnitTests
 
@@ -43,17 +44,22 @@
     chf.rate.rate = [NSNumber numberWithDouble:1.1];
     usd.rate.rate = [NSNumber numberWithDouble:1.5];
     
-    STAssertEquals([chf convertToCurrency:chf amount:2.2], 2.2, nil);
-    STAssertEquals([eur convertToCurrency:eur amount:2.2], 2.2, nil);
+    Travel *travel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:context];
+    [travel addRatesObject:chf.rate];
+    [travel addRatesObject:usd.rate];
     
-    STAssertEquals([chf convertToCurrency:eur amount:2], 2 / 1.1, nil); // = 1.8
-    STAssertEquals([eur convertToCurrency:chf amount:2], 2 * 1.1, nil); // = 2.2
     
-    STAssertEquals([usd convertToCurrency:eur amount:2], 2 / 1.5, nil); 
-    STAssertEquals([eur convertToCurrency:usd amount:2], 2 * 1.5, nil); 
+    STAssertEquals([chf convertTravelAmount:travel currency:chf amount:2.2], 2.2, nil);
+    STAssertEquals([eur convertTravelAmount:travel currency:eur amount:2.2], 2.2, nil);
     
-    STAssertEquals([chf convertToCurrency:usd amount:2], 2 / 1.1 * 1.5, nil);
-    STAssertEquals([usd convertToCurrency:chf amount:2], 2 / 1.5 * 1.1, nil);
+    STAssertEquals([chf convertTravelAmount:travel currency:eur amount:2], 2 / 1.1, nil); // = 1.8
+    STAssertEquals([eur convertTravelAmount:travel currency:chf amount:2], 2 * 1.1, nil); // = 2.2
+    
+    STAssertEquals([usd convertTravelAmount:travel currency:eur amount:2], 2 / 1.5, nil); 
+    STAssertEquals([eur convertTravelAmount:travel currency:usd amount:2], 2 * 1.5, nil); 
+    
+    STAssertEquals([chf convertTravelAmount:travel currency:usd amount:2], 2 / 1.1 * 1.5, nil);
+    STAssertEquals([usd convertTravelAmount:travel currency:chf amount:2], 2 / 1.5 * 1.1, nil);
 
 }
 

@@ -14,21 +14,23 @@
 
 @implementation CoreDataTableViewController
 
-@synthesize fetchedResultsController;
+@synthesize fetchedResultsController=_fetchedResultsController, dataSearchController=_dataSearchController;
 @synthesize titleKey, subtitleKey, searchKey, imageKey;
 
 - (void)createSearchBar
 {
     if (self.tableView) {
+        
         if (self.searchKey.length) {
             
-			UISearchBar *searchBar = [(UISearchBar *) [[UISearchBar alloc] init] autorelease];
+			UISearchBar *searchBar = [[[UISearchBar alloc] init] autorelease];
             searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             searchBar.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 38);
-			[[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] autorelease];
-			self.searchDisplayController.searchResultsDelegate = self;
-			self.searchDisplayController.searchResultsDataSource = self;
-			self.searchDisplayController.delegate = self;
+            
+			self.dataSearchController = [[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] retain];
+			self.dataSearchController.searchResultsDelegate = self;
+			self.dataSearchController.searchResultsDataSource = self;
+			self.dataSearchController.delegate = self;
             searchBar.tintColor = [UIFactory defaultTintColor];
             
             UIView *subView = [self createTableHeaderSubView];
@@ -41,7 +43,7 @@
                 self.tableView.tableHeaderView = comboView;
                 [comboView release];
             } else {
-                self.tableView.tableHeaderView = searchBar;
+                self.tableView.tableHeaderView = self.dataSearchController.searchBar;
             }
         } else {
             UIView *subView = [self createTableHeaderSubView];
@@ -84,18 +86,23 @@
 - (NSFetchedResultsController *)fetchedResultsControllerForTableView:(UITableView *)tableView
 {
 	if (tableView == self.tableView) {
+        
 		if (self.fetchedResultsController.fetchRequest.predicate != normalPredicate) {
+            // reset predicate after search is over
 			[NSFetchedResultsController deleteCacheWithName:self.fetchedResultsController.cacheName];
 			self.fetchedResultsController.fetchRequest.predicate = normalPredicate;
 			[self performFetchForTableView:tableView];
 		}
 		[currentSearchText release];
 		currentSearchText = nil;
+        
 	} else if ((tableView == self.searchDisplayController.searchResultsTableView) && self.searchKey && ![currentSearchText isEqual:self.searchDisplayController.searchBar.text]) {
+        
 		[currentSearchText release];
 		currentSearchText = [self.searchDisplayController.searchBar.text copy];
 		NSString *searchPredicateFormat = [NSString stringWithFormat:@"%@ contains[c] %@", self.searchKey, @"%@"];
 		NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:searchPredicateFormat, self.searchDisplayController.searchBar.text];
+        
 		[NSFetchedResultsController deleteCacheWithName:self.fetchedResultsController.cacheName];
 		self.fetchedResultsController.fetchRequest.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:searchPredicate, normalPredicate , nil]];
 		[self performFetchForTableView:tableView];
@@ -113,22 +120,21 @@
 - (void)setFetchedResultsController:(NSFetchedResultsController *)controller
 {
   
-	fetchedResultsController.delegate = nil;
-	[fetchedResultsController release];
-	fetchedResultsController = [controller retain];
+	_fetchedResultsController.delegate = nil;
+	[_fetchedResultsController release];
+	_fetchedResultsController = [controller retain];
 	controller.delegate = self;
 	normalPredicate = [self.fetchedResultsController.fetchRequest.predicate retain];
+    
 	if (!self.title) self.title = controller.fetchRequest.entity.name;
 	if (self.view.window) [self performFetchForTableView:self.tableView];
 }
 
-- (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject
-{
+- (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject {
 	return UITableViewCellAccessoryDisclosureIndicator;
 }
 
-- (UIImage *)thumbnailImageForManagedObject:(NSManagedObject *)managedObject
-{
+- (UIImage *)thumbnailImageForManagedObject:(NSManagedObject *)managedObject {
 	return nil;
 }
 
@@ -346,8 +352,12 @@
 #pragma mark dealloc
 
 - (void)dealloc {
-	fetchedResultsController.delegate = nil;
-	[fetchedResultsController release];
+    
+    [NSFetchedResultsController deleteCacheWithName:_fetchedResultsController.cacheName];
+    
+	_fetchedResultsController.delegate = nil;
+	[_fetchedResultsController release];
+    
 	[searchKey release];
 	[titleKey release];
 	[currentSearchText release];

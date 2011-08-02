@@ -371,6 +371,11 @@ static NSIndexPath *_currenciesIndexPath;
     self.travel.city = self.city;
     self.travel.closed = [NSNumber numberWithInt:0];
     self.travel.currencies = [[[NSSet alloc] initWithArray:self.currencies] autorelease];
+    
+    for (Currency *currency in self.currencies) {
+        [self.travel addRatesObject:currency.rate];
+    }
+    
    
     ABAddressBookRef addressBook = ABAddressBookCreate();
     

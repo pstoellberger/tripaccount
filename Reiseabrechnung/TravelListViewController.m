@@ -14,7 +14,6 @@
 #import "ReiseabrechnungAppDelegate.h"
 #import "UIFactory.h"
 #import "LocationViewController.h"
-#import "TravelAddWizard.h"
 #import "ShadowNavigationController.h"
 #import "HelpView.h"
 
@@ -179,9 +178,7 @@
     [_addButton release];
     [_editButton release];
     [_doneButton release];
-    
-    [_wizard release];
-    
+
     [super dealloc];
 }
 

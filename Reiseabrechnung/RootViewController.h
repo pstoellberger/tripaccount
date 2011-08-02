@@ -13,7 +13,6 @@
 #import "AlertPrompt.h"
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
-#import "TravelAddWizard.h"
 #import "TravelEditViewController.h"
 
 @interface RootViewController : UIViewController <TravelEditViewControllerDelegate> {

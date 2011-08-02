@@ -19,7 +19,7 @@
 #import "EntrySortViewController.h"
 #import "SummarySortViewController.h"
  
-@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate> {
+@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate> {
     Travel *_travel;
     UIBarButtonItem *_addButton;
     UIBarButtonItem *_actionButton;

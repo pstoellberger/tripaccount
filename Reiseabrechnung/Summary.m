@@ -72,7 +72,7 @@
     for (Entry *entry in travel.entries) {
         
         // convert to base currency
-        double baseAmount = [entry.currency convertToCurrency:summary.baseCurrency amount:[entry.amount doubleValue]];
+        double baseAmount = [entry.currency convertTravelAmount:travel currency:summary.baseCurrency amount:[entry.amount doubleValue]];
         
         // divide an expense in equal parts
         double divAmount = baseAmount / [entry.receivers count];

@@ -19,10 +19,12 @@
 #import "EntrySortViewController.h"
 #import "ShadowNavigationController.h"
 #import "UIFactory.h"
+#import "ExchangeRate.h"
 
 @interface TravelViewController ()
 
 - (void)closeTravel;
+- (void)openTravel;
 - (void)sendSummaryMail;
 
 @end
@@ -102,22 +104,43 @@
 }
 
 - (void)closeTravel {
+
+    // close
+    self.travel.closed = [NSNumber numberWithInt:1];
     
-    if ([self.travel.closed intValue] != 1) {
-        // close
-        self.travel.closed = [NSNumber numberWithInt:1];
-        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
-        
-    } else {
-        // open
-        self.travel.closed = [NSNumber numberWithInt:0];
-        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
-        
-        [_summarySortViewController.detailViewController.tableView reloadData];
-        [_entrySortViewController.detailViewController.tableView reloadData];
-        
-        [self updateStateOfNavigationController:self.tabBarController.selectedViewController];
+    for (Entry *entry in self.travel.entries) {
+        entry.checked = [NSNumber numberWithInt:0];
     }
+    
+    // copying exchange rates (=freeze)
+    NSMutableSet *addRates = [NSMutableSet set];
+    for (ExchangeRate *rate in self.travel.rates) {
+        ExchangeRate *newRate = [NSEntityDescription insertNewObjectForEntityForName: @"ExchangeRate" inManagedObjectContext: [_travel managedObjectContext]];
+        newRate.rate = rate.rate;
+        [addRates addObject:newRate];
+    }
+    [self.travel removeRates:self.travel.rates];
+    [self.travel addRates:addRates];
+    
+    [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+}
+
+- (void)openTravel {
+    
+    // open
+    self.travel.closed = [NSNumber numberWithInt:0];
+    [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+    
+    [_summarySortViewController.detailViewController.tableView reloadData];
+    [_entrySortViewController.detailViewController.tableView reloadData];
+    
+    [self updateStateOfNavigationController:self.tabBarController.selectedViewController];    
+}
+
+- (void)askToRefreshRatesWhenClosing {
+    NSString *message = @"Do you want to assign the latest currency exchange rates to this travel?";
+    UIAlertView *refreshRates = [[UIAlertView alloc] initWithTitle:@"Refresh rates" message:message delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [refreshRates show];
 }
 
 - (void)sendSummaryMail {
@@ -175,14 +198,40 @@
 
 }
 
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == [alertView cancelButtonIndex]) {
+        
+        NSLog(@"Change rates of travel to most current ones.");
+        
+        [self.travel removeRates:self.travel.rates];
+        
+        for (Currency *currency in self.travel.currencies) {
+            [self.travel addRatesObject:currency.rate];
+        }      
+    }
+    
+    [self openTravel];
+    
+}
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {
+        
         [self sendSummaryMail];
+        
     } else if (buttonIndex == 1) {
-        [self closeTravel];
+        
+        if ([self.travel.closed intValue] == 1) {
+            [self askToRefreshRatesWhenClosing];
+        } else {
+            [self closeTravel];
+        }
     }
 }
 

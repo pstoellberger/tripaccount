@@ -7,19 +7,20 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface CoreDataTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
-{
+@interface CoreDataTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate> {
+    
 	NSPredicate *normalPredicate;
 	NSString *currentSearchText;
 	NSString *titleKey;
 	NSString *subtitleKey;
 	NSString *searchKey;
     NSString *imageKey;
-	NSFetchedResultsController *fetchedResultsController;
 }
 
 // the controller (this class does nothing if this is not set)
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
+@property (nonatomic, retain) UISearchDisplayController *dataSearchController;
 
 // key to use when displaying items in the table; defaults to the first sortDescriptor's key
 @property (nonatomic, copy) NSString *titleKey;

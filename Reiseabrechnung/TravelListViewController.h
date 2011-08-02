@@ -13,7 +13,6 @@
 #import "AlertPrompt.h"
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
-#import "TravelAddWizard.h"
 #import "TravelEditViewController.h"
 
 @interface TravelListViewController : CoreDataTableViewController {
@@ -23,8 +22,6 @@
     UIBarButtonItem *_addButton;
     UIBarButtonItem *_editButton;
     UIBarButtonItem *_doneButton;
-    
-    TravelAddWizard *_wizard;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;

@@ -11,7 +11,7 @@
 
 @interface Currency (CurrencyHelper)
 
-- (double)convertToCurrency:(Currency *)currency amount:(double)amount;
+- (double)convertTravelAmount:(Travel *)travel currency:(Currency *)currency amount:(double)amount;
 - (NSArray *)allBaseCurrencies;
 
 @end

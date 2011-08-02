@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Country, Currency, Entry, Participant, Transfer;
+@class Country, Currency, Entry, ExchangeRate, Participant, Transfer;
 
 @interface Travel : NSManagedObject {
 @private
@@ -28,6 +28,7 @@
 @property (nonatomic, retain) Country *country;
 @property (nonatomic, retain) NSSet *transfers;
 @property (nonatomic, retain) Currency *transferBaseCurrency;
+@property (nonatomic, retain) NSSet *rates;
 @end
 
 @interface Travel (CoreDataGeneratedAccessors)
@@ -51,5 +52,10 @@
 - (void)removeTransfersObject:(Transfer *)value;
 - (void)addTransfers:(NSSet *)values;
 - (void)removeTransfers:(NSSet *)values;
+
+- (void)addRatesObject:(ExchangeRate *)value;
+- (void)removeRatesObject:(ExchangeRate *)value;
+- (void)addRates:(NSSet *)values;
+- (void)removeRates:(NSSet *)values;
 
 @end

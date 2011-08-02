@@ -10,6 +10,7 @@
 #import "Country.h"
 #import "Currency.h"
 #import "Entry.h"
+#import "ExchangeRate.h"
 #import "Participant.h"
 #import "Transfer.h"
 
@@ -29,5 +30,6 @@
 @dynamic country;
 @dynamic transfers;
 @dynamic transferBaseCurrency;
+@dynamic rates;
 
 @end
