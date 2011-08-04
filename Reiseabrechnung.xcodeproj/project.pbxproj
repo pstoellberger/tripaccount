@@ -24,8 +24,6 @@
 		F100DEBF13E2C5B700BB1E6E /* moreImages.png in Resources */ = {isa = PBXBuildFile; fileRef = F100DEBE13E2C5B700BB1E6E /* moreImages.png */; };
 		F100DEC313E2CC4400BB1E6E /* GradientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC213E2CC4300BB1E6E /* GradientCell.m */; };
 		F100DEC713E2E5F900BB1E6E /* DateSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */; };
-		F100DEC913E30E5800BB1E6E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F100DEC813E30E5600BB1E6E /* icon.png */; };
-		F100DECB13E30E8100BB1E6E /* iconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = F100DECA13E30E7F00BB1E6E /* iconSmall.png */; };
 		F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB1F13D99BE8002C08AC /* TextEditViewController.m */; };
 		F111CB2413D9AE82002C08AC /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */; };
 		F11FB33E13E6982B00115D12 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1DB58C713D86CB0001E3B4A /* countries.plist */; };
@@ -378,25 +376,23 @@
 		9408120C13EADF7F003D7B3E /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
 		9408120E13EADF7F003D7B3E /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
 		9408120F13EADF7F003D7B3E /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
-		94F97EDC13E9810D00662ADB /* iconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconSmall.png; path = ../iconSmall.png; sourceTree = "<group>"; };
-		94F97EDE13E9811500662ADB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		94F97EDC13E9810D00662ADB /* iconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSmall.png; sourceTree = "<group>"; };
+		94F97EDE13E9811500662ADB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		94F97EE113E9831C00662ADB /* RateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RateSelectViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		94F97EE213E9831C00662ADB /* RateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RateSelectViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		94F97EEA13E9878400662ADB /* RateEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RateEditViewController.xib; path = ../Reiseabrechnung/RateEditViewController.xib; sourceTree = "<group>"; };
-		94FFEA6613E99BCA00FC97A4 /* RateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RateCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		94FFEA6713E99BCA00FC97A4 /* RateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RateCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		94FFEA6813E99BCA00FC97A4 /* RateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RateCell.xib; path = ../RateCell.xib; sourceTree = "<group>"; };
+		94FFEA6613E99BCA00FC97A4 /* RateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = RateCell.h; path = Reiseabrechnung/RateCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		94FFEA6713E99BCA00FC97A4 /* RateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RateCell.m; path = Reiseabrechnung/RateCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		94FFEA6813E99BCA00FC97A4 /* RateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateCell.xib; sourceTree = "<group>"; };
 		F1006C2F13E0539F0014CF4B /* CurrencyRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyRefresh.h; sourceTree = "<group>"; };
 		F1006C3013E0539F0014CF4B /* CurrencyRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyRefresh.m; sourceTree = "<group>"; };
 		F1006C4613E07AF10014CF4B /* HelpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpView.h; path = Reiseabrechnung/HelpView.h; sourceTree = "<group>"; };
 		F1006C4713E07AF10014CF4B /* HelpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpView.m; path = Reiseabrechnung/HelpView.m; sourceTree = "<group>"; };
 		F100DEBE13E2C5B700BB1E6E /* moreImages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreImages.png; sourceTree = "<group>"; };
-		F100DEC113E2CC4300BB1E6E /* GradientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientCell.h; sourceTree = "<group>"; };
-		F100DEC213E2CC4300BB1E6E /* GradientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientCell.m; sourceTree = "<group>"; };
+		F100DEC113E2CC4300BB1E6E /* GradientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientCell.h; path = Reiseabrechnung/GradientCell.h; sourceTree = "<group>"; };
+		F100DEC213E2CC4300BB1E6E /* GradientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientCell.m; path = Reiseabrechnung/GradientCell.m; sourceTree = "<group>"; };
 		F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSortCategory.h; sourceTree = "<group>"; };
 		F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSortCategory.m; sourceTree = "<group>"; };
-		F100DEC813E30E5600BB1E6E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
-		F100DECA13E30E7F00BB1E6E /* iconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconSmall.png; path = ../iconSmall.png; sourceTree = "<group>"; };
 		F111CB1E13D99BE8002C08AC /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
 		F111CB1F13D99BE8002C08AC /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
 		F111CB2213D9AE82002C08AC /* AlignedStyle2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlignedStyle2Cell.h; path = Reiseabrechnung/AlignedStyle2Cell.h; sourceTree = "<group>"; };
@@ -433,8 +429,8 @@
 		F1533F1913D43BE5008EBE9D /* 60-signpost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-signpost.png"; sourceTree = "<group>"; };
 		F1533F1B13D43C25008EBE9D /* 80-shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "80-shopping-cart.png"; sourceTree = "<group>"; };
 		F1533F1D13D43C81008EBE9D /* 138-scales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "138-scales.png"; sourceTree = "<group>"; };
-		F159EA2713E08B3B00C2D855 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
-		F159EA2813E08B3C00C2D855 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrowView.m; sourceTree = "<group>"; };
+		F159EA2713E08B3B00C2D855 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrowView.h; path = Reiseabrechnung/ArrowView.h; sourceTree = "<group>"; };
+		F159EA2813E08B3C00C2D855 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrowView.m; path = Reiseabrechnung/ArrowView.m; sourceTree = "<group>"; };
 		F159EA2B13E0AF3000C2D855 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		F159EA3013E0AFCA00C2D855 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
@@ -442,8 +438,8 @@
 		F159EA3F13E19B0E00C2D855 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F159EA4A13E19C7B00C2D855 /* AppDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
 		F159EA4B13E19C7B00C2D855 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
-		F159EA5713E1ED7700C2D855 /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantView.h; sourceTree = "<group>"; };
-		F159EA5813E1ED7900C2D855 /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantView.m; sourceTree = "<group>"; };
+		F159EA5713E1ED7700C2D855 /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticipantView.h; path = Reiseabrechnung/ParticipantView.h; sourceTree = "<group>"; };
+		F159EA5813E1ED7900C2D855 /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticipantView.m; path = Reiseabrechnung/ParticipantView.m; sourceTree = "<group>"; };
 		F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F1A6C62E13D6B71B005E8388 /* ParticipantHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantHelperCategory.h; sourceTree = "<group>"; };
 		F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantHelperCategory.m; sourceTree = "<group>"; };
@@ -1212,8 +1208,6 @@
 			isa = PBXGroup;
 			children = (
 				F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */,
-				F100DECA13E30E7F00BB1E6E /* iconSmall.png */,
-				F100DEC813E30E5600BB1E6E /* icon.png */,
 				F1CD783613BA405B00D42AA3 /* Reiseabrechnung-Info.plist */,
 				F1CD783A13BA405B00D42AA3 /* Reiseabrechnung-Prefix.pch */,
 				F1CD783B13BA405B00D42AA3 /* main.m */,
@@ -1597,8 +1591,6 @@
 				F159EA2F13E0AF3200C2D855 /* InfoViewController.xib in Resources */,
 				F159EA3B13E0DA3E00C2D855 /* darkbackground.png in Resources */,
 				F100DEBF13E2C5B700BB1E6E /* moreImages.png in Resources */,
-				F100DEC913E30E5800BB1E6E /* icon.png in Resources */,
-				F100DECB13E30E8100BB1E6E /* iconSmall.png in Resources */,
 				94F97EED13E9878400662ADB /* RateEditViewController.xib in Resources */,
 				94FFEA6A13E99BCA00FC97A4 /* RateCell.xib in Resources */,
 			);
