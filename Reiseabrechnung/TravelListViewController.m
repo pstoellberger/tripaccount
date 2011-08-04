@@ -179,9 +179,6 @@
 
 - (void)dealloc {
     [_managedObjectContext release];
-    [_addButton release];
-    [_editButton release];
-    [_doneButton release];
 
     [super dealloc];
 }

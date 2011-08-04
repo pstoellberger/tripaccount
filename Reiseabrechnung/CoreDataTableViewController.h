@@ -11,10 +11,6 @@
     
 	NSPredicate *normalPredicate;
 	NSString *currentSearchText;
-	NSString *titleKey;
-	NSString *subtitleKey;
-	NSString *searchKey;
-    NSString *imageKey;
 }
 
 // the controller (this class does nothing if this is not set)
@@ -55,10 +51,10 @@
 
 - (void)performFetchForTableView:(UITableView *)tableView;
 
-- (id) cascadedObject:(NSManagedObject *)managedObject withKey:(NSString *)key;
+- (id)cascadedObject:(NSManagedObject *)managedObject withKey:(NSString *)key;
 
 - (UITableViewCell *)newUIViewCell;
 
-- (UIView *) createTableHeaderSubView;
+- (UIView *)createTableHeaderSubView;
 
 @end

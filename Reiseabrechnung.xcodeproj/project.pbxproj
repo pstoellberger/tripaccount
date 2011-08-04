@@ -78,8 +78,6 @@
 		F14B375813E6904D00351641 /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DB5A7813D87C43001E3B4A /* SummaryCell.m */; };
 		F14B375913E6904D00351641 /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */; };
 		F14B375A13E6904D00351641 /* GradientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC213E2CC4300BB1E6E /* GradientCell.m */; };
-		F14B375B13E6904D00351641 /* EditableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE13F113D5CD700079B234 /* EditableTableViewCell.m */; };
-		F14B375C13E6904D00351641 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD78B613BB799300D42AA3 /* AlertPrompt.m */; };
 		F14B375D13E6904D00351641 /* HelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1006C4713E07AF10014CF4B /* HelpView.m */; };
 		F14B375E13E6904D00351641 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA2813E08B3C00C2D855 /* ArrowView.m */; };
 		F14B375F13E6904D00351641 /* ParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5813E1ED7900C2D855 /* ParticipantView.m */; };
@@ -130,7 +128,6 @@
 		F1CD783F13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */; };
 		F1CD784213BA405B00D42AA3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CD784013BA405B00D42AA3 /* MainWindow.xib */; };
 		F1CD784513BA405B00D42AA3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD784413BA405B00D42AA3 /* RootViewController.m */; };
-		F1CD78B713BB799300D42AA3 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD78B613BB799300D42AA3 /* AlertPrompt.m */; };
 		F1CD78BB13BB8BF500D42AA3 /* TravelEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD78B913BB8BF300D42AA3 /* TravelEditViewController.m */; };
 		F1CD78C913BC6A7E00D42AA3 /* ParticipantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD78C713BC6A7D00D42AA3 /* ParticipantViewController.m */; };
 		F1CD78CE13BC6AA700D42AA3 /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD78CC13BC6AA400D42AA3 /* SummaryViewController.m */; };
@@ -142,7 +139,6 @@
 		F1CD790713BCC03D00D42AA3 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CD790613BCC03B00D42AA3 /* EntryCell.xib */; };
 		F1CE13D213D587DC0079B234 /* GenericSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE13D113D587DB0079B234 /* GenericSelectViewController.m */; };
 		F1CE13E413D5C2F40079B234 /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
-		F1CE13F313D5CD700079B234 /* EditableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE13F113D5CD700079B234 /* EditableTableViewCell.m */; };
 		F1CE923513DD54B5009F3B2F /* EntrySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923413DD54B4009F3B2F /* EntrySortViewController.m */; };
 		F1CE923913DDBEDC009F3B2F /* TravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */; };
 		F1CE923D13DEA7B6009F3B2F /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
@@ -474,8 +470,6 @@
 		F1CD784113BA405B00D42AA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		F1CD784313BA405B00D42AA3 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F1CD784413BA405B00D42AA3 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		F1CD78B513BB799300D42AA3 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertPrompt.h; path = Reiseabrechnung/AlertPrompt.h; sourceTree = "<group>"; };
-		F1CD78B613BB799300D42AA3 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPrompt.m; path = Reiseabrechnung/AlertPrompt.m; sourceTree = "<group>"; };
 		F1CD78B813BB8BF200D42AA3 /* TravelEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelEditViewController.h; sourceTree = "<group>"; };
 		F1CD78B913BB8BF300D42AA3 /* TravelEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelEditViewController.m; sourceTree = "<group>"; };
 		F1CD78C613BC6A7C00D42AA3 /* ParticipantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantViewController.h; sourceTree = "<group>"; };
@@ -495,8 +489,6 @@
 		F1CE13D013D587DB0079B234 /* GenericSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericSelectViewController.h; sourceTree = "<group>"; };
 		F1CE13D113D587DB0079B234 /* GenericSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericSelectViewController.m; sourceTree = "<group>"; };
 		F1CE13E313D5C2F40079B234 /* types.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = types.plist; sourceTree = "<group>"; };
-		F1CE13F013D5CD700079B234 /* EditableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditableTableViewCell.h; path = Reiseabrechnung/EditableTableViewCell.h; sourceTree = "<group>"; };
-		F1CE13F113D5CD700079B234 /* EditableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableTableViewCell.m; path = Reiseabrechnung/EditableTableViewCell.m; sourceTree = "<group>"; };
 		F1CE923313DD54B3009F3B2F /* EntrySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySortViewController.h; sourceTree = "<group>"; };
 		F1CE923413DD54B4009F3B2F /* EntrySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySortViewController.m; sourceTree = "<group>"; };
 		F1CE923713DDBEDA009F3B2F /* TravelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelListViewController.h; sourceTree = "<group>"; };
@@ -800,8 +792,6 @@
 				F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */,
 				F100DEC113E2CC4300BB1E6E /* GradientCell.h */,
 				F100DEC213E2CC4300BB1E6E /* GradientCell.m */,
-				F1CE13F013D5CD700079B234 /* EditableTableViewCell.h */,
-				F1CE13F113D5CD700079B234 /* EditableTableViewCell.m */,
 				94FFEA6613E99BCA00FC97A4 /* RateCell.h */,
 				94FFEA6713E99BCA00FC97A4 /* RateCell.m */,
 			);
@@ -1126,8 +1116,6 @@
 				F100DEC413E2D19700BB1E6E /* Cells */,
 				F1533F1213D433F7008EBE9D /* UIFactory.h */,
 				F1533F1313D433F7008EBE9D /* UIFactory.m */,
-				F1CD78B613BB799300D42AA3 /* AlertPrompt.m */,
-				F1CD78B513BB799300D42AA3 /* AlertPrompt.h */,
 				F1F8FABC13DC225B009BB4D3 /* ShadowNavigationController.h */,
 				F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */,
 				F1006C4613E07AF10014CF4B /* HelpView.h */,
@@ -1658,8 +1646,6 @@
 				F14B375813E6904D00351641 /* SummaryCell.m in Sources */,
 				F14B375913E6904D00351641 /* AlignedStyle2Cell.m in Sources */,
 				F14B375A13E6904D00351641 /* GradientCell.m in Sources */,
-				F14B375B13E6904D00351641 /* EditableTableViewCell.m in Sources */,
-				F14B375C13E6904D00351641 /* AlertPrompt.m in Sources */,
 				F14B375D13E6904D00351641 /* HelpView.m in Sources */,
 				F14B375E13E6904D00351641 /* ArrowView.m in Sources */,
 				F14B375F13E6904D00351641 /* ParticipantView.m in Sources */,
@@ -1699,7 +1685,6 @@
 				F1CD783C13BA405B00D42AA3 /* main.m in Sources */,
 				F1CD783F13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m in Sources */,
 				F1CD784513BA405B00D42AA3 /* RootViewController.m in Sources */,
-				F1CD78B713BB799300D42AA3 /* AlertPrompt.m in Sources */,
 				F1CD78BB13BB8BF500D42AA3 /* TravelEditViewController.m in Sources */,
 				F1CD78C913BC6A7E00D42AA3 /* ParticipantViewController.m in Sources */,
 				F1CD78CE13BC6AA700D42AA3 /* SummaryViewController.m in Sources */,
@@ -1712,7 +1697,6 @@
 				F1B8216813BE32E000FE329B /* TravelNotManaged.m in Sources */,
 				F1533F1413D433F7008EBE9D /* UIFactory.m in Sources */,
 				F1CE13D213D587DC0079B234 /* GenericSelectViewController.m in Sources */,
-				F1CE13F313D5CD700079B234 /* EditableTableViewCell.m in Sources */,
 				F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */,
 				F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */,
 				F1A6C63513D81170005E8388 /* CountryCell.m in Sources */,

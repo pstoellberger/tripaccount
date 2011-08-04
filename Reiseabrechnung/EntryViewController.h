@@ -27,11 +27,7 @@
     int _sortIndex;
     NSArray *_sortKeyArray;
     NSArray *_sectionKeyArray;
-    NSFetchRequest *_fetchRequest;
-    EntryCell *_entryCell;
-    
-    id _delegate;
-    id _editDelegate;
+
 }
 
 @property (nonatomic, retain) Travel *travel;

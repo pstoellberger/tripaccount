@@ -206,7 +206,7 @@
 }
 
 - (void)setDelegate:(id<EntryViewControllerDelegate>)delegate {
-    [_delegate release];
+    [(NSObject *)_delegate release];
     _delegate = delegate;
     [self.delegate didItemCountChange:[self.fetchedResultsController.fetchedObjects count]];
 }
@@ -220,32 +220,26 @@
 
 #pragma mark - View lifecycle
 
-- (void)dealloc
-{
-    [_sortKeyArray release];
-    [_sectionKeyArray release];
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (void)viewDidLoad {
     
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidLoad
-{
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+#pragma mark - Memory management
+
+- (void)dealloc {
+    
+    [_sortKeyArray release];
+    [_sectionKeyArray release];
+    [super dealloc];
 }
 
 @end

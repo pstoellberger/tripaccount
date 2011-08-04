@@ -52,8 +52,9 @@
                           target:(id)target 
                           action:(SEL)selector; {
     
-    self = [super initWithStyle:style];
-    if (self) {
+    
+    if (self = [super initWithStyle:style]) {
+        
         _selector = selector;
         _target = target;
         _multiSelectionAllowed = multiSelection;
@@ -149,46 +150,6 @@
     } 
 }
 
-- (void)selectAll:(id)sender {
-    
-    NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
-    for (id obj in self.fetchedResultsController.fetchedObjects) {
-        if (![self.selectedObjects containsObject:obj]) {
-            [self.selectedObjects addObject:obj];
-            [indexPathArray addObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:obj]];
-        }
-    }
-    [self.tableView beginUpdates];
-    [self.tableView reloadRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-    
-    for (id indexPath in indexPathArray) {
-        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];        
-    }
-    
-    [indexPathArray release];
-}
-
-- (void)selectNone:(id)sender {
-    NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
-    for (id obj in self.fetchedResultsController.fetchedObjects) {
-        if ([self.selectedObjects containsObject:obj]) {
-            [self.selectedObjects removeObject:obj];
-            [indexPathArray addObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:obj]];
-        }
-    }
-    [self.tableView beginUpdates];
-    [self.tableView reloadRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-    
-    for (id indexPath in indexPathArray) {
-        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];        
-    }    
-
-    [indexPathArray release];
-}
 
 - (UITableViewCellAccessoryType)accessoryTypeForManagedObject:(NSManagedObject *)managedObject {
     if ([self.selectedObjects containsObject:managedObject]) {
@@ -196,33 +157,6 @@
     } else {
         return UITableViewCellAccessoryNone;
     }
-}
-
-- (void)dealloc
-{
-    [_segControl release];
-    
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)selectParticipants:(UISegmentedControl *) sender {
-    if ([sender selectedSegmentIndex] == ALL_BUTTON_INDEX) {
-        [self selectAll:sender];
-    } else if ([sender selectedSegmentIndex] == NONE_BUTTON_INDEX) {
-        [self selectNone:sender];
-    }
-}
-
--(void)loadView {
-    [super loadView];
 }
 
 - (UIView *)createTableHeaderSubView {
@@ -269,18 +203,63 @@
     }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    if (self.multiSelectionAllowed && section == 0) {
-//        return 60;
-//    } else {
-//        return [UIFactory getDefaultSectionHeaderCellHeight]; ;
-//    }
-//}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+#pragma mark Select methods
+
+- (void)selectAll:(id)sender {
+    
+    NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
+    for (id obj in self.fetchedResultsController.fetchedObjects) {
+        if (![self.selectedObjects containsObject:obj]) {
+            [self.selectedObjects addObject:obj];
+            [indexPathArray addObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:obj]];
+        }
+    }
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    
+    for (id indexPath in indexPathArray) {
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];        
+    }
+    
+    [indexPathArray release];
+}
+
+- (void)selectNone:(id)sender {
+    NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
+    for (id obj in self.fetchedResultsController.fetchedObjects) {
+        if ([self.selectedObjects containsObject:obj]) {
+            [self.selectedObjects removeObject:obj];
+            [indexPathArray addObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:obj]];
+        }
+    }
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    
+    for (id indexPath in indexPathArray) {
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];        
+    }    
+    
+    [indexPathArray release];
+}
+- (void)selectParticipants:(UISegmentedControl *) sender {
+    if ([sender selectedSegmentIndex] == ALL_BUTTON_INDEX) {
+        [self selectAll:sender];
+    } else if ([sender selectedSegmentIndex] == NONE_BUTTON_INDEX) {
+        [self selectNone:sender];
+    }
+}
 
 #pragma mark - View lifecycle                   
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 }
 
@@ -289,16 +268,24 @@
     [self updateSegmentedControl];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
+#pragma mark Memory management 
+
+
+- (void)dealloc {
+    
+    [_segControl release];
+    [_selectedObjects release];
+    [_segControlView release];
+    
+    [super dealloc];
 }
+
 
 @end

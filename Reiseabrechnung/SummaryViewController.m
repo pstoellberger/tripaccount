@@ -130,6 +130,12 @@
     return 64;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+#pragma mark Business Logic
+
 - (void)recalculateSummary {
 
     if ([self.travel.closed intValue] != 1) {
@@ -158,36 +164,23 @@
 
 #pragma mark - View lifecycle
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (void)viewDidLoad {
     
-    // Release any cached data, images, etc that aren't in use.
-}
-
-
-- (void)viewDidLoad
-{
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
+#pragma mark - Memory management
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

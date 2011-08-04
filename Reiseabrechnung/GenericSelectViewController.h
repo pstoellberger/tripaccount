@@ -18,10 +18,8 @@
     SEL _selector;
     id _target;
     NSMutableArray *_selectedObjects;
-    BOOL _multiSelectionAllowed;
     UISegmentedControl *_segControl;
     UIView *_segControlView;
-    Class _cellClass;
     
 }
 

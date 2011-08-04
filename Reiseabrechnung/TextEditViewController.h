@@ -11,11 +11,6 @@
 
 @interface TextEditViewController : UITableViewController <UITextFieldDelegate> {
 
-    id _target;
-    SEL _selector;
-    
-    UITableViewCell *_textCell;
-    UITextField *_textField;
 }
 
 @property (nonatomic, retain) id target;

@@ -33,6 +33,10 @@
     return self;    
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
 #pragma mark - UITableViewDelegate
 
 
@@ -60,7 +64,6 @@
 // text field
 
 #pragma mark - View lifecycle
-
 
 - (void)loadView {
     
@@ -101,10 +104,6 @@
     
     self.cityCell = nil;
     self.countryCell = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
 }
 
 @end

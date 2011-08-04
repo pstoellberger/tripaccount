@@ -10,10 +10,7 @@
 #import "Travel.h"
 #import "EntryViewController.h"
 
-@interface EntrySortViewController : UIViewController <EntryViewControllerDelegate> {
-    Travel *_travel;
-    EntryViewController *_detailViewController;
-}
+@interface EntrySortViewController : UIViewController <EntryViewControllerDelegate>
 
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) EntryViewController *detailViewController;

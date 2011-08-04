@@ -69,33 +69,25 @@
     return cell;
 }
 
-- (void)deleteManagedObject:(NSManagedObject *)managedObject
-{
+- (void)deleteManagedObject:(NSManagedObject *)managedObject {
+    
     [_travel.managedObjectContext deleteObject:managedObject];
     [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
 }
 
-- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
-{
+- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
 	return [self.travel.closed intValue] != 1;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 #pragma mark - BadgeValue update 
 
 - (void)updateBadgeValue {
+    
     NSUInteger itemCount = [self.fetchedResultsController.fetchedObjects count];
     if (itemCount == 0) {
         self.tabBarItem.badgeValue = nil;
@@ -104,8 +96,8 @@
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    
     [super controllerDidChangeContent:controller];    
     [self updateBadgeValue];
 }
@@ -126,9 +118,10 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
+#pragma mark - Memory management
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

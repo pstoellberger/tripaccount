@@ -7,7 +7,6 @@
 //
 
 #import "EntryEditViewController.h"
-#import "EditableTableViewCell.h"
 #import "EntryNotManaged.h"
 #import "GenericSelectViewController.h"
 #import "ReiseabrechnungAppDelegate.h"
@@ -334,54 +333,6 @@ static NSIndexPath *_dateIndexPath;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)selectType:(Type *)type {
-    self.nmEntry.type = type;
-    [self checkIfDoneIsPossible];
-    [_cellsToReloadAndFlash addObject:_typeIndexPath];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)selectPayer:(Participant *)payer {
-    self.nmEntry.payer = payer;
-    [_cellsToReloadAndFlash addObject:_payerIndexPath];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)selectAmount:(NSNumber *)amount {
-    self.nmEntry.amount = amount;
-    [_cellsToReloadAndFlash addObject:_amountIndexPath];
-}
-
-- (void)selectText:(NSString *)text {
-    self.nmEntry.text = text;
-    [_cellsToReloadAndFlash addObject:_descriptionIndexPath];
-}
-
-- (void)selectDate:(NSDate *)date {
-    self.nmEntry.date = date;
-    [_cellsToReloadAndFlash addObject:_dateIndexPath];
-}
-
-- (void)selectCurrency:(Currency *)currency {
-    self.nmEntry.currency = currency;
-    
-    if (self.nmEntry.amount) {
-        [_cellsToReloadAndFlash addObject:_amountIndexPath];
-    }
-    [_cellsToReloadAndFlash addObject:_currencyIndexPath];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)selectReceivers:(NSArray *)receivers {
-    self.nmEntry.receivers = [[[NSSet alloc] initWithArray:receivers] autorelease];
-    [_cellsToReloadAndFlash addObject:_receiverIndexPath];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleInsert;
 }
@@ -452,6 +403,56 @@ static NSIndexPath *_dateIndexPath;
     }
 }
 
+#pragma mark Select methods
+
+- (void)selectType:(Type *)type {
+    self.nmEntry.type = type;
+    [self checkIfDoneIsPossible];
+    [_cellsToReloadAndFlash addObject:_typeIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)selectPayer:(Participant *)payer {
+    self.nmEntry.payer = payer;
+    [_cellsToReloadAndFlash addObject:_payerIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)selectAmount:(NSNumber *)amount {
+    self.nmEntry.amount = amount;
+    [_cellsToReloadAndFlash addObject:_amountIndexPath];
+}
+
+- (void)selectText:(NSString *)text {
+    self.nmEntry.text = text;
+    [_cellsToReloadAndFlash addObject:_descriptionIndexPath];
+}
+
+- (void)selectDate:(NSDate *)date {
+    self.nmEntry.date = date;
+    [_cellsToReloadAndFlash addObject:_dateIndexPath];
+}
+
+- (void)selectCurrency:(Currency *)currency {
+    self.nmEntry.currency = currency;
+    
+    if (self.nmEntry.amount) {
+        [_cellsToReloadAndFlash addObject:_amountIndexPath];
+    }
+    [_cellsToReloadAndFlash addObject:_currencyIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)selectReceivers:(NSArray *)receivers {
+    self.nmEntry.receivers = [[[NSSet alloc] initWithArray:receivers] autorelease];
+    [_cellsToReloadAndFlash addObject:_receiverIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -460,8 +461,8 @@ static NSIndexPath *_dateIndexPath;
 
 #pragma mark - View load/unload
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -475,29 +476,21 @@ static NSIndexPath *_dateIndexPath;
     [self checkIfDoneIsPossible];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 
-#pragma mark - memory management
+#pragma mark - Memory management
 
-- (void)dealloc
-{
+- (void)dealloc {
     [_cellsToReloadAndFlash release];
     
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 @end

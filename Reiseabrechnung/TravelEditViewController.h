@@ -16,19 +16,12 @@
 - (void)travelDidSave:(Travel *)travel;
 @end
 
-@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, UITableViewDelegate, UINavigationControllerDelegate> {
+@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate> {
 
     NSManagedObjectContext *_context;
     
-    Travel *_travel;
-    NSArray *_currencies;
-    Country *_country;
-    NSString *_name;
-    NSString *_city;
-    
     NSMutableArray* _cellsToReloadAndFlash;
     
-    CLLocationManager *_locManager;
     MKReverseGeocoder *_geocoder;
     
     BOOL _isFirstView;

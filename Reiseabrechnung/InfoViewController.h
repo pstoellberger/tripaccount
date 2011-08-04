@@ -1,5 +1,5 @@
 //
-//  InfoView.h
+//  InfoViewController.h
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 27/07/2011.

@@ -9,7 +9,6 @@
 #import "TravelEditViewController.h"
 #import "Currency.h"
 #import "TravelNotManaged.h"
-#import "EditableTableViewCell.h"
 #import "ReiseabrechnungAppDelegate.h"
 #import "UIFactory.h"
 #import "Country.h"
@@ -114,6 +113,31 @@ static NSIndexPath *_currenciesIndexPath;
     _cityIndexPath = [[NSIndexPath indexPathForRow:1 inSection:1] retain];
     _currenciesIndexPath = [[NSIndexPath indexPathForRow:2 inSection:1] retain];
 }
+
+
+- (void)updateAndFlash:(UIViewController *)viewController {
+    
+    if (viewController == self) {
+        
+        [self.tableView beginUpdates];
+        for (id indexPath in _cellsToReloadAndFlash) {
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        [self.tableView endUpdates];
+        
+        for (id indexPath in _cellsToReloadAndFlash) {
+            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];                  
+        }
+        [_cellsToReloadAndFlash removeAllObjects];
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+#pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -254,36 +278,13 @@ static NSIndexPath *_currenciesIndexPath;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark UINavigationControllerDelegate
+
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     [self updateAndFlash:self];
 }
 
-- (void)updateAndFlash:(UIViewController *)viewController {
-    
-    if (viewController == self) {
-        
-        [self.tableView beginUpdates];
-        for (id indexPath in _cellsToReloadAndFlash) {
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        }
-        [self.tableView endUpdates];
-        
-        for (id indexPath in _cellsToReloadAndFlash) {
-            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];                  
-        }
-        [_cellsToReloadAndFlash removeAllObjects];
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    
-    if (!self.travel && _isFirstView) {
-        [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
-        [self updateAndFlash:self];
-        _isFirstView = NO;
-    }
-}
+#pragma mark Select Items
 
 - (void)selectCurrencies:(NSArray *)newCurrencies {
     
@@ -436,30 +437,28 @@ static NSIndexPath *_currenciesIndexPath;
     }    
 }
 
+#pragma mark - View lifecycle
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    if (!self.travel && _isFirstView) {
+        [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
+        [self updateAndFlash:self];
+        _isFirstView = NO;
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [self checkIfDoneIsPossible];
 }
 
-#pragma mark - View lifecycle
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+#pragma mark - Memory Management
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
 }
 
 - (void)dealloc {
@@ -475,24 +474,21 @@ static NSIndexPath *_currenciesIndexPath;
     [super viewDidLoad];
 }
 
-#pragma mark - Localisation
+#pragma mark - Location finding
 
 -(void) startLocating {
     [self.locManager startUpdatingLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	NSLog(@"Location manager error: %@", [error description]);
 }
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
-{
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
 	NSLog(@"Reverse geocoder error: %@", [error description]);
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     if (!_geocoder) {
         _geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
         _geocoder.delegate = self;
@@ -501,8 +497,8 @@ static NSIndexPath *_currenciesIndexPath;
     }
 }
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
-{
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+    
 	NSLog(@"%@",[placemark.addressDictionary description]);
 	
     if ([placemark locality]) {

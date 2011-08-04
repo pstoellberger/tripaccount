@@ -12,8 +12,6 @@
 #import "ShadowNavigationController.h"
 
 @interface SummarySortViewController : ShadowNavigationController {
-    Travel *_travel;
-    SummaryViewController *_detailViewController;
     NSArray *_currencyArray;
 }
 

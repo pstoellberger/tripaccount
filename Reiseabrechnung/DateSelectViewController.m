@@ -1,5 +1,5 @@
 //
-//  DateSelecte.m
+//  DateSelectViewController.m
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 26/07/2011.
@@ -19,8 +19,8 @@
     
     if (self) {
         _action = action;
-        _target = [target retain];
-        _date = [date retain];
+        _target = target;
+        _date = [[date copy] retain];
     }
     return self;
 }
@@ -63,13 +63,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -101,9 +94,10 @@
     _timeSwitch = nil;
 }
 
+#pragma mark - Memory management
+
 - (void)dealloc {
     
-    [_target release];
     [_date release];   
     
     [super dealloc];

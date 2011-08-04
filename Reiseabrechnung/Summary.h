@@ -18,10 +18,7 @@
 
 @end
 
-@interface Summary : NSObject {
-    NSArray *_results;
-    NSMutableDictionary *_accounts;
-}
+@interface Summary : NSObject
 
 @property (nonatomic, retain) NSArray *results;
 @property (nonatomic, retain) Currency *baseCurrency;

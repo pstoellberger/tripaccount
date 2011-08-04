@@ -20,11 +20,7 @@
 #import "SummarySortViewController.h"
 #import "RateSelectViewController.h"
  
-@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate> {
-    Travel *_travel;
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_actionButton;
-}
+@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate>
 
 @property (nonatomic, retain, readonly) IBOutlet Travel *travel;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;

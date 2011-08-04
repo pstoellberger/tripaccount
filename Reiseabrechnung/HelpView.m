@@ -167,6 +167,8 @@ static NSString *DICTIONARY_KEY;
     [defaults synchronize];
 }
 
+#pragma mark Memory Management
+
 - (void)dealloc {
     [_text release];
     [_uniqueIdentifier release];

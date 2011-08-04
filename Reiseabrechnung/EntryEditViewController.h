@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TravelViewController.h"
-#import "EditableTableViewCell.h"
 #import "EntryNotManaged.h"
 
 
@@ -18,7 +17,6 @@
     
     EntryNotManaged *_entry;
     Entry *_entryManaged;
-    Travel *_travel;
 
     NSMutableArray* _cellsToReloadAndFlash;
     BOOL _isFirstView;

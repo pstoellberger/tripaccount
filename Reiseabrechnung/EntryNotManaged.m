@@ -12,7 +12,16 @@
 
 @implementation EntryNotManaged
 
-@synthesize text, currency, date, payer, amount, travel, receivers, type;
+@synthesize amount;
+@synthesize checked;
+@synthesize date;
+@synthesize text;
+@synthesize travel;
+@synthesize type;
+@synthesize payer;
+@synthesize receivers;
+@synthesize currency;
+
 
 - (id)init {
     self = [super init];

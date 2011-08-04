@@ -122,6 +122,10 @@
     }
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
 #pragma mark - UITableViewDelegate
 
 
@@ -213,10 +217,6 @@
     
     self.textCell = nil;
     self.textField = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
 }
 
 @end

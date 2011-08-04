@@ -48,6 +48,12 @@
     return self;    
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+#pragma mark Open PopUps
+
 - (void)openAddPopup {
     
     if ([[[self tabBarController] selectedViewController] isEqual:self.participantViewController]) {
@@ -91,6 +97,21 @@
 }
 
 
+- (void)openRateEditPopup {
+    
+    RateSelectViewController *rateSelectViewController = [[RateSelectViewController alloc] initWithTravel:self.travel];
+    rateSelectViewController.closeDelegate = self;
+    
+    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:rateSelectViewController];
+    navController.delegate = rateSelectViewController;
+    [self.navigationController presentModalViewController:navController animated:YES];
+    
+    [navController release];
+    [rateSelectViewController release];
+    
+}
+
+
 - (void)openActionPopup {
     
     UIActionSheet *actionPopup;
@@ -116,6 +137,8 @@
     [actionPopup showInView:self.view];
     [actionPopup release];
 }
+
+#pragma mark Travel logic
 
 - (void)closeTravel {
 
@@ -149,20 +172,6 @@
     [_entrySortViewController.detailViewController.tableView reloadData];
     
     [self updateStateOfNavigationController:self.tabBarController.selectedViewController];    
-}
-
-- (void)openRateEditPopup {
-    
-    RateSelectViewController *rateSelectViewController = [[RateSelectViewController alloc] initWithTravel:self.travel];
-    rateSelectViewController.closeDelegate = self;
-    
-    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:rateSelectViewController];
-    navController.delegate = rateSelectViewController;
-    [self.navigationController presentModalViewController:navController animated:YES];
-    
-    [navController release];
-    [rateSelectViewController release];
-    
 }
 
 - (void)askToRefreshRatesWhenClosing {
@@ -383,8 +392,8 @@
 
 #pragma mark - View lifecycle
 
-- (void)loadView
-{
+- (void)loadView {
+    
     [super loadView];
     
     self.addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)] autorelease]; 
@@ -420,21 +429,12 @@
 
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
+#pragma mark View lifecycle
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-}
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-
+    
     self.tabBarController = nil;
     self.participantViewController = nil;
     self.entrySortViewController = nil;
@@ -442,8 +442,10 @@
     self.addButton = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+#pragma mark Memory Management
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

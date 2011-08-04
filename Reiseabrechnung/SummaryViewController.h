@@ -15,7 +15,6 @@
 
 @interface SummaryViewController : CoreDataTableViewController {
 
-    SummaryCell *_summaryCell;
     Currency *_displayCurrency;
 }
 

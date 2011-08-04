@@ -8,17 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Travel.h"
-#import "AlertPrompt.h"
 #import "Entry.h"
-#import "AlertPrompt.h"
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
 #import "TravelEditViewController.h"
 #import "InfoViewController.h"
 
 @interface RootViewController : UIViewController <TravelEditViewControllerDelegate> {
-    NSManagedObjectContext *_managedObjectContext;
-    UITableViewController *_tableViewController;
     UIView *_helpView;
 }
 

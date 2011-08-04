@@ -31,14 +31,9 @@
     
     [self initializeStartDatabase:[NSBundle mainBundle]];
     
-    [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
+    [self refreshCurrencyRatesIfOutDated];
     
-    CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:self.managedObjectContext];
-    if ([currencyRefresh areRatesOutdated]) {
-        NSLog(@"Updating currencies...");
-        [currencyRefresh refreshCurrencies];
-    }
-    [currencyRefresh release];
+    [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
     
     RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
     self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
@@ -184,6 +179,28 @@
     }
 }
 
+- (void)refreshCurrencyRatesIfOutDated {
+    
+    CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:self.managedObjectContext];
+    
+    NSLog(@"Checking if currency rates are outdated.");
+    
+    if ([currencyRefresh areRatesOutdated]) {
+        
+        NSLog(@"Refreshing currency rates...");
+        
+        dispatch_queue_t updateQueue = dispatch_queue_create("UpdateQueue", NULL);
+        
+        dispatch_async(updateQueue, ^{
+            [currencyRefresh refreshCurrencies];
+            [currencyRefresh release];
+            
+            NSLog(@"Refresh finished.");
+        });
+    }
+    
+}
+
 - (Currency *)defaultCurrency {
     
     NSLocale *theLocale = [NSLocale currentLocale];
@@ -246,31 +263,28 @@
     }
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
+- (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    [self refreshCurrencyRatesIfOutDated];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
@@ -282,6 +296,7 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    [ReiseabrechnungAppDelegate saveContext:[self managedObjectContext]];
 }
 
 - (NSManagedObjectContext *)managedObjectContext {

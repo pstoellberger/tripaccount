@@ -8,11 +8,10 @@
 
 #import "CountryCell.h"
 
-
-
 @implementation CountryCell
 
 - (void) layoutSubviews {
+    
     [super layoutSubviews];
     NSLog(@"layout country cell %@", self.textLabel.text);
     

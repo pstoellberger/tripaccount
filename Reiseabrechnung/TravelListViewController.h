@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Travel.h"
-#import "AlertPrompt.h"
 #import "Entry.h"
-#import "AlertPrompt.h"
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
 #import "TravelEditViewController.h"
@@ -18,10 +16,6 @@
 @interface TravelListViewController : CoreDataTableViewController {
     
     NSManagedObjectContext *_managedObjectContext;
-
-    UIBarButtonItem *_addButton;
-    UIBarButtonItem *_editButton;
-    UIBarButtonItem *_doneButton;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;

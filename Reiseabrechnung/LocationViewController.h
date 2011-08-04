@@ -11,16 +11,6 @@
 
 @interface LocationViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
     
-    Travel *_travel;
-    
-    id _target;
-    SEL _selector;
-    
-    Country *_country;
-    NSString *_city;
-    
-    UITableViewCell *_countryCell;
-    UITableViewCell *_cityCell;
 }
 
 @property (nonatomic, retain) Travel *travel;

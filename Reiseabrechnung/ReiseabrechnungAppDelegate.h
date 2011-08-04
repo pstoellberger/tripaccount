@@ -18,9 +18,7 @@
 #import "Currency.h"
 #import "AppDefaults.h"
 
-@interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate> {
-    UINavigationController *_navController;
-}
+@interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -35,5 +33,6 @@
 - (Currency *)defaultCurrency;
 + (AppDefaults *)defaultsObject:(NSManagedObjectContext *) context;
 - (void)initializeStartDatabase:(NSBundle *)bundle;
+- (void)refreshCurrencyRatesIfOutDated;
 
 @end

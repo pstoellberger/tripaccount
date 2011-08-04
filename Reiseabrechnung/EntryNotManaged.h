@@ -12,12 +12,10 @@
 #import "Currency.h"
 #import "Type.h"
 
-@interface EntryNotManaged : NSObject {
-
-    
-}
+@interface EntryNotManaged : NSObject 
 
 @property (nonatomic, retain) NSNumber * amount;
+@property (nonatomic, retain) NSNumber * checked;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) Travel *travel;

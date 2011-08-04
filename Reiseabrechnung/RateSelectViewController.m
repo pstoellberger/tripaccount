@@ -150,6 +150,8 @@
     }
 }
 
+#pragma mark Memory management
+
 - (void)dealloc {
     [_cellsToReloadAndFlash release];
     [super dealloc];
