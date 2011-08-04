@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 28/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -14,7 +14,6 @@
 #import "ShadowNavigationController.h"
 #import "HelpView.h"
 #import "InfoViewController.h"
-#import "SettingsRootViewController.h"
 
 @interface RootViewController ()
 - (void)doneEditing;
@@ -24,7 +23,7 @@
 @implementation RootViewController
 
 @synthesize managedObjectContext=_managedObjectContext;
-@synthesize tableViewController=_tableViewController;
+@synthesize tableViewController=_tableViewController, infoViewController=_infoViewController;
 @synthesize addButton=_addButton, editButton=_editButton, doneButton=_doneButton;
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
@@ -38,7 +37,7 @@
         
         [self.view addSubview:self.tableViewController.view];
         
-        self.title = @"Reiseabrechnungen";
+        self.title = @"Trips";
         
         self.navigationItem.rightBarButtonItem = self.addButton;
         self.navigationItem.leftBarButtonItem = self.editButton;
@@ -85,7 +84,7 @@
 
 - (void)openInfoPopup {
     
-    InfoViewController *infoViewController = [[InfoViewController alloc] init];
+    self.infoViewController = [[[InfoViewController alloc] init] autorelease];
     
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:1.0];
@@ -93,16 +92,8 @@
 						   forView:[self.navigationController.view superview]
 							 cache:YES];
     
-	[[self.navigationController.view superview] addSubview:infoViewController.view];
+	[[self.navigationController.view superview] addSubview:self.infoViewController.view];
 	[UIView commitAnimations];
-}
-
-- (void)openSettingsPopup {
-    
-    SettingsRootViewController *settingsViewController = [[SettingsRootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
-    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:settingsViewController];
-    [self.navigationController presentModalViewController:navController animated:YES];
-    
 }
 
 - (void)viewDidLoad {
@@ -143,13 +134,11 @@
     toolbar.tintColor = [UIFactory defaultTintColor];
     
     UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithTitle:@"Info" style:UIBarButtonItemStyleBordered target:self action:@selector(openInfoPopup)];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(openSettingsPopup)];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-    toolbar.items = [NSArray arrayWithObjects:infoButton, flexibleSpace, settingsButton, nil];
+    toolbar.items = [NSArray arrayWithObjects:infoButton, nil];
     
     [infoButton release];
-    [settingsButton release];
     [flexibleSpace release];
     
     [newView addSubview:toolbar];

@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 18/07/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "UIFactory.h"
@@ -84,7 +84,6 @@
         if ([view isKindOfClass:[UISearchBar class]]) {
             
             [(UISearchBar*)view  setTintColor:color];
-            foundSearchBar = YES;
             break;
         }
         
@@ -163,7 +162,7 @@
 
 + (void)addGradientToView:(UIView *)cell {
  
-    CAGradientLayer *gradient = [[CAGradientLayer layer] retain];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = cell.bounds;
     gradient.startPoint = CGPointMake(0.5, 0.5);
     gradient.endPoint = CGPointMake(1, 1);
@@ -175,7 +174,7 @@
 
 + (void)addGradientToView:(UIView *)cell color1:(UIColor *)color1 color2:(UIColor *)color2 {
     
-    CAGradientLayer *gradient = [[CAGradientLayer layer] retain];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = cell.bounds;
     gradient.colors = [NSArray arrayWithObjects:(id)[color1 CGColor], (id)[color2 CGColor], nil];
     gradient.needsDisplayOnBoundsChange = YES;

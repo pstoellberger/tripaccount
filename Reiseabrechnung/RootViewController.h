@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 28/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,6 +14,7 @@
 #import "Participant.h"
 #import "CoreDataTableViewController.h"
 #import "TravelEditViewController.h"
+#import "InfoViewController.h"
 
 @interface RootViewController : UIViewController <TravelEditViewControllerDelegate> {
     NSManagedObjectContext *_managedObjectContext;
@@ -27,6 +28,8 @@
 
 @property (nonatomic, retain) UITableViewController *tableViewController;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, retain) InfoViewController *infoViewController;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 

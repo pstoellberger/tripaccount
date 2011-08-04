@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 02/08/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Martin Maier. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,7 +14,7 @@
 @interface Type : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSNumber * buildIn;
+@property (nonatomic, retain) NSNumber * builtIn;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) AppDefaults *defaults;

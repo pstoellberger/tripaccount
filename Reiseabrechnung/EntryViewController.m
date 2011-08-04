@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -76,12 +76,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
-    static NSString *CellIdentifier = @"EntryCell";
+    static NSString *reuseIdentifier = @"EntryCell";
     
-    EntryCell *cell = (EntryCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    EntryCell *cell = (EntryCell *) [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     if (cell == nil) {
-        NSArray *tlo = [[NSBundle mainBundle] loadNibNamed:@"EntryCell" owner:self options:nil];
-        cell = [tlo objectAtIndex:0];
+        [[NSBundle mainBundle] loadNibNamed:@"EntryCell" owner:self options:nil];
+        cell = self.entryCell;
         [UIFactory initializeCell:cell];
         
         cell.checkMark.layer.cornerRadius = 4;
@@ -154,19 +154,18 @@
     [self.tableView deselectRowAtIndexPath:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]  animated:YES];
 }
 
-- (void)deleteManagedObject:(NSManagedObject *)managedObject
-{
+- (void)deleteManagedObject:(NSManagedObject *)managedObject {
+    
     [_travel.managedObjectContext deleteObject:managedObject];
     [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
 }
 
-- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
-{
+- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
 	return [self.travel.closed intValue] != 1;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+
     return YES;
 }
 

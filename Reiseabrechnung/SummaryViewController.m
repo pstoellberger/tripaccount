@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -133,7 +133,7 @@
 - (void)recalculateSummary {
 
     if ([self.travel.closed intValue] != 1) {
-        Summary *summary = [[Summary createSummary:self.travel] retain];
+        Summary *summary = [Summary createSummary:self.travel];
         NSMutableDictionary *dic = summary.accounts;
         
         [self.travel removeTransfers:self.travel.transfers];

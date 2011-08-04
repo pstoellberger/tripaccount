@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "EntryEditViewController.h"
@@ -45,9 +45,14 @@ static NSIndexPath *_dateIndexPath;
 
 // designated initializer!
 - (id)initWithTravel: (Travel *)travel andEntry:(Entry *)entryManaged target:(id)target action:(SEL)selector {
+    
     self = [super initWithStyle:UITableViewStyleGrouped];
+    
     if (self) {
+        
         [self initIndexPaths];
+        
+        _isFirstView = YES;
         
         _target = target;
         _selector = selector;
@@ -70,18 +75,28 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (id)initWithTravel: (Travel *)travel target:(id)target action:(SEL)selector {
+    
     self = [self initWithTravel:travel andEntry:nil target:target action:selector];
+    
     if (self) {
+        
         if (!self.nmEntry) {
+            
             self.nmEntry = [[[EntryNotManaged alloc] init] autorelease];
+            
             if (travel.lastParticipantUsed) {
                 self.nmEntry.payer = travel.lastParticipantUsed;
             } else {
                 self.nmEntry.payer = [travel.participants anyObject];
             }
             
+            if (travel.lastCurrencyUsed) {
+                self.nmEntry.currency = travel.lastCurrencyUsed;
+            } else {
+                self.nmEntry.currency = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].homeCurrency;
+            }
+            
             self.nmEntry.receivers = travel.participants;
-            self.nmEntry.currency = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].homeCurrency;
             self.nmEntry.date = [UIFactory createDateWithoutTimeFromDate:[NSDate date]];
             self.nmEntry.type = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].defaultType;
         }
@@ -323,11 +338,15 @@ static NSIndexPath *_dateIndexPath;
     self.nmEntry.type = type;
     [self checkIfDoneIsPossible];
     [_cellsToReloadAndFlash addObject:_typeIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)selectPayer:(Participant *)payer {
     self.nmEntry.payer = payer;
     [_cellsToReloadAndFlash addObject:_payerIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)selectAmount:(NSNumber *)amount {
@@ -352,11 +371,15 @@ static NSIndexPath *_dateIndexPath;
         [_cellsToReloadAndFlash addObject:_amountIndexPath];
     }
     [_cellsToReloadAndFlash addObject:_currencyIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)selectReceivers:(NSArray *)receivers {
     self.nmEntry.receivers = [[[NSSet alloc] initWithArray:receivers] autorelease];
     [_cellsToReloadAndFlash addObject:_receiverIndexPath];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -390,9 +413,7 @@ static NSIndexPath *_dateIndexPath;
     [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark - UINavigationControllerDelegate
-
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+- (void)updateAndFlash:(UIViewController *)viewController {
     
     if (viewController == self) {
         
@@ -412,28 +433,38 @@ static NSIndexPath *_dateIndexPath;
     }
 }
 
-#pragma mark - View lifecycle
-
-- (void)dealloc
-{
-    [_cellsToReloadAndFlash release];
-    
-    [super dealloc];
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (void)viewDidAppear:(BOOL)animated {
     
-    // Release any cached data, images, etc that aren't in use.
+    if (!self.entryManaged && _isFirstView) {
+        
+        [_cellsToReloadAndFlash addObject:_payerIndexPath];
+        [_cellsToReloadAndFlash addObject:_dateIndexPath];
+        [_cellsToReloadAndFlash addObject:_typeIndexPath];
+        [_cellsToReloadAndFlash addObject:_currencyIndexPath];
+        [_cellsToReloadAndFlash addObject:_receiverIndexPath];
+        
+        [self updateAndFlash:self];
+        _isFirstView = NO;
+    }
 }
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self updateAndFlash:viewController];
+}
+
+#pragma mark - View load/unload
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
     if (self.entryManaged) {
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)] autorelease];
@@ -451,9 +482,22 @@ static NSIndexPath *_dateIndexPath;
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+
+#pragma mark - memory management
+
+- (void)dealloc
 {
-    return YES;
+    [_cellsToReloadAndFlash release];
+    
+    [super dealloc];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
 }
 
 @end

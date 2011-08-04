@@ -3,16 +3,17 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 25/07/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "SummarySortViewController.h"
 #import "UIFactory.h"
 #import "Currency.h"
+#import "CurrencyRefresh.h"
 
 @implementation SummarySortViewController
 
-@synthesize travel=_travel, detailViewController=_detailViewController;
+@synthesize travel=_travel, detailViewController=_detailViewController, lastUpdatedLabel=_lastUpdatedLabel, updateIndicator=_updateIndicator;
 
 - (id)initWithTravel:(Travel *)travel {
     
@@ -54,7 +55,9 @@
 
 #pragma mark - View lifecycle
 
-#define SORT_TOOLBAR_HEIGHT 40
+#define SORT_TOOLBAR_HEIGHT 50
+#define RATE_LABEL_HEIGHT 10
+#define ACTIVITY_VIEW_SIZE 10
 
 - (void)loadView {
     
@@ -69,7 +72,7 @@
     }
     
     UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray]; 
-    segControl.frame = CGRectMake(10, 5, [UIScreen mainScreen].bounds.size.width - 20, SORT_TOOLBAR_HEIGHT - 10);
+    segControl.frame = CGRectMake(10, 5, [UIScreen mainScreen].bounds.size.width - 20, SORT_TOOLBAR_HEIGHT - RATE_LABEL_HEIGHT - 10);
     segControl.selectedSegmentIndex = 0;
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
@@ -82,6 +85,23 @@
     toolbar.tintColor = [UIFactory defaultTintColor];
     [toolbar addSubview:segControl];
     
+    UILabel *ratesUpdated = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.lastUpdatedLabel = ratesUpdated;
+
+    ratesUpdated.backgroundColor = [UIColor clearColor];
+    ratesUpdated.font = [UIFont systemFontOfSize:10];
+    ratesUpdated.textAlignment = UITextAlignmentCenter;
+    ratesUpdated.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [self updateRateLabel];
+    [ratesUpdated sizeToFit];
+    ratesUpdated.frame = CGRectMake((self.toolbar.frame.size.width - ratesUpdated.frame.size.width) / 2, segControl.frame.size.height + segControl.frame.origin.y, ratesUpdated.frame.size.width, ratesUpdated.frame.size.height);
+    [toolbar addSubview:ratesUpdated];
+    
+    self.updateIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
+    self.updateIndicator.frame = CGRectMake(ratesUpdated.frame.origin.x + ratesUpdated.frame.size.width + ACTIVITY_VIEW_SIZE, segControl.frame.size.height + segControl.frame.origin.y + 2, ACTIVITY_VIEW_SIZE, ACTIVITY_VIEW_SIZE);
+    self.updateIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [toolbar addSubview:self.updateIndicator];
+    
     if ([segArray count] > 1) {
         self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height - SORT_TOOLBAR_HEIGHT);
         [newView addSubview:self.detailViewController.view];
@@ -91,9 +111,21 @@
         self.view = self.detailViewController.view;
     }
     
+    [ratesUpdated release];
     [toolbar release];
     [newView release];
     [segControl release];
+}
+
+- (void)updateRateLabel {
+    
+    NSDate *lastUpdated = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdatedKey]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterMediumStyle; 
+    
+    self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Rates last updated at %@", [formatter stringFromDate:lastUpdated]];
+    [formatter release];
 }
 
 /*

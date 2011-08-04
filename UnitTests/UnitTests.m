@@ -3,7 +3,7 @@
 //  UnitTests
 //
 //  Created by Martin Maier on 01/08/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "UnitTests.h"
@@ -41,12 +41,12 @@
     Currency *eur = [self currencyWithCode:@"EUR"];
     Currency *usd = [self currencyWithCode:@"USD"];
     
-    chf.rate.rate = [NSNumber numberWithDouble:1.1];
-    usd.rate.rate = [NSNumber numberWithDouble:1.5];
+    chf.defaultRate.rate = [NSNumber numberWithDouble:1.1];
+    usd.defaultRate.rate = [NSNumber numberWithDouble:1.5];
     
     Travel *travel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:context];
-    [travel addRatesObject:chf.rate];
-    [travel addRatesObject:usd.rate];
+    [travel addRatesObject:chf.defaultRate];
+    [travel addRatesObject:usd.defaultRate];
     
     
     STAssertEquals([chf convertTravelAmount:travel currency:chf amount:2.2], 2.2, nil);

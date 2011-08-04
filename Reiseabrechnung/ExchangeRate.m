@@ -2,8 +2,8 @@
 //  ExchangeRate.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 02/08/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Martin Maier on 8/4/11.
+//  Copyright (c) 2011 Martin Maier. All rights reserved.
 //
 
 #import "ExchangeRate.h"
@@ -15,6 +15,7 @@
 @dynamic lastUpdated;
 @dynamic edited;
 @dynamic rate;
+@dynamic defaultRate;
 @dynamic baseCurrency;
 @dynamic counterCurrency;
 @dynamic travels;

@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 27/07/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "CurrencyRefresh.h"
@@ -35,6 +35,10 @@
     return self;
 }
 
++ (NSString *)lastUpdatedKey {
+    return @"lastUpdated";
+}
+
 - (NSString *)buildURL:(NSManagedObjectContext *)context baseIsoCode:(NSString *)baseCurrencyCode {
     
     NSMutableString *url = [NSMutableString stringWithString:@"http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1d1t1&s="];
@@ -45,11 +49,13 @@
     return url;
 }
 
-- (BOOL)refreshCurrencies:(NSString *)baseIsoCode {
+- (BOOL)refreshCurrencies {
     
     NSHTTPURLResponse *response;
     NSError *error;
     BOOL returnValue = NO;
+    
+    NSString *baseIsoCode = @"EUR";
     
     //prepare request
 	NSString *urlString = [self buildURL:_context baseIsoCode:baseIsoCode];
@@ -74,6 +80,8 @@
 	//get response   
 	NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSLog(@"Response Code: %d", [response statusCode]);
+    
+    int ratesUpdated = 0;
     
 	if ([response statusCode] >= 200 && [response statusCode] < 300) {
         
@@ -101,27 +109,36 @@
                             if ([currencyCode isEqualToString:counterCurrency.code]) {
                                 
                                 ExchangeRate *updateRate = nil;
-                                for (ExchangeRate *rate in counterCurrency.ratesWithBaseCurrency) {
+                                for (ExchangeRate *rate in counterCurrency.rates) {
                                     
-                                    if ([rate.baseCurrency.code isEqualToString:baseIsoCode]) {
+                                    if ([rate.baseCurrency.code isEqualToString:baseIsoCode] && [rate.defaultRate intValue] == 1) {
                                         updateRate = rate;
                                         break;
                                     }
                                 }
                                 
-                                if (!updateRate) {
-                                    updateRate = [NSEntityDescription insertNewObjectForEntityForName:@"ExchangeRate" inManagedObjectContext:_context];
-                                    updateRate.baseCurrency = baseCurrency;
-                                    updateRate.counterCurrency = counterCurrency;
+                                if (updateRate) {
+                                    
+                                    updateRate.rate = [NSNumber numberWithDouble:currencyRate];
+                                    updateRate.lastUpdated = [NSDate date];
+                                    
+                                    ratesUpdated++;
+                                } else {
+                                    NSLog(@"no rate object found for %@", counterCurrency.code);
                                 }
-                                
-                                updateRate.rate = [NSNumber numberWithDouble:currencyRate];
-                                updateRate.lastUpdated = [NSDate date];
                             }
                         }
                     }
                 }
             }
+        }
+        
+        // tolerance 10
+        if ((ratesUpdated + 10) > [_currencies count]) {
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:[NSDate date] forKey:[CurrencyRefresh lastUpdatedKey]];
+            [defaults synchronize];
         }
         
         [ReiseabrechnungAppDelegate saveContext:_context];
@@ -134,6 +151,14 @@
     [result release];
     
     return returnValue;
+}
+
+- (BOOL)areRatesOutdated {
+    
+    NSDate *lastUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdatedKey]];
+    NSDate *updateFrom = [lastUpdate dateByAddingTimeInterval:60 * 60 * 24]; // = 1 day
+    
+    return [[NSDate date] earlierDate:updateFrom] == updateFrom;
 }
 
 - (void)dealloc {

@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "ParticipantViewController.h"
@@ -60,8 +60,12 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
+    
     UITableViewCell *cell = [super tableView:tableView cellForManagedObject:managedObject];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    
     return cell;
 }
 

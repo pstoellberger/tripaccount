@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 01/07/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "Summary.h"
@@ -66,7 +66,7 @@
     Summary *summary = [[[Summary alloc] init] autorelease];
     
     if (!summary.baseCurrency) {
-        summary.baseCurrency = ((Entry *) [travel.entries anyObject]).currency.rate.baseCurrency;
+        summary.baseCurrency = ((Entry *) [travel.entries anyObject]).currency.defaultRate.baseCurrency;
     }
       
     for (Entry *entry in travel.entries) {

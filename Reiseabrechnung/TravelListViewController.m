@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 28/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -69,7 +69,11 @@
         
         Travel *travel = (Travel *) managedObject;
         TravelViewController *detailViewController = [[TravelViewController alloc] initWithTravel:travel];
-        detailViewController.title = travel.name;
+        if (travel.name) {
+            detailViewController.title = travel.name;
+        } else {
+            detailViewController.title = travel.country.name;
+        }
         [self.rootViewController.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release]; 
     }

@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 22/07/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -52,7 +52,7 @@
         if (currency) {
             self.textField.frame = CGRectMake(BORDER_GAP, (self.textCell.bounds.size.height - self.textField.bounds.size.height) / 2, self.tableView.bounds.size.width - BORDER_GAP - BORDER_GAP, self.textField.bounds.size.height);            
             
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
             
             label.text = currency.code;
             label.font = self.textField.font;
@@ -62,15 +62,19 @@
             label.backgroundColor = [UIColor clearColor];
             label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
             
-            self.textField.frame = CGRectMake(self.textField.frame.origin.x, self.textField.frame.origin.y, label.frame.origin.x - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.bounds.size.height);
+            self.textField.frame = CGRectMake(self.textField.frame.origin.x, (self.textCell.frame.size.height - self.textField.frame.size.height) / 2, label.frame.origin.x - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.bounds.size.height);
             
             [self.textCell.contentView addSubview:label]; 
+            
         } else {
+            
             self.tableView.tableHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 80)] autorelease];
+            
+            self.textField.frame = CGRectMake(self.textField.frame.origin.x, (self.textCell.frame.size.height - self.textField.frame.size.height) / 2, self.textCell.frame.size.width - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.frame.size.height);
         }
         
         if (currency && [travel.currencies count] > 1) {
-            self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, FOOTER_HEIGHT)];
+            self.tableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, FOOTER_HEIGHT)] autorelease];
             
             [self.tableView.tableFooterView addSubview:self.convertView];
 
@@ -174,6 +178,7 @@
     self.textCell = [[[GradientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TextEditViewControllerCell"] autorelease];
  
     self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
+    [self.textField sizeToFit];
     self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
     self.textField.textAlignment = UITextAlignmentRight;
     self.textField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -187,7 +192,7 @@
     
     [self.textField becomeFirstResponder];
     
-    self.convertView = [[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP, CONVERSION_VIEW_GAP, [[UIScreen mainScreen] applicationFrame].size.width - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP, FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)];
+    self.convertView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP, CONVERSION_VIEW_GAP, [[UIScreen mainScreen] applicationFrame].size.width - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP, FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
     self.convertView.textAlignment = UITextAlignmentRight;
     self.convertView.textColor = [UIColor grayColor];
     self.convertView.editable = NO;

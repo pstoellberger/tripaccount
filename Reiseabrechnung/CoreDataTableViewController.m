@@ -27,7 +27,7 @@
             searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             searchBar.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 38);
             
-			self.dataSearchController = [[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] retain];
+			self.dataSearchController = [[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] autorelease];
 			self.dataSearchController.searchResultsDelegate = self;
 			self.dataSearchController.searchResultsDataSource = self;
 			self.dataSearchController.delegate = self;

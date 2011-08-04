@@ -1,35 +1,34 @@
 //
-//  EntryCell.m
+//  RateCell.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 30/06/2011.
+//  Created by Martin Maier on 8/3/11.
 //  Copyright 2011 Martin Maier. All rights reserved.
 //
 
-#import "EntryCell.h"
-#import <QuartzCore/QuartzCore.h>
+#import "RateCell.h"
 
-@implementation EntryCell
+@implementation RateCell
 
-@synthesize top, bottom, right, image, rightBottom, checkMark;
-
+@synthesize subTextLabel=_subTextLabel, nameLabel=_nameLabel, rateLabel=_rateLabel;
+    
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     
     [super setEditing:editing animated:animated]; 
-
+    
     if (editing) {
         [UIView animateWithDuration:0.3
                               delay:0 
                             options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
                          animations:^{
-                             right.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, - right.frame.origin.x - right.bounds.size.width, 0);
+                             self.subTextLabel.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, - self.subTextLabel.frame.origin.x - self.subTextLabel.bounds.size.width - 20, 0);
                          } 
                          completion:nil];
         [UIView animateWithDuration:0.3
                               delay:0 
                             options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
                          animations:^{
-                             rightBottom.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, - rightBottom.frame.origin.x - rightBottom.bounds.size.width, 0);
+                             self.rateLabel.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, - self.rateLabel.frame.origin.x - self.rateLabel.bounds.size.width - 20, 0);
                          } 
                          completion:nil];
     } else {
@@ -37,16 +36,16 @@
                               delay:0 
                             options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
                          animations:^{
-                             right.transform = CGAffineTransformIdentity;
+                             self.subTextLabel.transform = CGAffineTransformIdentity;
                          } 
-                         completion:^(BOOL fin) { [right setNeedsDisplay]; }];  
+                         completion:^(BOOL fin) { [self.subTextLabel setNeedsDisplay]; }];  
         [UIView animateWithDuration:0.3
                               delay:0 
                             options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
                          animations:^{
-                             rightBottom.transform = CGAffineTransformIdentity;
+                             self.rateLabel.transform = CGAffineTransformIdentity;
                          } 
-                         completion:^(BOOL fin) { [rightBottom setNeedsDisplay]; }];
+                         completion:^(BOOL fin) { [self.rateLabel setNeedsDisplay]; }];  
     }
 }
 

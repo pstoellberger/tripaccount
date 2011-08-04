@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 01/07/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "GenericSelectViewController.h"
@@ -32,7 +32,19 @@
                               
 }
 
-- (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context
+              withMultiSelection:(BOOL)multiSelection 
+                withFetchRequest:(NSFetchRequest *)fetchRequest
+                  withSectionKey:(NSString *)sectionKey
+             withSelectedObjects:(NSArray *)newSelectedObjects
+                          target:(id)target 
+                          action:(SEL)selector; {
+    return [self initInManagedObjectContext:context withStyle:UITableViewStylePlain withMultiSelection:multiSelection withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
+
+}
+
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context
+                       withStyle:(UITableViewStyle)style
               withMultiSelection:(BOOL)multiSelection 
                 withFetchRequest:(NSFetchRequest *)fetchRequest
                   withSectionKey:(NSString *)sectionKey
@@ -40,7 +52,7 @@
                           target:(id)target 
                           action:(SEL)selector; {
     
-    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:style];
     if (self) {
         _selector = selector;
         _target = target;
@@ -134,9 +146,7 @@
         } else {
             [_target performSelector:_selector withObject:self.selectedObjects];
         }
-    }    
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    } 
 }
 
 - (void)selectAll:(id)sender {

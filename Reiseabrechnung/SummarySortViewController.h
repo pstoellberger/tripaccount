@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 01/08/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,7 +19,10 @@
 
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) SummaryViewController *detailViewController;
+@property (nonatomic, retain) UILabel *lastUpdatedLabel;
+@property (nonatomic, retain) UIActivityIndicatorView *updateIndicator;
 
 - (id)initWithTravel:(Travel *) travel;
+- (void)updateRateLabel;
 
 @end

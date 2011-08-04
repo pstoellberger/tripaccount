@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 29/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "TravelEditViewController.h"
@@ -18,6 +18,7 @@
 #import "CountryCell.h"
 #import "TextEditViewController.h"
 #import "AlignedStyle2Cell.h"
+#import "ExchangeRate.h"
 
 static NSIndexPath *_countryIndexPath;
 static NSIndexPath *_cityIndexPath;
@@ -290,6 +291,8 @@ static NSIndexPath *_currenciesIndexPath;
         self.currencies = newCurrencies;
         [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
     }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)selectCountry:(Country *)newCountry {
@@ -322,6 +325,8 @@ static NSIndexPath *_currenciesIndexPath;
             [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
         }
     }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)selectName:(NSString *)newName {
@@ -372,11 +377,22 @@ static NSIndexPath *_currenciesIndexPath;
     self.travel.closed = [NSNumber numberWithInt:0];
     self.travel.currencies = [[[NSSet alloc] initWithArray:self.currencies] autorelease];
     
+    NSMutableArray *ratesToDelete = [NSMutableArray arrayWithArray:[self.travel.rates allObjects]];
     for (Currency *currency in self.currencies) {
-        [self.travel addRatesObject:currency.rate];
+        BOOL rateFound = NO;
+        for (ExchangeRate *rate in self.travel.rates) {
+            if (rate.counterCurrency == currency) {
+                [ratesToDelete removeObject:rate];
+                rateFound = YES;
+                break;
+            }
+        }
+        if (!rateFound) {
+            [self.travel addRatesObject:currency.defaultRate];
+        }
     }
+    [self.travel removeRates:[NSSet setWithArray:ratesToDelete]];
     
-   
     ABAddressBookRef addressBook = ABAddressBookCreate();
     
     if (addressBook) {

@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -18,8 +18,9 @@
 #import "EntryNotManaged.h"
 #import "EntrySortViewController.h"
 #import "SummarySortViewController.h"
+#import "RateSelectViewController.h"
  
-@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate> {
+@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate> {
     Travel *_travel;
     UIBarButtonItem *_addButton;
     UIBarButtonItem *_actionButton;
@@ -33,6 +34,9 @@
 
 @property (nonatomic, retain) UIBarButtonItem *addButton;
 @property (nonatomic, retain) UIBarButtonItem *actionButton;
+
+@property (nonatomic, retain) UIAlertView *rateRefreshAlertView;
+@property (nonatomic, retain) UIAlertView *mailSendAlertView;
 
 - (id)initWithTravel:(Travel *) travel;
 

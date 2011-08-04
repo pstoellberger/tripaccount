@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #include <stdlib.h>
@@ -20,6 +20,9 @@
 #import "ShadowNavigationController.h"
 #import "UIFactory.h"
 #import "ExchangeRate.h"
+#import "CurrencyRefresh.h"
+#import "RateSelectViewController.h"
+#import "ShadowNavigationController.h"
 
 @interface TravelViewController ()
 
@@ -34,6 +37,7 @@
 
 @synthesize travel=_travel, tabBarController=_tabBarController, addButton=_addButton, actionButton=_actionButton;
 @synthesize participantViewController=_participantViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
+@synthesize mailSendAlertView=_mailSendAlertView, rateRefreshAlertView=_rateRefreshAlertView;
 
 - (id)initWithTravel:(Travel *) travel {
     
@@ -86,18 +90,28 @@
     [picker release];
 }
 
+
 - (void)openActionPopup {
     
-    NSString *openOrCloseTrip = @"Close this trip";
+    UIActionSheet *actionPopup;
+    
     if ([self.travel.closed intValue] == 1) {
-        openOrCloseTrip = @"Open this trip";
+        
+        actionPopup = [[UIActionSheet alloc] initWithTitle: @"Choose your action"
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                    destructiveButtonTitle:nil
+                                         otherButtonTitles:@"Send summary e-mail", @"Open this trip", nil];
+    } else {
+        
+        actionPopup = [[UIActionSheet alloc] initWithTitle: @"Choose your action"
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                    destructiveButtonTitle:nil
+                                         otherButtonTitles:@"Send summary e-mail", @"Close this trip", @"Update exchange rates", @"Manually edit rates", nil];
     }
     
-    UIActionSheet *actionPopup = [[UIActionSheet alloc] initWithTitle: @"Choose your action"
-                                                        delegate:self
-                                               cancelButtonTitle:@"Cancel"
-                                          destructiveButtonTitle:nil
-                                               otherButtonTitles:@"Send summary e-mail", openOrCloseTrip, nil];
+
     actionPopup.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [actionPopup showInView:self.view];
     [actionPopup release];
@@ -137,10 +151,44 @@
     [self updateStateOfNavigationController:self.tabBarController.selectedViewController];    
 }
 
+- (void)openRateEditPopup {
+    
+    RateSelectViewController *rateSelectViewController = [[RateSelectViewController alloc] initWithTravel:self.travel];
+    rateSelectViewController.closeDelegate = self;
+    
+    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:rateSelectViewController];
+    navController.delegate = rateSelectViewController;
+    [self.navigationController presentModalViewController:navController animated:YES];
+    
+    [navController release];
+    [rateSelectViewController release];
+    
+}
+
 - (void)askToRefreshRatesWhenClosing {
-    NSString *message = @"Do you want to assign the latest currency exchange rates to this travel?";
-    UIAlertView *refreshRates = [[UIAlertView alloc] initWithTitle:@"Refresh rates" message:message delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
-    [refreshRates show];
+    [self.rateRefreshAlertView show];
+}
+
+- (void)askToSendEmail {
+    
+    NSString *noMailParticipants = nil;
+    for (Participant *participant in self.travel.participants) {
+        if (participant.email == nil || [participant.email length] == 0) {
+            if (noMailParticipants == nil) {
+                noMailParticipants = participant.name;
+            } else {
+                noMailParticipants = [noMailParticipants stringByAppendingFormat:@", ", participant.email];
+            }
+        }
+    }
+    
+    if (noMailParticipants) {
+        NSString *message = [NSString stringWithFormat:@"There are no email addresses available for the participant(s) %@", noMailParticipants];
+        self.mailSendAlertView.message = message;
+        [self.mailSendAlertView show];
+    } else {
+        [self sendSummaryMail];
+    }
 }
 
 - (void)sendSummaryMail {
@@ -168,6 +216,7 @@
     if (!entry) {
         _entry = [NSEntityDescription insertNewObjectForEntityForName: @"Entry" inManagedObjectContext: [_travel managedObjectContext]];
         _travel.lastParticipantUsed = nmEntry.payer;
+        _travel.lastCurrencyUsed = nmEntry.currency;
     } else {
         _entry = entry;
     }
@@ -198,19 +247,49 @@
 
 }
 
+- (void)refreshExchangeRates {
+    
+    dispatch_queue_t updateQueue = dispatch_queue_create("UpdateQueue", NULL);
+    dispatch_async(updateQueue, ^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_summarySortViewController.updateIndicator startAnimating];
+            _summarySortViewController.lastUpdatedLabel.text = @"Updating currency exchange rates...";
+        });
+        
+        CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[self.travel managedObjectContext]];
+        NSLog(@"Updating currencies...");
+        [currencyRefresh refreshCurrencies];
+        [currencyRefresh release];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_summarySortViewController updateRateLabel];
+            [_summarySortViewController.updateIndicator stopAnimating];
+        });
+    });
+}
+
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    if (buttonIndex == [alertView cancelButtonIndex]) {
+    if (alertView == self.rateRefreshAlertView) {
         
-        NSLog(@"Change rates of travel to most current ones.");
+        if (buttonIndex == [alertView cancelButtonIndex]) {
+            
+            NSLog(@"Changing rates of travel to most current ones.");
+            
+            [self.travel removeRates:self.travel.rates];
+            
+            for (Currency *currency in self.travel.currencies) {
+                [self.travel addRatesObject:currency.defaultRate];
+            }      
+        }
         
-        [self.travel removeRates:self.travel.rates];
+    } else if (alertView == self.mailSendAlertView) {
         
-        for (Currency *currency in self.travel.currencies) {
-            [self.travel addRatesObject:currency.rate];
-        }      
+        [self sendSummaryMail];
+        
     }
     
     [self openTravel];
@@ -223,7 +302,7 @@
     
     if (buttonIndex == 0) {
         
-        [self sendSummaryMail];
+        [self askToSendEmail];
         
     } else if (buttonIndex == 1) {
         
@@ -232,7 +311,20 @@
         } else {
             [self closeTravel];
         }
+    } else if (buttonIndex == 2) {
+        
+        [self refreshExchangeRates];
+        
+    } else if (buttonIndex == 3) {
+        
+        [self openRateEditPopup];
     }
+}
+#pragma mark - RateSelectViewControllerDelegate
+
+- (void)willDisappearWithChanges {
+    [_summarySortViewController.detailViewController recalculateSummary];
+    [_summarySortViewController.detailViewController.tableView reloadData];
 }
 
 #pragma mark - ABPeoplePickerNavigationControllerDelegate
@@ -268,12 +360,14 @@
     
     self.travel.selectedTab = [NSNumber numberWithInt:[tabBarController.viewControllers indexOfObject:viewController]];
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+    
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     
     if ([_summarySortViewController isEqual:viewController]) {
         [_summarySortViewController.detailViewController recalculateSummary];
+        [_summarySortViewController.detailViewController.tableView reloadData];
     }
     return YES;
 }
@@ -318,6 +412,11 @@
     [self updateStateOfNavigationController:self.tabBarController.selectedViewController];
     
     [self.view addSubview:_tabBarController.view];
+    
+    self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:@"Warning" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+    
+    NSString *rateRefreshAlertViewMessage = @"Do you want to assign the latest currency exchange rates to this travel?";
+    self.rateRefreshAlertView = [[[UIAlertView alloc] initWithTitle:@"Refresh rates" message:rateRefreshAlertViewMessage delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil] autorelease];
 
 }
 
@@ -343,8 +442,7 @@
     self.addButton = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 

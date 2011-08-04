@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 27/07/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,7 +14,10 @@
     NSArray *_currencies;
 }
 
++ (NSString *)lastUpdatedKey;
+
 - (id)initInManagedContext:(NSManagedObjectContext *)context;
-- (BOOL)refreshCurrencies:(NSString *)baseIsoCode;
+- (BOOL)refreshCurrencies;
+- (BOOL)areRatesOutdated;
 
 @end

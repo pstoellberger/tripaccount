@@ -112,8 +112,8 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
 								</object>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">3</int>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<int key="IBUIContentMode">7</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<object class="IBUILabel" id="909434823">
@@ -152,7 +152,6 @@
 										<string key="NSFrameSize">{39, 36}</string>
 										<reference key="NSSuperview" ref="911448856"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:311</string>
 										<reference key="IBUIBackgroundColor" ref="619667057"/>
 										<bool key="IBUIOpaque">NO</bool>

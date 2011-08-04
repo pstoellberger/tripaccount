@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 01/08/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "TypeViewController.h"
@@ -68,7 +68,7 @@
     
     Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext: self.context];
     type.name = typeName;
-    type.buildIn = [NSNumber numberWithInt:0];    
+    type.builtIn = [NSNumber numberWithInt:0];    
     
     [ReiseabrechnungAppDelegate saveContext:self.context];
     
@@ -104,7 +104,7 @@
         cell = [[[self newUIViewCell] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier] autorelease];
     }
     
-    if ([type.buildIn intValue] == 1) {
+    if ([type.builtIn intValue] == 1) {
         cell.detailTextLabel.text = @"(built-in)";
     } else {
         cell.detailTextLabel.text = nil;
@@ -124,7 +124,7 @@
     } else {
         
         Type *type = (Type *)managedObject;
-        if ([type.buildIn intValue] == 1) {
+        if ([type.builtIn intValue] == 1) {
             [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         } else {
             [self editType:type];
@@ -147,7 +147,7 @@
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
     
     Type *type = (Type *)managedObject;
-    if ([type.buildIn intValue] == 1) {
+    if ([type.builtIn intValue] == 1) {
         return NO;
     } else {
         return YES;

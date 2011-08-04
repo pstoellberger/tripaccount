@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 01/08/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "CurrencyHelperCategory.h"
@@ -22,8 +22,8 @@
     
     double returnValue = amount;
     
-    ExchangeRate *rateSelf = [self rate];
-    ExchangeRate *rateCurrency = [currency rate];
+    ExchangeRate *rateSelf = [self rateWithTravel:travel];
+    ExchangeRate *rateCurrency = [currency rateWithTravel:travel];
     
     if ([rateSelf.counterCurrency isEqual:currency]) {
         
@@ -45,13 +45,37 @@
         
         // no direct connection found -> convert to a base currency
 
-        Currency *euro = self.rate.baseCurrency;
+        Currency *euro = [self rateWithTravel:travel].baseCurrency;
         double amountInEuro = [self convertTravelAmount:travel currency:euro amount:amount];
         returnValue = [euro convertTravelAmount:travel currency:currency amount:amountInEuro];
         
     }
     
     return returnValue;
+}
+
+- (ExchangeRate *)defaultRate {
+    
+    ExchangeRate *returnRate = nil;
+    for (ExchangeRate *defaultRate in self.rates) {
+        if ([defaultRate.defaultRate intValue] == 1) {
+            returnRate = defaultRate;
+            break;
+        }
+    }
+    return returnRate;
+}
+
+- (ExchangeRate *)rateWithTravel:(Travel *)targetTravel {
+    
+    ExchangeRate *returnRate = nil;
+    for (ExchangeRate *defaultRate in self.rates) {
+        if ([defaultRate.travels containsObject:targetTravel]) {
+            returnRate = defaultRate;
+            break;
+        }
+    }
+    return returnRate;    
 }
 
 - (ExchangeRate *)travelRate:(Travel *)travel {

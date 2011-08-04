@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 30/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -21,6 +21,7 @@
     Travel *_travel;
 
     NSMutableArray* _cellsToReloadAndFlash;
+    BOOL _isFirstView;
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;
@@ -30,5 +31,7 @@
 
 - (IBAction)done:(UIBarButtonItem *)sender;
 - (IBAction)cancel:(UIBarButtonItem *)sender;
+
+- (void)updateAndFlash:(UIViewController *)viewController;
 
 @end

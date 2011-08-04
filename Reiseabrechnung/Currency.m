@@ -2,8 +2,8 @@
 //  Currency.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 02/08/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Martin Maier on 8/4/11.
+//  Copyright (c) 2011 Martin Maier. All rights reserved.
 //
 
 #import "Currency.h"
@@ -19,11 +19,12 @@
 @dynamic code;
 @dynamic name;
 @dynamic countries;
-@dynamic rate;
+@dynamic rates;
 @dynamic defaults;
 @dynamic ratesWithBaseCurrency;
+@dynamic transfersWithBaseCurrency;
 @dynamic travels;
 @dynamic entries;
-@dynamic transfersWithBaseCurrency;
+@dynamic lastUsedInTravel;
 
 @end

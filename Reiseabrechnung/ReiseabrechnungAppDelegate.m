@@ -3,7 +3,7 @@
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 28/06/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Martin Maier. All rights reserved.
 //
 
 #import "ReiseabrechnungAppDelegate.h"
@@ -31,12 +31,13 @@
     
     [self initializeStartDatabase:[NSBundle mainBundle]];
     
-    
     [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
     
-    //NSLog(@"Updating currencies...");
     CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:self.managedObjectContext];
-    //[currencyRefresh refreshCurrencies:@"EUR"];
+    if ([currencyRefresh areRatesOutdated]) {
+        NSLog(@"Updating currencies...");
+        [currencyRefresh refreshCurrencies];
+    }
     [currencyRefresh release];
     
     RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
@@ -55,7 +56,6 @@
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
     NSArray *currencies = [self.managedObjectContext executeFetchRequest:req error:nil];
-    [req release];
     
     if (![currencies lastObject]) {
         
@@ -108,8 +108,10 @@
                 if ([ratesForCurrencyKey isEqualToString:@"EUR"]) {
                     ratesForCurrencyKey = [ratesForCurrencyKey uppercaseString];
                     ExchangeRate *rate = [NSEntityDescription insertNewObjectForEntityForName:@"ExchangeRate" inManagedObjectContext:self.managedObjectContext];
+                    
                     rate.counterCurrency = _currency;
                     rate.rate = [ratesForCurrency valueForKey:ratesForCurrencyKey];
+                    rate.defaultRate = [NSNumber numberWithInt:1];
                     
                     Currency *baseCurrency = [newCurrencies objectForKey:ratesForCurrencyKey];
                     if (!baseCurrency) {
@@ -119,19 +121,29 @@
                     }
                     rate.baseCurrency = baseCurrency;
                     
-                    _currency.rate = rate;
+                    //[_currency addRatesObject:rate];
                 }
             }
         }
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults objectForKey:[CurrencyRefresh lastUpdatedKey]]) {
+            [defaults setObject:[currencyDict valueForKey:@"lastUpdated"] forKey:[CurrencyRefresh lastUpdatedKey]];
+            [defaults synchronize];                
+        }
+        
         [currencyDict release];
         [orderCountryDict release];
         
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
     }
     
+    currencies = [self.managedObjectContext executeFetchRequest:req error:nil];
+    [req release];
+    
     for (Currency *c in currencies) {
-        if (!c.rate){
-            NSLog(@"no rate %@", c.name);
+        if ([c.rates count] == 0){
+            NSLog(@"no rate for currency %@", c.name);
         }
     }
     
