@@ -80,14 +80,6 @@ static NSIndexPath *_currenciesIndexPath;
             self.city = @"";
             self.country = nil;
             
-        } else {
-            
-            self.travel = travel;
-            self.name = travel.name;
-            self.city = travel.city;
-            self.country = travel.country;
-            self.currencies = [travel.currencies allObjects];
-            
             // init location manager
             self.locManager = [[[CLLocationManager alloc] init] autorelease];
             if (![CLLocationManager locationServicesEnabled]) {
@@ -102,6 +94,14 @@ static NSIndexPath *_currenciesIndexPath;
             if (!self.country) {
                 [self startLocating];
             }
+            
+        } else {
+            
+            self.travel = travel;
+            self.name = travel.name;
+            self.city = travel.city;
+            self.country = travel.country;
+            self.currencies = [travel.currencies allObjects];
         }
     }
     return self;

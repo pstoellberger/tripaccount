@@ -30,7 +30,7 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 + (void)saveContext:(NSManagedObjectContext *) context;
-- (Currency *)defaultCurrency;
++ (Currency *)defaultCurrency:(NSManagedObjectContext *) context;
 + (AppDefaults *)defaultsObject:(NSManagedObjectContext *) context;
 - (void)initializeStartDatabase:(NSBundle *)bundle;
 - (void)refreshCurrencyRatesIfOutDated;

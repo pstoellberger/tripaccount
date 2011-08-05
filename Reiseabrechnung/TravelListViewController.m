@@ -69,7 +69,7 @@
         
         Travel *travel = (Travel *) managedObject;
         TravelViewController *detailViewController = [[TravelViewController alloc] initWithTravel:travel];
-        if (travel.name) {
+        if ([travel.name length] > 0) {
             detailViewController.title = travel.name;
         } else {
             detailViewController.title = travel.country.name;
@@ -81,14 +81,13 @@
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
-- (void)deleteManagedObject:(NSManagedObject *)managedObject
-{
+- (void)deleteManagedObject:(NSManagedObject *)managedObject {
+    
     [self.managedObjectContext deleteObject:managedObject];
     [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
-- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject
-{
+- (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
 	return YES;
 }
 
@@ -172,10 +171,11 @@
     [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
+
+#pragma mark Memory management
 
 - (void)dealloc {
     [_managedObjectContext release];

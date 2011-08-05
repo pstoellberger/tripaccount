@@ -26,7 +26,7 @@
         [UIFactory initializeTableViewController:self.tableView];
         
         self.title = @"People";
-        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"112-group" ofType:@"png"]];
+        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"group" ofType:@"png"]];
         
         NSManagedObjectContext *context = [travel managedObjectContext];
         

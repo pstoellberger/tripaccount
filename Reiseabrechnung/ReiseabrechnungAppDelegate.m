@@ -172,7 +172,7 @@
     if (!defaultObject.homeCurrency) {
         
         NSLog(@"Initialising defaults...");
-        defaultObject.homeCurrency = [self defaultCurrency];
+        defaultObject.homeCurrency = [ReiseabrechnungAppDelegate defaultCurrency:self.managedObjectContext];
         defaultObject.defaultType = _defaultType;
         
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
@@ -201,24 +201,24 @@
     
 }
 
-- (Currency *)defaultCurrency {
++ (Currency *)defaultCurrency:(NSManagedObjectContext *) context {
     
     NSLocale *theLocale = [NSLocale currentLocale];
     NSString *code = [theLocale objectForKey:NSLocaleCurrencyCode];
     
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
-    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
+    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext:context];
     req.predicate = [NSPredicate predicateWithFormat:@"code = %@", code];
-    NSArray *curSet = [self.managedObjectContext executeFetchRequest:req error:nil];
+    NSArray *curSet = [context executeFetchRequest:req error:nil];
     [req release];
     
     if ([curSet lastObject]) {
         return [curSet lastObject];
     } else {
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
-        req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: self.managedObjectContext];
+        req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext:context];
         req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
-        NSArray *travelSet = [self.managedObjectContext executeFetchRequest:req error:nil];
+        NSArray *travelSet = [context executeFetchRequest:req error:nil];
         [req release];
         
         if ([travelSet lastObject]) {

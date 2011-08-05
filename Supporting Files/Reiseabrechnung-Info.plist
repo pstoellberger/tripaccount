@@ -13,9 +13,10 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>iconSmall.png</string>
-		<string>icon.png</string>
+		<string>Icon.png</string>
 		<string>iconSmall.png</string>
 		<string>icon.png</string>
+		<string>Icon@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>name.martinmaier.${PRODUCT_NAME:rfc1034identifier}</string>

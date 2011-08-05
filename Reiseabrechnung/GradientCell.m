@@ -39,6 +39,10 @@
 }
 
 - (void)initGradient {
+    
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.textLabel.backgroundColor = [UIColor clearColor];
+    
     _gradient = [[CAGradientLayer layer] retain];
     _gradient.frame = self.bounds;
     _gradient.startPoint = CGPointMake(0.5, 0.5);

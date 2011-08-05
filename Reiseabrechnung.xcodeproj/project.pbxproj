@@ -14,6 +14,18 @@
 		9408120A13EAD10B003D7B3E /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FFEA6713E99BCA00FC97A4 /* RateCell.m */; };
 		9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408120C13EADF7F003D7B3E /* ExchangeRate.m */; };
 		9408121013EADF7F003D7B3E /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408120F13EADF7F003D7B3E /* Currency.m */; };
+		940B41ED13EBF18300902B00 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EC13EBF18300902B00 /* Icon.png */; };
+		940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EF13EBF18B00902B00 /* Icon@2x.png */; };
+		940B41F413EBF39800902B00 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F113EBF39800902B00 /* group.png */; };
+		940B41F513EBF39800902B00 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F113EBF39800902B00 /* group.png */; };
+		940B41F613EBF39800902B00 /* scales.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F213EBF39800902B00 /* scales.png */; };
+		940B41F713EBF39800902B00 /* scales.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F213EBF39800902B00 /* scales.png */; };
+		940B41F813EBF39800902B00 /* shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F313EBF39800902B00 /* shopping-cart.png */; };
+		940B41F913EBF39800902B00 /* shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F313EBF39800902B00 /* shopping-cart.png */; };
+		940B41FB13EC11A200902B00 /* pricetag.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FA13EC11A200902B00 /* pricetag.png */; };
+		940B41FC13EC11A200902B00 /* pricetag.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FA13EC11A200902B00 /* pricetag.png */; };
+		940B41FE13EC365C00902B00 /* pricetag_euro.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FD13EC365C00902B00 /* pricetag_euro.png */; };
+		940B41FF13EC365C00902B00 /* pricetag_euro.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FD13EC365C00902B00 /* pricetag_euro.png */; };
 		94F97EE313E9831C00662ADB /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
 		94F97EED13E9878400662ADB /* RateEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F97EEA13E9878400662ADB /* RateEditViewController.xib */; };
 		94F97EEE13E9878400662ADB /* RateEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F97EEA13E9878400662ADB /* RateEditViewController.xib */; };
@@ -98,11 +110,6 @@
 		F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F1533F0513D416BD008EBE9D /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F1533F0413D416BA008EBE9D /* background.png */; };
 		F1533F1413D433F7008EBE9D /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1533F1313D433F7008EBE9D /* UIFactory.m */; };
-		F1533F1613D437D0008EBE9D /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = F1533F1513D437D0008EBE9D /* 74-location.png */; };
-		F1533F1813D43AA1008EBE9D /* 112-group.png in Resources */ = {isa = PBXBuildFile; fileRef = F1533F1713D43AA1008EBE9D /* 112-group.png */; };
-		F1533F1A13D43BE5008EBE9D /* 60-signpost.png in Resources */ = {isa = PBXBuildFile; fileRef = F1533F1913D43BE5008EBE9D /* 60-signpost.png */; };
-		F1533F1C13D43C25008EBE9D /* 80-shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = F1533F1B13D43C25008EBE9D /* 80-shopping-cart.png */; };
-		F1533F1E13D43C81008EBE9D /* 138-scales.png in Resources */ = {isa = PBXBuildFile; fileRef = F1533F1D13D43C81008EBE9D /* 138-scales.png */; };
 		F159EA2913E08B3C00C2D855 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA2813E08B3C00C2D855 /* ArrowView.m */; };
 		F159EA2F13E0AF3200C2D855 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */; };
 		F159EA3113E0AFCA00C2D855 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA3013E0AFCA00C2D855 /* InfoViewController.m */; };
@@ -376,6 +383,13 @@
 		9408120C13EADF7F003D7B3E /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
 		9408120E13EADF7F003D7B3E /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
 		9408120F13EADF7F003D7B3E /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		940B41EC13EBF18300902B00 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		940B41EF13EBF18B00902B00 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		940B41F113EBF39800902B00 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
+		940B41F213EBF39800902B00 /* scales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scales.png; sourceTree = "<group>"; };
+		940B41F313EBF39800902B00 /* shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart.png"; sourceTree = "<group>"; };
+		940B41FA13EC11A200902B00 /* pricetag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pricetag.png; sourceTree = "<group>"; };
+		940B41FD13EC365C00902B00 /* pricetag_euro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pricetag_euro.png; sourceTree = "<group>"; };
 		94F97EDC13E9810D00662ADB /* iconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSmall.png; sourceTree = "<group>"; };
 		94F97EDE13E9811500662ADB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		94F97EE113E9831C00662ADB /* RateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RateSelectViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -424,11 +438,6 @@
 		F1533F0413D416BA008EBE9D /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		F1533F1213D433F7008EBE9D /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIFactory.h; path = Reiseabrechnung/UIFactory.h; sourceTree = "<group>"; };
 		F1533F1313D433F7008EBE9D /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIFactory.m; path = Reiseabrechnung/UIFactory.m; sourceTree = "<group>"; };
-		F1533F1513D437D0008EBE9D /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location.png"; sourceTree = "<group>"; };
-		F1533F1713D43AA1008EBE9D /* 112-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "112-group.png"; sourceTree = "<group>"; };
-		F1533F1913D43BE5008EBE9D /* 60-signpost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-signpost.png"; sourceTree = "<group>"; };
-		F1533F1B13D43C25008EBE9D /* 80-shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "80-shopping-cart.png"; sourceTree = "<group>"; };
-		F1533F1D13D43C81008EBE9D /* 138-scales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "138-scales.png"; sourceTree = "<group>"; };
 		F159EA2713E08B3B00C2D855 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrowView.h; path = Reiseabrechnung/ArrowView.h; sourceTree = "<group>"; };
 		F159EA2813E08B3C00C2D855 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrowView.m; path = Reiseabrechnung/ArrowView.m; sourceTree = "<group>"; };
 		F159EA2B13E0AF3000C2D855 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
@@ -1128,6 +1137,8 @@
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
+				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
+				940B41EC13EBF18300902B00 /* Icon.png */,
 				F1CD783413BA405A00D42AA3 /* Reiseabrechnung */,
 				F14B372D13E68B5F00351641 /* UnitTests */,
 				F1533F1F13D47951008EBE9D /* Data */,
@@ -1236,6 +1247,11 @@
 		F1CD78DC13BC764400D42AA3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				940B41F113EBF39800902B00 /* group.png */,
+				940B41FD13EC365C00902B00 /* pricetag_euro.png */,
+				940B41F213EBF39800902B00 /* scales.png */,
+				940B41FA13EC11A200902B00 /* pricetag.png */,
+				940B41F313EBF39800902B00 /* shopping-cart.png */,
 				94F97EDE13E9811500662ADB /* icon.png */,
 				94F97EDC13E9810D00662ADB /* iconSmall.png */,
 				F100DEBE13E2C5B700BB1E6E /* moreImages.png */,
@@ -1243,11 +1259,6 @@
 				F1A6C63113D6BFA6005E8388 /* noImage.png */,
 				F12C7AA013D104DF00668BF0 /* mobileTicker_name2-57x57.png */,
 				F1533F0413D416BA008EBE9D /* background.png */,
-				F1533F1D13D43C81008EBE9D /* 138-scales.png */,
-				F1533F1B13D43C25008EBE9D /* 80-shopping-cart.png */,
-				F1533F1913D43BE5008EBE9D /* 60-signpost.png */,
-				F1533F1713D43AA1008EBE9D /* 112-group.png */,
-				F1533F1513D437D0008EBE9D /* 74-location.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1351,6 +1362,11 @@
 				F11FB33F13E6982E00115D12 /* currencies.plist in Resources */,
 				F11FB34013E6983F00115D12 /* types.plist in Resources */,
 				94F97EEE13E9878400662ADB /* RateEditViewController.xib in Resources */,
+				940B41F513EBF39800902B00 /* group.png in Resources */,
+				940B41F713EBF39800902B00 /* scales.png in Resources */,
+				940B41F913EBF39800902B00 /* shopping-cart.png in Resources */,
+				940B41FC13EC11A200902B00 /* pricetag.png in Resources */,
+				940B41FF13EC365C00902B00 /* pricetag_euro.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1362,11 +1378,6 @@
 				F1CD790713BCC03D00D42AA3 /* EntryCell.xib in Resources */,
 				F12C7AA113D104DF00668BF0 /* mobileTicker_name2-57x57.png in Resources */,
 				F1533F0513D416BD008EBE9D /* background.png in Resources */,
-				F1533F1613D437D0008EBE9D /* 74-location.png in Resources */,
-				F1533F1813D43AA1008EBE9D /* 112-group.png in Resources */,
-				F1533F1A13D43BE5008EBE9D /* 60-signpost.png in Resources */,
-				F1533F1C13D43C25008EBE9D /* 80-shopping-cart.png in Resources */,
-				F1533F1E13D43C81008EBE9D /* 138-scales.png in Resources */,
 				F1CE13E413D5C2F40079B234 /* types.plist in Resources */,
 				F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */,
 				F1DB599F13D86CB2001E3B4A /* countries.plist in Resources */,
@@ -1593,6 +1604,13 @@
 				F100DEBF13E2C5B700BB1E6E /* moreImages.png in Resources */,
 				94F97EED13E9878400662ADB /* RateEditViewController.xib in Resources */,
 				94FFEA6A13E99BCA00FC97A4 /* RateCell.xib in Resources */,
+				940B41ED13EBF18300902B00 /* Icon.png in Resources */,
+				940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */,
+				940B41F413EBF39800902B00 /* group.png in Resources */,
+				940B41F613EBF39800902B00 /* scales.png in Resources */,
+				940B41F813EBF39800902B00 /* shopping-cart.png in Resources */,
+				940B41FB13EC11A200902B00 /* pricetag.png in Resources */,
+				940B41FE13EC365C00902B00 /* pricetag_euro.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

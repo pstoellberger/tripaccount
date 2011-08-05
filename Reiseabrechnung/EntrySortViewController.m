@@ -8,6 +8,8 @@
 
 #import "EntrySortViewController.h"
 #import "UIFactory.h"
+#import "ReiseabrechnungAppDelegate.h"
+#import "Currency.h"
 
 @implementation EntrySortViewController
 
@@ -24,7 +26,14 @@
         [evc release];
         
         self.title = @"Expenses";
-        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"80-shopping-cart" ofType:@"png"]];
+        
+        if ([[ReiseabrechnungAppDelegate defaultCurrency:[travel managedObjectContext]].code isEqualToString:@"USD"]) {
+            
+            self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"pricetag" ofType:@"png"]];            
+        } else {
+            
+            self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"pricetag_euro" ofType:@"png"]];
+        }
     }
     return self;
 }
@@ -55,12 +64,12 @@
     
     [super loadView];
     
-    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT)];
+    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT)];
     newView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
 
     NSArray *segArray = [NSArray arrayWithObjects:@"Person", @"Type", @"Date", nil];
     UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray]; 
-    segControl.frame = CGRectMake(10, 5, [UIScreen mainScreen].bounds.size.width - 20, SORT_TOOLBAR_HEIGHT - 10);
+    segControl.frame = CGRectMake(10, 5, [UIScreen mainScreen].applicationFrame.size.width - 20, SORT_TOOLBAR_HEIGHT - 10);
     segControl.selectedSegmentIndex = 0;
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
