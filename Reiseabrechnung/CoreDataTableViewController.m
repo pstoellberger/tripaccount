@@ -76,7 +76,24 @@
 - (void)performFetchForTableView:(UITableView *)tableView
 {
 	NSError *error = nil;
-	[self.fetchedResultsController performFetch:&error];
+    
+    @try {
+        [self.fetchedResultsController performFetch:&error];
+    }
+    @catch (NSException *exception) {
+        
+        if([[exception name] isEqualToString:NSInternalInconsistencyException]) {
+                                                                        
+            NSLog(@"NSInternalInconsistencyException caught, clearing cache and performing retry.");
+            // clear cache and retry
+            [NSFetchedResultsController deleteCacheWithName:self.fetchedResultsController.cacheName];
+            [self.fetchedResultsController performFetch:&error];
+        }
+        else {
+            @throw exception;
+        }
+    }
+
 	if (error) {
 		NSLog(@"[CoreDataTableViewController performFetchForTableView:] %@ (%@)", [error localizedDescription], [error localizedFailureReason]);
 	}

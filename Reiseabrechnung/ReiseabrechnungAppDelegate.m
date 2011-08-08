@@ -16,6 +16,7 @@
 #import "AppDefaults.h"
 #import "CurrencyRefresh.h"
 #import "ExchangeRate.h"
+#import "City.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -68,6 +69,15 @@
             
             NSString *countryId = [NSString stringWithFormat:@"%@", [countryItem valueForKey:@"id"]];
             [orderCountryDict setValue:_country forKey:countryId];
+            
+            NSDictionary *cities = [countryItem valueForKey:@"cities"];
+            for (NSDictionary *cityItem in cities) {
+                City *_city = [NSEntityDescription insertNewObjectForEntityForName:@"City" inManagedObjectContext:self.managedObjectContext];
+                _city.name = [cityItem valueForKey:@"name"];
+                _city.latitude = [cityItem valueForKey:@"latitude"];
+                _city.longitude = [cityItem valueForKey:@"longitude"];
+                _city.country = _country;
+            }
         }
         [countryDict release];
         
@@ -198,6 +208,8 @@
             NSLog(@"Refresh finished.");
         });
     }
+    
+    [currencyRefresh release];
     
 }
 

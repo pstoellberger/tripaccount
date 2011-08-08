@@ -8,23 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "TravelNotManaged.h"
-#import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
-#import <MapKit/MapKit.h>
+#import "Locator.h"
 
 @protocol TravelEditViewControllerDelegate
 - (void)travelDidSave:(Travel *)travel;
 @end
 
-@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, MKReverseGeocoderDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate> {
+@interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, LocatorDelegate> {
 
     NSManagedObjectContext *_context;
     
     NSMutableArray* _cellsToReloadAndFlash;
-    
-    MKReverseGeocoder *_geocoder;
-    
+
     BOOL _isFirstView;
+    
+    Locator *_locator;
 }
 
 @property (nonatomic, retain) NSString *name;
@@ -32,8 +31,6 @@
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Country *country;
 @property (nonatomic, retain) NSArray *currencies;
-
-@property (nonatomic, retain) CLLocationManager *locManager;
 
 @property (nonatomic, assign) id <TravelEditViewControllerDelegate> editDelegate;
 

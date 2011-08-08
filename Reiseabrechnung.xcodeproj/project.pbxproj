@@ -64,7 +64,6 @@
 		F14B373413E68B5F00351641 /* UnitTests.h in Resources */ = {isa = PBXBuildFile; fileRef = F14B373313E68B5F00351641 /* UnitTests.h */; };
 		F14B373613E68B5F00351641 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F14B373513E68B5F00351641 /* UnitTests.m */; };
 		F14B373D13E68CA600351641 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA4B13E19C7B00C2D855 /* AppDefaults.m */; };
-		F14B374213E68CA600351641 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD813DC2D59009BB4D3 /* Country.m */; };
 		F14B374313E68CA600351641 /* FirstLetterCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */; };
 		F14B374413E68CA600351641 /* DateSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */; };
 		F14B374513E68CA600351641 /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211A13BDE2D400FE329B /* Summary.m */; };
@@ -117,6 +116,16 @@
 		F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F159EA3F13E19B0E00C2D855 /* MessageUI.framework */; };
 		F159EA4C13E19C7B00C2D855 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA4B13E19C7B00C2D855 /* AppDefaults.m */; };
 		F159EA5913E1ED7B00C2D855 /* ParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5813E1ED7900C2D855 /* ParticipantView.m */; };
+		F17B449613EFF6AA00072F90 /* Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449513EFF6AA00072F90 /* Locator.m */; };
+		F17B449713EFF6AB00072F90 /* Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449513EFF6AA00072F90 /* Locator.m */; };
+		F17B449B13F00B1D00072F90 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449A13F00B1D00072F90 /* City.m */; };
+		F17B449C13F00B1D00072F90 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449A13F00B1D00072F90 /* City.m */; };
+		F17B449F13F00B1D00072F90 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449E13F00B1D00072F90 /* Country.m */; };
+		F17B44A013F00B1D00072F90 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449E13F00B1D00072F90 /* Country.m */; };
+		F17B44AE13F01A1E00072F90 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B44AD13F01A1E00072F90 /* Reachability.m */; };
+		F17B44AF13F01A1E00072F90 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B44AD13F01A1E00072F90 /* Reachability.m */; };
+		F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B44B213F01D7000072F90 /* SystemConfiguration.framework */; };
+		F17B44B413F01D8B00072F90 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B44B213F01D7000072F90 /* SystemConfiguration.framework */; };
 		F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */; };
 		F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A6C63113D6BFA6005E8388 /* noImage.png */; };
@@ -371,7 +380,6 @@
 		F1F8FABB13DC20E8009BB4D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1F8FAB913DC20E8009BB4D3 /* Localizable.strings */; };
 		F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */; };
 		F1F8FAD313DC2C46009BB4D3 /* FirstLetterCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */; };
-		F1F8FAD913DC2D59009BB4D3 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD813DC2D59009BB4D3 /* Country.m */; };
 		F1F8FAEF13DC498F009BB4D3 /* EntryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */; };
 		F1F8FAF213DC4A5A009BB4D3 /* NumberEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAF113DC4A5A009BB4D3 /* NumberEditViewController.m */; };
 /* End PBXBuildFile section */
@@ -449,6 +457,15 @@
 		F159EA4B13E19C7B00C2D855 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
 		F159EA5713E1ED7700C2D855 /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticipantView.h; path = Reiseabrechnung/ParticipantView.h; sourceTree = "<group>"; };
 		F159EA5813E1ED7900C2D855 /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticipantView.m; path = Reiseabrechnung/ParticipantView.m; sourceTree = "<group>"; };
+		F17B449413EFF6AA00072F90 /* Locator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locator.h; sourceTree = "<group>"; };
+		F17B449513EFF6AA00072F90 /* Locator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Locator.m; sourceTree = "<group>"; };
+		F17B449913F00B1D00072F90 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		F17B449A13F00B1D00072F90 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		F17B449D13F00B1D00072F90 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		F17B449E13F00B1D00072F90 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		F17B44AC13F01A1E00072F90 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F17B44AD13F01A1E00072F90 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		F17B44B213F01D7000072F90 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F1A6C62E13D6B71B005E8388 /* ParticipantHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantHelperCategory.h; sourceTree = "<group>"; };
 		F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantHelperCategory.m; sourceTree = "<group>"; };
@@ -728,8 +745,6 @@
 		F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadowNavigationController.m; path = Reiseabrechnung/ShadowNavigationController.m; sourceTree = "<group>"; };
 		F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLetterCategory.h; sourceTree = "<group>"; };
 		F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLetterCategory.m; sourceTree = "<group>"; };
-		F1F8FAD713DC2D59009BB4D3 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
-		F1F8FAD813DC2D59009BB4D3 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		F1F8FAE913DC3BB1009BB4D3 /* CountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryCell.h; path = Reiseabrechnung/CountryCell.h; sourceTree = "<group>"; };
 		F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryEditViewController.m; sourceTree = "<group>"; };
 		F1F8FAF013DC4A5A009BB4D3 /* NumberEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberEditViewController.h; sourceTree = "<group>"; };
@@ -752,6 +767,7 @@
 				F14B372B13E68B5F00351641 /* Foundation.framework in Frameworks */,
 				F14B372C13E68B5F00351641 /* CoreGraphics.framework in Frameworks */,
 				F14B372913E68B5F00351641 /* SenTestingKit.framework in Frameworks */,
+				F17B44B413F01D8B00072F90 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,6 +775,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */,
 				F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */,
 				F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */,
 				F12C7A9E13D0F7C600668BF0 /* CoreLocation.framework in Frameworks */,
@@ -1065,6 +1082,10 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F17B449D13F00B1D00072F90 /* Country.h */,
+				F17B449E13F00B1D00072F90 /* Country.m */,
+				F17B449913F00B1D00072F90 /* City.h */,
+				F17B449A13F00B1D00072F90 /* City.m */,
 				9408120E13EADF7F003D7B3E /* Currency.h */,
 				9408120F13EADF7F003D7B3E /* Currency.m */,
 				9408120B13EADF7F003D7B3E /* ExchangeRate.h */,
@@ -1081,8 +1102,6 @@
 				F127296F13E7EF370095286D /* Participant.m */,
 				F159EA4A13E19C7B00C2D855 /* AppDefaults.h */,
 				F159EA4B13E19C7B00C2D855 /* AppDefaults.m */,
-				F1F8FAD713DC2D59009BB4D3 /* Country.h */,
-				F1F8FAD813DC2D59009BB4D3 /* Country.m */,
 				F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */,
 				F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */,
 				F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */,
@@ -1109,8 +1128,12 @@
 		F1B8211D13BDFC9D00FE329B /* TravelEdit */ = {
 			isa = PBXGroup;
 			children = (
+				F17B44AC13F01A1E00072F90 /* Reachability.h */,
+				F17B44AD13F01A1E00072F90 /* Reachability.m */,
 				F1CD78B813BB8BF200D42AA3 /* TravelEditViewController.h */,
 				F1CD78B913BB8BF300D42AA3 /* TravelEditViewController.m */,
+				F17B449413EFF6AA00072F90 /* Locator.h */,
+				F17B449513EFF6AA00072F90 /* Locator.m */,
 			);
 			name = TravelEdit;
 			sourceTree = "<group>";
@@ -1163,6 +1186,7 @@
 		F1CD782D13BA405A00D42AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F17B44B213F01D7000072F90 /* SystemConfiguration.framework */,
 				F159EA3F13E19B0E00C2D855 /* MessageUI.framework */,
 				F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */,
 				F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */,
@@ -1639,7 +1663,6 @@
 			files = (
 				F14B373613E68B5F00351641 /* UnitTests.m in Sources */,
 				F14B373D13E68CA600351641 /* AppDefaults.m in Sources */,
-				F14B374213E68CA600351641 /* Country.m in Sources */,
 				F14B374313E68CA600351641 /* FirstLetterCategory.m in Sources */,
 				F14B374413E68CA600351641 /* DateSortCategory.m in Sources */,
 				F14B374513E68CA600351641 /* Summary.m in Sources */,
@@ -1685,6 +1708,10 @@
 				9408120813EAD0E5003D7B3E /* Type.m in Sources */,
 				9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */,
 				9408120A13EAD10B003D7B3E /* RateCell.m in Sources */,
+				F17B449713EFF6AB00072F90 /* Locator.m in Sources */,
+				F17B449C13F00B1D00072F90 /* City.m in Sources */,
+				F17B44A013F00B1D00072F90 /* Country.m in Sources */,
+				F17B44AF13F01A1E00072F90 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1716,7 +1743,6 @@
 				F111CB2413D9AE82002C08AC /* AlignedStyle2Cell.m in Sources */,
 				F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */,
 				F1F8FAD313DC2C46009BB4D3 /* FirstLetterCategory.m in Sources */,
-				F1F8FAD913DC2D59009BB4D3 /* Country.m in Sources */,
 				F1F8FAEF13DC498F009BB4D3 /* EntryEditViewController.m in Sources */,
 				F1F8FAF213DC4A5A009BB4D3 /* NumberEditViewController.m in Sources */,
 				F1CE923513DD54B5009F3B2F /* EntrySortViewController.m in Sources */,
@@ -1742,6 +1768,10 @@
 				940811F513EAB04C003D7B3E /* Travel.m in Sources */,
 				9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */,
 				9408121013EADF7F003D7B3E /* Currency.m in Sources */,
+				F17B449613EFF6AA00072F90 /* Locator.m in Sources */,
+				F17B449B13F00B1D00072F90 /* City.m in Sources */,
+				F17B449F13F00B1D00072F90 /* Country.m in Sources */,
+				F17B44AE13F01A1E00072F90 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,22 +1,19 @@
 //
-//  Country.m
+//  City.m
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 08/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "Country.h"
 #import "City.h"
-#import "Currency.h"
-#import "Travel.h"
+#import "Country.h"
 
 
-@implementation Country
+@implementation City
 @dynamic name;
-@dynamic image;
-@dynamic currencies;
-@dynamic travels;
-@dynamic cities;
+@dynamic longitude;
+@dynamic latitude;
+@dynamic country;
 
 @end

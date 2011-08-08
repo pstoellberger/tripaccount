@@ -25,7 +25,6 @@ static NSIndexPath *_descriptionIndexPath;
 static NSIndexPath *_currenciesIndexPath;
 
 @interface TravelEditViewController ()
-- (void)startLocating;
 - (void)initIndexPaths;
 - (void)updateAndFlash:(UIViewController *)viewController;
 @end
@@ -34,7 +33,6 @@ static NSIndexPath *_currenciesIndexPath;
 
 @synthesize name=_name, travel=_travel, country=_country, currencies=_currencies, city=_city;
 @synthesize editDelegate=_editDelegate;
-@synthesize locManager=_locManager;
 
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *)context {
@@ -80,20 +78,10 @@ static NSIndexPath *_currenciesIndexPath;
             self.city = @"";
             self.country = nil;
             
-            // init location manager
-            self.locManager = [[[CLLocationManager alloc] init] autorelease];
-            if (![CLLocationManager locationServicesEnabled]) {
-                NSLog(@"User has opted out of location services");
-            }
-            
-            self.locManager.delegate = self;
-            self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
-            
-            self.locManager.distanceFilter = 5.0f; // in meters
-            
-            if (!self.country) {
-                [self startLocating];
-            }
+            // init location here
+            _locator = [[Locator alloc] initInManagedObjectContext:context];
+            _locator.locationDelegate = self;
+            [_locator startLocating];
             
         } else {
             
@@ -437,6 +425,17 @@ static NSIndexPath *_currenciesIndexPath;
     }    
 }
 
+#pragma mark LocatorDelegate
+
+- (void)locationAquired:(Country *)country city:(NSString *)city {
+    
+    [self selectCity:city];
+    [self selectCountry:country];
+    
+    [self checkIfDoneIsPossible];
+    
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -462,9 +461,9 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (void)dealloc {
+    
     [_cellsToReloadAndFlash release];
-
-    [_geocoder release];
+    [_locator release];
     
     [super dealloc];
 }
@@ -472,57 +471,6 @@ static NSIndexPath *_currenciesIndexPath;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-#pragma mark - Location finding
-
--(void) startLocating {
-    [self.locManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-	NSLog(@"Location manager error: %@", [error description]);
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
-	NSLog(@"Reverse geocoder error: %@", [error description]);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    if (!_geocoder) {
-        _geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-        _geocoder.delegate = self;
-        [_geocoder start];
-        [_geocoder retain];
-    }
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
-    
-	NSLog(@"%@",[placemark.addressDictionary description]);
-	
-    if ([placemark locality]) {
-        self.city = [placemark locality];
-    }
-    
-    if ([placemark country]) {
-        NSFetchRequest *_fetchRequest = [[NSFetchRequest alloc] init];
-        _fetchRequest.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: _context];
-        _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name = %@", [placemark country]];
-        NSArray *countries = [_context executeFetchRequest:_fetchRequest error:nil];
-        [_fetchRequest release];
-        
-        if ([countries lastObject]) {
-            [self selectCountry:[countries lastObject]];
-        }
-    }
-    
-    [self.tableView reloadData];
-
-    [self checkIfDoneIsPossible];
-    
-    [self.locManager stopUpdatingLocation];
-    [geocoder cancel];
 }
 
 @end
