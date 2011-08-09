@@ -25,6 +25,7 @@
 @synthesize managedObjectContext=_managedObjectContext;
 @synthesize managedObjectModel=_managedObjectModel;
 @synthesize persistentStoreCoordinator=_persistentStoreCoordinator;
+@synthesize locator=_locator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOption {
 
@@ -33,6 +34,8 @@
     [self initializeStartDatabase:[NSBundle mainBundle]];
     
     [self refreshCurrencyRatesIfOutDated];
+    
+    self.locator = [[Locator alloc] initInManagedObjectContext:self.managedObjectContext];
     
     [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
     

@@ -74,14 +74,15 @@ static NSIndexPath *_currenciesIndexPath;
         if (!travel) {
             
             self.currencies = [NSArray arrayWithObject:[ReiseabrechnungAppDelegate defaultsObject:context].homeCurrency];
+            [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
             self.name = @"";
             self.city = @"";
             self.country = nil;
             
             // init location here
-            _locator = [[Locator alloc] initInManagedObjectContext:context];
-            _locator.locationDelegate = self;
-            [_locator startLocating];
+            Locator *locator = ((ReiseabrechnungAppDelegate *) [[UIApplication sharedApplication] delegate]).locator;
+            locator.locationDelegate = self;
+            [locator startLocating];
             
         } else {
             
@@ -105,7 +106,7 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)updateAndFlash:(UIViewController *)viewController {
     
-    if (viewController == self) {
+    if (viewController == self && _viewAppeared) {
         
         [self.tableView beginUpdates];
         for (id indexPath in _cellsToReloadAndFlash) {
@@ -429,8 +430,16 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)locationAquired:(Country *)country city:(NSString *)city {
     
+    int cellsToFlash = [_cellsToReloadAndFlash count];
+    
     [self selectCity:city];
     [self selectCountry:country];
+
+    // trigger flash only if the new cells are the only ones
+    // if there are cell to be flashed, updateAndFlash will be called anyway
+    if (cellsToFlash == 0) {
+        [self updateAndFlash:self];
+    }
     
     [self checkIfDoneIsPossible];
     
@@ -440,8 +449,9 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)viewDidAppear:(BOOL)animated {
     
+    _viewAppeared = YES;
+    
     if (!self.travel && _isFirstView) {
-        [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
         [self updateAndFlash:self];
         _isFirstView = NO;
     }
@@ -463,7 +473,6 @@ static NSIndexPath *_currenciesIndexPath;
 - (void)dealloc {
     
     [_cellsToReloadAndFlash release];
-    [_locator release];
     
     [super dealloc];
 }

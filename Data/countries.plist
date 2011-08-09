@@ -8029,6 +8029,25 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Vatican City</string>
+<key>id</key>
+<integer>228</integer>
+<key>image</key>
+<string>flag228.png</string>
+<key>cities</key>
+<array>
+<dict>
+<key>name</key>
+<string>Vatican City</string>
+<key>longitude</key>
+<real>12.450</real>
+<key>latitude</key>
+<real>41.900</real>
+</dict>
+</array>
+</dict>
+<dict>
+<key>name</key>
 <string>Venezuela</string>
 <key>id</key>
 <integer>229</integer>

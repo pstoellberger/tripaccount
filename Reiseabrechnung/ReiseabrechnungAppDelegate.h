@@ -17,6 +17,7 @@
 #import "UIFactory.h"
 #import "Currency.h"
 #import "AppDefaults.h"
+#import "Locator.h"
 
 @interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate>
 
@@ -26,6 +27,9 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+@property (nonatomic, retain) Locator *locator;
+
 
 - (NSURL *)applicationDocumentsDirectory;
 

@@ -22,8 +22,8 @@
     NSMutableArray* _cellsToReloadAndFlash;
 
     BOOL _isFirstView;
-    
-    Locator *_locator;
+    BOOL _viewAppeared;
+
 }
 
 @property (nonatomic, retain) NSString *name;

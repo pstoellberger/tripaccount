@@ -24,6 +24,7 @@
 
 @property (nonatomic, retain) CLLocationManager *locManager;
 @property (nonatomic, retain) Reachability *reachability;
+@property (retain) CLLocation *lastKnowLocation;
 
 @property (nonatomic, assign) id <LocatorDelegate> locationDelegate;
 
