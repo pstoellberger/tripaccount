@@ -14,7 +14,7 @@
 #import "TravelEditViewController.h"
 #import "InfoViewController.h"
 
-@interface RootViewController : UIViewController <TravelEditViewControllerDelegate> {
+@interface RootViewController : UIViewController <TravelEditViewControllerDelegate, UINavigationControllerDelegate> {
     UIView *_helpView;
 }
 
@@ -22,7 +22,7 @@
 @property (nonatomic, retain, readonly) UIBarButtonItem *editButton;
 @property (nonatomic, retain, readonly) UIBarButtonItem *doneButton;
 
-@property (nonatomic, retain) UITableViewController *tableViewController;
+@property (nonatomic, retain) CoreDataTableViewController *tableViewController;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, retain) InfoViewController *infoViewController;

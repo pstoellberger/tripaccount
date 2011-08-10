@@ -13,6 +13,8 @@
 #import "DateSortCategory.h"
 #import "CurrencyHelperCategory.h"
 #import "ParticipantHelperCategory.h"
+#import "ParticipantCategory.h"
+#import "TravelCategory.h"
 
 #import "UIFactory.h"
 #import "Currency.h"

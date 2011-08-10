@@ -409,12 +409,14 @@ static NSIndexPath *_currenciesIndexPath;
     
     [self dismissModalViewControllerAnimated:YES];
     
-    [self.editDelegate travelDidSave:self.travel];
+    [self.editDelegate travelEditFinished:self.travel wasSaved:YES];
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissModalViewControllerAnimated:YES];
+    
+    [self.editDelegate travelEditFinished:self.travel wasSaved:NO];
 }
 
 - (void)checkIfDoneIsPossible {

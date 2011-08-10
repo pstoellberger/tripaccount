@@ -1,0 +1,47 @@
+<html>
+
+<body>
+	
+<style type="text/css">
+
+table, th, td {
+border: 1px solid black;
+}
+
+.imageRow {
+	width:100px;
+	background-color:#000;
+}
+
+</style>
+
+<table>
+<tr>
+	<th class="imageRow">Payer</th>
+	<th>Date</th>
+	<th>Amount</th>
+	<th class="imageRow">Receivers</th>
+	<th>Type</th>
+	<th>Text</th>
+</tr>
+
+{% for entry in travel.entries %}
+<tr>
+    <td><img src="data:image/png;base64,{{ entry.payer.base64 }}" /> {{ entry.payer.name }}</td>
+    <td>{% entry.date | date_format: "dd MMM yyyy" %}</td>
+    <td>{{ entry.amount }} {{ entry.currency.code }}</td>
+	<td>
+	{% for receiver in entry.receivers %}
+		<img src="data:image/png;base64,{{ receiver.base64 }}" /> {{ receiver.name }}<br />
+	{% /for %}		
+	</td>  
+    <td>{{ entry.type.name }}</td>
+    <td>{{ entry.text }}</td>
+</tr>
+{% /for %}
+    
+</table>
+
+</body>
+
+</html>

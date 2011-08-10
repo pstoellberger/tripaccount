@@ -135,11 +135,11 @@
 
 - (int) getMultiplierFromPerson:(Participant *)person1 withPerson:(Participant *)person2 {
     if ([person1.name compare:person2.name] == NSOrderedAscending) {
-        NSLog(@"%@ is ascending to %@", person1.name, person2.name);
+        //NSLog(@"%@ is ascending to %@", person1.name, person2.name);
         return 1;
         
     } else {
-        NSLog(@"%@ is descending to %@", person1.name, person2.name);
+        //NSLog(@"%@ is descending to %@", person1.name, person2.name);
         return -1;
     }
 }
@@ -147,7 +147,7 @@
 - (void) setAccountOfPerson:(Participant *)person1 withPerson:(Participant *)person2 toBalance:(NSNumber *)balance {
     ParticipantKey *key = [self createKey:(Participant *)person1 withPerson:(Participant *)person2];
     int multiplier = [self getMultiplierFromPerson:person1 withPerson:person2];
-    NSLog(@"Balance between %@ and %@ is %@ with multiplier %d", person1.name, person2.name, balance, multiplier);
+    //NSLog(@"Balance between %@ and %@ is %@ with multiplier %d", person1.name, person2.name, balance, multiplier);
     [_accounts setObject:[NSNumber numberWithDouble:([balance doubleValue] * multiplier)] forKey:key];
 }
 

@@ -13,7 +13,7 @@
 #import "CoreDataTableViewController.h"
 #import "TravelEditViewController.h"
 
-@interface TravelListViewController : CoreDataTableViewController {
+@interface TravelListViewController : CoreDataTableViewController <UIAlertViewDelegate> {
     
     NSManagedObjectContext *_managedObjectContext;
 }
@@ -21,8 +21,9 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) UIViewController <TravelEditViewControllerDelegate> *rootViewController;
 
-- (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext withRootViewController:(UIViewController *)rootViewController;
+@property (nonatomic, retain) UIAlertView *openTripAlert;
+@property (nonatomic, retain) UIAlertView *refreshRatesAlert;
 
-- (void)closeTravel:(Travel *)travel;
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext withRootViewController:(UIViewController *)rootViewController;
 
 @end

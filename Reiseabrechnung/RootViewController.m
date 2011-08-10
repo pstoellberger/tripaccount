@@ -78,8 +78,13 @@
     [navController release];
 }
 
-- (void)travelDidSave:(Travel *)travel {
-    [self doneEditing];
+- (void)travelEditFinished:(Travel *)travel wasSaved:(BOOL)wasSaved {
+
+    [self.tableViewController.tableView deselectRowAtIndexPath:[self.tableViewController.tableView indexPathForSelectedRow] animated:YES];
+    
+    if (wasSaved) {
+        [self doneEditing];
+    }
 }
 
 - (void)openInfoPopup {
@@ -94,15 +99,6 @@
     
 	[[self.navigationController.view superview] addSubview:self.infoViewController.view];
 	[UIView commitAnimations];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -120,6 +116,28 @@
     [self.navigationItem setRightBarButtonItem:self.addButton animated:YES];
     [self.navigationItem setLeftBarButtonItem:self.editButton animated:YES];
     [self.tableViewController.tableView setEditing:NO animated:YES];
+}
+
+#pragma mark UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    if (viewController == self) {
+        [self.tableViewController.tableView deselectRowAtIndexPath:[self.tableViewController.tableView indexPathForSelectedRow] animated:YES];
+        
+        self.tableViewController.reloadDisabled = NO;
+    }
+}
+
+#pragma mark View lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 
 -(void)loadView {

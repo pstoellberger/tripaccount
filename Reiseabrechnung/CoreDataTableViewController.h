@@ -27,6 +27,8 @@
 
 @property (nonatomic, copy) NSString *imageKey;
 
+@property (nonatomic) BOOL reloadDisabled;
+
 - (NSFetchedResultsController *)fetchedResultsControllerForTableView:(UITableView *)tableView;
 
 // gets accessory type (e.g. disclosure indicator) for the given managedObject (default DisclosureIndicator)

@@ -20,6 +20,7 @@
 @implementation TravelListViewController
 
 @synthesize managedObjectContext=_managedObjectContext, fetchedResultsController=_fetchedResultsController, rootViewController=_rootViewController;
+@synthesize openTripAlert=_openTripAlert, refreshRatesAlert=_refreshRatesAlert;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext withRootViewController:(UIViewController <TravelEditViewControllerDelegate> *)rootViewController {
     
@@ -56,6 +57,7 @@
     if (self.tableView.editing) {
         
         if ([((Travel *)managedObject).closed intValue] != 1) {
+            
             TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext withTravel:(Travel *)managedObject];
             detailViewController.editDelegate = self.rootViewController;
             UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
@@ -63,9 +65,16 @@
             [self.rootViewController.navigationController presentModalViewController:navController animated:YES];   
             [detailViewController release];
             [navController release];
+            
+        } else {
+            
+            [self.openTripAlert show];
+            
         }
         
     } else {
+        
+        self.reloadDisabled = YES;
         
         Travel *travel = (Travel *) managedObject;
         TravelViewController *detailViewController = [[TravelViewController alloc] initWithTravel:travel];
@@ -76,9 +85,9 @@
         }
         [self.rootViewController.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release]; 
+        
     }
-    
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
@@ -89,17 +98,6 @@
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
 	return YES;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.tableView.allowsSelectionDuringEditing = YES;
-    
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [super controllerDidChangeContent:controller];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
@@ -124,6 +122,14 @@
         } else {
             cell.detailTextLabel.text = @"";
         }
+    }
+    
+    if ([travel.closed intValue] == 0) {
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:cell.textLabel.font.pointSize];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:cell.detailTextLabel.font.pointSize];
+    } else {
+        cell.textLabel.font = [UIFont italicSystemFontOfSize:cell.textLabel.font.pointSize];
+        cell.detailTextLabel.font = [UIFont italicSystemFontOfSize:cell.detailTextLabel.font.pointSize];
     }
 
     return cell;
@@ -151,18 +157,45 @@
     return nil;
 }
 
-- (void)closeTravel:(Travel *)travel {
-    
-    // perform operation
-    if ([travel.closed isEqualToNumber:[NSNumber numberWithInt:0]]) {
-        travel.closed = [NSNumber numberWithInt:1];
-    } else {
-        travel.closed = [NSNumber numberWithInt:0];
-    }
-    [ReiseabrechnungAppDelegate saveContext:[travel managedObjectContext]];
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
 
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (alertView == self.openTripAlert) {
+        
+        if (buttonIndex != self.openTripAlert.cancelButtonIndex) {
+            [self.refreshRatesAlert show];
+        } else {
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        }
+        
+    } else if (alertView == self.refreshRatesAlert) {
+        
+        [self.tableView beginUpdates];
+        
+        Travel *travel = [[self fetchedResultsControllerForTableView:self.tableView]  objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        [travel open:(buttonIndex != self.refreshRatesAlert.cancelButtonIndex)];
+        
+        [self.tableView endUpdates];
+        
+        [self managedObjectSelected:travel];
+    }
+}
+
+#pragma mark View lifecycle
+
+- (void)loadView {
+    
+    [super loadView];
+    
+    self.openTripAlert = [[[UIAlertView alloc] initWithTitle:@"Trip is closed." message:@"Closed trips can not be edited. Do you want to open the trip now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] autorelease];
+    
+    self.refreshRatesAlert = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
+    
 }
 
 - (void)viewDidUnload {
@@ -171,8 +204,10 @@
     [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.allowsSelectionDuringEditing = YES;
 }
 
 #pragma mark Memory management

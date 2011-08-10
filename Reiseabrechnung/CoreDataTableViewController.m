@@ -16,6 +16,7 @@
 
 @synthesize fetchedResultsController=_fetchedResultsController, dataSearchController=_dataSearchController;
 @synthesize titleKey, subtitleKey, searchKey, imageKey;
+@synthesize reloadDisabled=_reloadDisabled;
 
 - (void)createSearchBar
 {
@@ -350,7 +351,9 @@
             break;
 			
         case NSFetchedResultsChangeUpdate:
-			[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            if (!self.reloadDisabled) {
+                [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            }
             break;
 			
         case NSFetchedResultsChangeMove:

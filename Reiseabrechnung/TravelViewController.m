@@ -23,11 +23,13 @@
 #import "CurrencyRefresh.h"
 #import "RateSelectViewController.h"
 #import "ShadowNavigationController.h"
+#import "MGTemplateEngine.h"
+#import "ICUTemplateMatcher.h"
 
 @interface TravelViewController ()
 
 - (void)closeTravel;
-- (void)openTravel;
+- (void)openTravel:(BOOL)useLatestRates;
 - (void)sendSummaryMail;
 
 @end
@@ -143,29 +145,16 @@
 - (void)closeTravel {
 
     // close
-    self.travel.closed = [NSNumber numberWithInt:1];
-    
-    for (Entry *entry in self.travel.entries) {
-        entry.checked = [NSNumber numberWithInt:0];
-    }
-    
-    // copying exchange rates (=freeze)
-    NSMutableSet *addRates = [NSMutableSet set];
-    for (ExchangeRate *rate in self.travel.rates) {
-        ExchangeRate *newRate = [NSEntityDescription insertNewObjectForEntityForName: @"ExchangeRate" inManagedObjectContext: [_travel managedObjectContext]];
-        newRate.rate = rate.rate;
-        [addRates addObject:newRate];
-    }
-    [self.travel removeRates:self.travel.rates];
-    [self.travel addRates:addRates];
+    [self.travel close];
     
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
 }
 
-- (void)openTravel {
+- (void)openTravel:(BOOL)useLatestRates {
     
     // open
-    self.travel.closed = [NSNumber numberWithInt:0];
+    [self.travel open:useLatestRates];
+
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
     
     [_summarySortViewController.detailViewController.tableView reloadData];
@@ -174,7 +163,7 @@
     [self updateStateOfNavigationController:self.tabBarController.selectedViewController];    
 }
 
-- (void)askToRefreshRatesWhenClosing {
+- (void)askToRefreshRatesWhenOpening {
     [self.rateRefreshAlertView show];
 }
 
@@ -206,9 +195,22 @@
     
     controller.navigationBar.tintColor = [UIFactory defaultTintColor];
     
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:self.travel forKey:@"travel"];
+    
+    NSLog(@"%@", [[self.travel.participants anyObject] base64]);
+    
+    MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
+    engine.matcher = [[ICUTemplateMatcher alloc] initWithTemplateEngine:engine];
+    NSString *mailBody = [engine processTemplateInFileAtPath:[[NSBundle mainBundle] pathForResource:@"mailTemplate" ofType:@"html"] withVariables:dictionary];
+    
     controller.mailComposeDelegate = self;
-    [controller setSubject:@"My Subject"];
-    [controller setMessageBody:@"Hello there." isHTML:NO];
+    
+    NSString *subjectLine = [NSString stringWithFormat:@"Summary email for trip '%@'", self.travel.name];
+    if (!self.travel.name || [self.travel.name length] == 0) {
+        subjectLine = [NSString stringWithFormat:@"Summary email for trip to %@", self.travel.country.name];
+    }
+    [controller setSubject:subjectLine];
+    [controller setMessageBody:mailBody isHTML:YES];
 
     if (controller)  {
         [self presentModalViewController:controller animated:YES];
@@ -284,25 +286,13 @@
     
     if (alertView == self.rateRefreshAlertView) {
         
-        if (buttonIndex == [alertView cancelButtonIndex]) {
-            
-            NSLog(@"Changing rates of travel to most current ones.");
-            
-            [self.travel removeRates:self.travel.rates];
-            
-            for (Currency *currency in self.travel.currencies) {
-                [self.travel addRatesObject:currency.defaultRate];
-            }      
-        }
+        [self openTravel:(buttonIndex != [alertView cancelButtonIndex])];
         
     } else if (alertView == self.mailSendAlertView) {
         
         [self sendSummaryMail];
         
     }
-    
-    [self openTravel];
-    
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -316,7 +306,7 @@
     } else if (buttonIndex == 1) {
         
         if ([self.travel.closed intValue] == 1) {
-            [self askToRefreshRatesWhenClosing];
+            [self askToRefreshRatesWhenOpening];
         } else {
             [self closeTravel];
         }
@@ -424,8 +414,7 @@
     
     self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:@"Warning" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
     
-    NSString *rateRefreshAlertViewMessage = @"Do you want to assign the latest currency exchange rates to this travel?";
-    self.rateRefreshAlertView = [[[UIAlertView alloc] initWithTitle:@"Refresh rates" message:rateRefreshAlertViewMessage delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil] autorelease];
+    self.rateRefreshAlertView = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
 
 }
 

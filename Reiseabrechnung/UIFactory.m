@@ -52,6 +52,13 @@
     }
 }
 
++ (UIAlertView *)createAlterViewForRefreshingRatesOnOpeningTravel:(id <UIAlertViewDelegate>)delegate {
+    
+    NSString *rateRefreshAlertViewMessage = @"Do you want to assign the latest currency exchange rates to this travel?";
+    return [[[UIAlertView alloc] initWithTitle:@"Refresh rates" message:rateRefreshAlertViewMessage delegate:delegate cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] autorelease];
+    
+}
+
 
 + (void)changeTextColorOfSegControler:(UISegmentedControl *)segControl color:(UIColor *)color {
     

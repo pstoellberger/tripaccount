@@ -14,6 +14,11 @@
 
 - (double)convertTravelAmount:(Travel *)travel currency:(Currency *)currency amount:(double)amount {
     
+    if (!currency) {
+        NSLog(@"Can not convert to nil currency");
+        return amount;
+    }
+    
     NSLog(@"converting %@ to %@", self.name, currency.name);
     
     if ([self isEqual:currency]) {

@@ -568,6 +568,42 @@
 		F17B49E313F14E1000072F90 /* flag234.png in Resources */ = {isa = PBXBuildFile; fileRef = F17B482813F14E1000072F90 /* flag234.png */; };
 		F17B49E413F14E1000072F90 /* flag235.png in Resources */ = {isa = PBXBuildFile; fileRef = F17B482913F14E1000072F90 /* flag235.png */; };
 		F17B49E513F14E1000072F90 /* flag235.png in Resources */ = {isa = PBXBuildFile; fileRef = F17B482913F14E1000072F90 /* flag235.png */; };
+		F17B4A1613F17D0900072F90 /* ICUTemplateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */; };
+		F17B4A1713F17D0900072F90 /* ICUTemplateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */; };
+		F17B4A1C13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */; };
+		F17B4A1D13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */; };
+		F17B4A1E13F17D0900072F90 /* MGTemplateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49F413F17D0900072F90 /* MGTemplateEngine.m */; };
+		F17B4A1F13F17D0900072F90 /* MGTemplateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49F413F17D0900072F90 /* MGTemplateEngine.m */; };
+		F17B4A2013F17D0900072F90 /* MGTemplateStandardFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49FC13F17D0900072F90 /* MGTemplateStandardFilters.m */; };
+		F17B4A2113F17D0900072F90 /* MGTemplateStandardFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49FC13F17D0900072F90 /* MGTemplateStandardFilters.m */; };
+		F17B4A2213F17D0900072F90 /* MGTemplateStandardMarkers.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49FE13F17D0900072F90 /* MGTemplateStandardMarkers.m */; };
+		F17B4A2313F17D0900072F90 /* MGTemplateStandardMarkers.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49FE13F17D0900072F90 /* MGTemplateStandardMarkers.m */; };
+		F17B4A2413F17D0900072F90 /* NSArray_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0013F17D0900072F90 /* NSArray_DeepMutableCopy.m */; };
+		F17B4A2513F17D0900072F90 /* NSArray_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0013F17D0900072F90 /* NSArray_DeepMutableCopy.m */; };
+		F17B4A2613F17D0900072F90 /* NSDictionary_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */; };
+		F17B4A2713F17D0900072F90 /* NSDictionary_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */; };
+		F17B4A2813F17D0900072F90 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0413F17D0900072F90 /* RegexKitLite.m */; };
+		F17B4A2913F17D0900072F90 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0413F17D0900072F90 /* RegexKitLite.m */; };
+		F17B4A2C13F17D0900072F90 /* sample_template.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0713F17D0900072F90 /* sample_template.txt */; };
+		F17B4A2D13F17D0900072F90 /* sample_template.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0713F17D0900072F90 /* sample_template.txt */; };
+		F17B4A2E13F17D0900072F90 /* Source Code License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0813F17D0900072F90 /* Source Code License.rtf */; };
+		F17B4A2F13F17D0900072F90 /* Source Code License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0813F17D0900072F90 /* Source Code License.rtf */; };
+		F17B4A3013F17D0900072F90 /* Writing Filters.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0913F17D0900072F90 /* Writing Filters.txt */; };
+		F17B4A3113F17D0900072F90 /* Writing Filters.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0913F17D0900072F90 /* Writing Filters.txt */; };
+		F17B4A3213F17D0900072F90 /* Writing Markers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0A13F17D0900072F90 /* Writing Markers.txt */; };
+		F17B4A3313F17D0900072F90 /* Writing Markers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0A13F17D0900072F90 /* Writing Markers.txt */; };
+		F17B4A3413F17D0900072F90 /* Writing Matchers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */; };
+		F17B4A3513F17D0900072F90 /* Writing Matchers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */; };
+		F17B4A3A13F17D2600072F90 /* mailTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A3913F17D2600072F90 /* mailTemplate.html */; };
+		F17B4A3B13F17D2600072F90 /* mailTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A3913F17D2600072F90 /* mailTemplate.html */; };
+		F17B4A4113F180CB00072F90 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B4A4013F180CB00072F90 /* CoreFoundation.framework */; };
+		F17B4A4313F1812000072F90 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B4A4213F1811F00072F90 /* libicucore.dylib */; };
+		F17B4A4613F1889A00072F90 /* ParticipantCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A4513F1889900072F90 /* ParticipantCategory.m */; };
+		F17B4A4713F1889A00072F90 /* ParticipantCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A4513F1889900072F90 /* ParticipantCategory.m */; };
+		F17B4A4A13F18C7200072F90 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A4813F18C7000072F90 /* NSData+Base64.m */; };
+		F17B4A4B13F18C7200072F90 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A4813F18C7000072F90 /* NSData+Base64.m */; };
+		F17B4A4E13F25ED700072F90 /* TravelCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A4D13F25ED700072F90 /* TravelCategory.m */; };
+		F17B4A4F13F25ED700072F90 /* TravelCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A4D13F25ED700072F90 /* TravelCategory.m */; };
 		F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */; };
 		F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A6C63113D6BFA6005E8388 /* noImage.png */; };
@@ -914,6 +950,38 @@
 		F17B482713F14E1000072F90 /* flag233.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag233.png; sourceTree = "<group>"; };
 		F17B482813F14E1000072F90 /* flag234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag234.png; sourceTree = "<group>"; };
 		F17B482913F14E1000072F90 /* flag235.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag235.png; sourceTree = "<group>"; };
+		F17B49E913F17D0900072F90 /* DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeepMutableCopy.h; sourceTree = "<group>"; };
+		F17B49EE13F17D0900072F90 /* ICUTemplateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICUTemplateMatcher.h; sourceTree = "<group>"; };
+		F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICUTemplateMatcher.m; sourceTree = "<group>"; };
+		F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MGTemplateEngine README.txt"; sourceTree = "<group>"; };
+		F17B49F313F17D0900072F90 /* MGTemplateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTemplateEngine.h; sourceTree = "<group>"; };
+		F17B49F413F17D0900072F90 /* MGTemplateEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTemplateEngine.m; sourceTree = "<group>"; };
+		F17B49F913F17D0900072F90 /* MGTemplateFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTemplateFilter.h; sourceTree = "<group>"; };
+		F17B49FA13F17D0900072F90 /* MGTemplateMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTemplateMarker.h; sourceTree = "<group>"; };
+		F17B49FB13F17D0900072F90 /* MGTemplateStandardFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTemplateStandardFilters.h; sourceTree = "<group>"; };
+		F17B49FC13F17D0900072F90 /* MGTemplateStandardFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTemplateStandardFilters.m; sourceTree = "<group>"; };
+		F17B49FD13F17D0900072F90 /* MGTemplateStandardMarkers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTemplateStandardMarkers.h; sourceTree = "<group>"; };
+		F17B49FE13F17D0900072F90 /* MGTemplateStandardMarkers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTemplateStandardMarkers.m; sourceTree = "<group>"; };
+		F17B49FF13F17D0900072F90 /* NSArray_DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_DeepMutableCopy.h; sourceTree = "<group>"; };
+		F17B4A0013F17D0900072F90 /* NSArray_DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_DeepMutableCopy.m; sourceTree = "<group>"; };
+		F17B4A0113F17D0900072F90 /* NSDictionary_DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_DeepMutableCopy.h; sourceTree = "<group>"; };
+		F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_DeepMutableCopy.m; sourceTree = "<group>"; };
+		F17B4A0313F17D0900072F90 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		F17B4A0413F17D0900072F90 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		F17B4A0713F17D0900072F90 /* sample_template.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_template.txt; sourceTree = "<group>"; };
+		F17B4A0813F17D0900072F90 /* Source Code License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Source Code License.rtf"; sourceTree = "<group>"; };
+		F17B4A0913F17D0900072F90 /* Writing Filters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Writing Filters.txt"; sourceTree = "<group>"; };
+		F17B4A0A13F17D0900072F90 /* Writing Markers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Writing Markers.txt"; sourceTree = "<group>"; };
+		F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Writing Matchers.txt"; sourceTree = "<group>"; };
+		F17B4A3913F17D2600072F90 /* mailTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = mailTemplate.html; sourceTree = "<group>"; };
+		F17B4A4013F180CB00072F90 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F17B4A4213F1811F00072F90 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		F17B4A4413F1889900072F90 /* ParticipantCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCategory.h; sourceTree = "<group>"; };
+		F17B4A4513F1889900072F90 /* ParticipantCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCategory.m; sourceTree = "<group>"; };
+		F17B4A4813F18C7000072F90 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		F17B4A4913F18C7000072F90 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		F17B4A4C13F25ED600072F90 /* TravelCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelCategory.h; sourceTree = "<group>"; };
+		F17B4A4D13F25ED700072F90 /* TravelCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelCategory.m; sourceTree = "<group>"; };
 		F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F1A6C62E13D6B71B005E8388 /* ParticipantHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantHelperCategory.h; sourceTree = "<group>"; };
 		F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantHelperCategory.m; sourceTree = "<group>"; };
@@ -1007,6 +1075,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17B4A4313F1812000072F90 /* libicucore.dylib in Frameworks */,
+				F17B4A4113F180CB00072F90 /* CoreFoundation.framework in Frameworks */,
 				F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */,
 				F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */,
 				F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */,
@@ -1302,6 +1372,36 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		F17B49E613F17D0900072F90 /* MGTemplateEngine */ = {
+			isa = PBXGroup;
+			children = (
+				F17B49E913F17D0900072F90 /* DeepMutableCopy.h */,
+				F17B49EE13F17D0900072F90 /* ICUTemplateMatcher.h */,
+				F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */,
+				F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */,
+				F17B49F313F17D0900072F90 /* MGTemplateEngine.h */,
+				F17B49F413F17D0900072F90 /* MGTemplateEngine.m */,
+				F17B49F913F17D0900072F90 /* MGTemplateFilter.h */,
+				F17B49FA13F17D0900072F90 /* MGTemplateMarker.h */,
+				F17B49FB13F17D0900072F90 /* MGTemplateStandardFilters.h */,
+				F17B49FC13F17D0900072F90 /* MGTemplateStandardFilters.m */,
+				F17B49FD13F17D0900072F90 /* MGTemplateStandardMarkers.h */,
+				F17B49FE13F17D0900072F90 /* MGTemplateStandardMarkers.m */,
+				F17B49FF13F17D0900072F90 /* NSArray_DeepMutableCopy.h */,
+				F17B4A0013F17D0900072F90 /* NSArray_DeepMutableCopy.m */,
+				F17B4A0113F17D0900072F90 /* NSDictionary_DeepMutableCopy.h */,
+				F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */,
+				F17B4A0313F17D0900072F90 /* RegexKitLite.h */,
+				F17B4A0413F17D0900072F90 /* RegexKitLite.m */,
+				F17B4A0713F17D0900072F90 /* sample_template.txt */,
+				F17B4A0813F17D0900072F90 /* Source Code License.rtf */,
+				F17B4A0913F17D0900072F90 /* Writing Filters.txt */,
+				F17B4A0A13F17D0900072F90 /* Writing Markers.txt */,
+				F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */,
+			);
+			path = MGTemplateEngine;
+			sourceTree = "<group>";
+		};
 		F1A6BD1A13D5CF7200161197 /* en.proj */ = {
 			isa = PBXGroup;
 			children = (
@@ -1344,6 +1444,12 @@
 				F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */,
 				F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */,
 				F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */,
+				F17B4A4413F1889900072F90 /* ParticipantCategory.h */,
+				F17B4A4513F1889900072F90 /* ParticipantCategory.m */,
+				F17B4A4913F18C7000072F90 /* NSData+Base64.h */,
+				F17B4A4813F18C7000072F90 /* NSData+Base64.m */,
+				F17B4A4C13F25ED600072F90 /* TravelCategory.h */,
+				F17B4A4D13F25ED700072F90 /* TravelCategory.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1398,6 +1504,7 @@
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
+				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
 				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
 				940B41EC13EBF18300902B00 /* Icon.png */,
 				F1CD783413BA405A00D42AA3 /* Reiseabrechnung */,
@@ -1424,6 +1531,8 @@
 		F1CD782D13BA405A00D42AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F17B4A4213F1811F00072F90 /* libicucore.dylib */,
+				F17B4A4013F180CB00072F90 /* CoreFoundation.framework */,
 				F17B44B213F01D7000072F90 /* SystemConfiguration.framework */,
 				F159EA3F13E19B0E00C2D855 /* MessageUI.framework */,
 				F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */,
@@ -1482,6 +1591,7 @@
 			children = (
 				F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */,
 				F1CD783613BA405B00D42AA3 /* Reiseabrechnung-Info.plist */,
+				F17B4A3913F17D2600072F90 /* mailTemplate.html */,
 				F1CD783A13BA405B00D42AA3 /* Reiseabrechnung-Prefix.pch */,
 				F1CD783B13BA405B00D42AA3 /* main.m */,
 			);
@@ -1849,6 +1959,13 @@
 				F17B49E113F14E1000072F90 /* flag233.png in Resources */,
 				F17B49E313F14E1000072F90 /* flag234.png in Resources */,
 				F17B49E513F14E1000072F90 /* flag235.png in Resources */,
+				F17B4A1D13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */,
+				F17B4A2D13F17D0900072F90 /* sample_template.txt in Resources */,
+				F17B4A2F13F17D0900072F90 /* Source Code License.rtf in Resources */,
+				F17B4A3113F17D0900072F90 /* Writing Filters.txt in Resources */,
+				F17B4A3313F17D0900072F90 /* Writing Markers.txt in Resources */,
+				F17B4A3513F17D0900072F90 /* Writing Matchers.txt in Resources */,
+				F17B4A3B13F17D2600072F90 /* mailTemplate.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2099,6 +2216,13 @@
 				F17B49E013F14E1000072F90 /* flag233.png in Resources */,
 				F17B49E213F14E1000072F90 /* flag234.png in Resources */,
 				F17B49E413F14E1000072F90 /* flag235.png in Resources */,
+				F17B4A1C13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */,
+				F17B4A2C13F17D0900072F90 /* sample_template.txt in Resources */,
+				F17B4A2E13F17D0900072F90 /* Source Code License.rtf in Resources */,
+				F17B4A3013F17D0900072F90 /* Writing Filters.txt in Resources */,
+				F17B4A3213F17D0900072F90 /* Writing Markers.txt in Resources */,
+				F17B4A3413F17D0900072F90 /* Writing Matchers.txt in Resources */,
+				F17B4A3A13F17D2600072F90 /* mailTemplate.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2176,6 +2300,16 @@
 				F17B449C13F00B1D00072F90 /* City.m in Sources */,
 				F17B44A013F00B1D00072F90 /* Country.m in Sources */,
 				F17B44AF13F01A1E00072F90 /* Reachability.m in Sources */,
+				F17B4A1713F17D0900072F90 /* ICUTemplateMatcher.m in Sources */,
+				F17B4A1F13F17D0900072F90 /* MGTemplateEngine.m in Sources */,
+				F17B4A2113F17D0900072F90 /* MGTemplateStandardFilters.m in Sources */,
+				F17B4A2313F17D0900072F90 /* MGTemplateStandardMarkers.m in Sources */,
+				F17B4A2513F17D0900072F90 /* NSArray_DeepMutableCopy.m in Sources */,
+				F17B4A2713F17D0900072F90 /* NSDictionary_DeepMutableCopy.m in Sources */,
+				F17B4A2913F17D0900072F90 /* RegexKitLite.m in Sources */,
+				F17B4A4713F1889A00072F90 /* ParticipantCategory.m in Sources */,
+				F17B4A4B13F18C7200072F90 /* NSData+Base64.m in Sources */,
+				F17B4A4F13F25ED700072F90 /* TravelCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2236,6 +2370,16 @@
 				F17B449B13F00B1D00072F90 /* City.m in Sources */,
 				F17B449F13F00B1D00072F90 /* Country.m in Sources */,
 				F17B44AE13F01A1E00072F90 /* Reachability.m in Sources */,
+				F17B4A1613F17D0900072F90 /* ICUTemplateMatcher.m in Sources */,
+				F17B4A1E13F17D0900072F90 /* MGTemplateEngine.m in Sources */,
+				F17B4A2013F17D0900072F90 /* MGTemplateStandardFilters.m in Sources */,
+				F17B4A2213F17D0900072F90 /* MGTemplateStandardMarkers.m in Sources */,
+				F17B4A2413F17D0900072F90 /* NSArray_DeepMutableCopy.m in Sources */,
+				F17B4A2613F17D0900072F90 /* NSDictionary_DeepMutableCopy.m in Sources */,
+				F17B4A2813F17D0900072F90 /* RegexKitLite.m in Sources */,
+				F17B4A4613F1889A00072F90 /* ParticipantCategory.m in Sources */,
+				F17B4A4A13F18C7200072F90 /* NSData+Base64.m in Sources */,
+				F17B4A4E13F25ED700072F90 /* TravelCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

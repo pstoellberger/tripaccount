@@ -12,7 +12,7 @@
 #import "Locator.h"
 
 @protocol TravelEditViewControllerDelegate
-- (void)travelDidSave:(Travel *)travel;
+- (void)travelEditFinished:(Travel *)travel wasSaved:(BOOL)wasSaved;
 @end
 
 @interface TravelEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, LocatorDelegate> {

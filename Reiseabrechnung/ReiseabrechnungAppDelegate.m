@@ -41,6 +41,7 @@
     
     RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
     self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
+    self.navController.delegate = rvc;
     [rvc release];
     
     [self.window addSubview:self.navController.view];
