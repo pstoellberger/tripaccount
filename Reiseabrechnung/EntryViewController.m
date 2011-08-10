@@ -150,8 +150,6 @@
         
         [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
     }
-    
-    [self.tableView deselectRowAtIndexPath:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]  animated:YES];
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {

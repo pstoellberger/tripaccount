@@ -71,8 +71,19 @@
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
     
-    [_travel.managedObjectContext deleteObject:managedObject];
-    [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
+    Participant *participant = (Participant *)managedObject;
+    
+    if ([participant.pays count] > 0) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Can not delete traveler" message:@"This traveler has expensens on this trip. Please delete those expenses first." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK" , nil];
+        [alertView show];
+        [alertView release];
+        
+    } else {
+        
+        [_travel.managedObjectContext deleteObject:managedObject];
+        [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
+    }
 }
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {

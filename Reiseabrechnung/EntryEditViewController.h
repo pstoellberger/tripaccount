@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TravelViewController.h"
 #import "EntryNotManaged.h"
+#import "Entry.h"
 
+@protocol EntryEditViewControllerDelegate 
+- (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry;
+- (void)editWasCanceled:(Entry *)entry;
+@end
 
 @interface EntryEditViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate> {
-    id _target;
-    SEL _selector;
-    
-    EntryNotManaged *_entry;
-    Entry *_entryManaged;
 
     NSMutableArray* _cellsToReloadAndFlash;
     BOOL _isFirstView;
@@ -24,8 +23,10 @@
 
 @property (nonatomic, retain, readonly) Travel *travel;
 
-- (id)initWithTravel: (Travel *) travel target:(id)target action:(SEL)selector;
-- (id)initWithTravel: (Travel *) travel andEntry:(Entry *)entry target:(id)target action:(SEL)selector;
+@property (nonatomic, assign) id <EntryEditViewControllerDelegate> editDelegate;
+
+- (id)initWithTravel: (Travel *) travel;
+- (id)initWithTravel: (Travel *) travel andEntry:(Entry *)entry;
 
 - (IBAction)done:(UIBarButtonItem *)sender;
 - (IBAction)cancel:(UIBarButtonItem *)sender;

@@ -41,9 +41,10 @@ static NSIndexPath *_dateIndexPath;
 @implementation EntryEditViewController
 
 @synthesize entryManaged=_entryManaged, travel=_travel, nmEntry=_nmEntry;
+@synthesize editDelegate=_editDelegate;
 
 // designated initializer!
-- (id)initWithTravel: (Travel *)travel andEntry:(Entry *)entryManaged target:(id)target action:(SEL)selector {
+- (id)initWithTravel:(Travel *)travel andEntry:(Entry *)entryManaged {
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     
@@ -52,9 +53,6 @@ static NSIndexPath *_dateIndexPath;
         [self initIndexPaths];
         
         _isFirstView = YES;
-        
-        _target = target;
-        _selector = selector;
         
         _cellsToReloadAndFlash = [[[NSMutableArray alloc] init] retain];
         
@@ -73,9 +71,9 @@ static NSIndexPath *_dateIndexPath;
     return self;
 }
 
-- (id)initWithTravel: (Travel *)travel target:(id)target action:(SEL)selector {
+- (id)initWithTravel: (Travel *)travel {
     
-    self = [self initWithTravel:travel andEntry:nil target:target action:selector];
+    self = [self initWithTravel:travel andEntry:nil];
     
     if (self) {
         
@@ -351,10 +349,7 @@ static NSIndexPath *_dateIndexPath;
 
 - (IBAction)done:(UIBarButtonItem *)sender {
     
-    if ([_target respondsToSelector:_selector]) {
-        [_target performSelector:_selector withObject:self.nmEntry withObject:self.entryManaged];
-    }
-    
+    [self.editDelegate addOrEditEntryWithParameters:self.nmEntry andEntry:self.entryManaged];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -362,6 +357,9 @@ static NSIndexPath *_dateIndexPath;
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissModalViewControllerAnimated:YES];
+    
+    NSLog(@"%@",self.entryManaged);
+    [self.editDelegate editWasCanceled:self.entryManaged];
 }
 
 - (void)updateAndFlash:(UIViewController *)viewController {

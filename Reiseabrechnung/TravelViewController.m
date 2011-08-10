@@ -67,7 +67,8 @@
 
 - (void)openEntryAddPopup {
     
-    EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel target:self action:@selector(addOrEditEntryWithParameters:andEntry:)];
+    EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel];
+    detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
     navController.delegate = detailViewController;
     [self presentModalViewController:navController animated:YES];   
@@ -77,7 +78,8 @@
 
 - (void)openEditEntryPopup:(Entry *)entry {
     
-    EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel andEntry:entry target:self action:@selector(addOrEditEntryWithParameters:andEntry:)];
+    EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel andEntry:entry];
+    detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
     navController.delegate = detailViewController;
     [self presentModalViewController:navController animated:YES];   
@@ -240,10 +242,16 @@
     _entry.type = nmEntry.type;
     _entry.travel = _travel;
     
-    
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
     
     [self.entrySortViewController.detailViewController.tableView endUpdates];
+}
+
+- (void)editWasCanceled:(Entry *)entry {
+    
+    if (entry) {
+        [self.entrySortViewController.detailViewController.tableView deselectRowAtIndexPath:[[self.entrySortViewController.detailViewController fetchedResultsControllerForTableView:self.entrySortViewController.detailViewController.tableView] indexPathForObject:entry] animated:YES];
+    }
 }
 
 - (void)updateStateOfNavigationController:(UIViewController *)selectedViewController {
