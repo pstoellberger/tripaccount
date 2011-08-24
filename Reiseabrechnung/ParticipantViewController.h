@@ -10,9 +10,9 @@
 #import "Travel.h"
 #import "CoreDataTableViewController.h"
 
-
 @protocol ParticipantViewControllerEditDelegate
 - (void)participantWasDeleted:(Participant *)participant;
+- (void)openParticipantPopup:(Participant *)participant;
 @end
 
 @interface ParticipantViewController : CoreDataTableViewController {

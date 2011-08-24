@@ -39,6 +39,7 @@
 		F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB1F13D99BE8002C08AC /* TextEditViewController.m */; };
 		F111CB2413D9AE82002C08AC /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */; };
 		F11A520E1404F51700B983B8 /* MultiLineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A520D1404F51700B983B8 /* MultiLineSegmentedControl.m */; };
+		F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5212140541B000B983B8 /* ParticipantEditViewController.m */; };
 		F11FB34013E6983F00115D12 /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
 		F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */; };
 		F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
@@ -684,6 +685,8 @@
 		F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlignedStyle2Cell.m; path = Reiseabrechnung/AlignedStyle2Cell.m; sourceTree = "<group>"; };
 		F11A520C1404F51700B983B8 /* MultiLineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiLineSegmentedControl.h; sourceTree = "<group>"; };
 		F11A520D1404F51700B983B8 /* MultiLineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiLineSegmentedControl.m; sourceTree = "<group>"; };
+		F11A5211140541B000B983B8 /* ParticipantEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantEditViewController.h; sourceTree = "<group>"; };
+		F11A5212140541B000B983B8 /* ParticipantEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantEditViewController.m; sourceTree = "<group>"; };
 		F11FB34913E6B01E00115D12 /* SummarySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarySortViewController.h; sourceTree = "<group>"; };
 		F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarySortViewController.m; sourceTree = "<group>"; };
 		F11FB36513E6E73A00115D12 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
@@ -1123,6 +1126,15 @@
 				94FFEA6713E99BCA00FC97A4 /* RateCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		F11A52101405418600B983B8 /* ParticipantEdit */ = {
+			isa = PBXGroup;
+			children = (
+				F11A5211140541B000B983B8 /* ParticipantEditViewController.h */,
+				F11A5212140541B000B983B8 /* ParticipantEditViewController.m */,
+			);
+			name = ParticipantEdit;
 			sourceTree = "<group>";
 		};
 		F14B372D13E68B5F00351641 /* UnitTests */ = {
@@ -1584,6 +1596,7 @@
 				F1CD78CC13BC6AA400D42AA3 /* SummaryViewController.m */,
 				F11FB34913E6B01E00115D12 /* SummarySortViewController.h */,
 				F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */,
+				F11A52101405418600B983B8 /* ParticipantEdit */,
 				F1B8211C13BDFC8700FE329B /* EntryEdit */,
 				94F97EE013E981B200662ADB /* RateEdit */,
 				F1CD78BD13BB8C0900D42AA3 /* Model */,
@@ -2386,6 +2399,7 @@
 				F17B4A4A13F18C7200072F90 /* NSData+Base64.m in Sources */,
 				F17B4A4E13F25ED700072F90 /* TravelCategory.m in Sources */,
 				F11A520E1404F51700B983B8 /* MultiLineSegmentedControl.m in Sources */,
+				F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

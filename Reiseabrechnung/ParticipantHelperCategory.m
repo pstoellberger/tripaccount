@@ -12,6 +12,10 @@
 @implementation Participant (ParticipantHelper)
 
 + (BOOL)addParticipant:(Participant *)person toTravel:(Travel *)travel withABRecord:(ABRecordRef)recordRef {
+    return [Participant addParticipant:person toTravel:travel withABRecord:recordRef andEmail:nil];
+}
+
++ (BOOL)addParticipant:(Participant *)person toTravel:(Travel *)travel withABRecord:(ABRecordRef)recordRef andEmail:(NSString *)email {
     
     NSString *firstName = (NSString *) ABRecordCopyValue(recordRef, kABPersonFirstNameProperty);
     NSString *lastName = (NSString *) ABRecordCopyValue(recordRef, kABPersonLastNameProperty);
@@ -19,8 +23,7 @@
     
     NSArray *emailList = (NSArray *) ABMultiValueCopyArrayOfAllValues((ABMultiValueRef *) ABRecordCopyValue(recordRef, kABPersonEmailProperty));
     
-    NSString *email = @"";
-    if ([emailList count] > 0) {
+    if (!email && [emailList count] > 0) {
         email = (NSString *) [emailList objectAtIndex:0];
     }
     

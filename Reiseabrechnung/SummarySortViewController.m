@@ -139,6 +139,7 @@
     
     [ratesUpdated release];
     [toolbar release];
+    [ratestoolbar release];
     [newView release];
     [segControl release];
 }

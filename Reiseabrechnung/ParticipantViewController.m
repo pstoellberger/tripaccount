@@ -9,6 +9,8 @@
 #import "ParticipantViewController.h"
 #import "Participant.h"
 #import "ReiseabrechnungAppDelegate.h"
+#import "ParticipantEditViewController.h"
+#import "ShadowNavigationController.h"
 
 @implementation ParticipantViewController
 
@@ -48,8 +50,6 @@
         self.imageKey = @"image";
         self.subtitleKey = @"email";
         
-        self.tableView.allowsSelection = NO;
-
         [self viewWillAppear:YES];
         
         [self updateBadgeValue];
@@ -65,7 +65,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
     UITableViewCell *cell = [super tableView:tableView cellForManagedObject:managedObject];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     
@@ -83,10 +82,10 @@
         [alertView release];
         
     } else {
-        
+    
         [_travel.managedObjectContext deleteObject:managedObject];
         [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
-        
+
         [self.editDelegate participantWasDeleted:participant];
     }
 }
@@ -99,6 +98,10 @@
     return YES;
 }
 
+- (void)managedObjectSelected:(NSManagedObject *)managedObject {
+    
+    [self.editDelegate openParticipantPopup:(Participant *)managedObject];
+}
 
 #pragma mark - BadgeValue update 
 

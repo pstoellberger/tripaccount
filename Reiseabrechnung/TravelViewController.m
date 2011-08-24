@@ -25,6 +25,7 @@
 #import "ShadowNavigationController.h"
 #import "MGTemplateEngine.h"
 #import "ICUTemplateMatcher.h"
+#import "ParticipantEditViewController.h"
 
 @interface TravelViewController ()
 
@@ -33,6 +34,9 @@
 - (void)sendSummaryMail;
 - (void)updateTableViewInsets;
 - (void)updateSummary;
+- (void)openPersonChooseOrCreatePopup;
+- (void)selectPerson:(ABRecordRef)abRecordRef withEmail:(NSString *)email;
+
 @end
 
 
@@ -42,11 +46,38 @@
 @synthesize participantViewController=_participantViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
 @synthesize mailSendAlertView=_mailSendAlertView, rateRefreshAlertView=_rateRefreshAlertView;
 
+@synthesize actionSheetAddPerson=_actionSheetAddPerson, actionSheetOpenTravel=_actionSheetOpenTravel, actionSheetClosedTravel=_actionSheetClosedTravel;
+
+
 - (id)initWithTravel:(Travel *) travel {
     
     self = [self init];
+
     if (self) {
         _travel = travel;
+        
+        self.actionSheetClosedTravel = [[[UIActionSheet alloc] initWithTitle: @"Choose your action"
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                    destructiveButtonTitle:nil
+                                         otherButtonTitles:@"Send summary e-mail", @"Open this trip", nil] autorelease];
+        self.actionSheetClosedTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+
+        
+        self.actionSheetOpenTravel = [[[UIActionSheet alloc] initWithTitle: @"Choose your action"
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                    destructiveButtonTitle:nil
+                                         otherButtonTitles:@"Send summary e-mail", @"Close this trip", @"Update exchange rates", @"Manually edit rates", nil] autorelease];
+        self.actionSheetOpenTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;        
+        
+        
+        self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle: @"Where is the person?"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"Choose from Address Book", @"Create new person", nil] autorelease];
+        self.actionSheetAddPerson.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     }
     return self;    
 }
@@ -60,7 +91,7 @@
 - (void)openAddPopup {
     
     if ([[[self tabBarController] selectedViewController] isEqual:self.participantViewController]) {
-        [self openParticipantAddPopup];
+        [self openPersonChooseOrCreatePopup];
     } else if ([[[self tabBarController] selectedViewController] isEqual:self.entrySortViewController]) {
         [self openEntryAddPopup];
     }
@@ -88,12 +119,14 @@
     [navController release];    
 }
 
-- (void)openParticipantAddPopup {
+- (void)openPersonAddPopup {
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
     picker.navigationBar.barStyle = UIBarStyleBlack;
     picker.navigationBar.tintColor = [UIFactory defaultTintColor];
+    picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
+
     [self presentModalViewController:picker animated:YES];
     
     [UIFactory setColorOfSearchBarInABPicker:picker color:[UIFactory defaultTintColor]];
@@ -119,28 +152,17 @@
 
 - (void)openActionPopup {
     
-    UIActionSheet *actionPopup;
-    
     if ([self.travel.closed intValue] == 1) {
-        
-        actionPopup = [[UIActionSheet alloc] initWithTitle: @"Choose your action"
-                                                  delegate:self
-                                         cancelButtonTitle:@"Cancel"
-                                    destructiveButtonTitle:nil
-                                         otherButtonTitles:@"Send summary e-mail", @"Open this trip", nil];
+        [self.actionSheetClosedTravel showInView:self.view];
     } else {
-        
-        actionPopup = [[UIActionSheet alloc] initWithTitle: @"Choose your action"
-                                                  delegate:self
-                                         cancelButtonTitle:@"Cancel"
-                                    destructiveButtonTitle:nil
-                                         otherButtonTitles:@"Send summary e-mail", @"Close this trip", @"Update exchange rates", @"Manually edit rates", nil];
+        [self.actionSheetOpenTravel showInView:self.view];
     }
-    
+}
 
-    actionPopup.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [actionPopup showInView:self.view];
-    [actionPopup release];
+- (void)openPersonChooseOrCreatePopup {
+
+    [self.actionSheetAddPerson showInView:self.view];
+    
 }
 
 #pragma mark Travel logic
@@ -251,6 +273,13 @@
     [self updateSummary];
 }
 
+- (void)selectPerson:(ABRecordRef)abRecordRef withEmail:(NSString *)email {
+    
+    Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
+    [Participant addParticipant:newPerson toTravel:_travel withABRecord:abRecordRef andEmail:email];
+    [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];    
+}
+
 - (void)entryWasDeleted:(Entry *)entry {
     
     [self updateSummary];
@@ -267,7 +296,6 @@
             [self.summarySortViewController.detailViewController.tableView reloadData];     
         });
     });
-    dispatch_release(updateQueue);
 }
 
 - (void)editWasCanceled:(Entry *)entry {
@@ -311,7 +339,6 @@
         
         [self updateSummary];
     });
-    dispatch_release(updateQueue);
 }
 
 
@@ -326,6 +353,26 @@
     self.summarySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.summarySortViewController.sortToolBar.frame.size.height + self.summarySortViewController.ratesToolBar.frame.size.height, 0);
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
     
+}
+
+
+#pragma mark - ParticipantViewControllerEditDelegate
+
+- (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved {
+
+    [self.participantViewController.tableView deselectRowAtIndexPath:[self.participantViewController.tableView indexPathForSelectedRow] animated:YES];
+
+}
+
+- (void)openParticipantPopup:(Participant *)participant {
+    
+    ParticipantEditViewController *detailViewController = [[ParticipantEditViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext] withTravel:self.travel withParticipant:participant];
+    detailViewController.editDelegate = self;
+    UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
+    navController.delegate = detailViewController;
+    [self presentModalViewController:navController animated:YES];   
+    [detailViewController release];
+    [navController release];    
 }
 
 #pragma mark - ParticipantViewControllerEditDelegate
@@ -354,24 +401,37 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    if (buttonIndex == 0) {
-        
-        [self askToSendEmail];
-        
-    } else if (buttonIndex == 1) {
-        
-        if ([self.travel.closed intValue] == 1) {
-            [self askToRefreshRatesWhenOpening];
-        } else {
-            [self closeTravel];
+    if ([actionSheet isEqual:self.actionSheetOpenTravel] || [actionSheet isEqual:self.actionSheetClosedTravel]) {
+        if (buttonIndex == 0) {
+            
+            [self askToSendEmail];
+            
+        } else if (buttonIndex == 1) {
+            
+            if ([self.travel.closed intValue] == 1) {
+                [self askToRefreshRatesWhenOpening];
+            } else {
+                [self closeTravel];
+            }
+        } else if (buttonIndex == 2) {
+            
+            [self refreshExchangeRates];
+            
+        } else if (buttonIndex == 3) {
+            
+            [self openRateEditPopup];
         }
-    } else if (buttonIndex == 2) {
+    } else {
         
-        [self refreshExchangeRates];
+        if (buttonIndex == 0) {
+            
+            [self openPersonAddPopup];
+            
+        } else if (buttonIndex == 1) {
         
-    } else if (buttonIndex == 3) {
-        
-        [self openRateEditPopup];
+            [self openParticipantPopup:nil];
+            
+        }
     }
 }
 #pragma mark - RateSelectViewControllerDelegate
@@ -382,21 +442,45 @@
 
 #pragma mark - ABPeoplePickerNavigationControllerDelegate
 
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)abRecordRef{
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
     
-    Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
-    [Participant addParticipant:newPerson toTravel:_travel withABRecord:abRecordRef];
-    [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
+    BOOL returnValue = YES;
     
-    [[self navigationController] dismissModalViewControllerAnimated:YES];
+    ABMultiValueRef *multiValue = (ABMultiValueRef *) ABRecordCopyValue(person, kABPersonEmailProperty);
+    NSArray *emailList = (NSArray *) ABMultiValueCopyArrayOfAllValues(multiValue);
     
-	return NO;
+    if ([emailList count] <= 1) {
+        
+        NSString *email = nil;
+        if ([emailList count] > 0) {
+            email = [emailList objectAtIndex:0];
+        }
+        
+        [self selectPerson:person withEmail:email];
+        [[self navigationController] dismissModalViewControllerAnimated:YES];
+        
+        returnValue = NO;
+    }
+    
+    CFRelease(multiValue);
+    CFRelease(emailList);
+    
+    return returnValue;
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person 
 								property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
     
-    // no property selection allowed
+    ABMultiValueRef *multiValue = (ABMultiValueRef *) ABRecordCopyValue(person, property);
+    CFIndex index = (CFIndex) ABMultiValueGetIndexForIdentifier(multiValue, identifier);
+    NSString *email = (NSString *) ABMultiValueCopyValueAtIndex(multiValue, index);
+    
+    [self selectPerson:person withEmail:email];
+    [[self navigationController] dismissModalViewControllerAnimated:YES];
+    
+    CFRelease(multiValue);
+    CFRelease(email);
+    
 	return NO;
 }
 

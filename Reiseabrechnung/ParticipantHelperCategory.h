@@ -13,5 +13,6 @@
 @interface Participant (ParticipantHelper)
     
 + (BOOL)addParticipant:(Participant *)person toTravel:(Travel *)travel withABRecord:(ABRecordRef)recordRef;
++ (BOOL)addParticipant:(Participant *)person toTravel:(Travel *)travel withABRecord:(ABRecordRef)recordRef andEmail:(NSString *)email;
 
 @end

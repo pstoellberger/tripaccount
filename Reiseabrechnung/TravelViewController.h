@@ -20,8 +20,9 @@
 #import "SummarySortViewController.h"
 #import "RateSelectViewController.h"
 #import "EntryEditViewController.h"
+#import "ParticipantEditViewController.h"
  
-@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate, EntryEditViewControllerDelegate, ParticipantViewControllerEditDelegate>
+@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate, EntryEditViewControllerDelegate, ParticipantViewControllerEditDelegate, ParticipantEditViewControllerEditDelegate>
 
 @property (nonatomic, retain, readonly) IBOutlet Travel *travel;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
@@ -35,9 +36,13 @@
 @property (nonatomic, retain) UIAlertView *rateRefreshAlertView;
 @property (nonatomic, retain) UIAlertView *mailSendAlertView;
 
+@property (nonatomic, retain) UIActionSheet *actionSheetOpenTravel;
+@property (nonatomic, retain) UIActionSheet *actionSheetClosedTravel;
+@property (nonatomic, retain) UIActionSheet *actionSheetAddPerson;
+
 - (id)initWithTravel:(Travel *) travel;
 
-- (void)openParticipantAddPopup;
+- (void)openPersonAddPopup;
 - (void)openEntryAddPopup;
 - (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry;
 - (void)updateStateOfNavigationController:(UIViewController *)selectedViewController;

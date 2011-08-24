@@ -38,6 +38,10 @@
     return self;    
 }
 
+- (void)setKeyBoardType:(UIKeyboardType)keyboardType {
+    self.textField.keyboardType = keyboardType;
+}
+
 - (void)done {
     if ([_target respondsToSelector:_selector]) {
         [_target performSelector:_selector withObject:[_textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];

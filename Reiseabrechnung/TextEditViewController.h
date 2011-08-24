@@ -20,6 +20,7 @@
 @property (nonatomic, retain) UITextField *textField;
 
 - (id)initWithText:(NSString *)text target:(id)target selector:(SEL)selector;
+- (void)setKeyBoardType:(UIKeyboardType)keyboardType;
 - (void)done;
 
 @end
