@@ -53,7 +53,7 @@
                           target:(id)target 
                           action:(SEL)selector; {
     
-    return [self initInManagedObjectContext:context withStyle:UITableViewStylePlain withMultiSelection:multiSelection withAllNoneButtons:multiSelection withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
+    return [self initInManagedObjectContext:context withStyle:style withMultiSelection:multiSelection withAllNoneButtons:multiSelection withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
 }
     
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context

@@ -27,6 +27,8 @@ static NSIndexPath *_currenciesIndexPath;
 @interface TravelEditViewController ()
 - (void)initIndexPaths;
 - (void)updateAndFlash:(UIViewController *)viewController;
+- (void)selectCity:(NSString *)newCity;
+- (void)selectName:(NSString *)newName;
 @end
 
 @implementation TravelEditViewController
@@ -58,6 +60,7 @@ static NSIndexPath *_currenciesIndexPath;
         [UIFactory initializeTableViewController:self.tableView];
         
         self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
         if (self.travel) {
@@ -167,19 +170,19 @@ static NSIndexPath *_currenciesIndexPath;
         cell.textLabel.text = @"City/State";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.city;
-
+        
     } else if ([indexPath isEqual:_descriptionIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
         cell.textLabel.text = @"Description";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.name;
-        
+
     } else if ([indexPath isEqual:_currenciesIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = @"Foreign";
+        cell.textLabel.text = @"Currencies";
         
         NSString *currenciesString = @"";
         const unichar cr = '\n';
@@ -195,14 +198,33 @@ static NSIndexPath *_currenciesIndexPath;
         NSLog(@"no indexpath cell found for %@ ", indexPath);
     }
     
-    if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] -1 ) {
-        //[UIFactory addShadowToView:cell];
-    }
-    
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Clear";
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (indexPath == _cityIndexPath || indexPath == _descriptionIndexPath);  
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath == _cityIndexPath) {
+        
+        self.city = @"";
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_cityIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        
+    } else if (indexPath == _descriptionIndexPath) {
+        
+        self.name = @"";
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath isEqual:_currenciesIndexPath] && [self.currencies count] > 1) {
         return 40 + (([self.currencies count]-1) * 19.5);
     } else {

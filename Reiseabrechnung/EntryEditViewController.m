@@ -331,8 +331,20 @@ static NSIndexPath *_dateIndexPath;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleInsert;
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Clear";
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (indexPath == _descriptionIndexPath);  
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath == _descriptionIndexPath) {
+        self.nmEntry.text = @"";
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 - (void)checkIfDoneIsPossible {
