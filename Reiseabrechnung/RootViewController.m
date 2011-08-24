@@ -163,7 +163,7 @@
      [super viewDidUnload];
 }
 
--(void)loadView {
+- (void)loadView {
      
      [super loadView];
      
@@ -186,13 +186,16 @@
      [toolbar release];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
      
      if (!_helpView) {
           NSString *text = @"Use this button to add a new trip to start tracking your expenses.";
           _helpView = [[HelpView alloc] initWithFrame:CGRectMake(170, 2, 148, 90) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT uniqueIdentifier:@"travel add button"];
           [self.view addSubview:_helpView];        
      }
+     
+     
+     [self.tableViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
 }
 
 - (void)dealloc {
