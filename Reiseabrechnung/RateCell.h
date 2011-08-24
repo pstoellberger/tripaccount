@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GradientCell.h"
 
-@interface RateCell : UITableViewCell
+@interface RateCell : GradientCell
 
 @property (nonatomic, retain) IBOutlet UILabel *subTextLabel;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
