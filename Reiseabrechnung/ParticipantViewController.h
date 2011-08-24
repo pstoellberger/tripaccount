@@ -10,10 +10,16 @@
 #import "Travel.h"
 #import "CoreDataTableViewController.h"
 
+
+@protocol ParticipantViewControllerEditDelegate
+- (void)participantWasDeleted:(Participant *)participant;
+@end
+
 @interface ParticipantViewController : CoreDataTableViewController {
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;
+@property (nonatomic, assign) id <ParticipantViewControllerEditDelegate> editDelegate;
 
 - (void)updateBadgeValue;
 

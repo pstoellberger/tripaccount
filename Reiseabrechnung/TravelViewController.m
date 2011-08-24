@@ -32,7 +32,7 @@
 - (void)openTravel:(BOOL)useLatestRates;
 - (void)sendSummaryMail;
 - (void)updateTableViewInsets;
-
+- (void)updateSummary;
 @end
 
 
@@ -248,8 +248,26 @@
     
     [self.entrySortViewController.detailViewController.tableView endUpdates];
     
-    [self.summarySortViewController.detailViewController recalculateSummary];
-    [self.summarySortViewController.detailViewController.tableView reloadData];
+    [self updateSummary];
+}
+
+- (void)entryWasDeleted:(Entry *)entry {
+    
+    [self updateSummary];
+}
+
+- (void)updateSummary {
+    
+    dispatch_queue_t updateQueue = dispatch_queue_create("UpdateSummary", NULL);
+    dispatch_async(updateQueue, ^{
+        
+        [self.summarySortViewController.detailViewController recalculateSummary];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.summarySortViewController.detailViewController.tableView reloadData];     
+        });
+    });
+    dispatch_release(updateQueue);
 }
 
 - (void)editWasCanceled:(Entry *)entry {
@@ -290,7 +308,10 @@
             [_summarySortViewController updateRateLabel];
             [_summarySortViewController.updateIndicator stopAnimating];
         });
+        
+        [self updateSummary];
     });
+    dispatch_release(updateQueue);
 }
 
 
@@ -305,6 +326,13 @@
     self.summarySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.summarySortViewController.sortToolBar.frame.size.height + self.summarySortViewController.ratesToolBar.frame.size.height, 0);
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
     
+}
+
+#pragma mark - ParticipantViewControllerEditDelegate
+
+- (void)participantWasDeleted:(Participant *)participant {
+    
+    [self updateSummary];   
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -349,8 +377,7 @@
 #pragma mark - RateSelectViewControllerDelegate
 
 - (void)willDisappearWithChanges {
-    [_summarySortViewController.detailViewController recalculateSummary];
-    [_summarySortViewController.detailViewController.tableView reloadData];
+    [self updateSummary];
 }
 
 #pragma mark - ABPeoplePickerNavigationControllerDelegate
@@ -390,11 +417,6 @@
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    
-    if ([_summarySortViewController isEqual:viewController]) {
-        //[_summarySortViewController.detailViewController recalculateSummary];
-        //[_summarySortViewController.detailViewController.tableView reloadData];
-    }
     return YES;
 }
 
@@ -422,6 +444,7 @@
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.participantViewController = [[[ParticipantViewController alloc] initWithTravel:_travel] autorelease];
+    self.participantViewController.editDelegate = self;
     
     self.entrySortViewController = [[[EntrySortViewController alloc] initWithTravel:_travel] autorelease];
     self.entrySortViewController.detailViewController.editDelegate = self;

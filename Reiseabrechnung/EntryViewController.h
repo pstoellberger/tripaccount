@@ -21,6 +21,7 @@
 @protocol EntryViewControllerEditDelegate
 - (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry;
 - (void)openEditEntryPopup:(Entry *)entry;
+- (void)entryWasDeleted:(Entry *)entry;
 @end
 
 @interface EntryViewController : CoreDataTableViewController {

@@ -140,6 +140,8 @@
 #pragma mark Business Logic
 
 - (void)recalculateSummary {
+    
+    NSLog(@"recalculate summary.");
 
     if ([self.travel.closed intValue] != 1) {
         

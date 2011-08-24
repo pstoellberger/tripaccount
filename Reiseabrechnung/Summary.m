@@ -164,7 +164,7 @@
     if (!returnValue) {
         returnValue = [[[NSNumber alloc] initWithInt:0] autorelease];
         [_accounts setObject:returnValue forKey:key];
-        NSLog(@"Creating account for %@ and %@", key.payer.name, key.receiver.name);
+        //NSLog(@"Creating account for %@ and %@", key.payer.name, key.receiver.name);
     }
     return [NSNumber numberWithDouble:([returnValue doubleValue] * multiplier)];
     

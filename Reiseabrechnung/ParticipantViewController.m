@@ -12,7 +12,7 @@
 
 @implementation ParticipantViewController
 
-@synthesize travel=_travel;
+@synthesize travel=_travel, editDelegate=_editDelegate;
 
 - (id)initWithTravel:(Travel *) travel {
     
@@ -62,7 +62,7 @@
     return UITableViewCellAccessoryNone;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
     UITableViewCell *cell = [super tableView:tableView cellForManagedObject:managedObject];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -86,6 +86,8 @@
         
         [_travel.managedObjectContext deleteObject:managedObject];
         [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
+        
+        [self.editDelegate participantWasDeleted:participant];
     }
 }
 

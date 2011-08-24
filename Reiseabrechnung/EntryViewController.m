@@ -159,6 +159,8 @@
     
     [_travel.managedObjectContext deleteObject:managedObject];
     [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
+    
+    [self.editDelegate entryWasDeleted:(Entry *)managedObject];
 }
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
