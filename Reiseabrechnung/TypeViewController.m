@@ -17,7 +17,7 @@
 
 -(id)initInManagedObjectContext:(NSManagedObjectContext *)context withMultiSelection:(BOOL)multiSelection withFetchRequest:(NSFetchRequest *)fetchRequest withSectionKey:(NSString *)sectionKey withSelectedObjects:(NSArray *)selectedObjects target:(id)target action:(SEL)selector {
     
-    if (self = [super initInManagedObjectContext:context withMultiSelection:multiSelection withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:selectedObjects target:target action:selector]) {
+    if (self = [super initInManagedObjectContext:context withMultiSelection:multiSelection withAllNoneButtons:NO withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:selectedObjects target:target action:selector]) {
         
         _editButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEditing)] retain];
         _addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)] retain];

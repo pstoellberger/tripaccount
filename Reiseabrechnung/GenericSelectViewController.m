@@ -20,7 +20,7 @@
 
 @implementation GenericSelectViewController
 
-@synthesize multiSelectionAllowed=_multiSelectionAllowed, cellClass=_cellClass, context=_context;
+@synthesize multiSelectionAllowed=_multiSelectionAllowed, cellClass=_cellClass, context=_context, allNoneButtons=_allNoneButtons;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
               withMultiSelection:(BOOL)multiSelection 
@@ -28,18 +28,19 @@
              withSelectedObjects:(NSArray *)newSelectedObjects
                           target:(id)target 
                           action:(SEL)selector; {
-    return [self initInManagedObjectContext:context withMultiSelection:multiSelection withFetchRequest:fetchRequest withSectionKey:nil withSelectedObjects:newSelectedObjects target:target action:selector];
+    return [self initInManagedObjectContext:context withMultiSelection:multiSelection withAllNoneButtons:multiSelection withFetchRequest:fetchRequest withSectionKey:nil withSelectedObjects:newSelectedObjects target:target action:selector];
                               
 }
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context
               withMultiSelection:(BOOL)multiSelection 
+              withAllNoneButtons:(BOOL)allNoneButtons
                 withFetchRequest:(NSFetchRequest *)fetchRequest
                   withSectionKey:(NSString *)sectionKey
              withSelectedObjects:(NSArray *)newSelectedObjects
                           target:(id)target 
                           action:(SEL)selector; {
-    return [self initInManagedObjectContext:context withStyle:UITableViewStylePlain withMultiSelection:multiSelection withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
+    return [self initInManagedObjectContext:context withStyle:UITableViewStylePlain withMultiSelection:multiSelection withAllNoneButtons:allNoneButtons withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
 
 }
 
@@ -52,12 +53,26 @@
                           target:(id)target 
                           action:(SEL)selector; {
     
+    return [self initInManagedObjectContext:context withStyle:UITableViewStylePlain withMultiSelection:multiSelection withAllNoneButtons:multiSelection withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
+}
+    
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context
+                       withStyle:(UITableViewStyle)style
+              withMultiSelection:(BOOL)multiSelection
+              withAllNoneButtons:(BOOL)allNoneButtons 
+                withFetchRequest:(NSFetchRequest *)fetchRequest
+                  withSectionKey:(NSString *)sectionKey
+             withSelectedObjects:(NSArray *)newSelectedObjects
+                          target:(id)target 
+                          action:(SEL)selector; {
+    
     
     if (self = [super initWithStyle:style]) {
         
         _selector = selector;
         _target = target;
         _multiSelectionAllowed = multiSelection;
+        _allNoneButtons = allNoneButtons;
         
         self.context = context;
         
@@ -161,7 +176,7 @@
 
 - (UIView *)createTableHeaderSubView {
     
-    if (self.multiSelectionAllowed) {
+    if (self.allNoneButtons) {
         NSString *selectAllButton = @"All";
         NSString *selectNoneButton = @"None";            
         

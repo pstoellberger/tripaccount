@@ -31,6 +31,7 @@
 - (void)closeTravel;
 - (void)openTravel:(BOOL)useLatestRates;
 - (void)sendSummaryMail;
+- (void)updateTableViewInsets;
 
 @end
 
@@ -202,8 +203,9 @@
     NSLog(@"%@", [[self.travel.participants anyObject] base64]);
     
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
-    engine.matcher = [[ICUTemplateMatcher alloc] initWithTemplateEngine:engine];
+    engine.matcher = [[[ICUTemplateMatcher alloc] initWithTemplateEngine:engine] autorelease];
     NSString *mailBody = [engine processTemplateInFileAtPath:[[NSBundle mainBundle] pathForResource:@"mailTemplate" ofType:@"html"] withVariables:dictionary];
+    [engine release];
     
     controller.mailComposeDelegate = self;
     
@@ -245,6 +247,9 @@
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
     
     [self.entrySortViewController.detailViewController.tableView endUpdates];
+    
+    [self.summarySortViewController.detailViewController recalculateSummary];
+    [self.summarySortViewController.detailViewController.tableView reloadData];
 }
 
 - (void)editWasCanceled:(Entry *)entry {
@@ -286,6 +291,20 @@
             [_summarySortViewController.updateIndicator stopAnimating];
         });
     });
+}
+
+
+- (void) updateTableViewInsets {
+    
+    self.participantViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
+    self.participantViewController.tableView.scrollIndicatorInsets = self.participantViewController.tableView.contentInset;
+    
+    self.entrySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.entrySortViewController.sortToolBar.frame.size.height, 0);
+    self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
+    
+    self.summarySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.summarySortViewController.sortToolBar.frame.size.height + self.summarySortViewController.ratesToolBar.frame.size.height, 0);
+    self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
+    
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -373,8 +392,8 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     
     if ([_summarySortViewController isEqual:viewController]) {
-        [_summarySortViewController.detailViewController recalculateSummary];
-        [_summarySortViewController.detailViewController.tableView reloadData];
+        //[_summarySortViewController.detailViewController recalculateSummary];
+        //[_summarySortViewController.detailViewController.tableView reloadData];
     }
     return YES;
 }
@@ -424,6 +443,14 @@
     
     self.rateRefreshAlertView = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateTableViewInsets];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self updateTableViewInsets];
 }
 
 #pragma mark View lifecycle

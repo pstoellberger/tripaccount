@@ -24,6 +24,7 @@
 }
 
 @property (nonatomic, readonly) BOOL multiSelectionAllowed;
+@property (nonatomic, readonly) BOOL allNoneButtons;
 @property (nonatomic, retain) Class cellClass;
 @property (nonatomic, retain) NSManagedObjectContext *context;
 
@@ -39,6 +40,7 @@
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
               withMultiSelection:(BOOL)multiSelection 
+              withAllNoneButtons:(BOOL)allNoneButtons
                 withFetchRequest:(NSFetchRequest *)fetchRequest
                   withSectionKey:(NSString *)sectionKey
              withSelectedObjects:(NSArray *)selectedObjects
@@ -48,6 +50,16 @@
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
                        withStyle:(UITableViewStyle)style
               withMultiSelection:(BOOL)multiSelection 
+                withFetchRequest:(NSFetchRequest *)fetchRequest
+                  withSectionKey:(NSString *)sectionKey
+             withSelectedObjects:(NSArray *)selectedObjects
+                          target:(id)target 
+                          action:(SEL)selector;
+
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
+                       withStyle:(UITableViewStyle)style
+              withMultiSelection:(BOOL)multiSelection 
+              withAllNoneButtons:(BOOL)allNoneButtons
                 withFetchRequest:(NSFetchRequest *)fetchRequest
                   withSectionKey:(NSString *)sectionKey
              withSelectedObjects:(NSArray *)selectedObjects

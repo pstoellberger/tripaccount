@@ -16,8 +16,9 @@
 - (void)viewWillAppear:(BOOL)animated {   
     [super viewWillAppear:animated];   
     
-    self.navigationBar.barStyle = UIBarStyleBlack;
-    self.navigationBar.tintColor = [UIFactory defaultTintColor];
+    self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    //self.navigationBar.tintColor = [UIFactory defaultTintColor];
+    //self.navigationController.ins
     [UIFactory addShadowToView:self.navigationBar];
 } 
 

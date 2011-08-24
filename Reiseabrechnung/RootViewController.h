@@ -25,6 +25,8 @@
 @property (nonatomic, retain) CoreDataTableViewController *tableViewController;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic, retain) UIToolbar *infoToolBar;
+
 @property (nonatomic, retain) InfoViewController *infoViewController;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;

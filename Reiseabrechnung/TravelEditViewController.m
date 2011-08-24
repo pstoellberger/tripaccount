@@ -220,6 +220,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
                                                                                                          withMultiSelection:NO
+                                                                                                         withAllNoneButtons:NO
                                                                                                            withFetchRequest:_fetchRequest 
                                                                                                              withSectionKey:@"uppercaseFirstLetterOfName"
                                                                                                         withSelectedObjects:[NSArray arrayWithObjects:self.country, nil]
@@ -254,6 +255,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
                                                                                                          withMultiSelection:YES
+                                                                                                         withAllNoneButtons:NO
                                                                                                            withFetchRequest:_fetchRequest
                                                                                                              withSectionKey:@"uppercaseFirstLetterOfName"
                                                                                                         withSelectedObjects:self.currencies

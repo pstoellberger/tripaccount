@@ -27,11 +27,14 @@
         _travel = travel;
         _displayCurrency = currency;
 
-        [UIFactory initializeTableViewController:self.tableView];
-        
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-
+        
+        [UIFactory initializeTableViewController:self.tableView];
+        
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
+        self.tableView.contentInset = self.tableView.scrollIndicatorInsets;
+        
         self.title = @"Summary";
         self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"138-scales" ofType:@"png"]];
         
@@ -139,6 +142,7 @@
 - (void)recalculateSummary {
 
     if ([self.travel.closed intValue] != 1) {
+        
         Summary *summary = [Summary createSummary:self.travel];
         NSMutableDictionary *dic = summary.accounts;
         

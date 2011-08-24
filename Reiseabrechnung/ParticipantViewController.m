@@ -25,6 +25,9 @@
         
         [UIFactory initializeTableViewController:self.tableView];
         
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
+        self.tableView.contentInset = self.tableView.scrollIndicatorInsets;
+        
         self.title = @"People";
         self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"group" ofType:@"png"]];
         

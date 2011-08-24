@@ -103,6 +103,7 @@
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"City" inManagedObjectContext:self.context];
     NSArray *allCities = [self.context executeFetchRequest:req error:nil];
+    [req release];
     
     City *city = nil;
     Country *country = nil;

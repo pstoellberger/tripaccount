@@ -20,6 +20,9 @@
 @property (nonatomic, retain) UILabel *lastUpdatedLabel;
 @property (nonatomic, retain) UIActivityIndicatorView *updateIndicator;
 
+@property (nonatomic, retain) UIToolbar *sortToolBar;
+@property (nonatomic, retain) UIToolbar *ratesToolBar;
+
 - (id)initWithTravel:(Travel *) travel;
 - (void)updateRateLabel;
 

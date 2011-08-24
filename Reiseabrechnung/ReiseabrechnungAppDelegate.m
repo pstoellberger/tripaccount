@@ -35,12 +35,15 @@
     
     [self refreshCurrencyRatesIfOutDated];
     
-    self.locator = [[Locator alloc] initInManagedObjectContext:self.managedObjectContext];
+    self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
+    
+    NSLog(@"%@",self.window.frame);
     
     [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
     
     RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
     self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
+    self.navController.toolbar.barStyle = UIBarStyleBlackTranslucent;
     self.navController.delegate = rvc;
     [rvc release];
     
@@ -211,9 +214,11 @@
             
             NSLog(@"Refresh finished.");
         });
+        
+    } else {
+        
+        [currencyRefresh release];
     }
-    
-    [currencyRefresh release];
     
 }
 
