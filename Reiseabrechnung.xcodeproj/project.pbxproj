@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		940811F513EAB04C003D7B3E /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = 940811F413EAB04C003D7B3E /* Travel.m */; };
-		9408120713EAD0E5003D7B3E /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = 940811F413EAB04C003D7B3E /* Travel.m */; };
 		9408120813EAD0E5003D7B3E /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F127299513E839B10095286D /* Type.m */; };
 		9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
 		9408120A13EAD10B003D7B3E /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FFEA6713E99BCA00FC97A4 /* RateCell.m */; };
 		9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408120C13EADF7F003D7B3E /* ExchangeRate.m */; };
-		9408121013EADF7F003D7B3E /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408120F13EADF7F003D7B3E /* Currency.m */; };
 		940B41ED13EBF18300902B00 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EC13EBF18300902B00 /* Icon.png */; };
 		940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EF13EBF18B00902B00 /* Icon@2x.png */; };
 		940B41F413EBF39800902B00 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F113EBF39800902B00 /* group.png */; };
@@ -27,8 +24,6 @@
 		940B41FE13EC365C00902B00 /* pricetag_euro.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FD13EC365C00902B00 /* pricetag_euro.png */; };
 		940B41FF13EC365C00902B00 /* pricetag_euro.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FD13EC365C00902B00 /* pricetag_euro.png */; };
 		94F97EE313E9831C00662ADB /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
-		94F97EED13E9878400662ADB /* RateEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F97EEA13E9878400662ADB /* RateEditViewController.xib */; };
-		94F97EEE13E9878400662ADB /* RateEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F97EEA13E9878400662ADB /* RateEditViewController.xib */; };
 		94FFEA6913E99BCA00FC97A4 /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FFEA6713E99BCA00FC97A4 /* RateCell.m */; };
 		94FFEA6A13E99BCA00FC97A4 /* RateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FFEA6813E99BCA00FC97A4 /* RateCell.xib */; };
 		F1006C3113E0539F0014CF4B /* CurrencyRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F1006C3013E0539F0014CF4B /* CurrencyRefresh.m */; };
@@ -38,15 +33,16 @@
 		F100DEC713E2E5F900BB1E6E /* DateSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */; };
 		F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB1F13D99BE8002C08AC /* TextEditViewController.m */; };
 		F111CB2413D9AE82002C08AC /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */; };
-		F11A520E1404F51700B983B8 /* MultiLineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A520D1404F51700B983B8 /* MultiLineSegmentedControl.m */; };
 		F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5212140541B000B983B8 /* ParticipantEditViewController.m */; };
+		F11A521614055E7200B983B8 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521514055E7100B983B8 /* Participant.m */; };
+		F11A521714055E7200B983B8 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521514055E7100B983B8 /* Participant.m */; };
+		F11A521A140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */; };
+		F11A521B140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */; };
+		F11A521E140654C100B983B8 /* NumberFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521D140654C100B983B8 /* NumberFilter.m */; };
+		F11A521F140654C100B983B8 /* NumberFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521D140654C100B983B8 /* NumberFilter.m */; };
 		F11FB34013E6983F00115D12 /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
 		F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */; };
 		F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
-		F127297013E7EF370095286D /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F127296F13E7EF370095286D /* Participant.m */; };
-		F127297113E7EF370095286D /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F127296F13E7EF370095286D /* Participant.m */; };
-		F127297813E7F01A0095286D /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F127297713E7F01A0095286D /* Transfer.m */; };
-		F127297913E7F01A0095286D /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F127297713E7F01A0095286D /* Transfer.m */; };
 		F127298813E7FCFF0095286D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298713E7FCFF0095286D /* Entry.m */; };
 		F127298913E7FCFF0095286D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298713E7FCFF0095286D /* Entry.m */; };
 		F127299213E813A10095286D /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
@@ -615,6 +611,14 @@
 		F1B8211B13BDE2D400FE329B /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211A13BDE2D400FE329B /* Summary.m */; };
 		F1B8213C13BE0E3A00FE329B /* EntryNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8213B13BE0E3A00FE329B /* EntryNotManaged.m */; };
 		F1B8216813BE32E000FE329B /* TravelNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8216713BE32DF00FE329B /* TravelNotManaged.m */; };
+		F1BB9D6A1406623D00DA0573 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D691406623D00DA0573 /* Transfer.m */; };
+		F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D691406623D00DA0573 /* Transfer.m */; };
+		F1BB9D6F1406623E00DA0573 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D6E1406623E00DA0573 /* Travel.m */; };
+		F1BB9D701406623E00DA0573 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D6E1406623E00DA0573 /* Travel.m */; };
+		F1BB9D731406623E00DA0573 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D721406623E00DA0573 /* Currency.m */; };
+		F1BB9D741406623E00DA0573 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D721406623E00DA0573 /* Currency.m */; };
+		F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
+		F1BB9D781406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
 		F1CD782F13BA405A00D42AA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD782E13BA405A00D42AA3 /* UIKit.framework */; };
 		F1CD783113BA405A00D42AA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD783013BA405A00D42AA3 /* Foundation.framework */; };
 		F1CD783313BA405A00D42AA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */; };
@@ -649,12 +653,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		940811F313EAB04C003D7B3E /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
-		940811F413EAB04C003D7B3E /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
 		9408120B13EADF7F003D7B3E /* ExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRate.h; sourceTree = "<group>"; };
 		9408120C13EADF7F003D7B3E /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
-		9408120E13EADF7F003D7B3E /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
-		9408120F13EADF7F003D7B3E /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 		940B41EC13EBF18300902B00 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		940B41EF13EBF18B00902B00 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		940B41F113EBF39800902B00 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
@@ -666,7 +666,6 @@
 		94F97EDE13E9811500662ADB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		94F97EE113E9831C00662ADB /* RateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RateSelectViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		94F97EE213E9831C00662ADB /* RateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RateSelectViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		94F97EEA13E9878400662ADB /* RateEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RateEditViewController.xib; path = ../Reiseabrechnung/RateEditViewController.xib; sourceTree = "<group>"; };
 		94FFEA6613E99BCA00FC97A4 /* RateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = RateCell.h; path = Reiseabrechnung/RateCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		94FFEA6713E99BCA00FC97A4 /* RateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RateCell.m; path = Reiseabrechnung/RateCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		94FFEA6813E99BCA00FC97A4 /* RateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateCell.xib; sourceTree = "<group>"; };
@@ -683,18 +682,18 @@
 		F111CB1F13D99BE8002C08AC /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
 		F111CB2213D9AE82002C08AC /* AlignedStyle2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlignedStyle2Cell.h; path = Reiseabrechnung/AlignedStyle2Cell.h; sourceTree = "<group>"; };
 		F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlignedStyle2Cell.m; path = Reiseabrechnung/AlignedStyle2Cell.m; sourceTree = "<group>"; };
-		F11A520C1404F51700B983B8 /* MultiLineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiLineSegmentedControl.h; sourceTree = "<group>"; };
-		F11A520D1404F51700B983B8 /* MultiLineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiLineSegmentedControl.m; sourceTree = "<group>"; };
 		F11A5211140541B000B983B8 /* ParticipantEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantEditViewController.h; sourceTree = "<group>"; };
 		F11A5212140541B000B983B8 /* ParticipantEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantEditViewController.m; sourceTree = "<group>"; };
+		F11A521414055E7100B983B8 /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
+		F11A521514055E7100B983B8 /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
+		F11A5218140563D000B983B8 /* MultiLineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiLineSegmentedControl.h; path = Reiseabrechnung/MultiLineSegmentedControl.h; sourceTree = "<group>"; };
+		F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultiLineSegmentedControl.m; path = Reiseabrechnung/MultiLineSegmentedControl.m; sourceTree = "<group>"; };
+		F11A521C140654C100B983B8 /* NumberFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFilter.h; sourceTree = "<group>"; };
+		F11A521D140654C100B983B8 /* NumberFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberFilter.m; sourceTree = "<group>"; };
 		F11FB34913E6B01E00115D12 /* SummarySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarySortViewController.h; sourceTree = "<group>"; };
 		F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarySortViewController.m; sourceTree = "<group>"; };
 		F11FB36513E6E73A00115D12 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
 		F11FB36613E6E73A00115D12 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
-		F127296E13E7EF370095286D /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
-		F127296F13E7EF370095286D /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
-		F127297613E7F01A0095286D /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
-		F127297713E7F01A0095286D /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
 		F127298613E7FCFF0095286D /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
 		F127298713E7FCFF0095286D /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		F127299413E839B10095286D /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
@@ -1002,6 +1001,14 @@
 		F1B8213B13BE0E3A00FE329B /* EntryNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryNotManaged.m; sourceTree = "<group>"; };
 		F1B8216613BE32DE00FE329B /* TravelNotManaged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelNotManaged.h; sourceTree = "<group>"; };
 		F1B8216713BE32DF00FE329B /* TravelNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelNotManaged.m; sourceTree = "<group>"; };
+		F1BB9D681406623D00DA0573 /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
+		F1BB9D691406623D00DA0573 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
+		F1BB9D6D1406623E00DA0573 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
+		F1BB9D6E1406623E00DA0573 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
+		F1BB9D711406623E00DA0573 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		F1BB9D721406623E00DA0573 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		F1BB9D751406703600DA0573 /* EntryCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCategory.h; sourceTree = "<group>"; };
+		F1BB9D761406703600DA0573 /* EntryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCategory.m; sourceTree = "<group>"; };
 		F1CD782A13BA405A00D42AA3 /* Reiseabrechnung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reiseabrechnung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CD782E13BA405A00D42AA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1CD783013BA405A00D42AA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1420,7 +1427,6 @@
 		F1A6BD1A13D5CF7200161197 /* en.proj */ = {
 			isa = PBXGroup;
 			children = (
-				94F97EEA13E9878400662ADB /* RateEditViewController.xib */,
 				F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */,
 				F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */,
 				F1CD784013BA405B00D42AA3 /* MainWindow.xib */,
@@ -1435,24 +1441,24 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F1BB9D711406623E00DA0573 /* Currency.h */,
+				F1BB9D721406623E00DA0573 /* Currency.m */,
+				F1BB9D6D1406623E00DA0573 /* Travel.h */,
+				F1BB9D6E1406623E00DA0573 /* Travel.m */,
+				F1BB9D681406623D00DA0573 /* Transfer.h */,
+				F1BB9D691406623D00DA0573 /* Transfer.m */,
+				F11A521414055E7100B983B8 /* Participant.h */,
+				F11A521514055E7100B983B8 /* Participant.m */,
 				F17B449D13F00B1D00072F90 /* Country.h */,
 				F17B449E13F00B1D00072F90 /* Country.m */,
 				F17B449913F00B1D00072F90 /* City.h */,
 				F17B449A13F00B1D00072F90 /* City.m */,
-				9408120E13EADF7F003D7B3E /* Currency.h */,
-				9408120F13EADF7F003D7B3E /* Currency.m */,
 				9408120B13EADF7F003D7B3E /* ExchangeRate.h */,
 				9408120C13EADF7F003D7B3E /* ExchangeRate.m */,
-				940811F313EAB04C003D7B3E /* Travel.h */,
-				940811F413EAB04C003D7B3E /* Travel.m */,
 				F127299413E839B10095286D /* Type.h */,
 				F127299513E839B10095286D /* Type.m */,
 				F127298613E7FCFF0095286D /* Entry.h */,
 				F127298713E7FCFF0095286D /* Entry.m */,
-				F127297613E7F01A0095286D /* Transfer.h */,
-				F127297713E7F01A0095286D /* Transfer.m */,
-				F127296E13E7EF370095286D /* Participant.h */,
-				F127296F13E7EF370095286D /* Participant.m */,
 				F159EA4A13E19C7B00C2D855 /* AppDefaults.h */,
 				F159EA4B13E19C7B00C2D855 /* AppDefaults.m */,
 				F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */,
@@ -1465,6 +1471,8 @@
 				F17B4A4813F18C7000072F90 /* NSData+Base64.m */,
 				F17B4A4C13F25ED600072F90 /* TravelCategory.h */,
 				F17B4A4D13F25ED700072F90 /* TravelCategory.m */,
+				F1BB9D751406703600DA0573 /* EntryCategory.h */,
+				F1BB9D761406703600DA0573 /* EntryCategory.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1511,8 +1519,10 @@
 				F159EA2813E08B3C00C2D855 /* ArrowView.m */,
 				F159EA5713E1ED7700C2D855 /* ParticipantView.h */,
 				F159EA5813E1ED7900C2D855 /* ParticipantView.m */,
-				F11A520C1404F51700B983B8 /* MultiLineSegmentedControl.h */,
-				F11A520D1404F51700B983B8 /* MultiLineSegmentedControl.m */,
+				F11A5218140563D000B983B8 /* MultiLineSegmentedControl.h */,
+				F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */,
+				F11A521C140654C100B983B8 /* NumberFilter.h */,
+				F11A521D140654C100B983B8 /* NumberFilter.m */,
 			);
 			name = "View Helper";
 			path = ..;
@@ -1749,7 +1759,6 @@
 				F14B373213E68B5F00351641 /* InfoPlist.strings in Resources */,
 				F14B373413E68B5F00351641 /* UnitTests.h in Resources */,
 				F11FB34013E6983F00115D12 /* types.plist in Resources */,
-				94F97EEE13E9878400662ADB /* RateEditViewController.xib in Resources */,
 				940B41F513EBF39800902B00 /* group.png in Resources */,
 				940B41F713EBF39800902B00 /* scales.png in Resources */,
 				940B41F913EBF39800902B00 /* shopping-cart.png in Resources */,
@@ -2003,7 +2012,6 @@
 				F159EA2F13E0AF3200C2D855 /* InfoViewController.xib in Resources */,
 				F159EA3B13E0DA3E00C2D855 /* darkbackground.png in Resources */,
 				F100DEBF13E2C5B700BB1E6E /* moreImages.png in Resources */,
-				94F97EED13E9878400662ADB /* RateEditViewController.xib in Resources */,
 				94FFEA6A13E99BCA00FC97A4 /* RateCell.xib in Resources */,
 				940B41ED13EBF18300902B00 /* Icon.png in Resources */,
 				940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */,
@@ -2305,12 +2313,9 @@
 				F14B376F13E6906000351641 /* EntryEditViewController.m in Sources */,
 				F14B377013E6906000351641 /* DateSelectViewController.m in Sources */,
 				F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */,
-				F127297113E7EF370095286D /* Participant.m in Sources */,
-				F127297913E7F01A0095286D /* Transfer.m in Sources */,
 				F127298913E7FCFF0095286D /* Entry.m in Sources */,
 				F127299213E813A10095286D /* TypeViewController.m in Sources */,
 				F127299313E813B30095286D /* SummarySortViewController.m in Sources */,
-				9408120713EAD0E5003D7B3E /* Travel.m in Sources */,
 				9408120813EAD0E5003D7B3E /* Type.m in Sources */,
 				9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */,
 				9408120A13EAD10B003D7B3E /* RateCell.m in Sources */,
@@ -2328,6 +2333,13 @@
 				F17B4A4713F1889A00072F90 /* ParticipantCategory.m in Sources */,
 				F17B4A4B13F18C7200072F90 /* NSData+Base64.m in Sources */,
 				F17B4A4F13F25ED700072F90 /* TravelCategory.m in Sources */,
+				F11A521714055E7200B983B8 /* Participant.m in Sources */,
+				F11A521B140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
+				F11A521F140654C100B983B8 /* NumberFilter.m in Sources */,
+				F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */,
+				F1BB9D701406623E00DA0573 /* Travel.m in Sources */,
+				F1BB9D741406623E00DA0573 /* Currency.m in Sources */,
+				F1BB9D781406703600DA0573 /* EntryCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2375,15 +2387,11 @@
 				F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */,
 				F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */,
 				F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */,
-				F127297013E7EF370095286D /* Participant.m in Sources */,
-				F127297813E7F01A0095286D /* Transfer.m in Sources */,
 				F127298813E7FCFF0095286D /* Entry.m in Sources */,
 				F127299613E839B10095286D /* Type.m in Sources */,
 				94F97EE313E9831C00662ADB /* RateSelectViewController.m in Sources */,
 				94FFEA6913E99BCA00FC97A4 /* RateCell.m in Sources */,
-				940811F513EAB04C003D7B3E /* Travel.m in Sources */,
 				9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */,
-				9408121013EADF7F003D7B3E /* Currency.m in Sources */,
 				F17B449613EFF6AA00072F90 /* Locator.m in Sources */,
 				F17B449B13F00B1D00072F90 /* City.m in Sources */,
 				F17B449F13F00B1D00072F90 /* Country.m in Sources */,
@@ -2398,8 +2406,14 @@
 				F17B4A4613F1889A00072F90 /* ParticipantCategory.m in Sources */,
 				F17B4A4A13F18C7200072F90 /* NSData+Base64.m in Sources */,
 				F17B4A4E13F25ED700072F90 /* TravelCategory.m in Sources */,
-				F11A520E1404F51700B983B8 /* MultiLineSegmentedControl.m in Sources */,
 				F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */,
+				F11A521614055E7200B983B8 /* Participant.m in Sources */,
+				F11A521A140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
+				F11A521E140654C100B983B8 /* NumberFilter.m in Sources */,
+				F1BB9D6A1406623D00DA0573 /* Transfer.m in Sources */,
+				F1BB9D6F1406623E00DA0573 /* Travel.m in Sources */,
+				F1BB9D731406623E00DA0573 /* Currency.m in Sources */,
+				F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

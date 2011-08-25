@@ -11,8 +11,11 @@
 
 @interface Travel (OpenClose)
 
-- (void)open:(BOOL)useLatestRates;
+@property (nonatomic, readonly) NSString *location;
+@property (nonatomic, readonly) NSArray *sortedEntries;
 
+- (void)open:(BOOL)useLatestRates;
 - (void)close;
+
 
 @end

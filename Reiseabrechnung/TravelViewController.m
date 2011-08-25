@@ -26,6 +26,7 @@
 #import "MGTemplateEngine.h"
 #import "ICUTemplateMatcher.h"
 #import "ParticipantEditViewController.h"
+#import "NumberFilter.h"
 
 @interface TravelViewController ()
 
@@ -36,6 +37,7 @@
 - (void)updateSummary;
 - (void)openPersonChooseOrCreatePopup;
 - (void)selectPerson:(ABRecordRef)abRecordRef withEmail:(NSString *)email;
+- (NSString *)prettyPrintListOfStrings:(NSArray *)array;
 
 @end
 
@@ -76,7 +78,7 @@
                                                                  delegate:self
                                                         cancelButtonTitle:@"Cancel"
                                                    destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Choose from Address Book", @"Create new person", nil] autorelease];
+                                                        otherButtonTitles:@"From Address Book", @"Create new person", nil] autorelease];
         self.actionSheetAddPerson.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     }
     return self;    
@@ -194,24 +196,52 @@
 
 - (void)askToSendEmail {
     
-    NSString *noMailParticipants = nil;
+    NSMutableArray *noMailParticipants = [NSMutableArray array];
     for (Participant *participant in self.travel.participants) {
         if (participant.email == nil || [participant.email length] == 0) {
-            if (noMailParticipants == nil) {
-                noMailParticipants = participant.name;
-            } else {
-                noMailParticipants = [noMailParticipants stringByAppendingFormat:@", ", participant.email];
-            }
+            [noMailParticipants addObject:participant.name];
         }
     }
     
-    if (noMailParticipants) {
-        NSString *message = [NSString stringWithFormat:@"There are no email addresses available for the participant(s) %@", noMailParticipants];
+    if ([noMailParticipants count] > 0) {
+        NSString *message = [NSString stringWithFormat:@"There are no email addresses available for the participant%@ %@", ([noMailParticipants count]==1)?@"":@"s", [self prettyPrintListOfStrings:noMailParticipants]];
         self.mailSendAlertView.message = message;
         [self.mailSendAlertView show];
     } else {
         [self sendSummaryMail];
     }
+}
+
+- (NSString *)prettyPrintListOfStrings:(NSArray *)array {
+    
+    NSString *returnValue = nil;
+    
+    if ([array count] == 0) {
+        
+        returnValue = @"";
+        
+    } else if ([array count] == 1) {
+        
+        returnValue = [array objectAtIndex:0];
+        
+    } else if ([array count] == 2) {
+        
+        returnValue = [NSString stringWithFormat:@"%@ and %@", [array objectAtIndex:0], [array objectAtIndex:1]];
+        
+    } else {
+        
+        for (int i=0; i < [array count]; i++) {
+            if (i == 0) {
+                returnValue = [array objectAtIndex:i];
+            } else if (i == [array count] - 1) {
+                returnValue = [returnValue stringByAppendingFormat:@" and %@", [array objectAtIndex:i]];
+            } else {
+                returnValue = [returnValue stringByAppendingFormat:@", %@", [array objectAtIndex:i]];
+            }
+        }
+    }
+    
+    return returnValue;
 }
 
 - (void)sendSummaryMail {
@@ -222,8 +252,6 @@
     
     NSDictionary *dictionary = [NSDictionary dictionaryWithObject:self.travel forKey:@"travel"];
     
-    NSLog(@"%@", [[self.travel.participants anyObject] base64]);
-    
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
     engine.matcher = [[[ICUTemplateMatcher alloc] initWithTemplateEngine:engine] autorelease];
     NSString *mailBody = [engine processTemplateInFileAtPath:[[NSBundle mainBundle] pathForResource:@"mailTemplate" ofType:@"html"] withVariables:dictionary];
@@ -231,13 +259,29 @@
     
     controller.mailComposeDelegate = self;
     
-    NSString *subjectLine = [NSString stringWithFormat:@"Summary email for trip '%@'", self.travel.name];
+    NSString *subjectLine = [NSString stringWithFormat:@"Expenses summary report for trip '%@'", self.travel.name];
     if (!self.travel.name || [self.travel.name length] == 0) {
-        subjectLine = [NSString stringWithFormat:@"Summary email for trip to %@", self.travel.country.name];
+        subjectLine = [NSString stringWithFormat:@"Expenses summary report for trip to %@", self.travel.location];
     }
     [controller setSubject:subjectLine];
     [controller setMessageBody:mailBody isHTML:YES];
+    
+    NSLog(@"%@", mailBody);
 
+    NSMutableArray *toArray = [NSMutableArray array];
+    for (Participant *p in self.travel.participants) {
+        if (![p.yourself isEqual:[NSNumber numberWithInt:1]]) {
+            if (p.email != nil && [p.email length] > 0) {
+                [toArray addObject:p.email];
+            } 
+        } else {
+            [controller setCcRecipients:[NSArray arrayWithObject:p.email]];
+        }
+        
+    }
+    [controller setToRecipients:toArray];
+    
+    
     if (controller)  {
         [self presentModalViewController:controller animated:YES];
     }
@@ -287,15 +331,18 @@
 
 - (void)updateSummary {
     
-    dispatch_queue_t updateQueue = dispatch_queue_create("UpdateSummary", NULL);
-    dispatch_async(updateQueue, ^{
-        
-        [self.summarySortViewController.detailViewController recalculateSummary];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.summarySortViewController.detailViewController.tableView reloadData];     
-        });
-    });
+//    dispatch_queue_t updateQueue = dispatch_queue_create("UpdateSummary", NULL);
+//    dispatch_async(updateQueue, ^{
+//        
+//        [self.summarySortViewController.detailViewController recalculateSummary];
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.summarySortViewController.detailViewController.tableView reloadData];     
+//        });
+//    });
+    
+    [self.summarySortViewController.detailViewController recalculateSummary];
+    [self.summarySortViewController.detailViewController.tableView reloadData]; 
 }
 
 - (void)editWasCanceled:(Entry *)entry {
@@ -390,7 +437,7 @@
         
         [self openTravel:(buttonIndex != [alertView cancelButtonIndex])];
         
-    } else if (alertView == self.mailSendAlertView) {
+    } else if (alertView == self.mailSendAlertView && buttonIndex != self.mailSendAlertView.cancelButtonIndex) {
         
         [self sendSummaryMail];
         
@@ -463,7 +510,10 @@
     }
     
     CFRelease(multiValue);
-    CFRelease(emailList);
+    
+    if (emailList) {
+        CFRelease(emailList);
+    }
     
     return returnValue;
 }
@@ -546,7 +596,7 @@
     
     [self.view addSubview:_tabBarController.view];
     
-    self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:@"Warning" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+    self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:@"Warning" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil] autorelease];
     
     self.rateRefreshAlertView = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
 

@@ -54,7 +54,7 @@
         cell = self.rateCell;
     }
     
-    cell.rateLabel.text = [NSString stringWithFormat:@"1 %@ = %.02f %@", rate.baseCurrency.code, [rate.rate doubleValue], rate.counterCurrency.code];
+    cell.rateLabel.text = [NSString stringWithFormat:@"1 %@ = %@ %@", rate.baseCurrency.code, [UIFactory formatNumber:rate.rate], rate.counterCurrency.code];
     cell.nameLabel.text = rate.counterCurrency.name;
     
     NSLog(@"%@", cell.subTextLabel);

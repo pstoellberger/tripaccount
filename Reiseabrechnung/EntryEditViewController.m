@@ -90,7 +90,16 @@ static NSIndexPath *_dateIndexPath;
             if (travel.lastCurrencyUsed) {
                 self.nmEntry.currency = travel.lastCurrencyUsed;
             } else {
-                self.nmEntry.currency = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].homeCurrency;
+                if ([travel.currencies count] == 1) {
+                    self.nmEntry.currency = [travel.currencies anyObject];
+                } else {
+                    for (Currency *currency in travel.currencies) {
+                        if (![currency isEqual:[ReiseabrechnungAppDelegate defaultCurrency:[travel managedObjectContext]]]) {
+                            self.nmEntry.currency = currency;
+                            break;
+                        }
+                    }
+                }
             }
             
             self.nmEntry.receivers = travel.participants;
@@ -153,9 +162,9 @@ static NSIndexPath *_dateIndexPath;
         
         if (self.nmEntry.amount) {
             if (self.nmEntry.currency) {
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f %@", [self.nmEntry.amount doubleValue], self.nmEntry.currency.code];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:self.nmEntry.amount], self.nmEntry.currency.code];
             } else {
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f", [self.nmEntry.amount doubleValue]];
+                cell.detailTextLabel.text = [UIFactory formatNumber:self.nmEntry.amount];
             }
         }
         
@@ -348,7 +357,8 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (void)checkIfDoneIsPossible {
-    if (self.nmEntry.amount <= 0) {
+    
+    if (self.nmEntry.amount <= 0 || !self.nmEntry.payer) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
     } else if (self.nmEntry.type) {
         self.navigationItem.rightBarButtonItem.enabled = YES;

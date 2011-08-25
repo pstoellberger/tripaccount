@@ -15,6 +15,7 @@
 #import "ParticipantHelperCategory.h"
 #import "ParticipantCategory.h"
 #import "TravelCategory.h"
+#import "EntryCategory.h"
 
 #import "UIFactory.h"
 #import "Currency.h"

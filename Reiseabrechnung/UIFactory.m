@@ -212,4 +212,15 @@
     [cell.layer insertSublayer:gradient atIndex:0];  
 }
 
++ (NSString *)formatNumber:(NSNumber *)number {
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    numberFormatter.maximumFractionDigits = 2;
+    NSString *returnValue = [numberFormatter stringFromNumber:number];
+    [numberFormatter release];
+    
+    return returnValue;
+}
+
 @end

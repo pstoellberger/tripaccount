@@ -102,7 +102,7 @@
         cell.top.text = entry.type.name;
     }
     cell.right.text = [NSString stringWithFormat:@"%@ %@", entry.amount, entry.currency.code];
-    cell.bottom.participants = [entry.receivers allObjects];
+    cell.bottom.participants = entry.sortedReceivers;
     cell.image.image = [UIImage imageWithData:entry.payer.image];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -178,17 +178,21 @@
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
     self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sectionKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
+    
+    [super performFetchForTableView:self.tableView];
+    
 }
 
 - (void)sortTable:(int)sortIndex {
+    
     _sortIndex = sortIndex;
     [self initFetchResultsController:self.fetchRequest];
     
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+    self.travel.displaySort = [NSNumber numberWithInt:sortIndex];
+    [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     NSString *sectionName = [super tableView:tableView titleForHeaderInSection:section];
     

@@ -13,12 +13,12 @@
 
 @synthesize toolbar;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.view.frame = [[UIScreen mainScreen] applicationFrame];
-        // Custom initialization
+        
     }
     return self;
 }
@@ -40,11 +40,5 @@
 }
 
 #pragma mark - View lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.toolbar.tintColor = [UIFactory defaultTintColor];
-}
 
 @end

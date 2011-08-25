@@ -23,6 +23,8 @@
 
     BOOL _isFirstView;
     BOOL _viewAppeared;
+    
+    BOOL _cityWasAutoFilled;
 
 }
 

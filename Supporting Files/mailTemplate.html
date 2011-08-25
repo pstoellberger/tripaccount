@@ -1,47 +1,152 @@
+{% load NumberFilter %}
+
 <html>
-
-<body>
-	
-<style type="text/css">
-
-table, th, td {
-border: 1px solid black;
-}
-
-.imageRow {
-	width:100px;
-	background-color:#000;
-}
-
-</style>
-
-<table>
-<tr>
-	<th class="imageRow">Payer</th>
-	<th>Date</th>
-	<th>Amount</th>
-	<th class="imageRow">Receivers</th>
-	<th>Type</th>
-	<th>Text</th>
-</tr>
-
-{% for entry in travel.entries %}
-<tr>
-    <td><img src="data:image/png;base64,{{ entry.payer.base64 }}" /> {{ entry.payer.name }}</td>
-    <td>{% entry.date | date_format: "dd MMM yyyy" %}</td>
-    <td>{{ entry.amount }} {{ entry.currency.code }}</td>
-	<td>
-	{% for receiver in entry.receivers %}
-		<img src="data:image/png;base64,{{ receiver.base64 }}" /> {{ receiver.name }}<br />
-	{% /for %}		
-	</td>  
-    <td>{{ entry.type.name }}</td>
-    <td>{{ entry.text }}</td>
-</tr>
-{% /for %}
     
-</table>
-
-</body>
-
+    <body>
+        
+        
+        <style type="text/css">
+            
+            table, th, td {
+                border: 1px #333 solid;
+                border-collapse: collapse;
+            }
+            
+            .imageRow {
+                vertical-align: middle;
+            }
+            
+            .imageRow img {
+                vertical-align: middle;
+                padding: 2px;
+            }
+            
+            .amountRow {
+                text-align: right;
+            }
+            
+            th {
+                background-color: #3767BF;
+				color: white;
+                padding: 5px;
+                border: 1px #000 solid;
+                
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2D549C', endColorstr='#3767BF'); /* for IE */
+				background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF)); /* for webkit browsers */
+				background: -moz-linear-gradient(top,  #2D549C,  #3767BF); /* for firefox 3.6+ */
+            }
+            
+            td {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            tr.even, tr.odd {
+				background: #EEE; /* for non-css3 browsers */
+                
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF', endColorstr='#CDCDCD'); /* for IE */
+				background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CDCDCD)); /* for webkit browsers */
+				background: -moz-linear-gradient(top,  #FFF,  #CDCDCD); /* for firefox 3.6+ */
+            }
+            
+            tr.oxdd {
+ 				background: #FFF; /* for non-css3 browsers */
+                
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF', endColorstr='#888'); /* for IE */
+				background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#888)); /* for webkit browsers */
+				background: -moz-linear-gradient(top,  #FFF,  #888); /* for firefox 3.6+ */
+            }
+            
+            .currencyTable, .currencyTable td {
+                border-style: none;
+                background-color:none;
+            }
+            
+            
+            </style>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="6" class="title">Expenses of trip {{ travel.name }} to {{ travel.location }}</th>
+                </tr>
+                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
+                    <th class="imageRow">Payer</th>
+                    <th class="typeRow">Type</th>
+                    <th class="textRow">Text</th>        
+                    <th class="amountRow">Amount</th>
+                    <th class="dateRow">Date</th>
+                    <th class="imageRow">Receivers</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in travel.sortedEntries %}
+                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
+                    
+                    <td class="payerRow imageRow"><img src="data:image/png;base64,{{ entry.payer.base64 }}" /> {{ entry.payer.name }}</td>
+                    <td class="typeRow">{{ entry.type.name }}</td>
+                    <td class="textRow">{{ entry.text }}</td>
+                    <td class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
+                    <td class="dateRow">
+                        <span>
+                            {% if entry.hasTimeSpecified %} 
+                            {{ entry.date | date_format: "dd. MMM yyyy HH:mm" }}
+                            {% else %}
+                            {{ entry.date | date_format: "dd. MMM yyyy" }}
+                            {% /if %}
+                        </span></td>
+                    <td class="receiverRow imageRow">
+                        {% for receiver in entry.sortedReceivers %}
+                        <span class="imageAndName"><img src="data:image/png;base64,{{ receiver.base64 }}" /> {{ receiver.name }}</span>
+                        {% /for %}		
+                    </td>
+                </tr>
+                {% /for %}
+            </tbody>
+            <tfooter>
+                <tr>
+                    <th colspan="6" class="title">Total costs: {{ travel.country.name }}</th>
+                </tr>
+            </tfooter>
+        </table>
+        
+        <br /><br />
+        
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="4" class="title">Summary</th>
+                </tr>
+                <tr>
+                    <th class="imageRow">Who owes</th>
+                    <th class="textRow">How much</th>
+                    <th class="typeRow">To whom</th>
+                    <th class="typeRow">Already paid?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transfer in travel.transfers %}
+                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
+                    <td class="debtorRow imageRow"><img src="data:image/png;base64,{{ transfer.debtor.base64 }}" /> {{ transfer.debtor.name }}</td>
+                    <td class="amountRow">{{ transfer.amount | decimalNumber }}</td>
+                    <td class="debteeRow"><img src="data:image/png;base64,{{ transfer.debtee.base64 }}" /> {{ transfer.debtee.name }}</td>
+                    <td class="amountRow">{% if transfer.paid == 1 %} Yes {% else %} No {% /if %}</td>
+                </tr>
+                {% /for %}
+            </tbody>
+        </table>
+        
+        <br /><br />
+        
+        <strong>Currencies used for this trip:</strong>
+        <table class="currencyTable">
+            {% for currency in travel.currencies %}
+            <tr>
+                <td>{{ currency.code }}</td><td>...</td><td>{{ currency.name }}</td>
+            </tr>
+            {% /for %}
+        </table>
+        
+    </body>
+    
 </html>

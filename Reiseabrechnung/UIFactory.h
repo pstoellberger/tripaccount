@@ -35,5 +35,6 @@
 + (UIView *)createBackgroundViewWithFrame:(CGRect)rect;
 + (void)setColorOfSearchBarInABPicker:(ABPeoplePickerNavigationController *)picker color:(UIColor *)color;
 + (UIAlertView *)createAlterViewForRefreshingRatesOnOpeningTravel:(id <UIAlertViewDelegate>)delegate;
++ (NSString *)formatNumber:(NSNumber *)number;
 
 @end

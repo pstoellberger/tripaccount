@@ -2,14 +2,14 @@
 //  Currency.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 8/4/11.
-//  Copyright (c) 2011 Martin Maier. All rights reserved.
+//  Created by Martin Maier on 25/08/2011.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class AppDefaults, Country, Entry, ExchangeRate, Travel;
+@class AppDefaults, Country, Entry, ExchangeRate, Transfer, Travel;
 
 @interface Currency : NSManagedObject {
 @private
@@ -23,8 +23,10 @@
 @property (nonatomic, retain) NSSet *ratesWithBaseCurrency;
 @property (nonatomic, retain) NSSet *transfersWithBaseCurrency;
 @property (nonatomic, retain) NSSet *travels;
+@property (nonatomic, retain) NSSet *lastUsedInTravel;
 @property (nonatomic, retain) NSSet *entries;
-@property (nonatomic, retain) Travel *lastUsedInTravel;
+@property (nonatomic, retain) NSSet *displayedInTravel;
+@property (nonatomic, retain) NSSet *transfers;
 @end
 
 @interface Currency (CoreDataGeneratedAccessors)
@@ -54,9 +56,24 @@
 - (void)addTravels:(NSSet *)values;
 - (void)removeTravels:(NSSet *)values;
 
+- (void)addLastUsedInTravelObject:(Travel *)value;
+- (void)removeLastUsedInTravelObject:(Travel *)value;
+- (void)addLastUsedInTravel:(NSSet *)values;
+- (void)removeLastUsedInTravel:(NSSet *)values;
+
 - (void)addEntriesObject:(Entry *)value;
 - (void)removeEntriesObject:(Entry *)value;
 - (void)addEntries:(NSSet *)values;
 - (void)removeEntries:(NSSet *)values;
+
+- (void)addDisplayedInTravelObject:(Travel *)value;
+- (void)removeDisplayedInTravelObject:(Travel *)value;
+- (void)addDisplayedInTravel:(NSSet *)values;
+- (void)removeDisplayedInTravel:(NSSet *)values;
+
+- (void)addTransfersObject:(Transfer *)value;
+- (void)removeTransfersObject:(Transfer *)value;
+- (void)addTransfers:(NSSet *)values;
+- (void)removeTransfers:(NSSet *)values;
 
 @end

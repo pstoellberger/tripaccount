@@ -52,6 +52,7 @@ static NSIndexPath *_currenciesIndexPath;
         [self initIndexPaths];
         
         _isFirstView = YES;
+        _cityWasAutoFilled = NO;
         
         _cellsToReloadAndFlash = [[[NSMutableArray alloc] init] retain];
         
@@ -318,7 +319,7 @@ static NSIndexPath *_currenciesIndexPath;
         if (self.country) {
             // remove old currencies
             for (Currency *currency in [self.country.currencies allObjects]) {
-                if (![newCountry.currencies containsObject:currency] && [newCurrencies containsObject:currency]) {
+                if (![newCountry.currencies containsObject:currency] && [newCurrencies containsObject:currency] && ![currency isEqual:[ReiseabrechnungAppDelegate defaultCurrency:_context]]) {
                     [newCurrencies removeObject:currency];
                 }
             }
@@ -337,6 +338,10 @@ static NSIndexPath *_currenciesIndexPath;
         if (![newCurrencies isEqualToArray:self.currencies]) {
             self.currencies = newCurrencies;
             [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
+        }
+        
+        if (_cityWasAutoFilled) {
+            [self selectCity:@""];
         }
     }
     
@@ -373,8 +378,13 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (void)selectCity:(NSString *)newCity {
+    
     if (![newCity isEqualToString:self.city]) {
+        
         self.city = newCity;
+        
+        _cityWasAutoFilled = NO;
+        
         [_cellsToReloadAndFlash addObject:_cityIndexPath];
     }
 }
@@ -420,6 +430,7 @@ static NSIndexPath *_currenciesIndexPath;
             NSArray *martinPerson = (NSArray *) ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
             if ([martinPerson lastObject]) {
                 Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
+                newPerson.yourself = [NSNumber numberWithInt:1];
                 [Participant addParticipant:newPerson toTravel:_travel withABRecord:[martinPerson lastObject]];
             }
             [martinPerson release];
@@ -458,8 +469,10 @@ static NSIndexPath *_currenciesIndexPath;
     
     int cellsToFlash = [_cellsToReloadAndFlash count];
     
-    [self selectCity:city];
     [self selectCountry:country];
+
+    [self selectCity:city];
+    _cityWasAutoFilled = YES;
 
     // trigger flash only if the new cells are the only ones
     // if there are cell to be flashed, updateAndFlash will be called anyway

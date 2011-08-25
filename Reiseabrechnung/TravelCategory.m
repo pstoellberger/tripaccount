@@ -61,4 +61,29 @@
     
 }
 
+- (NSArray *)sortedEntries {
+    
+    NSSortDescriptor *sortNameDescriptor = nil;
+    if ([self.displaySort isEqual:[NSNumber numberWithInt:0]]) {
+        sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"payer.name" ascending:YES] autorelease];
+    } else if ([self.displaySort isEqual:[NSNumber numberWithInt:1]]) {
+        sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"type.name" ascending:YES] autorelease];
+    } else if ([self.displaySort isEqual:[NSNumber numberWithInt:2]]) {
+        sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"dateWithOutTime" ascending:YES] autorelease];
+    }
+    
+    NSArray *allSortDescriptors = [NSArray arrayWithObjects:sortNameDescriptor, [[[NSSortDescriptor alloc] initWithKey:@"dateWithOutTime" ascending:YES] autorelease], nil];
+    
+    return [[self.entries allObjects] sortedArrayUsingDescriptors:allSortDescriptors];
+}
+
+- (NSString *)location {
+    
+    if (self.city != nil && [self.city length] > 0) {
+        return [NSString stringWithFormat:@"%@, %@", self.city, self.country.name];
+    } else {
+        return self.country.name;
+    }
+}
+
 @end

@@ -13,7 +13,7 @@
 
 @implementation EntrySortViewController
 
-@synthesize travel=_travel, detailViewController=_detailViewController, sortToolBar=_sortToolBar;
+@synthesize travel=_travel, detailViewController=_detailViewController, sortToolBar=_sortToolBar, segControl=_segControl;
 
 - (id)initWithTravel:(Travel *)travel {
     
@@ -58,7 +58,7 @@
 
 #pragma mark - View lifecycle
 
-#define SORT_TOOLBAR_HEIGHT 35
+#define CURRENCY_SORT_TOOLBAR_HEIGHT 35
 
 - (void)loadView {
     
@@ -69,22 +69,24 @@
 
     NSArray *segArray = [NSArray arrayWithObjects:@"Person", @"Type", @"Date", nil];
     UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray]; 
-    segControl.frame = CGRectMake(3, 3, [UIScreen mainScreen].applicationFrame.size.width - 6, SORT_TOOLBAR_HEIGHT - 6);
-    segControl.selectedSegmentIndex = 0;
+    segControl.frame = CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 10, CURRENCY_SORT_TOOLBAR_HEIGHT - 10);
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
     segControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     segControl.tintColor = [UIColor clearColor];
     segControl.alpha = 0.9;
+    self.segControl = segControl;
     
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - SORT_TOOLBAR_HEIGHT, newView.frame.size.width, SORT_TOOLBAR_HEIGHT)];
+    self.segControl.selectedSegmentIndex = [self.travel.displaySort intValue];
+        
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - CURRENCY_SORT_TOOLBAR_HEIGHT, newView.frame.size.width, CURRENCY_SORT_TOOLBAR_HEIGHT)];
     toolbar.barStyle = UIBarStyleBlackTranslucent;
     toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight;
     self.sortToolBar = toolbar;
     [toolbar addSubview:segControl];
     
     self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
-    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, SORT_TOOLBAR_HEIGHT, 0);
+    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, CURRENCY_SORT_TOOLBAR_HEIGHT, 0);
     self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
     
     [newView addSubview:self.detailViewController.view];
@@ -95,6 +97,7 @@
     [toolbar release];
     [newView release];
     [segControl release];
+    
 }
 
 - (void)viewDidUnload {

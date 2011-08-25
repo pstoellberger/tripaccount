@@ -16,7 +16,7 @@
 @property (nonatomic, retain) EntryViewController *detailViewController;
 
 @property (nonatomic, retain) UIToolbar *sortToolBar;
-
+@property (nonatomic, retain) UISegmentedControl *segControl;
 
 - (id)initWithTravel:(Travel *) travel;
 

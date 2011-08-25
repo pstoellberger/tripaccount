@@ -48,7 +48,7 @@
         
         self.fetchedResultsController.delegate = self;
         [self performFetchForTableView:self.tableView];
-        
+       
         [self viewWillAppear:YES];
     }
     return self;
@@ -79,7 +79,7 @@
     cell.leftImage.image = [UIImage imageWithData:transfer.debtor.image];
     cell.debtee.text = transfer.debtee.name;
     cell.rightImage.image = [UIImage imageWithData:transfer.debtee.image];
-    cell.amount.text = [NSString stringWithFormat:@"%.02f %@", [self.travel.transferBaseCurrency convertTravelAmount:self.travel currency:_displayCurrency amount:[transfer.amount doubleValue]], _displayCurrency.code];
+    cell.amount.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.travel.transferBaseCurrency convertTravelAmount:self.travel currency:_displayCurrency amount:[transfer.amount doubleValue]]]], _displayCurrency.code];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.paid.hidden = YES;
     
@@ -127,6 +127,9 @@
 - (void)changeDisplayedCurrency:(Currency *)currency {
     _displayCurrency = currency;
     [self.tableView reloadData];
+    
+    self.travel.displayCurrency = currency;
+    [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

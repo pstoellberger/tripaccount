@@ -16,6 +16,7 @@
 
 @synthesize travel=_travel, detailViewController=_detailViewController, lastUpdatedLabel=_lastUpdatedLabel, updateIndicator=_updateIndicator;
 @synthesize sortToolBar=_sortToolBar, ratesToolBar=_ratesToolBar;
+@synthesize segControl=_segControl;
 
 - (id)initWithTravel:(Travel *)travel {
     
@@ -64,7 +65,7 @@
 
 #pragma mark - View lifecycle
 
-#define SORT_TOOLBAR_HEIGHT 40
+#define SORT_TOOLBAR_HEIGHT 45
 #define RATE_SORT_TOOLBAR_HEIGHT 15
 #define RATE_LABEL_HEIGHT 10
 #define ACTIVITY_VIEW_SIZE 10
@@ -85,7 +86,7 @@
     }
 
     MultiLineSegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArrayTitles andSubTitles:segArraySubTitles]; 
-    segControl.frame = CGRectMake(3, 3, [[UIScreen mainScreen] applicationFrame].size.width - 6, SORT_TOOLBAR_HEIGHT - 6);
+    segControl.frame = CGRectMake(5, 5, [[UIScreen mainScreen] applicationFrame].size.width - 10, SORT_TOOLBAR_HEIGHT - 10);
     segControl.selectedSegmentIndex = 0;
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
@@ -93,7 +94,10 @@
     segControl.tintColor = [UIColor clearColor];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
     segControl.alpha = 0.9;
+    self.segControl = segControl;
    
+    self.segControl.selectedSegmentIndex = [_currencyArray indexOfObject:self.travel.displayCurrency];
+    
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - SORT_TOOLBAR_HEIGHT - RATE_SORT_TOOLBAR_HEIGHT, newView.frame.size.width, SORT_TOOLBAR_HEIGHT)];
     toolbar.barStyle = UIBarStyleBlackTranslucent;
     toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight;

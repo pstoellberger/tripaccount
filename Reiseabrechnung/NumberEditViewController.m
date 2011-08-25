@@ -40,10 +40,7 @@
         self.currency = currency;
         
         self.number = [[startNumber copy] autorelease];
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        numberFormatter.maximumFractionDigits = 2;
-        self.textField.text = [numberFormatter stringFromNumber:self.number];
-        [numberFormatter release];
+        self.textField.text = [UIFactory formatNumber:self.number];
         
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
         
@@ -109,7 +106,7 @@
         for (Currency *currency in self.travel.currencies) {
             
             if (![currency isEqual:self.currency]) {
-                NSString *line = [NSString stringWithFormat:@"%.2f %@", [self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]],currency.code];
+                NSString *line = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]]]],currency.code];
                 conversionString = [[conversionString stringByAppendingString:line] stringByAppendingString:singleCR];
             }
         }
