@@ -32,6 +32,8 @@
 		F10CC9971407D1CC00A8DD31 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC9951407D1CC00A8DD31 /* Travel.m */; };
 		F10CC99B1407D1CD00A8DD31 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */; };
 		F10CC99C1407D1CD00A8DD31 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */; };
+		F10CC99E1407DD8C00A8DD31 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F10CC99D1407DD8C00A8DD31 /* Settings.bundle */; };
+		F10CC99F1407DD8C00A8DD31 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F10CC99D1407DD8C00A8DD31 /* Settings.bundle */; };
 		F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB1F13D99BE8002C08AC /* TextEditViewController.m */; };
 		F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5212140541B000B983B8 /* ParticipantEditViewController.m */; };
 		F11A521614055E7200B983B8 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521514055E7100B983B8 /* Participant.m */; };
@@ -680,6 +682,7 @@
 		F10CC9951407D1CC00A8DD31 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
 		F10CC9991407D1CD00A8DD31 /* AppDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
 		F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
+		F10CC99D1407DD8C00A8DD31 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F111CB1E13D99BE8002C08AC /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
 		F111CB1F13D99BE8002C08AC /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
 		F11A5211140541B000B983B8 /* ParticipantEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantEditViewController.h; sourceTree = "<group>"; };
@@ -1624,6 +1627,7 @@
 				F17B4A3913F17D2600072F90 /* mailTemplate.html */,
 				F1CD783A13BA405B00D42AA3 /* Reiseabrechnung-Prefix.pch */,
 				F1CD783B13BA405B00D42AA3 /* main.m */,
+				F10CC99D1407DD8C00A8DD31 /* Settings.bundle */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1997,6 +2001,7 @@
 				F17B4A3513F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3B13F17D2600072F90 /* mailTemplate.html in Resources */,
 				F1301FFC1407810300A07F6F /* about.png in Resources */,
+				F10CC99F1407DD8C00A8DD31 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2254,6 +2259,7 @@
 				F17B4A3413F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3A13F17D2600072F90 /* mailTemplate.html in Resources */,
 				F1301FFB1407810300A07F6F /* about.png in Resources */,
+				F10CC99E1407DD8C00A8DD31 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

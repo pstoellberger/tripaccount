@@ -38,4 +38,6 @@ typedef enum {
 - (void)findBestSizeForLabel:(UILabel *)label maxWidth:(int)maxWidth;
 - (UIColor *)crossColors:(UIColor *)color1 color2:(UIColor *)color2;
 
++ (NSString *)DICTIONARY_KEY;
+
 @end

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesStackState
+   version = "1.0">
+   <StackStates>
+      <StackState
+         stackFrameDescription = "-[RootViewController initInManagedObjectContext:]:RootViewController.m">
+         <expressions>
+            <expression
+               value = "self.tableView">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[RootViewController addTravel:withCurrency:]:RootViewController.m">
+         <expressions>
+            <expression
+               value = "_travel">
+            </expression>
+            <expression
+               value = "_travel.name">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[CoreDataTableViewController createSearchBar]:CoreDataTableViewController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "main:main.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[CurrencySelectViewController managedObjectSelected:]:CurrencySelectViewController.m">
+         <expressions>
+            <expression
+               value = "[self parentViewController]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "+[ParticipantHelper addParticipant:toTravel:withABRecord:]:ParticipantHelper.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[EntryViewController managedObjectSelected:]:EntryViewController.m">
+         <expressions>
+            <expression
+               value = "self.parentViewController">
+            </expression>
+            <expression
+               value = "[self parentViewController]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[TravelViewController openEntryAddPopup]:TravelViewController.m">
+         <expressions>
+            <expression
+               value = "self.navigationController">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[TravelEditViewController textField:shouldChangeCharactersInRange:replacementString:]:TravelEditViewController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[RootViewController tableView:cellForRowAtIndexPath:]:RootViewController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[CoreDataTableViewController tableView:numberOfRowsInSection:]:CoreDataTableViewController.m">
+         <expressions>
+            <expression
+               value = "[[[[self fetchedResultsControllerForTableView:tableView] sections] objectAtIndex:section] numberOfObjects]">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[TravelViewController viewDidLoad]:TravelViewController.m">
+         <expressions>
+            <expression
+               value = "[_participantViewController delegate]">
+            </expression>
+            <expression
+               value = "pvc.travel">
+            </expression>
+            <expression
+               value = "_participantViewController">
+            </expression>
+         </expressions>
+      </StackState>
+   </StackStates>
+</VariablesStackState>

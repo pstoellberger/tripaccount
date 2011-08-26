@@ -262,7 +262,10 @@
     
     controller.navigationBar.tintColor = [UIFactory defaultTintColor];
     
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:self.travel forKey:@"travel"];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObject:self.travel forKey:@"travel"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"includeImages"]) {
+        [dictionary setValue:@"Yes" forKey:@"includeImages"];
+    }
     
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
     engine.matcher = [[[ICUTemplateMatcher alloc] initWithTemplateEngine:engine] autorelease];

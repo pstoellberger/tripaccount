@@ -9,6 +9,7 @@
 #import "HelpView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ArrowView.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation HelpView
 
@@ -25,17 +26,17 @@
 
 #define degreesToRadians(x) (M_PI * x / 180.0)
 
-static NSString *DICTIONARY_KEY;
-
 @synthesize uniqueIdentifier=_uniqueIdentifier;
+
++ (NSString *)DICTIONARY_KEY {
+    return @"HelpViewClickedAway";
+}
 
 - (id)initWithFrame:(CGRect)frame text:(NSString *)text arrowPosition:(ArrowPosition)arrowPosition enterStage:(EnterStage)enterStage uniqueIdentifier:(NSString *)uniqueIdentifier {    
     if ((self = [super initWithFrame:frame])) {
         
         NSLog(@"%@ %@", self, text);
-        
-        DICTIONARY_KEY = @"HelpViewClickedAway";
-        
+
         _aboutToLeave = NO;
         _uniqueIdentifier = uniqueIdentifier;
         _enterStage = enterStage;
@@ -136,11 +137,11 @@ static NSString *DICTIONARY_KEY;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         #if TARGET_IPHONE_SIMULATOR
-        [defaults removeObjectForKey:DICTIONARY_KEY];        
-        NSLog(@"Removing userdefaults because we are in the simulator");
+        //[defaults removeObjectForKey:DICTIONARY_KEY];        
+        //NSLog(@"Removing userdefaults because we are in the simulator");
         #endif
         
-        NSDictionary *dictionary = [defaults dictionaryForKey:DICTIONARY_KEY];
+        NSDictionary *dictionary = [defaults dictionaryForKey:[HelpView DICTIONARY_KEY]];
         if (dictionary) {
             if ([dictionary objectForKey:uniqueIdentifier]) {
                 self.hidden = YES;
@@ -189,26 +190,28 @@ static NSString *DICTIONARY_KEY;
     
     if (!self.hidden) {
         
-        int stageY = self.frame.origin.y;
+        double transformY = [self convertPoint:self.frame.origin toView:nil].y + self.frame.size.height;
         
         if (_enterStage == ENTER_STAGE_FROM_TOP) {
-            self.frame = CGRectMake(self.frame.origin.x, 0 - [self convertPoint:self.frame.origin toView:nil].y - self.frame.size.height, self.frame.size.width, self.frame.size.height);
+            self.transform = CGAffineTransformTranslate(self.transform, 0, -transformY);
         } else {
-            self.frame = CGRectMake(self.frame.origin.x, [[UIScreen mainScreen] applicationFrame].size.height, self.frame.size.width, self.frame.size.height);
+            transformY = [[UIScreen mainScreen] applicationFrame].size.height - transformY;
+            self.transform = CGAffineTransformTranslate(self.transform, 0, -transformY);
         }
         
         [UIView animateWithDuration:1
                               delay:0
                             options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction)
-                         animations:^{ self.frame = CGRectMake(self.frame.origin.x, stageY, self.frame.size.width, self.frame.size.height); } 
-                         completion:^(BOOL fin) { [self hoverHelpView]; } ];    
+                         animations:^{ self.transform = CGAffineTransformIdentity; } 
+                         completion:^(BOOL fin) { [self hoverHelpView]; } ];
+
     }
 }
 
 - (void)didMoveToSuperview {
     
     [self enterStage];
-    
+    [((ReiseabrechnungAppDelegate *) [UIApplication sharedApplication].delegate) registerHelpBubble:self];
 }
 
 - (void)leaveStage:(BOOL)removeFromSuperView {
@@ -252,9 +255,9 @@ static NSString *DICTIONARY_KEY;
     [self leaveStage:NO];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:DICTIONARY_KEY]];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:[defaults dictionaryForKey:[HelpView DICTIONARY_KEY]]];
     [dictionary setObject:@"YES" forKey:_uniqueIdentifier];
-    [defaults setObject:dictionary forKey:DICTIONARY_KEY];
+    [defaults setObject:dictionary forKey:[HelpView DICTIONARY_KEY]];
     [defaults synchronize];
 }
 

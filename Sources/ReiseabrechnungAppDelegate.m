@@ -20,6 +20,8 @@
 
 @implementation ReiseabrechnungAppDelegate
 
+@synthesize helpBubbles=_helpBubbles;
+
 @synthesize window=_window;
 @synthesize navController=_navController;
 @synthesize managedObjectContext=_managedObjectContext;
@@ -28,16 +30,18 @@
 @synthesize locator=_locator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOption {
+    
+    self.helpBubbles = [NSMutableArray array];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
+    [self checkForResetOfHelpBubbles];
     
     [self initializeStartDatabase:[NSBundle mainBundle]];
     
     [self refreshCurrencyRatesIfOutDated];
     
     self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
-    
-    NSLog(@"%@",self.window.frame);
     
     [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
     
@@ -196,6 +200,36 @@
     }
 }
 
+- (void)checkForResetOfHelpBubbles {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL resetBubbles = [defaults boolForKey:@"resetBubbles"];
+    
+    if (resetBubbles) {
+        NSLog(@"Resetting help bubbles...");
+        [defaults removeObjectForKey:[HelpView DICTIONARY_KEY]];
+        [defaults setBool:NO forKey:@"resetBubbles"];
+        [defaults synchronize];
+        
+        for (HelpView *view in self.helpBubbles) {
+            if (view.hidden) {
+                view.hidden = false;
+                [view enterStage];
+            }
+        }
+    }
+    
+}
+
+
+- (void)registerHelpBubble:(HelpView *)helpView {
+    
+    if (![self.helpBubbles containsObject:helpView]) {
+        [self.helpBubbles addObject:helpView];
+    }
+    
+}
+
 - (void)refreshCurrencyRatesIfOutDated {
     
     CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:self.managedObjectContext];
@@ -303,6 +337,7 @@
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
     [self refreshCurrencyRatesIfOutDated];
+    [self checkForResetOfHelpBubbles];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

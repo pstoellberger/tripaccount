@@ -33,6 +33,8 @@
 
 @property (nonatomic, retain) Locator *locator;
 
+@property (nonatomic, retain) NSMutableArray *helpBubbles;
+
 
 - (NSURL *)applicationDocumentsDirectory;
 
@@ -41,5 +43,8 @@
 + (AppDefaults *)defaultsObject:(NSManagedObjectContext *) context;
 - (void)initializeStartDatabase:(NSBundle *)bundle;
 - (void)refreshCurrencyRatesIfOutDated;
+- (void)checkForResetOfHelpBubbles;
+
+- (void)registerHelpBubble:(HelpView *)helpView;
 
 @end
