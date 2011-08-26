@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9408120813EAD0E5003D7B3E /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F127299513E839B10095286D /* Type.m */; };
 		9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
-		9408120A13EAD10B003D7B3E /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FFEA6713E99BCA00FC97A4 /* RateCell.m */; };
 		9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408120C13EADF7F003D7B3E /* ExchangeRate.m */; };
 		940B41ED13EBF18300902B00 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EC13EBF18300902B00 /* Icon.png */; };
 		940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EF13EBF18B00902B00 /* Icon@2x.png */; };
@@ -24,15 +23,16 @@
 		940B41FE13EC365C00902B00 /* pricetag_euro.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FD13EC365C00902B00 /* pricetag_euro.png */; };
 		940B41FF13EC365C00902B00 /* pricetag_euro.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41FD13EC365C00902B00 /* pricetag_euro.png */; };
 		94F97EE313E9831C00662ADB /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
-		94FFEA6913E99BCA00FC97A4 /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FFEA6713E99BCA00FC97A4 /* RateCell.m */; };
 		94FFEA6A13E99BCA00FC97A4 /* RateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FFEA6813E99BCA00FC97A4 /* RateCell.xib */; };
 		F1006C3113E0539F0014CF4B /* CurrencyRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F1006C3013E0539F0014CF4B /* CurrencyRefresh.m */; };
 		F1006C4813E07AF10014CF4B /* HelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1006C4713E07AF10014CF4B /* HelpView.m */; };
 		F100DEBF13E2C5B700BB1E6E /* moreImages.png in Resources */ = {isa = PBXBuildFile; fileRef = F100DEBE13E2C5B700BB1E6E /* moreImages.png */; };
-		F100DEC313E2CC4400BB1E6E /* GradientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC213E2CC4300BB1E6E /* GradientCell.m */; };
 		F100DEC713E2E5F900BB1E6E /* DateSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */; };
+		F10CC9961407D1CC00A8DD31 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC9951407D1CC00A8DD31 /* Travel.m */; };
+		F10CC9971407D1CC00A8DD31 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC9951407D1CC00A8DD31 /* Travel.m */; };
+		F10CC99B1407D1CD00A8DD31 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */; };
+		F10CC99C1407D1CD00A8DD31 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */; };
 		F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB1F13D99BE8002C08AC /* TextEditViewController.m */; };
-		F111CB2413D9AE82002C08AC /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */; };
 		F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5212140541B000B983B8 /* ParticipantEditViewController.m */; };
 		F11A521614055E7200B983B8 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521514055E7100B983B8 /* Participant.m */; };
 		F11A521714055E7200B983B8 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521514055E7100B983B8 /* Participant.m */; };
@@ -51,6 +51,8 @@
 		F12C7A9E13D0F7C600668BF0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */; };
 		F12C7A9F13D0F7C600668BF0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9D13D0F7C600668BF0 /* MapKit.framework */; };
 		F12C7AA113D104DF00668BF0 /* mobileTicker_name2-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C7AA013D104DF00668BF0 /* mobileTicker_name2-57x57.png */; };
+		F1301FFB1407810300A07F6F /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = F1301FFA1407810300A07F6F /* about.png */; };
+		F1301FFC1407810300A07F6F /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = F1301FFA1407810300A07F6F /* about.png */; };
 		F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F14B372013E67BDF00351641 /* CurrencyHelperCategory.m */; };
 		F14B372913E68B5F00351641 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14B372813E68B5F00351641 /* SenTestingKit.framework */; };
 		F14B372A13E68B5F00351641 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD782E13BA405A00D42AA3 /* UIKit.framework */; };
@@ -59,7 +61,6 @@
 		F14B373213E68B5F00351641 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F14B373013E68B5F00351641 /* InfoPlist.strings */; };
 		F14B373413E68B5F00351641 /* UnitTests.h in Resources */ = {isa = PBXBuildFile; fileRef = F14B373313E68B5F00351641 /* UnitTests.h */; };
 		F14B373613E68B5F00351641 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F14B373513E68B5F00351641 /* UnitTests.m */; };
-		F14B373D13E68CA600351641 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA4B13E19C7B00C2D855 /* AppDefaults.m */; };
 		F14B374313E68CA600351641 /* FirstLetterCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */; };
 		F14B374413E68CA600351641 /* DateSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */; };
 		F14B374513E68CA600351641 /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211A13BDE2D400FE329B /* Summary.m */; };
@@ -78,11 +79,6 @@
 		F14B375313E68F7E00351641 /* ReiseabrechnungAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */; };
 		F14B375413E6902E00351641 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD784413BA405B00D42AA3 /* RootViewController.m */; };
 		F14B375513E6903100351641 /* ShadowNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */; };
-		F14B375613E6904100351641 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD790413BCB91500D42AA3 /* EntryCell.m */; };
-		F14B375713E6904D00351641 /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C63413D8116F005E8388 /* CountryCell.m */; };
-		F14B375813E6904D00351641 /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DB5A7813D87C43001E3B4A /* SummaryCell.m */; };
-		F14B375913E6904D00351641 /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */; };
-		F14B375A13E6904D00351641 /* GradientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC213E2CC4300BB1E6E /* GradientCell.m */; };
 		F14B375D13E6904D00351641 /* HelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1006C4713E07AF10014CF4B /* HelpView.m */; };
 		F14B375E13E6904D00351641 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA2813E08B3C00C2D855 /* ArrowView.m */; };
 		F14B375F13E6904D00351641 /* ParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5813E1ED7900C2D855 /* ParticipantView.m */; };
@@ -110,8 +106,19 @@
 		F159EA3113E0AFCA00C2D855 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA3013E0AFCA00C2D855 /* InfoViewController.m */; };
 		F159EA3B13E0DA3E00C2D855 /* darkbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F159EA3A13E0DA3D00C2D855 /* darkbackground.png */; };
 		F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F159EA3F13E19B0E00C2D855 /* MessageUI.framework */; };
-		F159EA4C13E19C7B00C2D855 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA4B13E19C7B00C2D855 /* AppDefaults.m */; };
 		F159EA5913E1ED7B00C2D855 /* ParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5813E1ED7900C2D855 /* ParticipantView.m */; };
+		F1731B571407745A0050D6AC /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B561407745A0050D6AC /* EntryCell.m */; };
+		F1731B581407745A0050D6AC /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B561407745A0050D6AC /* EntryCell.m */; };
+		F1731B63140774860050D6AC /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B5E140774860050D6AC /* AlignedStyle2Cell.m */; };
+		F1731B64140774860050D6AC /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B5E140774860050D6AC /* AlignedStyle2Cell.m */; };
+		F1731B65140774860050D6AC /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B5F140774860050D6AC /* CountryCell.m */; };
+		F1731B66140774860050D6AC /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B5F140774860050D6AC /* CountryCell.m */; };
+		F1731B67140774860050D6AC /* GradientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B60140774860050D6AC /* GradientCell.m */; };
+		F1731B68140774860050D6AC /* GradientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B60140774860050D6AC /* GradientCell.m */; };
+		F1731B69140774860050D6AC /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B61140774860050D6AC /* RateCell.m */; };
+		F1731B6A140774860050D6AC /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B61140774860050D6AC /* RateCell.m */; };
+		F1731B6B140774860050D6AC /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B62140774860050D6AC /* SummaryCell.m */; };
+		F1731B6C140774860050D6AC /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B62140774860050D6AC /* SummaryCell.m */; };
 		F17B449613EFF6AA00072F90 /* Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449513EFF6AA00072F90 /* Locator.m */; };
 		F17B449713EFF6AB00072F90 /* Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449513EFF6AA00072F90 /* Locator.m */; };
 		F17B449B13F00B1D00072F90 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449A13F00B1D00072F90 /* City.m */; };
@@ -605,7 +612,6 @@
 		F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */; };
 		F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A6C63113D6BFA6005E8388 /* noImage.png */; };
-		F1A6C63513D81170005E8388 /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C63413D8116F005E8388 /* CountryCell.m */; };
 		F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B820DA13BCD76C00FE329B /* CoreData.framework */; };
 		F1B8211213BD9F3A00FE329B /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211113BD9F3900FE329B /* CoreDataTableViewController.m */; };
 		F1B8211B13BDE2D400FE329B /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211A13BDE2D400FE329B /* Summary.m */; };
@@ -613,8 +619,6 @@
 		F1B8216813BE32E000FE329B /* TravelNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8216713BE32DF00FE329B /* TravelNotManaged.m */; };
 		F1BB9D6A1406623D00DA0573 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D691406623D00DA0573 /* Transfer.m */; };
 		F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D691406623D00DA0573 /* Transfer.m */; };
-		F1BB9D6F1406623E00DA0573 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D6E1406623E00DA0573 /* Travel.m */; };
-		F1BB9D701406623E00DA0573 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D6E1406623E00DA0573 /* Travel.m */; };
 		F1BB9D731406623E00DA0573 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D721406623E00DA0573 /* Currency.m */; };
 		F1BB9D741406623E00DA0573 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D721406623E00DA0573 /* Currency.m */; };
 		F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
@@ -633,7 +637,6 @@
 		F1CD78DA13BC73FC00D42AA3 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD78D813BC73FA00D42AA3 /* EntryViewController.m */; };
 		F1CD78F613BC8BB900D42AA3 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD78F413BC8BB900D42AA3 /* AddressBook.framework */; };
 		F1CD78F713BC8BB900D42AA3 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD78F513BC8BB900D42AA3 /* AddressBookUI.framework */; };
-		F1CD790513BCB91700D42AA3 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD790413BCB91500D42AA3 /* EntryCell.m */; };
 		F1CD790713BCC03D00D42AA3 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CD790613BCC03B00D42AA3 /* EntryCell.xib */; };
 		F1CE13D213D587DC0079B234 /* GenericSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE13D113D587DB0079B234 /* GenericSelectViewController.m */; };
 		F1CE13E413D5C2F40079B234 /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
@@ -641,7 +644,6 @@
 		F1CE923913DDBEDC009F3B2F /* TravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */; };
 		F1CE923D13DEA7B6009F3B2F /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
 		F1CE923E13DEA7B6009F3B2F /* DateSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */; };
-		F1DB5A7913D87C43001E3B4A /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DB5A7813D87C43001E3B4A /* SummaryCell.m */; };
 		F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
 		F1EAFCC713D974FF00759FB9 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAFCC613D974FF00759FB9 /* LocationViewController.m */; };
 		F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */; };
@@ -666,28 +668,26 @@
 		94F97EDE13E9811500662ADB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		94F97EE113E9831C00662ADB /* RateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RateSelectViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		94F97EE213E9831C00662ADB /* RateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RateSelectViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		94FFEA6613E99BCA00FC97A4 /* RateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = RateCell.h; path = Reiseabrechnung/RateCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		94FFEA6713E99BCA00FC97A4 /* RateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RateCell.m; path = Reiseabrechnung/RateCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		94FFEA6813E99BCA00FC97A4 /* RateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateCell.xib; sourceTree = "<group>"; };
 		F1006C2F13E0539F0014CF4B /* CurrencyRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyRefresh.h; sourceTree = "<group>"; };
 		F1006C3013E0539F0014CF4B /* CurrencyRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyRefresh.m; sourceTree = "<group>"; };
-		F1006C4613E07AF10014CF4B /* HelpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpView.h; path = Reiseabrechnung/HelpView.h; sourceTree = "<group>"; };
-		F1006C4713E07AF10014CF4B /* HelpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpView.m; path = Reiseabrechnung/HelpView.m; sourceTree = "<group>"; };
+		F1006C4613E07AF10014CF4B /* HelpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpView.h; sourceTree = "<group>"; };
+		F1006C4713E07AF10014CF4B /* HelpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpView.m; sourceTree = "<group>"; };
 		F100DEBE13E2C5B700BB1E6E /* moreImages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreImages.png; sourceTree = "<group>"; };
-		F100DEC113E2CC4300BB1E6E /* GradientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientCell.h; path = Reiseabrechnung/GradientCell.h; sourceTree = "<group>"; };
-		F100DEC213E2CC4300BB1E6E /* GradientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientCell.m; path = Reiseabrechnung/GradientCell.m; sourceTree = "<group>"; };
 		F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSortCategory.h; sourceTree = "<group>"; };
 		F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSortCategory.m; sourceTree = "<group>"; };
+		F10CC9941407D1CC00A8DD31 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
+		F10CC9951407D1CC00A8DD31 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
+		F10CC9991407D1CD00A8DD31 /* AppDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
+		F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
 		F111CB1E13D99BE8002C08AC /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
 		F111CB1F13D99BE8002C08AC /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
-		F111CB2213D9AE82002C08AC /* AlignedStyle2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlignedStyle2Cell.h; path = Reiseabrechnung/AlignedStyle2Cell.h; sourceTree = "<group>"; };
-		F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlignedStyle2Cell.m; path = Reiseabrechnung/AlignedStyle2Cell.m; sourceTree = "<group>"; };
 		F11A5211140541B000B983B8 /* ParticipantEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantEditViewController.h; sourceTree = "<group>"; };
 		F11A5212140541B000B983B8 /* ParticipantEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantEditViewController.m; sourceTree = "<group>"; };
 		F11A521414055E7100B983B8 /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
 		F11A521514055E7100B983B8 /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
-		F11A5218140563D000B983B8 /* MultiLineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiLineSegmentedControl.h; path = Reiseabrechnung/MultiLineSegmentedControl.h; sourceTree = "<group>"; };
-		F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultiLineSegmentedControl.m; path = Reiseabrechnung/MultiLineSegmentedControl.m; sourceTree = "<group>"; };
+		F11A5218140563D000B983B8 /* MultiLineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiLineSegmentedControl.h; sourceTree = "<group>"; };
+		F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiLineSegmentedControl.m; sourceTree = "<group>"; };
 		F11A521C140654C100B983B8 /* NumberFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFilter.h; sourceTree = "<group>"; };
 		F11A521D140654C100B983B8 /* NumberFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberFilter.m; sourceTree = "<group>"; };
 		F11FB34913E6B01E00115D12 /* SummarySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarySortViewController.h; sourceTree = "<group>"; };
@@ -701,6 +701,7 @@
 		F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F12C7A9D13D0F7C600668BF0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F12C7AA013D104DF00668BF0 /* mobileTicker_name2-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobileTicker_name2-57x57.png"; sourceTree = "<group>"; };
+		F1301FFA1407810300A07F6F /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		F14B371F13E67BDF00351641 /* CurrencyHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelperCategory.h; sourceTree = "<group>"; };
 		F14B372013E67BDF00351641 /* CurrencyHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyHelperCategory.m; sourceTree = "<group>"; };
 		F14B372713E68B5F00351641 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -711,19 +712,29 @@
 		F14B373513E68B5F00351641 /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		F14B373713E68B5F00351641 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		F1533F0413D416BA008EBE9D /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		F1533F1213D433F7008EBE9D /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIFactory.h; path = Reiseabrechnung/UIFactory.h; sourceTree = "<group>"; };
-		F1533F1313D433F7008EBE9D /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIFactory.m; path = Reiseabrechnung/UIFactory.m; sourceTree = "<group>"; };
-		F159EA2713E08B3B00C2D855 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrowView.h; path = Reiseabrechnung/ArrowView.h; sourceTree = "<group>"; };
-		F159EA2813E08B3C00C2D855 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrowView.m; path = Reiseabrechnung/ArrowView.m; sourceTree = "<group>"; };
+		F1533F1213D433F7008EBE9D /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
+		F1533F1313D433F7008EBE9D /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
+		F159EA2713E08B3B00C2D855 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
+		F159EA2813E08B3C00C2D855 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrowView.m; sourceTree = "<group>"; };
 		F159EA2B13E0AF3000C2D855 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		F159EA3013E0AFCA00C2D855 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		F159EA3A13E0DA3D00C2D855 /* darkbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = darkbackground.png; sourceTree = "<group>"; };
 		F159EA3F13E19B0E00C2D855 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		F159EA4A13E19C7B00C2D855 /* AppDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
-		F159EA4B13E19C7B00C2D855 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
-		F159EA5713E1ED7700C2D855 /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticipantView.h; path = Reiseabrechnung/ParticipantView.h; sourceTree = "<group>"; };
-		F159EA5813E1ED7900C2D855 /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticipantView.m; path = Reiseabrechnung/ParticipantView.m; sourceTree = "<group>"; };
+		F159EA5713E1ED7700C2D855 /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantView.h; sourceTree = "<group>"; };
+		F159EA5813E1ED7900C2D855 /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantView.m; sourceTree = "<group>"; };
+		F1731B551407745A0050D6AC /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCell.h; sourceTree = "<group>"; };
+		F1731B561407745A0050D6AC /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCell.m; sourceTree = "<group>"; };
+		F1731B59140774860050D6AC /* AlignedStyle2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlignedStyle2Cell.h; sourceTree = "<group>"; };
+		F1731B5A140774860050D6AC /* CountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCell.h; sourceTree = "<group>"; };
+		F1731B5B140774860050D6AC /* GradientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientCell.h; sourceTree = "<group>"; };
+		F1731B5C140774860050D6AC /* RateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateCell.h; sourceTree = "<group>"; };
+		F1731B5D140774860050D6AC /* SummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryCell.h; sourceTree = "<group>"; };
+		F1731B5E140774860050D6AC /* AlignedStyle2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlignedStyle2Cell.m; sourceTree = "<group>"; };
+		F1731B5F140774860050D6AC /* CountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCell.m; sourceTree = "<group>"; };
+		F1731B60140774860050D6AC /* GradientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientCell.m; sourceTree = "<group>"; };
+		F1731B61140774860050D6AC /* RateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateCell.m; sourceTree = "<group>"; };
+		F1731B62140774860050D6AC /* SummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryCell.m; sourceTree = "<group>"; };
 		F17B449413EFF6AA00072F90 /* Locator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locator.h; sourceTree = "<group>"; };
 		F17B449513EFF6AA00072F90 /* Locator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Locator.m; sourceTree = "<group>"; };
 		F17B449913F00B1D00072F90 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
@@ -991,7 +1002,6 @@
 		F1A6C62E13D6B71B005E8388 /* ParticipantHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantHelperCategory.h; sourceTree = "<group>"; };
 		F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantHelperCategory.m; sourceTree = "<group>"; };
 		F1A6C63113D6BFA6005E8388 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
-		F1A6C63413D8116F005E8388 /* CountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryCell.m; path = Reiseabrechnung/CountryCell.m; sourceTree = "<group>"; };
 		F1B820DA13BCD76C00FE329B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F1B8211013BD9F3700FE329B /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		F1B8211113BD9F3900FE329B /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
@@ -1003,13 +1013,11 @@
 		F1B8216713BE32DF00FE329B /* TravelNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelNotManaged.m; sourceTree = "<group>"; };
 		F1BB9D681406623D00DA0573 /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
 		F1BB9D691406623D00DA0573 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
-		F1BB9D6D1406623E00DA0573 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
-		F1BB9D6E1406623E00DA0573 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
 		F1BB9D711406623E00DA0573 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
 		F1BB9D721406623E00DA0573 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 		F1BB9D751406703600DA0573 /* EntryCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCategory.h; sourceTree = "<group>"; };
 		F1BB9D761406703600DA0573 /* EntryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCategory.m; sourceTree = "<group>"; };
-		F1CD782A13BA405A00D42AA3 /* Reiseabrechnung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reiseabrechnung.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CD782A13BA405A00D42AA3 /* Trip Cost Split.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Cost Split.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CD782E13BA405A00D42AA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1CD783013BA405A00D42AA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1027,15 +1035,13 @@
 		F1CD78C713BC6A7D00D42AA3 /* ParticipantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantViewController.m; sourceTree = "<group>"; };
 		F1CD78CB13BC6AA300D42AA3 /* SummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryViewController.h; sourceTree = "<group>"; };
 		F1CD78CC13BC6AA400D42AA3 /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
-		F1CD78D213BC705C00D42AA3 /* TravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TravelViewController.h; path = Reiseabrechnung/TravelViewController.h; sourceTree = SOURCE_ROOT; };
-		F1CD78D313BC705C00D42AA3 /* TravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TravelViewController.m; path = Reiseabrechnung/TravelViewController.m; sourceTree = SOURCE_ROOT; };
+		F1CD78D213BC705C00D42AA3 /* TravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelViewController.h; sourceTree = "<group>"; };
+		F1CD78D313BC705C00D42AA3 /* TravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelViewController.m; sourceTree = "<group>"; };
 		F1CD78D713BC73F900D42AA3 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
 		F1CD78D813BC73FA00D42AA3 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
 		F1CD78F413BC8BB900D42AA3 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		F1CD78F513BC8BB900D42AA3 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		F1CD78F813BC930100D42AA3 /* EntryEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryEditViewController.h; sourceTree = "<group>"; };
-		F1CD790313BCB91300D42AA3 /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryCell.h; path = Reiseabrechnung/EntryCell.h; sourceTree = "<group>"; };
-		F1CD790413BCB91500D42AA3 /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryCell.m; path = Reiseabrechnung/EntryCell.m; sourceTree = "<group>"; };
 		F1CD790613BCC03B00D42AA3 /* EntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
 		F1CE13D013D587DB0079B234 /* GenericSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericSelectViewController.h; sourceTree = "<group>"; };
 		F1CE13D113D587DB0079B234 /* GenericSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericSelectViewController.m; sourceTree = "<group>"; };
@@ -1047,18 +1053,15 @@
 		F1CE923A13DEA7B6009F3B2F /* DateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSelectViewController.h; sourceTree = "<group>"; };
 		F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectViewController.m; sourceTree = "<group>"; };
 		F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateSelectViewController.xib; sourceTree = "<group>"; };
-		F1DB5A7713D87C43001E3B4A /* SummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SummaryCell.h; path = Reiseabrechnung/SummaryCell.h; sourceTree = "<group>"; };
-		F1DB5A7813D87C43001E3B4A /* SummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SummaryCell.m; path = Reiseabrechnung/SummaryCell.m; sourceTree = "<group>"; };
 		F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
 		F1EAFCC513D974FF00759FB9 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		F1EAFCC613D974FF00759FB9 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F1F8FABA13DC20E8009BB4D3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
-		F1F8FABC13DC225B009BB4D3 /* ShadowNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadowNavigationController.h; path = Reiseabrechnung/ShadowNavigationController.h; sourceTree = "<group>"; };
-		F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadowNavigationController.m; path = Reiseabrechnung/ShadowNavigationController.m; sourceTree = "<group>"; };
+		F1F8FABC13DC225B009BB4D3 /* ShadowNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowNavigationController.h; sourceTree = "<group>"; };
+		F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowNavigationController.m; sourceTree = "<group>"; };
 		F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLetterCategory.h; sourceTree = "<group>"; };
 		F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLetterCategory.m; sourceTree = "<group>"; };
-		F1F8FAE913DC3BB1009BB4D3 /* CountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryCell.h; path = Reiseabrechnung/CountryCell.h; sourceTree = "<group>"; };
 		F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryEditViewController.m; sourceTree = "<group>"; };
 		F1F8FAF013DC4A5A009BB4D3 /* NumberEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberEditViewController.h; sourceTree = "<group>"; };
 		F1F8FAF113DC4A5A009BB4D3 /* NumberEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberEditViewController.m; sourceTree = "<group>"; };
@@ -1119,18 +1122,18 @@
 		F100DEC413E2D19700BB1E6E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F1CD790313BCB91300D42AA3 /* EntryCell.h */,
-				F1CD790413BCB91500D42AA3 /* EntryCell.m */,
-				F1F8FAE913DC3BB1009BB4D3 /* CountryCell.h */,
-				F1A6C63413D8116F005E8388 /* CountryCell.m */,
-				F1DB5A7713D87C43001E3B4A /* SummaryCell.h */,
-				F1DB5A7813D87C43001E3B4A /* SummaryCell.m */,
-				F111CB2213D9AE82002C08AC /* AlignedStyle2Cell.h */,
-				F111CB2313D9AE82002C08AC /* AlignedStyle2Cell.m */,
-				F100DEC113E2CC4300BB1E6E /* GradientCell.h */,
-				F100DEC213E2CC4300BB1E6E /* GradientCell.m */,
-				94FFEA6613E99BCA00FC97A4 /* RateCell.h */,
-				94FFEA6713E99BCA00FC97A4 /* RateCell.m */,
+				F1731B551407745A0050D6AC /* EntryCell.h */,
+				F1731B561407745A0050D6AC /* EntryCell.m */,
+				F1731B59140774860050D6AC /* AlignedStyle2Cell.h */,
+				F1731B5E140774860050D6AC /* AlignedStyle2Cell.m */,
+				F1731B5A140774860050D6AC /* CountryCell.h */,
+				F1731B5F140774860050D6AC /* CountryCell.m */,
+				F1731B5B140774860050D6AC /* GradientCell.h */,
+				F1731B60140774860050D6AC /* GradientCell.m */,
+				F1731B5C140774860050D6AC /* RateCell.h */,
+				F1731B61140774860050D6AC /* RateCell.m */,
+				F1731B5D140774860050D6AC /* SummaryCell.h */,
+				F1731B62140774860050D6AC /* SummaryCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1415,8 +1418,8 @@
 				F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */,
 				F17B4A0313F17D0900072F90 /* RegexKitLite.h */,
 				F17B4A0413F17D0900072F90 /* RegexKitLite.m */,
-				F17B4A0713F17D0900072F90 /* sample_template.txt */,
 				F17B4A0813F17D0900072F90 /* Source Code License.rtf */,
+				F17B4A0713F17D0900072F90 /* sample_template.txt */,
 				F17B4A0913F17D0900072F90 /* Writing Filters.txt */,
 				F17B4A0A13F17D0900072F90 /* Writing Markers.txt */,
 				F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */,
@@ -1441,10 +1444,12 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F10CC9991407D1CD00A8DD31 /* AppDefaults.h */,
+				F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */,
+				F10CC9941407D1CC00A8DD31 /* Travel.h */,
+				F10CC9951407D1CC00A8DD31 /* Travel.m */,
 				F1BB9D711406623E00DA0573 /* Currency.h */,
 				F1BB9D721406623E00DA0573 /* Currency.m */,
-				F1BB9D6D1406623E00DA0573 /* Travel.h */,
-				F1BB9D6E1406623E00DA0573 /* Travel.m */,
 				F1BB9D681406623D00DA0573 /* Transfer.h */,
 				F1BB9D691406623D00DA0573 /* Transfer.m */,
 				F11A521414055E7100B983B8 /* Participant.h */,
@@ -1459,8 +1464,6 @@
 				F127299513E839B10095286D /* Type.m */,
 				F127298613E7FCFF0095286D /* Entry.h */,
 				F127298713E7FCFF0095286D /* Entry.m */,
-				F159EA4A13E19C7B00C2D855 /* AppDefaults.h */,
-				F159EA4B13E19C7B00C2D855 /* AppDefaults.m */,
 				F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */,
 				F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */,
 				F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */,
@@ -1525,16 +1528,13 @@
 				F11A521D140654C100B983B8 /* NumberFilter.m */,
 			);
 			name = "View Helper";
-			path = ..;
 			sourceTree = "<group>";
 		};
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
 				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
-				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
-				940B41EC13EBF18300902B00 /* Icon.png */,
-				F1CD783413BA405A00D42AA3 /* Reiseabrechnung */,
+				F1CD783413BA405A00D42AA3 /* Sources */,
 				F14B372D13E68B5F00351641 /* UnitTests */,
 				F1533F1F13D47951008EBE9D /* Data */,
 				F1CD78DC13BC764400D42AA3 /* Images */,
@@ -1549,7 +1549,7 @@
 		F1CD782B13BA405A00D42AA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1CD782A13BA405A00D42AA3 /* Reiseabrechnung.app */,
+				F1CD782A13BA405A00D42AA3 /* Trip Cost Split.app */,
 				F14B372713E68B5F00351641 /* UnitTests.octest */,
 			);
 			name = Products;
@@ -1576,7 +1576,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F1CD783413BA405A00D42AA3 /* Reiseabrechnung */ = {
+		F1CD783413BA405A00D42AA3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				F1B8212B13BE01C000FE329B /* View Helper */,
@@ -1611,12 +1611,14 @@
 				94F97EE013E981B200662ADB /* RateEdit */,
 				F1CD78BD13BB8C0900D42AA3 /* Model */,
 			);
-			path = Reiseabrechnung;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		F1CD783513BA405B00D42AA3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
+				940B41EC13EBF18300902B00 /* Icon.png */,
 				F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */,
 				F1CD783613BA405B00D42AA3 /* Reiseabrechnung-Info.plist */,
 				F17B4A3913F17D2600072F90 /* mailTemplate.html */,
@@ -1648,6 +1650,7 @@
 			isa = PBXGroup;
 			children = (
 				940B41F113EBF39800902B00 /* group.png */,
+				F1301FFA1407810300A07F6F /* about.png */,
 				940B41FD13EC365C00902B00 /* pricetag_euro.png */,
 				940B41F213EBF39800902B00 /* scales.png */,
 				940B41FA13EC11A200902B00 /* pricetag.png */,
@@ -1705,9 +1708,9 @@
 			productReference = F14B372713E68B5F00351641 /* UnitTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		F1CD782913BA405A00D42AA3 /* Reiseabrechnung */ = {
+		F1CD782913BA405A00D42AA3 /* Trip Cost Split */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Reiseabrechnung" */;
+			buildConfigurationList = F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Trip Cost Split" */;
 			buildPhases = (
 				F1CD782613BA405A00D42AA3 /* Sources */,
 				F1CD782713BA405A00D42AA3 /* Frameworks */,
@@ -1717,9 +1720,9 @@
 			);
 			dependencies = (
 			);
-			name = Reiseabrechnung;
+			name = "Trip Cost Split";
 			productName = Reiseabrechnung;
-			productReference = F1CD782A13BA405A00D42AA3 /* Reiseabrechnung.app */;
+			productReference = F1CD782A13BA405A00D42AA3 /* Trip Cost Split.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1745,7 +1748,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1CD782913BA405A00D42AA3 /* Reiseabrechnung */,
+				F1CD782913BA405A00D42AA3 /* Trip Cost Split */,
 				F14B372613E68B5F00351641 /* UnitTests */,
 			);
 		};
@@ -1993,6 +1996,7 @@
 				F17B4A3313F17D0900072F90 /* Writing Markers.txt in Resources */,
 				F17B4A3513F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3B13F17D2600072F90 /* mailTemplate.html in Resources */,
+				F1301FFC1407810300A07F6F /* about.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2249,6 +2253,7 @@
 				F17B4A3213F17D0900072F90 /* Writing Markers.txt in Resources */,
 				F17B4A3413F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3A13F17D2600072F90 /* mailTemplate.html in Resources */,
+				F1301FFB1407810300A07F6F /* about.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2276,7 +2281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F14B373613E68B5F00351641 /* UnitTests.m in Sources */,
-				F14B373D13E68CA600351641 /* AppDefaults.m in Sources */,
 				F14B374313E68CA600351641 /* FirstLetterCategory.m in Sources */,
 				F14B374413E68CA600351641 /* DateSortCategory.m in Sources */,
 				F14B374513E68CA600351641 /* Summary.m in Sources */,
@@ -2288,11 +2292,6 @@
 				F14B375313E68F7E00351641 /* ReiseabrechnungAppDelegate.m in Sources */,
 				F14B375413E6902E00351641 /* RootViewController.m in Sources */,
 				F14B375513E6903100351641 /* ShadowNavigationController.m in Sources */,
-				F14B375613E6904100351641 /* EntryCell.m in Sources */,
-				F14B375713E6904D00351641 /* CountryCell.m in Sources */,
-				F14B375813E6904D00351641 /* SummaryCell.m in Sources */,
-				F14B375913E6904D00351641 /* AlignedStyle2Cell.m in Sources */,
-				F14B375A13E6904D00351641 /* GradientCell.m in Sources */,
 				F14B375D13E6904D00351641 /* HelpView.m in Sources */,
 				F14B375E13E6904D00351641 /* ArrowView.m in Sources */,
 				F14B375F13E6904D00351641 /* ParticipantView.m in Sources */,
@@ -2318,7 +2317,6 @@
 				F127299313E813B30095286D /* SummarySortViewController.m in Sources */,
 				9408120813EAD0E5003D7B3E /* Type.m in Sources */,
 				9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */,
-				9408120A13EAD10B003D7B3E /* RateCell.m in Sources */,
 				F17B449713EFF6AB00072F90 /* Locator.m in Sources */,
 				F17B449C13F00B1D00072F90 /* City.m in Sources */,
 				F17B44A013F00B1D00072F90 /* Country.m in Sources */,
@@ -2337,9 +2335,16 @@
 				F11A521B140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
 				F11A521F140654C100B983B8 /* NumberFilter.m in Sources */,
 				F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */,
-				F1BB9D701406623E00DA0573 /* Travel.m in Sources */,
 				F1BB9D741406623E00DA0573 /* Currency.m in Sources */,
 				F1BB9D781406703600DA0573 /* EntryCategory.m in Sources */,
+				F1731B581407745A0050D6AC /* EntryCell.m in Sources */,
+				F1731B64140774860050D6AC /* AlignedStyle2Cell.m in Sources */,
+				F1731B66140774860050D6AC /* CountryCell.m in Sources */,
+				F1731B68140774860050D6AC /* GradientCell.m in Sources */,
+				F1731B6A140774860050D6AC /* RateCell.m in Sources */,
+				F1731B6C140774860050D6AC /* SummaryCell.m in Sources */,
+				F10CC9971407D1CC00A8DD31 /* Travel.m in Sources */,
+				F10CC99C1407D1CD00A8DD31 /* AppDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2355,7 +2360,6 @@
 				F1CD78CE13BC6AA700D42AA3 /* SummaryViewController.m in Sources */,
 				F1CD78D513BC705F00D42AA3 /* TravelViewController.m in Sources */,
 				F1CD78DA13BC73FC00D42AA3 /* EntryViewController.m in Sources */,
-				F1CD790513BCB91700D42AA3 /* EntryCell.m in Sources */,
 				F1B8211213BD9F3A00FE329B /* CoreDataTableViewController.m in Sources */,
 				F1B8211B13BDE2D400FE329B /* Summary.m in Sources */,
 				F1B8213C13BE0E3A00FE329B /* EntryNotManaged.m in Sources */,
@@ -2364,11 +2368,8 @@
 				F1CE13D213D587DC0079B234 /* GenericSelectViewController.m in Sources */,
 				F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */,
 				F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */,
-				F1A6C63513D81170005E8388 /* CountryCell.m in Sources */,
-				F1DB5A7913D87C43001E3B4A /* SummaryCell.m in Sources */,
 				F1EAFCC713D974FF00759FB9 /* LocationViewController.m in Sources */,
 				F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */,
-				F111CB2413D9AE82002C08AC /* AlignedStyle2Cell.m in Sources */,
 				F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */,
 				F1F8FAD313DC2C46009BB4D3 /* FirstLetterCategory.m in Sources */,
 				F1F8FAEF13DC498F009BB4D3 /* EntryEditViewController.m in Sources */,
@@ -2380,9 +2381,7 @@
 				F1006C4813E07AF10014CF4B /* HelpView.m in Sources */,
 				F159EA2913E08B3C00C2D855 /* ArrowView.m in Sources */,
 				F159EA3113E0AFCA00C2D855 /* InfoViewController.m in Sources */,
-				F159EA4C13E19C7B00C2D855 /* AppDefaults.m in Sources */,
 				F159EA5913E1ED7B00C2D855 /* ParticipantView.m in Sources */,
-				F100DEC313E2CC4400BB1E6E /* GradientCell.m in Sources */,
 				F100DEC713E2E5F900BB1E6E /* DateSortCategory.m in Sources */,
 				F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */,
 				F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */,
@@ -2390,7 +2389,6 @@
 				F127298813E7FCFF0095286D /* Entry.m in Sources */,
 				F127299613E839B10095286D /* Type.m in Sources */,
 				94F97EE313E9831C00662ADB /* RateSelectViewController.m in Sources */,
-				94FFEA6913E99BCA00FC97A4 /* RateCell.m in Sources */,
 				9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */,
 				F17B449613EFF6AA00072F90 /* Locator.m in Sources */,
 				F17B449B13F00B1D00072F90 /* City.m in Sources */,
@@ -2411,9 +2409,16 @@
 				F11A521A140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
 				F11A521E140654C100B983B8 /* NumberFilter.m in Sources */,
 				F1BB9D6A1406623D00DA0573 /* Transfer.m in Sources */,
-				F1BB9D6F1406623E00DA0573 /* Travel.m in Sources */,
 				F1BB9D731406623E00DA0573 /* Currency.m in Sources */,
 				F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */,
+				F1731B571407745A0050D6AC /* EntryCell.m in Sources */,
+				F1731B63140774860050D6AC /* AlignedStyle2Cell.m in Sources */,
+				F1731B65140774860050D6AC /* CountryCell.m in Sources */,
+				F1731B67140774860050D6AC /* GradientCell.m in Sources */,
+				F1731B69140774860050D6AC /* RateCell.m in Sources */,
+				F1731B6B140774860050D6AC /* SummaryCell.m in Sources */,
+				F10CC9961407D1CC00A8DD31 /* Travel.m in Sources */,
+				F10CC99B1407D1CD00A8DD31 /* AppDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2571,7 +2576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Reiseabrechnung" */ = {
+		F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Trip Cost Split" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1CD784C13BA405B00D42AA3 /* Debug */,
