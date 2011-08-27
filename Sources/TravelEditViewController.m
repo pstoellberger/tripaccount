@@ -391,7 +391,9 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (IBAction)done:(UIBarButtonItem *)sender {
     
-    if (!self.travel) {
+    BOOL newTravel = !self.travel;
+    
+    if (newTravel) {
         self.travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext:_context];
     }
     
@@ -417,28 +419,29 @@ static NSIndexPath *_currenciesIndexPath;
     }
     [self.travel removeRates:[NSSet setWithArray:ratesToDelete]];
     
-    ABAddressBookRef addressBook = ABAddressBookCreate();
-    
-    if (addressBook) {
+    if (newTravel) {
+        ABAddressBookRef addressBook = ABAddressBookCreate();
         
-        NSString *deviceName = [[UIDevice currentDevice] name];
-        NSRange range = [deviceName rangeOfString:@"iPhone"];
-        
-        if (range.location > 3) {
-            NSString *userName = [deviceName substringToIndex:range.location - 3];
+        if (addressBook) {
             
-            NSArray *martinPerson = (NSArray *) ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
-            if ([martinPerson lastObject]) {
-                Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
-                newPerson.yourself = [NSNumber numberWithInt:1];
-                [Participant addParticipant:newPerson toTravel:_travel withABRecord:[martinPerson lastObject]];
+            NSString *deviceName = [[UIDevice currentDevice] name];
+            NSRange range = [deviceName rangeOfString:@"iPhone"];
+            
+            if (range.location > 3) {
+                NSString *userName = [deviceName substringToIndex:range.location - 3];
+                
+                NSArray *martinPerson = (NSArray *) ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
+                if ([martinPerson lastObject]) {
+                    Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
+                    newPerson.yourself = [NSNumber numberWithInt:1];
+                    [Participant addParticipant:newPerson toTravel:_travel withABRecord:[martinPerson lastObject]];
+                }
+                [martinPerson release];
             }
-            [martinPerson release];
+            
+            CFRelease(addressBook);
         }
-        
-        CFRelease(addressBook);
     }
-    
     
     [ReiseabrechnungAppDelegate saveContext:_context];
     
@@ -491,13 +494,7 @@ static NSIndexPath *_currenciesIndexPath;
     _viewAppeared = YES;
     
     NSString *text = @"Enter the currencies you want to use for this travel.";
-    HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(220, 200, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
-    [UIFactory addHelpViewToView:helpView toView:self.view];
-    [helpView release];
-    
-    
-    text = @"Cells will flash in blue to indicate a change.";
-    helpView = [[HelpView alloc] initWithFrame:CGRectMake(80, 80, 50, 50) text:text arrowPosition:ARROWPOSITION_NONE enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"flash help"];
+    HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(240, 192, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
     [UIFactory addHelpViewToView:helpView toView:self.view];
     [helpView release];
     

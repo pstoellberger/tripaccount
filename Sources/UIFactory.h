@@ -41,6 +41,6 @@
 + (UIAlertView *)createAlterViewForRefreshingRatesOnOpeningTravel:(id <UIAlertViewDelegate>)delegate;
 + (NSString *)formatNumber:(NSNumber *)number;
 + (void)addHelpViewToView:(HelpView *)helpView toView:(UIView *)view;
-+ (void)replaceHelpViewInView:(HelpView *)replaceHelpView withView:(HelpView *)helpView toView:(UIView *)view;
++ (void)replaceHelpViewInView:(NSString *)replaceHelpViewId withView:(HelpView *)helpView toView:(UIView *)view;
 
 @end

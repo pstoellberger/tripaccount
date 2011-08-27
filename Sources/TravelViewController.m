@@ -54,23 +54,23 @@
 - (id)initWithTravel:(Travel *) travel {
     
     self = [self init];
-
+    
     if (self) {
         _travel = travel;
         
         self.actionSheetClosedTravel = [[[UIActionSheet alloc] initWithTitle: @"Choose your action"
-                                                  delegate:self
-                                         cancelButtonTitle:@"Cancel"
-                                    destructiveButtonTitle:nil
-                                         otherButtonTitles:@"Send summary e-mail", @"Open this trip", nil] autorelease];
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Cancel"
+                                                      destructiveButtonTitle:nil
+                                                           otherButtonTitles:@"Send summary e-mail", @"Open this trip", nil] autorelease];
         self.actionSheetClosedTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-
+        
         
         self.actionSheetOpenTravel = [[[UIActionSheet alloc] initWithTitle: @"Choose your action"
-                                                  delegate:self
-                                         cancelButtonTitle:@"Cancel"
-                                    destructiveButtonTitle:nil
-                                         otherButtonTitles:@"Send summary e-mail", @"Close this trip", @"Update exchange rates", @"Manually edit rates", nil] autorelease];
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Cancel"
+                                                    destructiveButtonTitle:nil
+                                                         otherButtonTitles:@"Send summary e-mail", @"Close this trip", @"Update exchange rates", @"Manually edit rates", nil] autorelease];
         self.actionSheetOpenTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;        
         
         
@@ -128,7 +128,7 @@
     picker.navigationBar.barStyle = UIBarStyleBlack;
     picker.navigationBar.tintColor = [UIFactory defaultTintColor];
     picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
-
+    
     [self presentModalViewController:picker animated:YES];
     
     [UIFactory setColorOfSearchBarInABPicker:picker color:[UIFactory defaultTintColor]];
@@ -162,7 +162,7 @@
 }
 
 - (void)openPersonChooseOrCreatePopup {
-
+    
     [self.actionSheetAddPerson showInView:self.view];
     
 }
@@ -170,7 +170,7 @@
 #pragma mark Travel logic
 
 - (void)closeTravel {
-
+    
     // close
     [self.travel close];
     
@@ -187,7 +187,7 @@
     
     // open
     [self.travel open:useLatestRates];
-
+    
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
     
     [_summarySortViewController.detailViewController.tableView reloadData];
@@ -200,6 +200,7 @@
     [self.summarySortViewController updateRateLabel];
     
     [self initHelpBubbleForViewController:self.summarySortViewController];
+    [UIFactory replaceHelpViewInView:@"travelClosedLabel" withView:nil toView:self.summarySortViewController.view];
 }
 
 - (void)askToRefreshRatesWhenOpening {
@@ -282,7 +283,7 @@
     [controller setMessageBody:mailBody isHTML:YES];
     
     NSLog(@"%@", mailBody);
-
+    
     NSMutableArray *toArray = [NSMutableArray array];
     for (Participant *p in self.travel.participants) {
         if (![p.yourself isEqual:[NSNumber numberWithInt:1]]) {
@@ -346,15 +347,15 @@
 
 - (void)updateSummary {
     
-//    dispatch_queue_t updateQueue = dispatch_queue_create("UpdateSummary", NULL);
-//    dispatch_async(updateQueue, ^{
-//        
-//        [self.summarySortViewController.detailViewController recalculateSummary];
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.summarySortViewController.detailViewController.tableView reloadData];     
-//        });
-//    });
+    //    dispatch_queue_t updateQueue = dispatch_queue_create("UpdateSummary", NULL);
+    //    dispatch_async(updateQueue, ^{
+    //        
+    //        [self.summarySortViewController.detailViewController recalculateSummary];
+    //        
+    //        dispatch_async(dispatch_get_main_queue(), ^{
+    //            [self.summarySortViewController.detailViewController.tableView reloadData];     
+    //        });
+    //    });
     
     [self.summarySortViewController.detailViewController recalculateSummary];
     [self.summarySortViewController.detailViewController.tableView reloadData]; 
@@ -376,7 +377,7 @@
     }
     
     self.addButton.enabled = [self.travel.closed intValue] != 1;
-
+    
 }
 
 - (void)refreshExchangeRates {
@@ -412,15 +413,17 @@
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
-    } else if (viewController == self.entrySortViewController && ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
+    } else if (viewController == self.entrySortViewController) {
         
-        NSString *text = @"Add new expense entries here.";
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
-        [UIFactory addHelpViewToView:helpView toView:viewController.view];
-        [helpView release];
+        if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
+            NSString *text = @"Add new expense entries here.";
+            HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
+            [UIFactory addHelpViewToView:helpView toView:viewController.view];
+            [helpView release];
+        }
         
-        text = @"Use these button to sort the expense entries.";
-        helpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 270, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_LEFT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"sort button entry"];
+        NSString *text = @"Use these button to sort the expense entries.";
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 270, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_LEFT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"sort button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
@@ -432,15 +435,17 @@
         [helpView release];
         
         text = @"Find here the date of the last update of the currency exchange rates. Use the action above to update them now.";
-        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
+        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 295, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
         
         text = @"The travel was closed and can not be changed any more. Exchange rates used of this travel are fixed.";
-        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 290, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
+        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 295, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
-        if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
-            [UIFactory replaceHelpViewInView:closedHelpView withView:openHelpView toView:viewController.view];
+        if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
+            if (!self.summarySortViewController.ratesToolBar.hidden) {
+                [UIFactory replaceHelpViewInView:closedHelpView.uniqueIdentifier withView:openHelpView toView:viewController.view];
+            }
         } else {
-            [UIFactory replaceHelpViewInView:openHelpView withView:closedHelpView toView:viewController.view];
+            [UIFactory replaceHelpViewInView:openHelpView.uniqueIdentifier withView:closedHelpView toView:viewController.view];
         }
         
         [openHelpView release];
@@ -465,9 +470,9 @@
 #pragma mark - ParticipantViewControllerEditDelegate
 
 - (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved {
-
+    
     [self.participantViewController.tableView deselectRowAtIndexPath:[self.participantViewController.tableView indexPathForSelectedRow] animated:YES];
-
+    
 }
 
 - (void)openParticipantPopup:(Participant *)participant {
@@ -534,7 +539,7 @@
             [self openPersonAddPopup];
             
         } else if (buttonIndex == 1) {
-        
+            
             [self openParticipantPopup:nil];
             
         }
@@ -661,7 +666,7 @@
     self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:@"Warning" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil] autorelease];
     
     self.rateRefreshAlertView = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {

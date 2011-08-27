@@ -39,6 +39,8 @@
     
     [self initializeStartDatabase:[NSBundle mainBundle]];
     
+    [self initializeSampleTrip];
+    
     [self refreshCurrencyRatesIfOutDated];
     
     self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
@@ -200,9 +202,63 @@
     }
 }
 
+- (void)initializeSampleTrip {
+    
+    if (![[ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated isEqual:[NSNumber numberWithInt:1]]) {
+        
+        Travel *travel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:self.managedObjectContext];
+        travel.name = @"Sample Trip";
+        travel.city = @"Vienna";
+        
+        NSFetchRequest *req = [[NSFetchRequest alloc] init];
+        req.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: self.managedObjectContext];
+        req.predicate = [NSPredicate predicateWithFormat:@"name = 'Austria'"];
+        
+        travel.country = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
+        [req release];
+        
+        req = [[NSFetchRequest alloc] init];
+        req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
+        req.predicate = [NSPredicate predicateWithFormat:@"code = 'EUR'"];
+        
+        [travel addCurrencies:[NSSet setWithArray:[self.managedObjectContext executeFetchRequest:req error:nil]]];
+        [req release];
+        
+        Participant *p1 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
+        p1.name =  @"Leonardo";
+        p1.email = @"leonardo@tmnt.com";
+        p1.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"leo" ofType:@"png"]];
+        
+        Participant *p2 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
+        p2.name =  @"Raphael";
+        p2.email = @"raphael@tmnt.com";
+        p2.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"raphael" ofType:@"png"]];
+        
+        Participant *p3 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
+        p3.name =  @"Donatello";
+        p3.email = @"donatello@tmnt.com";
+        p3.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"donatello" ofType:@"png"]];
+        
+        Participant *p4 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
+        p4.name =  @"Michelangelo";
+        p4.email = @"michelangelo@tmnt.com";
+        p4.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"michelangelo" ofType:@"png"]];
+        
+        [travel addParticipantsObject:p1];
+        [travel addParticipantsObject:p2];
+        [travel addParticipantsObject:p3];
+        [travel addParticipantsObject:p4];
+        
+        [ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated = [NSNumber numberWithInt:1];
+        [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
+    }
+    
+}
+
 - (void)checkForResetOfHelpBubbles {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
     BOOL resetBubbles = [defaults boolForKey:@"resetBubbles"];
     
     if (resetBubbles) {

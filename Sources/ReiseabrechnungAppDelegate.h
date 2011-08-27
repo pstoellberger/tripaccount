@@ -44,7 +44,7 @@
 - (void)initializeStartDatabase:(NSBundle *)bundle;
 - (void)refreshCurrencyRatesIfOutDated;
 - (void)checkForResetOfHelpBubbles;
-
+- (void)initializeSampleTrip;
 - (void)registerHelpBubble:(HelpView *)helpView;
 
 @end

@@ -251,13 +251,13 @@
     [view bringSubviewToFront:helpView];
 }
 
-+ (void)replaceHelpViewInView:(HelpView *)replaceHelpView withView:(HelpView *)helpView toView:(UIView *)view {
++ (void)replaceHelpViewInView:(NSString *)replaceHelpViewId withView:(HelpView *)helpView toView:(UIView *)view {
     
     BOOL alreadyAdded = NO;
     for (UIView *subView in [view subviews]) {
         if ([subView isKindOfClass:[HelpView class]]) {
             HelpView *subHelpView = (HelpView *) subView;
-            if ([subHelpView.uniqueIdentifier isEqual:replaceHelpView.uniqueIdentifier]) {
+            if ([subHelpView.uniqueIdentifier isEqual:replaceHelpViewId]) {
                 [subHelpView leaveStage:YES];
             } else if ([subHelpView.uniqueIdentifier isEqual:helpView.uniqueIdentifier]) {
                 alreadyAdded = YES;

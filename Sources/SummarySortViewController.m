@@ -53,10 +53,11 @@
     if (![self.travel.closed isEqual:[NSNumber numberWithInt:1] ]) {
         NSDate *lastUpdated = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdatedKey]];
         self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Rates last updated at %@", [formatter stringFromDate:lastUpdated]];
-   
+        self.ratesToolBar.hidden = self.segControl.numberOfSegments <= 1;
     } else {
         
         self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Travel closed at %@", [formatter stringFromDate:self.travel.closedDate]];
+        self.ratesToolBar.hidden = NO;
     }
     
     [self.lastUpdatedLabel sizeToFit];
@@ -129,7 +130,6 @@
     ratesUpdated.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     ratesUpdated.textAlignment = UITextAlignmentCenter;
     ratesUpdated.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [self updateRateLabel];
     [ratestoolbar addSubview:ratesUpdated];
     
     self.updateIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
@@ -137,19 +137,21 @@
     self.updateIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [ratestoolbar addSubview:self.updateIndicator];
     
+    [newView addSubview:self.detailViewController.view];
+    
     if ([segArrayTitles count] > 1) {
-        
         self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
         self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, SORT_TOOLBAR_HEIGHT + RATE_SORT_TOOLBAR_HEIGHT, 0);
         self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
-        
-        [newView addSubview:self.detailViewController.view];
         [newView addSubview:toolbar];
-        [newView addSubview:ratestoolbar];
-        self.view = newView;
     } else {
-        self.view = self.detailViewController.view;
+        ratestoolbar.hidden = YES;
     }
+
+    [newView addSubview:ratestoolbar];
+    self.view = newView;
+    
+    [self updateRateLabel];
     
     [ratesUpdated release];
     [toolbar release];

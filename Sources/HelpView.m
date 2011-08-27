@@ -32,11 +32,10 @@
     return @"HelpViewClickedAway";
 }
 
-- (id)initWithFrame:(CGRect)frame text:(NSString *)text arrowPosition:(ArrowPosition)arrowPosition enterStage:(EnterStage)enterStage uniqueIdentifier:(NSString *)uniqueIdentifier {    
+- (id)initWithFrame:(CGRect)frame text:(NSString *)text arrowPosition:(ArrowPosition)arrowPosition enterStage:(EnterStage)enterStage uniqueIdentifier:(NSString *)uniqueIdentifier { 
+    
     if ((self = [super initWithFrame:frame])) {
         
-        NSLog(@"%@ %@", self, text);
-
         _aboutToLeave = NO;
         _uniqueIdentifier = uniqueIdentifier;
         _enterStage = enterStage;
@@ -130,6 +129,16 @@
         self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         
         [bodyView release];
+        
+        if (arrowPosition == ARROWPOSITION_TOP_RIGHT) {
+            self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        } else if (arrowPosition == ARROWPOSITION_TOP_LEFT) { 
+            self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+        } else if (arrowPosition == ARROWPOSITION_BOTTOM_LEFT) { 
+            self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+        } else if (arrowPosition == ARROWPOSITION_BOTTOM_RIGHT) { 
+            self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        }    
   
         
         //[UIFactory addShadowToView:self];
@@ -203,7 +212,8 @@
                               delay:0
                             options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction)
                          animations:^{ self.transform = CGAffineTransformIdentity; } 
-                         completion:^(BOOL fin) { [self hoverHelpView]; } ];
+                         completion:^(BOOL fin) { //[self hoverHelpView];
+                         } ];
 
     }
 }
