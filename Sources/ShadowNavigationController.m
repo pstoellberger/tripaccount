@@ -18,7 +18,6 @@
     
     self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     //self.navigationBar.tintColor = [UIFactory defaultTintColor];
-    //self.navigationController.ins
     [UIFactory addShadowToView:self.navigationBar];
 } 
 

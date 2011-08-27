@@ -65,12 +65,13 @@
         cell = self.summaryCell;
         [UIFactory initializeCell:cell];
         
-        cell.paid.transform = CGAffineTransformMakeRotation( -M_PI/4 ); // = 45 degrees
+        cell.paid.transform = CGAffineTransformMakeRotation( -M_PI/6 ); // = 45 degrees
         cell.paid.layer.cornerRadius = 4;
         cell.paid.layer.masksToBounds = YES;
         [UIFactory addGradientToView:cell.paid color1:[UIColor colorWithRed:1 green:0.2 blue:0.2 alpha:1] color2:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]];
         [UIFactory addShadowToView:cell.paid];
         cell.paid.alpha = 0.5;
+        cell.paidLabel.text = @"BEZAHLT";
     }
     
     Transfer *transfer = (Transfer *)managedObject;
@@ -87,11 +88,14 @@
     cell.leftImage.alpha = 1;
     
     UIColor *textColor = [UIColor blackColor];
-    if ([self.travel.closed intValue] == 1 && [transfer.paid intValue] == 1) {
-        cell.paid.hidden = NO;
+    if ([self.travel.closed intValue] == 1) {
         textColor = [UIColor grayColor];
         cell.rightImage.alpha = 0.6;
         cell.leftImage.alpha = 0.6;
+    }
+    
+    if ([transfer.paid intValue] == 1) {
+       cell.paid.hidden = NO; 
     }
 
     cell.debtor.textColor = textColor;

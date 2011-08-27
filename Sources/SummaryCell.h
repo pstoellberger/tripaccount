@@ -19,6 +19,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *leftImage;
 @property (nonatomic, retain) IBOutlet UIImageView *rightImage;
 @property (nonatomic, retain) IBOutlet UIView *paid;
+@property (nonatomic, retain) IBOutlet UILabel *paidLabel;
 @property (nonatomic, retain) IBOutlet UILabel *owes;
 @property (nonatomic, retain) IBOutlet UILabel *to;
 

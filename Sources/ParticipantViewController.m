@@ -70,6 +70,16 @@
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     
+    cell.textLabel.alpha = 1;
+    cell.detailTextLabel.alpha = 1;
+    cell.imageView.alpha = 1;
+    
+    if ([self.travel.closed intValue] == 1) {
+        cell.textLabel.alpha = 0.6;
+        cell.detailTextLabel.alpha = 0.6;
+        cell.imageView.alpha = 0.6;
+    }
+    
     return cell;
 }
 

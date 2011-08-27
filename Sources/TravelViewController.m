@@ -176,6 +176,10 @@
     
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
     
+    [self.summarySortViewController.detailViewController.tableView reloadData];
+    [self.entrySortViewController.detailViewController.tableView reloadData];
+    [self.participantViewController.tableView reloadData];
+    
     [self.participantViewController updateTravelOpenOrClosed];
     [self.entrySortViewController.detailViewController updateTravelOpenOrClosed];
     [self.summarySortViewController updateRateLabel];
@@ -190,8 +194,9 @@
     
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
     
-    [_summarySortViewController.detailViewController.tableView reloadData];
-    [_entrySortViewController.detailViewController.tableView reloadData];
+    [self.summarySortViewController.detailViewController.tableView reloadData];
+    [self.entrySortViewController.detailViewController.tableView reloadData];
+    [self.participantViewController.tableView reloadData];
     
     [self updateStateOfNavigationController:self.tabBarController.selectedViewController]; 
     
@@ -435,10 +440,10 @@
         [helpView release];
         
         text = @"Find here the date of the last update of the currency exchange rates. Use the action above to update them now.";
-        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 295, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
+        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
         
         text = @"The travel was closed and can not be changed any more. Exchange rates used of this travel are fixed.";
-        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 295, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
+        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
             if (!self.summarySortViewController.ratesToolBar.hidden) {

@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">11A511</string>
+		<string key="IBDocument.SystemVersion">11B26</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
 		<string key="IBDocument.AppKitVersion">1138</string>
 		<string key="IBDocument.HIToolboxVersion">566.00</string>
@@ -337,7 +337,15 @@
 						<reference key="source" ref="284687861"/>
 						<reference key="destination" ref="244168670"/>
 					</object>
-					<int key="connectionID">25</int>
+					<int key="connectionID">27</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">paidLabel</string>
+						<reference key="source" ref="284687861"/>
+						<reference key="destination" ref="665669162"/>
+					</object>
+					<int key="connectionID">28</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -478,7 +486,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">25</int>
+			<int key="maxID">28</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -512,6 +520,7 @@
 							<string>leftImage</string>
 							<string>owes</string>
 							<string>paid</string>
+							<string>paidLabel</string>
 							<string>rightImage</string>
 							<string>to</string>
 						</object>
@@ -523,6 +532,7 @@
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UIView</string>
+							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UILabel</string>
 						</object>
@@ -537,6 +547,7 @@
 							<string>leftImage</string>
 							<string>owes</string>
 							<string>paid</string>
+							<string>paidLabel</string>
 							<string>rightImage</string>
 							<string>to</string>
 						</object>
@@ -565,6 +576,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">paid</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">paidLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">rightImage</string>

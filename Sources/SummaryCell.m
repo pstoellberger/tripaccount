@@ -10,7 +10,7 @@
 
 @implementation SummaryCell
 
-@synthesize debtor, debtee, amount, leftImage, rightImage, paid, owes, to;
+@synthesize debtor, debtee, amount, leftImage, rightImage, paid, owes, to, paidLabel;
 
 
 @end
