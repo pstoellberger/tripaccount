@@ -77,6 +77,8 @@
     
     UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_TOOLBAR_HEIGHT)];
     [segControlView addSubview:segControl];
+    [segControl release];
+    
     self.detailViewController.tableView.tableHeaderView = segControlView;
     [segControlView release];
     

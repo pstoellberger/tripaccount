@@ -11,6 +11,7 @@
 
 @interface Locator () 
 - (void)performOfflineLocalisation:(CLLocation *)newLocation;
+- (void)startReverseGeoCoding;
 @end
 
 @implementation Locator
@@ -27,6 +28,7 @@
         self.context = context;
         
         alreadyProcessed = NO;
+        geoCoderRetries = 0;
         
         // init location manager
         self.locManager = [[[CLLocationManager alloc] init] autorelease];
@@ -46,6 +48,7 @@
 #pragma mark - Location finding
 
 - (void)startLocating {
+    geoCoderRetries = 0;
     alreadyProcessed = NO;
     self.lastKnowLocation = nil;
     [self.locManager startUpdatingLocation];
@@ -57,43 +60,58 @@
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
 	NSLog(@"Reverse geocoder error: %@", [error description]);
-    [self performOfflineLocalisation:self.lastKnowLocation];
+    geoCoderRetries++;
+    
+    if (geoCoderRetries < 3) {
+        [self startReverseGeoCoding];
+    } else {
+        [self performOfflineLocalisation:self.lastKnowLocation];
+    }
+}
+
+- (void)startReverseGeoCoding {
+    
+    if (!_geocoder) {
+        _geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:self.lastKnowLocation.coordinate];
+        _geocoder.delegate = self;
+        [_geocoder retain];
+    }
+    
+    [_geocoder start];    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     
-    NSLog(@"%@",newLocation);
+    NSDate *eventDate = newLocation.timestamp; 
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     
-    if (!self.lastKnowLocation || newLocation.horizontalAccuracy < self.lastKnowLocation.horizontalAccuracy) {
-        self.lastKnowLocation = newLocation;
-    }
-    
-    if (!alreadyProcessed) {
+    //Is the event recent and accurate enough ?
+    if (abs(howRecent) < 60) {    
         
-        NetworkStatus netStatus = [self.reachability currentReachabilityStatus];
+        if (!self.lastKnowLocation || newLocation.horizontalAccuracy < self.lastKnowLocation.horizontalAccuracy) {
+            self.lastKnowLocation = newLocation;
+        }
         
-        if (netStatus == ReachableViaWiFi || netStatus == ReachableViaWWAN) {
+        if (!alreadyProcessed) {
             
-            // get location from google
-                        
-            if (!_geocoder) {
-                _geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:self.lastKnowLocation.coordinate];
-                _geocoder.delegate = self;
-                [_geocoder retain];
+            NetworkStatus netStatus = [self.reachability currentReachabilityStatus];
+            
+            if (netStatus == ReachableViaWiFi || netStatus == ReachableViaWWAN) {
+                
+                // get location from google
+                [self startReverseGeoCoding];            
+                
+            } else {
+                
+                // calculate local
+                [self performOfflineLocalisation:self.lastKnowLocation];
+                
             }
-            
-            [_geocoder start];
-            
-        } else {
-            
-            // calculate local
-            [self performOfflineLocalisation:self.lastKnowLocation];
             
         }
         
+        [self.locManager stopUpdatingLocation];
     }
-    
-    [self.locManager stopUpdatingLocation];
 }
 
 - (void)performOfflineLocalisation:(CLLocation *)newLocation {

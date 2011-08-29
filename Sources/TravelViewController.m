@@ -519,6 +519,10 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
+    NSLog(@"%f", self.summarySortViewController.detailViewController.tableView.contentInset.top);
+    
+    NSLog(@"%@", self.summarySortViewController.detailViewController.tableView.tableHeaderView);
+    
     if ([actionSheet isEqual:self.actionSheetOpenTravel] || [actionSheet isEqual:self.actionSheetClosedTravel]) {
         if (buttonIndex == 0) {
             

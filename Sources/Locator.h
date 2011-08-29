@@ -20,6 +20,7 @@
 @interface Locator : NSObject <CLLocationManagerDelegate, MKReverseGeocoderDelegate> {
     MKReverseGeocoder *_geocoder;
     BOOL alreadyProcessed;
+    int geoCoderRetries;
 }
 
 @property (nonatomic, retain) CLLocationManager *locManager;

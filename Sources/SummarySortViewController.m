@@ -112,10 +112,11 @@
         
         UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, SORT_TOOLBAR_HEIGHT)];
         [segControlView addSubview:segControl];
+        [segControl release];
+        
         self.detailViewController.tableView.tableHeaderView = segControlView;
         [segControlView release];
         
-        self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
         self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, RATE_SORT_TOOLBAR_HEIGHT, 0);
         self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
         
@@ -141,6 +142,7 @@
     self.updateIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [ratestoolbar addSubview:self.updateIndicator];
     
+    self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
     [newView addSubview:self.detailViewController.view];
     [newView addSubview:ratestoolbar];
     
