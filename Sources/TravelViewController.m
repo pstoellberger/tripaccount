@@ -430,7 +430,7 @@
         }
         
         NSString *text = @"Use these button to sort the expense entries.";
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"sort button entry"];
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         

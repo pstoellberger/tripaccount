@@ -76,9 +76,17 @@
         label.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(12.0)];
         [self findBestSizeForLabel:label maxWidth:[[UIScreen mainScreen] applicationFrame].size.width - labelLeft - LABEL_GAP];
         
-        [bodyView addSubview:label];
+        UILabel *dismissLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, label.frame.size.height + LABEL_GAP, labelLeft + label.frame.size.width, 10 + LABEL_GAP)];
+        dismissLabel.font = [UIFont italicSystemFontOfSize:9];
+        dismissLabel.textColor = [UIFactory defaultDarkTintColor];
+        dismissLabel.textAlignment = UITextAlignmentCenter;
+        dismissLabel.backgroundColor = [UIColor clearColor];
+        dismissLabel.text = @"Tap to dismiss";
         
-        bodyView.frame = CGRectMake(bodyView.frame.origin.x, bodyView.frame.origin.y, labelLeft + label.frame.size.width + LABEL_GAP, label.frame.size.height + LABEL_GAP + LABEL_GAP); 
+        [bodyView addSubview:label];
+        [bodyView addSubview:dismissLabel];
+        
+        bodyView.frame = CGRectMake(bodyView.frame.origin.x, bodyView.frame.origin.y, labelLeft + label.frame.size.width + LABEL_GAP, label.frame.size.height + LABEL_GAP + dismissLabel.frame.size.height + LABEL_GAP); 
         
         [UIFactory addGradientToView:bodyView color1:gradColor1 color2:gradColor2 startPoint:CGPointMake(0, 1) endPoint:CGPointMake(1,0)];
         
@@ -197,14 +205,14 @@
 - (void)enterStage {
     
     if (!self.hidden) {
-        
-        double transformY = [self convertPoint:self.frame.origin toView:nil].y + self.frame.size.height;
+    
+       double transformY = [self.superview convertPoint:self.frame.origin toView:nil].y;
         
         if (_enterStage == ENTER_STAGE_FROM_TOP) {
             self.transform = CGAffineTransformTranslate(self.transform, 0, -transformY);
         } else {
-            transformY = [[UIScreen mainScreen] applicationFrame].size.height - transformY;
-            self.transform = CGAffineTransformTranslate(self.transform, 0, -transformY);
+            transformY = [[UIScreen mainScreen] applicationFrame].size.height - transformY + 20;
+            self.transform = CGAffineTransformTranslate(self.transform, 0, transformY);
         }
         
         [UIView animateWithDuration:1

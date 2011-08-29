@@ -18,8 +18,8 @@
 @synthesize titleKey, subtitleKey, searchKey, imageKey;
 @synthesize reloadDisabled=_reloadDisabled;
 
-- (void)createSearchBar
-{
+- (void)createSearchBar {
+    
     if (self.tableView) {
         
         if (self.searchKey.length) {
@@ -27,12 +27,13 @@
 			UISearchBar *searchBar = [[[UISearchBar alloc] init] autorelease];
             searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             searchBar.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 38);
+            searchBar.tintColor = [UIFactory defaultTintColor];
+            searchBar.delegate = self;
             
 			self.dataSearchController = [[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] autorelease];
 			self.dataSearchController.searchResultsDelegate = self;
 			self.dataSearchController.searchResultsDataSource = self;
 			self.dataSearchController.delegate = self;
-            searchBar.tintColor = [UIFactory defaultTintColor];
             
             UIView *subView = [self createTableHeaderSubView];
             
@@ -53,15 +54,13 @@
     }
 }
 
-- (void)setSearchKey:(NSString *)aKey
-{
+- (void)setSearchKey:(NSString *)aKey {
 	[searchKey release];
 	searchKey = [aKey copy];
 	[self createSearchBar];
 }
 
-- (NSString *) titleKey
-{
+- (NSString *) titleKey {
 	if (!titleKey) {
 		NSArray *sortDescriptors = [self.fetchedResultsController.fetchRequest sortDescriptors];
 		if (sortDescriptors.count) {
@@ -74,8 +73,7 @@
 	}
 }
 
-- (void)performFetchForTableView:(UITableView *)tableView
-{
+- (void)performFetchForTableView:(UITableView *)tableView {
 	NSError *error = nil;
     
     @try {
@@ -129,14 +127,16 @@
 	return self.fetchedResultsController;
 }
 
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
-{
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
 	// reset the fetch controller for the main (non-searching) table view
 	[self fetchedResultsControllerForTableView:self.tableView];
 }
 
-- (void)setFetchedResultsController:(NSFetchedResultsController *)controller
-{
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+- (void)setFetchedResultsController:(NSFetchedResultsController *)controller {
   
 	_fetchedResultsController.delegate = nil;
 	[_fetchedResultsController release];
