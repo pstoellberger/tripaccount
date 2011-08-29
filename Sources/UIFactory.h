@@ -35,6 +35,8 @@
 + (BOOL)dateHasTime:(NSDate *)date;
 + (NSDate *)createDateWithoutTimeFromDate:(NSDate *)date;
 + (UIColor *)defaultTintColor;
++ (UIColor *)defaultDarkTintColor; 
++ (UIColor *)defaultLightTintColor;
 + (void)changeTextColorOfSegControler:(UISegmentedControl *)segControl color:(UIColor *)color;
 + (UIView *)createBackgroundViewWithFrame:(CGRect)rect;
 + (void)setColorOfSearchBarInABPicker:(ABPeoplePickerNavigationController *)picker color:(UIColor *)color;

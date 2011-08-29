@@ -44,8 +44,8 @@
         //self.alpha = 0.75;
         self.opaque = NO;
         
-        UIColor *gradColor1 = [UIColor colorWithRed:0.8 green:0.8 blue:1.0 alpha:1];
-        UIColor *gradColor2 = [UIColor colorWithRed:0.95 green:0.95 blue:1.0 alpha:1];
+        UIColor *gradColor1 = [UIFactory defaultTintColor]; //[UIColor colorWithRed:0.8 green:0.8 blue:1.0 alpha:1];
+        UIColor *gradColor2 = [UIFactory defaultLightTintColor]; //[UIColor colorWithRed:0.95 green:0.95 blue:1.0 alpha:1];
         
         UIView *bodyView = nil;
         if (arrowPosition == ARROWPOSITION_TOP_RIGHT || arrowPosition == ARROWPOSITION_TOP_LEFT) {
@@ -70,7 +70,7 @@
         int labelLeft = infoImageView.frame.origin.x + infoImageView.frame.size.width + LABEL_GAP;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(labelLeft, LABEL_GAP, bodyView.frame.size.width - labelLeft - LABEL_GAP, bodyView.frame.size.height - LABEL_GAP)];
         label.text = text;
-        label.textColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.5 alpha:1.0];
+        label.textColor = [UIFactory defaultDarkTintColor]; //[UIColor colorWithRed:0.1 green:0.1 blue:0.5 alpha:1.0];
         label.backgroundColor = [UIColor clearColor];
         label.numberOfLines = 0;
         label.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(12.0)];

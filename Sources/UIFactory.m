@@ -23,6 +23,14 @@
     return [UIColor colorWithRed:ct(159) green:ct(172) blue:ct(181) alpha:1];
 }
 
++ (UIColor *)defaultDarkTintColor {
+    return [UIColor colorWithRed:ct(59) green:ct(72) blue:ct(81) alpha:1];
+}
+
++ (UIColor *)defaultLightTintColor {
+    return [UIColor colorWithRed:ct(219) green:ct(232) blue:ct(241) alpha:1];
+}
+
 + (UIView *)createBackgroundViewWithFrame:(CGRect)rect {
     UIView *backgroundView = [[[UIView alloc] initWithFrame:rect] autorelease];
     backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"darkbackground.png"]];   
