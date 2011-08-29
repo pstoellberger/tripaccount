@@ -182,7 +182,7 @@
     
     [self.participantViewController updateTravelOpenOrClosed];
     [self.entrySortViewController.detailViewController updateTravelOpenOrClosed];
-    [self.summarySortViewController updateRateLabel];
+    [self.summarySortViewController updateRateLabel:YES];
     
     [self initHelpBubbleForViewController:self.summarySortViewController];
 }
@@ -202,7 +202,7 @@
     
     [self.participantViewController updateTravelOpenOrClosed];
     [self.entrySortViewController.detailViewController updateTravelOpenOrClosed];
-    [self.summarySortViewController updateRateLabel];
+    [self.summarySortViewController updateRateLabel:YES];
     
     [self initHelpBubbleForViewController:self.summarySortViewController];
     [UIFactory replaceHelpViewInView:@"travelClosedLabel" withView:nil toView:self.summarySortViewController.view];
@@ -403,7 +403,7 @@
         [currencyRefresh release];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_summarySortViewController updateRateLabel];
+            [_summarySortViewController updateRateLabel:YES];
             [_summarySortViewController.updateIndicator stopAnimating];
         });
         
@@ -424,13 +424,13 @@
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
             NSString *text = @"Add new expense entries here.";
-            HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
+            HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, 0, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
             [UIFactory addHelpViewToView:helpView toView:viewController.view];
             [helpView release];
         }
         
         NSString *text = @"Use these button to sort the expense entries.";
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 270, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_LEFT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"sort button entry"];
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"sort button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
@@ -444,11 +444,11 @@
         text = @"Find here the date of the last update of the currency exchange rates. Use the action above to update them now.";
         HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
         
-        text = @"The travel was closed and can not be changed any more. Exchange rates used of this travel are fixed.";
+        text = @"The travel was closed and can not be changed any more. Exchange rates used for this travel are fixed.";
         HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
-            if (!self.summarySortViewController.ratesToolBar.hidden) {
+            if (self.summarySortViewController.segControl.numberOfSegments > 1) {
                 [UIFactory replaceHelpViewInView:closedHelpView.uniqueIdentifier withView:openHelpView toView:viewController.view];
             }
         } else {
@@ -518,10 +518,6 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    NSLog(@"%f", self.summarySortViewController.detailViewController.tableView.contentInset.top);
-    
-    NSLog(@"%@", self.summarySortViewController.detailViewController.tableView.tableHeaderView);
     
     if ([actionSheet isEqual:self.actionSheetOpenTravel] || [actionSheet isEqual:self.actionSheetClosedTravel]) {
         if (buttonIndex == 0) {

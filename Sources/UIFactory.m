@@ -111,6 +111,7 @@
     view.layer.shadowRadius = 3.0f;
     view.layer.shadowOpacity = 1.0f;
     //view.layer.shouldRasterize = YES;
+    //view.layer.masksToBounds = YES;
 }
 
 + (void)removeShadowFromView:(UIView *)view {

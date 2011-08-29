@@ -58,15 +58,13 @@
 
 #pragma mark - View lifecycle
 
-#define CURRENCY_SORT_TOOLBAR_HEIGHT 40
-
 - (void)loadView {
     
     [super loadView];
 
     NSArray *segArray = [NSArray arrayWithObjects:@"Person", @"Type", @"Date", nil];
     UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray]; 
-    segControl.frame = CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 10, CURRENCY_SORT_TOOLBAR_HEIGHT - 10);
+    segControl.frame = CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 10, ENTRY_SORT_HEIGHT - 10);
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
     segControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -75,7 +73,7 @@
     
     self.segControl.selectedSegmentIndex = [self.travel.displaySort intValue];
     
-    UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_TOOLBAR_HEIGHT)];
+    UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
     [segControlView addSubview:segControl];
     [segControl release];
     

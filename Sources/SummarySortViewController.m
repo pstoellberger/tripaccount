@@ -13,12 +13,6 @@
 #import "MultiLineSegmentedControl.h"
 #import "TravelCategory.h"
 
-#define SORT_TOOLBAR_HEIGHT 45
-#define RATE_SORT_TOOLBAR_HEIGHT 15
-#define RATE_LABEL_HEIGHT 10
-#define ACTIVITY_VIEW_SIZE 10
-
-
 @implementation SummarySortViewController
 
 @synthesize travel=_travel, detailViewController=_detailViewController, lastUpdatedLabel=_lastUpdatedLabel, updateIndicator=_updateIndicator;
@@ -44,20 +38,41 @@
     [self.detailViewController changeDisplayedCurrency:[_currencyArray objectAtIndex:sender.selectedSegmentIndex]];
 }
 
-- (void)updateRateLabel {
+- (void)updateRateLabel:(BOOL)animate; {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterMediumStyle;     
+    formatter.timeStyle = NSDateFormatterMediumStyle;
+    
+    //self.ratesToolBar.hidden = self.segControl.numberOfSegments <= 1 && ![self.travel.closed isEqual:[NSNumber numberWithInt:1]];
+    
+    float animationDuration = 0.5;
+    if (!animate) {
+        animationDuration = 0;
+    }
     
     if (![self.travel.closed isEqual:[NSNumber numberWithInt:1] ]) {
-        NSDate *lastUpdated = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdatedKey]];
-        self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Rates last updated at %@", [formatter stringFromDate:lastUpdated]];
-        self.ratesToolBar.hidden = self.segControl.numberOfSegments <= 1;
+        
+        if (self.segControl.numberOfSegments <= 1) {
+            
+            if (CGAffineTransformIsIdentity(self.ratesToolBar.transform)) {
+                [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformTranslate(self.ratesToolBar.transform, 0, self.ratesToolBar.frame.size.height); } ];
+            } else {
+                [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformIdentity; } ];
+            }
+        } else {
+            
+            NSDate *lastUpdated = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdatedKey]];
+            self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Rates last updated at %@", [formatter stringFromDate:lastUpdated]];
+        }
+            
     } else {
         
         self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Travel closed at %@", [formatter stringFromDate:self.travel.closedDate]];
-        self.ratesToolBar.hidden = NO;
+        
+        if (!CGAffineTransformIsIdentity(self.ratesToolBar.transform)) {
+            [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformIdentity; } ];            
+        }
     }
     
     [self.lastUpdatedLabel sizeToFit];
@@ -100,7 +115,7 @@
     
     if ([_currencyArray count] > 1) {
         MultiLineSegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArrayTitles andSubTitles:segArraySubTitles]; 
-        segControl.frame = CGRectMake(5, 5, [[UIScreen mainScreen] applicationFrame].size.width - 10, SORT_TOOLBAR_HEIGHT - 10);
+        segControl.frame = CGRectMake(5, 5, [[UIScreen mainScreen] applicationFrame].size.width - 10, CURRENCY_SORT_HEIGHT - 10);
         segControl.selectedSegmentIndex = 0;
         [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
         segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
@@ -110,7 +125,7 @@
         
         self.segControl.selectedSegmentIndex = [_currencyArray indexOfObject:self.travel.displayCurrency];
         
-        UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, SORT_TOOLBAR_HEIGHT)];
+        UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
         [segControlView addSubview:segControl];
         [segControl release];
         
@@ -148,7 +163,7 @@
     
     self.view = newView;
     
-    [self updateRateLabel];
+    [self updateRateLabel:NO];
     
     [ratesUpdated release];
     [ratestoolbar release];

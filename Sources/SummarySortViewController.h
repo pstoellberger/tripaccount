@@ -24,6 +24,6 @@
 @property (nonatomic, retain) UIToolbar *ratesToolBar;
 
 - (id)initWithTravel:(Travel *) travel;
-- (void)updateRateLabel;
+- (void)updateRateLabel:(BOOL)animate; 
 
 @end

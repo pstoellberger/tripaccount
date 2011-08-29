@@ -88,10 +88,10 @@
         
         if (arrowPosition != ARROWPOSITION_NONE) {
             
-            if (arrowPosition == ARROWPOSITION_TOP_RIGHT || arrowPosition == ARROWPOSITION_BOTTOM_RIGHT) {
+            if (arrowPosition == ARROWPOSITION_TOP_RIGHT) {
                 self.frame = CGRectMake(self.frame.origin.x - (bodyView.frame.size.width - self.frame.size.width), self.frame.origin.y, bodyView.frame.size.width,bodyView.frame.size.height + ARROW_HEIGHT);
-            } else if (arrowPosition == ARROWPOSITION_BOTTOM_LEFT) {
-                self.frame = CGRectMake(self.frame.origin.x - (bodyView.frame.size.width - self.frame.size.width), self.frame.origin.y - (bodyView.frame.size.height - self.frame.size.height), bodyView.frame.size.width, bodyView.frame.size.height + ARROW_HEIGHT);
+            } else if (arrowPosition == ARROWPOSITION_BOTTOM_LEFT || arrowPosition == ARROWPOSITION_BOTTOM_RIGHT) {
+                 self.frame = CGRectMake(self.frame.origin.x - (bodyView.frame.size.width - self.frame.size.width), self.frame.origin.y - (bodyView.frame.size.height - self.frame.size.height), bodyView.frame.size.width, bodyView.frame.size.height + ARROW_HEIGHT);
             }
             
             ArrowView *arrowView = nil;
@@ -140,8 +140,7 @@
             self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         }    
   
-        
-        //[UIFactory addShadowToView:self];
+        [UIFactory addShadowToView:self];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
