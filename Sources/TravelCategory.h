@@ -13,9 +13,9 @@
 
 @property (nonatomic, readonly) NSString *location;
 @property (nonatomic, readonly) NSArray *sortedEntries;
+@property (nonatomic, readonly) NSArray *sortedCurrencies;
 
 - (void)open:(BOOL)useLatestRates;
 - (void)close;
-
 
 @end

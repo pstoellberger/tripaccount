@@ -53,8 +53,6 @@
 		F11FB34013E6983F00115D12 /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
 		F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */; };
 		F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
-		F127298813E7FCFF0095286D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298713E7FCFF0095286D /* Entry.m */; };
-		F127298913E7FCFF0095286D /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F127298713E7FCFF0095286D /* Entry.m */; };
 		F127299213E813A10095286D /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
 		F127299313E813B30095286D /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */; };
 		F127299613E839B10095286D /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F127299513E839B10095286D /* Type.m */; };
@@ -117,6 +115,7 @@
 		F159EA3B13E0DA3E00C2D855 /* darkbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F159EA3A13E0DA3D00C2D855 /* darkbackground.png */; };
 		F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F159EA3F13E19B0E00C2D855 /* MessageUI.framework */; };
 		F159EA5913E1ED7B00C2D855 /* ParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA5813E1ED7900C2D855 /* ParticipantView.m */; };
+		F16D3FE61408E52700FDE28A /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F16D3FE51408E52700FDE28A /* Entry.m */; };
 		F1731B571407745A0050D6AC /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B561407745A0050D6AC /* EntryCell.m */; };
 		F1731B581407745A0050D6AC /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B561407745A0050D6AC /* EntryCell.m */; };
 		F1731B63140774860050D6AC /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B5E140774860050D6AC /* AlignedStyle2Cell.m */; };
@@ -709,8 +708,6 @@
 		F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarySortViewController.m; sourceTree = "<group>"; };
 		F11FB36513E6E73A00115D12 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
 		F11FB36613E6E73A00115D12 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
-		F127298613E7FCFF0095286D /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		F127298713E7FCFF0095286D /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		F127299413E839B10095286D /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		F127299513E839B10095286D /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -738,6 +735,8 @@
 		F159EA3F13E19B0E00C2D855 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F159EA5713E1ED7700C2D855 /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantView.h; sourceTree = "<group>"; };
 		F159EA5813E1ED7900C2D855 /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantView.m; sourceTree = "<group>"; };
+		F16D3FE41408E52700FDE28A /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		F16D3FE51408E52700FDE28A /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		F1731B551407745A0050D6AC /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCell.h; sourceTree = "<group>"; };
 		F1731B561407745A0050D6AC /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCell.m; sourceTree = "<group>"; };
 		F1731B59140774860050D6AC /* AlignedStyle2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlignedStyle2Cell.h; sourceTree = "<group>"; };
@@ -1032,7 +1031,7 @@
 		F1BB9D721406623E00DA0573 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 		F1BB9D751406703600DA0573 /* EntryCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCategory.h; sourceTree = "<group>"; };
 		F1BB9D761406703600DA0573 /* EntryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCategory.m; sourceTree = "<group>"; };
-		F1CD782A13BA405A00D42AA3 /* Trip Cost Split.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Cost Split.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CD782A13BA405A00D42AA3 /* Trip Account.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Account.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CD782E13BA405A00D42AA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1CD783013BA405A00D42AA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1471,6 +1470,8 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F16D3FE41408E52700FDE28A /* Entry.h */,
+				F16D3FE51408E52700FDE28A /* Entry.m */,
 				F10CC9991407D1CD00A8DD31 /* AppDefaults.h */,
 				F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */,
 				F10CC9941407D1CC00A8DD31 /* Travel.h */,
@@ -1489,8 +1490,6 @@
 				9408120C13EADF7F003D7B3E /* ExchangeRate.m */,
 				F127299413E839B10095286D /* Type.h */,
 				F127299513E839B10095286D /* Type.m */,
-				F127298613E7FCFF0095286D /* Entry.h */,
-				F127298713E7FCFF0095286D /* Entry.m */,
 				F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */,
 				F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */,
 				F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */,
@@ -1576,7 +1575,7 @@
 		F1CD782B13BA405A00D42AA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1CD782A13BA405A00D42AA3 /* Trip Cost Split.app */,
+				F1CD782A13BA405A00D42AA3 /* Trip Account.app */,
 				F14B372713E68B5F00351641 /* UnitTests.octest */,
 			);
 			name = Products;
@@ -1736,9 +1735,9 @@
 			productReference = F14B372713E68B5F00351641 /* UnitTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		F1CD782913BA405A00D42AA3 /* Trip Cost Split */ = {
+		F1CD782913BA405A00D42AA3 /* Trip Account */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Trip Cost Split" */;
+			buildConfigurationList = F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Trip Account" */;
 			buildPhases = (
 				F1CD782613BA405A00D42AA3 /* Sources */,
 				F1CD782713BA405A00D42AA3 /* Frameworks */,
@@ -1748,9 +1747,9 @@
 			);
 			dependencies = (
 			);
-			name = "Trip Cost Split";
+			name = "Trip Account";
 			productName = Reiseabrechnung;
-			productReference = F1CD782A13BA405A00D42AA3 /* Trip Cost Split.app */;
+			productReference = F1CD782A13BA405A00D42AA3 /* Trip Account.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1776,7 +1775,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1CD782913BA405A00D42AA3 /* Trip Cost Split */,
+				F1CD782913BA405A00D42AA3 /* Trip Account */,
 				F14B372613E68B5F00351641 /* UnitTests */,
 			);
 		};
@@ -2350,7 +2349,6 @@
 				F14B376F13E6906000351641 /* EntryEditViewController.m in Sources */,
 				F14B377013E6906000351641 /* DateSelectViewController.m in Sources */,
 				F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */,
-				F127298913E7FCFF0095286D /* Entry.m in Sources */,
 				F127299213E813A10095286D /* TypeViewController.m in Sources */,
 				F127299313E813B30095286D /* SummarySortViewController.m in Sources */,
 				9408120813EAD0E5003D7B3E /* Type.m in Sources */,
@@ -2424,7 +2422,6 @@
 				F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */,
 				F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */,
 				F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */,
-				F127298813E7FCFF0095286D /* Entry.m in Sources */,
 				F127299613E839B10095286D /* Type.m in Sources */,
 				94F97EE313E9831C00662ADB /* RateSelectViewController.m in Sources */,
 				9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */,
@@ -2457,6 +2454,7 @@
 				F1731B6B140774860050D6AC /* SummaryCell.m in Sources */,
 				F10CC9961407D1CC00A8DD31 /* Travel.m in Sources */,
 				F10CC99B1407D1CD00A8DD31 /* AppDefaults.m in Sources */,
+				F16D3FE61408E52700FDE28A /* Entry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2614,7 +2612,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Trip Cost Split" */ = {
+		F1CD784B13BA405B00D42AA3 /* Build configuration list for PBXNativeTarget "Trip Account" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1CD784C13BA405B00D42AA3 /* Debug */,

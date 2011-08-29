@@ -22,6 +22,9 @@ static NSInteger MY_TAG = 0x666;
     
     if (self = [super initWithItems:items]) {
         self.subTitles = newTitles;
+        titles = [items retain];
+        
+        viewLabelMap = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -32,26 +35,72 @@ static NSInteger MY_TAG = 0x666;
     
     if (!initialized) {
         
+        NSMutableArray *labelArray = [NSMutableArray arrayWithCapacity:[self.subviews count]];
+        
         int segIndex = 0;
         for (UIView *segmentView in self.subviews) {
             
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-            label.textColor = [UIColor lightGrayColor];
             label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont boldSystemFontOfSize:10];
             label.textAlignment = UITextAlignmentCenter;
-            label.shadowColor = [UIColor blackColor];
             label.tag = MY_TAG;
-            label.text = [self.subTitles objectAtIndex:[self.subTitles count] - segIndex - 1];
+            label.shadowColor = [UIColor darkGrayColor];
             
+            NSString *code = nil;
+            for (UIView *subView in segmentView.subviews) {
+                if ([subView respondsToSelector:@selector(text)]) {
+                    code = [subView performSelector:@selector(text)];
+                    break;
+                }
+            }
+            label.text = [self.subTitles objectAtIndex:[titles indexOfObject:code]];
+
             [segmentView addSubview:label];
+            [labelArray addObject:label];
             [label release];
             
             segIndex++;
         }
+                
+        subLabels = [[NSArray alloc] initWithArray:labelArray];
         
         initialized = YES;
+    
+        // set correct text color of sublabel
+        [self setSelectedSegmentIndex:self.selectedSegmentIndex];
     }
+}
+
+- (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex {
+    [super setSelectedSegmentIndex:selectedSegmentIndex];
+    
+    if (initialized) {
+        
+        int counter = 0;
+        for (UIView *segmentView in self.subviews) {
+            
+            NSString *code = nil;
+            for (UIView *subView in segmentView.subviews) {
+                if ([subView respondsToSelector:@selector(text)]) {
+                    code = [subView performSelector:@selector(text)];
+                    break;
+                }
+            }
+            
+            
+            UILabel *subTitleLabel = (UILabel *)[segmentView viewWithTag:MY_TAG];
+            
+            if ([[self titleForSegmentAtIndex:self.selectedSegmentIndex] isEqualToString:code]) {
+                subTitleLabel.textColor = [UIColor whiteColor];
+            } else {
+                subTitleLabel.textColor = [UIColor lightGrayColor];
+            }
+            
+            counter++;
+        }
+    }
+    
 }
 
 - (void)layoutSubviews {
@@ -86,6 +135,12 @@ static NSInteger MY_TAG = 0x666;
             }
         }
     }
+}
+
+- (void)dealloc {
+    [subLabels release];
+    [titles release];
+    [super dealloc];
 }
 
 @end

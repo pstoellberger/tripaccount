@@ -2,8 +2,8 @@
 //  Entry.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 02/08/2011.
-//  Copyright (c) 2011 Martin Maier. All rights reserved.
+//  Created by Martin Maier on 27/08/2011.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Entry.h"
@@ -18,6 +18,8 @@
 @dynamic checked;
 @dynamic date;
 @dynamic text;
+@dynamic created;
+@dynamic lastUpdated;
 @dynamic travel;
 @dynamic type;
 @dynamic payer;

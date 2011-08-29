@@ -12,6 +12,9 @@
 @interface MultiLineSegmentedControl : UISegmentedControl {
     
     BOOL initialized;
+    NSArray *subLabels;
+    NSArray *titles;
+    NSMutableDictionary *viewLabelMap;
 }
 
 @property (nonatomic, retain) NSArray *subTitles;

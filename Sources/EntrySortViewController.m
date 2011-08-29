@@ -13,7 +13,7 @@
 
 @implementation EntrySortViewController
 
-@synthesize travel=_travel, detailViewController=_detailViewController, sortToolBar=_sortToolBar, segControl=_segControl;
+@synthesize travel=_travel, detailViewController=_detailViewController, segControl=_segControl;
 
 - (id)initWithTravel:(Travel *)travel {
     
@@ -58,14 +58,11 @@
 
 #pragma mark - View lifecycle
 
-#define CURRENCY_SORT_TOOLBAR_HEIGHT 35
+#define CURRENCY_SORT_TOOLBAR_HEIGHT 40
 
 - (void)loadView {
     
     [super loadView];
-    
-    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height - TABBAR_HEIGHT)];
-    newView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
 
     NSArray *segArray = [NSArray arrayWithObjects:@"Person", @"Type", @"Date", nil];
     UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray]; 
@@ -73,31 +70,22 @@
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
     segControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    segControl.tintColor = [UIColor clearColor];
-    segControl.alpha = 0.9;
+    segControl.tintColor = [UIFactory defaultTintColor];
     self.segControl = segControl;
     
     self.segControl.selectedSegmentIndex = [self.travel.displaySort intValue];
-        
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - CURRENCY_SORT_TOOLBAR_HEIGHT, newView.frame.size.width, CURRENCY_SORT_TOOLBAR_HEIGHT)];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight;
-    self.sortToolBar = toolbar;
-    [toolbar addSubview:segControl];
     
-    self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
-    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, CURRENCY_SORT_TOOLBAR_HEIGHT, 0);
+    UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_TOOLBAR_HEIGHT)];
+    [segControlView addSubview:segControl];
+    self.detailViewController.tableView.tableHeaderView = segControlView;
+    [segControlView release];
+    
+    self.detailViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height - TABBAR_HEIGHT);
+    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
     self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
     
-    [newView addSubview:self.detailViewController.view];
-    [newView addSubview:toolbar];
-    
-    self.view = newView;
+    self.view = self.detailViewController.view;
 
-    [toolbar release];
-    [newView release];
-    [segControl release];
-    
 }
 
 - (void)viewDidUnload {

@@ -12,6 +12,7 @@
 #import "Currency.h"
 #import "CurrencyHelperCategory.h"
 #import "Country.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation Travel (OpenClose)
 
@@ -78,6 +79,22 @@
     NSArray *allSortDescriptors = [NSArray arrayWithObjects:sortNameDescriptor, [[[NSSortDescriptor alloc] initWithKey:@"dateWithOutTime" ascending:YES] autorelease], nil];
     
     return [[self.entries allObjects] sortedArrayUsingDescriptors:allSortDescriptors];
+}
+
+- (NSArray *)sortedCurrencies {
+    
+    NSSortDescriptor *sortCodeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"code" ascending:YES] autorelease];
+    
+    NSArray *returnArray = [[self.currencies allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortCodeDescriptor]];
+    
+    Currency *defCurr = [ReiseabrechnungAppDelegate defaultCurrency:[self managedObjectContext]];
+    if ([returnArray containsObject:defCurr]) {
+        NSMutableArray *mutArray = [NSMutableArray arrayWithArray:returnArray];
+        [mutArray removeObject:defCurr];
+        [mutArray insertObject:defCurr atIndex:0];
+        returnArray = [NSArray arrayWithArray:mutArray];
+    }
+    return returnArray;
 }
 
 - (NSString *)location {

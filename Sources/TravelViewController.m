@@ -319,6 +319,7 @@
         _entry = [NSEntityDescription insertNewObjectForEntityForName: @"Entry" inManagedObjectContext: [_travel managedObjectContext]];
         _travel.lastParticipantUsed = nmEntry.payer;
         _travel.lastCurrencyUsed = nmEntry.currency;
+        _entry.created = [NSDate date];
     } else {
         _entry = entry;
     }
@@ -330,6 +331,7 @@
     _entry.receivers= nmEntry.receivers;
     _entry.type = nmEntry.type;
     _entry.travel = _travel;
+    _entry.lastUpdated = [NSDate date];
     
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
     
@@ -463,10 +465,10 @@
     self.participantViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
     self.participantViewController.tableView.scrollIndicatorInsets = self.participantViewController.tableView.contentInset;
     
-    self.entrySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.entrySortViewController.sortToolBar.frame.size.height, 0);
+    self.entrySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
     self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
     
-    self.summarySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.summarySortViewController.sortToolBar.frame.size.height + self.summarySortViewController.ratesToolBar.frame.size.height, 0);
+    self.summarySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.summarySortViewController.ratesToolBar.frame.size.height, 0);
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
     
 }

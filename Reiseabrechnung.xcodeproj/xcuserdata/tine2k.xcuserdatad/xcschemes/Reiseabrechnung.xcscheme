@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F1CD782913BA405A00D42AA3"
-               BuildableName = "Trip Cost Split.app"
-               BlueprintName = "Trip Cost Split"
+               BuildableName = "Trip Account.app"
+               BlueprintName = "Trip Account"
                ReferencedContainer = "container:Reiseabrechnung.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -41,8 +41,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F1CD782913BA405A00D42AA3"
-            BuildableName = "Trip Cost Split.app"
-            BlueprintName = "Trip Cost Split"
+            BuildableName = "Trip Account.app"
+            BlueprintName = "Trip Account"
             ReferencedContainer = "container:Reiseabrechnung.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -67,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F1CD782913BA405A00D42AA3"
-            BuildableName = "Trip Cost Split.app"
-            BlueprintName = "Trip Cost Split"
+            BuildableName = "Trip Account.app"
+            BlueprintName = "Trip Account"
             ReferencedContainer = "container:Reiseabrechnung.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

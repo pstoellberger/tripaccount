@@ -21,7 +21,6 @@
 @property (nonatomic, retain) UIActivityIndicatorView *updateIndicator;
 @property (nonatomic, retain) UISegmentedControl *segControl;
 
-@property (nonatomic, retain) UIToolbar *sortToolBar;
 @property (nonatomic, retain) UIToolbar *ratesToolBar;
 
 - (id)initWithTravel:(Travel *) travel;
