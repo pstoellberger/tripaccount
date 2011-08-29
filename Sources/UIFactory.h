@@ -12,7 +12,6 @@
 #import "HelpView.h"
 
 #define NAVIGATIONBAR_HEIGHT 44
-#define TOOLBAR_HEIGHT 44
 #define STATUSBAR_HEIGHT 20
 #define TABBAR_HEIGHT 49
 

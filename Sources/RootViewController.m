@@ -26,7 +26,7 @@
 @synthesize managedObjectContext=_managedObjectContext;
 @synthesize tableViewController=_tableViewController, infoViewController=_infoViewController;
 @synthesize addButton=_addButton, editButton=_editButton, doneButton=_doneButton;
-@synthesize infoToolBar=_infoToolBar;
+@synthesize infoButton=_infoButton;
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
      
@@ -36,19 +36,13 @@
           self.tableViewController = [[[TravelListViewController alloc] initInManagedObjectContext:context withRootViewController:self] autorelease];
           self.tableViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
           self.tableViewController.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-          self.tableViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, TOOLBAR_HEIGHT, 0);
+          self.tableViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
           self.tableViewController.tableView.scrollIndicatorInsets = self.tableViewController.tableView.contentInset;
           
           [self.view addSubview:self.tableViewController.view];
           
-          // bring toolbar to front
-          for (UIView *view in self.view.subviews) {
-               if ([view isKindOfClass:[UIToolbar class]]) {
-                    [self.view bringSubviewToFront:view];
-                    break;
-               }
-          }
-          
+          // bring button to front
+          [self.view bringSubviewToFront:self.infoButton];
           
           self.title = @"Trips";
           
@@ -60,7 +54,7 @@
 
 - (void)updateTableViewInsets {
      
-     self.tableViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, self.infoToolBar.frame.size.height, 0);
+     self.tableViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
      self.tableViewController.tableView.scrollIndicatorInsets = self.tableViewController.tableView.contentInset;
 }
 
@@ -118,6 +112,7 @@
      
      [[self.navigationController.view superview] addSubview:self.infoViewController.view];
      [UIView commitAnimations];
+     
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -167,22 +162,18 @@
      
      [super loadView];
      
-     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - TOOLBAR_HEIGHT, self.view.frame.size.width, TOOLBAR_HEIGHT)];
-     toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
-     toolbar.barStyle = UIBarStyleBlackTranslucent;
-     self.infoToolBar = toolbar;
+     UIButton *iButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+     iButton.frame = CGRectMake(self.view.frame.size.width - iButton.frame.size.width - 10, self.view.frame.size.height - iButton.frame.size.height - 10, iButton.frame.size.width, iButton.frame.size.height);
+     iButton.adjustsImageWhenHighlighted = YES;
+     iButton.adjustsImageWhenDisabled = YES;
+     iButton.showsTouchWhenHighlighted = YES;
+     iButton.reversesTitleShadowWhenHighlighted = YES;
+     iButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
      
-     UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithTitle:@"Info" style:UIBarButtonItemStyleBordered target:self action:@selector(openInfoPopup)];
-     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+     [iButton addTarget:self action:@selector(openInfoPopup) forControlEvents:UIControlEventTouchUpInside];
+     self.infoButton = iButton;
      
-     toolbar.items = [NSArray arrayWithObjects:infoButton, nil];
-     
-     [infoButton release];
-     [flexibleSpace release];
-     
-     [self.view addSubview:toolbar];
-     [self.view bringSubviewToFront:toolbar];
-     [toolbar release];
+     [self.view addSubview:iButton];
 
 }
 

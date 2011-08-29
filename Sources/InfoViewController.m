@@ -36,7 +36,7 @@
 							 cache:YES];
     
 	[self.view removeFromSuperview];
-	[UIView commitAnimations];    
+	[UIView commitAnimations];
 }
 
 #pragma mark - View lifecycle

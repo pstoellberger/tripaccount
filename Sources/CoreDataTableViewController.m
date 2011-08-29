@@ -177,6 +177,10 @@
         UITableViewCell *newCell = [self newUIViewCell];
         cell = [[newCell initWithStyle:cellStyle reuseIdentifier:ReuseIdentifier] autorelease];
         // get a class name like this: NSStringFromClass([newCell class])
+        
+        if (tableView.style == UITableViewStylePlain) {
+            [UIFactory initializeCell:cell];
+        }
     }
 	
 	if (self.titleKey) cell.textLabel.text = [self cascadedObject:managedObject withKey:self.titleKey];
@@ -195,10 +199,6 @@
 	cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
 	UIImage *thumbnail = [self thumbnailImageForManagedObject:managedObject];
 	if (thumbnail) cell.imageView.image = thumbnail;
-    
-    if (tableView.style == UITableViewStylePlain) {
-        [UIFactory initializeCell:cell];
-    }
 
 	return cell;
 }

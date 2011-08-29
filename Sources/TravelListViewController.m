@@ -126,11 +126,11 @@
     }
     
     if ([travel.closed intValue] == 0) {
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:cell.textLabel.font.pointSize];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:cell.detailTextLabel.font.pointSize];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
     } else {
-        cell.textLabel.font = [UIFont italicSystemFontOfSize:cell.textLabel.font.pointSize];
-        cell.detailTextLabel.font = [UIFont italicSystemFontOfSize:cell.detailTextLabel.font.pointSize];
+        cell.textLabel.font = [UIFont italicSystemFontOfSize:16];
+        cell.detailTextLabel.font = [UIFont italicSystemFontOfSize:14];
     }
 
     return cell;

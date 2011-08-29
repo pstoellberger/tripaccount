@@ -24,7 +24,7 @@
 @property (nonatomic, retain) CoreDataTableViewController *tableViewController;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic, retain) UIToolbar *infoToolBar;
+@property (nonatomic, retain) UIButton *infoButton;
 
 @property (nonatomic, retain) InfoViewController *infoViewController;
 
