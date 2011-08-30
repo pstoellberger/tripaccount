@@ -38,8 +38,6 @@
 		F10CC9AC14080D6500A8DD31 /* raphael.png in Resources */ = {isa = PBXBuildFile; fileRef = F10CC9A614080D6500A8DD31 /* raphael.png */; };
 		F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB1F13D99BE8002C08AC /* TextEditViewController.m */; };
 		F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5212140541B000B983B8 /* ParticipantEditViewController.m */; };
-		F11A521614055E7200B983B8 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521514055E7100B983B8 /* Participant.m */; };
-		F11A521714055E7200B983B8 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521514055E7100B983B8 /* Participant.m */; };
 		F11A521A140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */; };
 		F11A521B140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */; };
 		F11A521E140654C100B983B8 /* NumberFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A521D140654C100B983B8 /* NumberFilter.m */; };
@@ -654,6 +652,7 @@
 		F1D4B23E140CF17D00CD2224 /* pricetag_euro.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B23D140CF17C00CD2224 /* pricetag_euro.png */; };
 		F1D4B240140CF3C000CD2224 /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B23F140CF3BF00CD2224 /* information@2x.png */; };
 		F1D4B242140CF45200CD2224 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B241140CF45100CD2224 /* information.png */; };
+		F1D4B245140D157000CD2224 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B244140D156E00CD2224 /* Participant.m */; };
 		F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
 		F1EAFCC713D974FF00759FB9 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAFCC613D974FF00759FB9 /* LocationViewController.m */; };
 		F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */; };
@@ -694,8 +693,6 @@
 		F111CB1F13D99BE8002C08AC /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
 		F11A5211140541B000B983B8 /* ParticipantEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantEditViewController.h; sourceTree = "<group>"; };
 		F11A5212140541B000B983B8 /* ParticipantEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantEditViewController.m; sourceTree = "<group>"; };
-		F11A521414055E7100B983B8 /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
-		F11A521514055E7100B983B8 /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
 		F11A5218140563D000B983B8 /* MultiLineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiLineSegmentedControl.h; sourceTree = "<group>"; };
 		F11A5219140563D100B983B8 /* MultiLineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiLineSegmentedControl.m; sourceTree = "<group>"; };
 		F11A521C140654C100B983B8 /* NumberFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFilter.h; sourceTree = "<group>"; };
@@ -1073,6 +1070,8 @@
 		F1D4B23D140CF17C00CD2224 /* pricetag_euro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pricetag_euro.png; sourceTree = "<group>"; };
 		F1D4B23F140CF3BF00CD2224 /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
 		F1D4B241140CF45100CD2224 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
+		F1D4B243140D156C00CD2224 /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
+		F1D4B244140D156E00CD2224 /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
 		F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
 		F1EAFCC513D974FF00759FB9 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		F1EAFCC613D974FF00759FB9 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
@@ -1477,6 +1476,8 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F1D4B243140D156C00CD2224 /* Participant.h */,
+				F1D4B244140D156E00CD2224 /* Participant.m */,
 				F16D3FE41408E52700FDE28A /* Entry.h */,
 				F16D3FE51408E52700FDE28A /* Entry.m */,
 				F10CC9991407D1CD00A8DD31 /* AppDefaults.h */,
@@ -1487,8 +1488,6 @@
 				F1BB9D721406623E00DA0573 /* Currency.m */,
 				F1BB9D681406623D00DA0573 /* Transfer.h */,
 				F1BB9D691406623D00DA0573 /* Transfer.m */,
-				F11A521414055E7100B983B8 /* Participant.h */,
-				F11A521514055E7100B983B8 /* Participant.m */,
 				F17B449D13F00B1D00072F90 /* Country.h */,
 				F17B449E13F00B1D00072F90 /* Country.m */,
 				F17B449913F00B1D00072F90 /* City.h */,
@@ -2377,7 +2376,6 @@
 				F17B4A4713F1889A00072F90 /* ParticipantCategory.m in Sources */,
 				F17B4A4B13F18C7200072F90 /* NSData+Base64.m in Sources */,
 				F17B4A4F13F25ED700072F90 /* TravelCategory.m in Sources */,
-				F11A521714055E7200B983B8 /* Participant.m in Sources */,
 				F11A521B140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
 				F11A521F140654C100B983B8 /* NumberFilter.m in Sources */,
 				F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */,
@@ -2450,7 +2448,6 @@
 				F17B4A4A13F18C7200072F90 /* NSData+Base64.m in Sources */,
 				F17B4A4E13F25ED700072F90 /* TravelCategory.m in Sources */,
 				F11A5213140541B000B983B8 /* ParticipantEditViewController.m in Sources */,
-				F11A521614055E7200B983B8 /* Participant.m in Sources */,
 				F11A521A140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
 				F11A521E140654C100B983B8 /* NumberFilter.m in Sources */,
 				F1BB9D6A1406623D00DA0573 /* Transfer.m in Sources */,
@@ -2467,6 +2464,7 @@
 				F16D3FE61408E52700FDE28A /* Entry.m in Sources */,
 				F1D4B22B140CD6E900CD2224 /* TransferCategory.m in Sources */,
 				F1D4B22E140CDF6D00CD2224 /* ParticipantSortViewController.m in Sources */,
+				F1D4B245140D157000CD2224 /* Participant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

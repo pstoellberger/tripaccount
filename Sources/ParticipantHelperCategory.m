@@ -8,6 +8,7 @@
 
 #import "ParticipantHelperCategory.h"
 #import "Travel.h"
+#import "UIFactory.h"
 
 @implementation Participant (ParticipantHelper)
 
@@ -54,13 +55,18 @@
             }
             
             image = [UIImage imageWithData:imgData];
+            
             if (image) {
                 person.image = UIImagePNGRepresentation(image);
             }
             [imgData release];
+            
         } else {
             person.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"noImage" ofType:@"png"]];
         }
+        
+        // get thumbnail
+        person.imageSmall = UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:person.image] scaledToSize:CGSizeMake(32, 32)]);
     }
     
     [firstName release];

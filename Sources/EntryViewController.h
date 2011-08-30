@@ -28,7 +28,7 @@
     int _sortIndex;
     NSArray *_sortKeyArray;
     NSArray *_sectionKeyArray;
-
+    NSDateFormatter *_dateFormatter;
 }
 
 @property (nonatomic, retain) Travel *travel;
