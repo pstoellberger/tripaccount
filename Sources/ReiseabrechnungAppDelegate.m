@@ -204,7 +204,9 @@
 
 - (void)initializeSampleTrip {
     
-    if (![[ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated isEqual:[NSNumber numberWithInt:1]]) {
+    if (YES || ![[ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated isEqual:[NSNumber numberWithInt:1]]) {
+        
+        NSLog(@"Initialising sample travel...");
         
         Travel *travel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:self.managedObjectContext];
         travel.name = @"Sample Trip";
@@ -219,9 +221,16 @@
         
         req = [[NSFetchRequest alloc] init];
         req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
-        req.predicate = [NSPredicate predicateWithFormat:@"code = 'EUR'"];
+        req.predicate = [NSPredicate predicateWithFormat:@"code = 'USD'"];
+        Currency *usdCurrency = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
+        [travel addCurrenciesObject:usdCurrency];
+        [req release];
         
-        [travel addCurrencies:[NSSet setWithArray:[self.managedObjectContext executeFetchRequest:req error:nil]]];
+        req = [[NSFetchRequest alloc] init];
+        req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
+        req.predicate = [NSPredicate predicateWithFormat:@"code = 'EUR'"];
+        Currency *eurCurrency = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
+        [travel addCurrenciesObject:eurCurrency];
         [req release];
         
         Participant *p1 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
@@ -248,6 +257,42 @@
         [travel addParticipantsObject:p2];
         [travel addParticipantsObject:p3];
         [travel addParticipantsObject:p4];
+        
+        NSArray *participantArray = [NSArray arrayWithObjects:p1, p2, p3, p4, nil];
+        
+        NSString *sampleTripPlist =[[NSBundle mainBundle] pathForResource:@"sampleTrip" ofType:@"plist"];
+        NSDictionary *sampleTripDict = [[NSDictionary alloc] initWithContentsOfFile:sampleTripPlist];
+        
+        NSArray *entriesArray = [sampleTripDict objectForKey:@"entries"];
+        for (NSDictionary *entryDict in entriesArray) {
+            
+            Entry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:self.managedObjectContext];
+            entry.travel = travel;
+            
+            entry.payer = [participantArray objectAtIndex:[[entryDict objectForKey:@"payer"] intValue]];
+            entry.text = [entryDict objectForKey:@"description"];
+            entry.amount = [entryDict objectForKey:@"amount"];
+
+            NSDate *date = [[UIFactory createDateWithoutTimeFromDate:[NSDate date]] dateByAddingTimeInterval:-7 * 60 * 60 * 24];
+            entry.date = [date dateByAddingTimeInterval:([[entryDict objectForKey:@"date"] intValue] * 60 * 60 * 24)];
+            
+            NSArray *receiverArray = [entryDict objectForKey:@"receivers"];
+            for (NSNumber *receiverNumber in receiverArray) {
+                [entry addReceiversObject:[participantArray objectAtIndex:[receiverNumber intValue]]];
+            }
+        
+            if ([[entryDict objectForKey:@"currency"] isEqualToString:@"USD"]) {
+                entry.currency = usdCurrency;
+            } else if ([[entryDict objectForKey:@"currency"] isEqualToString:@"EUR"]) {
+                entry.currency = eurCurrency;
+            }
+            
+            req = [[NSFetchRequest alloc] init];
+            req.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext: self.managedObjectContext];
+            req.predicate = [NSPredicate predicateWithFormat:@"name = %@", [entryDict objectForKey:@"type"]];
+            entry.type = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
+            [req release];
+        }
         
         [ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated = [NSNumber numberWithInt:1];
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];

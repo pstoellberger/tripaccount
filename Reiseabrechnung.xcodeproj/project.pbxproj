@@ -653,6 +653,7 @@
 		F1CE923913DDBEDC009F3B2F /* TravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */; };
 		F1CE923D13DEA7B6009F3B2F /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
 		F1CE923E13DEA7B6009F3B2F /* DateSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */; };
+		F1D4B227140CBB7000CD2224 /* sampleTrip.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B226140CBB7000CD2224 /* sampleTrip.plist */; };
 		F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
 		F1EAFCC713D974FF00759FB9 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAFCC613D974FF00759FB9 /* LocationViewController.m */; };
 		F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */; };
@@ -1067,6 +1068,7 @@
 		F1CE923A13DEA7B6009F3B2F /* DateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSelectViewController.h; sourceTree = "<group>"; };
 		F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectViewController.m; sourceTree = "<group>"; };
 		F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateSelectViewController.xib; sourceTree = "<group>"; };
+		F1D4B226140CBB7000CD2224 /* sampleTrip.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleTrip.plist; sourceTree = "<group>"; };
 		F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
 		F1EAFCC513D974FF00759FB9 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		F1EAFCC613D974FF00759FB9 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
@@ -1159,6 +1161,7 @@
 				F10CC9A414080D6500A8DD31 /* donatello.png */,
 				F10CC9A514080D6500A8DD31 /* michelangelo.png */,
 				F10CC9A614080D6500A8DD31 /* raphael.png */,
+				F1D4B226140CBB7000CD2224 /* sampleTrip.plist */,
 			);
 			path = sample;
 			sourceTree = "<group>";
@@ -1196,6 +1199,7 @@
 			isa = PBXGroup;
 			children = (
 				F10CC9A014080C0400A8DD31 /* sample */,
+				F1CE13E313D5C2F40079B234 /* types.plist */,
 				F17B474C13F14E0F00072F90 /* countries.plist */,
 				F17B474D13F14E0F00072F90 /* currencies.plist */,
 				F17B474E13F14E0F00072F90 /* flag2.png */,
@@ -1418,7 +1422,6 @@
 				F17B482713F14E1000072F90 /* flag233.png */,
 				F17B482813F14E1000072F90 /* flag234.png */,
 				F17B482913F14E1000072F90 /* flag235.png */,
-				F1CE13E313D5C2F40079B234 /* types.plist */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -2291,6 +2294,7 @@
 				F10CC9A714080D6500A8DD31 /* donatello.png in Resources */,
 				F10CC9A914080D6500A8DD31 /* michelangelo.png in Resources */,
 				F10CC9AB14080D6500A8DD31 /* raphael.png in Resources */,
+				F1D4B227140CBB7000CD2224 /* sampleTrip.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

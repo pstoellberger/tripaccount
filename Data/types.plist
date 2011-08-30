@@ -5,12 +5,28 @@
 	<key>types</key>
 	<array>
 		<string>Hotel</string>
+		<string>Souvenirs</string>
+		<string>Gas</string>
 		<string>Flight</string>
 		<string>Dinner</string>
 		<string>Breakfast</string>
 		<string>Tax</string>
-		<string>Car</string>
+		<string>Lunch</string>
+		<string>Rental car</string>
 		<string>Other</string>
+		<string>Entrance fee</string>
+		<string>Visa</string>
+		<string>Ticket</string>
+		<string>Coffee</string>
+		<string>Cash</string>
+		<string>Groceries</string>
+		<string>Transportation</string>
+		<string>Drinks</string>
+		<string>Food</string>
+		<string>Sweets</string>
+		<string>Tip</string>
+		<string>Shopping</string>
+		<string>Present</string>
 	</array>
 </dict>
 </plist>
