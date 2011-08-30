@@ -62,8 +62,8 @@
 
 + (UIAlertView *)createAlterViewForRefreshingRatesOnOpeningTravel:(id <UIAlertViewDelegate>)delegate {
     
-    NSString *rateRefreshAlertViewMessage = @"Do you want to assign the latest currency exchange rates to this travel?";
-    return [[[UIAlertView alloc] initWithTitle:@"Refresh rates" message:rateRefreshAlertViewMessage delegate:delegate cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] autorelease];
+    NSString *rateRefreshAlertViewMessage = NSLocalizedString(@"Do you want to assign the latest currency exchange rates to this travel?", @"when opening travel");
+    return [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Refresh rates", @"alert view title") message:rateRefreshAlertViewMessage delegate:delegate cancelButtonTitle:NSLocalizedString(@"No", @"alert title answer") otherButtonTitles:NSLocalizedString(@"Yes", @"alert title answer"), nil] autorelease];
     
 }
 

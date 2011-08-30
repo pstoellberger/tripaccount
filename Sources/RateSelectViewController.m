@@ -89,7 +89,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"Reset rate";
+    return NSLocalizedString(@"Reset rate", @"red button title clear rate");
 }
 
 - (void)doneWithEditing {

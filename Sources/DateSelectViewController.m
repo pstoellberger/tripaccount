@@ -21,6 +21,8 @@
         _action = action;
         _target = target;
         _date = [[date copy] retain];
+        
+        _timeDescriptionLabel.text = NSLocalizedString(@"Specifiy time", @"specify time label");
     }
     return self;
 }

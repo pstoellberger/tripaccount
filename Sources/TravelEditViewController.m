@@ -70,7 +70,7 @@ static NSIndexPath *_currenciesIndexPath;
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done:)] autorelease];
         }
         
-        self.title = @"Add Trip";  
+        self.title = NSLocalizedString(@"Add Trip", @"trip add title");  
         
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
@@ -156,7 +156,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = @"Country";
+        cell.textLabel.text = NSLocalizedString(@"Country", @"country cell caption");
         if (self.country) {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.country.name];
             if (self.country.image) {
@@ -168,14 +168,14 @@ static NSIndexPath *_currenciesIndexPath;
     } else if ([indexPath isEqual:_cityIndexPath]) {
                 
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
-        cell.textLabel.text = @"City/State";
+        cell.textLabel.text = NSLocalizedString(@"City/State", @"city cell caption");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.city;
         
     } else if ([indexPath isEqual:_descriptionIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
-        cell.textLabel.text = @"Description";
+        cell.textLabel.text = NSLocalizedString(@"Description", @"description cell caption");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.name;
 
@@ -183,7 +183,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = @"Currencies";
+        cell.textLabel.text = NSLocalizedString(@"Currencies", @"currencies cell caption");
         
         NSString *currenciesString = @"";
         const unichar cr = '\n';
@@ -203,7 +203,7 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"Clear";
+    return NSLocalizedString(@"Clear", @"caption of red delete button to clear");
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -258,7 +258,7 @@ static NSIndexPath *_currenciesIndexPath;
     } else if ([indexPath isEqual:_cityIndexPath]) {
         
         TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.city target:self selector:@selector(selectCity:)]; 
-        textEditViewController.title = @"City";
+        textEditViewController.title = NSLocalizedString(@"City", @"edit city title");
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];            
         
@@ -266,7 +266,7 @@ static NSIndexPath *_currenciesIndexPath;
     } else if ([indexPath isEqual:_descriptionIndexPath]) {
         
         TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.name target:self selector:@selector(selectName:)]; 
-        textEditViewController.title = @"Description";
+        textEditViewController.title = NSLocalizedString(@"Description", @"edit description title");
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];
         
@@ -495,7 +495,7 @@ static NSIndexPath *_currenciesIndexPath;
     
     _viewAppeared = YES;
     
-    NSString *text = @"Enter the currencies you want to use for this travel.";
+    NSString *text = NSLocalizedString(@"Enter the currencies you want to use for this travel.", @"help bubble currencies enter");
     HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(240, 192, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
     [UIFactory addHelpViewToView:helpView toView:self.view];
     [helpView release];

@@ -83,7 +83,6 @@
 		F14B376113E6905300351641 /* CurrencyRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F1006C3013E0539F0014CF4B /* CurrencyRefresh.m */; };
 		F14B376213E6905300351641 /* TravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */; };
 		F14B376313E6905300351641 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA3013E0AFCA00C2D855 /* InfoViewController.m */; };
-		F14B376513E6905800351641 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAFCC613D974FF00759FB9 /* LocationViewController.m */; };
 		F14B376613E6905800351641 /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F111CB1F13D99BE8002C08AC /* TextEditViewController.m */; };
 		F14B376713E6905800351641 /* NumberEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAF113DC4A5A009BB4D3 /* NumberEditViewController.m */; };
 		F14B376813E6906000351641 /* TravelEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD78B913BB8BF300D42AA3 /* TravelEditViewController.m */; };
@@ -653,8 +652,8 @@
 		F1D4B240140CF3C000CD2224 /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B23F140CF3BF00CD2224 /* information@2x.png */; };
 		F1D4B242140CF45200CD2224 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B241140CF45100CD2224 /* information.png */; };
 		F1D4B245140D157000CD2224 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B244140D156E00CD2224 /* Participant.m */; };
+		F1D4B24C140D394F00CD2224 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B24A140D394F00CD2224 /* Localizable.strings */; };
 		F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
-		F1EAFCC713D974FF00759FB9 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAFCC613D974FF00759FB9 /* LocationViewController.m */; };
 		F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */; };
 		F1F8FABB13DC20E8009BB4D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1F8FAB913DC20E8009BB4D3 /* Localizable.strings */; };
 		F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */; };
@@ -1072,9 +1071,8 @@
 		F1D4B241140CF45100CD2224 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		F1D4B243140D156C00CD2224 /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
 		F1D4B244140D156E00CD2224 /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
+		F1D4B24B140D394F00CD2224 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
-		F1EAFCC513D974FF00759FB9 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
-		F1EAFCC613D974FF00759FB9 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F1F8FABA13DC20E8009BB4D3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		F1F8FABC13DC225B009BB4D3 /* ShadowNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowNavigationController.h; sourceTree = "<group>"; };
@@ -1462,6 +1460,7 @@
 		F1A6BD1A13D5CF7200161197 /* en.proj */ = {
 			isa = PBXGroup;
 			children = (
+				F1D4B24A140D394F00CD2224 /* Localizable.strings */,
 				F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */,
 				F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */,
 				F1CD784013BA405B00D42AA3 /* MainWindow.xib */,
@@ -1714,8 +1713,6 @@
 		F1EAFCC413D974A700759FB9 /* TravelAdd */ = {
 			isa = PBXGroup;
 			children = (
-				F1EAFCC513D974FF00759FB9 /* LocationViewController.h */,
-				F1EAFCC613D974FF00759FB9 /* LocationViewController.m */,
 				F111CB1E13D99BE8002C08AC /* TextEditViewController.h */,
 				F111CB1F13D99BE8002C08AC /* TextEditViewController.m */,
 				F1F8FAF013DC4A5A009BB4D3 /* NumberEditViewController.h */,
@@ -2300,6 +2297,7 @@
 				F1D4B23E140CF17D00CD2224 /* pricetag_euro.png in Resources */,
 				F1D4B240140CF3C000CD2224 /* information@2x.png in Resources */,
 				F1D4B242140CF45200CD2224 /* information.png in Resources */,
+				F1D4B24C140D394F00CD2224 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2345,7 +2343,6 @@
 				F14B376113E6905300351641 /* CurrencyRefresh.m in Sources */,
 				F14B376213E6905300351641 /* TravelListViewController.m in Sources */,
 				F14B376313E6905300351641 /* InfoViewController.m in Sources */,
-				F14B376513E6905800351641 /* LocationViewController.m in Sources */,
 				F14B376613E6905800351641 /* TextEditViewController.m in Sources */,
 				F14B376713E6905800351641 /* NumberEditViewController.m in Sources */,
 				F14B376813E6906000351641 /* TravelEditViewController.m in Sources */,
@@ -2412,7 +2409,6 @@
 				F1CE13D213D587DC0079B234 /* GenericSelectViewController.m in Sources */,
 				F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */,
 				F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */,
-				F1EAFCC713D974FF00759FB9 /* LocationViewController.m in Sources */,
 				F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */,
 				F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */,
 				F1F8FAD313DC2C46009BB4D3 /* FirstLetterCategory.m in Sources */,
@@ -2486,6 +2482,14 @@
 			);
 			name = MainWindow.xib;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		F1D4B24A140D394F00CD2224 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1D4B24B140D394F00CD2224 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		F1F8FAB913DC20E8009BB4D3 /* Localizable.strings */ = {

@@ -146,7 +146,7 @@ static NSIndexPath *_dateIndexPath;
     if ([indexPath isEqual:_payerIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
-        cell.textLabel.text = @"Payer";
+        cell.textLabel.text = NSLocalizedString(@"Payer", @"cell title payer");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         if (self.nmEntry.payer) {
@@ -156,7 +156,7 @@ static NSIndexPath *_dateIndexPath;
     } else if ([indexPath isEqual:_amountIndexPath]) {
 
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
-        cell.textLabel.text = @"Amount";
+        cell.textLabel.text = NSLocalizedString(@"Amount", @"cell title amount");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         
@@ -171,7 +171,7 @@ static NSIndexPath *_dateIndexPath;
     } else if ([indexPath isEqual:_dateIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
-        cell.textLabel.text = @"Date";
+        cell.textLabel.text = NSLocalizedString(@"Date", @"cell title date");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         
@@ -187,7 +187,7 @@ static NSIndexPath *_dateIndexPath;
     } else if ([indexPath isEqual:_currencyIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
-        cell.textLabel.text = @"Currency";
+        cell.textLabel.text = NSLocalizedString(@"Currency", @"cell title currency");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         if (self.nmEntry.currency) {
@@ -197,14 +197,14 @@ static NSIndexPath *_dateIndexPath;
     } else if ([indexPath isEqual:_descriptionIndexPath]) {        
 
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
-        cell.textLabel.text = @"Description";
+        cell.textLabel.text = NSLocalizedString(@"Description", @"cell title description");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.nmEntry.text;
         
     } else if ([indexPath isEqual:_typeIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
-        cell.textLabel.text = @"Type";
+        cell.textLabel.text = NSLocalizedString(@"Type", @"cell title type");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         if (self.nmEntry.type.name) {
@@ -215,7 +215,7 @@ static NSIndexPath *_dateIndexPath;
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = @"Receiver";
+        cell.textLabel.text = NSLocalizedString(@"Receiver", @"cell title receiver");
         
         NSString *receiverString = @"";
         const unichar cr = '\n';
@@ -259,7 +259,7 @@ static NSIndexPath *_dateIndexPath;
                                                                                                                      target:self
                                                                                                                      action:@selector(selectPayer:)];
         selectViewController.imageKey = @"image";
-        selectViewController.title = @"Payer";
+        selectViewController.title = NSLocalizedString(@"Payer", @"controller title payer");
         
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
@@ -267,14 +267,14 @@ static NSIndexPath *_dateIndexPath;
     } else if ([indexPath isEqual:_amountIndexPath]) {
         
         NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount currency:self.nmEntry.currency travel:self.travel target:self selector:@selector(selectAmount:)]; 
-        numberEditViewController.title = @"Amount";
+        numberEditViewController.title = NSLocalizedString(@"Amount", @"controller title amount");
         [self.navigationController pushViewController:numberEditViewController animated:YES];
         [numberEditViewController release]; 
         
     } else if ([indexPath isEqual:_dateIndexPath]) {
         
         DateSelectViewController *dateSelectViewController = [[DateSelectViewController alloc] initWithDate:self.nmEntry.date target:self selector:@selector(selectDate:)]; 
-        dateSelectViewController.title = @"Date";
+        dateSelectViewController.title = NSLocalizedString(@"Date", @"controller title date");
         [self.navigationController pushViewController:dateSelectViewController animated:YES];
         [dateSelectViewController release]; 
         
@@ -297,7 +297,7 @@ static NSIndexPath *_dateIndexPath;
     } else if ([indexPath isEqual:_descriptionIndexPath]) {
         
         TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.nmEntry.text target:self selector:@selector(selectText:)]; 
-        textEditViewController.title = @"Description";
+        textEditViewController.title = NSLocalizedString(@"Description", @"controller title description");
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];    
 
@@ -332,7 +332,7 @@ static NSIndexPath *_dateIndexPath;
                                                                                                                      action:@selector(selectReceivers:)];
         
         selectViewController.imageKey = @"image";
-        selectViewController.title = @"Receivers";
+        selectViewController.title = NSLocalizedString(@"Receivers", @"controller title receivers");
         
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
@@ -342,7 +342,7 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"Clear";
+    return NSLocalizedString(@"Clear", @"remove button clear cell");
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

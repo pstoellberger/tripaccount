@@ -58,27 +58,27 @@
     if (self) {
         _travel = travel;
         
-        self.actionSheetClosedTravel = [[[UIActionSheet alloc] initWithTitle: @"Choose your action"
+        self.actionSheetClosedTravel = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose your action", @"close travel action sheet title")
                                                                     delegate:self
-                                                           cancelButtonTitle:@"Cancel"
+                                                           cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                       destructiveButtonTitle:nil
-                                                           otherButtonTitles:@"Send summary e-mail", @"Open this trip", nil] autorelease];
+                                                           otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Open this trip", @"alert item open trip"), nil] autorelease];
         self.actionSheetClosedTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         
         
-        self.actionSheetOpenTravel = [[[UIActionSheet alloc] initWithTitle: @"Choose your action"
+        self.actionSheetOpenTravel = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose your action", @"open travel action sheet title")
                                                                   delegate:self
-                                                         cancelButtonTitle:@"Cancel"
+                                                         cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                     destructiveButtonTitle:nil
-                                                         otherButtonTitles:@"Send summary e-mail", @"Close this trip", @"Update exchange rates", @"Manually edit rates", nil] autorelease];
+                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), NSLocalizedString(@"Update exchange rates", @"alert item update rates"), NSLocalizedString(@"Manually edit rates", @"alert title edit rate"), nil] autorelease];
         self.actionSheetOpenTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;        
         
         
-        self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle: @"Where is the person?"
+        self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Where is the person?", @"add person action sheet title")
                                                                  delegate:self
-                                                        cancelButtonTitle:@"Cancel"
+                                                        cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                    destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"From Address Book", @"Create new person", nil] autorelease];
+                                                        otherButtonTitles:NSLocalizedString(@"From Address Book", @"alert item address book"), NSLocalizedString(@"Create new person", @"alert item new person"), nil] autorelease];
         self.actionSheetAddPerson.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     }
     return self;    
@@ -222,7 +222,7 @@
     }
     
     if ([noMailParticipants count] > 0) {
-        NSString *message = [NSString stringWithFormat:@"There are no email addresses available for the participant%@ %@", ([noMailParticipants count]==1)?@"":@"s", [self prettyPrintListOfStrings:noMailParticipants]];
+        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"There are no email addresses available for the participant%@ %@", @"alert no mail addresses"), ([noMailParticipants count]==1)?@"":@"s", [self prettyPrintListOfStrings:noMailParticipants]];
         self.mailSendAlertView.message = message;
         [self.mailSendAlertView show];
     } else {
@@ -244,7 +244,7 @@
         
     } else if ([array count] == 2) {
         
-        returnValue = [NSString stringWithFormat:@"%@ and %@", [array objectAtIndex:0], [array objectAtIndex:1]];
+        returnValue = [NSString stringWithFormat:NSLocalizedString(@"%@ and %@", @"param1 'and' param2 count:2"), [array objectAtIndex:0], [array objectAtIndex:1]];
         
     } else {
         
@@ -252,7 +252,7 @@
             if (i == 0) {
                 returnValue = [array objectAtIndex:i];
             } else if (i == [array count] - 1) {
-                returnValue = [returnValue stringByAppendingFormat:@" and %@", [array objectAtIndex:i]];
+                returnValue = [returnValue stringByAppendingFormat:NSLocalizedString(@", and %@",  @"param1 'and' param2 count:>2"), [array objectAtIndex:i]];
             } else {
                 returnValue = [returnValue stringByAppendingFormat:@", %@", [array objectAtIndex:i]];
             }
@@ -282,14 +282,12 @@
     
     controller.mailComposeDelegate = self;
     
-    NSString *subjectLine = [NSString stringWithFormat:@"Expenses summary report for trip '%@'", self.travel.name];
+    NSString *subjectLine = [NSString stringWithFormat:NSLocalizedString(@"Expenses summary report for trip '%@'", @"mail subject"), self.travel.name];
     if (!self.travel.name || [self.travel.name length] == 0) {
-        subjectLine = [NSString stringWithFormat:@"Expenses summary report for trip to %@", self.travel.location];
+        subjectLine = [NSString stringWithFormat:NSLocalizedString(@"Expenses summary report for trip to %@", @"mail subject with no travel name"), self.travel.location];
     }
     [controller setSubject:subjectLine];
     [controller setMessageBody:mailBody isHTML:YES];
-    
-    NSLog(@"%@", mailBody);
     
     NSMutableArray *toArray = [NSMutableArray array];
     for (Participant *p in self.travel.participants) {
@@ -396,7 +394,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [_summarySortViewController.updateIndicator startAnimating];
-            _summarySortViewController.lastUpdatedLabel.text = @"Updating currency exchange rates...";
+            _summarySortViewController.lastUpdatedLabel.text = NSLocalizedString(@"Updating currency exchange rates...", @"status text of update toolbar");
         });
         
         CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[self.travel managedObjectContext]];
@@ -417,7 +415,7 @@
     
     if (viewController == self.participantSortViewController && ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
         
-        NSString *text = @"Add travelers on this trip here.";
+        NSString *text = NSLocalizedString(@"Add people on this trip here.", @"help bubble add travelers");
         HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"traveler add"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
@@ -425,28 +423,28 @@
     } else if (viewController == self.entrySortViewController) {
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
-            NSString *text = @"Add new expense entries here.";
+            NSString *text = NSLocalizedString(@"Add new expense entries here.", @"help bubble add expenses");
             HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
             [UIFactory addHelpViewToView:helpView toView:viewController.view];
             [helpView release];
         }
         
-        NSString *text = @"Use buttons on top of the table to sort the expense entries.";
+        NSString *text = NSLocalizedString(@"Use buttons on top of the table to sort the expense entries.", @"help bubble sort buttons");
         HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, NAVIGATIONBAR_HEIGHT + ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
     } else if (viewController == self.summarySortViewController) {
         
-        NSString *text = @"This button offers you action like sending the summary report email to the travelers. You can also fix or edit currency exchange rates here.";
+        NSString *text = NSLocalizedString(@"This button offers you action like sending the summary report email to the travelers. You can also fix or edit currency exchange rates here.", @"help bubble action button");
         HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"action button"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
-        text = @"Find here the date of the last update of the currency exchange rates. Use the action above to update them now.";
+        text = NSLocalizedString(@"Find here the date of the last update of the currency exchange rates. Use the action above to update them now.", @"help bubble last updated toolbar");
         HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
         
-        text = @"The travel was closed and can not be changed any more. Exchange rates used for this travel are fixed.";
+        text = NSLocalizedString(@"The travel was closed and can not be changed any more. Exchange rates used for this travel are fixed.", @"help bubble close travel");
         HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
@@ -672,7 +670,7 @@
     
     [self.view addSubview:_tabBarController.view];
     
-    self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:@"Warning" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil] autorelease];
+    self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", @"alert title") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"alert item") otherButtonTitles:NSLocalizedString(@"OK", @"alert item"), nil] autorelease];
     
     self.rateRefreshAlertView = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
     

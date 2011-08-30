@@ -11,7 +11,7 @@
 
 @implementation EntryCell
 
-@synthesize top, bottom, right, image, rightBottom, checkMark, forLabel;
+@synthesize top, bottom, right, image, rightBottom, forLabel;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     

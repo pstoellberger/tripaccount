@@ -13,7 +13,6 @@
 #import "Currency.h"
 #import "ReiseabrechnungAppDelegate.h"
 #import "UIFactory.h"
-#import "LocationViewController.h"
 #import "ShadowNavigationController.h"
 #import "HelpView.h"
 
@@ -138,9 +137,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if ([[super tableView:tableView titleForHeaderInSection:section] isEqualToString:@"0"]) {
-        return @"Open Trips";
+        return NSLocalizedString(@"Open Trips", @"section trip list for open trips");
     } else if ([[super tableView:tableView titleForHeaderInSection:section] isEqualToString:@"1"]) {
-        return @"Closed Trips";
+        return NSLocalizedString(@"Closed Trips", @"section trip list for closed trips");
     } else {
         return @"";
     }
@@ -193,7 +192,7 @@
     
     [super loadView];
     
-    self.openTripAlert = [[[UIAlertView alloc] initWithTitle:@"Trip is closed." message:@"Closed trips can not be edited. Do you want to open the trip now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] autorelease];
+    self.openTripAlert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Trip is closed.", @"alert view title") message:NSLocalizedString(@"Closed trips can not be edited. Do you want to open the trip now?", @"alert view question to open trip") delegate:self cancelButtonTitle:NSLocalizedString(@"No", @"answer no") otherButtonTitles:NSLocalizedString(@"Yes", @"answer yes"), nil] autorelease];
     
     self.refreshRatesAlert = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
     

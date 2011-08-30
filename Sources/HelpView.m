@@ -81,7 +81,7 @@
         dismissLabel.textColor = [UIFactory defaultDarkTintColor];
         dismissLabel.textAlignment = UITextAlignmentCenter;
         dismissLabel.backgroundColor = [UIColor clearColor];
-        dismissLabel.text = @"Tap to dismiss";
+        dismissLabel.text = NSLocalizedString(@"Tap to dismiss", @"help bubble bottom text");
         
         [bodyView addSubview:label];
         [bodyView addSubview:dismissLabel];

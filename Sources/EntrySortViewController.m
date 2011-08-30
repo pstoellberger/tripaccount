@@ -26,7 +26,7 @@
         entryListViewController.delegate = self;
         [entryListViewController release];
         
-        self.title = @"Expenses";
+        self.title = NSLocalizedString(@"Expenses", @"tabbar expenses");
         
         if ([[ReiseabrechnungAppDelegate defaultCurrency:[travel managedObjectContext]].code isEqualToString:@"USD"]) {
             
@@ -63,7 +63,7 @@
     
     [super loadView];
 
-    NSArray *segArray = [NSArray arrayWithObjects:@"Person", @"Type", @"Date", nil];
+    NSArray *segArray = [NSArray arrayWithObjects:NSLocalizedString(@"Person", @"sort button"), NSLocalizedString(@"Type", @"sort button"), NSLocalizedString(@"Date", @"sort button"), nil];
     UISegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArray andSubTitles:nil]; 
     segControl.frame = CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 10, ENTRY_SORT_HEIGHT - 10);
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];

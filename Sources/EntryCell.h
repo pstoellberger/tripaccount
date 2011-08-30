@@ -19,7 +19,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *right;
 @property (nonatomic, retain) IBOutlet UIImageView *image;
 @property (nonatomic, retain) IBOutlet UILabel *rightBottom;
-@property (nonatomic, retain) IBOutlet UIView *checkMark;
 @property (nonatomic, retain) IBOutlet UILabel *forLabel;
 
 @end

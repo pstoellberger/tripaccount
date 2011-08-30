@@ -91,7 +91,6 @@
     
     self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(25, 12, self.tableView.bounds.size.width - 25 - 20, 40)] autorelease];
     self.textField.delegate = self;
-    self.textField.placeholder = @"Description (optional)";
     
     [self.textCell addSubview:self.textField];
     
