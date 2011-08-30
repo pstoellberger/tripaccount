@@ -209,7 +209,7 @@
        double transformY = [self.superview convertPoint:self.frame.origin toView:nil].y;
         
         if (_enterStage == ENTER_STAGE_FROM_TOP) {
-            self.transform = CGAffineTransformTranslate(self.transform, 0, -transformY);
+            self.transform = CGAffineTransformTranslate(self.transform, 0, -transformY - self.frame.size.height);
         } else {
             transformY = [[UIScreen mainScreen] applicationFrame].size.height - transformY + 20;
             self.transform = CGAffineTransformTranslate(self.transform, 0, transformY);

@@ -309,10 +309,11 @@ static NSIndexPath *_dateIndexPath;
         
         TypeViewController *selectViewController = [[TypeViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
                                                                                        withMultiSelection:NO
-                                                                                         withFetchRequest:_fetchRequest 
+                                                                                         withFetchRequest:_fetchRequest
                                                                                       withSelectedObjects:[NSArray arrayWithObjects: self.nmEntry.type ,nil] 
                                                                                                    target:self
                                                                                                    action:@selector(selectType:)];
+        
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
 
