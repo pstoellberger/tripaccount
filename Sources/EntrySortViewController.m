@@ -84,7 +84,9 @@
     self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
     self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
     
-    self.view = self.detailViewController.view;
+    UIView *detailViewContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.detailViewController.view.frame.size.height)] autorelease];
+    [detailViewContainer addSubview:self.detailViewController.view];
+    self.view = detailViewContainer;
 
 }
 

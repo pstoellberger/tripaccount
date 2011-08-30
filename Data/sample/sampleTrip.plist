@@ -6,6 +6,47 @@
 	<array>
 		<dict>
 			<key>description</key>
+			<string>Sachertorte</string>
+			<key>type</key>
+			<string>Sweets</string>
+			<key>payer</key>
+			<integer>0</integer>
+			<key>amount</key>
+			<integer>29</integer>
+			<key>currency</key>
+			<string>EUR</string>
+			<key>date</key>
+			<integer>5</integer>
+			<key>receivers</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>description</key>
+			<string>Schönbrunn</string>
+			<key>type</key>
+			<string>Ticket</string>
+			<key>payer</key>
+			<integer>1</integer>
+			<key>amount</key>
+			<real>23.5</real>
+			<key>currency</key>
+			<string>EUR</string>
+			<key>date</key>
+			<integer>5</integer>
+			<key>receivers</key>
+			<array>
+				<integer>0</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>description</key>
 			<string>6 nights</string>
 			<key>type</key>
 			<string>Hotel</string>
@@ -48,7 +89,7 @@
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>from ATM</string>
+			<string>ATM</string>
 			<key>type</key>
 			<string>Cash</string>
 			<key>payer</key>
@@ -62,8 +103,6 @@
 			<key>receivers</key>
 			<array>
 				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
 				<integer>3</integer>
 			</array>
 		</dict>

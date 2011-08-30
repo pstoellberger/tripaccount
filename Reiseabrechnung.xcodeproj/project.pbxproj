@@ -654,6 +654,8 @@
 		F1CE923D13DEA7B6009F3B2F /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
 		F1CE923E13DEA7B6009F3B2F /* DateSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */; };
 		F1D4B227140CBB7000CD2224 /* sampleTrip.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B226140CBB7000CD2224 /* sampleTrip.plist */; };
+		F1D4B22B140CD6E900CD2224 /* TransferCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B22A140CD6E800CD2224 /* TransferCategory.m */; };
+		F1D4B22E140CDF6D00CD2224 /* ParticipantSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B22D140CDF6800CD2224 /* ParticipantSortViewController.m */; };
 		F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
 		F1EAFCC713D974FF00759FB9 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EAFCC613D974FF00759FB9 /* LocationViewController.m */; };
 		F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */; };
@@ -1069,6 +1071,10 @@
 		F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectViewController.m; sourceTree = "<group>"; };
 		F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateSelectViewController.xib; sourceTree = "<group>"; };
 		F1D4B226140CBB7000CD2224 /* sampleTrip.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleTrip.plist; sourceTree = "<group>"; };
+		F1D4B229140CD6E600CD2224 /* TransferCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferCategory.h; sourceTree = "<group>"; };
+		F1D4B22A140CD6E800CD2224 /* TransferCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferCategory.m; sourceTree = "<group>"; };
+		F1D4B22C140CDF6400CD2224 /* ParticipantSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantSortViewController.h; sourceTree = "<group>"; };
+		F1D4B22D140CDF6800CD2224 /* ParticipantSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantSortViewController.m; sourceTree = "<group>"; };
 		F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
 		F1EAFCC513D974FF00759FB9 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		F1EAFCC613D974FF00759FB9 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
@@ -1505,6 +1511,8 @@
 				F17B4A4D13F25ED700072F90 /* TravelCategory.m */,
 				F1BB9D751406703600DA0573 /* EntryCategory.h */,
 				F1BB9D761406703600DA0573 /* EntryCategory.m */,
+				F1D4B229140CD6E600CD2224 /* TransferCategory.h */,
+				F1D4B22A140CD6E800CD2224 /* TransferCategory.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1627,6 +1635,8 @@
 				F1CD78D313BC705C00D42AA3 /* TravelViewController.m */,
 				F1CD78C613BC6A7C00D42AA3 /* ParticipantViewController.h */,
 				F1CD78C713BC6A7D00D42AA3 /* ParticipantViewController.m */,
+				F1D4B22C140CDF6400CD2224 /* ParticipantSortViewController.h */,
+				F1D4B22D140CDF6800CD2224 /* ParticipantSortViewController.m */,
 				F1CD78D713BC73F900D42AA3 /* EntryViewController.h */,
 				F1CD78D813BC73FA00D42AA3 /* EntryViewController.m */,
 				F1CE923313DD54B3009F3B2F /* EntrySortViewController.h */,
@@ -2459,6 +2469,8 @@
 				F10CC9961407D1CC00A8DD31 /* Travel.m in Sources */,
 				F10CC99B1407D1CD00A8DD31 /* AppDefaults.m in Sources */,
 				F16D3FE61408E52700FDE28A /* Entry.m in Sources */,
+				F1D4B22B140CD6E900CD2224 /* TransferCategory.m in Sources */,
+				F1D4B22E140CDF6D00CD2224 /* ParticipantSortViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -140,14 +140,14 @@
                 </tr>
             </thead>
             <tbody>
-                {% for transfer in travel.transfers %}
+                {% for transfer in travel.sortedTransfers %}
                 <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
                     <td class="debtorRow imageRow">
                         {% if includeImages %}
                         <img src="data:image/png;base64,{{ transfer.debtor.base64 }}" /> 
                         {% /if %}
                         {{ transfer.debtor.name }}</td>
-                    <td class="amountRow">{{ transfer.amount | decimalNumber }}</td>
+                    <td class="amountRow">{{ transfer.amountInDisplayCurrency | decimalNumber }} {{ travel.displayCurrency.name }}</td>
                     <td class="debteeRow">
                         {% if includeImages %}
                         <img src="data:image/png;base64,{{ transfer.debtee.base64 }}" /> 

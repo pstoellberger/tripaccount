@@ -24,7 +24,8 @@
 @property (nonatomic, retain) Currency *baseCurrency;
 @property (nonatomic, retain, readonly) NSMutableDictionary *accounts;
 
-+ (Summary *) createSummary:(Travel *) travel;
++ (Summary *)createSummary:(Travel *) travel;
++ (void)updateSummaryOfTravel:(Travel *)travel;
 
 @end
 

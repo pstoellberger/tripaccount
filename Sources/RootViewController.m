@@ -184,7 +184,7 @@
      [UIFactory addHelpViewToView:helpView toView:self.view];
      [helpView release];
      
-     text = @"Try this app by using the sample trip to Vienna, Austria.";
+     text = @"Have a look at the sample to trip to see how the app works.";
      helpView = [[HelpView alloc] initWithFrame:CGRectMake(2, NAVIGATIONBAR_HEIGHT + 70, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sample trip"];
      [UIFactory addHelpViewToView:helpView toView:self.view];       
      [helpView release];

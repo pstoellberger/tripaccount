@@ -24,7 +24,7 @@
         self.travel = travel;
         _currencyArray = [self.travel.sortedCurrencies retain];
         
-        SummaryViewController *evc = [[SummaryViewController alloc] initWithTravel:travel andDisplayedCurrency:[_currencyArray objectAtIndex:0]];
+        SummaryViewController *evc = [[SummaryViewController alloc] initWithTravel:travel];
         self.detailViewController = evc;
         [evc release];
         

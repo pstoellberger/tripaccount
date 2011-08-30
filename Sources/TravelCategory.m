@@ -97,6 +97,13 @@
     return returnArray;
 }
 
+- (NSArray *)sortedTransfers {
+    
+    NSArray *allSortDescriptors = [NSArray arrayWithObjects:[[[NSSortDescriptor alloc] initWithKey:@"debtor.name" ascending:YES] autorelease], [[[NSSortDescriptor alloc] initWithKey:@"debtee.name" ascending:YES] autorelease], nil];
+    
+    return [[self.transfers allObjects] sortedArrayUsingDescriptors:allSortDescriptors];
+}
+
 - (NSString *)location {
     
     if (self.city != nil && [self.city length] > 0) {

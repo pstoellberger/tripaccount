@@ -14,7 +14,7 @@
 
 @implementation ParticipantViewController
 
-@synthesize travel=_travel, editDelegate=_editDelegate;
+@synthesize travel=_travel, editDelegate=_editDelegate, delegate=_delegate;
 
 - (id)initWithTravel:(Travel *) travel {
     
@@ -26,13 +26,7 @@
         self.tableView.dataSource = self;
         
         [UIFactory initializeTableViewController:self.tableView];
-        
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
-        self.tableView.contentInset = self.tableView.scrollIndicatorInsets;
-        
-        self.title = @"People";
-        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"group" ofType:@"png"]];
-        
+       
         NSManagedObjectContext *context = [travel managedObjectContext];
         
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
@@ -51,8 +45,6 @@
         self.subtitleKey = @"email";
         
         [self viewWillAppear:YES];
-        
-        [self updateBadgeValue];
         
         [self updateTravelOpenOrClosed];
     }
@@ -119,22 +111,10 @@
     self.tableView.allowsSelection = ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]];
 }
 
-#pragma mark - BadgeValue update 
-
-- (void)updateBadgeValue {
-    
-    NSUInteger itemCount = [self.fetchedResultsController.fetchedObjects count];
-    if (itemCount == 0) {
-        self.tabBarItem.badgeValue = nil;
-    } else {
-        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", itemCount];
-    }
-}
-
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     
     [super controllerDidChangeContent:controller];    
-    [self updateBadgeValue];
+    [self.delegate didItemCountChange:[controller.fetchedObjects count]];
 }
 
 

@@ -17,6 +17,7 @@
 #import "CurrencyRefresh.h"
 #import "ExchangeRate.h"
 #import "City.h"
+#import "Summary.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -204,14 +205,15 @@
 
 - (void)initializeSampleTrip {
     
-    if (YES || ![[ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated isEqual:[NSNumber numberWithInt:1]]) {
+    if (![[ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated isEqual:[NSNumber numberWithInt:1]]) {
         
         NSLog(@"Initialising sample travel...");
         
         Travel *travel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:self.managedObjectContext];
         travel.name = @"Sample Trip";
         travel.city = @"Vienna";
-        
+        travel.closed = [NSNumber numberWithInt:0];
+               
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
         req.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: self.managedObjectContext];
         req.predicate = [NSPredicate predicateWithFormat:@"name = 'Austria'"];
@@ -219,6 +221,7 @@
         travel.country = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
         [req release];
         
+        // currencies
         req = [[NSFetchRequest alloc] init];
         req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
         req.predicate = [NSPredicate predicateWithFormat:@"code = 'USD'"];
@@ -232,6 +235,13 @@
         Currency *eurCurrency = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
         [travel addCurrenciesObject:eurCurrency];
         [req release];
+        
+        // rates
+        [travel addRatesObject:usdCurrency.defaultRate];
+        [travel addRatesObject:eurCurrency.defaultRate];
+        
+        travel.displayCurrency = eurCurrency;
+        travel.displaySort = [NSNumber numberWithInt:1];
         
         Participant *p1 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
         p1.name =  @"Leonardo";
@@ -269,6 +279,9 @@
             Entry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:self.managedObjectContext];
             entry.travel = travel;
             
+            entry.created = [NSDate date];
+            entry.lastUpdated = [NSDate date];
+            
             entry.payer = [participantArray objectAtIndex:[[entryDict objectForKey:@"payer"] intValue]];
             entry.text = [entryDict objectForKey:@"description"];
             entry.amount = [entryDict objectForKey:@"amount"];
@@ -293,6 +306,8 @@
             entry.type = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
             [req release];
         }
+        
+        [Summary updateSummaryOfTravel:travel];
         
         [ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated = [NSNumber numberWithInt:1];
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];

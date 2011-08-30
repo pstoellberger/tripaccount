@@ -45,7 +45,7 @@
 @implementation TravelViewController
 
 @synthesize travel=_travel, tabBarController=_tabBarController, addButton=_addButton, actionButton=_actionButton;
-@synthesize participantViewController=_participantViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
+@synthesize participantSortViewController=_participantSortViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
 @synthesize mailSendAlertView=_mailSendAlertView, rateRefreshAlertView=_rateRefreshAlertView;
 
 @synthesize actionSheetAddPerson=_actionSheetAddPerson, actionSheetOpenTravel=_actionSheetOpenTravel, actionSheetClosedTravel=_actionSheetClosedTravel;
@@ -92,7 +92,7 @@
 
 - (void)openAddPopup {
     
-    if ([[[self tabBarController] selectedViewController] isEqual:self.participantViewController]) {
+    if ([[[self tabBarController] selectedViewController] isEqual:self.participantSortViewController]) {
         [self openPersonChooseOrCreatePopup];
     } else if ([[[self tabBarController] selectedViewController] isEqual:self.entrySortViewController]) {
         [self openEntryAddPopup];
@@ -178,9 +178,9 @@
     
     [self.summarySortViewController.detailViewController.tableView reloadData];
     [self.entrySortViewController.detailViewController.tableView reloadData];
-    [self.participantViewController.tableView reloadData];
+    [self.participantSortViewController.detailViewController.tableView reloadData];
     
-    [self.participantViewController updateTravelOpenOrClosed];
+    [self.participantSortViewController.detailViewController updateTravelOpenOrClosed];
     [self.entrySortViewController.detailViewController updateTravelOpenOrClosed];
     [self.summarySortViewController updateRateLabel:YES];
     
@@ -196,11 +196,11 @@
     
     [self.summarySortViewController.detailViewController.tableView reloadData];
     [self.entrySortViewController.detailViewController.tableView reloadData];
-    [self.participantViewController.tableView reloadData];
+    [self.participantSortViewController.detailViewController.tableView reloadData];
     
     [self updateStateOfNavigationController:self.tabBarController.selectedViewController]; 
     
-    [self.participantViewController updateTravelOpenOrClosed];
+    [self.participantSortViewController.detailViewController updateTravelOpenOrClosed];
     [self.entrySortViewController.detailViewController updateTravelOpenOrClosed];
     [self.summarySortViewController updateRateLabel:YES];
     
@@ -269,7 +269,9 @@
     controller.navigationBar.tintColor = [UIFactory defaultTintColor];
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObject:self.travel forKey:@"travel"];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"includeImages"]) {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults synchronize];
+    if ([userDefaults boolForKey:@"includeImages"]) {
         [dictionary setValue:@"Yes" forKey:@"includeImages"];
     }
     
@@ -413,10 +415,10 @@
 
 - (void)initHelpBubbleForViewController:(UIViewController *)viewController {
     
-    if (viewController == self.participantViewController && ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
+    if (viewController == self.participantSortViewController && ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
         
         NSString *text = @"Add travelers on this trip here.";
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, 0, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"traveler add"];
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"traveler add"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
@@ -424,13 +426,13 @@
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
             NSString *text = @"Add new expense entries here.";
-            HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, 0, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
+            HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
             [UIFactory addHelpViewToView:helpView toView:viewController.view];
             [helpView release];
         }
         
-        NSString *text = @"Use these button to sort the expense entries.";
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
+        NSString *text = @"Use buttons on top of the table to sort the expense entries.";
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, NAVIGATIONBAR_HEIGHT + ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
@@ -462,8 +464,8 @@
 
 - (void) updateTableViewInsets {
     
-    self.participantViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
-    self.participantViewController.tableView.scrollIndicatorInsets = self.participantViewController.tableView.contentInset;
+    self.participantSortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
+    self.participantSortViewController.detailViewController.tableView.scrollIndicatorInsets = self.participantSortViewController.detailViewController.tableView.contentInset;
     
     self.entrySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
     self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
@@ -478,7 +480,7 @@
 
 - (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved {
     
-    [self.participantViewController.tableView deselectRowAtIndexPath:[self.participantViewController.tableView indexPathForSelectedRow] animated:YES];
+    [self.participantSortViewController.detailViewController.tableView deselectRowAtIndexPath:[self.participantSortViewController.detailViewController.tableView indexPathForSelectedRow] animated:YES];
     
 }
 
@@ -651,8 +653,8 @@
     self.view.frame = CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height - NAVIGATIONBAR_HEIGHT);    
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    self.participantViewController = [[[ParticipantViewController alloc] initWithTravel:_travel] autorelease];
-    self.participantViewController.editDelegate = self;
+    self.participantSortViewController = [[[ParticipantSortViewController alloc] initWithTravel:_travel] autorelease];
+    self.participantSortViewController.detailViewController.editDelegate = self;
     
     self.entrySortViewController = [[[EntrySortViewController alloc] initWithTravel:_travel] autorelease];
     self.entrySortViewController.detailViewController.editDelegate = self;
@@ -661,7 +663,7 @@
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.delegate = self;
-    [self.tabBarController setViewControllers:[NSArray arrayWithObjects:self.participantViewController, self.entrySortViewController, self.summarySortViewController, nil] animated:NO];
+    [self.tabBarController setViewControllers:[NSArray arrayWithObjects:self.participantSortViewController, self.entrySortViewController, self.summarySortViewController, nil] animated:NO];
     self.tabBarController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.tabBarController.tabBar.frame = CGRectMake(0, self.tabBarController.view.frame.size.height - TABBAR_HEIGHT, self.view.frame.size.width, TABBAR_HEIGHT);
     
@@ -677,7 +679,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self.participantViewController viewDidAppear:animated];
+    [self.participantSortViewController viewDidAppear:animated];
     [self.entrySortViewController viewDidAppear:animated];
     [self.summarySortViewController viewDidAppear:animated];
     
@@ -700,7 +702,7 @@
     [super viewDidUnload];
     
     self.tabBarController = nil;
-    self.participantViewController = nil;
+    self.participantSortViewController = nil;
     self.entrySortViewController = nil;
     self.summarySortViewController = nil;
     self.addButton = nil;

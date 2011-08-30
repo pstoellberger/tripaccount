@@ -21,12 +21,13 @@
 #import "RateSelectViewController.h"
 #import "EntryEditViewController.h"
 #import "ParticipantEditViewController.h"
+#import "ParticipantSortViewController.h"
  
 @interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate, EntryEditViewControllerDelegate, ParticipantViewControllerEditDelegate, ParticipantEditViewControllerEditDelegate>
 
 @property (nonatomic, retain, readonly) IBOutlet Travel *travel;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet ParticipantViewController *participantViewController;
+@property (nonatomic, retain) IBOutlet ParticipantSortViewController *participantSortViewController;
 @property (nonatomic, retain) IBOutlet EntrySortViewController *entrySortViewController;
 @property (nonatomic, retain) IBOutlet SummarySortViewController *summarySortViewController;
 

@@ -20,13 +20,12 @@
 
 @synthesize travel=_travel, summaryCell=_summaryCell ;
 
-- (id)initWithTravel:(Travel *) travel andDisplayedCurrency:(Currency *)currency {
+- (id)initWithTravel:(Travel *) travel {
 
     if (self = [super initWithStyle:UITableViewStylePlain]) {
     
         _travel = travel;
-        _displayCurrency = currency;
-
+        
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         
@@ -68,7 +67,7 @@
         [UIFactory addGradientToView:cell.paid color1:[UIColor colorWithRed:1 green:0.2 blue:0.2 alpha:1] color2:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]];
         [UIFactory addShadowToView:cell.paid];
         cell.paid.alpha = 0.5;
-        cell.paidLabel.text = @"BEZAHLT";
+        cell.paidLabel.text = @"PAID";
     }
     
     Transfer *transfer = (Transfer *)managedObject;
@@ -77,7 +76,7 @@
     cell.leftImage.image = [UIImage imageWithData:transfer.debtor.image];
     cell.debtee.text = transfer.debtee.name;
     cell.rightImage.image = [UIImage imageWithData:transfer.debtee.image];
-    cell.amount.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.travel.transferBaseCurrency convertTravelAmount:self.travel currency:_displayCurrency amount:[transfer.amount doubleValue]]]], _displayCurrency.code];
+    cell.amount.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[transfer amountInDisplayCurrency]], self.travel.displayCurrency.code];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.paid.hidden = YES;
     
@@ -126,11 +125,12 @@
 }
 
 - (void)changeDisplayedCurrency:(Currency *)currency {
-    _displayCurrency = currency;
-    [self.tableView reloadData];
     
     self.travel.displayCurrency = currency;
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+    
+    [self.tableView reloadData];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,25 +149,7 @@
 
     if ([self.travel.closed intValue] != 1) {
         
-        Summary *summary = [Summary createSummary:self.travel];
-        NSMutableDictionary *dic = summary.accounts;
-        
-        [self.travel removeTransfers:self.travel.transfers];
-        
-        self.travel.transferBaseCurrency = summary.baseCurrency;
-        
-        for (NSString* key in [dic keyEnumerator]) {
-            ParticipantKey *participantKey = (ParticipantKey *)key;
-            
-            Transfer *transfer = [NSEntityDescription insertNewObjectForEntityForName: @"Transfer" inManagedObjectContext: [_travel managedObjectContext]];
-            transfer.debtor = participantKey.payer;
-            transfer.debtee = participantKey.receiver;
-            transfer.amount = [dic objectForKey:key];
-            transfer.travel = self.travel;
-            [self.travel addTransfersObject:transfer];
-        }
-        
-        [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+        [Summary updateSummaryOfTravel:self.travel];
     }
 }
 

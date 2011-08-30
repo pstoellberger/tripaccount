@@ -12,6 +12,8 @@
 #import "Currency.h"
 #import "ExchangeRate.h"
 #import "CurrencyHelperCategory.h"
+#import "Transfer.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation ParticipantKey
 
@@ -62,7 +64,31 @@
     return self;
 }
 
-+ (Summary *) createSummary:(Travel *) travel {
++ (void)updateSummaryOfTravel:(Travel *)travel {
+    
+    Summary *summary = [Summary createSummary:travel];
+    NSMutableDictionary *dic = summary.accounts;
+    
+    [travel removeTransfers:travel.transfers];
+    
+    travel.transferBaseCurrency = summary.baseCurrency;
+    
+    for (NSString* key in [dic keyEnumerator]) {
+        ParticipantKey *participantKey = (ParticipantKey *)key;
+        
+        Transfer *transfer = [NSEntityDescription insertNewObjectForEntityForName: @"Transfer" inManagedObjectContext: [travel managedObjectContext]];
+        transfer.debtor = participantKey.payer;
+        transfer.debtee = participantKey.receiver;
+        transfer.amount = [dic objectForKey:key];
+        transfer.travel = travel;
+        transfer.currency = travel.transferBaseCurrency;
+        [travel addTransfersObject:transfer];
+    }
+    
+    [ReiseabrechnungAppDelegate saveContext:[travel managedObjectContext]];
+}
+
++ (Summary *)createSummary:(Travel *) travel {
     Summary *summary = [[[Summary alloc] init] autorelease];
     
     if (!summary.baseCurrency) {

@@ -395,6 +395,7 @@ static NSIndexPath *_currenciesIndexPath;
     
     if (newTravel) {
         self.travel = [NSEntityDescription insertNewObjectForEntityForName: @"Travel" inManagedObjectContext:_context];
+        self.travel.displayCurrency = [self.currencies objectAtIndex:0];
     }
     
     self.travel.name = self.name;
@@ -402,6 +403,7 @@ static NSIndexPath *_currenciesIndexPath;
     self.travel.city = self.city;
     self.travel.closed = [NSNumber numberWithInt:0];
     self.travel.currencies = [[[NSSet alloc] initWithArray:self.currencies] autorelease];
+    
     
     NSMutableArray *ratesToDelete = [NSMutableArray arrayWithArray:[self.travel.rates allObjects]];
     for (Currency *currency in self.currencies) {
@@ -459,7 +461,7 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)checkIfDoneIsPossible {
     
-    if (self.country || [self.name length] > 0) {
+    if ([self.currencies count] > 0 && (self.country || [self.name length] > 0)) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         self.navigationItem.rightBarButtonItem.enabled = NO;

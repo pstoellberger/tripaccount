@@ -10,6 +10,10 @@
 #import "Travel.h"
 #import "CoreDataTableViewController.h"
 
+@protocol ParticipantViewControllerDelegate
+- (void)didItemCountChange:(NSUInteger)itemCount;
+@end
+
 @protocol ParticipantViewControllerEditDelegate
 - (void)participantWasDeleted:(Participant *)participant;
 - (void)openParticipantPopup:(Participant *)participant;
@@ -19,9 +23,9 @@
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;
+@property (nonatomic, assign) id <ParticipantViewControllerDelegate> delegate;
 @property (nonatomic, assign) id <ParticipantViewControllerEditDelegate> editDelegate;
 
-- (void)updateBadgeValue;
 - (void)updateTravelOpenOrClosed;
 
 @end

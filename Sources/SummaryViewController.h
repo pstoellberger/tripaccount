@@ -15,13 +15,12 @@
 
 @interface SummaryViewController : CoreDataTableViewController {
 
-    Currency *_displayCurrency;
 }
 
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, assign) IBOutlet SummaryCell *summaryCell;
 
-- (id)initWithTravel:(Travel *) travel andDisplayedCurrency:(Currency *)currency;
+- (id)initWithTravel:(Travel *) travel;
 - (void)recalculateSummary;
 
 - (void)changeDisplayedCurrency:(Currency *)currency;

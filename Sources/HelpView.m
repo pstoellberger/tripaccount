@@ -227,6 +227,8 @@
 
 - (void)didMoveToSuperview {
     
+    [self.superview bringSubviewToFront:self];
+    
     [self enterStage];
     [((ReiseabrechnungAppDelegate *) [UIApplication sharedApplication].delegate) registerHelpBubble:self];
 }
