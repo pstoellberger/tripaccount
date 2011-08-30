@@ -113,8 +113,15 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     
-    [super controllerDidChangeContent:controller];    
+    [super controllerDidChangeContent:controller];  
+    
     [self.delegate didItemCountChange:[controller.fetchedObjects count]];
+}
+
+- (void)setDelegate:(id<ParticipantViewControllerDelegate>)delegate {
+    [(NSObject *)_delegate release];
+    _delegate = delegate;
+    [self.delegate didItemCountChange:[self.fetchedResultsController.fetchedObjects count]];
 }
 
 

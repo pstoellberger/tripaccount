@@ -60,7 +60,7 @@
         bodyView.layer.borderColor = gradColor1.CGColor;
         bodyView.layer.borderWidth = 1.0f;
         
-        UIImage *infoImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"png"]];
+        UIImage *infoImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"information" ofType:@"png"]];
         UIImageView *infoImageView = [[UIImageView alloc] initWithImage:infoImage];
         infoImageView.frame = CGRectMake(IMAGE_GAP, IMAGE_GAP, 24, 24);
         [infoImage release];

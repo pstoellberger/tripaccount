@@ -31,8 +31,8 @@
         
         [UIFactory initializeTableViewController:self.tableView];
         
-        self.title = @"Summary";
-        self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"138-scales" ofType:@"png"]];
+        self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
+        self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
         
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
         req.entity = [NSEntityDescription entityForName:@"Transfer" inManagedObjectContext:[travel managedObjectContext]];

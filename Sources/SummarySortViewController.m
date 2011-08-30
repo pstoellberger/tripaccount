@@ -132,9 +132,6 @@
         self.detailViewController.tableView.tableHeaderView = segControlView;
         [segControlView release];
         
-        self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, RATE_SORT_TOOLBAR_HEIGHT, 0);
-        self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
-        
     }
 
     UIToolbar *ratestoolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - RATE_SORT_TOOLBAR_HEIGHT, newView.frame.size.width, RATE_SORT_TOOLBAR_HEIGHT)];
