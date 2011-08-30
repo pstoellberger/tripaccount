@@ -64,7 +64,7 @@ static NSIndexPath *_emailIndexPath;
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done:)] autorelease];
         }
         
-        self.title = @"Add Person";  
+        self.title = NSLocalizedString(@"Add Person", @"controller person add title");  
         
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
@@ -128,14 +128,14 @@ static NSIndexPath *_emailIndexPath;
     if ([indexPath isEqual:_nameIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
-        cell.textLabel.text = @"Name";
+        cell.textLabel.text = NSLocalizedString(@"Name", @"cell caption name");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.name;
         
     } else if ([indexPath isEqual:_emailIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
-        cell.textLabel.text = @"E-Mail";
+        cell.textLabel.text = NSLocalizedString(@"E-Mail", @"cell caption mail");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.email;
         
@@ -147,7 +147,7 @@ static NSIndexPath *_emailIndexPath;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"Clear";
+    return NSLocalizedString(@"Clear", @"delete button title clear text cell");
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -176,7 +176,7 @@ static NSIndexPath *_emailIndexPath;
     if ([indexPath isEqual:_nameIndexPath]) {
         
         TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.name target:self selector:@selector(selectName:)]; 
-        textEditViewController.title = @"Name";
+        textEditViewController.title = NSLocalizedString(@"Name", @"controller title edit name");
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];            
         
@@ -184,7 +184,7 @@ static NSIndexPath *_emailIndexPath;
     } else if ([indexPath isEqual:_emailIndexPath]) {
         
         TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.email target:self selector:@selector(selectEmail:)]; 
-        textEditViewController.title = @"E-Mail";
+        textEditViewController.title = NSLocalizedString(@"E-Mail", @"controller title edit mail");
         [textEditViewController setKeyBoardType:UIKeyboardTypeEmailAddress];
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];            

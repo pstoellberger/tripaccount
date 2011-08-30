@@ -22,7 +22,7 @@
         participantListViewController.delegate = self;
         [participantListViewController release];
         
-        self.title = @"People";
+        self.title = NSLocalizedString(@"People", @"tabbar people");
         self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"group" ofType:@"png"]];
         
     }

@@ -105,7 +105,7 @@
     }
     
     if ([type.builtIn intValue] == 1) {
-        cell.detailTextLabel.text = @"(built-in)";
+        cell.detailTextLabel.text = NSLocalizedString(@"(built-in)", @"built-in type mark");
     } else {
         cell.detailTextLabel.text = nil;
     }

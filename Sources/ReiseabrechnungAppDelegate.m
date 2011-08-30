@@ -210,8 +210,8 @@
         NSLog(@"Initialising sample travel...");
         
         Travel *travel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:self.managedObjectContext];
-        travel.name = @"Sample Trip";
-        travel.city = @"Vienna";
+        travel.name = NSLocalizedString(@"Sample Trip", @"sample trip name");
+        travel.city = NSLocalizedString(@"Vienna", @"sampe trip Stadt");
         travel.closed = [NSNumber numberWithInt:0];
                
         NSFetchRequest *req = [[NSFetchRequest alloc] init];

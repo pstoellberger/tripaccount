@@ -177,8 +177,8 @@
 - (UIView *)createTableHeaderSubView {
     
     if (self.allNoneButtons) {
-        NSString *selectAllButton = @"All";
-        NSString *selectNoneButton = @"None";            
+        NSString *selectAllButton = NSLocalizedString(@"All", @"select button add");
+        NSString *selectNoneButton = NSLocalizedString(@"None", @"select button none");            
         
         _segControl = [[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:selectAllButton, selectNoneButton, nil]] retain];
         _segControl.frame = CGRectMake(10, 10, self.tableView.bounds.size.width - 20, 40);

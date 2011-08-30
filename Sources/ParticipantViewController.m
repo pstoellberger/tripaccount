@@ -81,7 +81,7 @@
     
     if ([participant.pays count] > 0) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Can not delete traveler" message:@"This traveler has expensens on this trip. Please delete those expenses first." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK" , nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can not delete traveler", @"alert view can not delete") message:NSLocalizedString(@"This traveler has expensens on this trip. Please delete those expenses first.", @"alert view explain why can not delete") delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"alert view ok") , nil];
         [alertView show];
         [alertView release];
         

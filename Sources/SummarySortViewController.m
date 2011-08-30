@@ -28,7 +28,7 @@
         self.detailViewController = evc;
         [evc release];
         
-        self.title = @"Summary";
+        self.title = NSLocalizedString(@"Summary", @"tabbar summary");
         self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"scales" ofType:@"png"]];
     }
     return self;
@@ -43,8 +43,6 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterMediumStyle;
     formatter.timeStyle = NSDateFormatterMediumStyle;
-    
-    //self.ratesToolBar.hidden = self.segControl.numberOfSegments <= 1 && ![self.travel.closed isEqual:[NSNumber numberWithInt:1]];
     
     float animationDuration = 0.5;
     if (!animate) {
@@ -63,12 +61,12 @@
         } else {
             
             NSDate *lastUpdated = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdatedKey]];
-            self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Rates last updated at %@", [formatter stringFromDate:lastUpdated]];
+            self.lastUpdatedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Rates last updated at %@", @"status bar last updated"), [formatter stringFromDate:lastUpdated]];
         }
             
     } else {
         
-        self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Travel closed at %@", [formatter stringFromDate:self.travel.closedDate]];
+        self.lastUpdatedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Travel closed at %@", @"status bar travel closed"), [formatter stringFromDate:self.travel.closedDate]];
         
         if (!CGAffineTransformIsIdentity(self.ratesToolBar.transform)) {
             [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformIdentity; } ];            
