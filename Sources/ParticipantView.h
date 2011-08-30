@@ -13,4 +13,6 @@
 
 @property (nonatomic, retain) NSArray *participants;
 
++ (UIImage *)moreImagesImage;
+
 @end

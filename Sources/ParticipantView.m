@@ -11,6 +11,8 @@
 
 @implementation ParticipantView
 
+static UIImage *moreImagesImage;
+
 @synthesize participants=_participants;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -24,6 +26,13 @@
 #define IMAGE_SIZE 16
 #define IMAGE_GAP 2
 
++ (UIImage *)moreImagesImage {
+    if (!moreImagesImage) {
+        moreImagesImage = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"moreImages" ofType:@"png"]]];
+    }
+    return moreImagesImage;
+}
+
 - (void)drawRect:(CGRect)rect {
     
     [super drawRect:rect];
@@ -34,13 +43,12 @@
     
     int counter = 0;
     for (Participant *participant in self.participants) {
-        UIImage *image = [UIImage imageWithData:participant.image];
+        UIImage *image = [UIImage imageWithData:participant.imageSmall];
         [image drawInRect:CGRectMake(((IMAGE_SIZE+IMAGE_GAP) * counter), 0, IMAGE_SIZE, IMAGE_SIZE)];
         counter++;
         
         if (((IMAGE_SIZE+IMAGE_GAP) * (counter+2)) > rect.size.width) {
-            UIImage *moreImages = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"moreImages" ofType:@"png"]]];
-            [moreImages drawInRect:CGRectMake(((IMAGE_SIZE+IMAGE_GAP) * counter), 0, IMAGE_SIZE, IMAGE_SIZE)];
+            [[ParticipantView moreImagesImage] drawInRect:CGRectMake(((IMAGE_SIZE+IMAGE_GAP) * counter), 0, IMAGE_SIZE, IMAGE_SIZE)];
             break;
         }
     }

@@ -30,6 +30,9 @@
     
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        
         _travel = travel;
         _sortIndex = 0;
         
@@ -101,13 +104,10 @@
     cell.bottom.participants = entry.sortedReceivers;
     cell.image.image = [UIImage imageWithData:entry.payer.image];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
     if ([UIFactory dateHasTime:entry.date]) {
-        formatter.timeStyle = NSDateFormatterShortStyle;
+        _dateFormatter.timeStyle = NSDateFormatterShortStyle;
     }
-    cell.rightBottom.text = [formatter stringFromDate:entry.date];
-    [formatter release];
+    cell.rightBottom.text = [_dateFormatter stringFromDate:entry.date];
     
     cell.image.alpha = 1;
     cell.bottom.alpha = 1;
@@ -243,7 +243,7 @@
 #pragma mark - Memory management
 
 - (void)dealloc {
-    
+    [_dateFormatter release];
     [_sortKeyArray release];
     [_sectionKeyArray release];
     [super dealloc];

@@ -247,21 +247,25 @@
         p1.name =  @"Leonardo";
         p1.email = @"leonardo@tmnt.com";
         p1.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"leo" ofType:@"png"]];
+        p1.imageSmall = UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:p1.image] scaledToSize:CGSizeMake(32, 32)]);
         
         Participant *p2 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
         p2.name =  @"Raphael";
         p2.email = @"raphael@tmnt.com";
         p2.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"raphael" ofType:@"png"]];
+        p2.imageSmall = UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:p2.image] scaledToSize:CGSizeMake(32, 32)]);
         
         Participant *p3 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
         p3.name =  @"Donatello";
         p3.email = @"donatello@tmnt.com";
         p3.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"donatello" ofType:@"png"]];
+        p3.imageSmall = UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:p3.image] scaledToSize:CGSizeMake(32, 32)]);
         
         Participant *p4 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:self.managedObjectContext];
         p4.name =  @"Michelangelo";
         p4.email = @"michelangelo@tmnt.com";
         p4.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"michelangelo" ofType:@"png"]];
+        p4.imageSmall = UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:p4.image] scaledToSize:CGSizeMake(32, 32)]);
         
         [travel addParticipantsObject:p1];
         [travel addParticipantsObject:p2];
@@ -306,6 +310,7 @@
             entry.type = [[self.managedObjectContext executeFetchRequest:req error:nil] lastObject];
             [req release];
         }
+        [sampleTripDict release];
         
         [Summary updateSummaryOfTravel:travel];
         

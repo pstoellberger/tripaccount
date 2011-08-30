@@ -86,6 +86,8 @@
         [bodyView addSubview:label];
         [bodyView addSubview:dismissLabel];
         
+        [dismissLabel release];
+        
         bodyView.frame = CGRectMake(bodyView.frame.origin.x, bodyView.frame.origin.y, labelLeft + label.frame.size.width + LABEL_GAP, label.frame.size.height + LABEL_GAP + dismissLabel.frame.size.height + LABEL_GAP); 
         
         [UIFactory addGradientToView:bodyView color1:gradColor1 color2:gradColor2 startPoint:CGPointMake(0, 1) endPoint:CGPointMake(1,0)];
