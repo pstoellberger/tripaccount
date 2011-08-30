@@ -7,18 +7,14 @@
 
 #import "MultiLineSegmentedControl.h"
 
-static NSInteger MY_TAG = 0x666;
+static NSInteger SUBLABEL_TAG = 0x666;
+static NSInteger LABEL_TAG = 0x555;
 
 @implementation MultiLineSegmentedControl
 
 @synthesize subTitles;
 
 - (id)initWithItems:(NSArray *)items andSubTitles:(NSArray *)newTitles {
-    
-    if ([items count] != [newTitles count]) {
-        [NSException raise:NSInvalidArgumentException format:@"Titles and subtitles array must be of the same size."];
-        return nil;
-    }
     
     if (self = [super initWithItems:items]) {
         self.subTitles = newTitles;
@@ -40,25 +36,34 @@ static NSInteger MY_TAG = 0x666;
         int segIndex = 0;
         for (UIView *segmentView in self.subviews) {
             
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-            label.backgroundColor = [UIColor clearColor];
-            label.font = [UIFont boldSystemFontOfSize:10];
-            label.textAlignment = UITextAlignmentCenter;
-            label.tag = MY_TAG;
-            label.shadowColor = [UIColor darkGrayColor];
-            
-            NSString *code = nil;
             for (UIView *subView in segmentView.subviews) {
-                if ([subView respondsToSelector:@selector(text)]) {
-                    code = [subView performSelector:@selector(text)];
-                    break;
+                if ([subView isKindOfClass:[UILabel class]]) {
+                    subView.tag = LABEL_TAG;
                 }
             }
-            label.text = [self.subTitles objectAtIndex:[titles indexOfObject:code]];
-
-            [segmentView addSubview:label];
-            [labelArray addObject:label];
-            [label release];
+            
+            if ([self.subTitles count] > segIndex) {
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+                label.backgroundColor = [UIColor clearColor];
+                label.font = [UIFont boldSystemFontOfSize:10];
+                label.textAlignment = UITextAlignmentCenter;
+                label.tag = SUBLABEL_TAG;
+                label.shadowColor = [UIColor darkGrayColor];
+                
+                NSString *code = nil;
+                for (UIView *subView in segmentView.subviews) {
+                    if ([subView respondsToSelector:@selector(text)]) {
+                        code = [subView performSelector:@selector(text)];
+                        break;
+                    }
+                }
+                label.text = [self.subTitles objectAtIndex:[titles indexOfObject:code]];
+                
+                [segmentView addSubview:label];
+                [labelArray addObject:label];
+                [label release];
+            }
             
             segIndex++;
         }
@@ -88,13 +93,16 @@ static NSInteger MY_TAG = 0x666;
                 }
             }
             
+            UILabel *subTitleLabel = (UILabel *)[segmentView viewWithTag:SUBLABEL_TAG];
             
-            UILabel *subTitleLabel = (UILabel *)[segmentView viewWithTag:MY_TAG];
+            UILabel *mainTitleLabel = (UILabel *)[segmentView viewWithTag:LABEL_TAG];
             
             if ([[self titleForSegmentAtIndex:self.selectedSegmentIndex] isEqualToString:code]) {
                 subTitleLabel.textColor = [UIColor whiteColor];
+                mainTitleLabel.textColor = [UIColor whiteColor];
             } else {
                 subTitleLabel.textColor = [UIColor lightGrayColor];
+                mainTitleLabel.textColor = [UIColor lightGrayColor];
             }
             
             counter++;
@@ -113,7 +121,7 @@ static NSInteger MY_TAG = 0x666;
         UIView *segmentLabel = [[segmentView subviews] objectAtIndex:0];
         if (segmentLabel) {
             
-            UILabel *myLabel = (UILabel *)[segmentView viewWithTag:MY_TAG];
+            UILabel *myLabel = (UILabel *)[segmentView viewWithTag:SUBLABEL_TAG];
             if (myLabel) {
                 
                 if (self.frame.size.height >= 25) {

@@ -10,6 +10,7 @@
 #import "UIFactory.h"
 #import "ReiseabrechnungAppDelegate.h"
 #import "Currency.h"
+#import "MultiLineSegmentedControl.h"
 
 @implementation EntrySortViewController
 
@@ -20,10 +21,10 @@
     if (self = [super init]) {
         self.travel = travel;
         
-        EntryViewController *evc = [[EntryViewController alloc] initWithTravel:travel];
-        self.detailViewController = evc;
-        evc.delegate = self;
-        [evc release];
+        EntryViewController *entryListViewController = [[EntryViewController alloc] initWithTravel:travel];
+        self.detailViewController = entryListViewController;
+        entryListViewController.delegate = self;
+        [entryListViewController release];
         
         self.title = @"Expenses";
         
@@ -63,7 +64,7 @@
     [super loadView];
 
     NSArray *segArray = [NSArray arrayWithObjects:@"Person", @"Type", @"Date", nil];
-    UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray]; 
+    UISegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArray andSubTitles:nil]; 
     segControl.frame = CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 10, ENTRY_SORT_HEIGHT - 10);
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
@@ -81,8 +82,6 @@
     [segControlView release];
     
     self.detailViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height - TABBAR_HEIGHT);
-    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
-    self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
     
     UIView *detailViewContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.detailViewController.view.frame.size.height)] autorelease];
     [detailViewContainer addSubview:self.detailViewController.view];

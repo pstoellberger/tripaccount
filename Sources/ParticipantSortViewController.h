@@ -17,4 +17,6 @@
 
 - (id)initWithTravel:(Travel *) travel;
 
+- (void)didItemCountChange:(NSUInteger)itemCount;
+
 @end

@@ -17,10 +17,10 @@
     if (self = [super init]) {
         self.travel = travel;
         
-        ParticipantViewController *evc = [[ParticipantViewController alloc] initWithTravel:travel];
-        self.detailViewController = evc;
-        evc.delegate = self;
-        [evc release];
+        ParticipantViewController *participantListViewController = [[ParticipantViewController alloc] initWithTravel:travel];
+        self.detailViewController = participantListViewController;
+        participantListViewController.delegate = self;
+        [participantListViewController release];
         
         self.title = @"People";
         self.tabBarItem.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"group" ofType:@"png"]];
