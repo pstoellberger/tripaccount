@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9408120813EAD0E5003D7B3E /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F127299513E839B10095286D /* Type.m */; };
 		9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
 		9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408120C13EADF7F003D7B3E /* ExchangeRate.m */; };
 		940B41ED13EBF18300902B00 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EC13EBF18300902B00 /* Icon.png */; };
@@ -47,7 +46,6 @@
 		F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
 		F127299213E813A10095286D /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
 		F127299313E813B30095286D /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */; };
-		F127299613E839B10095286D /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F127299513E839B10095286D /* Type.m */; };
 		F12C7A9E13D0F7C600668BF0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */; };
 		F12C7A9F13D0F7C600668BF0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9D13D0F7C600668BF0 /* MapKit.framework */; };
 		F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F14B372013E67BDF00351641 /* CurrencyHelperCategory.m */; };
@@ -95,7 +93,10 @@
 		F14B376F13E6906000351641 /* EntryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */; };
 		F14B377013E6906000351641 /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
 		F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
+		F1509277140E7DE6009C5AB9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1509275140E7DE6009C5AB9 /* Localizable.strings */; };
 		F1533F1413D433F7008EBE9D /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1533F1313D433F7008EBE9D /* UIFactory.m */; };
+		F1567972140E0F0A008A8A33 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F1567971140E0F0A008A8A33 /* Country.m */; };
+		F1567975140E6BE6008A8A33 /* I18NSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1567974140E6BE6008A8A33 /* I18NSortCategory.m */; };
 		F159EA2913E08B3C00C2D855 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA2813E08B3C00C2D855 /* ArrowView.m */; };
 		F159EA2F13E0AF3200C2D855 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */; };
 		F159EA3113E0AFCA00C2D855 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159EA3013E0AFCA00C2D855 /* InfoViewController.m */; };
@@ -117,10 +118,6 @@
 		F1731B6C140774860050D6AC /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1731B62140774860050D6AC /* SummaryCell.m */; };
 		F17B449613EFF6AA00072F90 /* Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449513EFF6AA00072F90 /* Locator.m */; };
 		F17B449713EFF6AB00072F90 /* Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449513EFF6AA00072F90 /* Locator.m */; };
-		F17B449B13F00B1D00072F90 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449A13F00B1D00072F90 /* City.m */; };
-		F17B449C13F00B1D00072F90 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449A13F00B1D00072F90 /* City.m */; };
-		F17B449F13F00B1D00072F90 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449E13F00B1D00072F90 /* Country.m */; };
-		F17B44A013F00B1D00072F90 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B449E13F00B1D00072F90 /* Country.m */; };
 		F17B44AE13F01A1E00072F90 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B44AD13F01A1E00072F90 /* Reachability.m */; };
 		F17B44AF13F01A1E00072F90 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B44AD13F01A1E00072F90 /* Reachability.m */; };
 		F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B44B213F01D7000072F90 /* SystemConfiguration.framework */; };
@@ -615,8 +612,6 @@
 		F1B8216813BE32E000FE329B /* TravelNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8216713BE32DF00FE329B /* TravelNotManaged.m */; };
 		F1BB9D6A1406623D00DA0573 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D691406623D00DA0573 /* Transfer.m */; };
 		F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D691406623D00DA0573 /* Transfer.m */; };
-		F1BB9D731406623E00DA0573 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D721406623E00DA0573 /* Currency.m */; };
-		F1BB9D741406623E00DA0573 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D721406623E00DA0573 /* Currency.m */; };
 		F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
 		F1BB9D781406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
 		F1CD782F13BA405A00D42AA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD782E13BA405A00D42AA3 /* UIKit.framework */; };
@@ -653,9 +648,11 @@
 		F1D4B242140CF45200CD2224 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B241140CF45100CD2224 /* information.png */; };
 		F1D4B245140D157000CD2224 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B244140D156E00CD2224 /* Participant.m */; };
 		F1D4B24C140D394F00CD2224 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B24A140D394F00CD2224 /* Localizable.strings */; };
+		F1D4B255140E0B4300CD2224 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B254140E0B3F00CD2224 /* City.m */; };
+		F1D4B258140E0B6100CD2224 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B257140E0B5F00CD2224 /* Currency.m */; };
+		F1D4B25B140E0BA600CD2224 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B25A140E0B6A00CD2224 /* Type.m */; };
 		F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
 		F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */; };
-		F1F8FABB13DC20E8009BB4D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1F8FAB913DC20E8009BB4D3 /* Localizable.strings */; };
 		F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */; };
 		F1F8FAD313DC2C46009BB4D3 /* FirstLetterCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */; };
 		F1F8FAEF13DC498F009BB4D3 /* EntryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */; };
@@ -700,8 +697,6 @@
 		F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarySortViewController.m; sourceTree = "<group>"; };
 		F11FB36513E6E73A00115D12 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
 		F11FB36613E6E73A00115D12 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
-		F127299413E839B10095286D /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		F127299513E839B10095286D /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F12C7A9D13D0F7C600668BF0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F14B371F13E67BDF00351641 /* CurrencyHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelperCategory.h; sourceTree = "<group>"; };
@@ -713,8 +708,13 @@
 		F14B373313E68B5F00351641 /* UnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTests.h; sourceTree = "<group>"; };
 		F14B373513E68B5F00351641 /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		F14B373713E68B5F00351641 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		F1509276140E7DE6009C5AB9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		F1533F1213D433F7008EBE9D /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
 		F1533F1313D433F7008EBE9D /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
+		F1567970140E0F0A008A8A33 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		F1567971140E0F0A008A8A33 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		F1567973140E6BE6008A8A33 /* I18NSortCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = I18NSortCategory.h; sourceTree = "<group>"; };
+		F1567974140E6BE6008A8A33 /* I18NSortCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = I18NSortCategory.m; sourceTree = "<group>"; };
 		F159EA2713E08B3B00C2D855 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
 		F159EA2813E08B3C00C2D855 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrowView.m; sourceTree = "<group>"; };
 		F159EA2B13E0AF3000C2D855 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
@@ -740,10 +740,6 @@
 		F1731B62140774860050D6AC /* SummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryCell.m; sourceTree = "<group>"; };
 		F17B449413EFF6AA00072F90 /* Locator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locator.h; sourceTree = "<group>"; };
 		F17B449513EFF6AA00072F90 /* Locator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Locator.m; sourceTree = "<group>"; };
-		F17B449913F00B1D00072F90 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
-		F17B449A13F00B1D00072F90 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
-		F17B449D13F00B1D00072F90 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
-		F17B449E13F00B1D00072F90 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		F17B44AC13F01A1E00072F90 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		F17B44AD13F01A1E00072F90 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		F17B44B213F01D7000072F90 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1016,8 +1012,6 @@
 		F1B8216713BE32DF00FE329B /* TravelNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelNotManaged.m; sourceTree = "<group>"; };
 		F1BB9D681406623D00DA0573 /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
 		F1BB9D691406623D00DA0573 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
-		F1BB9D711406623E00DA0573 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
-		F1BB9D721406623E00DA0573 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 		F1BB9D751406703600DA0573 /* EntryCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCategory.h; sourceTree = "<group>"; };
 		F1BB9D761406703600DA0573 /* EntryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCategory.m; sourceTree = "<group>"; };
 		F1CD782A13BA405A00D42AA3 /* Trip Account.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Account.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1072,9 +1066,14 @@
 		F1D4B243140D156C00CD2224 /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
 		F1D4B244140D156E00CD2224 /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
 		F1D4B24B140D394F00CD2224 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		F1D4B253140E0B3000CD2224 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		F1D4B254140E0B3F00CD2224 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		F1D4B256140E0B5700CD2224 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		F1D4B257140E0B5F00CD2224 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		F1D4B259140E0B6600CD2224 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		F1D4B25A140E0B6A00CD2224 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
 		F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F1F8FABA13DC20E8009BB4D3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		F1F8FABC13DC225B009BB4D3 /* ShadowNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowNavigationController.h; sourceTree = "<group>"; };
 		F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowNavigationController.m; sourceTree = "<group>"; };
 		F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLetterCategory.h; sourceTree = "<group>"; };
@@ -1475,6 +1474,14 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F1567970140E0F0A008A8A33 /* Country.h */,
+				F1567971140E0F0A008A8A33 /* Country.m */,
+				F1D4B259140E0B6600CD2224 /* Type.h */,
+				F1D4B25A140E0B6A00CD2224 /* Type.m */,
+				F1D4B256140E0B5700CD2224 /* Currency.h */,
+				F1D4B257140E0B5F00CD2224 /* Currency.m */,
+				F1D4B253140E0B3000CD2224 /* City.h */,
+				F1D4B254140E0B3F00CD2224 /* City.m */,
 				F1D4B243140D156C00CD2224 /* Participant.h */,
 				F1D4B244140D156E00CD2224 /* Participant.m */,
 				F16D3FE41408E52700FDE28A /* Entry.h */,
@@ -1483,18 +1490,10 @@
 				F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */,
 				F10CC9941407D1CC00A8DD31 /* Travel.h */,
 				F10CC9951407D1CC00A8DD31 /* Travel.m */,
-				F1BB9D711406623E00DA0573 /* Currency.h */,
-				F1BB9D721406623E00DA0573 /* Currency.m */,
 				F1BB9D681406623D00DA0573 /* Transfer.h */,
 				F1BB9D691406623D00DA0573 /* Transfer.m */,
-				F17B449D13F00B1D00072F90 /* Country.h */,
-				F17B449E13F00B1D00072F90 /* Country.m */,
-				F17B449913F00B1D00072F90 /* City.h */,
-				F17B449A13F00B1D00072F90 /* City.m */,
 				9408120B13EADF7F003D7B3E /* ExchangeRate.h */,
 				9408120C13EADF7F003D7B3E /* ExchangeRate.m */,
-				F127299413E839B10095286D /* Type.h */,
-				F127299513E839B10095286D /* Type.m */,
 				F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */,
 				F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */,
 				F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */,
@@ -1509,6 +1508,12 @@
 				F1BB9D761406703600DA0573 /* EntryCategory.m */,
 				F1D4B229140CD6E600CD2224 /* TransferCategory.h */,
 				F1D4B22A140CD6E800CD2224 /* TransferCategory.m */,
+				F14B371F13E67BDF00351641 /* CurrencyHelperCategory.h */,
+				F14B372013E67BDF00351641 /* CurrencyHelperCategory.m */,
+				F1A6C62E13D6B71B005E8388 /* ParticipantHelperCategory.h */,
+				F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */,
+				F1567973140E6BE6008A8A33 /* I18NSortCategory.h */,
+				F1567974140E6BE6008A8A33 /* I18NSortCategory.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1674,10 +1679,6 @@
 				F1B8213B13BE0E3A00FE329B /* EntryNotManaged.m */,
 				F1B8216613BE32DE00FE329B /* TravelNotManaged.h */,
 				F1B8216713BE32DF00FE329B /* TravelNotManaged.m */,
-				F14B371F13E67BDF00351641 /* CurrencyHelperCategory.h */,
-				F14B372013E67BDF00351641 /* CurrencyHelperCategory.m */,
-				F1A6C62E13D6B71B005E8388 /* ParticipantHelperCategory.h */,
-				F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1705,7 +1706,7 @@
 		F1CE13E913D5C87B0079B234 /* de.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				F1F8FAB913DC20E8009BB4D3 /* Localizable.strings */,
+				F1509275140E7DE6009C5AB9 /* Localizable.strings */,
 			);
 			path = de.lproj;
 			sourceTree = "<group>";
@@ -2044,7 +2045,6 @@
 				F1CE13E413D5C2F40079B234 /* types.plist in Resources */,
 				F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */,
 				F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */,
-				F1F8FABB13DC20E8009BB4D3 /* Localizable.strings in Resources */,
 				F1CE923E13DEA7B6009F3B2F /* DateSelectViewController.xib in Resources */,
 				F159EA2F13E0AF3200C2D855 /* InfoViewController.xib in Resources */,
 				F159EA3B13E0DA3E00C2D855 /* darkbackground.png in Resources */,
@@ -2298,6 +2298,7 @@
 				F1D4B240140CF3C000CD2224 /* information@2x.png in Resources */,
 				F1D4B242140CF45200CD2224 /* information.png in Resources */,
 				F1D4B24C140D394F00CD2224 /* Localizable.strings in Resources */,
+				F1509277140E7DE6009C5AB9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2357,11 +2358,8 @@
 				F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */,
 				F127299213E813A10095286D /* TypeViewController.m in Sources */,
 				F127299313E813B30095286D /* SummarySortViewController.m in Sources */,
-				9408120813EAD0E5003D7B3E /* Type.m in Sources */,
 				9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */,
 				F17B449713EFF6AB00072F90 /* Locator.m in Sources */,
-				F17B449C13F00B1D00072F90 /* City.m in Sources */,
-				F17B44A013F00B1D00072F90 /* Country.m in Sources */,
 				F17B44AF13F01A1E00072F90 /* Reachability.m in Sources */,
 				F17B4A1713F17D0900072F90 /* ICUTemplateMatcher.m in Sources */,
 				F17B4A1F13F17D0900072F90 /* MGTemplateEngine.m in Sources */,
@@ -2376,7 +2374,6 @@
 				F11A521B140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
 				F11A521F140654C100B983B8 /* NumberFilter.m in Sources */,
 				F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */,
-				F1BB9D741406623E00DA0573 /* Currency.m in Sources */,
 				F1BB9D781406703600DA0573 /* EntryCategory.m in Sources */,
 				F1731B581407745A0050D6AC /* EntryCell.m in Sources */,
 				F1731B64140774860050D6AC /* AlignedStyle2Cell.m in Sources */,
@@ -2426,12 +2423,9 @@
 				F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */,
 				F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */,
 				F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */,
-				F127299613E839B10095286D /* Type.m in Sources */,
 				94F97EE313E9831C00662ADB /* RateSelectViewController.m in Sources */,
 				9408120D13EADF7F003D7B3E /* ExchangeRate.m in Sources */,
 				F17B449613EFF6AA00072F90 /* Locator.m in Sources */,
-				F17B449B13F00B1D00072F90 /* City.m in Sources */,
-				F17B449F13F00B1D00072F90 /* Country.m in Sources */,
 				F17B44AE13F01A1E00072F90 /* Reachability.m in Sources */,
 				F17B4A1613F17D0900072F90 /* ICUTemplateMatcher.m in Sources */,
 				F17B4A1E13F17D0900072F90 /* MGTemplateEngine.m in Sources */,
@@ -2447,7 +2441,6 @@
 				F11A521A140563D100B983B8 /* MultiLineSegmentedControl.m in Sources */,
 				F11A521E140654C100B983B8 /* NumberFilter.m in Sources */,
 				F1BB9D6A1406623D00DA0573 /* Transfer.m in Sources */,
-				F1BB9D731406623E00DA0573 /* Currency.m in Sources */,
 				F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */,
 				F1731B571407745A0050D6AC /* EntryCell.m in Sources */,
 				F1731B63140774860050D6AC /* AlignedStyle2Cell.m in Sources */,
@@ -2461,6 +2454,11 @@
 				F1D4B22B140CD6E900CD2224 /* TransferCategory.m in Sources */,
 				F1D4B22E140CDF6D00CD2224 /* ParticipantSortViewController.m in Sources */,
 				F1D4B245140D157000CD2224 /* Participant.m in Sources */,
+				F1D4B255140E0B4300CD2224 /* City.m in Sources */,
+				F1D4B258140E0B6100CD2224 /* Currency.m in Sources */,
+				F1D4B25B140E0BA600CD2224 /* Type.m in Sources */,
+				F1567972140E0F0A008A8A33 /* Country.m in Sources */,
+				F1567975140E6BE6008A8A33 /* I18NSortCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2473,6 +2471,14 @@
 				F14B373113E68B5F00351641 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1509275140E7DE6009C5AB9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1509276140E7DE6009C5AB9 /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		F1CD784013BA405B00D42AA3 /* MainWindow.xib */ = {
@@ -2488,14 +2494,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F1D4B24B140D394F00CD2224 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		F1F8FAB913DC20E8009BB4D3 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1F8FABA13DC20E8009BB4D3 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -266,7 +266,7 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_amountIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount currency:self.nmEntry.currency travel:self.travel target:self selector:@selector(selectAmount:)]; 
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withDecimals:2 currency:self.nmEntry.currency travel:self.travel target:self selector:@selector(selectAmount:)]; 
         numberEditViewController.title = NSLocalizedString(@"Amount", @"controller title amount");
         [self.navigationController pushViewController:numberEditViewController animated:YES];
         [numberEditViewController release]; 
@@ -291,6 +291,7 @@ static NSIndexPath *_dateIndexPath;
                                                                                                         withSelectedObjects:[NSArray arrayWithObjects: self.nmEntry.currency, nil] 
                                                                                                                      target:self
                                                                                                                      action:@selector(selectCurrency:)];
+        selectViewController.title = NSLocalizedString(@"Currency", @"controller title");
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
         
@@ -303,13 +304,8 @@ static NSIndexPath *_dateIndexPath;
 
     } else if ([indexPath isEqual:_typeIndexPath]) {
         
-        NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-        _fetchRequest.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext: [self.travel managedObjectContext]];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]]; 
-        
         TypeViewController *selectViewController = [[TypeViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
                                                                                        withMultiSelection:NO
-                                                                                         withFetchRequest:_fetchRequest
                                                                                       withSelectedObjects:[NSArray arrayWithObjects: self.nmEntry.type ,nil] 
                                                                                                    target:self
                                                                                                    action:@selector(selectType:)];

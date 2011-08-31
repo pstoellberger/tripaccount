@@ -11,6 +11,7 @@
 
 @interface Travel (OpenClose)
 
+@property (nonatomic, readonly) NSString *totalCostLabel;
 @property (nonatomic, readonly) NSString *location;
 @property (nonatomic, readonly) NSArray *sortedEntries;
 @property (nonatomic, readonly) NSArray *sortedCurrencies;

@@ -30,7 +30,9 @@
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Currency *currency;
 
-- (id)initWithNumber:(NSNumber *)startNumber currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector;
+@property (nonatomic) int decimals;
+
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector;
 - (void)done;
 - (void)refreshConversion;
 

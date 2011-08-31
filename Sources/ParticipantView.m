@@ -28,7 +28,7 @@ static UIImage *moreImagesImage;
 
 + (UIImage *)moreImagesImage {
     if (!moreImagesImage) {
-        moreImagesImage = [UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"moreImages" ofType:@"png"]]];
+        moreImagesImage = [[UIImage imageWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"moreImages" ofType:@"png"]]] retain];
     }
     return moreImagesImage;
 }

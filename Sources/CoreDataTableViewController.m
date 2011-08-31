@@ -217,13 +217,7 @@
     for (NSString *component in components) {
         returnValue = [returnValue valueForKey:component];
     }
-    
-    if ([returnValue isKindOfClass:[NSString class]]) {
-        //return NSLo calizedString(returnValue, returnValue);
-        return returnValue;
-    } else {
-        return returnValue;
-    }
+    return returnValue;
 }
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject

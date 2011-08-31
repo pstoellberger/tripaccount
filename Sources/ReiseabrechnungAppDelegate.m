@@ -179,9 +179,15 @@
         NSString *typesPlistPath = [bundle pathForResource:@"types" ofType:@"plist"];
         NSArray *staticTypeNames = [[NSDictionary dictionaryWithContentsOfFile:typesPlistPath] valueForKey:@"types"];
         
-        for (NSString *staticTypeName in staticTypeNames) {
+        for (NSDictionary *staticTypeNameDict in staticTypeNames) {
             Type *_type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:self.managedObjectContext];
-            _type.name = staticTypeName;
+            
+            for (NSString *key in [staticTypeNameDict keyEnumerator]) {
+                SEL setter = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [key substringFromIndex:1], nil]);
+                if ([_type respondsToSelector:setter]) {
+                    [_type performSelector:setter withObject:[staticTypeNameDict objectForKey:key]];
+                }
+            }
             
             if ([_type.name isEqualToString:@"Other"]) {
                 _defaultType = _type;

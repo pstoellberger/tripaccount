@@ -251,6 +251,7 @@ static NSIndexPath *_currenciesIndexPath;
                                                                                                                      action:@selector(selectCountry:)];
         selectViewController.imageKey = @"image";
         selectViewController.searchKey = @"name";
+        selectViewController.title = NSLocalizedString(@"Country", "controller title");
         
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
@@ -258,7 +259,7 @@ static NSIndexPath *_currenciesIndexPath;
     } else if ([indexPath isEqual:_cityIndexPath]) {
         
         TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.city target:self selector:@selector(selectCity:)]; 
-        textEditViewController.title = NSLocalizedString(@"City", @"edit city title");
+        textEditViewController.title = NSLocalizedString(@"City/State", @"edit city title");
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];            
         
@@ -285,6 +286,7 @@ static NSIndexPath *_currenciesIndexPath;
                                                                                                                      target:self
                                                                                                                      action:@selector(selectCurrencies:)];
         selectViewController.searchKey = @"name";
+        selectViewController.title = NSLocalizedString(@"Currencies", "controller title");
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
     }
@@ -495,7 +497,7 @@ static NSIndexPath *_currenciesIndexPath;
     
     _viewAppeared = YES;
     
-    NSString *text = NSLocalizedString(@"Enter the currencies you want to use for this travel.", @"help bubble currencies enter");
+    NSString *text = NSLocalizedString(@"help currencies", @"help bubble currencies enter");
     HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(240, 192, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
     [UIFactory addHelpViewToView:helpView toView:self.view];
     [helpView release];

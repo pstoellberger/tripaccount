@@ -2,8 +2,8 @@
 //  Type.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 02/08/2011.
-//  Copyright (c) 2011 Martin Maier. All rights reserved.
+//  Created by Martin Maier on 31/08/2011.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Type.h"
@@ -14,6 +14,7 @@
 @implementation Type
 @dynamic builtIn;
 @dynamic name;
+@dynamic name_de;
 @dynamic entries;
 @dynamic defaults;
 

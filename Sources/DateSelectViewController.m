@@ -22,7 +22,6 @@
         _target = target;
         _date = [[date copy] retain];
         
-        _timeDescriptionLabel.text = NSLocalizedString(@"Specifiy time", @"specify time label");
     }
     return self;
 }
@@ -66,7 +65,10 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
+    _timeDescriptionLabel.text = NSLocalizedString(@"Specify time", @"specify time label");
 
     [_picker addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventValueChanged];
     [_picker setDate:_date animated:NO];

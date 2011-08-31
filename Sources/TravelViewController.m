@@ -125,8 +125,7 @@
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
-    picker.navigationBar.barStyle = UIBarStyleBlack;
-    picker.navigationBar.tintColor = [UIFactory defaultTintColor];
+    picker.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
     
     [self presentModalViewController:picker animated:YES];
@@ -222,7 +221,7 @@
     }
     
     if ([noMailParticipants count] > 0) {
-        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"There are no email addresses available for the participant%@ %@", @"alert no mail addresses"), ([noMailParticipants count]==1)?@"":@"s", [self prettyPrintListOfStrings:noMailParticipants]];
+        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"There are no email addresses available for the participant%@ %@", @"alert no mail addresses"), ([noMailParticipants count]==1)?@"":NSLocalizedString(@"plural character",@"plural character"), [self prettyPrintListOfStrings:noMailParticipants]];
         self.mailSendAlertView.message = message;
         [self.mailSendAlertView show];
     } else {
@@ -265,8 +264,7 @@
 - (void)sendSummaryMail {
     
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
-    
-    controller.navigationBar.tintColor = [UIFactory defaultTintColor];
+    controller.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObject:self.travel forKey:@"travel"];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -274,6 +272,26 @@
     if ([userDefaults boolForKey:@"includeImages"]) {
         [dictionary setValue:@"Yes" forKey:@"includeImages"];
     }
+    if ([self.travel.name length] > 0) {
+        [dictionary setValue:@"Yes" forKey:@"tripHasName"];
+    }
+    [dictionary setValue:NSLocalizedString(@"Expenses of trip", @"mail label") forKey:@"labelExpenses"];
+    [dictionary setValue:NSLocalizedString(@"to", @"mail label") forKey:@"labelTo"];
+    [dictionary setValue:NSLocalizedString(@"Payer", @"mail label") forKey:@"labelPayer"];
+    [dictionary setValue:NSLocalizedString(@"Type", @"mail label") forKey:@"labelType"];
+    [dictionary setValue:NSLocalizedString(@"Description", @"mail label") forKey:@"labelText"];
+    [dictionary setValue:NSLocalizedString(@"Amount", @"mail label") forKey:@"labelAmount"];
+    [dictionary setValue:NSLocalizedString(@"Date", @"mail label") forKey:@"labelDate"];
+    [dictionary setValue:NSLocalizedString(@"Receivers", @"mail label") forKey:@"labelReceivers"];
+    [dictionary setValue:NSLocalizedString(@"total costs", @"mail label") forKey:@"labelTotal"];
+    [dictionary setValue:NSLocalizedString(@"Summary", @"mail label") forKey:@"labelSummary"];
+    [dictionary setValue:NSLocalizedString(@"who owes", @"mail label") forKey:@"labelWhoOwes"];
+    [dictionary setValue:NSLocalizedString(@"how much", @"mail label") forKey:@"labelHowMuch"];
+    [dictionary setValue:NSLocalizedString(@"to whom", @"mail label") forKey:@"labelToWhom"];
+    [dictionary setValue:NSLocalizedString(@"already paid", @"mail label") forKey:@"labelAlreadyPaid"];
+    [dictionary setValue:NSLocalizedString(@"Yes", @"mail label") forKey:@"labelYes"];
+    [dictionary setValue:NSLocalizedString(@"No", @"mail label") forKey:@"labelNo"];
+    [dictionary setValue:NSLocalizedString(@"Currencies used for this trip:", @"mail label") forKey:@"labelCurrenciesUsed"];
     
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
     engine.matcher = [[[ICUTemplateMatcher alloc] initWithTemplateEngine:engine] autorelease];
@@ -415,7 +433,7 @@
     
     if (viewController == self.participantSortViewController && ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
         
-        NSString *text = NSLocalizedString(@"Add people on this trip here.", @"help bubble add travelers");
+        NSString *text = NSLocalizedString(@"help add people", @"help bubble add travelers");
         HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"traveler add"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
@@ -423,28 +441,28 @@
     } else if (viewController == self.entrySortViewController) {
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
-            NSString *text = NSLocalizedString(@"Add new expense entries here.", @"help bubble add expenses");
+            NSString *text = NSLocalizedString(@"help add entries", @"help bubble add expenses");
             HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
             [UIFactory addHelpViewToView:helpView toView:viewController.view];
             [helpView release];
         }
         
-        NSString *text = NSLocalizedString(@"Use buttons on top of the table to sort the expense entries.", @"help bubble sort buttons");
+        NSString *text = NSLocalizedString(@"help sort", @"help bubble sort buttons");
         HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, NAVIGATIONBAR_HEIGHT + ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
     } else if (viewController == self.summarySortViewController) {
         
-        NSString *text = NSLocalizedString(@"This button offers you action like sending the summary report email to the travelers. You can also fix or edit currency exchange rates here.", @"help bubble action button");
+        NSString *text = NSLocalizedString(@"help action", @"help bubble action button");
         HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"action button"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
-        text = NSLocalizedString(@"Find here the date of the last update of the currency exchange rates. Use the action above to update them now.", @"help bubble last updated toolbar");
+        text = NSLocalizedString(@"help rate updated", @"help bubble last updated toolbar");
         HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
         
-        text = NSLocalizedString(@"The travel was closed and can not be changed any more. Exchange rates used for this travel are fixed.", @"help bubble close travel");
+        text = NSLocalizedString(@"help closed travel", @"help bubble close travel");
         HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
