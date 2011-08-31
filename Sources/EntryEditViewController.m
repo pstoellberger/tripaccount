@@ -191,7 +191,7 @@ static NSIndexPath *_dateIndexPath;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         if (self.nmEntry.currency) {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", self.nmEntry.currency.name, self.nmEntry.currency.code];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", self.nmEntry.currency.nameI18N, self.nmEntry.currency.code];
         }
         
     } else if ([indexPath isEqual:_descriptionIndexPath]) {        
@@ -207,8 +207,8 @@ static NSIndexPath *_dateIndexPath;
         cell.textLabel.text = NSLocalizedString(@"Type", @"cell title type");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
-        if (self.nmEntry.type.name) {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.nmEntry.type.name];
+        if (self.nmEntry.type) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.nmEntry.type.nameI18N];
         }
 
     } else if ([indexPath isEqual:_receiverIndexPath]) {
@@ -282,7 +282,7 @@ static NSIndexPath *_dateIndexPath;
 
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: [self.travel managedObjectContext]];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:[Currency sortAttributeI18N] ascending:YES selector:@selector(caseInsensitiveCompare:)]];
         _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"travels contains %@", self.travel];
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]

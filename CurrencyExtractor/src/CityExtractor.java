@@ -2,6 +2,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,7 +28,7 @@ public class CityExtractor {
 		findCities(null);
 	}
 
-	public static void findCities(List<Country> countries) throws Exception {
+	public static void findCities(Set<Country> countries) throws Exception {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpget = new HttpGet("http://en.wikipedia.org/wiki/List_of_cities_by_latitude");
@@ -86,7 +87,7 @@ public class CityExtractor {
 
 					boolean countryFound = false;
 					for (Country country : countries) {
-						if (country.getName().equalsIgnoreCase(city.getCountry())) {
+						if (country.getSortName().equalsIgnoreCase(city.getCountry())) {
 							country.getCities().add(city);
 							countryFound = true;
 							break;
@@ -94,7 +95,7 @@ public class CityExtractor {
 					}
 					if (!countryFound && countryNameMap.keySet().contains(city.getCountry())) {
 						for (Country country : countries) {
-							if (country.getName().equalsIgnoreCase(countryNameMap.get(city.getCountry()))) {
+							if (country.getSortName().equalsIgnoreCase(countryNameMap.get(city.getCountry()))) {
 								country.getCities().add(city);
 								countryFound = true;
 								break;

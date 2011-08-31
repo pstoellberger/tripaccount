@@ -158,7 +158,7 @@ static NSIndexPath *_currenciesIndexPath;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"Country", @"country cell caption");
         if (self.country) {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.country.name];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.country.nameI18N];
             if (self.country.image) {
                 NSString *pathCountryPlist =[[NSBundle mainBundle] pathForResource:self.country.image ofType:@""];
                 cell.imageView.image = [UIImage imageWithContentsOfFile:pathCountryPlist];                       
@@ -189,7 +189,7 @@ static NSIndexPath *_currenciesIndexPath;
         const unichar cr = '\n';
         NSString *singleCR = [NSString stringWithCharacters:&cr length:1];
         for (Currency *currency in self.currencies) {
-            currenciesString = [[currenciesString stringByAppendingString:currency.name] stringByAppendingString:singleCR];
+            currenciesString = [[currenciesString stringByAppendingString:currency.nameI18N] stringByAppendingString:singleCR];
         }
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n", [currenciesString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
@@ -239,7 +239,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: _context];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:[Country sortAttributeI18N] ascending:YES]];
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
                                                                                                          withMultiSelection:NO
@@ -250,7 +250,8 @@ static NSIndexPath *_currenciesIndexPath;
                                                                                                                      target:self
                                                                                                                      action:@selector(selectCountry:)];
         selectViewController.imageKey = @"image";
-        selectViewController.searchKey = @"name";
+        selectViewController.titleKey = [Country sortAttributeI18N];
+        selectViewController.searchKey = [Country sortAttributeI18N];
         selectViewController.title = NSLocalizedString(@"Country", "controller title");
         
         [self.navigationController pushViewController:selectViewController animated:YES];
@@ -275,7 +276,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         NSFetchRequest *_fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
         _fetchRequest.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
-        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]; 
+        _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:[Currency sortAttributeI18N] ascending:YES]]; 
         
         GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:_context
                                                                                                          withMultiSelection:YES
@@ -285,7 +286,8 @@ static NSIndexPath *_currenciesIndexPath;
                                                                                                         withSelectedObjects:self.currencies
                                                                                                                      target:self
                                                                                                                      action:@selector(selectCurrencies:)];
-        selectViewController.searchKey = @"name";
+        selectViewController.searchKey = [Currency sortAttributeI18N];
+        selectViewController.titleKey = [Currency sortAttributeI18N];
         selectViewController.title = NSLocalizedString(@"Currencies", "controller title");
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
@@ -359,7 +361,7 @@ static NSIndexPath *_currenciesIndexPath;
         if (!self.country && [newName length] > 0) {
             NSFetchRequest *req = [[NSFetchRequest alloc] init];
             req.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: _context];
-            req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+            req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:[Country sortAttributeI18N] ascending:YES]];
             NSArray *countrySet = [_context executeFetchRequest:req error:nil];
             [req release];
             

@@ -13,7 +13,7 @@
 
 - (NSString *)uppercaseFirstLetterOfName {
     [self willAccessValueForKey:@"uppercaseFirstLetterOfName"];
-    NSString *aString = [[self valueForKey:@"name"] uppercaseString];
+    NSString *aString = [[self valueForKey:@"nameI18N"] uppercaseString];
     NSString *stringToReturn = [aString substringWithRange:[aString rangeOfComposedCharacterSequenceAtIndex:0]];
     [self didAccessValueForKey:@"uppercaseFirstLetterOfName"];
     return stringToReturn;
@@ -25,7 +25,7 @@
 
 - (NSString *)uppercaseFirstLetterOfName {
     [self willAccessValueForKey:@"uppercaseFirstLetterOfName"];
-    NSString *aString = [[self valueForKey:@"name"] uppercaseString];
+    NSString *aString = [[self valueForKey:@"nameI18N"] uppercaseString];
     NSString *stringToReturn = [aString substringWithRange:[aString rangeOfComposedCharacterSequenceAtIndex:0]];
     [self didAccessValueForKey:@"uppercaseFirstLetterOfName"];
     return stringToReturn;

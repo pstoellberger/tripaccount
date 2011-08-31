@@ -79,6 +79,7 @@
         for (NSDictionary *countryItem in countries) {
             Country *_country = [NSEntityDescription insertNewObjectForEntityForName:@"Country" inManagedObjectContext:self.managedObjectContext];
             _country.name = [countryItem valueForKey:@"name"];
+            _country.name_de = [countryItem valueForKey:@"name_de"];
             _country.image = [countryItem valueForKey:@"image"];
             
             NSString *countryId = [NSString stringWithFormat:@"%@", [countryItem valueForKey:@"id"]];
@@ -112,6 +113,7 @@
             }
             _currency.code = currencyIsoCode;
             _currency.name = [[currencyItem valueForKey:@"name"] capitalizedString];
+            _currency.name_de = [[currencyItem valueForKey:@"name_de"] capitalizedString];
             _currency.digits = [currencyItem valueForKey:@"digits"];
             
             NSArray *countriesForCurrency = [currencyItem valueForKey:@"countries"];

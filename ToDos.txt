@@ -2,12 +2,8 @@ Reiseabrechnung ToDos:
 
 Technical:
 - Info
-- Mail layout
-- Person edit
-- help bubbles
 
 Non technical:
 - Localisation
-- Name finding
 - Video
 - Screenshots

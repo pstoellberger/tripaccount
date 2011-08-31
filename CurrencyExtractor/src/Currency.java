@@ -4,6 +4,7 @@ import java.util.List;
 public class Currency implements Comparable<Currency> {
 
 	private String name;
+	private String nameDe;
 	private String isoCode;
 	private List<Country> countries = new ArrayList<Country>();
 	private int numberOfDigitsAfterSep;
@@ -15,6 +16,14 @@ public class Currency implements Comparable<Currency> {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getNameDe() {
+		return nameDe;
+	}
+
+	public void setNameDe(String nameDe) {
+		this.nameDe = nameDe;
 	}
 
 	public String getIsoCode() {

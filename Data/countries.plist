@@ -7,6 +7,10 @@
 <dict>
 <key>name</key>
 <string>Afghanistan</string>
+<key>name_de</key>
+<string>Afghanistan</string>
+<key>sortName</key>
+<string>Afghanistan</string>
 <key>id</key>
 <integer>2</integer>
 <key>image</key>
@@ -34,6 +38,10 @@
 <dict>
 <key>name</key>
 <string>Albania</string>
+<key>name_de</key>
+<string>Albanien</string>
+<key>sortName</key>
+<string>Albania</string>
 <key>id</key>
 <integer>4</integer>
 <key>image</key>
@@ -53,6 +61,10 @@
 <dict>
 <key>name</key>
 <string>Alderney</string>
+<key>name_de</key>
+<string>Alderney</string>
+<key>sortName</key>
+<string>Alderney</string>
 <key>id</key>
 <integer>5</integer>
 <key>image</key>
@@ -63,6 +75,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Algeria</string>
+<key>name_de</key>
+<string>Algerien</string>
+<key>sortName</key>
 <string>Algeria</string>
 <key>id</key>
 <integer>6</integer>
@@ -83,6 +99,10 @@
 <dict>
 <key>name</key>
 <string>Andorra</string>
+<key>name_de</key>
+<string>Andorra</string>
+<key>sortName</key>
+<string>Andorra</string>
 <key>id</key>
 <integer>7</integer>
 <key>image</key>
@@ -101,6 +121,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Angola</string>
+<key>name_de</key>
+<string>Angola</string>
+<key>sortName</key>
 <string>Angola</string>
 <key>id</key>
 <integer>8</integer>
@@ -129,6 +153,10 @@
 <dict>
 <key>name</key>
 <string>Anguilla</string>
+<key>name_de</key>
+<string>Anguilla</string>
+<key>sortName</key>
+<string>Anguilla</string>
 <key>id</key>
 <integer>9</integer>
 <key>image</key>
@@ -139,6 +167,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Antigua and Barbuda</string>
+<key>name_de</key>
+<string>Antigua und Barbuda</string>
+<key>sortName</key>
 <string>Antigua and Barbuda</string>
 <key>id</key>
 <integer>10</integer>
@@ -158,6 +190,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Argentina</string>
+<key>name_de</key>
+<string>Argentinien</string>
+<key>sortName</key>
 <string>Argentina</string>
 <key>id</key>
 <integer>11</integer>
@@ -266,6 +302,10 @@
 <dict>
 <key>name</key>
 <string>Armenia</string>
+<key>name_de</key>
+<string>Armenien</string>
+<key>sortName</key>
+<string>Armenia</string>
 <key>id</key>
 <integer>12</integer>
 <key>image</key>
@@ -285,6 +325,10 @@
 <dict>
 <key>name</key>
 <string>Aruba</string>
+<key>name_de</key>
+<string>Aruba</string>
+<key>sortName</key>
+<string>Aruba</string>
 <key>id</key>
 <integer>13</integer>
 <key>image</key>
@@ -295,6 +339,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Australia</string>
+<key>name_de</key>
+<string>Australien</string>
+<key>sortName</key>
 <string>Australia</string>
 <key>id</key>
 <integer>15</integer>
@@ -419,6 +467,10 @@
 <dict>
 <key>name</key>
 <string>Austria</string>
+<key>name_de</key>
+<string>Österreich</string>
+<key>sortName</key>
+<string>Austria</string>
 <key>id</key>
 <integer>16</integer>
 <key>image</key>
@@ -438,6 +490,10 @@
 <dict>
 <key>name</key>
 <string>Azerbaijan</string>
+<key>name_de</key>
+<string>Aserbaidschan</string>
+<key>sortName</key>
+<string>Azerbaijan</string>
 <key>id</key>
 <integer>17</integer>
 <key>image</key>
@@ -456,6 +512,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Bahamas</string>
+<key>name_de</key>
+<string>Bahamas</string>
+<key>sortName</key>
 <string>Bahamas, The</string>
 <key>id</key>
 <integer>18</integer>
@@ -476,6 +536,10 @@
 <dict>
 <key>name</key>
 <string>Bahrain</string>
+<key>name_de</key>
+<string>Bahrain</string>
+<key>sortName</key>
+<string>Bahrain</string>
 <key>id</key>
 <integer>19</integer>
 <key>image</key>
@@ -494,6 +558,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Bangladesh</string>
+<key>name_de</key>
+<string>Bangladesch</string>
+<key>sortName</key>
 <string>Bangladesh</string>
 <key>id</key>
 <integer>20</integer>
@@ -522,6 +590,10 @@
 <dict>
 <key>name</key>
 <string>Barbados</string>
+<key>name_de</key>
+<string>Barbados</string>
+<key>sortName</key>
+<string>Barbados</string>
 <key>id</key>
 <integer>21</integer>
 <key>image</key>
@@ -541,6 +613,10 @@
 <dict>
 <key>name</key>
 <string>Belarus</string>
+<key>name_de</key>
+<string>Weißrussland</string>
+<key>sortName</key>
+<string>Belarus</string>
 <key>id</key>
 <integer>22</integer>
 <key>image</key>
@@ -559,6 +635,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Belgium</string>
+<key>name_de</key>
+<string>Belgien</string>
+<key>sortName</key>
 <string>Belgium</string>
 <key>id</key>
 <integer>23</integer>
@@ -595,6 +675,10 @@
 <dict>
 <key>name</key>
 <string>Belize</string>
+<key>name_de</key>
+<string>Belize</string>
+<key>sortName</key>
+<string>Belize</string>
 <key>id</key>
 <integer>24</integer>
 <key>image</key>
@@ -621,6 +705,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Benin</string>
+<key>name_de</key>
+<string>Benin</string>
+<key>sortName</key>
 <string>Benin</string>
 <key>id</key>
 <integer>25</integer>
@@ -649,6 +737,10 @@
 <dict>
 <key>name</key>
 <string>Bermuda</string>
+<key>name_de</key>
+<string>Bermuda</string>
+<key>sortName</key>
+<string>Bermuda</string>
 <key>id</key>
 <integer>26</integer>
 <key>image</key>
@@ -668,6 +760,10 @@
 <dict>
 <key>name</key>
 <string>Bhutan</string>
+<key>name_de</key>
+<string>Bhutan</string>
+<key>sortName</key>
+<string>Bhutan</string>
 <key>id</key>
 <integer>27</integer>
 <key>image</key>
@@ -686,6 +782,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Bolivia</string>
+<key>name_de</key>
+<string>Bolivien</string>
+<key>sortName</key>
 <string>Bolivia</string>
 <key>id</key>
 <integer>28</integer>
@@ -722,6 +822,10 @@
 <dict>
 <key>name</key>
 <string>Bosnia and Herzegovina</string>
+<key>name_de</key>
+<string>Bosnien und Herzegowina</string>
+<key>sortName</key>
+<string>Bosnia and Herzegovina</string>
 <key>id</key>
 <integer>30</integer>
 <key>image</key>
@@ -740,6 +844,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Botswana</string>
+<key>name_de</key>
+<string>Botsuana</string>
+<key>sortName</key>
 <string>Botswana</string>
 <key>id</key>
 <integer>31</integer>
@@ -767,6 +875,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Brazil</string>
+<key>name_de</key>
+<string>Brasilien</string>
+<key>sortName</key>
 <string>Brazil</string>
 <key>id</key>
 <integer>32</integer>
@@ -939,6 +1051,10 @@
 <dict>
 <key>name</key>
 <string>British Indian Ocean Territory</string>
+<key>name_de</key>
+<string>Britisches Territorium im Indischen Ozean</string>
+<key>sortName</key>
+<string>British Indian Ocean Territory</string>
 <key>id</key>
 <integer>33</integer>
 <key>image</key>
@@ -950,6 +1066,10 @@
 <dict>
 <key>name</key>
 <string>British Virgin Islands</string>
+<key>name_de</key>
+<string>Britische Jungferninseln</string>
+<key>sortName</key>
+<string>British Virgin Islands</string>
 <key>id</key>
 <integer>34</integer>
 <key>image</key>
@@ -960,6 +1080,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Brunei</string>
+<key>name_de</key>
+<string>Brunei</string>
+<key>sortName</key>
 <string>Brunei</string>
 <key>id</key>
 <integer>35</integer>
@@ -980,6 +1104,10 @@
 <dict>
 <key>name</key>
 <string>Bulgaria</string>
+<key>name_de</key>
+<string>Bulgarien</string>
+<key>sortName</key>
+<string>Bulgaria</string>
 <key>id</key>
 <integer>36</integer>
 <key>image</key>
@@ -998,6 +1126,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Burkina Faso</string>
+<key>name_de</key>
+<string>Burkina Faso</string>
+<key>sortName</key>
 <string>Burkina Faso</string>
 <key>id</key>
 <integer>37</integer>
@@ -1026,6 +1158,10 @@
 <dict>
 <key>name</key>
 <string>Burma</string>
+<key>name_de</key>
+<string>Myanmar</string>
+<key>sortName</key>
+<string>Burma</string>
 <key>id</key>
 <integer>38</integer>
 <key>image</key>
@@ -1053,6 +1189,10 @@
 <dict>
 <key>name</key>
 <string>Burundi</string>
+<key>name_de</key>
+<string>Burundi</string>
+<key>sortName</key>
+<string>Burundi</string>
 <key>id</key>
 <integer>39</integer>
 <key>image</key>
@@ -1072,6 +1212,10 @@
 <dict>
 <key>name</key>
 <string>Cambodia</string>
+<key>name_de</key>
+<string>Kambodscha</string>
+<key>sortName</key>
+<string>Cambodia</string>
 <key>id</key>
 <integer>40</integer>
 <key>image</key>
@@ -1090,6 +1234,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Cameroon</string>
+<key>name_de</key>
+<string>Kamerun</string>
+<key>sortName</key>
 <string>Cameroon</string>
 <key>id</key>
 <integer>41</integer>
@@ -1117,6 +1265,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Canada</string>
+<key>name_de</key>
+<string>Kanada</string>
+<key>sortName</key>
 <string>Canada</string>
 <key>id</key>
 <integer>42</integer>
@@ -1377,6 +1529,10 @@
 <dict>
 <key>name</key>
 <string>Cape Verde</string>
+<key>name_de</key>
+<string>Kap Verde</string>
+<key>sortName</key>
+<string>Cape Verde</string>
 <key>id</key>
 <integer>43</integer>
 <key>image</key>
@@ -1395,6 +1551,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Cayman Islands</string>
+<key>name_de</key>
+<string>Kaimaninseln</string>
+<key>sortName</key>
 <string>Cayman Islands</string>
 <key>id</key>
 <integer>44</integer>
@@ -1415,6 +1575,10 @@
 <dict>
 <key>name</key>
 <string>Central African Republic</string>
+<key>name_de</key>
+<string>Zentralafrikanische Republik</string>
+<key>sortName</key>
+<string>Central African Republic</string>
 <key>id</key>
 <integer>45</integer>
 <key>image</key>
@@ -1433,6 +1597,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Chad</string>
+<key>name_de</key>
+<string>Tschad</string>
+<key>sortName</key>
 <string>Chad</string>
 <key>id</key>
 <integer>46</integer>
@@ -1460,6 +1628,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Chile</string>
+<key>name_de</key>
+<string>Chile</string>
+<key>sortName</key>
 <string>Chile</string>
 <key>id</key>
 <integer>47</integer>
@@ -1575,6 +1747,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>People's Republic of China</string>
+<key>name_de</key>
+<string>Volksrepublik China</string>
+<key>sortName</key>
 <string>China, People's Republic of</string>
 <key>id</key>
 <integer>48</integer>
@@ -1707,6 +1883,10 @@
 <dict>
 <key>name</key>
 <string>Colombia</string>
+<key>name_de</key>
+<string>Kolumbien</string>
+<key>sortName</key>
+<string>Colombia</string>
 <key>id</key>
 <integer>50</integer>
 <key>image</key>
@@ -1750,6 +1930,10 @@
 <dict>
 <key>name</key>
 <string>Comoros</string>
+<key>name_de</key>
+<string>Komoren</string>
+<key>sortName</key>
+<string>Comoros</string>
 <key>id</key>
 <integer>51</integer>
 <key>image</key>
@@ -1768,6 +1952,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Republic of the Congo</string>
+<key>name_de</key>
+<string>Republik Kongo</string>
+<key>sortName</key>
 <string>Congo, Republic of the</string>
 <key>id</key>
 <integer>53</integer>
@@ -1788,6 +1976,10 @@
 <dict>
 <key>name</key>
 <string>Cook Islands</string>
+<key>name_de</key>
+<string>Cook-Inseln</string>
+<key>sortName</key>
+<string>Cook Islands</string>
 <key>id</key>
 <integer>54</integer>
 <key>image</key>
@@ -1798,6 +1990,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Costa Rica</string>
+<key>name_de</key>
+<string>Costa Rica</string>
+<key>sortName</key>
 <string>Costa Rica</string>
 <key>id</key>
 <integer>55</integer>
@@ -1850,10 +2046,14 @@
 <dict>
 <key>name</key>
 <string>Croatia</string>
+<key>name_de</key>
+<string>Kroatien</string>
+<key>sortName</key>
+<string>Croatia</string>
 <key>id</key>
-<integer>56</integer>
+<integer>57</integer>
 <key>image</key>
-<string>flag56.png</string>
+<string>flag57.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -1869,10 +2069,14 @@
 <dict>
 <key>name</key>
 <string>Cuba</string>
+<key>name_de</key>
+<string>Kuba</string>
+<key>sortName</key>
+<string>Cuba</string>
 <key>id</key>
-<integer>57</integer>
+<integer>58</integer>
 <key>image</key>
-<string>flag57.png</string>
+<string>flag58.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -1896,10 +2100,14 @@
 <dict>
 <key>name</key>
 <string>Cyprus</string>
+<key>name_de</key>
+<string>Zypern</string>
+<key>sortName</key>
+<string>Cyprus</string>
 <key>id</key>
-<integer>59</integer>
+<integer>60</integer>
 <key>image</key>
-<string>flag59.png</string>
+<string>flag60.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -1915,10 +2123,14 @@
 <dict>
 <key>name</key>
 <string>Czech Republic</string>
+<key>name_de</key>
+<string>Tschechien</string>
+<key>sortName</key>
+<string>Czech Republic</string>
 <key>id</key>
-<integer>60</integer>
+<integer>61</integer>
 <key>image</key>
-<string>flag60.png</string>
+<string>flag61.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -1934,10 +2146,14 @@
 <dict>
 <key>name</key>
 <string>Côte d'Ivoire</string>
+<key>name_de</key>
+<string>Elfenbein</string>
+<key>sortName</key>
+<string>Côte d'Ivoire</string>
 <key>id</key>
-<integer>61</integer>
+<integer>56</integer>
 <key>image</key>
-<string>flag61.png</string>
+<string>flag56.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -1960,6 +2176,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Denmark</string>
+<key>name_de</key>
+<string>Dänemark</string>
+<key>sortName</key>
 <string>Denmark</string>
 <key>id</key>
 <integer>62</integer>
@@ -2012,6 +2232,10 @@
 <dict>
 <key>name</key>
 <string>Djibouti</string>
+<key>name_de</key>
+<string>Dschibuti</string>
+<key>sortName</key>
+<string>Djibouti</string>
 <key>id</key>
 <integer>63</integer>
 <key>image</key>
@@ -2030,6 +2254,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Dominica</string>
+<key>name_de</key>
+<string>Dominica</string>
+<key>sortName</key>
 <string>Dominica</string>
 <key>id</key>
 <integer>64</integer>
@@ -2050,6 +2278,10 @@
 <dict>
 <key>name</key>
 <string>Dominican Republic</string>
+<key>name_de</key>
+<string>Dominikanische Republik</string>
+<key>sortName</key>
+<string>Dominican Republic</string>
 <key>id</key>
 <integer>65</integer>
 <key>image</key>
@@ -2069,6 +2301,10 @@
 <dict>
 <key>name</key>
 <string>East Timor</string>
+<key>name_de</key>
+<string>Osttimor</string>
+<key>sortName</key>
+<string>East Timor</string>
 <key>id</key>
 <integer>66</integer>
 <key>image</key>
@@ -2087,6 +2323,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Ecuador</string>
+<key>name_de</key>
+<string>Ecuador</string>
+<key>sortName</key>
 <string>Ecuador</string>
 <key>id</key>
 <integer>67</integer>
@@ -2114,6 +2354,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Egypt</string>
+<key>name_de</key>
+<string>Ägypten</string>
+<key>sortName</key>
 <string>Egypt</string>
 <key>id</key>
 <integer>68</integer>
@@ -2150,6 +2394,10 @@
 <dict>
 <key>name</key>
 <string>El Salvador</string>
+<key>name_de</key>
+<string>El Salvador</string>
+<key>sortName</key>
+<string>El Salvador</string>
 <key>id</key>
 <integer>69</integer>
 <key>image</key>
@@ -2168,6 +2416,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Equatorial Guinea</string>
+<key>name_de</key>
+<string>Äquatorialguinea</string>
+<key>sortName</key>
 <string>Equatorial Guinea</string>
 <key>id</key>
 <integer>70</integer>
@@ -2188,6 +2440,10 @@
 <dict>
 <key>name</key>
 <string>Eritrea</string>
+<key>name_de</key>
+<string>Eritrea</string>
+<key>sortName</key>
+<string>Eritrea</string>
 <key>id</key>
 <integer>71</integer>
 <key>image</key>
@@ -2206,6 +2462,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Estonia</string>
+<key>name_de</key>
+<string>Estland</string>
+<key>sortName</key>
 <string>Estonia</string>
 <key>id</key>
 <integer>72</integer>
@@ -2234,6 +2494,10 @@
 <dict>
 <key>name</key>
 <string>Ethiopia</string>
+<key>name_de</key>
+<string>Äthiopien</string>
+<key>sortName</key>
+<string>Ethiopia</string>
 <key>id</key>
 <integer>73</integer>
 <key>image</key>
@@ -2252,6 +2516,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Falkland Islands</string>
+<key>name_de</key>
+<string>Falkland-Inseln</string>
+<key>sortName</key>
 <string>Falkland Islands</string>
 <key>id</key>
 <integer>74</integer>
@@ -2272,6 +2540,10 @@
 <dict>
 <key>name</key>
 <string>Faroe Islands</string>
+<key>name_de</key>
+<string>Färöer-Inseln</string>
+<key>sortName</key>
+<string>Faroe Islands</string>
 <key>id</key>
 <integer>75</integer>
 <key>image</key>
@@ -2283,10 +2555,14 @@
 <dict>
 <key>name</key>
 <string>Federated States of Micronesia</string>
+<key>name_de</key>
+<string>Föderierte Staaten von Mikronesien</string>
+<key>sortName</key>
+<string>Federated States of Micronesia</string>
 <key>id</key>
-<integer>76</integer>
+<integer>139</integer>
 <key>image</key>
-<string>flag76.png</string>
+<string>flag139.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2302,10 +2578,14 @@
 <dict>
 <key>name</key>
 <string>Fiji</string>
+<key>name_de</key>
+<string>Fidschi</string>
+<key>sortName</key>
+<string>Fiji</string>
 <key>id</key>
-<integer>77</integer>
+<integer>76</integer>
 <key>image</key>
-<string>flag77.png</string>
+<string>flag76.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2321,10 +2601,14 @@
 <dict>
 <key>name</key>
 <string>Finland</string>
+<key>name_de</key>
+<string>Finnland</string>
+<key>sortName</key>
+<string>Finland</string>
 <key>id</key>
-<integer>78</integer>
+<integer>77</integer>
 <key>image</key>
-<string>flag78.png</string>
+<string>flag77.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2460,10 +2744,14 @@
 <dict>
 <key>name</key>
 <string>France</string>
+<key>name_de</key>
+<string>Frankreich</string>
+<key>sortName</key>
+<string>France</string>
 <key>id</key>
-<integer>79</integer>
+<integer>78</integer>
 <key>image</key>
-<string>flag79.png</string>
+<string>flag78.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2559,10 +2847,14 @@
 <dict>
 <key>name</key>
 <string>French Polynesia</string>
+<key>name_de</key>
+<string>Französisch-Polynesien</string>
+<key>sortName</key>
+<string>French Polynesia</string>
 <key>id</key>
-<integer>80</integer>
+<integer>79</integer>
 <key>image</key>
-<string>flag80.png</string>
+<string>flag79.png</string>
 <key>cities</key>
 <array>
 </array>
@@ -2570,10 +2862,14 @@
 <dict>
 <key>name</key>
 <string>Gabon</string>
+<key>name_de</key>
+<string>Gabun</string>
+<key>sortName</key>
+<string>Gabon</string>
 <key>id</key>
-<integer>81</integer>
+<integer>80</integer>
 <key>image</key>
-<string>flag81.png</string>
+<string>flag80.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2588,11 +2884,15 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Gambia</string>
+<key>name_de</key>
+<string>Gambia</string>
+<key>sortName</key>
 <string>Gambia, The</string>
 <key>id</key>
-<integer>82</integer>
+<integer>81</integer>
 <key>image</key>
-<string>flag82.png</string>
+<string>flag81.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2616,10 +2916,14 @@
 <dict>
 <key>name</key>
 <string>Georgia</string>
+<key>name_de</key>
+<string>Georgien</string>
+<key>sortName</key>
+<string>Georgia</string>
 <key>id</key>
-<integer>83</integer>
+<integer>82</integer>
 <key>image</key>
-<string>flag83.png</string>
+<string>flag82.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2651,10 +2955,14 @@
 <dict>
 <key>name</key>
 <string>Germany</string>
+<key>name_de</key>
+<string>Deutschland</string>
+<key>sortName</key>
+<string>Germany</string>
 <key>id</key>
-<integer>84</integer>
+<integer>83</integer>
 <key>image</key>
-<string>flag84.png</string>
+<string>flag83.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2710,10 +3018,14 @@
 <dict>
 <key>name</key>
 <string>Ghana</string>
+<key>name_de</key>
+<string>Ghana</string>
+<key>sortName</key>
+<string>Ghana</string>
 <key>id</key>
-<integer>85</integer>
+<integer>84</integer>
 <key>image</key>
-<string>flag85.png</string>
+<string>flag84.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2753,10 +3065,14 @@
 <dict>
 <key>name</key>
 <string>Gibraltar</string>
+<key>name_de</key>
+<string>Gibraltar</string>
+<key>sortName</key>
+<string>Gibraltar</string>
 <key>id</key>
-<integer>86</integer>
+<integer>85</integer>
 <key>image</key>
-<string>flag86.png</string>
+<string>flag85.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2772,10 +3088,14 @@
 <dict>
 <key>name</key>
 <string>Greece</string>
+<key>name_de</key>
+<string>Griechenland</string>
+<key>sortName</key>
+<string>Greece</string>
 <key>id</key>
-<integer>87</integer>
+<integer>86</integer>
 <key>image</key>
-<string>flag87.png</string>
+<string>flag86.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2815,10 +3135,14 @@
 <dict>
 <key>name</key>
 <string>Grenada</string>
+<key>name_de</key>
+<string>Grenada</string>
+<key>sortName</key>
+<string>Grenada</string>
 <key>id</key>
-<integer>88</integer>
+<integer>87</integer>
 <key>image</key>
-<string>flag88.png</string>
+<string>flag87.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2834,10 +3158,14 @@
 <dict>
 <key>name</key>
 <string>Guatemala</string>
+<key>name_de</key>
+<string>Guatemala</string>
+<key>sortName</key>
+<string>Guatemala</string>
 <key>id</key>
-<integer>89</integer>
+<integer>88</integer>
 <key>image</key>
-<string>flag89.png</string>
+<string>flag88.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2853,10 +3181,14 @@
 <dict>
 <key>name</key>
 <string>Guernsey</string>
+<key>name_de</key>
+<string>Guernsey</string>
+<key>sortName</key>
+<string>Guernsey</string>
 <key>id</key>
-<integer>90</integer>
+<integer>89</integer>
 <key>image</key>
-<string>flag90.png</string>
+<string>flag89.png</string>
 <key>cities</key>
 <array>
 </array>
@@ -2864,10 +3196,14 @@
 <dict>
 <key>name</key>
 <string>Guinea</string>
+<key>name_de</key>
+<string>Guinea</string>
+<key>sortName</key>
+<string>Guinea</string>
 <key>id</key>
-<integer>91</integer>
+<integer>90</integer>
 <key>image</key>
-<string>flag91.png</string>
+<string>flag90.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2891,10 +3227,14 @@
 <dict>
 <key>name</key>
 <string>Guinea-Bissau</string>
+<key>name_de</key>
+<string>Guinea-Bissau</string>
+<key>sortName</key>
+<string>Guinea-Bissau</string>
 <key>id</key>
-<integer>92</integer>
+<integer>91</integer>
 <key>image</key>
-<string>flag92.png</string>
+<string>flag91.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2910,10 +3250,14 @@
 <dict>
 <key>name</key>
 <string>Guyana</string>
+<key>name_de</key>
+<string>Guyana</string>
+<key>sortName</key>
+<string>Guyana</string>
 <key>id</key>
-<integer>93</integer>
+<integer>92</integer>
 <key>image</key>
-<string>flag93.png</string>
+<string>flag92.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2929,10 +3273,14 @@
 <dict>
 <key>name</key>
 <string>Haiti</string>
+<key>name_de</key>
+<string>Haiti</string>
+<key>sortName</key>
+<string>Haiti</string>
 <key>id</key>
-<integer>94</integer>
+<integer>93</integer>
 <key>image</key>
-<string>flag94.png</string>
+<string>flag93.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2948,10 +3296,14 @@
 <dict>
 <key>name</key>
 <string>Honduras</string>
+<key>name_de</key>
+<string>Honduras</string>
+<key>sortName</key>
+<string>Honduras</string>
 <key>id</key>
-<integer>95</integer>
+<integer>94</integer>
 <key>image</key>
-<string>flag95.png</string>
+<string>flag94.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2967,10 +3319,14 @@
 <dict>
 <key>name</key>
 <string>Hong Kong</string>
+<key>name_de</key>
+<string>Hongkong</string>
+<key>sortName</key>
+<string>Hong Kong</string>
 <key>id</key>
-<integer>96</integer>
+<integer>95</integer>
 <key>image</key>
-<string>flag96.png</string>
+<string>flag95.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -2986,10 +3342,14 @@
 <dict>
 <key>name</key>
 <string>Hungary</string>
+<key>name_de</key>
+<string>Ungarn</string>
+<key>sortName</key>
+<string>Hungary</string>
 <key>id</key>
-<integer>97</integer>
+<integer>96</integer>
 <key>image</key>
-<string>flag97.png</string>
+<string>flag96.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3005,10 +3365,14 @@
 <dict>
 <key>name</key>
 <string>Iceland</string>
+<key>name_de</key>
+<string>Island</string>
+<key>sortName</key>
+<string>Iceland</string>
 <key>id</key>
-<integer>98</integer>
+<integer>97</integer>
 <key>image</key>
-<string>flag98.png</string>
+<string>flag97.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3040,10 +3404,14 @@
 <dict>
 <key>name</key>
 <string>India</string>
+<key>name_de</key>
+<string>Indien</string>
+<key>sortName</key>
+<string>India</string>
 <key>id</key>
-<integer>99</integer>
+<integer>98</integer>
 <key>image</key>
-<string>flag99.png</string>
+<string>flag98.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3203,10 +3571,14 @@
 <dict>
 <key>name</key>
 <string>Indonesia</string>
+<key>name_de</key>
+<string>Indonesien</string>
+<key>sortName</key>
+<string>Indonesia</string>
 <key>id</key>
-<integer>100</integer>
+<integer>99</integer>
 <key>image</key>
-<string>flag100.png</string>
+<string>flag99.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3334,10 +3706,14 @@
 <dict>
 <key>name</key>
 <string>Iran</string>
+<key>name_de</key>
+<string>Iran</string>
+<key>sortName</key>
+<string>Iran</string>
 <key>id</key>
-<integer>101</integer>
+<integer>100</integer>
 <key>image</key>
-<string>flag101.png</string>
+<string>flag100.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3369,10 +3745,14 @@
 <dict>
 <key>name</key>
 <string>Iraq</string>
+<key>name_de</key>
+<string>Irak</string>
+<key>sortName</key>
+<string>Iraq</string>
 <key>id</key>
-<integer>102</integer>
+<integer>101</integer>
 <key>image</key>
-<string>flag102.png</string>
+<string>flag101.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3404,10 +3784,14 @@
 <dict>
 <key>name</key>
 <string>Ireland</string>
+<key>name_de</key>
+<string>Irland</string>
+<key>sortName</key>
+<string>Ireland</string>
 <key>id</key>
-<integer>103</integer>
+<integer>102</integer>
 <key>image</key>
-<string>flag103.png</string>
+<string>flag102.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3423,10 +3807,14 @@
 <dict>
 <key>name</key>
 <string>Isle of Man</string>
+<key>name_de</key>
+<string>Isle of Man</string>
+<key>sortName</key>
+<string>Isle of Man</string>
 <key>id</key>
-<integer>104</integer>
+<integer>103</integer>
 <key>image</key>
-<string>flag104.png</string>
+<string>flag103.png</string>
 <key>cities</key>
 <array>
 </array>
@@ -3434,10 +3822,14 @@
 <dict>
 <key>name</key>
 <string>Israel</string>
+<key>name_de</key>
+<string>Israel</string>
+<key>sortName</key>
+<string>Israel</string>
 <key>id</key>
-<integer>105</integer>
+<integer>104</integer>
 <key>image</key>
-<string>flag105.png</string>
+<string>flag104.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3469,10 +3861,14 @@
 <dict>
 <key>name</key>
 <string>Italy</string>
+<key>name_de</key>
+<string>Italien</string>
+<key>sortName</key>
+<string>Italy</string>
 <key>id</key>
-<integer>106</integer>
+<integer>105</integer>
 <key>image</key>
-<string>flag106.png</string>
+<string>flag105.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3560,10 +3956,14 @@
 <dict>
 <key>name</key>
 <string>Jamaica</string>
+<key>name_de</key>
+<string>Jamaika</string>
+<key>sortName</key>
+<string>Jamaica</string>
 <key>id</key>
-<integer>107</integer>
+<integer>106</integer>
 <key>image</key>
-<string>flag107.png</string>
+<string>flag106.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3579,10 +3979,14 @@
 <dict>
 <key>name</key>
 <string>Japan</string>
+<key>name_de</key>
+<string>Japan</string>
+<key>sortName</key>
+<string>Japan</string>
 <key>id</key>
-<integer>108</integer>
+<integer>107</integer>
 <key>image</key>
-<string>flag108.png</string>
+<string>flag107.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3678,10 +4082,14 @@
 <dict>
 <key>name</key>
 <string>Jersey</string>
+<key>name_de</key>
+<string>Jersey</string>
+<key>sortName</key>
+<string>Jersey</string>
 <key>id</key>
-<integer>109</integer>
+<integer>108</integer>
 <key>image</key>
-<string>flag109.png</string>
+<string>flag108.png</string>
 <key>cities</key>
 <array>
 </array>
@@ -3689,10 +4097,14 @@
 <dict>
 <key>name</key>
 <string>Jordan</string>
+<key>name_de</key>
+<string>Jordanien</string>
+<key>sortName</key>
+<string>Jordan</string>
 <key>id</key>
-<integer>110</integer>
+<integer>109</integer>
 <key>image</key>
-<string>flag110.png</string>
+<string>flag109.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3708,10 +4120,14 @@
 <dict>
 <key>name</key>
 <string>Kazakhstan</string>
+<key>name_de</key>
+<string>Kasachstan</string>
+<key>sortName</key>
+<string>Kazakhstan</string>
 <key>id</key>
-<integer>111</integer>
+<integer>110</integer>
 <key>image</key>
-<string>flag111.png</string>
+<string>flag110.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3735,10 +4151,14 @@
 <dict>
 <key>name</key>
 <string>Kenya</string>
+<key>name_de</key>
+<string>Kenia</string>
+<key>sortName</key>
+<string>Kenya</string>
 <key>id</key>
-<integer>112</integer>
+<integer>111</integer>
 <key>image</key>
-<string>flag112.png</string>
+<string>flag111.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3762,10 +4182,14 @@
 <dict>
 <key>name</key>
 <string>Kiribati</string>
+<key>name_de</key>
+<string>Kiribati</string>
+<key>sortName</key>
+<string>Kiribati</string>
 <key>id</key>
-<integer>113</integer>
+<integer>112</integer>
 <key>image</key>
-<string>flag113.png</string>
+<string>flag112.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3780,11 +4204,15 @@
 </dict>
 <dict>
 <key>name</key>
+<string>North Korea</string>
+<key>name_de</key>
+<string>Nordkorea</string>
+<key>sortName</key>
 <string>Korea, North</string>
 <key>id</key>
-<integer>114</integer>
+<integer>113</integer>
 <key>image</key>
-<string>flag114.png</string>
+<string>flag113.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3807,11 +4235,15 @@
 </dict>
 <dict>
 <key>name</key>
+<string>South Korea</string>
+<key>name_de</key>
+<string>Südkorea</string>
+<key>sortName</key>
 <string>Korea, South</string>
 <key>id</key>
-<integer>115</integer>
+<integer>114</integer>
 <key>image</key>
-<string>flag115.png</string>
+<string>flag114.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3835,10 +4267,14 @@
 <dict>
 <key>name</key>
 <string>Kosovo</string>
+<key>name_de</key>
+<string>Kosovo</string>
+<key>sortName</key>
+<string>Kosovo</string>
 <key>id</key>
-<integer>116</integer>
+<integer>115</integer>
 <key>image</key>
-<string>flag116.png</string>
+<string>flag115.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3854,10 +4290,14 @@
 <dict>
 <key>name</key>
 <string>Kuwait</string>
+<key>name_de</key>
+<string>Kuwait</string>
+<key>sortName</key>
+<string>Kuwait</string>
 <key>id</key>
-<integer>117</integer>
+<integer>116</integer>
 <key>image</key>
-<string>flag117.png</string>
+<string>flag116.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3873,10 +4313,14 @@
 <dict>
 <key>name</key>
 <string>Kyrgyzstan</string>
+<key>name_de</key>
+<string>Kirgisistan</string>
+<key>sortName</key>
+<string>Kyrgyzstan</string>
 <key>id</key>
-<integer>118</integer>
+<integer>117</integer>
 <key>image</key>
-<string>flag118.png</string>
+<string>flag117.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3892,10 +4336,14 @@
 <dict>
 <key>name</key>
 <string>Laos</string>
+<key>name_de</key>
+<string>Laos</string>
+<key>sortName</key>
+<string>Laos</string>
 <key>id</key>
-<integer>119</integer>
+<integer>118</integer>
 <key>image</key>
-<string>flag119.png</string>
+<string>flag118.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3911,10 +4359,14 @@
 <dict>
 <key>name</key>
 <string>Latvia</string>
+<key>name_de</key>
+<string>Lettland</string>
+<key>sortName</key>
+<string>Latvia</string>
 <key>id</key>
-<integer>120</integer>
+<integer>119</integer>
 <key>image</key>
-<string>flag120.png</string>
+<string>flag119.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3930,10 +4382,14 @@
 <dict>
 <key>name</key>
 <string>Lebanon</string>
+<key>name_de</key>
+<string>Libanon</string>
+<key>sortName</key>
+<string>Lebanon</string>
 <key>id</key>
-<integer>121</integer>
+<integer>120</integer>
 <key>image</key>
-<string>flag121.png</string>
+<string>flag120.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3949,10 +4405,14 @@
 <dict>
 <key>name</key>
 <string>Lesotho</string>
+<key>name_de</key>
+<string>Lesotho</string>
+<key>sortName</key>
+<string>Lesotho</string>
 <key>id</key>
-<integer>122</integer>
+<integer>121</integer>
 <key>image</key>
-<string>flag122.png</string>
+<string>flag121.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3968,10 +4428,14 @@
 <dict>
 <key>name</key>
 <string>Liberia</string>
+<key>name_de</key>
+<string>Liberia</string>
+<key>sortName</key>
+<string>Liberia</string>
 <key>id</key>
-<integer>123</integer>
+<integer>122</integer>
 <key>image</key>
-<string>flag123.png</string>
+<string>flag122.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -3987,10 +4451,14 @@
 <dict>
 <key>name</key>
 <string>Libya</string>
+<key>name_de</key>
+<string>Libyen</string>
+<key>sortName</key>
+<string>Libya</string>
 <key>id</key>
-<integer>124</integer>
+<integer>123</integer>
 <key>image</key>
-<string>flag124.png</string>
+<string>flag123.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4022,10 +4490,14 @@
 <dict>
 <key>name</key>
 <string>Liechtenstein</string>
+<key>name_de</key>
+<string>Liechtenstein</string>
+<key>sortName</key>
+<string>Liechtenstein</string>
 <key>id</key>
-<integer>125</integer>
+<integer>124</integer>
 <key>image</key>
-<string>flag125.png</string>
+<string>flag124.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4041,10 +4513,14 @@
 <dict>
 <key>name</key>
 <string>Lithuania</string>
+<key>name_de</key>
+<string>Litauen</string>
+<key>sortName</key>
+<string>Lithuania</string>
 <key>id</key>
-<integer>126</integer>
+<integer>125</integer>
 <key>image</key>
-<string>flag126.png</string>
+<string>flag125.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4060,10 +4536,14 @@
 <dict>
 <key>name</key>
 <string>Luxembourg</string>
+<key>name_de</key>
+<string>Luxemburg</string>
+<key>sortName</key>
+<string>Luxembourg</string>
 <key>id</key>
-<integer>127</integer>
+<integer>126</integer>
 <key>image</key>
-<string>flag127.png</string>
+<string>flag126.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4078,11 +4558,15 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Republic of Macedonia</string>
+<key>name_de</key>
+<string>Mazedonien</string>
+<key>sortName</key>
 <string>Macedonia, Republic of</string>
 <key>id</key>
-<integer>129</integer>
+<integer>128</integer>
 <key>image</key>
-<string>flag129.png</string>
+<string>flag128.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4098,10 +4582,14 @@
 <dict>
 <key>name</key>
 <string>Madagascar</string>
+<key>name_de</key>
+<string>Madagaskar</string>
+<key>sortName</key>
+<string>Madagascar</string>
 <key>id</key>
-<integer>130</integer>
+<integer>129</integer>
 <key>image</key>
-<string>flag130.png</string>
+<string>flag129.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4117,10 +4605,14 @@
 <dict>
 <key>name</key>
 <string>Malawi</string>
+<key>name_de</key>
+<string>Malawi</string>
+<key>sortName</key>
+<string>Malawi</string>
 <key>id</key>
-<integer>131</integer>
+<integer>130</integer>
 <key>image</key>
-<string>flag131.png</string>
+<string>flag130.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4144,10 +4636,14 @@
 <dict>
 <key>name</key>
 <string>Malaysia</string>
+<key>name_de</key>
+<string>Malaysia</string>
+<key>sortName</key>
+<string>Malaysia</string>
 <key>id</key>
-<integer>132</integer>
+<integer>131</integer>
 <key>image</key>
-<string>flag132.png</string>
+<string>flag131.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4227,10 +4723,14 @@
 <dict>
 <key>name</key>
 <string>Maldives</string>
+<key>name_de</key>
+<string>Malediven</string>
+<key>sortName</key>
+<string>Maldives</string>
 <key>id</key>
-<integer>133</integer>
+<integer>132</integer>
 <key>image</key>
-<string>flag133.png</string>
+<string>flag132.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4246,10 +4746,14 @@
 <dict>
 <key>name</key>
 <string>Mali</string>
+<key>name_de</key>
+<string>Mali</string>
+<key>sortName</key>
+<string>Mali</string>
 <key>id</key>
-<integer>134</integer>
+<integer>133</integer>
 <key>image</key>
-<string>flag134.png</string>
+<string>flag133.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4273,10 +4777,14 @@
 <dict>
 <key>name</key>
 <string>Malta</string>
+<key>name_de</key>
+<string>Malta</string>
+<key>sortName</key>
+<string>Malta</string>
 <key>id</key>
-<integer>135</integer>
+<integer>134</integer>
 <key>image</key>
-<string>flag135.png</string>
+<string>flag134.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4292,10 +4800,14 @@
 <dict>
 <key>name</key>
 <string>Marshall Islands</string>
+<key>name_de</key>
+<string>Marshallinseln</string>
+<key>sortName</key>
+<string>Marshall Islands</string>
 <key>id</key>
-<integer>136</integer>
+<integer>135</integer>
 <key>image</key>
-<string>flag136.png</string>
+<string>flag135.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4311,10 +4823,14 @@
 <dict>
 <key>name</key>
 <string>Mauritania</string>
+<key>name_de</key>
+<string>Mauretanien</string>
+<key>sortName</key>
+<string>Mauritania</string>
 <key>id</key>
-<integer>137</integer>
+<integer>136</integer>
 <key>image</key>
-<string>flag137.png</string>
+<string>flag136.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4330,10 +4846,14 @@
 <dict>
 <key>name</key>
 <string>Mauritius</string>
+<key>name_de</key>
+<string>Mauritius</string>
+<key>sortName</key>
+<string>Mauritius</string>
 <key>id</key>
-<integer>138</integer>
+<integer>137</integer>
 <key>image</key>
-<string>flag138.png</string>
+<string>flag137.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4349,10 +4869,14 @@
 <dict>
 <key>name</key>
 <string>Mexico</string>
+<key>name_de</key>
+<string>Mexiko</string>
+<key>sortName</key>
+<string>Mexico</string>
 <key>id</key>
-<integer>139</integer>
+<integer>138</integer>
 <key>image</key>
-<string>flag139.png</string>
+<string>flag138.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -4544,6 +5068,10 @@
 <dict>
 <key>name</key>
 <string>Moldova</string>
+<key>name_de</key>
+<string>Moldawien</string>
+<key>sortName</key>
+<string>Moldova</string>
 <key>id</key>
 <integer>140</integer>
 <key>image</key>
@@ -4571,6 +5099,10 @@
 <dict>
 <key>name</key>
 <string>Monaco</string>
+<key>name_de</key>
+<string>Monaco</string>
+<key>sortName</key>
+<string>Monaco</string>
 <key>id</key>
 <integer>141</integer>
 <key>image</key>
@@ -4589,6 +5121,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Mongolia</string>
+<key>name_de</key>
+<string>Mongolei</string>
+<key>sortName</key>
 <string>Mongolia</string>
 <key>id</key>
 <integer>142</integer>
@@ -4609,6 +5145,10 @@
 <dict>
 <key>name</key>
 <string>Montenegro</string>
+<key>name_de</key>
+<string>Montenegro</string>
+<key>sortName</key>
+<string>Montenegro</string>
 <key>id</key>
 <integer>143</integer>
 <key>image</key>
@@ -4628,6 +5168,10 @@
 <dict>
 <key>name</key>
 <string>Montserrat</string>
+<key>name_de</key>
+<string>Montserrat</string>
+<key>sortName</key>
+<string>Montserrat</string>
 <key>id</key>
 <integer>144</integer>
 <key>image</key>
@@ -4638,6 +5182,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Morocco</string>
+<key>name_de</key>
+<string>Marokko</string>
+<key>sortName</key>
 <string>Morocco</string>
 <key>id</key>
 <integer>145</integer>
@@ -4682,6 +5230,10 @@
 <dict>
 <key>name</key>
 <string>Mozambique</string>
+<key>name_de</key>
+<string>Mosambik</string>
+<key>sortName</key>
+<string>Mozambique</string>
 <key>id</key>
 <integer>146</integer>
 <key>image</key>
@@ -4700,6 +5252,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Namibia</string>
+<key>name_de</key>
+<string>Namibia</string>
+<key>sortName</key>
 <string>Namibia</string>
 <key>id</key>
 <integer>148</integer>
@@ -4720,6 +5276,10 @@
 <dict>
 <key>name</key>
 <string>Nauru</string>
+<key>name_de</key>
+<string>Nauru</string>
+<key>sortName</key>
+<string>Nauru</string>
 <key>id</key>
 <integer>149</integer>
 <key>image</key>
@@ -4739,6 +5299,10 @@
 <dict>
 <key>name</key>
 <string>Nepal</string>
+<key>name_de</key>
+<string>Nepal</string>
+<key>sortName</key>
+<string>Nepal</string>
 <key>id</key>
 <integer>150</integer>
 <key>image</key>
@@ -4757,6 +5321,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Netherlands</string>
+<key>name_de</key>
+<string>Niederlande</string>
+<key>sortName</key>
 <string>Netherlands</string>
 <key>id</key>
 <integer>151</integer>
@@ -4841,6 +5409,10 @@
 <dict>
 <key>name</key>
 <string>New Caledonia</string>
+<key>name_de</key>
+<string>Neukaledonien</string>
+<key>sortName</key>
+<string>New Caledonia</string>
 <key>id</key>
 <integer>152</integer>
 <key>image</key>
@@ -4851,6 +5423,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>New Zealand</string>
+<key>name_de</key>
+<string>Neuseeland</string>
+<key>sortName</key>
 <string>New Zealand</string>
 <key>id</key>
 <integer>153</integer>
@@ -4911,6 +5487,10 @@
 <dict>
 <key>name</key>
 <string>Nicaragua</string>
+<key>name_de</key>
+<string>Nicaragua</string>
+<key>sortName</key>
+<string>Nicaragua</string>
 <key>id</key>
 <integer>154</integer>
 <key>image</key>
@@ -4938,6 +5518,10 @@
 <dict>
 <key>name</key>
 <string>Niger</string>
+<key>name_de</key>
+<string>Niger</string>
+<key>sortName</key>
+<string>Niger</string>
 <key>id</key>
 <integer>155</integer>
 <key>image</key>
@@ -4956,6 +5540,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Nigeria</string>
+<key>name_de</key>
+<string>Nigeria</string>
+<key>sortName</key>
 <string>Nigeria</string>
 <key>id</key>
 <integer>156</integer>
@@ -5016,6 +5604,10 @@
 <dict>
 <key>name</key>
 <string>Niue</string>
+<key>name_de</key>
+<string>Niue</string>
+<key>sortName</key>
+<string>Niue</string>
 <key>id</key>
 <integer>157</integer>
 <key>image</key>
@@ -5027,6 +5619,10 @@
 <dict>
 <key>name</key>
 <string>Northern Cyprus</string>
+<key>name_de</key>
+<string>Nordzypern</string>
+<key>sortName</key>
+<string>Northern Cyprus</string>
 <key>id</key>
 <integer>158</integer>
 <key>image</key>
@@ -5037,6 +5633,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Norway</string>
+<key>name_de</key>
+<string>Norwegen</string>
+<key>sortName</key>
 <string>Norway</string>
 <key>id</key>
 <integer>159</integer>
@@ -5083,6 +5683,14 @@
 <real>18.934</real>
 <key>latitude</key>
 <real>69.667</real>
+</dict>
+<dict>
+<key>name</key>
+<string>Narvik</string>
+<key>longitude</key>
+<real>17.567</real>
+<key>latitude</key>
+<real>68.417</real>
 </dict>
 <dict>
 <key>name</key>
@@ -5153,6 +5761,10 @@
 <dict>
 <key>name</key>
 <string>Oman</string>
+<key>name_de</key>
+<string>Oman</string>
+<key>sortName</key>
+<string>Oman</string>
 <key>id</key>
 <integer>160</integer>
 <key>image</key>
@@ -5171,6 +5783,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Pakistan</string>
+<key>name_de</key>
+<string>Pakistan</string>
+<key>sortName</key>
 <string>Pakistan</string>
 <key>id</key>
 <integer>161</integer>
@@ -5207,6 +5823,10 @@
 <dict>
 <key>name</key>
 <string>Palau</string>
+<key>name_de</key>
+<string>Palau</string>
+<key>sortName</key>
+<string>Palau</string>
 <key>id</key>
 <integer>162</integer>
 <key>image</key>
@@ -5225,6 +5845,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Palestine</string>
+<key>name_de</key>
+<string>Palästina</string>
+<key>sortName</key>
 <string>Palestine</string>
 <key>id</key>
 <integer>163</integer>
@@ -5245,6 +5869,10 @@
 <dict>
 <key>name</key>
 <string>Panama</string>
+<key>name_de</key>
+<string>Panama</string>
+<key>sortName</key>
+<string>Panama</string>
 <key>id</key>
 <integer>164</integer>
 <key>image</key>
@@ -5263,6 +5891,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Papua New Guinea</string>
+<key>name_de</key>
+<string>Papua-Neuguinea</string>
+<key>sortName</key>
 <string>Papua New Guinea</string>
 <key>id</key>
 <integer>165</integer>
@@ -5283,6 +5915,10 @@
 <dict>
 <key>name</key>
 <string>Paraguay</string>
+<key>name_de</key>
+<string>Paraguay</string>
+<key>sortName</key>
+<string>Paraguay</string>
 <key>id</key>
 <integer>166</integer>
 <key>image</key>
@@ -5301,6 +5937,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Peru</string>
+<key>name_de</key>
+<string>Peru</string>
+<key>sortName</key>
 <string>Peru</string>
 <key>id</key>
 <integer>167</integer>
@@ -5336,6 +5976,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Philippines</string>
+<key>name_de</key>
+<string>Philippinen</string>
+<key>sortName</key>
 <string>Philippines</string>
 <key>id</key>
 <integer>168</integer>
@@ -5396,6 +6040,10 @@
 <dict>
 <key>name</key>
 <string>Pitcairn Islands</string>
+<key>name_de</key>
+<string>Pitcairninseln</string>
+<key>sortName</key>
+<string>Pitcairn Islands</string>
 <key>id</key>
 <integer>169</integer>
 <key>image</key>
@@ -5406,6 +6054,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Poland</string>
+<key>name_de</key>
+<string>Polen</string>
+<key>sortName</key>
 <string>Poland</string>
 <key>id</key>
 <integer>170</integer>
@@ -5450,6 +6102,10 @@
 <dict>
 <key>name</key>
 <string>Portugal</string>
+<key>name_de</key>
+<string>Portugal</string>
+<key>sortName</key>
+<string>Portugal</string>
 <key>id</key>
 <integer>171</integer>
 <key>image</key>
@@ -5469,6 +6125,10 @@
 <dict>
 <key>name</key>
 <string>Qatar</string>
+<key>name_de</key>
+<string>Katar</string>
+<key>sortName</key>
+<string>Qatar</string>
 <key>id</key>
 <integer>172</integer>
 <key>image</key>
@@ -5487,6 +6147,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Romania</string>
+<key>name_de</key>
+<string>Rumänien</string>
+<key>sortName</key>
 <string>Romania</string>
 <key>id</key>
 <integer>173</integer>
@@ -5514,6 +6178,10 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Russia</string>
+<key>name_de</key>
+<string>Russland</string>
+<key>sortName</key>
 <string>Russia</string>
 <key>id</key>
 <integer>174</integer>
@@ -5758,6 +6426,10 @@
 <dict>
 <key>name</key>
 <string>Rwanda</string>
+<key>name_de</key>
+<string>Ruanda</string>
+<key>sortName</key>
+<string>Rwanda</string>
 <key>id</key>
 <integer>175</integer>
 <key>image</key>
@@ -5777,10 +6449,14 @@
 <dict>
 <key>name</key>
 <string>Saint Helena</string>
+<key>name_de</key>
+<string>Saint Helena</string>
+<key>sortName</key>
+<string>Saint Helena</string>
 <key>id</key>
-<integer>177</integer>
+<integer>178</integer>
 <key>image</key>
-<string>flag177.png</string>
+<string>flag178.png</string>
 <key>cities</key>
 <array>
 </array>
@@ -5788,10 +6464,14 @@
 <dict>
 <key>name</key>
 <string>Saint Kitts and Nevis</string>
+<key>name_de</key>
+<string>St.Kitts und Nevis</string>
+<key>sortName</key>
+<string>Saint Kitts and Nevis</string>
 <key>id</key>
-<integer>178</integer>
+<integer>179</integer>
 <key>image</key>
-<string>flag178.png</string>
+<string>flag179.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5807,10 +6487,14 @@
 <dict>
 <key>name</key>
 <string>Saint Lucia</string>
+<key>name_de</key>
+<string>St. Lucia</string>
+<key>sortName</key>
+<string>Saint Lucia</string>
 <key>id</key>
-<integer>179</integer>
+<integer>180</integer>
 <key>image</key>
-<string>flag179.png</string>
+<string>flag180.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5826,10 +6510,14 @@
 <dict>
 <key>name</key>
 <string>Saint Vincent and the Grenadines</string>
+<key>name_de</key>
+<string>St. Vincent und die Grenadinen</string>
+<key>sortName</key>
+<string>Saint Vincent and the Grenadines</string>
 <key>id</key>
-<integer>180</integer>
+<integer>181</integer>
 <key>image</key>
-<string>flag180.png</string>
+<string>flag181.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5845,10 +6533,14 @@
 <dict>
 <key>name</key>
 <string>Samoa</string>
+<key>name_de</key>
+<string>Samoa</string>
+<key>sortName</key>
+<string>Samoa</string>
 <key>id</key>
-<integer>181</integer>
+<integer>182</integer>
 <key>image</key>
-<string>flag181.png</string>
+<string>flag182.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5864,10 +6556,14 @@
 <dict>
 <key>name</key>
 <string>San Marino</string>
+<key>name_de</key>
+<string>San Marino</string>
+<key>sortName</key>
+<string>San Marino</string>
 <key>id</key>
-<integer>182</integer>
+<integer>183</integer>
 <key>image</key>
-<string>flag182.png</string>
+<string>flag183.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5883,10 +6579,14 @@
 <dict>
 <key>name</key>
 <string>Saudi Arabia</string>
+<key>name_de</key>
+<string>Saudi-Arabien</string>
+<key>sortName</key>
+<string>Saudi Arabia</string>
 <key>id</key>
-<integer>183</integer>
+<integer>185</integer>
 <key>image</key>
-<string>flag183.png</string>
+<string>flag185.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5918,10 +6618,14 @@
 <dict>
 <key>name</key>
 <string>Senegal</string>
+<key>name_de</key>
+<string>Senegal</string>
+<key>sortName</key>
+<string>Senegal</string>
 <key>id</key>
-<integer>184</integer>
+<integer>186</integer>
 <key>image</key>
-<string>flag184.png</string>
+<string>flag186.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5937,10 +6641,14 @@
 <dict>
 <key>name</key>
 <string>Serbia</string>
+<key>name_de</key>
+<string>Serbien</string>
+<key>sortName</key>
+<string>Serbia</string>
 <key>id</key>
-<integer>185</integer>
+<integer>187</integer>
 <key>image</key>
-<string>flag185.png</string>
+<string>flag187.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5964,10 +6672,14 @@
 <dict>
 <key>name</key>
 <string>Seychelles</string>
+<key>name_de</key>
+<string>Seychellen</string>
+<key>sortName</key>
+<string>Seychelles</string>
 <key>id</key>
-<integer>186</integer>
+<integer>188</integer>
 <key>image</key>
-<string>flag186.png</string>
+<string>flag188.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -5983,10 +6695,14 @@
 <dict>
 <key>name</key>
 <string>Sierra Leone</string>
+<key>name_de</key>
+<string>Sierra Leone</string>
+<key>sortName</key>
+<string>Sierra Leone</string>
 <key>id</key>
-<integer>187</integer>
+<integer>189</integer>
 <key>image</key>
-<string>flag187.png</string>
+<string>flag189.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6002,10 +6718,14 @@
 <dict>
 <key>name</key>
 <string>Singapore</string>
+<key>name_de</key>
+<string>Singapur</string>
+<key>sortName</key>
+<string>Singapore</string>
 <key>id</key>
-<integer>188</integer>
+<integer>190</integer>
 <key>image</key>
-<string>flag188.png</string>
+<string>flag190.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6021,10 +6741,14 @@
 <dict>
 <key>name</key>
 <string>Slovakia</string>
+<key>name_de</key>
+<string>Slowakei</string>
+<key>sortName</key>
+<string>Slovakia</string>
 <key>id</key>
-<integer>191</integer>
+<integer>193</integer>
 <key>image</key>
-<string>flag191.png</string>
+<string>flag193.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6040,10 +6764,14 @@
 <dict>
 <key>name</key>
 <string>Slovenia</string>
+<key>name_de</key>
+<string>Slowenien</string>
+<key>sortName</key>
+<string>Slovenia</string>
 <key>id</key>
-<integer>192</integer>
+<integer>194</integer>
 <key>image</key>
-<string>flag192.png</string>
+<string>flag194.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6059,10 +6787,14 @@
 <dict>
 <key>name</key>
 <string>Solomon Islands</string>
+<key>name_de</key>
+<string>Salomonen</string>
+<key>sortName</key>
+<string>Solomon Islands</string>
 <key>id</key>
-<integer>193</integer>
+<integer>195</integer>
 <key>image</key>
-<string>flag193.png</string>
+<string>flag195.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6078,10 +6810,14 @@
 <dict>
 <key>name</key>
 <string>Somalia</string>
+<key>name_de</key>
+<string>Somalia</string>
+<key>sortName</key>
+<string>Somalia</string>
 <key>id</key>
-<integer>194</integer>
+<integer>196</integer>
 <key>image</key>
-<string>flag194.png</string>
+<string>flag196.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6113,10 +6849,14 @@
 <dict>
 <key>name</key>
 <string>South Africa</string>
+<key>name_de</key>
+<string>Südafrika</string>
+<key>sortName</key>
+<string>South Africa</string>
 <key>id</key>
-<integer>195</integer>
+<integer>198</integer>
 <key>image</key>
-<string>flag195.png</string>
+<string>flag198.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6220,10 +6960,14 @@
 <dict>
 <key>name</key>
 <string>South Georgia and the South Sandwich Islands</string>
+<key>name_de</key>
+<string>Südgeorgien und die Südlichen Sandwichinseln</string>
+<key>sortName</key>
+<string>South Georgia and the South Sandwich Islands</string>
 <key>id</key>
-<integer>196</integer>
+<integer>199</integer>
 <key>image</key>
-<string>flag196.png</string>
+<string>flag199.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6239,10 +6983,14 @@
 <dict>
 <key>name</key>
 <string>Spain</string>
+<key>name_de</key>
+<string>Spanien</string>
+<key>sortName</key>
+<string>Spain</string>
 <key>id</key>
-<integer>198</integer>
+<integer>201</integer>
 <key>image</key>
-<string>flag198.png</string>
+<string>flag201.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6306,10 +7054,14 @@
 <dict>
 <key>name</key>
 <string>Sri Lanka</string>
+<key>name_de</key>
+<string>Sri Lanka</string>
+<key>sortName</key>
+<string>Sri Lanka</string>
 <key>id</key>
-<integer>199</integer>
+<integer>203</integer>
 <key>image</key>
-<string>flag199.png</string>
+<string>flag203.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6333,10 +7085,14 @@
 <dict>
 <key>name</key>
 <string>Sudan</string>
+<key>name_de</key>
+<string>Sudan</string>
+<key>sortName</key>
+<string>Sudan</string>
 <key>id</key>
-<integer>200</integer>
+<integer>204</integer>
 <key>image</key>
-<string>flag200.png</string>
+<string>flag204.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6352,10 +7108,14 @@
 <dict>
 <key>name</key>
 <string>Suriname</string>
+<key>name_de</key>
+<string>Suriname</string>
+<key>sortName</key>
+<string>Suriname</string>
 <key>id</key>
-<integer>201</integer>
+<integer>205</integer>
 <key>image</key>
-<string>flag201.png</string>
+<string>flag205.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6371,10 +7131,14 @@
 <dict>
 <key>name</key>
 <string>Swaziland</string>
+<key>name_de</key>
+<string>Swasiland</string>
+<key>sortName</key>
+<string>Swaziland</string>
 <key>id</key>
-<integer>202</integer>
+<integer>206</integer>
 <key>image</key>
-<string>flag202.png</string>
+<string>flag206.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6390,10 +7154,14 @@
 <dict>
 <key>name</key>
 <string>Sweden</string>
+<key>name_de</key>
+<string>Schweden</string>
+<key>sortName</key>
+<string>Sweden</string>
 <key>id</key>
-<integer>203</integer>
+<integer>207</integer>
 <key>image</key>
-<string>flag203.png</string>
+<string>flag207.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6414,14 +7182,6 @@
 </dict>
 <dict>
 <key>name</key>
-<string>Luleå</string>
-<key>longitude</key>
-<real>22.217</real>
-<key>latitude</key>
-<real>66.000</real>
-</dict>
-<dict>
-<key>name</key>
 <string>Boden, Sweden</string>
 <key>longitude</key>
 <real>21.717</real>
@@ -6435,6 +7195,14 @@
 <real>24.134</real>
 <key>latitude</key>
 <real>65.834</real>
+</dict>
+<dict>
+<key>name</key>
+<string>Luleå</string>
+<key>longitude</key>
+<real>22.150</real>
+<key>latitude</key>
+<real>65.567</real>
 </dict>
 <dict>
 <key>name</key>
@@ -6521,10 +7289,14 @@
 <dict>
 <key>name</key>
 <string>Switzerland</string>
+<key>name_de</key>
+<string>Schweiz</string>
+<key>sortName</key>
+<string>Switzerland</string>
 <key>id</key>
-<integer>204</integer>
+<integer>208</integer>
 <key>image</key>
-<string>flag204.png</string>
+<string>flag208.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6572,10 +7344,14 @@
 <dict>
 <key>name</key>
 <string>Syria</string>
+<key>name_de</key>
+<string>Syrien</string>
+<key>sortName</key>
+<string>Syria</string>
 <key>id</key>
-<integer>205</integer>
+<integer>209</integer>
 <key>image</key>
-<string>flag205.png</string>
+<string>flag209.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6599,10 +7375,14 @@
 <dict>
 <key>name</key>
 <string>São Tomé and Príncipe</string>
+<key>name_de</key>
+<string>São Tomé and Príncipe</string>
+<key>sortName</key>
+<string>São Tomé and Príncipe</string>
 <key>id</key>
-<integer>206</integer>
+<integer>184</integer>
 <key>image</key>
-<string>flag206.png</string>
+<string>flag184.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6618,10 +7398,14 @@
 <dict>
 <key>name</key>
 <string>Taiwan (Republic of China)</string>
+<key>name_de</key>
+<string>Taiwan (Republik China)</string>
+<key>sortName</key>
+<string>Taiwan (Republic of China)</string>
 <key>id</key>
-<integer>207</integer>
+<integer>210</integer>
 <key>image</key>
-<string>flag207.png</string>
+<string>flag210.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6653,10 +7437,14 @@
 <dict>
 <key>name</key>
 <string>Tajikistan</string>
+<key>name_de</key>
+<string>Tadschikistan</string>
+<key>sortName</key>
+<string>Tajikistan</string>
 <key>id</key>
-<integer>208</integer>
+<integer>211</integer>
 <key>image</key>
-<string>flag208.png</string>
+<string>flag211.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6672,10 +7460,14 @@
 <dict>
 <key>name</key>
 <string>Tanzania</string>
+<key>name_de</key>
+<string>Tansania</string>
+<key>sortName</key>
+<string>Tanzania</string>
 <key>id</key>
-<integer>209</integer>
+<integer>212</integer>
 <key>image</key>
-<string>flag209.png</string>
+<string>flag212.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6699,10 +7491,14 @@
 <dict>
 <key>name</key>
 <string>Thailand</string>
+<key>name_de</key>
+<string>Thailand</string>
+<key>sortName</key>
+<string>Thailand</string>
 <key>id</key>
-<integer>210</integer>
+<integer>213</integer>
 <key>image</key>
-<string>flag210.png</string>
+<string>flag213.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6790,10 +7586,14 @@
 <dict>
 <key>name</key>
 <string>Togo</string>
+<key>name_de</key>
+<string>Togo</string>
+<key>sortName</key>
+<string>Togo</string>
 <key>id</key>
-<integer>211</integer>
+<integer>214</integer>
 <key>image</key>
-<string>flag211.png</string>
+<string>flag214.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6809,10 +7609,14 @@
 <dict>
 <key>name</key>
 <string>Tonga</string>
+<key>name_de</key>
+<string>Tonga</string>
+<key>sortName</key>
+<string>Tonga</string>
 <key>id</key>
-<integer>212</integer>
+<integer>215</integer>
 <key>image</key>
-<string>flag212.png</string>
+<string>flag215.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6828,10 +7632,14 @@
 <dict>
 <key>name</key>
 <string>Trinidad and Tobago</string>
+<key>name_de</key>
+<string>Trinidad und Tobago</string>
+<key>sortName</key>
+<string>Trinidad and Tobago</string>
 <key>id</key>
-<integer>213</integer>
+<integer>217</integer>
 <key>image</key>
-<string>flag213.png</string>
+<string>flag217.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6855,10 +7663,14 @@
 <dict>
 <key>name</key>
 <string>Tristan da Cunha</string>
+<key>name_de</key>
+<string>Tristan da Cunha</string>
+<key>sortName</key>
+<string>Tristan da Cunha</string>
 <key>id</key>
-<integer>214</integer>
+<integer>218</integer>
 <key>image</key>
-<string>flag214.png</string>
+<string>flag218.png</string>
 <key>cities</key>
 <array>
 </array>
@@ -6866,10 +7678,14 @@
 <dict>
 <key>name</key>
 <string>Tunisia</string>
+<key>name_de</key>
+<string>Tunesien</string>
+<key>sortName</key>
+<string>Tunisia</string>
 <key>id</key>
-<integer>215</integer>
+<integer>219</integer>
 <key>image</key>
-<string>flag215.png</string>
+<string>flag219.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6893,10 +7709,14 @@
 <dict>
 <key>name</key>
 <string>Turkey</string>
+<key>name_de</key>
+<string>Türkei</string>
+<key>sortName</key>
+<string>Turkey</string>
 <key>id</key>
-<integer>216</integer>
+<integer>220</integer>
 <key>image</key>
-<string>flag216.png</string>
+<string>flag220.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6944,10 +7764,14 @@
 <dict>
 <key>name</key>
 <string>Turkmenistan</string>
+<key>name_de</key>
+<string>Turkmenistan</string>
+<key>sortName</key>
+<string>Turkmenistan</string>
 <key>id</key>
-<integer>217</integer>
+<integer>221</integer>
 <key>image</key>
-<string>flag217.png</string>
+<string>flag221.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -6963,10 +7787,14 @@
 <dict>
 <key>name</key>
 <string>Turks and Caicos Islands</string>
+<key>name_de</key>
+<string>Turks-und Caicosinseln</string>
+<key>sortName</key>
+<string>Turks and Caicos Islands</string>
 <key>id</key>
-<integer>218</integer>
+<integer>222</integer>
 <key>image</key>
-<string>flag218.png</string>
+<string>flag222.png</string>
 <key>cities</key>
 <array>
 </array>
@@ -6974,10 +7802,14 @@
 <dict>
 <key>name</key>
 <string>Uganda</string>
+<key>name_de</key>
+<string>Uganda</string>
+<key>sortName</key>
+<string>Uganda</string>
 <key>id</key>
-<integer>220</integer>
+<integer>224</integer>
 <key>image</key>
-<string>flag220.png</string>
+<string>flag224.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -7001,10 +7833,14 @@
 <dict>
 <key>name</key>
 <string>Ukraine</string>
+<key>name_de</key>
+<string>Ukraine</string>
+<key>sortName</key>
+<string>Ukraine</string>
 <key>id</key>
-<integer>221</integer>
+<integer>225</integer>
 <key>image</key>
-<string>flag221.png</string>
+<string>flag225.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -7044,10 +7880,14 @@
 <dict>
 <key>name</key>
 <string>United Arab Emirates</string>
+<key>name_de</key>
+<string>Vereinigte Arabische Emirate</string>
+<key>sortName</key>
+<string>United Arab Emirates</string>
 <key>id</key>
-<integer>222</integer>
+<integer>226</integer>
 <key>image</key>
-<string>flag222.png</string>
+<string>flag226.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -7071,10 +7911,14 @@
 <dict>
 <key>name</key>
 <string>United Kingdom</string>
+<key>name_de</key>
+<string>Großbritannien</string>
+<key>sortName</key>
+<string>United Kingdom</string>
 <key>id</key>
-<integer>223</integer>
+<integer>227</integer>
 <key>image</key>
-<string>flag223.png</string>
+<string>flag227.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -7314,10 +8158,14 @@
 <dict>
 <key>name</key>
 <string>United States</string>
+<key>name_de</key>
+<string>USA</string>
+<key>sortName</key>
+<string>United States</string>
 <key>id</key>
-<integer>224</integer>
+<integer>228</integer>
 <key>image</key>
-<string>flag224.png</string>
+<string>flag228.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -7957,10 +8805,14 @@
 <dict>
 <key>name</key>
 <string>Uruguay</string>
+<key>name_de</key>
+<string>Uruguay</string>
+<key>sortName</key>
+<string>Uruguay</string>
 <key>id</key>
-<integer>225</integer>
+<integer>229</integer>
 <key>image</key>
-<string>flag225.png</string>
+<string>flag229.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -7976,10 +8828,14 @@
 <dict>
 <key>name</key>
 <string>Uzbekistan</string>
+<key>name_de</key>
+<string>Usbekistan</string>
+<key>sortName</key>
+<string>Uzbekistan</string>
 <key>id</key>
-<integer>226</integer>
+<integer>230</integer>
 <key>image</key>
-<string>flag226.png</string>
+<string>flag230.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -8011,10 +8867,14 @@
 <dict>
 <key>name</key>
 <string>Vanuatu</string>
+<key>name_de</key>
+<string>Vanuatu</string>
+<key>sortName</key>
+<string>Vanuatu</string>
 <key>id</key>
-<integer>227</integer>
+<integer>231</integer>
 <key>image</key>
-<string>flag227.png</string>
+<string>flag231.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -8030,10 +8890,14 @@
 <dict>
 <key>name</key>
 <string>Vatican City</string>
+<key>name_de</key>
+<string>Vatikanstadt</string>
+<key>sortName</key>
+<string>Vatican City</string>
 <key>id</key>
-<integer>228</integer>
+<integer>232</integer>
 <key>image</key>
-<string>flag228.png</string>
+<string>flag232.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -8049,10 +8913,14 @@
 <dict>
 <key>name</key>
 <string>Venezuela</string>
+<key>name_de</key>
+<string>Venezuela</string>
+<key>sortName</key>
+<string>Venezuela</string>
 <key>id</key>
-<integer>229</integer>
+<integer>233</integer>
 <key>image</key>
-<string>flag229.png</string>
+<string>flag233.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -8076,10 +8944,14 @@
 <dict>
 <key>name</key>
 <string>Vietnam</string>
+<key>name_de</key>
+<string>Vietnam</string>
+<key>sortName</key>
+<string>Vietnam</string>
 <key>id</key>
-<integer>230</integer>
+<integer>234</integer>
 <key>image</key>
-<string>flag230.png</string>
+<string>flag234.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -8102,22 +8974,15 @@
 </dict>
 <dict>
 <key>name</key>
-<string>Western Sahara</string>
-<key>id</key>
-<integer>232</integer>
-<key>image</key>
-<string>flag232.png</string>
-<key>cities</key>
-<array>
-</array>
-</dict>
-<dict>
-<key>name</key>
+<string>Yemen</string>
+<key>name_de</key>
+<string>Jemen</string>
+<key>sortName</key>
 <string>Yemen</string>
 <key>id</key>
-<integer>233</integer>
+<integer>236</integer>
 <key>image</key>
-<string>flag233.png</string>
+<string>flag236.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -8133,10 +8998,14 @@
 <dict>
 <key>name</key>
 <string>Zambia</string>
+<key>name_de</key>
+<string>Sambia</string>
+<key>sortName</key>
+<string>Zambia</string>
 <key>id</key>
-<integer>234</integer>
+<integer>237</integer>
 <key>image</key>
-<string>flag234.png</string>
+<string>flag237.png</string>
 <key>cities</key>
 <array>
 <dict>
@@ -8168,10 +9037,14 @@
 <dict>
 <key>name</key>
 <string>Zimbabwe</string>
+<key>name_de</key>
+<string>Simbabwe</string>
+<key>sortName</key>
+<string>Zimbabwe</string>
 <key>id</key>
-<integer>235</integer>
+<integer>238</integer>
 <key>image</key>
-<string>flag235.png</string>
+<string>flag238.png</string>
 <key>cities</key>
 <array>
 <dict>

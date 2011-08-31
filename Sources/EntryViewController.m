@@ -93,12 +93,14 @@
         [UIFactory initializeCell:cell];
     }
     
+    cell.forLabel.text = NSLocalizedString(@"for", @"for label");
+    
     // Set up the cell... 
     Entry *entry = (Entry *) managedObject;
     if (entry.text && [entry.text length] > 0) {
         cell.top.text = entry.text;
     } else {
-        cell.top.text = entry.type.name;
+        cell.top.text = entry.type.nameI18N;
     }
     cell.right.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:entry.amount], entry.currency.code];
     cell.bottom.participants = entry.sortedReceivers;

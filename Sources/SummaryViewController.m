@@ -70,6 +70,9 @@
         cell.paidLabel.text = NSLocalizedString(@"PAID", @"red label uppercase");
     }
     
+    cell.owes.text = NSLocalizedString(@"owes", @"owes");
+    cell.to.text = NSLocalizedString(@"(owes) to", @"owes 'to'");
+    
     Transfer *transfer = (Transfer *)managedObject;
 
     cell.debtor.text = transfer.debtor.name;
