@@ -38,6 +38,10 @@
         self.top.frame = CGRectMake(self.top.frame.origin.x, self.top.frame.origin.y, self.contentView.frame.size.width - self.top.frame.origin.x, self.top.frame.size.height);
         
     } else {
+        
+        rightBottom.hidden = NO;
+        right.hidden = NO;
+        
         [UIView animateWithDuration:0.3
                               delay:0 
                             options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
@@ -58,6 +62,20 @@
         self.top.frame = CGRectMake(self.top.frame.origin.x, self.top.frame.origin.y, self.right.frame.origin.x - self.top.frame.origin.x, self.top.frame.size.height);
         
     }
+}
+
+- (void)layoutSubviews {
+
+    [super layoutSubviews];
+    
+    
+    if (!CGAffineTransformIsIdentity(rightBottom.transform)) {
+        rightBottom.hidden = YES;
+    }
+    
+    if (!CGAffineTransformIsIdentity(right.transform)) {
+        right.hidden = YES;
+    } 
 }
 
 @end

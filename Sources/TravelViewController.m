@@ -125,7 +125,7 @@
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
-    picker.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    picker.navigationBar.barStyle = UIBarStyleBlack;
     picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
     
     [self presentModalViewController:picker animated:YES];

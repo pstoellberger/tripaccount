@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
 
 - (IBAction)cancel;
 
