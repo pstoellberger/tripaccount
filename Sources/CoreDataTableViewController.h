@@ -24,6 +24,7 @@
 @property (nonatomic, copy) NSString *subtitleKey;
 // key to use when searching the table (should usually be the same as displayKey); if nil, no searching allowed
 @property (nonatomic, copy) NSString *searchKey;
+@property (nonatomic, copy) NSString *searchKeyAlternative;
 
 @property (nonatomic, copy) NSString *imageKey;
 

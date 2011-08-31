@@ -9,6 +9,7 @@
 #import "CurrencyHelperCategory.h"
 #import "ExchangeRate.h"
 #import "Travel.h"
+#import "I18NSortCategory.h"
 
 @implementation Currency (CurrencyHelper)
 
@@ -106,6 +107,10 @@
     [req release];
     
     return allBaseCurrencies;
+}
+
+- (NSString *)fullName {
+    return [NSString stringWithFormat:@"%@ (%@)", self.nameI18N, self.code];
 }
 
 @end

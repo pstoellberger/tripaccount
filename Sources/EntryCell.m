@@ -69,11 +69,8 @@
     [super layoutSubviews];
     
     
-    if (!CGAffineTransformIsIdentity(rightBottom.transform)) {
+    if (self.editing) {
         rightBottom.hidden = YES;
-    }
-    
-    if (!CGAffineTransformIsIdentity(right.transform)) {
         right.hidden = YES;
     } 
 }

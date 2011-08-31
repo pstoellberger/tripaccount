@@ -287,7 +287,8 @@ static NSIndexPath *_currenciesIndexPath;
                                                                                                                      target:self
                                                                                                                      action:@selector(selectCurrencies:)];
         selectViewController.searchKey = [Currency sortAttributeI18N];
-        selectViewController.titleKey = [Currency sortAttributeI18N];
+        selectViewController.searchKeyAlternative = @"code";
+        selectViewController.titleKey = @"fullName";
         selectViewController.title = NSLocalizedString(@"Currencies", "controller title");
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];

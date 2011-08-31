@@ -15,7 +15,7 @@
 @implementation CoreDataTableViewController
 
 @synthesize fetchedResultsController=_fetchedResultsController, dataSearchController=_dataSearchController;
-@synthesize titleKey, subtitleKey, searchKey, imageKey;
+@synthesize titleKey, subtitleKey, searchKey, imageKey, searchKeyAlternative;
 @synthesize reloadDisabled=_reloadDisabled;
 
 - (void)createSearchBar {
@@ -116,9 +116,15 @@
         
 		[currentSearchText release];
 		currentSearchText = [self.searchDisplayController.searchBar.text copy];
-		NSString *searchPredicateFormat = [NSString stringWithFormat:@"%@ contains[c] %@", self.searchKey, @"%@"];
-		NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:searchPredicateFormat, self.searchDisplayController.searchBar.text];
         
+		NSString *searchPredicateFormat = [NSString stringWithFormat:@"%@ contains[c] %@", self.searchKey, @"%@"];
+        NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:searchPredicateFormat, self.searchDisplayController.searchBar.text];
+        
+        if (searchKeyAlternative) {
+            searchPredicateFormat = [NSString stringWithFormat:@"%@ contains[c] %@ OR %@ contains[c] %@", self.searchKey, @"%@", self.searchKeyAlternative, @"%@"];
+            searchPredicate = [NSPredicate predicateWithFormat:searchPredicateFormat, self.searchDisplayController.searchBar.text, self.searchDisplayController.searchBar.text];
+        }
+		
 		[NSFetchedResultsController deleteCacheWithName:self.fetchedResultsController.cacheName];
 		self.fetchedResultsController.fetchRequest.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:searchPredicate, normalPredicate , nil]];
 		[self performFetchForTableView:tableView];
