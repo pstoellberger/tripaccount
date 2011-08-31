@@ -2,7 +2,7 @@
 //  City.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 08/08/2011.
+//  Created by Martin Maier on 31/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,9 +11,10 @@
 
 
 @implementation City
+@dynamic latitude;
 @dynamic name;
 @dynamic longitude;
-@dynamic latitude;
+@dynamic name_de;
 @dynamic country;
 
 @end

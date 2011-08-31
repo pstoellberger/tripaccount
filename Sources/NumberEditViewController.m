@@ -18,17 +18,19 @@
 
 @synthesize target=_target, selector=_selector;
 @synthesize textField=_textField, textCell=_textCell, convertView=_convertView;
-@synthesize travel=_travel, currency=_currency, number=_number;
+@synthesize travel=_travel, currency=_currency, number=_number, decimals=_decimals;
 
 #define TEXTFIELD_LABEL_GAP 15
 #define BORDER_GAP 10
 #define FOOTER_HEIGHT 155
 
-- (id)initWithNumber:(NSNumber *)startNumber currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector {
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector {
     
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         
         [UIFactory initializeTableViewController:self.tableView];
+        
+        self.decimals = decimals;
         
         self.target = target;
         self.selector = selector;
@@ -40,7 +42,7 @@
         self.currency = currency;
         
         self.number = [[startNumber copy] autorelease];
-        self.textField.text = [UIFactory formatNumber:self.number];
+        self.textField.text = [UIFactory formatNumber:self.number withDecimals:decimals];
         
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
         
@@ -64,8 +66,6 @@
             [self.textCell.contentView addSubview:label]; 
             
         } else {
-            
-            self.tableView.tableHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 80)] autorelease];
             
             self.textField.frame = CGRectMake(self.textField.frame.origin.x, (self.textCell.frame.size.height - self.textField.frame.size.height) / 2, self.textCell.frame.size.width - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.frame.size.height);
         }
@@ -106,7 +106,7 @@
         for (Currency *currency in self.travel.currencies) {
             
             if (![currency isEqual:self.currency]) {
-                NSString *line = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]]]],currency.code];
+                NSString *line = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]]] withDecimals:self.decimals],currency.code];
                 conversionString = [[conversionString stringByAppendingString:line] stringByAppendingString:singleCR];
             }
         }

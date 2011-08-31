@@ -179,12 +179,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
      
-     NSString *text = NSLocalizedString(@"Use this button to add a new trip to start tracking your expenses.", @"help bubble add trip");
+     NSString *text = NSLocalizedString(@"help add trip", @"help bubble add trip");
      HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"travel add button"];
      [UIFactory addHelpViewToView:helpView toView:self.view];
      [helpView release];
      
-     text = NSLocalizedString(@"Have a look at the sample to trip to see how the app works.", @"help bubble sample trip");
+     text = NSLocalizedString(@"help sample trip", @"help bubble sample trip");
      helpView = [[HelpView alloc] initWithFrame:CGRectMake(2, NAVIGATIONBAR_HEIGHT + 70, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sample trip"];
      [UIFactory addHelpViewToView:helpView toView:self.view];       
      [helpView release];

@@ -12,12 +12,18 @@
 #import "Type.h"
 #import "TextEditViewController.h"
 #import "ReiseabrechnungAppDelegate.h"
+#import "UIFactory.h"
 
 @implementation TypeViewController
 
-- (id)initInManagedObjectContext:(NSManagedObjectContext *)context withMultiSelection:(BOOL)multiSelection withFetchRequest:(NSFetchRequest *)fetchRequest withSelectedObjects:(NSArray *)selectedObjects target:(id)target action:(SEL)selector {
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context withMultiSelection:(BOOL)multiSelection withSelectedObjects:(NSArray *)selectedObjects target:(id)target action:(SEL)selector {
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:context];
+    fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:[Type sortAttributeI18N] ascending:YES selector:@selector(caseInsensitiveCompare:)]]; 
     
     if (self = [super initInManagedObjectContext:context withMultiSelection:multiSelection withAllNoneButtons:NO withFetchRequest:fetchRequest withSectionKey:nil withSelectedObjects:selectedObjects target:target action:selector]) {
+        
         
         _editButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEditing)] retain];
         _addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)] retain];
@@ -25,9 +31,13 @@
         
         self.navigationItem.rightBarButtonItem = _editButton;
         
+        self.title = NSLocalizedString(@"Type", "controller title");
+        
         self.tableView.allowsSelectionDuringEditing = YES;
         
     }
+    
+    [fetchRequest release];
     
     return self;
 }
@@ -35,6 +45,7 @@
 - (void)openAddPopup {
     
     TextEditViewController *tevc = [[TextEditViewController alloc] initWithText:@"" target:self selector:@selector(addType:)];
+    tevc.title = NSLocalizedString(@"Add type", @"title new type");
     [self.navigationController pushViewController:tevc animated:YES];
     [tevc release];
 }
@@ -68,6 +79,7 @@
     
     Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext: self.context];
     type.name = typeName;
+    type.name_de = typeName;
     type.builtIn = [NSNumber numberWithInt:0];    
     
     [ReiseabrechnungAppDelegate saveContext:self.context];
@@ -110,7 +122,7 @@
         cell.detailTextLabel.text = nil;
     }
     
-    cell.textLabel.text = type.name;
+    cell.textLabel.text = type.nameI18N;
     
     return cell;
 }

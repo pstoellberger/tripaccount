@@ -2,7 +2,7 @@
 //  Country.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 08/08/2011.
+//  Created by Martin Maier on 31/08/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,11 +14,12 @@
 @interface Country : NSManagedObject {
 @private
 }
+@property (nonatomic, retain) NSString * name_de;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * image;
 @property (nonatomic, retain) NSSet *currencies;
-@property (nonatomic, retain) NSSet *travels;
 @property (nonatomic, retain) NSSet *cities;
+@property (nonatomic, retain) NSSet *travels;
 @end
 
 @interface Country (CoreDataGeneratedAccessors)
@@ -28,14 +29,14 @@
 - (void)addCurrencies:(NSSet *)values;
 - (void)removeCurrencies:(NSSet *)values;
 
-- (void)addTravelsObject:(Travel *)value;
-- (void)removeTravelsObject:(Travel *)value;
-- (void)addTravels:(NSSet *)values;
-- (void)removeTravels:(NSSet *)values;
-
 - (void)addCitiesObject:(City *)value;
 - (void)removeCitiesObject:(City *)value;
 - (void)addCities:(NSSet *)values;
 - (void)removeCities:(NSSet *)values;
+
+- (void)addTravelsObject:(Travel *)value;
+- (void)removeTravelsObject:(Travel *)value;
+- (void)addTravels:(NSSet *)values;
+- (void)removeTravels:(NSSet *)values;
 
 @end

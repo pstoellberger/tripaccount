@@ -68,15 +68,19 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="6" class="title">Expenses of trip {{ travel.name }} to {{ travel.location }}</th>
+                    {% if tripHasName %}
+                        <th colspan="6" class="title">{{ labelExpenses }} '{{ travel.name }}' {{ labelTo }} {{ travel.location }}</th>
+                    {% else %}
+                        <th colspan="6" class="title">{{ labelExpenses }} {{ labelTo }} {{ travel.location }}</th>
+                    {% /if %}
                 </tr>
                 <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
-                    <th class="imageRow">Payer</th>
-                    <th class="typeRow">Type</th>
-                    <th class="textRow">Text</th>        
-                    <th class="amountRow">Amount</th>
-                    <th class="dateRow">Date</th>
-                    <th class="imageRow">Receivers</th>
+                    <th class="imageRow">{{ labelPayer }}</th>
+                    <th class="typeRow">{{ labelType }}</th>
+                    <th class="textRow">{{ labelText }}</th>        
+                    <th class="amountRow">{{ labelAmount }}</th>
+                    <th class="dateRow">{{ labelDate }}</th>
+                    <th class="imageRow">{{ labelReceivers }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,7 +93,7 @@
                         {% /if %}
                         {{ entry.payer.name }}
                     </td>
-                    <td class="typeRow">{{ entry.type.name }}</td>
+                    <td class="typeRow">{{ entry.type.nameI18N }}</td>
                     <td class="textRow">{{ entry.text }}</td>
                     <td class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
                     <td class="dateRow">
@@ -120,7 +124,7 @@
             </tbody>
             <tfooter>
                 <tr>
-                    <th colspan="6" class="title">Total costs: {{ travel.country.name }}</th>
+                    <th colspan="6" class="title">{{ labelTotal }}: {{ travel.totalCostLabel }}</th>
                 </tr>
             </tfooter>
         </table>
@@ -130,13 +134,13 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="4" class="title">Summary</th>
+                    <th colspan="4" class="title">{{ labelSummary }}</th>
                 </tr>
                 <tr>
-                    <th class="imageRow">Who owes</th>
-                    <th class="textRow">How much</th>
-                    <th class="typeRow">To whom</th>
-                    <th class="typeRow">Already paid?</th>
+                    <th class="imageRow">{{ labelWhoOwes }}</th>
+                    <th class="textRow">{{ labelHowMuch }}</th>
+                    <th class="typeRow">{{ labelToWhom }}</th>
+                    <th class="typeRow">{{ labelAlreadyPaid }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -147,13 +151,13 @@
                         <img src="data:image/png;base64,{{ transfer.debtor.base64 }}" /> 
                         {% /if %}
                         {{ transfer.debtor.name }}</td>
-                    <td class="amountRow">{{ transfer.amountInDisplayCurrency | decimalNumber }} {{ travel.displayCurrency.name }}</td>
+                    <td class="amountRow">{{ transfer.amountInDisplayCurrency | decimalNumber }} {{ travel.displayCurrency.code }}</td>
                     <td class="debteeRow">
                         {% if includeImages %}
                         <img src="data:image/png;base64,{{ transfer.debtee.base64 }}" /> 
                         {% /if %}
                         {{ transfer.debtee.name }}</td>
-                    <td class="amountRow">{% if transfer.paid == 1 %} Yes {% else %} No {% /if %}</td>
+                    <td class="amountRow">{% if transfer.paid == 1 %} {{ labelYes }} {% else %} {{ labelNo }} {% /if %}</td>
                 </tr>
                 {% /for %}
             </tbody>
@@ -161,7 +165,7 @@
         
         <br /><br />
         
-        <strong>Currencies used for this trip:</strong>
+        <strong>{{ labelCurrenciesUsed }}:</strong>
         <table class="currencyTable">
             {% for currency in travel.currencies %}
             <tr>

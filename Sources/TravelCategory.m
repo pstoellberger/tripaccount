@@ -71,7 +71,7 @@
     if ([self.displaySort isEqual:[NSNumber numberWithInt:0]]) {
         sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"payer.name" ascending:YES] autorelease];
     } else if ([self.displaySort isEqual:[NSNumber numberWithInt:1]]) {
-        sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"type.name" ascending:YES] autorelease];
+        sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:[NSString stringWithFormat:@"type.%@", [Type sortAttributeI18N]] ascending:YES] autorelease];
     } else if ([self.displaySort isEqual:[NSNumber numberWithInt:2]]) {
         sortNameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"dateWithOutTime" ascending:YES] autorelease];
     }
@@ -111,6 +111,16 @@
     } else {
         return self.country.name;
     }
+}
+
+- (NSString *)totalCostLabel {
+    
+    double totalCosts = 0;
+    for (Entry *entry in self.entries) {
+        totalCosts = totalCosts + [entry.currency convertTravelAmount:self currency:self.displayCurrency amount:[entry.amount doubleValue]];
+    }
+    return [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:totalCosts]], self.displayCurrency.code];
+    
 }
 
 @end

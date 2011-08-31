@@ -33,6 +33,8 @@
         
         self.travel = travel;
         
+        self.title = NSLocalizedString(@"Exchange rate", "controller title");
+        
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneWithEditing)] autorelease];
         
         self.tableView.backgroundColor = [UIColor clearColor];
@@ -54,7 +56,7 @@
         cell = self.rateCell;
     }
     
-    cell.rateLabel.text = [NSString stringWithFormat:@"1 %@ = %@ %@", rate.baseCurrency.code, [UIFactory formatNumber:rate.rate], rate.counterCurrency.code];
+    cell.rateLabel.text = [NSString stringWithFormat:@"1 %@ = %@ %@", rate.baseCurrency.code, [UIFactory formatNumber:rate.rate withDecimals:4], rate.counterCurrency.code];
     cell.nameLabel.text = rate.counterCurrency.name;
     
     NSLog(@"%@", cell.subTextLabel);
@@ -101,7 +103,7 @@
 
 - (void)selectRate:(ExchangeRate *)rate {
     
-    NumberEditViewController *controller = [[NumberEditViewController alloc] initWithNumber:rate.rate currency:nil travel:nil target:self selector:@selector(selectNewRateValue:)];
+    NumberEditViewController *controller = [[NumberEditViewController alloc] initWithNumber:rate.rate withDecimals:4 currency:nil travel:nil target:self selector:@selector(selectNewRateValue:)];
     self.rateToEdit = rate;
     
     [self.navigationController pushViewController:controller animated:YES];

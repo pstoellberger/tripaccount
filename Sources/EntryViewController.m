@@ -36,8 +36,8 @@
         _travel = travel;
         _sortIndex = 0;
         
-        _sectionKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"type.name", @"dateWithOutTime", nil];
-        _sortKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"type.name", @"date", nil];
+        _sectionKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"type.nameI18N", @"dateWithOutTime", nil];
+        _sortKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", [NSString stringWithFormat:@"type.%@", [Type sortAttributeI18N]], @"date", nil];
 
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -100,7 +100,7 @@
     } else {
         cell.top.text = entry.type.name;
     }
-    cell.right.text = [NSString stringWithFormat:@"%@ %@", entry.amount, entry.currency.code];
+    cell.right.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:entry.amount], entry.currency.code];
     cell.bottom.participants = entry.sortedReceivers;
     cell.image.image = [UIImage imageWithData:entry.payer.image];
     

@@ -232,10 +232,14 @@
 }
 
 + (NSString *)formatNumber:(NSNumber *)number {
+    return [self formatNumber:number withDecimals:2];
+}
+
++ (NSString *)formatNumber:(NSNumber *)number withDecimals:(int)decimals {
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    numberFormatter.maximumFractionDigits = 2;
+    numberFormatter.maximumFractionDigits = decimals;
     NSString *returnValue = [numberFormatter stringFromNumber:number];
     [numberFormatter release];
     
@@ -288,4 +292,9 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
+
++ (NSString *)translateString:(NSString *)dbString {
+    return [[NSBundle mainBundle] localizedStringForKey:dbString value:dbString table:nil];    
+}
+
 @end
