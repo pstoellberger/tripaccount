@@ -12,5 +12,13 @@
 
 @synthesize debtor, debtee, amount, leftImage, rightImage, paid, owes, to, paidLabel;
 
+- (void)setFrame:(CGRect)frame {
+    
+    self.paid.transform = CGAffineTransformIdentity;
+    
+    [super setFrame:frame];
+    
+    self.paid.transform = CGAffineTransformMakeRotation( -M_PI/6 ); // = 45 degrees
+}
 
 @end
