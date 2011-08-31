@@ -22,9 +22,6 @@
 /* select button add */
 "All" = "Alle";
 
-/* mail label */
-"already paid" = "Bereits bezahlt?";
-
 /* cell title amount
    controller title amount */
 "Amount" = "Betrag";
@@ -252,5 +249,8 @@
 "for" = "für";
 
 "owes" = "schuldet";
+
+/* mail label */
+"already paid" = "Bereits bezahlt?";
 
 "(owes) to" = "";

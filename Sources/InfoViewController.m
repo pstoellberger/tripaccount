@@ -11,7 +11,7 @@
 
 @implementation InfoViewController
 
-@synthesize toolbar;
+@synthesize toolbar=_toolbar, webView=_webView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     
@@ -37,6 +37,10 @@
     
 	[self.view removeFromSuperview];
 	[UIView commitAnimations];
+}
+
+- (IBAction)contact {
+    
 }
 
 #pragma mark - View lifecycle
