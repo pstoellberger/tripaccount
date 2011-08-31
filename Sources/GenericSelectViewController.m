@@ -136,7 +136,7 @@
     }
 }
 
-- (void) updateSegmentedControl {
+- (void)updateSegmentedControl {
     if (_segControl) {
         if ([self.selectedObjects count] == [self.fetchedResultsController.fetchedObjects count]) {
             _segControl.selectedSegmentIndex = ALL_BUTTON_INDEX;
