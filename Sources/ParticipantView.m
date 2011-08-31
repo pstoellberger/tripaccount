@@ -18,7 +18,7 @@ static UIImage *moreImagesImage;
 - (id)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
-  
+        
     }
     return self;
 }
@@ -39,7 +39,9 @@ static UIImage *moreImagesImage;
         
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-	UIGraphicsPushContext(context);								
+	UIGraphicsPushContext(context);
+	
+    NSLog(@"%f", rect.size.width);
     
     int counter = 0;
     for (Participant *participant in self.participants) {

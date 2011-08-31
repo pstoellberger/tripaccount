@@ -48,7 +48,7 @@ public class Main {
 
 		List<Currency> currencies = new ArrayList<Currency>();
 
-		List<Country> countries = new ArrayList<Country>();
+		Set<Country> countries = new TreeSet<Country>();
 
 		if (entity != null) {
 			String content = EntityUtils.toString(entity);
@@ -70,7 +70,14 @@ public class Main {
 
 					Matcher m6 = patternCountryName.matcher(countryContent);
 					while (m6.find()) {
-						country.setName(m6.group(1));
+						country.setSortName(m6.group(1));
+					}
+
+					if (country.getSortName() != null && country.getSortName().contains(",")) {
+						country.setName(country.getSortName().substring(country.getSortName().indexOf(",") + 1) + " "
+								+ country.getSortName().substring(0, country.getSortName().indexOf(",")));
+					} else {
+						country.setName(country.getSortName());
 					}
 
 					m6 = patternCountryImage.matcher(countryContent);
@@ -121,7 +128,70 @@ public class Main {
 		getExchangeRates(currencies, "EUR");
 		getExchangeRates(currencies, "USD");
 
+		writeFlags(currencies, countries, new File("/tmp/currencyOutput"));
+
+		// translate currencies
+		BufferedReader reader = new BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("currencies_de.txt")));
+		String line;
+		while ((line = reader.readLine()) != null) {
+			StringTokenizer tokenizer = new StringTokenizer(line, "\t");
+			if (tokenizer.hasMoreTokens()) {
+				String nameDe = tokenizer.nextToken();
+				String code = tokenizer.nextToken();
+
+				for (Currency currency : currencies) {
+					if (currency.getIsoCode().toUpperCase().equals(code)) {
+						currency.setNameDe(nameDe);
+						break;
+					}
+				}
+			}
+		}
+
+		for (Currency currency : currencies) {
+			if (currency.getNameDe() == null) {
+				System.out.println("Currency " + currency.getName() + " " + currency.getIsoCode() + " has no DE name");
+			}
+		}
+
+		// translate countries
+		reader = new BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("countries_de.txt")));
+		while ((line = reader.readLine()) != null) {
+			StringTokenizer tokenizer = new StringTokenizer(line, "\t");
+			if (tokenizer.hasMoreTokens()) {
+				String name = tokenizer.nextToken();
+				String nameDe = tokenizer.nextToken();
+
+				for (Country country : countries) {
+					if (country.getName().equalsIgnoreCase(name)) {
+						country.setNameDe(nameDe);
+						break;
+					}
+				}
+			}
+		}
+
+		for (Country country : countries) {
+			if (country.getNameDe() == null) {
+				System.out.println("Country " + country.getName() + " has no DE name");
+			}
+		}
+
 		CityExtractor.findCities(countries);
+
+		// FileWriter writer = new FileWriter(new File("/Users/tine2k/countryList.txt"));
+		// for (Country country : countries) {
+		// if (country.getNameDe() == null) {
+		// writer.write(country.getName() + "\n");
+		// }
+		// }
+		// writer.close();
+
+		for (Country country : countries) {
+			if (country.getName().startsWith("The ")) {
+				country.setName(country.getName().substring("The ".length()));
+			}
+		}
 
 		writeOut(currencies, new File("/tmp/currencyOutput"));
 	}
@@ -184,17 +254,13 @@ public class Main {
 		return null;
 	}
 
-	private static void writeOut(List<Currency> currencies, File directory) throws Exception {
+	private static void writeFlags(List<Currency> currencies, Set<Country> countries, File directory) throws Exception {
+
 		if (!directory.exists()) {
 			directory.mkdirs();
 		}
 
 		Collections.sort(currencies);
-
-		Set<Country> countries = new TreeSet<Country>();
-		for (Currency currency : currencies) {
-			countries.addAll(currency.getCountries());
-		}
 
 		int counter = 0;
 		for (Country country : countries) {
@@ -215,8 +281,8 @@ public class Main {
 				for (File file : f.listFiles()) {
 
 					List<String> countryNames = new ArrayList<String>();
-					countryNames.add(country.getName());
-					countryNames.add(country.getName().toLowerCase().replace(",", "").replace(" the", "").replace("-", " "));
+					countryNames.add(country.getSortName());
+					countryNames.add(country.getSortName().toLowerCase().replace(",", "").replace(" the", "").replace("-", " "));
 
 					String fileNameToCompare = file.getName().substring(0, file.getName().length() - ".png".length()).replace("_", " ");
 					for (String countryName : countryNames) {
@@ -251,7 +317,7 @@ public class Main {
 		System.out.println("No flag for ");
 		for (Country country : countries) {
 			if (country.getImgPath() == null) {
-				System.out.println(country.getName());
+				System.out.println(country.getSortName());
 				for (Currency cur : currencies) {
 					if (cur.getCountries().contains(country)) {
 						System.out.println("  - " + cur.getName());
@@ -279,7 +345,7 @@ public class Main {
 				Country country = counIter.next();
 				if (country.getImgPath() == null) {
 					if (!countryExceptions.contains(country.getName())) {
-						System.out.println("Removing country " + country.getName());
+						System.out.println("Removing country " + country.getSortName());
 						countries.remove(country);
 						counIter.remove();
 					}
@@ -302,6 +368,14 @@ public class Main {
 				curIter.remove();
 			}
 		}
+	}
+
+	private static void writeOut(List<Currency> currencies, File directory) throws Exception {
+
+		Set<Country> countries = new TreeSet<Country>();
+		for (Currency currency : currencies) {
+			countries.addAll(currency.getCountries());
+		}
 
 		boolean skipPlists = false;
 		if (skipPlists) {
@@ -318,6 +392,10 @@ public class Main {
 				write(writer, "<dict>");
 				write(writer, "<key>name</key>");
 				write(writer, "<string>" + country.getName() + "</string>");
+				write(writer, "<key>name_de</key>");
+				write(writer, "<string>" + country.getNameDe() + "</string>");
+				write(writer, "<key>sortName</key>");
+				write(writer, "<string>" + country.getSortName() + "</string>");
 				write(writer, "<key>id</key>");
 				write(writer, "<integer>" + country.getId() + "</integer>");
 				write(writer, "<key>image</key>");
@@ -356,6 +434,8 @@ public class Main {
 				write(writer, "<string>" + currency.getIsoCode() + "</string>");
 				write(writer, "<key>name</key>");
 				write(writer, "<string>" + currency.getName() + "</string>");
+				write(writer, "<key>name_de</key>");
+				write(writer, "<string>" + currency.getNameDe() + "</string>");
 				write(writer, "<key>digits</key>");
 				write(writer, "<integer>" + currency.getNumberOfDigitsAfterSep() + "</integer>");
 				write(writer, "<key>rates</key>");

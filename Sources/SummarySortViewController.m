@@ -12,6 +12,7 @@
 #import "CurrencyRefresh.h"
 #import "MultiLineSegmentedControl.h"
 #import "TravelCategory.h"
+#import "I18NSortCategory.h"
 
 @implementation SummarySortViewController
 
@@ -74,8 +75,11 @@
     }
     
     [self.lastUpdatedLabel sizeToFit];
+    
     self.updateIndicator.frame = CGRectMake(self.lastUpdatedLabel.frame.origin.x + self.lastUpdatedLabel.frame.size.width + ACTIVITY_VIEW_SIZE, self.lastUpdatedLabel.frame.origin.y, ACTIVITY_VIEW_SIZE, ACTIVITY_VIEW_SIZE);
     self.lastUpdatedLabel.frame = CGRectMake((self.ratesToolBar.frame.size.width - self.lastUpdatedLabel.frame.size.width) / 2, (self.ratesToolBar.frame.size.height - self.lastUpdatedLabel.frame.size.height) / 2, self.lastUpdatedLabel.frame.size.width, self.lastUpdatedLabel.frame.size.height);
+    
+    self.detailViewController.view.frame = CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.ratesToolBar.frame.origin.y);
     
     [formatter release];
 }
@@ -108,7 +112,7 @@
 
     for (Currency *currency in _currencyArray) {
         [segArrayTitles addObject:currency.code];
-        [segArraySubTitles addObject:currency.name];
+        [segArraySubTitles addObject:currency.nameI18N];
     }
     
     if ([_currencyArray count] > 1) {
@@ -151,10 +155,11 @@
     self.updateIndicator.frame = CGRectMake(ratesUpdated.frame.origin.x + ratesUpdated.frame.size.width + ACTIVITY_VIEW_SIZE, ratesUpdated.frame.origin.y, ACTIVITY_VIEW_SIZE, ACTIVITY_VIEW_SIZE);
     self.updateIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [ratestoolbar addSubview:self.updateIndicator];
-    
-    self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
+
     [newView addSubview:self.detailViewController.view];
     [newView addSubview:ratestoolbar];
+    
+    self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
     
     self.view = newView;
     

@@ -6,6 +6,8 @@ public class Country implements Comparable<Country> {
 
 	private int id;
 	private String name;
+	private String sortName;
+	private String nameDe;
 	private URL imgPath;
 	private List<City> cities = new ArrayList<City>();
 
@@ -15,6 +17,22 @@ public class Country implements Comparable<Country> {
 
 	public void setCities(List<City> cities) {
 		this.cities = cities;
+	}
+
+	public String getSortName() {
+		return sortName;
+	}
+
+	public void setSortName(String sortName) {
+		this.sortName = sortName;
+	}
+
+	public String getNameDe() {
+		return nameDe;
+	}
+
+	public void setNameDe(String nameDe) {
+		this.nameDe = nameDe;
 	}
 
 	public String getName() {
@@ -77,6 +95,12 @@ public class Country implements Comparable<Country> {
 	}
 
 	public int compareTo(Country country) {
-		return name.compareTo(country.getName());
+		if (sortName == null) {
+			return 1;
+		}
+		if (country.getSortName() == null) {
+			return -1;
+		}
+		return sortName.compareTo(country.getSortName());
 	}
 }

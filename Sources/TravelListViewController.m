@@ -42,7 +42,7 @@
         [self performFetchForTableView:self.tableView];
         
         self.titleKey = @"name";
-        self.subtitleKey = @"country.name";
+        self.subtitleKey = @"country.nameI18N";
         self.imageKey = @"country.image";
 
         self.clearsSelectionOnViewWillAppear = YES;
@@ -81,7 +81,7 @@
         if ([travel.name length] > 0) {
             detailViewController.title = travel.name;
         } else {
-            detailViewController.title = travel.country.name;
+            detailViewController.title = travel.country.nameI18N;
         }
         [self.rootViewController.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release]; 
@@ -110,13 +110,13 @@
         // travel text
         cell.textLabel.text = travel.name;
         if ([travel.city length] > 0) {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", travel.city, travel.country.name];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", travel.city, travel.country.nameI18N];
         } else {
-            cell.detailTextLabel.text = travel.country.name;
+            cell.detailTextLabel.text = travel.country.nameI18N;
         }
     } else {
         // travel country
-        cell.textLabel.text = travel.country.name;
+        cell.textLabel.text = travel.country.nameI18N;
         if ([travel.city length] > 0) {
             cell.detailTextLabel.text = travel.city;
         } else {

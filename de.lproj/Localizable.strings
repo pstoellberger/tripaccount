@@ -115,7 +115,7 @@
 "help sample trip" = "An diesem Beispieltrip kannst du die App kennenlernen.";
 
 /* alert title edit rate */
-"Manually edit rates" = "Währungen editieren";
+"Manually edit rates" = "Wechselkurse editieren";
 
 /* cell caption name
    controller title edit name */
@@ -249,3 +249,8 @@
 /* mail label */
 "who owes" = "Wer schuldet?";
 
+"for" = "für";
+
+"owes" = "schuldet";
+
+"(owes) to" = "";

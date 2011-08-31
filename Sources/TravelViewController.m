@@ -264,7 +264,7 @@
 - (void)sendSummaryMail {
     
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
-    controller.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    controller.navigationBar.barStyle = UIBarStyleBlack;
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObject:self.travel forKey:@"travel"];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

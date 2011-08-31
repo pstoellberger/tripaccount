@@ -12,8 +12,6 @@
 
 - (NSString *)nameI18N {
     
-    NSLog(@"%@", [[NSLocale preferredLanguages] objectAtIndex:0]);
-    
     if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"de"]) {
         return self.name_de;
     } else {
@@ -25,6 +23,57 @@
 
 + (NSString *)sortAttributeI18N {
 
+    if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"de"]) {
+        return @"name_de";
+    } else {
+        return @"name";
+    }
+    
+}
+
+@end
+
+@implementation Currency (I18NSortCategory)
+
+- (NSString *)nameI18N {
+    
+    if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"de"]) {
+        return self.name_de;
+    } else {
+        return self.name;
+    }
+    
+    
+}
+
++ (NSString *)sortAttributeI18N {
+    
+    if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"de"]) {
+        return @"name_de";
+    } else {
+        return @"name";
+    }
+    
+}
+
+
+@end
+
+@implementation Country (I18NSortCategory)
+
+- (NSString *)nameI18N {
+    
+    if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"de"]) {
+        return self.name_de;
+    } else {
+        return self.name;
+    }
+    
+    
+}
+
++ (NSString *)sortAttributeI18N {
+    
     if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"de"]) {
         return @"name_de";
     } else {

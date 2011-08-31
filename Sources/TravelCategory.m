@@ -18,7 +18,7 @@
 
 - (void)open:(BOOL)useLatestRates {
     
-    NSLog(@"Opening travel with name %@ and country %@", self.name, self.country.name);
+    NSLog(@"Opening travel with name %@ and country %@", self.name, self.country.nameI18N);
     
     self.closed = [NSNumber numberWithInt:0];
     self.closedDate = nil;
@@ -38,7 +38,7 @@
 
 - (void)close {
     
-    NSLog(@"Closing travel with name %@ and country %@", self.name, self.country.name);
+    NSLog(@"Closing travel with name %@ and country %@", self.name, self.country.nameI18N);
     
     self.closed = [NSNumber numberWithInt:1];
     
@@ -107,9 +107,9 @@
 - (NSString *)location {
     
     if (self.city != nil && [self.city length] > 0) {
-        return [NSString stringWithFormat:@"%@, %@", self.city, self.country.name];
+        return [NSString stringWithFormat:@"%@, %@", self.city, self.country.nameI18N];
     } else {
-        return self.country.name;
+        return self.country.nameI18N;
     }
 }
 
