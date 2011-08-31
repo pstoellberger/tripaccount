@@ -171,7 +171,7 @@
 							</object>
 							<object class="IBUILabel" id="540291589">
 								<reference key="NSNextResponder" ref="110739500"/>
-								<int key="NSvFlags">300</int>
+								<int key="NSvFlags">314</int>
 								<string key="NSFrame">{{49, 20}, {43, 24}}</string>
 								<reference key="NSSuperview" ref="110739500"/>
 								<reference key="NSWindow"/>
@@ -191,12 +191,12 @@
 							</object>
 							<object class="IBUIView" id="244168670">
 								<reference key="NSNextResponder" ref="110739500"/>
-								<int key="NSvFlags">-2147483351</int>
+								<int key="NSvFlags">-2147483347</int>
 								<object class="NSMutableArray" key="NSSubviews">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="IBUILabel" id="665669162">
 										<reference key="NSNextResponder" ref="244168670"/>
-										<int key="NSvFlags">301</int>
+										<int key="NSvFlags">274</int>
 										<string key="NSFrameSize">{60, 25}</string>
 										<reference key="NSSuperview" ref="244168670"/>
 										<reference key="NSWindow"/>
@@ -232,6 +232,8 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAwIDAAA</bytes>
 								</object>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<int key="IBUIContentMode">3</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</object>
