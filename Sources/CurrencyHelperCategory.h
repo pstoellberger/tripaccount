@@ -11,6 +11,8 @@
 
 @interface Currency (CurrencyHelper)
 
+@property (nonatomic, readonly) NSString *fullName;
+
 - (double)convertTravelAmount:(Travel *)travel currency:(Currency *)currency amount:(double)amount;
 - (NSArray *)allBaseCurrencies;
 - (ExchangeRate *)defaultRate;
