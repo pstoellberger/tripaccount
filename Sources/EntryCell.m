@@ -24,14 +24,19 @@
                          animations:^{
                              right.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, - right.frame.origin.x - right.bounds.size.width, 0);
                          } 
-                         completion:nil];
+                         completion:^(BOOL fin) {
+                             right.hidden = YES;
+                         }];
         [UIView animateWithDuration:0.3
                               delay:0 
                             options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
                          animations:^{
                              rightBottom.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, - rightBottom.frame.origin.x - rightBottom.bounds.size.width, 0);
+                             
                          } 
-                         completion:nil];
+                         completion:^(BOOL fin) {
+                             rightBottom.hidden = YES;
+                         }];
         
         // beide labels ganz nach rechts ausdehnen
         self.bottom.frame = CGRectMake(self.bottom.frame.origin.x, self.bottom.frame.origin.y, self.contentView.frame.size.width - self.bottom.frame.origin.x, self.bottom.frame.size.height);
@@ -62,17 +67,6 @@
         self.top.frame = CGRectMake(self.top.frame.origin.x, self.top.frame.origin.y, self.right.frame.origin.x - self.top.frame.origin.x, self.top.frame.size.height);
         
     }
-}
-
-- (void)layoutSubviews {
-
-    [super layoutSubviews];
-    
-    
-    if (self.editing) {
-        rightBottom.hidden = YES;
-        right.hidden = YES;
-    } 
 }
 
 @end
