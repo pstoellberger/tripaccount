@@ -25,5 +25,6 @@
 
 - (id)initWithTravel:(Travel *) travel;
 - (void)updateRateLabel:(BOOL)animate; 
+- (void)centerRateLabel;
 
 @end

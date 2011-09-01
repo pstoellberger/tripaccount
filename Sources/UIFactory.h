@@ -19,7 +19,7 @@
 
 #define RATE_SORT_TOOLBAR_HEIGHT 15
 #define RATE_LABEL_HEIGHT 10
-#define ACTIVITY_VIEW_SIZE 10
+#define ACTIVITY_VIEW_SIZE 13
 
 
 @class HelpView;

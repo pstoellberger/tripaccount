@@ -92,7 +92,7 @@
         cell.leftImage.alpha = 0.6;
     }
     
-    if ([transfer.paid intValue] == 1) {
+    if ([self.travel.closed intValue] == 1 && [transfer.paid intValue] == 1) {
        cell.paid.hidden = NO; 
     }
 

@@ -411,8 +411,9 @@
     dispatch_async(updateQueue, ^{
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_summarySortViewController.updateIndicator startAnimating];
             _summarySortViewController.lastUpdatedLabel.text = NSLocalizedString(@"Updating currency exchange rates...", @"status text of update toolbar");
+            [_summarySortViewController centerRateLabel];
+            [_summarySortViewController.updateIndicator startAnimating];
         });
         
         CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[self.travel managedObjectContext]];
