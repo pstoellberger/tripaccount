@@ -175,8 +175,9 @@
     req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:[_sortKeyArray objectAtIndex:_sortIndex] ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES], nil];
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
-    self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sectionKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
-    
+    if (!self.fetchedResultsController) {
+        self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sectionKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
+    }    
     [super performFetchForTableView:self.tableView];
     
 }
@@ -184,6 +185,7 @@
 - (void)sortTable:(int)sortIndex {
     
     _sortIndex = sortIndex;
+    
     [self initFetchResultsController:self.fetchRequest];
     
     self.travel.displaySort = [NSNumber numberWithInt:sortIndex];

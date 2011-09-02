@@ -268,14 +268,14 @@
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObject:self.travel forKey:@"travel"];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults synchronize];
-    NSLog(@"includeImages %@", [userDefaults boolForKey:@"includeImages"]);
+    
     if ([userDefaults boolForKey:@"includeImages"]) {
         [dictionary setValue:@"Yes" forKey:@"includeImages"];
     }
     if ([self.travel.name length] > 0) {
         [dictionary setValue:@"Yes" forKey:@"tripHasName"];
     }
+    
     [dictionary setValue:NSLocalizedString(@"Expenses of trip", @"mail label") forKey:@"labelExpenses"];
     [dictionary setValue:NSLocalizedString(@"to", @"mail label") forKey:@"labelTo"];
     [dictionary setValue:NSLocalizedString(@"Payer", @"mail label") forKey:@"labelPayer"];

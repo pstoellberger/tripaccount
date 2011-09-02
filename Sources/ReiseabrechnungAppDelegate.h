@@ -48,5 +48,6 @@
 - (void)checkForResetOfHelpBubbles;
 - (void)initializeSampleTrip;
 - (void)registerHelpBubble:(HelpView *)helpView;
+- (void)initUserDefaults;
 
 @end

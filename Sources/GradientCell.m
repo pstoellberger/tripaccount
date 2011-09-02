@@ -45,9 +45,9 @@
     
     _gradient = [[CAGradientLayer layer] retain];
     _gradient.frame = self.bounds;
-    _gradient.startPoint = CGPointMake(0.5, 0.5);
-    _gradient.endPoint = CGPointMake(1, 1);
-    _gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:1 alpha:1] CGColor], (id)[[UIColor colorWithWhite:0.8 alpha:1] CGColor], nil];
+    _gradient.startPoint = CGPointMake(0, 0);
+    _gradient.endPoint = CGPointMake(0, 1);
+    _gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:1 alpha:1] CGColor], (id)[[UIColor colorWithWhite:0.85 alpha:1] CGColor], nil];
     _gradient.needsDisplayOnBoundsChange = YES;
     
     self.backgroundView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.frame.size.width, self.frame.size.height)] autorelease];
