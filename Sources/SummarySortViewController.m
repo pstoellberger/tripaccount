@@ -129,7 +129,7 @@
         [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
         segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
         segControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        segControl.tintColor = [UIFactory defaultTintColor];
+        segControl.tintColor = [UIColor blackColor];
         self.segControl = segControl;
         
         self.segControl.selectedSegmentIndex = [_currencyArray indexOfObject:self.travel.displayCurrency];
