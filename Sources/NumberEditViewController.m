@@ -42,8 +42,7 @@
         self.currency = currency;
         
         self.number = [[startNumber copy] autorelease];
-        self.textField.text = [UIFactory formatNumber:self.number withDecimals:decimals];
-        
+        self.textField.text = [UIFactory formatNumberWithoutThSep:startNumber withDecimals:decimals];        
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
         
         self.tableView.allowsSelection = NO;

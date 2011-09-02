@@ -246,6 +246,18 @@
     return returnValue;
 }
 
++ (NSString *)formatNumberWithoutThSep:(NSNumber *)number withDecimals:(int)decimals {
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    numberFormatter.usesGroupingSeparator = NO;
+    numberFormatter.maximumFractionDigits = decimals;
+    NSString *returnValue = [numberFormatter stringFromNumber:number];
+    [numberFormatter release];
+    
+    return returnValue;
+}
+
 + (void)addHelpViewToView:(HelpView *)helpView toView:(UIView *)view {
        
     BOOL alreadyAdded = NO;

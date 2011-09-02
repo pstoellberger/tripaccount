@@ -32,6 +32,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOption {
     
+    [self initUserDefaults];
+    
     self.helpBubbles = [NSMutableArray array];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
@@ -58,6 +60,15 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+    
+}
+
+- (void)initUserDefaults {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"YES" forKey:@"includeImages"];
+    [defaults registerDefaults:appDefaults];
+    [defaults synchronize];
     
 }
 

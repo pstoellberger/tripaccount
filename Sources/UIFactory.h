@@ -49,6 +49,7 @@
 + (UIAlertView *)createAlterViewForRefreshingRatesOnOpeningTravel:(id <UIAlertViewDelegate>)delegate;
 + (NSString *)formatNumber:(NSNumber *)number;
 + (NSString *)formatNumber:(NSNumber *)number withDecimals:(int)decimals;
++ (NSString *)formatNumberWithoutThSep:(NSNumber *)number withDecimals:(int)decimals;
 + (void)addHelpViewToView:(HelpView *)helpView toView:(UIView *)view;
 + (void)replaceHelpViewInView:(NSString *)replaceHelpViewId withView:(HelpView *)helpView toView:(UIView *)view;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
