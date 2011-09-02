@@ -269,6 +269,7 @@
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObject:self.travel forKey:@"travel"];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults synchronize];
+    NSLog(@"includeImages %@", [userDefaults boolForKey:@"includeImages"]);
     if ([userDefaults boolForKey:@"includeImages"]) {
         [dictionary setValue:@"Yes" forKey:@"includeImages"];
     }

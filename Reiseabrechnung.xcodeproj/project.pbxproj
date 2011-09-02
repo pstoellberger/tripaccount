@@ -25,8 +25,6 @@
 		F10CC9971407D1CC00A8DD31 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC9951407D1CC00A8DD31 /* Travel.m */; };
 		F10CC99B1407D1CD00A8DD31 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */; };
 		F10CC99C1407D1CD00A8DD31 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */; };
-		F10CC99E1407DD8C00A8DD31 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F10CC99D1407DD8C00A8DD31 /* Settings.bundle */; };
-		F10CC99F1407DD8C00A8DD31 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F10CC99D1407DD8C00A8DD31 /* Settings.bundle */; };
 		F10CC9A214080C0400A8DD31 /* leo.png in Resources */ = {isa = PBXBuildFile; fileRef = F10CC9A114080C0400A8DD31 /* leo.png */; };
 		F10CC9A314080C0400A8DD31 /* leo.png in Resources */ = {isa = PBXBuildFile; fileRef = F10CC9A114080C0400A8DD31 /* leo.png */; };
 		F10CC9A714080D6500A8DD31 /* donatello.png in Resources */ = {isa = PBXBuildFile; fileRef = F10CC9A414080D6500A8DD31 /* donatello.png */; };
@@ -93,7 +91,8 @@
 		F14B376F13E6906000351641 /* EntryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */; };
 		F14B377013E6906000351641 /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
 		F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
-		F1509277140E7DE6009C5AB9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1509275140E7DE6009C5AB9 /* Localizable.strings */; };
+		F14ECA77140FEB6F00F7ADFB /* Root.strings in Resources */ = {isa = PBXBuildFile; fileRef = F14ECA75140FEB6F00F7ADFB /* Root.strings */; };
+		F14ECA79140FEB8300F7ADFB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F14ECA73140FEB0600F7ADFB /* Settings.bundle */; };
 		F150936A140EB01B009C5AB9 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = F150927B140EB01B009C5AB9 /* countries.plist */; };
 		F150936B140EB01B009C5AB9 /* currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = F150927C140EB01B009C5AB9 /* currencies.plist */; };
 		F150936C140EB01B009C5AB9 /* flag2.png in Resources */ = {isa = PBXBuildFile; fileRef = F150927D140EB01B009C5AB9 /* flag2.png */; };
@@ -475,7 +474,6 @@
 		F10CC9951407D1CC00A8DD31 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
 		F10CC9991407D1CD00A8DD31 /* AppDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
 		F10CC99A1407D1CD00A8DD31 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
-		F10CC99D1407DD8C00A8DD31 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F10CC9A114080C0400A8DD31 /* leo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leo.png; sourceTree = "<group>"; };
 		F10CC9A414080D6500A8DD31 /* donatello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donatello.png; sourceTree = "<group>"; };
 		F10CC9A514080D6500A8DD31 /* michelangelo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = michelangelo.png; sourceTree = "<group>"; };
@@ -503,6 +501,9 @@
 		F14B373313E68B5F00351641 /* UnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTests.h; sourceTree = "<group>"; };
 		F14B373513E68B5F00351641 /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		F14B373713E68B5F00351641 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		F14ECA73140FEB0600F7ADFB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F14ECA76140FEB6F00F7ADFB /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Settings.bundle/en.lproj/Root.strings; sourceTree = "<group>"; };
+		F14ECA78140FEB8200F7ADFB /* de */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = de; path = Settings.bundle/de.lproj/Root.strings; sourceTree = "<group>"; };
 		F1509276140E7DE6009C5AB9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		F150927B140EB01B009C5AB9 /* countries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = countries.plist; sourceTree = "<group>"; };
 		F150927C140EB01B009C5AB9 /* currencies.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = currencies.plist; sourceTree = "<group>"; };
@@ -1285,7 +1286,7 @@
 			path = MGTemplateEngine;
 			sourceTree = "<group>";
 		};
-		F1A6BD1A13D5CF7200161197 /* en.proj */ = {
+		F1A6BD1A13D5CF7200161197 /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
 				F1D4B24A140D394F00CD2224 /* Localizable.strings */,
@@ -1296,7 +1297,6 @@
 				F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */,
 				F1CD790613BCC03B00D42AA3 /* EntryCell.xib */,
 			);
-			name = en.proj;
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
@@ -1405,7 +1405,7 @@
 				F14B372D13E68B5F00351641 /* UnitTests */,
 				F1533F1F13D47951008EBE9D /* Data */,
 				F1CD78DC13BC764400D42AA3 /* Images */,
-				F1A6BD1A13D5CF7200161197 /* en.proj */,
+				F1A6BD1A13D5CF7200161197 /* en.lproj */,
 				F1CE13E913D5C87B0079B234 /* de.lproj */,
 				F1CD783513BA405B00D42AA3 /* Supporting Files */,
 				F1CD782D13BA405A00D42AA3 /* Frameworks */,
@@ -1493,7 +1493,8 @@
 				F17B4A3913F17D2600072F90 /* mailTemplate.html */,
 				F1CD783A13BA405B00D42AA3 /* Reiseabrechnung-Prefix.pch */,
 				F1CD783B13BA405B00D42AA3 /* main.m */,
-				F10CC99D1407DD8C00A8DD31 /* Settings.bundle */,
+				F14ECA75140FEB6F00F7ADFB /* Root.strings */,
+				F14ECA73140FEB0600F7ADFB /* Settings.bundle */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1635,7 +1636,6 @@
 				F17B4A3313F17D0900072F90 /* Writing Markers.txt in Resources */,
 				F17B4A3513F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3B13F17D2600072F90 /* mailTemplate.html in Resources */,
-				F10CC99F1407DD8C00A8DD31 /* Settings.bundle in Resources */,
 				F10CC9A314080C0400A8DD31 /* leo.png in Resources */,
 				F10CC9A814080D6500A8DD31 /* donatello.png in Resources */,
 				F10CC9AA14080D6500A8DD31 /* michelangelo.png in Resources */,
@@ -1668,7 +1668,6 @@
 				F17B4A3213F17D0900072F90 /* Writing Markers.txt in Resources */,
 				F17B4A3413F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3A13F17D2600072F90 /* mailTemplate.html in Resources */,
-				F10CC99E1407DD8C00A8DD31 /* Settings.bundle in Resources */,
 				F10CC9A214080C0400A8DD31 /* leo.png in Resources */,
 				F10CC9A714080D6500A8DD31 /* donatello.png in Resources */,
 				F10CC9A914080D6500A8DD31 /* michelangelo.png in Resources */,
@@ -1683,7 +1682,6 @@
 				F1D4B240140CF3C000CD2224 /* information@2x.png in Resources */,
 				F1D4B242140CF45200CD2224 /* information.png in Resources */,
 				F1D4B24C140D394F00CD2224 /* Localizable.strings in Resources */,
-				F1509277140E7DE6009C5AB9 /* Localizable.strings in Resources */,
 				F150936A140EB01B009C5AB9 /* countries.plist in Resources */,
 				F150936B140EB01B009C5AB9 /* currencies.plist in Resources */,
 				F150936C140EB01B009C5AB9 /* flag2.png in Resources */,
@@ -1923,6 +1921,8 @@
 				F1509456140EB01B009C5AB9 /* flag236.png in Resources */,
 				F1509457140EB01B009C5AB9 /* flag237.png in Resources */,
 				F1509458140EB01B009C5AB9 /* flag238.png in Resources */,
+				F14ECA77140FEB6F00F7ADFB /* Root.strings in Resources */,
+				F14ECA79140FEB8300F7ADFB /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2095,6 +2095,15 @@
 				F14B373113E68B5F00351641 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F14ECA75140FEB6F00F7ADFB /* Root.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F14ECA76140FEB6F00F7ADFB /* en */,
+				F14ECA78140FEB8200F7ADFB /* de */,
+			);
+			name = Root.strings;
 			sourceTree = "<group>";
 		};
 		F1509275140E7DE6009C5AB9 /* Localizable.strings */ = {
