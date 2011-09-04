@@ -83,18 +83,7 @@
 
 - (NSArray *)sortedCurrencies {
     
-    NSSortDescriptor *sortCodeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"code" ascending:YES] autorelease];
-    
-    NSArray *returnArray = [[self.currencies allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortCodeDescriptor]];
-    
-    Currency *defCurr = [ReiseabrechnungAppDelegate defaultCurrency:[self managedObjectContext]];
-    if ([returnArray containsObject:defCurr]) {
-        NSMutableArray *mutArray = [NSMutableArray arrayWithArray:returnArray];
-        [mutArray removeObject:defCurr];
-        [mutArray insertObject:defCurr atIndex:0];
-        returnArray = [NSArray arrayWithArray:mutArray];
-    }
-    return returnArray;
+    return [Currency sortCurrencies:[self.currencies allObjects] inManagedObjectContext:[self managedObjectContext]];
 }
 
 - (NSArray *)sortedTransfers {

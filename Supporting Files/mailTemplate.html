@@ -4,13 +4,8 @@
     
     <body>
         
-        
         <style type="text/css">
             
-            table, th, td {
-                border: 1px #333 solid;
-                border-collapse: collapse;
-            }
             
             .imageRow {
                 vertical-align: middle;
@@ -65,7 +60,7 @@
             
             </style>
         
-        <table>
+        <table style="border: 1px #333 solid;border-collapse: collapse;">
             <thead>
                 <tr>
                     {% if tripHasName %}
@@ -75,28 +70,28 @@
                     {% /if %}
                 </tr>
                 <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
-                    <th class="imageRow">{{ labelPayer }}</th>
-                    <th class="typeRow">{{ labelType }}</th>
-                    <th class="textRow">{{ labelText }}</th>        
-                    <th class="amountRow">{{ labelAmount }}</th>
-                    <th class="dateRow">{{ labelDate }}</th>
-                    <th class="imageRow">{{ labelReceivers }}</th>
+                    <th class="imageRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelPayer }}</th>
+                    <th class="typeRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelType }}</th>
+                    <th class="textRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelText }}</th>        
+                    <th class="amountRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelAmount }}</th>
+                    <th class="dateRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelDate }}</th>
+                    <th class="imageRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelReceivers }}</th>
                 </tr>
             </thead>
             <tbody>
                 {% for entry in travel.sortedEntries %}
                 <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
                     
-                    <td class="payerRow imageRow">
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="payerRow imageRow">
                         {% if includeImages %}
                         <img src="data:image/png;base64,{{ entry.payer.base64 }}" /> 
                         {% /if %}
                         {{ entry.payer.name }}
                     </td>
-                    <td class="typeRow">{{ entry.type.nameI18N }}</td>
-                    <td class="textRow">{{ entry.text }}</td>
-                    <td class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
-                    <td class="dateRow">
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="typeRow">{{ entry.type.nameI18N }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="textRow">{{ entry.text }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="dateRow">
                         <span>
                             {% if entry.hasTimeSpecified %} 
                             {{ entry.date | date_format: "dd. MMM yyyy HH:mm" }}
@@ -104,7 +99,7 @@
                             {{ entry.date | date_format: "dd. MMM yyyy" }}
                             {% /if %}
                         </span></td>
-                    <td class="receiverRow imageRow">
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="receiverRow imageRow">
                         {% for receiver in entry.sortedReceivers %}
                         <span class="imageAndName">
                             {% if includeImages %}
@@ -146,18 +141,18 @@
             <tbody>
                 {% for transfer in travel.sortedTransfers %}
                 <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
-                    <td class="debtorRow imageRow">
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="debtorRow imageRow">
                         {% if includeImages %}
                         <img src="data:image/png;base64,{{ transfer.debtor.base64 }}" /> 
                         {% /if %}
                         {{ transfer.debtor.name }}</td>
-                    <td class="amountRow">{{ transfer.amountInDisplayCurrency | decimalNumber }} {{ travel.displayCurrency.code }}</td>
-                    <td class="debteeRow">
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="amountRow">{{ transfer.amountInDisplayCurrency | decimalNumber }} {{ travel.displayCurrency.code }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="debteeRow">
                         {% if includeImages %}
                         <img src="data:image/png;base64,{{ transfer.debtee.base64 }}" /> 
                         {% /if %}
                         {{ transfer.debtee.name }}</td>
-                    <td class="amountRow">{% if transfer.paid == 1 %} {{ labelYes }} {% else %} {{ labelNo }} {% /if %}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="amountRow">{% if transfer.paid == 1 %} {{ labelYes }} {% else %} {{ labelNo }} {% /if %}</td>
                 </tr>
                 {% /for %}
             </tbody>

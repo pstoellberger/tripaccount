@@ -18,4 +18,6 @@
 - (ExchangeRate *)defaultRate;
 - (ExchangeRate *)rateWithTravel:(Travel *)targetTravel;
 
++ (NSArray *)sortCurrencies:(NSArray *)currencies inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

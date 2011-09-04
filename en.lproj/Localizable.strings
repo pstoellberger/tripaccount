@@ -164,7 +164,7 @@
 "Sample Trip" = "Example Trip";
 
 /* alert item mail */
-"Send summary e-mail" = "Send summary e-mail";
+"Send summary e-mail" = "EMail summary";
 
 /* specify time label */
 "Specifiy time" = "Specifiy time";
@@ -248,3 +248,4 @@
 
 "(owes) to" = "";
 
+"currency can be removed" = "Currencies that are used for expenses of the trip can not be removed.";

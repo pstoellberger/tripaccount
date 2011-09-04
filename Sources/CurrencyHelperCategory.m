@@ -10,6 +10,7 @@
 #import "ExchangeRate.h"
 #import "Travel.h"
 #import "I18NSortCategory.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation Currency (CurrencyHelper)
 
@@ -111,6 +112,23 @@
 
 - (NSString *)fullName {
     return [NSString stringWithFormat:@"%@ (%@)", self.nameI18N, self.code];
+}
+
++ (NSArray *)sortCurrencies:(NSArray *)currencies inManagedObjectContext:(NSManagedObjectContext *)context {
+    
+    NSSortDescriptor *sortCodeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"code" ascending:YES] autorelease];
+    
+    NSArray *returnArray = [currencies sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortCodeDescriptor]];
+    
+    Currency *defCurr = [ReiseabrechnungAppDelegate defaultCurrency:context];
+    if ([returnArray containsObject:defCurr]) {
+        NSMutableArray *mutArray = [NSMutableArray arrayWithArray:returnArray];
+        [mutArray removeObject:defCurr];
+        [mutArray insertObject:defCurr atIndex:0];
+        returnArray = [NSArray arrayWithArray:mutArray];
+    }
+    
+    return returnArray;
 }
 
 @end

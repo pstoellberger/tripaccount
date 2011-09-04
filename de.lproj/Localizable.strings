@@ -254,3 +254,5 @@
 "already paid" = "Bereits bezahlt?";
 
 "(owes) to" = "";
+
+"currency can be removed" = "Währungen, die für Ausgaben dieses Trips verwendet werden, können nicht entfernt werden.";

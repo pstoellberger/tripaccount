@@ -307,8 +307,24 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)selectCurrencies:(NSArray *)newCurrencies {
     
+    NSMutableSet *addCurrArray = [NSMutableSet set];
+    for (Entry *entry in self.travel.entries) {
+        if (![newCurrencies containsObject:entry.currency]) {
+            [addCurrArray addObject:entry.currency];
+        }
+    }
+    
+    if ([addCurrArray count] > 0) {
+        
+        NSString *message = NSLocalizedString(@"currency can be removed", @"alert when when chaning travel");
+        UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", @"alert title") message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"alert item") otherButtonTitles:NSLocalizedString(@"OK", @"alert item"), nil] autorelease];
+        [alertView show];
+        
+        newCurrencies = [newCurrencies arrayByAddingObjectsFromArray:[addCurrArray allObjects]];
+    }
+    
     if (![newCurrencies isEqual:self.currencies]) {
-        self.currencies = newCurrencies;
+        self.currencies = [Currency sortCurrencies:newCurrencies inManagedObjectContext:[self.travel managedObjectContext]];
         [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
     }
     
@@ -409,6 +425,14 @@ static NSIndexPath *_currenciesIndexPath;
     self.travel.closed = [NSNumber numberWithInt:0];
     self.travel.currencies = [[[NSSet alloc] initWithArray:self.currencies] autorelease];
     
+    if ([self.travel.currencies containsObject:self.travel.lastCurrencyUsed]) {
+        self.travel.lastCurrencyUsed = [self.currencies objectAtIndex:0]; 
+    }
+    if ([self.travel.currencies containsObject:self.travel.displayCurrency]) {
+        self.travel.displayCurrency = [self.currencies objectAtIndex:0]; 
+    }
+    
+
     
     NSMutableArray *ratesToDelete = [NSMutableArray arrayWithArray:[self.travel.rates allObjects]];
     for (Currency *currency in self.currencies) {
