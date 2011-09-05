@@ -38,29 +38,51 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
+    [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
+    
+    UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.window.frame.size.width - 40) / 2, (self.window.frame.size.height - 40) / 2, 40, 40)];
+    actView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [self.window addSubview:actView];
+    [self.window makeKeyAndVisible];
+    [actView startAnimating];
+    
+    dispatch_queue_t updateQueue = dispatch_queue_create("InitQ", NULL);
+    
+    dispatch_async(updateQueue, ^{
+        
+        [self performInitialisations:self.window];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [actView stopAnimating];
+            [actView removeFromSuperview];
+        
+            RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
+            self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
+            self.navController.toolbar.barStyle = UIBarStyleBlackTranslucent;
+            self.navController.delegate = rvc;
+            [rvc release];
+            
+            [self.window addSubview:self.navController.view];
+        });
+    });
+    
+    return YES;
+    
+}
+
+#define INDIC_SIZE 40
+
+- (void)performInitialisations:(UIWindow *)window {
+    
     [self checkForResetOfHelpBubbles];
     
     [self initializeStartDatabase:[NSBundle mainBundle]];
     
     [self initializeSampleTrip];
     
-    [self refreshCurrencyRatesIfOutDated];
-    
     self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
     
-    [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
-    
-    RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
-    self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
-    self.navController.toolbar.barStyle = UIBarStyleBlackTranslucent;
-    self.navController.delegate = rvc;
-    [rvc release];
-    
-    [self.window addSubview:self.navController.view];
-    [self.window makeKeyAndVisible];
-    
-    return YES;
-    
+    [self refreshCurrencyRatesIfOutDated];    
 }
 
 - (void)initUserDefaults {
