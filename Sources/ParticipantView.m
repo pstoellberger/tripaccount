@@ -41,8 +41,6 @@ static UIImage *moreImagesImage;
 
 	UIGraphicsPushContext(context);
 	
-    NSLog(@"%f", rect.size.width);
-    
     int counter = 0;
     for (Participant *participant in self.participants) {
         UIImage *image = [UIImage imageWithData:participant.imageSmall];

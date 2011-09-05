@@ -36,9 +36,11 @@ static NSInteger LABEL_TAG = 0x555;
         int segIndex = 0;
         for (UIView *segmentView in self.subviews) {
             
+            UILabel *mainLabel = nil;
             for (UIView *subView in segmentView.subviews) {
                 if ([subView isKindOfClass:[UILabel class]]) {
                     subView.tag = LABEL_TAG;
+                    mainLabel = (UILabel *)subView;
                 }
             }
             
@@ -49,7 +51,11 @@ static NSInteger LABEL_TAG = 0x555;
                 label.font = [UIFont boldSystemFontOfSize:10];
                 label.textAlignment = UITextAlignmentCenter;
                 label.tag = SUBLABEL_TAG;
-                label.shadowColor = [UIColor darkGrayColor];
+                
+                if (mainLabel) {
+                    label.shadowColor = mainLabel.shadowColor;
+                    label.shadowOffset = mainLabel.shadowOffset;
+                }
                 
                 NSString *code = nil;
                 for (UIView *subView in segmentView.subviews) {
