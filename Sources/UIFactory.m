@@ -106,9 +106,19 @@
 
 + (void)addShadowToView:(UIView *)view {
     
-    view.layer.shadowColor = [[UIColor blackColor] CGColor];
-    view.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    view.layer.shadowRadius = 3.0f;
+    [self addShadowToView:view withColor:[UIColor blackColor]];
+}
+
++ (void)addShadowToView:(UIView *)view withColor:(UIColor *)color {
+    
+    [self addShadowToView:view withColor:color withOffset:1.0 andRadius:3.0];
+}
+
++ (void)addShadowToView:(UIView *)view withColor:(UIColor *)color withOffset:(double)offset andRadius:(double)radius {
+    
+    view.layer.shadowColor = [color CGColor];
+    view.layer.shadowOffset = CGSizeMake(offset, offset);
+    view.layer.shadowRadius = radius;
     view.layer.shadowOpacity = 1.0f;
     //view.layer.shouldRasterize = YES;
     //view.layer.masksToBounds = YES;

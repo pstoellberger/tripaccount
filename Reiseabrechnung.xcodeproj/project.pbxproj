@@ -399,6 +399,7 @@
 		F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */; };
 		F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A6C63113D6BFA6005E8388 /* noImage.png */; };
+		F1A6E51614154B6C00FB8C92 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1509275140E7DE6009C5AB9 /* Localizable.strings */; };
 		F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B820DA13BCD76C00FE329B /* CoreData.framework */; };
 		F1B8211213BD9F3A00FE329B /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211113BD9F3900FE329B /* CoreDataTableViewController.m */; };
 		F1B8211B13BDE2D400FE329B /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211A13BDE2D400FE329B /* Summary.m */; };
@@ -1923,6 +1924,7 @@
 				F1509458140EB01B009C5AB9 /* flag238.png in Resources */,
 				F14ECA77140FEB6F00F7ADFB /* Root.strings in Resources */,
 				F14ECA79140FEB8300F7ADFB /* Settings.bundle in Resources */,
+				F1A6E51614154B6C00FB8C92 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

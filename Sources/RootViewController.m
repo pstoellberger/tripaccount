@@ -102,10 +102,11 @@
 
 - (void)openInfoPopup {
      
-     self.infoViewController = [[[InfoViewController alloc] init] autorelease];
+     self.infoViewController = [[[InfoViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+     self.infoViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
      
      [UIView beginAnimations:nil context:nil];
-     [UIView setAnimationDuration:1.0];
+     [UIView setAnimationDuration:0.8];
      [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight
                             forView:[self.navigationController.view superview]
                               cache:YES];
@@ -115,9 +116,8 @@
      
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-     return YES;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+     return self.infoViewController.view.superview == nil;
 }
 
 - (void)changeToEditMode {
@@ -133,6 +133,7 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
      [self updateTableViewInsets];
 }
 

@@ -11,7 +11,8 @@
 
 @implementation InfoViewController
 
-@synthesize toolbar=_toolbar, webView=_webView;
+@synthesize feedBackLabel=_feedBackLabel, titleLabel=_titleLabel, versionLabel=_versionLabel, copyrightLabel=_copyrightLabel;
+@synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     
@@ -19,8 +20,39 @@
     if (self) {
         self.view.frame = [[UIScreen mainScreen] applicationFrame];
         
+        UIView *bgView = [UIFactory createBackgroundViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [self.view addSubview:bgView];
+        [self.view sendSubviewToBack:bgView];
+        self.view.backgroundColor = [UIColor clearColor];
+        
+        [UIFactory addShadowToView:self.titleLabel withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
+        [UIFactory addShadowToView:self.featureButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
+        [UIFactory addShadowToView:self.feedbackButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
+        [UIFactory addShadowToView:self.licenseButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
+        [UIFactory addShadowToView:self.closeButton withColor:[UIColor whiteColor] withOffset:0 andRadius:1.0];
+        
+        self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"versionlabel", @""), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+
+        self.feedBackLabel.text = NSLocalizedString(@"feedbackLabel", @"info feedbackLabel");
+        self.copyrightLabel.text = NSLocalizedString(@"copyrightLabel", @"info feedback button");
+        
+        [self setButtonTitle:self.closeButton title:NSLocalizedString(@"close", @"info close button")];
+        [self setButtonTitle:self.licenseButton title:NSLocalizedString(@"Acknowledgements", @"Acknowledgements")];
+        [self setButtonTitle:self.featureButton title:NSLocalizedString(@"Request a feature", @"info feature button")];
+        [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];        
+        
     }
     return self;
+}
+
+- (void)setButtonTitle:(UIButton *)button title:(NSString *)title {
+    
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateHighlighted];
+    [button setTitle:title forState:UIControlStateApplication];
+    [button setTitle:title forState:UIControlStateDisabled];
+    [button setTitle:title forState:UIControlStateReserved];
+    [button setTitle:title forState:UIControlStateSelected];
 }
 
 
@@ -30,7 +62,7 @@
 
 - (IBAction)cancel {
 	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:1.0];
+	[UIView setAnimationDuration:0.8];
 	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
 						   forView:self.view.superview
 							 cache:YES];
@@ -39,8 +71,45 @@
 	[UIView commitAnimations];
 }
 
-- (IBAction)contact {
+- (IBAction)requestFeature {
+    [self openEmailPopup:[NSLocalizedString(@"Feature Request for Trip Account Version ", @"subject feature request") stringByAppendingString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]] withTitle:NSLocalizedString(@"Feature Request", @"Feature Request") withMailName:NSLocalizedString(@"Feature Request", @"Feature Request")];    
+}
+
+- (IBAction)sendFeedback {
+    [self openEmailPopup:[NSLocalizedString(@"Feedback for Trip Account Version ", @"subject feedback request") stringByAppendingString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]] withTitle:NSLocalizedString(@"Feedback", @"Feedback") withMailName:NSLocalizedString(@"Feedback", @"Feedback")];
+}
+
+- (void)openEmailPopup:(NSString *)subject withTitle:(NSString *)title withMailName:(NSString *)mailName {
+
+    MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+    controller.navigationBar.barStyle = UIBarStyleBlack;
+    controller.mailComposeDelegate = self;
+    [controller setSubject:subject];
+    [controller setMessageBody:nil isHTML:NO];
+    [controller setToRecipients:[NSArray arrayWithObject:[NSString stringWithFormat:@"Trip Account %@ <tripaccount@martinmaier.name>", mailName]]];
     
+    if (controller)  {
+        [self presentModalViewController:controller animated:YES];
+        [controller becomeFirstResponder];
+    }
+    [controller release];
+    
+}
+
+- (IBAction)licenseNotes {
+    
+    UIAlertView *license = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Acknowledgements", @"Acknowledgements") message:NSLocalizedString(@"This app includes MGTemplateEnige by Matt Gemmell.", @"ack text") delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [license show];
+    [license release];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"It's away!");
+    }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - View lifecycle

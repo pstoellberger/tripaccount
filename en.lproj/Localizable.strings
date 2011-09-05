@@ -27,7 +27,7 @@
 "Amount" = "Amount";
 
 /* alert view can not delete */
-"Can not delete traveler" = "Can not delete traveler";
+"Can not delete traveler" = "Can not delete person";
 
 /* alert item
    Cancel */
@@ -49,7 +49,7 @@
 "Clear" = "Clear";
 
 /* alert item close trip */
-"Close this trip" = "Close this trip";
+"Close this trip" = "Close this Trip";
 
 /* section trip list for closed trips */
 "Closed Trips" = "Closed Trips";
@@ -61,7 +61,7 @@
 "Country" = "Country";
 
 /* alert item new person */
-"Create new person" = "Create new person";
+"Create new person" = "Create new Person";
 
 /* currencies cell caption */
 "Currencies" = "Currencies";
@@ -81,23 +81,23 @@
 "Description" = "Description";
 
 /* when opening travel */
-"Do you want to assign the latest currency exchange rates to this travel?" = "Do you want to assign the latest currency exchange rates to this travel?";
+"Do you want to assign the latest currency exchange rates to this travel?" = "Do you want to assign the latest currency exchange rates to this trip?";
 
 /* cell caption mail
    controller title edit mail */
-"E-Mail" = "E-Mail";
+"E-Mail" = "Email";
 
 /* help bubble currencies enter */
-"help currencies" = "Enter the currencies you want to use for this travel.";
+"help currencies" = "Enter the currencies you want to use for this trip.";
 
 /* tabbar expenses */
 "Expenses" = "Expenses";
 
 /* mail subject */
-"Expenses summary report for trip '%@'" = "Expenses summary report for trip '%@'";
+"Expenses summary report for trip '%@'" = "Expenses Summary Report for Trip '%@'";
 
 /* mail subject with no travel name */
-"Expenses summary report for trip to %@" = "Expenses summary report for trip to %@";
+"Expenses summary report for trip to %@" = "Expenses Summary Report for Trip to %@";
 
 /* help bubble last updated toolbar */
 "help rate updated" = "Find here the date of the last update of the currency exchange rates. Use the action above to update them now.";
@@ -106,10 +106,10 @@
 "From Address Book" = "From Address Book";
 
 /* help bubble sample trip */
-"help sample trip" = "Have a look at the sample to trip to see how the app works.";
+"help sample trip" = "Have a look at the sample trip to see how the app works.";
 
 /* alert title edit rate */
-"Manually edit rates" = "Manually edit rates";
+"Manually edit rates" = "Manually Edit Rates";
 
 /* cell caption name
    controller title edit name */
@@ -127,7 +127,7 @@
 "OK" = "OK";
 
 /* alert item open trip */
-"Open this trip" = "Open this trip";
+"Open this trip" = "Open this Trip";
 
 /* section trip list for open trips */
 "Open Trips" = "Open Trips";
@@ -164,7 +164,7 @@
 "Sample Trip" = "Example Trip";
 
 /* alert item mail */
-"Send summary e-mail" = "EMail summary";
+"Send summary e-mail" = "Email Summary";
 
 /* specify time label */
 "Specifiy time" = "Specifiy time";
@@ -176,19 +176,19 @@
 "Tap to dismiss" = "Tap to dismiss";
 
 /* help bubble close travel */
-"help closed travel" = "The travel was closed and can not be changed any more. Exchange rates used for this travel are fixed.";
+"help closed travel" = "The trip was closed and can not be changed any more. Exchange rates used for this trip are fixed.";
 
 /* alert no mail addresses */
 "There are no email addresses available for the person%@ %@" = "There are no email addresses available for the participant%1$@ %2$@";
 
 /* help bubble action button */
-"help action" = "This button offers you action like sending the summary report email to the travelers. You can also fix or edit currency exchange rates here.";
+"help action" = "This button offers you action like sending the Summary Report Email to the people on the trip. You can also fix or edit currency exchange rates here.";
 
 /* alert view explain why can not delete */
-"This traveler has expensens on this trip. Please delete those expenses first." = "This traveler has expensens on this trip. Please delete those expenses first.";
+"This traveler has expensens on this trip. Please delete those expenses first." = "This person has expensens on this trip. Please delete those expenses first.";
 
 /* status bar travel closed */
-"Travel closed at %@" = "Travel closed at %@";
+"Travel closed at %@" = "Trip closed at %@";
 
 /* alert view title */
 "Trip is closed." = "Trip is closed.";
@@ -198,7 +198,7 @@
 "Type" = "Type";
 
 /* alert item update rates */
-"Update exchange rates" = "Update exchange rates";
+"Update exchange rates" = "Update Exchange Rates";
 
 /* status text of update toolbar */
 "Updating currency exchange rates..." = "Updating currency exchange rates...";
@@ -249,3 +249,27 @@
 "(owes) to" = "";
 
 "currency can be removed" = "Currencies that are used for expenses of the trip can not be removed.";
+
+"versionlabel" = "version: %@";
+
+"copyrightLabel" = "© 2011 Martin Maier, all rights reserved.";
+
+"close" = "Close";
+
+"Acknowledgements" = "Acknowledgements";
+
+"This app includes MGTemplateEnige by Matt Gemmell." = "This app includes MGTemplateEngine by Matt Gemmell.";
+
+"Request a feature" = "Request a Feature";
+
+"Provide Feedback" = "Provide Feedback";
+
+"feedbackLabel" = "I am eager to improve this app. \nPlease let me know what you think and what you would like to see in future versions.";
+
+"Feature Request for Trip Account Version " = "Feature Request for Trip Account Version ";
+
+"Feature Request" = "Feature Request";
+
+"Feedback for Trip Account Version " = "Feedback for Trip Account Version ";
+
+"Feedback" = "Feedback";
