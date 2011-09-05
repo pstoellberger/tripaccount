@@ -256,3 +256,27 @@
 "(owes) to" = "";
 
 "currency can be removed" = "Währungen, die für Ausgaben dieses Trips verwendet werden, können nicht entfernt werden.";
+
+"versionlabel" = "Version: %@";
+
+"copyrightLabel" = "© 2011 Martin Maier, alle Rechte vorbehalten.";
+
+"close" = "Schließen";
+
+"Acknowledgements" = "Lizenzinformationen";
+
+"This app includes MGTemplateEnige by Matt Gemmell." = "Diese App verwendet MGTemplateEngine von Matt Gemmell.";
+
+"Request a feature" = "Funktion wünschen";
+
+"Provide Feedback" = "Feedback geben";
+
+"feedbackLabel" = "Ich will diese App verbessern. \nBitte gib mir Feedback und lass mich wissen, was du in zukünftigen Versionen sehen möchtest.";
+
+"Feature Request for Trip Account Version " = "Neue Funktion für Trip Account Version ";
+
+"Feature Request" = "Neue Funktion";
+
+"Feedback for Trip Account Version " = "Feedback für Trip Account Version ";
+
+"Feedback" = "Feedback";

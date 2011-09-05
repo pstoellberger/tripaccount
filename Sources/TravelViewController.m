@@ -539,36 +539,39 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    if ([actionSheet isEqual:self.actionSheetOpenTravel] || [actionSheet isEqual:self.actionSheetClosedTravel]) {
-        if (buttonIndex == 0) {
-            
-            [self askToSendEmail];
-            
-        } else if (buttonIndex == 1) {
-            
-            if ([self.travel.closed intValue] == 1) {
-                [self askToRefreshRatesWhenOpening];
-            } else {
-                [self closeTravel];
-            }
-        } else if (buttonIndex == 2) {
-            
-            [self refreshExchangeRates];
-            
-        } else if (buttonIndex == 3) {
-            
-            [self openRateEditPopup];
-        }
-    } else {
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
         
-        if (buttonIndex == 0) {
+        if ([actionSheet isEqual:self.actionSheetOpenTravel] || [actionSheet isEqual:self.actionSheetClosedTravel]) {
+            if (buttonIndex == 0) {
+                
+                [self askToSendEmail];
+                
+            } else if (buttonIndex == 1) {
+                
+                if ([self.travel.closed intValue] == 1) {
+                    [self askToRefreshRatesWhenOpening];
+                } else {
+                    [self closeTravel];
+                }
+            } else if (buttonIndex == 2) {
+                
+                [self refreshExchangeRates];
+                
+            } else if (buttonIndex == 3) {
+                
+                [self openRateEditPopup];
+            }
+        } else {
             
-            [self openPersonAddPopup];
-            
-        } else if (buttonIndex == 1) {
-            
-            [self openParticipantPopup:nil];
-            
+            if (buttonIndex == 0) {
+                
+                [self openPersonAddPopup];
+                
+            } else if (buttonIndex == 1) {
+                
+                [self openParticipantPopup:nil];
+                
+            }
         }
     }
 }

@@ -37,6 +37,8 @@
 + (int)defaultSectionHeaderCellHeight;
 + (int)defaultCellHeight;
 + (void)addShadowToView:(UIView *)view;
++ (void)addShadowToView:(UIView *)view withColor:(UIColor *)color;
++ (void)addShadowToView:(UIView *)view withColor:(UIColor *)color withOffset:(double)offset andRadius:(double)radius;
 + (void)removeShadowFromView:(UIView *)view;
 + (BOOL)dateHasTime:(NSDate *)date;
 + (NSDate *)createDateWithoutTimeFromDate:(NSDate *)date;
