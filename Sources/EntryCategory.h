@@ -13,6 +13,7 @@
 
 @property (nonatomic, readonly) NSArray *sortedReceivers;
 @property (nonatomic, readonly) BOOL hasTimeSpecified;
+@property (nonatomic, readonly) NSString *typeSectionName;
 
 
 @end

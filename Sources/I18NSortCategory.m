@@ -18,7 +18,6 @@
         return self.name;
     }
     
-    
 }
 
 + (NSString *)sortAttributeI18N {

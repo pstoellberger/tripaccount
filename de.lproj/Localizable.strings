@@ -75,7 +75,7 @@
    sort button */
 "Date" = "Datum";
 
-"Currencies used for this trip:" = "Verwendete Währungen"
+"Currencies used for this trip:" = "Verwendete Währungen";
 
 /* cell title description
    controller title description
@@ -88,7 +88,7 @@
 
 /* cell caption mail
    controller title edit mail */
-"E-Mail" = "E-Mail";
+"E-Mail" = "Email";
 
 /* help bubble currencies enter */
 "help currencies" = "Wähle die Währung die du für diesen Trip verwenden möchtest.";
@@ -170,7 +170,7 @@
 "Sample Trip" = "Beispiel-Trip";
 
 /* alert item mail */
-"Send summary e-mail" = "Sende Abrechnungs-E-Mail";
+"Send summary e-mail" = "Sende Abrechnungs-Email";
 
 /* specify time label */
 "Specify time" = "Tageszeit festlegen";
@@ -185,10 +185,10 @@
 "help closed travel" = "Dieser Trip ist abgeschlossen und kann nicht mehr geändert werden. Die Wechselkurse für diesen Trip sind nun fixiert.";
 
 /* alert no mail addresses */
-"There are no email addresses available for the participant%@ %@" = "Die Personen%1$@ %2$@ besitzen keine E-Mail-Adressen.";
+"There are no email addresses available for the participant%@ %@" = "Die Personen%1$@ %2$@ besitzen keine Email-Adressen.";
 
 /* help bubble action button */
-"help action" = "Dieser Button ermöglicht Aktionen wie das Senden des Abrechnungs-E-Mails. Hier können auch die Wechselkurse fixiert oder händisch editiert werden.";
+"help action" = "Dieser Button ermöglicht Aktionen wie das Senden des Abrechnungs-Emails. Hier können auch die Wechselkurse fixiert oder händisch editiert werden.";
 
 /* alert view explain why can not delete */
 "This traveler has expensens on this trip. Please delete those expenses first." = "Diese Person hat Ausgaben zugeordnent. Bitte lösche diese zuerst.";
@@ -283,3 +283,5 @@
 "Feedback for Trip Account Version " = "Feedback für Trip Account Version ";
 
 "Feedback" = "Feedback";
+
+"<no type>" = "<Kein Typ>";

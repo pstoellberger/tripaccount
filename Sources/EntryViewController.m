@@ -36,7 +36,7 @@
         _travel = travel;
         _sortIndex = 0;
         
-        _sectionKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"type.nameI18N", @"dateWithOutTime", nil];
+        _sectionKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"typeSectionName", @"dateWithOutTime", nil];
         _sortKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", [NSString stringWithFormat:@"type.%@", [Type sortAttributeI18N]], @"date", nil];
 
         self.tableView.delegate = self;
@@ -175,9 +175,8 @@
     req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:[_sortKeyArray objectAtIndex:_sortIndex] ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES], nil];
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
-    if (!self.fetchedResultsController) {
-        self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sectionKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
-    }    
+    self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sectionKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
+    
     [super performFetchForTableView:self.tableView];
     
 }
