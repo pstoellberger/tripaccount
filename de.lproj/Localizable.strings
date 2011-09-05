@@ -69,10 +69,13 @@
 /* cell title currency */
 "Currency" = "Währung";
 
+
 /* cell title date
    controller title date
    sort button */
 "Date" = "Datum";
+
+"Currencies used for this trip:" = "Verwendete Währungen"
 
 /* cell title description
    controller title description

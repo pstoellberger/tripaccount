@@ -271,6 +271,11 @@
     
     if ([userDefaults boolForKey:@"includeImages"]) {
         [dictionary setValue:@"Yes" forKey:@"includeImages"];
+        
+        for (Participant *p in self.travel.participants) {
+            //UIImage * image = [UIImage imageWithData:p.image];
+            //[controller addAttachmentData:UIImageJPEGRepresentation(image, 1) mimeType:@"image/jpg" fileName:[NSString stringWithFormat:@"%@.jpg", p.name]];
+        }
     }
     if ([self.travel.name length] > 0) {
         [dictionary setValue:@"Yes" forKey:@"tripHasName"];
@@ -307,7 +312,7 @@
     }
     [controller setSubject:subjectLine];
     [controller setMessageBody:mailBody isHTML:YES];
-    
+
     NSMutableArray *toArray = [NSMutableArray array];
     for (Participant *p in self.travel.participants) {
         if (![p.yourself isEqual:[NSNumber numberWithInt:1]]) {
