@@ -104,7 +104,7 @@ static NSIndexPath *_dateIndexPath;
             
             self.nmEntry.receivers = travel.participants;
             self.nmEntry.date = [UIFactory createDateWithoutTimeFromDate:[NSDate date]];
-            self.nmEntry.type = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].defaultType;
+            //self.nmEntry.type = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].defaultType;
         }
         
         [self checkIfDoneIsPossible];

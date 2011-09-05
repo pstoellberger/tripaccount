@@ -74,7 +74,7 @@
    sort button */
 "Date" = "Date";
 
-"Currencies used for this trip:" = "Currencies used for this trip"
+"Currencies used for this trip:" = "Currencies used for this trip";
 
 /* cell title description
    controller title description
@@ -275,3 +275,5 @@
 "Feedback for Trip Account Version " = "Feedback for Trip Account Version ";
 
 "Feedback" = "Feedback";
+
+"<no type>" = "<No Type>";
