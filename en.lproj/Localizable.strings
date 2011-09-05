@@ -74,6 +74,8 @@
    sort button */
 "Date" = "Date";
 
+"Currencies used for this trip:" = "Currencies used for this trip"
+
 /* cell title description
    controller title description
    description cell caption

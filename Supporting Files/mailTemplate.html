@@ -4,6 +4,115 @@
     
     <body>
         
+        <table style="border: 1px #333 solid;border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    {% if tripHasName %}
+                        <th colspan="6" class="title" style="background: #2D549C; color: #FFF; font-size:11pt;" height="30">{{ labelExpenses }} '{{ travel.name }}' {{ labelTo }} {{ travel.location }}</th>
+                    {% else %}
+                        <th colspan="6" class="title" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelExpenses }} {{ labelTo }} {{ travel.location }}</th>
+                    {% /if %}
+                </tr>
+                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
+                    <th class="imageRow" style="background: #2D549C; color: #FFF; font-size:11pt;" height="20">{{ labelPayer }}</th>
+                    <th class="typeRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelType }}</th>
+                    <th class="textRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelText }}</th>        
+                    <th class="amountRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelAmount }}</th>
+                    <th class="dateRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelDate }}</th>
+                    <th class="imageRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelReceivers }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in travel.sortedEntries %}
+                <tr {%if currentLoop.currentIndex % 2%}class="odd" style="background: #DDD" {%else%}class="even"{%/if%}>
+                    
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="payerRow imageRow">
+                        {% if includeImages %}
+                        <img src="data:image/png;base64,{{ entry.payer.base64 }}" /> 
+                        {% /if %}
+                        {{ entry.payer.name }}
+                    </td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="typeRow">{{ entry.type.nameI18N }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="textRow">{{ entry.text }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="dateRow">
+                        <span>
+                            {% if entry.hasTimeSpecified %} 
+                            {{ entry.date | date_format: "dd. MMM yyyy HH:mm" }}
+                            {% else %}
+                            {{ entry.date | date_format: "dd. MMM yyyy" }}
+                            {% /if %}
+                        </span></td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="receiverRow imageRow">
+                        {% for receiver in entry.sortedReceivers %}
+                        <span class="imageAndName">
+                            {% if includeImages %}
+                                <img src="data:image/png;base64,{{ receiver.base64 }}" /> {{ receiver.name }}
+                            {% else %}
+                                {% if receiver.hash != entry.sortedReceivers.@lastObject.hash %}
+                                    {{ receiver.name }},
+                                {% else %}
+                                    {{ receiver.name }}
+                                {% /if %}
+                            {% /if %}
+                        </span>
+                        {% /for %}		
+                    </td>
+                </tr>
+                {% /for %}
+            </tbody>
+            <tfooter>
+                <tr>
+                    <th colspan="6" class="title" height="30" style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;background: #2D549C; color: #FFF; font-size:11pt;">{{ labelTotal }}: {{ travel.totalCostLabel }}</th>
+                </tr>
+            </tfooter>
+        </table>
+        
+        <br /><br />
+        
+        <table style="border: 1px #333 solid;border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th colspan="4" class="title" style="background: #2D549C; color: #FFF; font-size:11pt;" height="30">{{ labelSummary }}</th>
+                </tr>
+                <tr>
+                    <th class="imageRow" style="background: #2D549C; color: #FFF; font-size:11pt;" height="20">{{ labelWhoOwes }}</th>
+                    <th class="textRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelHowMuch }}</th>
+                    <th class="typeRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelToWhom }}</th>
+                    <th class="typeRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelAlreadyPaid }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transfer in travel.sortedTransfers %}
+                <tr {%if currentLoop.currentIndex % 2%}class="odd" style="background: #DDD"{%else%}class="even"{%/if%}>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="debtorRow imageRow">
+                        {% if includeImages %}
+                        <img src="data:image/png;base64,{{ transfer.debtor.base64 }}" /> 
+                        {% /if %}
+                        {{ transfer.debtor.name }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="amountRow">{{ transfer.amountInDisplayCurrency | decimalNumber }} {{ travel.displayCurrency.code }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="debteeRow">
+                        {% if includeImages %}
+                        <img src="data:image/png;base64,{{ transfer.debtee.base64 }}" /> 
+                        {% /if %}
+                        {{ transfer.debtee.name }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="amountRow">{% if transfer.paid == 1 %} {{ labelYes }} {% else %} {{ labelNo }} {% /if %}</td>
+                </tr>
+                {% /for %}
+            </tbody>
+        </table>
+        
+        <br /><br />
+        
+        <strong>{{ labelCurrenciesUsed }}:</strong>
+        <table class="currencyTable">
+            {% for currency in travel.currencies %}
+            <tr>
+                <td>{{ currency.code }}</td><td>...</td><td>{{ currency.nameI18N }}</td>
+            </tr>
+            {% /for %}
+        </table>
+        
         <style type="text/css">
             
             
@@ -59,115 +168,6 @@
             
             
             </style>
-        
-        <table style="border: 1px #333 solid;border-collapse: collapse;">
-            <thead>
-                <tr>
-                    {% if tripHasName %}
-                        <th colspan="6" class="title">{{ labelExpenses }} '{{ travel.name }}' {{ labelTo }} {{ travel.location }}</th>
-                    {% else %}
-                        <th colspan="6" class="title">{{ labelExpenses }} {{ labelTo }} {{ travel.location }}</th>
-                    {% /if %}
-                </tr>
-                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
-                    <th class="imageRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelPayer }}</th>
-                    <th class="typeRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelType }}</th>
-                    <th class="textRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelText }}</th>        
-                    <th class="amountRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelAmount }}</th>
-                    <th class="dateRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelDate }}</th>
-                    <th class="imageRow" style="border: 1px #333 solid;border-collapse: collapse; background: -webkit-gradient(linear, left top, left bottom, from(#2D549C), to(#3767BF));">{{ labelReceivers }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for entry in travel.sortedEntries %}
-                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
-                    
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="payerRow imageRow">
-                        {% if includeImages %}
-                        <img src="data:image/png;base64,{{ entry.payer.base64 }}" /> 
-                        {% /if %}
-                        {{ entry.payer.name }}
-                    </td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="typeRow">{{ entry.type.nameI18N }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="textRow">{{ entry.text }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="dateRow">
-                        <span>
-                            {% if entry.hasTimeSpecified %} 
-                            {{ entry.date | date_format: "dd. MMM yyyy HH:mm" }}
-                            {% else %}
-                            {{ entry.date | date_format: "dd. MMM yyyy" }}
-                            {% /if %}
-                        </span></td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="receiverRow imageRow">
-                        {% for receiver in entry.sortedReceivers %}
-                        <span class="imageAndName">
-                            {% if includeImages %}
-                                <img src="data:image/png;base64,{{ receiver.base64 }}" /> {{ receiver.name }}
-                            {% else %}
-                                {% if receiver.hash != entry.sortedReceivers.@lastObject.hash %}
-                                    {{ receiver.name }},
-                                {% else %}
-                                    {{ receiver.name }}
-                                {% /if %}
-                            {% /if %}
-                        </span>
-                        {% /for %}		
-                    </td>
-                </tr>
-                {% /for %}
-            </tbody>
-            <tfooter>
-                <tr>
-                    <th colspan="6" class="title">{{ labelTotal }}: {{ travel.totalCostLabel }}</th>
-                </tr>
-            </tfooter>
-        </table>
-        
-        <br /><br />
-        
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="4" class="title">{{ labelSummary }}</th>
-                </tr>
-                <tr>
-                    <th class="imageRow">{{ labelWhoOwes }}</th>
-                    <th class="textRow">{{ labelHowMuch }}</th>
-                    <th class="typeRow">{{ labelToWhom }}</th>
-                    <th class="typeRow">{{ labelAlreadyPaid }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for transfer in travel.sortedTransfers %}
-                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="debtorRow imageRow">
-                        {% if includeImages %}
-                        <img src="data:image/png;base64,{{ transfer.debtor.base64 }}" /> 
-                        {% /if %}
-                        {{ transfer.debtor.name }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="amountRow">{{ transfer.amountInDisplayCurrency | decimalNumber }} {{ travel.displayCurrency.code }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="debteeRow">
-                        {% if includeImages %}
-                        <img src="data:image/png;base64,{{ transfer.debtee.base64 }}" /> 
-                        {% /if %}
-                        {{ transfer.debtee.name }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse;" class="amountRow">{% if transfer.paid == 1 %} {{ labelYes }} {% else %} {{ labelNo }} {% /if %}</td>
-                </tr>
-                {% /for %}
-            </tbody>
-        </table>
-        
-        <br /><br />
-        
-        <strong>{{ labelCurrenciesUsed }}:</strong>
-        <table class="currencyTable">
-            {% for currency in travel.currencies %}
-            <tr>
-                <td>{{ currency.code }}</td><td>...</td><td>{{ currency.nameI18N }}</td>
-            </tr>
-            {% /for %}
-        </table>
         
     </body>
     
