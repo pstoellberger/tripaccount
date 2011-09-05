@@ -49,5 +49,6 @@
 - (void)initializeSampleTrip;
 - (void)registerHelpBubble:(HelpView *)helpView;
 - (void)initUserDefaults;
+- (void)performInitialisations:(UIWindow *)window;
 
 @end

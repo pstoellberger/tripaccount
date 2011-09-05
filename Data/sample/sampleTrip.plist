@@ -29,7 +29,7 @@
 			<key>description</key>
 			<string>Schönbrunn</string>
 			<key>type</key>
-			<string>Ticket</string>
+			<string>Tickets</string>
 			<key>payer</key>
 			<integer>1</integer>
 			<key>amount</key>
@@ -70,7 +70,7 @@
 			<key>description</key>
 			<string>Parfum for April O&apos;Neil</string>
 			<key>type</key>
-			<string>Present</string>
+			<string>Presents</string>
 			<key>payer</key>
 			<integer>3</integer>
 			<key>amount</key>
