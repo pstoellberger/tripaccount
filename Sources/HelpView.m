@@ -136,8 +136,6 @@
             [arrowView release];
         }
         
-        self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        
         [bodyView release];
         
         if (arrowPosition == ARROWPOSITION_TOP_RIGHT) {

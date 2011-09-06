@@ -11,6 +11,7 @@
 #import "ReiseabrechnungAppDelegate.h"
 #import "Currency.h"
 #import "MultiLineSegmentedControl.h"
+#import "GradientView.h"
 
 @implementation EntrySortViewController
 
@@ -74,7 +75,7 @@
     
     self.segControl.selectedSegmentIndex = [self.travel.displaySort intValue];
     
-    UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
+    GradientView *segControlView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
     [UIFactory addGradientToView:segControlView];
     [segControlView addSubview:segControl];
     [segControl release];

@@ -14,6 +14,11 @@
 @synthesize feedBackLabel=_feedBackLabel, titleLabel=_titleLabel, versionLabel=_versionLabel, copyrightLabel=_copyrightLabel;
 @synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton;
 
+#define CLOSE_LABEL_GAP 6
+#define CLOSE_LABEL_SIZE_REDUCTION 10
+
+#define COPYRIGHT_LABEL_GAP 10
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,7 +44,12 @@
         [self setButtonTitle:self.closeButton title:NSLocalizedString(@"close", @"info close button")];
         [self setButtonTitle:self.licenseButton title:NSLocalizedString(@"Acknowledgements", @"Acknowledgements")];
         [self setButtonTitle:self.featureButton title:NSLocalizedString(@"Request a feature", @"info feature button")];
-        [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];        
+        [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];      
+        
+        [self.closeButton sizeToFit];
+        self.closeButton.frame = CGRectMake(self.view.frame.size.width - self.closeButton.frame.size.width - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.view.frame.size.height - self.closeButton.frame.size.height - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.width - CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.height - CLOSE_LABEL_SIZE_REDUCTION);
+        
+        self.copyrightLabel.frame = CGRectMake(COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.origin.y, self.view.frame.size.width - self.closeButton.frame.size.width - COPYRIGHT_LABEL_GAP - COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.size.height);
         
     }
     return self;

@@ -13,6 +13,7 @@
 #import "MultiLineSegmentedControl.h"
 #import "TravelCategory.h"
 #import "I18NSortCategory.h"
+#import "GradientView.h"
 
 @implementation SummarySortViewController
 
@@ -134,8 +135,7 @@
         
         self.segControl.selectedSegmentIndex = [_currencyArray indexOfObject:self.travel.displayCurrency];
         
-        UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
-        [UIFactory addGradientToView:segControlView];
+        GradientView *segControlView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
         [segControlView addSubview:segControl];
         [segControl release];
         
