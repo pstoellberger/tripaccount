@@ -131,6 +131,7 @@
     view.layer.shadowRadius = 0;
     view.layer.shadowOpacity = 0;
     view.layer.masksToBounds = YES;
+    
 }
 
 #pragma mark Date
@@ -217,6 +218,7 @@
     gradient.endPoint = CGPointMake(1, 1);
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:1 alpha:1] CGColor], (id)[[UIColor colorWithWhite:0.8 alpha:1] CGColor], nil];
     gradient.needsDisplayOnBoundsChange = YES;
+
     
     [cell.layer insertSublayer:gradient atIndex:0];  
 }

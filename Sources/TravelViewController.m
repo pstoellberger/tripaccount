@@ -438,10 +438,15 @@
 
 - (void)initHelpBubbleForViewController:(UIViewController *)viewController {
     
+    double navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    double entrySortHeight = self.entrySortViewController.detailViewController.tableView.tableHeaderView.frame.size.height;
+    double windowWidth = self.view.frame.size.width;
+    double windowHeight = self.view.frame.size.height;
+    
     if (viewController == self.participantSortViewController && ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
         
         NSString *text = NSLocalizedString(@"help add people", @"help bubble add travelers");
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"traveler add"];
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(windowWidth - 102, navBarHeight, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"traveler add"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
@@ -449,28 +454,28 @@
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
             NSString *text = NSLocalizedString(@"help add entries", @"help bubble add expenses");
-            HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
+            HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(windowWidth - 102, navBarHeight, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
             [UIFactory addHelpViewToView:helpView toView:viewController.view];
             [helpView release];
         }
         
         NSString *text = NSLocalizedString(@"help sort", @"help bubble sort buttons");
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, NAVIGATIONBAR_HEIGHT + ENTRY_SORT_HEIGHT - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, navBarHeight + entrySortHeight - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
     } else if (viewController == self.summarySortViewController) {
         
         NSString *text = NSLocalizedString(@"help action", @"help bubble action button");
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"action button"];
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(windowWidth - 102, navBarHeight, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"action button"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
         text = NSLocalizedString(@"help rate updated", @"help bubble last updated toolbar");
-        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
+        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, windowHeight - 180, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
         
         text = NSLocalizedString(@"help closed travel", @"help bubble close travel");
-        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, 280, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
+        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, windowHeight - 180, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
             if (self.summarySortViewController.segControl.numberOfSegments > 1) {
@@ -485,7 +490,7 @@
     }
 }
 
-- (void) updateTableViewInsets {
+- (void)updateTableViewInsets {
     
     self.participantSortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
     self.participantSortViewController.detailViewController.tableView.scrollIndicatorInsets = self.participantSortViewController.detailViewController.tableView.contentInset;

@@ -180,13 +180,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
      
+     double navBarHeight = self.navigationController.navigationBar.frame.size.height;
+     double windowWidth = self.view.frame.size.width;
+     
      NSString *text = NSLocalizedString(@"help add trip", @"help bubble add trip");
-     HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(218, NAVIGATIONBAR_HEIGHT, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"travel add button"];
+     HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(windowWidth - 102, navBarHeight, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"travel add button"];
      [UIFactory addHelpViewToView:helpView toView:self.view];
      [helpView release];
      
      text = NSLocalizedString(@"help sample trip", @"help bubble sample trip");
-     helpView = [[HelpView alloc] initWithFrame:CGRectMake(2, NAVIGATIONBAR_HEIGHT + 70, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sample trip"];
+     helpView = [[HelpView alloc] initWithFrame:CGRectMake(2, navBarHeight + 70, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sample trip"];
      [UIFactory addHelpViewToView:helpView toView:self.view];       
      [helpView release];
      
