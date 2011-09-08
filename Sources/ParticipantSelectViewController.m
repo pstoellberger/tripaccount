@@ -58,9 +58,10 @@
     Participant *p = (Participant *)managedObject;
     
     cell.textLabel.text = p.name;
+    cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
     cell.imageView.image = [UIImage imageWithData:p.image];
     
-    if (self.entry.amount && [self.entry.amount doubleValue] != 0) {
+    if (self.entry.amount && [self.entry.amount doubleValue] != 0 && cell.detailTextLabel) {
         [_amountCells setObject:cell.detailTextLabel forKey:p.name];
     }
     
