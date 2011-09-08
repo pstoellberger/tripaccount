@@ -35,8 +35,6 @@
     [self initUserDefaults];
     
     self.helpBubbles = [NSMutableArray array];
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
     [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
     
@@ -44,6 +42,7 @@
     actView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     [self.window addSubview:actView];
     [self.window makeKeyAndVisible];
+        
     [actView startAnimating];
     
     dispatch_queue_t updateQueue = dispatch_queue_create("InitQ", NULL);
@@ -55,14 +54,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [actView stopAnimating];
             [actView removeFromSuperview];
-        
+            
             RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
             self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
-            self.navController.toolbar.barStyle = UIBarStyleBlackTranslucent;
             self.navController.delegate = rvc;
             [rvc release];
             
             [self.window addSubview:self.navController.view];
+
         });
     });
     
