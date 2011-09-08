@@ -410,6 +410,7 @@
 		F1BB9D6B1406623D00DA0573 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D691406623D00DA0573 /* Transfer.m */; };
 		F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
 		F1BB9D781406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
+		F1C02B9D14191B9100467C9F /* ParticipantSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C02B9C14191B9100467C9F /* ParticipantSelectViewController.m */; };
 		F1CD782F13BA405A00D42AA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD782E13BA405A00D42AA3 /* UIKit.framework */; };
 		F1CD783113BA405A00D42AA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD783013BA405A00D42AA3 /* Foundation.framework */; };
 		F1CD783313BA405A00D42AA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */; };
@@ -831,6 +832,8 @@
 		F1BB9D691406623D00DA0573 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
 		F1BB9D751406703600DA0573 /* EntryCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCategory.h; sourceTree = "<group>"; };
 		F1BB9D761406703600DA0573 /* EntryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCategory.m; sourceTree = "<group>"; };
+		F1C02B9B14191B9100467C9F /* ParticipantSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantSelectViewController.h; sourceTree = "<group>"; };
+		F1C02B9C14191B9100467C9F /* ParticipantSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantSelectViewController.m; sourceTree = "<group>"; };
 		F1CD782A13BA405A00D42AA3 /* Trip Account.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Account.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CD782E13BA405A00D42AA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1CD783013BA405A00D42AA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1362,6 +1365,8 @@
 				F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */,
 				F1CE923A13DEA7B6009F3B2F /* DateSelectViewController.h */,
 				F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */,
+				F1C02B9B14191B9100467C9F /* ParticipantSelectViewController.h */,
+				F1C02B9C14191B9100467C9F /* ParticipantSelectViewController.m */,
 			);
 			name = EntryEdit;
 			sourceTree = "<group>";
@@ -2091,6 +2096,7 @@
 				F1567972140E0F0A008A8A33 /* Country.m in Sources */,
 				F1567975140E6BE6008A8A33 /* I18NSortCategory.m in Sources */,
 				F1A6E51A141679CF00FB8C92 /* GradientView.m in Sources */,
+				F1C02B9D14191B9100467C9F /* ParticipantSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

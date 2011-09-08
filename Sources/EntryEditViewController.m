@@ -15,6 +15,7 @@
 #import "NumberEditViewController.h"
 #import "DateSelectViewController.h"
 #import "TypeViewController.h"
+#import "ParticipantSelectViewController.h"
 
 static NSIndexPath *_payerIndexPath;
 static NSIndexPath *_amountIndexPath;
@@ -320,10 +321,11 @@ static NSIndexPath *_dateIndexPath;
         _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
         _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"travel = %@", self.travel];
         
-        GenericSelectViewController *selectViewController = [[GenericSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
-                                                                                                         withMultiSelection:YES
-                                                                                                           withFetchRequest:_fetchRequest 
-                                                                                                        withSelectedObjects:[self.nmEntry.receivers allObjects] 
+        ParticipantSelectViewController *selectViewController = [[ParticipantSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
+                                                                                                                         withEntry:self.nmEntry
+                                                                                                                 withMultiSelection:YES
+                                                                                                                   withFetchRequest:_fetchRequest 
+                                                                                                                withSelectedObjects:[self.nmEntry.receivers allObjects] 
                                                                                                                      target:self
                                                                                                                      action:@selector(selectReceivers:)];
         
