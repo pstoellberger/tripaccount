@@ -17,7 +17,6 @@
     
     SEL _selector;
     id _target;
-    NSMutableArray *_selectedObjects;
     UISegmentedControl *_segControl;
     UIView *_segControlView;
     
@@ -27,6 +26,7 @@
 @property (nonatomic, readonly) BOOL allNoneButtons;
 @property (nonatomic, retain) Class cellClass;
 @property (nonatomic, retain) NSManagedObjectContext *context;
+@property (nonatomic, retain) NSMutableArray *selectedObjects;
 
 - (void)selectAll:(id)sender;
 - (void)selectNone:(id)sender;

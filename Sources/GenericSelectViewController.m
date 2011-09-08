@@ -11,8 +11,6 @@
 #import "UIFactory.h"
 
 @interface GenericSelectViewController () 
-
-@property (retain, readonly) NSMutableArray *selectedObjects;
 - (void)done;
 - (void)updateSegmentedControl;
 - (UIView *)createTableHeaderSubView;
@@ -20,14 +18,14 @@
 
 @implementation GenericSelectViewController
 
-@synthesize multiSelectionAllowed=_multiSelectionAllowed, cellClass=_cellClass, context=_context, allNoneButtons=_allNoneButtons;
+@synthesize multiSelectionAllowed=_multiSelectionAllowed, cellClass=_cellClass, context=_context, allNoneButtons=_allNoneButtons, selectedObjects=_selectedObjects;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context 
               withMultiSelection:(BOOL)multiSelection 
                 withFetchRequest:(NSFetchRequest *)fetchRequest
              withSelectedObjects:(NSArray *)newSelectedObjects
                           target:(id)target 
-                          action:(SEL)selector; {
+                          action:(SEL)selector {
     return [self initInManagedObjectContext:context withMultiSelection:multiSelection withAllNoneButtons:multiSelection withFetchRequest:fetchRequest withSectionKey:nil withSelectedObjects:newSelectedObjects target:target action:selector];
                               
 }
@@ -39,7 +37,7 @@
                   withSectionKey:(NSString *)sectionKey
              withSelectedObjects:(NSArray *)newSelectedObjects
                           target:(id)target 
-                          action:(SEL)selector; {
+                          action:(SEL)selector {
     return [self initInManagedObjectContext:context withStyle:UITableViewStylePlain withMultiSelection:multiSelection withAllNoneButtons:allNoneButtons withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
 
 }
@@ -51,7 +49,7 @@
                   withSectionKey:(NSString *)sectionKey
              withSelectedObjects:(NSArray *)newSelectedObjects
                           target:(id)target 
-                          action:(SEL)selector; {
+                          action:(SEL)selector {
     
     return [self initInManagedObjectContext:context withStyle:style withMultiSelection:multiSelection withAllNoneButtons:multiSelection withFetchRequest:fetchRequest withSectionKey:sectionKey withSelectedObjects:newSelectedObjects target:target action:selector];
 }
@@ -64,7 +62,7 @@
                   withSectionKey:(NSString *)sectionKey
              withSelectedObjects:(NSArray *)newSelectedObjects
                           target:(id)target 
-                          action:(SEL)selector; {
+                          action:(SEL)selector {
     
     
     if (self = [super initWithStyle:style]) {
@@ -75,6 +73,8 @@
         _allNoneButtons = allNoneButtons;
         
         self.context = context;
+        
+        self.selectedObjects = [[NSMutableArray alloc] init];
         
         [UIFactory initializeTableViewController:self.tableView];
         
@@ -146,13 +146,6 @@
             _segControl.selectedSegmentIndex = UISegmentedControlNoSegment;
         }
     }           
-}
-
-- (NSMutableArray *)selectedObjects {
-    if (!_selectedObjects) {
-        _selectedObjects = [[[NSMutableArray alloc] init] retain];
-    }
-    return _selectedObjects;
 }
 
 - (void)done {
@@ -296,7 +289,6 @@
 - (void)dealloc {
     
     [_segControl release];
-    [_selectedObjects release];
     [_segControlView release];
     
     [super dealloc];
