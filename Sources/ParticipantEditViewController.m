@@ -58,13 +58,19 @@ static NSIndexPath *_emailIndexPath;
         self.participant = participant;
         
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
+        
         if (self.participant) {
+        
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)] autorelease];
+            self.title = NSLocalizedString(@"Edit Person", @"controller person edit title");  
+            
         } else {
+            
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done:)] autorelease];
+            self.title = NSLocalizedString(@"Add Person", @"controller person add title");  
+            
         }
         
-        self.title = NSLocalizedString(@"Add Person", @"controller person add title");  
         
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
