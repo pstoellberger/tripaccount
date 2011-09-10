@@ -16,8 +16,20 @@
 /* controller person add title */
 "Add Person" = "Add Person";
 
+/* controller person edit title */
+"Edit Person" = "Edit Person";
+
 /* trip add title */
 "Add Trip" = "Add Trip";
+
+/* trip edit title */
+"Edit Trip" = "Edit Trip";
+
+/* expense add title */
+"Add Expense" = "Add Expense";
+
+/* expense edit title */
+"Edit Expense" = "Edit Expense";
 
 /* select button add */
 "All" = "All";

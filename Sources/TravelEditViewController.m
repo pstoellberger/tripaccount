@@ -64,13 +64,20 @@ static NSIndexPath *_currenciesIndexPath;
         self.tableView.dataSource = self;
         
         self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
+        
+        self.travel = travel;
+        
         if (self.travel) {
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)] autorelease];
+            
+            self.title = NSLocalizedString(@"Edit Trip", @"trip edit title");  
+            
         } else {
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done:)] autorelease];
+            
+            self.title = NSLocalizedString(@"Add Trip", @"trip add title");  
+            
         }
-        
-        self.title = NSLocalizedString(@"Add Trip", @"trip add title");  
         
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
@@ -89,8 +96,7 @@ static NSIndexPath *_currenciesIndexPath;
             [locator startLocating];
             
         } else {
-            
-            self.travel = travel;
+
             self.name = travel.name;
             self.city = travel.city;
             self.country = travel.country;

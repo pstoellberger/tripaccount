@@ -10,7 +10,8 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 @interface InfoViewController : UIViewController <MFMailComposeViewControllerDelegate> {
-    
+    SEL _action;
+    id _target;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *feedBackLabel;
@@ -28,5 +29,6 @@
 - (IBAction)licenseNotes;
 - (void)openEmailPopup:(NSString *)subject withTitle:(NSString *)title withMailName:(NSString *)mailName;
 - (void)setButtonTitle:(UIButton *)button title:(NSString *)title;
+- (void)setCloseAction:(id)target action:(SEL)action;
 
 @end

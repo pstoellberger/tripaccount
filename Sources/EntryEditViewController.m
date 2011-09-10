@@ -488,8 +488,12 @@ static NSIndexPath *_dateIndexPath;
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
     if (self.entryManaged) {
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)] autorelease];
+        self.title = NSLocalizedString(@"Edit Expense", @"entry edit title");  
+        
     } else {
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done:)] autorelease];
+        self.title = NSLocalizedString(@"Add Expense", @"entry add title"); 
+        
     }
     
     [self checkIfDoneIsPossible];

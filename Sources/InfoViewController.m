@@ -70,15 +70,16 @@
     return YES;
 }
 
+- (void)setCloseAction:(id)target action:(SEL)action {
+    _target = target;
+    _action = action;
+}
+
 - (IBAction)cancel {
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.8];
-	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
-						   forView:self.view.superview
-							 cache:YES];
     
-	[self.view removeFromSuperview];
-	[UIView commitAnimations];
+    if (_target && _action && [_target respondsToSelector:_action]) {
+        [_target performSelector:_action];
+    }
 }
 
 - (IBAction)requestFeature {
