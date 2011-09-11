@@ -75,7 +75,8 @@
     
     self.segControl.selectedSegmentIndex = [self.travel.displaySort intValue];
     
-    GradientView *segControlView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
+    UIToolbar *segControlView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
+    segControlView.barStyle = UIBarStyleBlack;
     [UIFactory addGradientToView:segControlView];
     [segControlView addSubview:segControl];
     [segControl release];

@@ -74,7 +74,7 @@
         
         self.context = context;
         
-        self.selectedObjects = [[NSMutableArray alloc] init];
+        self.selectedObjects = [[[NSMutableArray alloc] init] autorelease];
         
         [UIFactory initializeTableViewController:self.tableView];
         
