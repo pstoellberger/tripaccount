@@ -27,5 +27,6 @@
 @property (nonatomic, assign) id <ParticipantViewControllerEditDelegate> editDelegate;
 
 - (void)updateTravelOpenOrClosed;
+- (id)initWithTravel:(Travel *)travel;
 
 @end
