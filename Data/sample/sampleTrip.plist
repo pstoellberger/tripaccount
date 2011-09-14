@@ -47,7 +47,7 @@
 		</dict>
 		<dict>
 			<key>description</key>
-			<string>6 nights</string>
+			<string>6x</string>
 			<key>type</key>
 			<string>Hotel</string>
 			<key>payer</key>
@@ -63,46 +63,6 @@
 				<integer>0</integer>
 				<integer>1</integer>
 				<integer>2</integer>
-				<integer>3</integer>
-			</array>
-		</dict>
-		<dict>
-			<key>description</key>
-			<string>Parfum for April O&apos;Neil</string>
-			<key>type</key>
-			<string>Presents</string>
-			<key>payer</key>
-			<integer>3</integer>
-			<key>amount</key>
-			<integer>53</integer>
-			<key>currency</key>
-			<string>EUR</string>
-			<key>date</key>
-			<integer>7</integer>
-			<key>receivers</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-				<integer>3</integer>
-			</array>
-		</dict>
-		<dict>
-			<key>description</key>
-			<string>ATM</string>
-			<key>type</key>
-			<string>Cash</string>
-			<key>payer</key>
-			<integer>3</integer>
-			<key>amount</key>
-			<integer>200</integer>
-			<key>currency</key>
-			<string>EUR</string>
-			<key>date</key>
-			<integer>4</integer>
-			<key>receivers</key>
-			<array>
-				<integer>0</integer>
 				<integer>3</integer>
 			</array>
 		</dict>
@@ -161,51 +121,6 @@
 			<string>EUR</string>
 			<key>date</key>
 			<integer>0</integer>
-			<key>receivers</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-				<integer>3</integer>
-			</array>
-		</dict>
-		<dict>
-			<key>description</key>
-			<string>Flight from LA</string>
-			<key>type</key>
-			<string>Flight</string>
-			<key>payer</key>
-			<integer>3</integer>
-			<key>amount</key>
-			<integer>676</integer>
-			<key>currency</key>
-			<string>USD</string>
-			<key>date</key>
-			<integer>0</integer>
-			<key>receivers</key>
-			<array>
-				<integer>3</integer>
-			</array>
-		</dict>
-		<dict>
-			<key>description</key>
-			<string>Flight from NYC</string>
-			<key>type</key>
-			<string>Flight</string>
-			<key>payer</key>
-			<integer>2</integer>
-			<key>amount</key>
-			<integer>1945</integer>
-			<key>currency</key>
-			<string>USD</string>
-			<key>date</key>
-			<integer>0</integer>
-			<key>receivers</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-			</array>
 		</dict>
 		<dict>
 			<key>description</key>
@@ -220,27 +135,6 @@
 			<string>EUR</string>
 			<key>date</key>
 			<integer>1</integer>
-			<key>receivers</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-				<integer>3</integer>
-			</array>
-		</dict>
-		<dict>
-			<key>description</key>
-			<string>Present for Master Splinter</string>
-			<key>type</key>
-			<string>Souvenirs</string>
-			<key>payer</key>
-			<integer>1</integer>
-			<key>amount</key>
-			<integer>22</integer>
-			<key>currency</key>
-			<string>EUR</string>
-			<key>date</key>
-			<integer>2</integer>
 			<key>receivers</key>
 			<array>
 				<integer>0</integer>

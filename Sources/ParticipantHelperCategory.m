@@ -22,7 +22,8 @@
     NSString *lastName = (NSString *) ABRecordCopyValue(recordRef, kABPersonLastNameProperty);
     NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
-    NSArray *emailList = (NSArray *) ABMultiValueCopyArrayOfAllValues((ABMultiValueRef *) ABRecordCopyValue(recordRef, kABPersonEmailProperty));
+    ABMultiValueRef emailMultiValue = (ABMultiValueRef *) ABRecordCopyValue(recordRef, kABPersonEmailProperty);
+    NSArray *emailList = (NSArray *) ABMultiValueCopyArrayOfAllValues(emailMultiValue);
     
     if (!email && [emailList count] > 0) {
         email = (NSString *) [emailList objectAtIndex:0];
@@ -69,6 +70,8 @@
         person.imageSmall = UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:person.image] scaledToSize:CGSizeMake(32, 32)]);
     }
     
+    CFRelease(emailMultiValue);
+    [emailList release];
     [firstName release];
     [lastName release];
     

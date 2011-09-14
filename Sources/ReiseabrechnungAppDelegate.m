@@ -34,6 +34,8 @@
     
     [self initUserDefaults];
     
+    self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
+    
     self.helpBubbles = [NSMutableArray array];
     
     [self.window addSubview:[UIFactory createBackgroundViewWithFrame:self.window.frame]];
@@ -78,8 +80,6 @@
     [self initializeStartDatabase:[NSBundle mainBundle]];
     
     [self initializeSampleTrip];
-    
-    self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
     
     [self refreshCurrencyRatesIfOutDated];    
 }

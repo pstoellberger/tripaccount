@@ -48,9 +48,14 @@
 #pragma mark - Location finding
 
 - (void)startLocating {
+    
     geoCoderRetries = 0;
     alreadyProcessed = NO;
     self.lastKnowLocation = nil;
+    NSLog(@"%@", self.locManager);
+    
+    NSLog(@"%@", self.locManager.delegate);
+    
     [self.locManager startUpdatingLocation];
 }
 
@@ -80,7 +85,7 @@
     [_geocoder start];    
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {  
     
     NSDate *eventDate = newLocation.timestamp; 
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
