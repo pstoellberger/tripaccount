@@ -19,7 +19,7 @@
 
     NSManagedObjectContext *_context;
     
-    NSMutableArray* _cellsToReloadAndFlash;
+    NSMutableSet* _cellsToReloadAndFlash;
 
     BOOL _isFirstView;
     BOOL _viewAppeared;

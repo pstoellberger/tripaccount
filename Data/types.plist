@@ -6,6 +6,24 @@
 	<array>
 		<dict>
 			<key>name</key>
+			<string>Transportation</string>
+			<key>name_de</key>
+			<string>Transport</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Snacks</string>
+			<key>name_de</key>
+			<string>Snacks</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Taxi</string>
+			<key>name_de</key>
+			<string>Taxi</string>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Tickets</string>
 			<key>name_de</key>
 			<string>Tickets</string>

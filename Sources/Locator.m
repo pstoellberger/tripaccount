@@ -30,6 +30,8 @@
         alreadyProcessed = NO;
         geoCoderRetries = 0;
         
+        _locale = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+        
         // init location manager
         self.locManager = [[[CLLocationManager alloc] init] autorelease];
         
@@ -52,9 +54,6 @@
     geoCoderRetries = 0;
     alreadyProcessed = NO;
     self.lastKnowLocation = nil;
-    NSLog(@"%@", self.locManager);
-    
-    NSLog(@"%@", self.locManager.delegate);
     
     [self.locManager startUpdatingLocation];
 }
@@ -67,6 +66,8 @@
 	NSLog(@"Reverse geocoder error: %@", [error description]);
     geoCoderRetries++;
     
+    [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
+    
     if (geoCoderRetries < 3) {
         [self startReverseGeoCoding];
     } else {
@@ -75,6 +76,8 @@
 }
 
 - (void)startReverseGeoCoding {
+    
+    [[NSUserDefaults standardUserDefaults] setObject: [NSArray arrayWithObjects:@"en", nil] forKey:@"AppleLanguages"];
     
     if (!_geocoder) {
         _geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:self.lastKnowLocation.coordinate];
@@ -91,7 +94,9 @@
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     
     //Is the event recent and accurate enough ?
-    if (abs(howRecent) < 60) {    
+    NSLog(@"how recent %d secs", abs(howRecent));
+    
+    if (abs(howRecent) < 30) {    
         
         if (!self.lastKnowLocation || newLocation.horizontalAccuracy < self.lastKnowLocation.horizontalAccuracy) {
             self.lastKnowLocation = newLocation;
@@ -159,6 +164,8 @@
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
     
+    [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
+    
     [geocoder cancel];
     
     NSLog(@"%@",[placemark.addressDictionary description]);
@@ -181,7 +188,6 @@
     
     if (country) {
         alreadyProcessed = YES;
-        NSLog(@"setting city  %@ and country %@ in  %@", city, country, self.locationDelegate);
         [self.locationDelegate locationAquired:country city:city];
     }
 }
@@ -191,6 +197,7 @@
 - (void)dealloc {
     
     [_geocoder release];
+    [_locale release];
     
     [super dealloc];
 }

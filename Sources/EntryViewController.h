@@ -29,6 +29,7 @@
     NSArray *_sortKeyArray;
     NSArray *_sectionKeyArray;
     NSDateFormatter *_dateFormatter;
+    NSDateFormatter *_headerDateFormatter;
 }
 
 @property (nonatomic, retain) Travel *travel;

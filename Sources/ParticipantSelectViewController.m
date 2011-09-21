@@ -73,9 +73,7 @@
 
 - (void)updateCellWithSplitAmount:(UILabel *)label selected:(BOOL)selected {
     
-    NSLog(@"%d", selected);
-    
-    if ([self.selectedObjects count] != 0 && selected) {
+    if ([self.selectedObjects count] != 0 && selected && [self.entry.amount doubleValue] > 0) {
         
         label.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:([self.entry.amount doubleValue] / [self.selectedObjects count])]], self.entry.currency.code]; 
         

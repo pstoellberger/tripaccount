@@ -33,6 +33,9 @@
         _dateFormatter = [[NSDateFormatter alloc] init];
         _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
         
+        _headerDateFormatter = [[NSDateFormatter alloc] init];
+        _headerDateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        
         _travel = travel;
         _sortIndex = 0;
         
@@ -108,6 +111,8 @@
     
     if ([UIFactory dateHasTime:entry.date]) {
         _dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    } else {
+        _dateFormatter.timeStyle = NSDateFormatterNoStyle;
     }
     cell.rightBottom.text = [_dateFormatter stringFromDate:entry.date];
     
@@ -197,10 +202,7 @@
     
     if (_sortIndex == 2) {
         Entry *entry = (Entry *)[((id <NSFetchedResultsSectionInfo>)[[[self fetchedResultsControllerForTableView:tableView] sections] objectAtIndex:section]).objects objectAtIndex:0];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateStyle = NSDateFormatterMediumStyle;
-        sectionName = [formatter stringFromDate:entry.date];
-        [formatter release];
+        sectionName = [_headerDateFormatter stringFromDate:entry.date];
     }
     return sectionName;
    
@@ -247,6 +249,7 @@
 
 - (void)dealloc {
     [_dateFormatter release];
+    [_headerDateFormatter release];
     [_sortKeyArray release];
     [_sectionKeyArray release];
     [super dealloc];
