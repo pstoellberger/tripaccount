@@ -54,7 +54,7 @@ static NSIndexPath *_currenciesIndexPath;
         _isFirstView = YES;
         _cityWasAutoFilled = NO;
         
-        _cellsToReloadAndFlash = [[[NSMutableArray alloc] init] retain];
+        _cellsToReloadAndFlash = [[[NSMutableSet alloc] init] retain];
         
         _context = context;
         
@@ -511,8 +511,10 @@ static NSIndexPath *_currenciesIndexPath;
     
     [self selectCountry:country];
 
-    [self selectCity:city];
-    _cityWasAutoFilled = YES;
+    if (![city isEqualToString:country.name]) {
+        [self selectCity:city];
+        _cityWasAutoFilled = YES;  
+    }
 
     // trigger flash only if the new cells are the only ones
     // if there are cell to be flashed, updateAndFlash will be called anyway

@@ -15,6 +15,8 @@
 
 @end
 
+static NSDateFormatter *formatter = nil;
+
 @implementation UIFactory
 
 #define ct(x) (x / 256.0)
@@ -139,10 +141,12 @@
 
 + (BOOL)dateHasTime:(NSDate *)date {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"HH:mm";
+    if (!formatter) {
+        formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"HH:mm";
+    }
+    
     BOOL returnValue = ![[formatter stringFromDate:date] isEqualToString:@"00:00"];
-    [formatter release];
     return returnValue;    
 }
 

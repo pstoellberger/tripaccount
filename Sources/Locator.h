@@ -21,6 +21,7 @@
     MKReverseGeocoder *_geocoder;
     BOOL alreadyProcessed;
     int geoCoderRetries;
+    id _locale;
 }
 
 @property (nonatomic, retain) CLLocationManager *locManager;
