@@ -38,6 +38,7 @@
 @property (nonatomic, retain) UIAlertView *mailSendAlertView;
 
 @property (nonatomic, retain) UIActionSheet *actionSheetOpenTravel;
+@property (nonatomic, retain) UIActionSheet *actionSheetOpenTravelNoCurrency;
 @property (nonatomic, retain) UIActionSheet *actionSheetClosedTravel;
 @property (nonatomic, retain) UIActionSheet *actionSheetAddPerson;
 

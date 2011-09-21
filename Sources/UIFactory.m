@@ -24,7 +24,8 @@
 }
 
 + (UIColor *)defaultDarkTintColor {
-    return [UIColor colorWithRed:ct(59) green:ct(72) blue:ct(81) alpha:1];
+    //return [UIColor colorWithRed:ct(59) green:ct(72) blue:ct(81) alpha:1];
+    return [UIColor colorWithRed:ct(99) green:ct(112) blue:ct(121) alpha:1];
 }
 
 + (UIColor *)defaultLightTintColor {

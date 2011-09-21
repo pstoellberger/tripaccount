@@ -51,6 +51,7 @@ static NSInteger LABEL_TAG = 0x555;
                 label.font = [UIFont boldSystemFontOfSize:10];
                 label.textAlignment = UITextAlignmentCenter;
                 label.tag = SUBLABEL_TAG;
+                label.textColor = [UIColor whiteColor];
                 
                 if (mainLabel) {
                     label.shadowColor = mainLabel.shadowColor;
@@ -77,44 +78,8 @@ static NSInteger LABEL_TAG = 0x555;
         subLabels = [[NSArray alloc] initWithArray:labelArray];
         
         initialized = YES;
-    
-        // set correct text color of sublabel
-        [self setSelectedSegmentIndex:self.selectedSegmentIndex];
-    }
-}
 
-- (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex {
-    [super setSelectedSegmentIndex:selectedSegmentIndex];
-    
-    if (initialized) {
-        
-        int counter = 0;
-        for (UIView *segmentView in self.subviews) {
-            
-            NSString *code = nil;
-            for (UIView *subView in segmentView.subviews) {
-                if ([subView respondsToSelector:@selector(text)]) {
-                    code = [subView performSelector:@selector(text)];
-                    break;
-                }
-            }
-            
-            UILabel *subTitleLabel = (UILabel *)[segmentView viewWithTag:SUBLABEL_TAG];
-            
-            UILabel *mainTitleLabel = (UILabel *)[segmentView viewWithTag:LABEL_TAG];
-            
-            if ([[self titleForSegmentAtIndex:self.selectedSegmentIndex] isEqualToString:code]) {
-                subTitleLabel.textColor = [UIColor whiteColor];
-                mainTitleLabel.textColor = [UIColor whiteColor];
-            } else {
-                subTitleLabel.textColor = [UIColor lightGrayColor];
-                mainTitleLabel.textColor = [UIColor lightGrayColor];
-            }
-            
-            counter++;
-        }
     }
-    
 }
 
 - (void)layoutSubviews {
