@@ -48,7 +48,7 @@
 @synthesize participantSortViewController=_participantSortViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
 @synthesize mailSendAlertView=_mailSendAlertView, rateRefreshAlertView=_rateRefreshAlertView;
 
-@synthesize actionSheetAddPerson=_actionSheetAddPerson, actionSheetOpenTravel=_actionSheetOpenTravel, actionSheetClosedTravel=_actionSheetClosedTravel;
+@synthesize actionSheetAddPerson=_actionSheetAddPerson, actionSheetOpenTravel=_actionSheetOpenTravel, actionSheetClosedTravel=_actionSheetClosedTravel, actionSheetOpenTravelNoCurrency=_actionSheetOpenTravelNoCurrency;
 
 
 - (id)initWithTravel:(Travel *) travel {
@@ -73,6 +73,13 @@
                                                          otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), NSLocalizedString(@"Update exchange rates", @"alert item update rates"), NSLocalizedString(@"Manually edit rates", @"alert title edit rate"), nil] autorelease];
         self.actionSheetOpenTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;        
         
+        
+        self.actionSheetOpenTravelNoCurrency = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose your action", @"open travel action sheet title")
+                                                                  delegate:self
+                                                         cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
+                                                    destructiveButtonTitle:nil
+                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), nil] autorelease];
+        self.actionSheetOpenTravelNoCurrency.actionSheetStyle = UIActionSheetStyleBlackTranslucent;   
         
         self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Where is the person?", @"add person action sheet title")
                                                                  delegate:self
@@ -156,7 +163,11 @@
     if ([self.travel.closed intValue] == 1) {
         [self.actionSheetClosedTravel showInView:self.view];
     } else {
-        [self.actionSheetOpenTravel showInView:self.view];
+        if ([self.travel.currencies count] == 1) {
+            [self.actionSheetOpenTravelNoCurrency showInView:self.view];
+        } else {
+            [self.actionSheetOpenTravel showInView:self.view];
+        }
     }
 }
 
@@ -551,7 +562,8 @@
     
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         
-        if ([actionSheet isEqual:self.actionSheetOpenTravel] || [actionSheet isEqual:self.actionSheetClosedTravel]) {
+        if ([actionSheet isEqual:self.actionSheetOpenTravel] || [actionSheet isEqual:self.actionSheetOpenTravelNoCurrency] || [actionSheet isEqual:self.actionSheetClosedTravel]) {
+            
             if (buttonIndex == 0) {
                 
                 [self askToSendEmail];
@@ -559,7 +571,13 @@
             } else if (buttonIndex == 1) {
                 
                 if ([self.travel.closed intValue] == 1) {
-                    [self askToRefreshRatesWhenOpening];
+                    
+                    if ([self.travel.currencies count] == 1) {
+                        [self openTravel:YES];
+                    } else {
+                        [self askToRefreshRatesWhenOpening];
+                    }
+                        
                 } else {
                     [self closeTravel];
                 }

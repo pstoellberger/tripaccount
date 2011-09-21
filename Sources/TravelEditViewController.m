@@ -330,7 +330,7 @@ static NSIndexPath *_currenciesIndexPath;
     }
     
     if (![newCurrencies isEqual:self.currencies]) {
-        self.currencies = [Currency sortCurrencies:newCurrencies inManagedObjectContext:[self.travel managedObjectContext]];
+        self.currencies = [Currency sortCurrencies:newCurrencies inManagedObjectContext:_context];
         [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
     }
     

@@ -128,15 +128,14 @@
         segControl.frame = CGRectMake(5, 5, [[UIScreen mainScreen] applicationFrame].size.width - 10, CURRENCY_SORT_HEIGHT - 10);
         segControl.selectedSegmentIndex = 0;
         [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
-        segControl.segmentedControlStyle = UISegmentedControlStyleBezeled;
+        segControl.segmentedControlStyle = UISegmentedControlStyleBar;
         segControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        segControl.tintColor = [UIColor blackColor];
+        segControl.tintColor = [UIFactory defaultDarkTintColor];
         self.segControl = segControl;
         
         self.segControl.selectedSegmentIndex = [_currencyArray indexOfObject:self.travel.displayCurrency];
         
-        UIToolbar *segControlView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
-        segControlView.barStyle = UIBarStyleBlack;
+        UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
         [segControlView addSubview:segControl];
         [segControl release];
         
