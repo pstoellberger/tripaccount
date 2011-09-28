@@ -435,15 +435,18 @@
         
         CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[self.travel managedObjectContext]];
         NSLog(@"Updating currencies...");
-        [currencyRefresh refreshCurrencies];
+        BOOL updated = [currencyRefresh refreshCurrencies];
         [currencyRefresh release];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [_summarySortViewController updateRateLabel:YES];
             [_summarySortViewController.updateIndicator stopAnimating];
+            
+            if (updated) {
+                [self updateSummary];
+            }
         });
         
-        [self updateSummary];
     });
 }
 

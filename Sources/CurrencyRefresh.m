@@ -146,6 +146,16 @@
         //here you get the response
         returnValue = YES;
 	} else {
+        
+        if (!response) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no network title", @"uialert view") message:NSLocalizedString(@"no network message", @"uialert view") delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"uialert view"), nil];
+                [alertView show];
+            });
+
+        }
+        
         returnValue = NO;
     }
     [result release];

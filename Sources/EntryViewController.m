@@ -106,7 +106,12 @@
         cell.top.text = entry.type.nameI18N;
     }
     cell.right.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:entry.amount], entry.currency.code];
+    
     cell.bottom.participants = entry.sortedReceivers;
+    [cell.bottom setNeedsDisplay];
+    cell.rightBottom.hidden = NO;
+    cell.right.hidden = NO;
+    
     cell.image.image = [UIImage imageWithData:entry.payer.image];
     
     if ([UIFactory dateHasTime:entry.date]) {

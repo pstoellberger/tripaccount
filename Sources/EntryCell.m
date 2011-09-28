@@ -25,7 +25,7 @@
                              right.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, - right.frame.origin.x - right.bounds.size.width, 0);
                          } 
                          completion:^(BOOL fin) {
-                             right.hidden = YES;
+                             right.hidden = right.frame.origin.x < 0;
                          }];
         [UIView animateWithDuration:0.3
                               delay:0 
@@ -35,7 +35,7 @@
                              
                          } 
                          completion:^(BOOL fin) {
-                             rightBottom.hidden = YES;
+                             rightBottom.hidden = rightBottom.frame.origin.x < 0;
                          }];
         
         // beide labels ganz nach rechts ausdehnen
@@ -52,15 +52,24 @@
                             options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
                          animations:^{
                              right.transform = CGAffineTransformIdentity;
+                             right.hidden = NO;
                          } 
-                         completion:^(BOOL fin) { [right setNeedsDisplay]; }];  
+                         completion:^(BOOL fin) { 
+                             [right setNeedsDisplay];  
+                             right.hidden = right.frame.origin.x < 0;
+                         }];  
         [UIView animateWithDuration:0.3
                               delay:0 
                             options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
                          animations:^{
                              rightBottom.transform = CGAffineTransformIdentity;
+                             rightBottom.hidden = NO;
                          } 
-                         completion:^(BOOL fin) { [rightBottom setNeedsDisplay]; }];
+                         completion:^(BOOL fin) { 
+                            [rightBottom setNeedsDisplay]; 
+                             rightBottom.hidden = rightBottom.frame.origin.x < 0;
+
+                         }];
         
         // beide labels wieder nach links
         self.bottom.frame = CGRectMake(self.bottom.frame.origin.x, self.bottom.frame.origin.y, self.rightBottom.frame.origin.x - self.bottom.frame.origin.x, self.bottom.frame.size.height);

@@ -278,7 +278,7 @@
 
 "Provide Feedback" = "Provide Feedback";
 
-"feedbackLabel" = "I am eager to improve this app. \nPlease let me know what you think and what you would like to see in future versions.";
+"feedbackLabel" = "Thanks you for purchasing this app.\n\nPlease let me know what you think and what you would like to see in future versions.";
 
 "Feature Request for Trip Account Version " = "Feature Request for Trip Account Version ";
 
@@ -289,3 +289,9 @@
 "Feedback" = "Feedback";
 
 "<no type>" = "<No Type>";
+
+"locManager" = "Your location will be used to autofill the country when a creating a new trip.";
+
+"no network title" = "Error updating exchange rates";
+
+"no network message" = "No Internet connection available";

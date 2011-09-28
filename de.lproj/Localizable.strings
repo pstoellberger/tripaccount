@@ -286,7 +286,7 @@
 
 "Provide Feedback" = "Feedback geben";
 
-"feedbackLabel" = "Ich will diese App verbessern. \nBitte gib mir Feedback und lass mich wissen, was du in zukünftigen Versionen sehen möchtest.";
+"feedbackLabel" = "Vielen Dank für den Kauf dieser App!\n\nBitte gib mir Feedback und lass mich wissen, was du in zukünftigen Versionen sehen möchtest.";
 
 "Feature Request for Trip Account Version " = "Neue Funktion für Trip Account Version ";
 
@@ -297,3 +297,9 @@
 "Feedback" = "Feedback";
 
 "<no type>" = "<Kein Typ>";
+
+"locManager" = "Der Aufenthaltsort wird zum Auto-Ausfüllen des Lands beim Erstellen eines neuen Trips verwendet.";
+
+"no network title" = "Fehler beim Aktualisieren der Wechselkurse";
+
+"no network message" = "Keine Verbindung zum Internet";
