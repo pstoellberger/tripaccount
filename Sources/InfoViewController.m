@@ -13,6 +13,7 @@
 
 @synthesize feedBackLabel=_feedBackLabel, titleLabel=_titleLabel, versionLabel=_versionLabel, copyrightLabel=_copyrightLabel;
 @synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton;
+@synthesize image=_image;
 
 #define CLOSE_LABEL_GAP 6
 #define CLOSE_LABEL_SIZE_REDUCTION 10
@@ -50,6 +51,8 @@
         self.closeButton.frame = CGRectMake(self.view.frame.size.width - self.closeButton.frame.size.width - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.view.frame.size.height - self.closeButton.frame.size.height - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.width - CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.height - CLOSE_LABEL_SIZE_REDUCTION);
         
         self.copyrightLabel.frame = CGRectMake(COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.origin.y, self.view.frame.size.width - self.closeButton.frame.size.width - COPYRIGHT_LABEL_GAP - COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.size.height);
+        
+        [UIFactory addShadowToView:self.image];
         
     }
     return self;

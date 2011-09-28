@@ -34,6 +34,7 @@
         
         // init location manager
         self.locManager = [[[CLLocationManager alloc] init] autorelease];
+        self.locManager.purpose = NSLocalizedString(@"locManager", @"purpose");
         
         if (![CLLocationManager locationServicesEnabled]) {
             NSLog(@"User has opted out of location services");
@@ -60,6 +61,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	NSLog(@"Location manager error: %@", [error description]);
+    [self.locManager stopUpdatingLocation];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
@@ -96,7 +98,7 @@
     //Is the event recent and accurate enough ?
     NSLog(@"how recent %d secs", abs(howRecent));
     
-    if (abs(howRecent) < 30) {    
+    if (abs(howRecent) < 10) {    
         
         if (!self.lastKnowLocation || newLocation.horizontalAccuracy < self.lastKnowLocation.horizontalAccuracy) {
             self.lastKnowLocation = newLocation;
