@@ -245,7 +245,7 @@
 "to" = "to";
 
 /* mail label */
-"to whom" = "To whom?";
+"to whom" = "Whom?";
 
 /* mail label */
 "total costs" = "Total costs";
@@ -295,3 +295,5 @@
 "no network title" = "Error updating exchange rates";
 
 "no network message" = "No Internet connection available";
+
+"all" = "all";

@@ -309,6 +309,8 @@
     [dictionary setValue:NSLocalizedString(@"Yes", @"mail label") forKey:@"labelYes"];
     [dictionary setValue:NSLocalizedString(@"No", @"mail label") forKey:@"labelNo"];
     [dictionary setValue:NSLocalizedString(@"Currencies used for this trip:", @"mail label") forKey:@"labelCurrenciesUsed"];
+    [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
+
     
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
     engine.matcher = [[[ICUTemplateMatcher alloc] initWithTemplateEngine:engine] autorelease];
