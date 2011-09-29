@@ -6,13 +6,6 @@
         
         <table style="border: 1px #333 solid;border-collapse: collapse;" cellspacing="0" cellpadding="0">
             <thead>
-                <tr>
-                    {% if tripHasName %}
-                        <th colspan="6" class="title" style="background: #2D549C; color: #FFF; font-size:11pt;" height="30">{{ labelExpenses }} '{{ travel.name }}' {{ labelTo }} {{ travel.location }}</th>
-                    {% else %}
-                        <th colspan="6" class="title" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelExpenses }} {{ labelTo }} {{ travel.location }}</th>
-                    {% /if %}
-                </tr>
                 <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
                     <th class="imageRow" style="background: #2D549C; color: #FFF; font-size:11pt;" height="20">{{ labelPayer }}</th>
                     <th class="typeRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelType }}</th>
@@ -34,8 +27,8 @@
                     </td>
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="typeRow">{{ entry.type.nameI18N }}</td>
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="textRow">{{ entry.text }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
-                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="dateRow">
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px; text-align:right; font-weight:bold;" class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px; text-align:right;" class="dateRow">
                         <span>
                             {% if entry.hasTimeSpecified %} 
                             {{ entry.date | date_format: "dd. MMM yyyy HH:mm" }}
@@ -46,15 +39,25 @@
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="receiverRow imageRow">
                         {% for receiver in entry.sortedReceivers %}
                         <span class="imageAndName">
-                            {% if includeImages %}
-                                <img src="data:image/png;base64,{{ receiver.base64 }}" /> {{ receiver.name }}
-                            {% else %}
-                                {% if receiver.hash != entry.sortedReceivers.@lastObject.hash %}
-                                    {{ receiver.name }},
-                                {% else %}
-                                    {{ receiver.name }}
+                                {% if includeImages %}
+                                    <img src="data:image/png;base64,{{ receiver.base64 }}" />
                                 {% /if %}
-                            {% /if %}
+                                
+                                {% if receiver.hash != entry.sortedReceivers.@lastObject.hash %}
+                                    {% if entry.sortedReceivers.@count != travel.participants.@count %}
+                                        {% if includeImages %}
+                                            {{ receiver.name }}
+                                        {% else %}
+                                            {{ receiver.name }},
+                                        {% /if %}
+                                    {% /if %}
+                                {% else %}
+                                    {% if entry.sortedReceivers.@count != travel.participants.@count %}
+                                        {{ receiver.name }}
+                                    {% else %}
+                                        {{ all }}
+                                    {% /if %}
+                                {% /if %}
                         </span>
                         {% /for %}		
                     </td>
