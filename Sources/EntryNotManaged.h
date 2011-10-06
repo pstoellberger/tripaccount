@@ -23,6 +23,7 @@
 @property (nonatomic, retain) Participant *payer;
 @property (nonatomic, retain) NSSet *receivers;
 @property (nonatomic, retain) Currency *currency;
+@property (nonatomic, readonly) NSArray *sortedReceivers;
 
 - (id)initWithEntry:(Entry *)entry;
 
