@@ -2554,29 +2554,6 @@
 </dict>
 <dict>
 <key>name</key>
-<string>Federated States of Micronesia</string>
-<key>name_de</key>
-<string>Föderierte Staaten von Mikronesien</string>
-<key>sortName</key>
-<string>Federated States of Micronesia</string>
-<key>id</key>
-<integer>139</integer>
-<key>image</key>
-<string>flag139.png</string>
-<key>cities</key>
-<array>
-<dict>
-<key>name</key>
-<string>Palikir</string>
-<key>longitude</key>
-<real>158.184</real>
-<key>latitude</key>
-<real>6.917</real>
-</dict>
-</array>
-</dict>
-<dict>
-<key>name</key>
 <string>Fiji</string>
 <key>name_de</key>
 <string>Fidschi</string>
@@ -4479,7 +4456,7 @@
 </dict>
 <dict>
 <key>name</key>
-<string>Sabha (city)</string>
+<string>Sabha, Libya</string>
 <key>longitude</key>
 <real>14.434</real>
 <key>latitude</key>

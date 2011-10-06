@@ -19,9 +19,7 @@
 		<string>Icon@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>name.martinmaier.${PRODUCT_NAME:rfc1034identifier}</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<string>name.martinmaier.tripaccount</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -34,10 +32,16 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -45,9 +49,5 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleBlackOpaque</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 </dict>
 </plist>
