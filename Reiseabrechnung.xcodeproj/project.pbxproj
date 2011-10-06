@@ -363,8 +363,6 @@
 		F17B44B413F01D8B00072F90 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B44B213F01D7000072F90 /* SystemConfiguration.framework */; };
 		F17B4A1613F17D0900072F90 /* ICUTemplateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */; };
 		F17B4A1713F17D0900072F90 /* ICUTemplateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */; };
-		F17B4A1C13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */; };
-		F17B4A1D13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */; };
 		F17B4A1E13F17D0900072F90 /* MGTemplateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49F413F17D0900072F90 /* MGTemplateEngine.m */; };
 		F17B4A1F13F17D0900072F90 /* MGTemplateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49F413F17D0900072F90 /* MGTemplateEngine.m */; };
 		F17B4A2013F17D0900072F90 /* MGTemplateStandardFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B49FC13F17D0900072F90 /* MGTemplateStandardFilters.m */; };
@@ -377,16 +375,6 @@
 		F17B4A2713F17D0900072F90 /* NSDictionary_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */; };
 		F17B4A2813F17D0900072F90 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0413F17D0900072F90 /* RegexKitLite.m */; };
 		F17B4A2913F17D0900072F90 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A0413F17D0900072F90 /* RegexKitLite.m */; };
-		F17B4A2C13F17D0900072F90 /* sample_template.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0713F17D0900072F90 /* sample_template.txt */; };
-		F17B4A2D13F17D0900072F90 /* sample_template.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0713F17D0900072F90 /* sample_template.txt */; };
-		F17B4A2E13F17D0900072F90 /* Source Code License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0813F17D0900072F90 /* Source Code License.rtf */; };
-		F17B4A2F13F17D0900072F90 /* Source Code License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0813F17D0900072F90 /* Source Code License.rtf */; };
-		F17B4A3013F17D0900072F90 /* Writing Filters.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0913F17D0900072F90 /* Writing Filters.txt */; };
-		F17B4A3113F17D0900072F90 /* Writing Filters.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0913F17D0900072F90 /* Writing Filters.txt */; };
-		F17B4A3213F17D0900072F90 /* Writing Markers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0A13F17D0900072F90 /* Writing Markers.txt */; };
-		F17B4A3313F17D0900072F90 /* Writing Markers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0A13F17D0900072F90 /* Writing Markers.txt */; };
-		F17B4A3413F17D0900072F90 /* Writing Matchers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */; };
-		F17B4A3513F17D0900072F90 /* Writing Matchers.txt in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */; };
 		F17B4A3A13F17D2600072F90 /* mailTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A3913F17D2600072F90 /* mailTemplate.html */; };
 		F17B4A3B13F17D2600072F90 /* mailTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = F17B4A3913F17D2600072F90 /* mailTemplate.html */; };
 		F17B4A4113F180CB00072F90 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B4A4013F180CB00072F90 /* CoreFoundation.framework */; };
@@ -786,7 +774,6 @@
 		F17B49E913F17D0900072F90 /* DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeepMutableCopy.h; sourceTree = "<group>"; };
 		F17B49EE13F17D0900072F90 /* ICUTemplateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICUTemplateMatcher.h; sourceTree = "<group>"; };
 		F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICUTemplateMatcher.m; sourceTree = "<group>"; };
-		F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MGTemplateEngine README.txt"; sourceTree = "<group>"; };
 		F17B49F313F17D0900072F90 /* MGTemplateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTemplateEngine.h; sourceTree = "<group>"; };
 		F17B49F413F17D0900072F90 /* MGTemplateEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTemplateEngine.m; sourceTree = "<group>"; };
 		F17B49F913F17D0900072F90 /* MGTemplateFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTemplateFilter.h; sourceTree = "<group>"; };
@@ -801,11 +788,6 @@
 		F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_DeepMutableCopy.m; sourceTree = "<group>"; };
 		F17B4A0313F17D0900072F90 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		F17B4A0413F17D0900072F90 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
-		F17B4A0713F17D0900072F90 /* sample_template.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_template.txt; sourceTree = "<group>"; };
-		F17B4A0813F17D0900072F90 /* Source Code License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Source Code License.rtf"; sourceTree = "<group>"; };
-		F17B4A0913F17D0900072F90 /* Writing Filters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Writing Filters.txt"; sourceTree = "<group>"; };
-		F17B4A0A13F17D0900072F90 /* Writing Markers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Writing Markers.txt"; sourceTree = "<group>"; };
-		F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Writing Matchers.txt"; sourceTree = "<group>"; };
 		F17B4A3913F17D2600072F90 /* mailTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = mailTemplate.html; sourceTree = "<group>"; };
 		F17B4A4013F180CB00072F90 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		F17B4A4213F1811F00072F90 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -1271,7 +1253,6 @@
 				F17B49E913F17D0900072F90 /* DeepMutableCopy.h */,
 				F17B49EE13F17D0900072F90 /* ICUTemplateMatcher.h */,
 				F17B49EF13F17D0900072F90 /* ICUTemplateMatcher.m */,
-				F17B49F213F17D0900072F90 /* MGTemplateEngine README.txt */,
 				F17B49F313F17D0900072F90 /* MGTemplateEngine.h */,
 				F17B49F413F17D0900072F90 /* MGTemplateEngine.m */,
 				F17B49F913F17D0900072F90 /* MGTemplateFilter.h */,
@@ -1286,11 +1267,6 @@
 				F17B4A0213F17D0900072F90 /* NSDictionary_DeepMutableCopy.m */,
 				F17B4A0313F17D0900072F90 /* RegexKitLite.h */,
 				F17B4A0413F17D0900072F90 /* RegexKitLite.m */,
-				F17B4A0813F17D0900072F90 /* Source Code License.rtf */,
-				F17B4A0713F17D0900072F90 /* sample_template.txt */,
-				F17B4A0913F17D0900072F90 /* Writing Filters.txt */,
-				F17B4A0A13F17D0900072F90 /* Writing Markers.txt */,
-				F17B4A0B13F17D0900072F90 /* Writing Matchers.txt */,
 			);
 			path = MGTemplateEngine;
 			sourceTree = "<group>";
@@ -1643,12 +1619,6 @@
 				F11FB34013E6983F00115D12 /* types.plist in Resources */,
 				940B41F513EBF39800902B00 /* group.png in Resources */,
 				940B41F713EBF39800902B00 /* scales.png in Resources */,
-				F17B4A1D13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */,
-				F17B4A2D13F17D0900072F90 /* sample_template.txt in Resources */,
-				F17B4A2F13F17D0900072F90 /* Source Code License.rtf in Resources */,
-				F17B4A3113F17D0900072F90 /* Writing Filters.txt in Resources */,
-				F17B4A3313F17D0900072F90 /* Writing Markers.txt in Resources */,
-				F17B4A3513F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3B13F17D2600072F90 /* mailTemplate.html in Resources */,
 				F10CC9A314080C0400A8DD31 /* leo.png in Resources */,
 				F10CC9A814080D6500A8DD31 /* donatello.png in Resources */,
@@ -1675,12 +1645,6 @@
 				940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */,
 				940B41F413EBF39800902B00 /* group.png in Resources */,
 				940B41F613EBF39800902B00 /* scales.png in Resources */,
-				F17B4A1C13F17D0900072F90 /* MGTemplateEngine README.txt in Resources */,
-				F17B4A2C13F17D0900072F90 /* sample_template.txt in Resources */,
-				F17B4A2E13F17D0900072F90 /* Source Code License.rtf in Resources */,
-				F17B4A3013F17D0900072F90 /* Writing Filters.txt in Resources */,
-				F17B4A3213F17D0900072F90 /* Writing Markers.txt in Resources */,
-				F17B4A3413F17D0900072F90 /* Writing Matchers.txt in Resources */,
 				F17B4A3A13F17D2600072F90 /* mailTemplate.html in Resources */,
 				F10CC9A214080C0400A8DD31 /* leo.png in Resources */,
 				F10CC9A714080D6500A8DD31 /* donatello.png in Resources */,
