@@ -42,22 +42,23 @@
                                 {% if includeImages %}
                                     <img src="data:image/png;base64,{{ receiver.base64 }}" />
                                 {% /if %}
-                                
-                                {% if receiver.hash != entry.sortedReceivers.@lastObject.hash %}
-                                    {% if entry.sortedReceivers.@count != travel.participants.@count %}
+                            
+                                {% if receiver.name equalsstring entry.sortedReceivers.@lastObject.name %}
+                                    {% if entry.sortedReceivers.@count == travel.participants.@count %}
+                                        {{ all }}
+                                    {% else %}
+                                        {{ receiver.name }}
+                                    {% /if %}
+                                {% else %}
+                                    {% if entry.sortedReceivers.@count < travel.participants.@count %} 
                                         {% if includeImages %}
                                             {{ receiver.name }}
                                         {% else %}
                                             {{ receiver.name }},
                                         {% /if %}
                                     {% /if %}
-                                {% else %}
-                                    {% if entry.sortedReceivers.@count != travel.participants.@count %}
-                                        {{ receiver.name }}
-                                    {% else %}
-                                        {{ all }}
-                                    {% /if %}
                                 {% /if %}
+
                         </span>
                         {% /for %}		
                     </td>

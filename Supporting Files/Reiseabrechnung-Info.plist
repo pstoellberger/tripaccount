@@ -20,6 +20,8 @@
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>name.martinmaier.${PRODUCT_NAME:rfc1034identifier}</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

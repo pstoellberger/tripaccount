@@ -53,4 +53,10 @@
     return self;
 }
 
+- (NSArray *)sortedReceivers {
+    
+    NSArray *allSortDescriptor = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]];
+    return [[self.receivers allObjects] sortedArrayUsingDescriptors:allSortDescriptor];
+}
+
 @end

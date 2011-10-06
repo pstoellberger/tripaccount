@@ -221,7 +221,7 @@ static NSIndexPath *_dateIndexPath;
         NSString *receiverString = @"";
         const unichar cr = '\n';
         NSString *singleCR = [NSString stringWithCharacters:&cr length:1];
-        for (Participant *receiver in self.nmEntry.receivers) {
+        for (Participant *receiver in self.nmEntry.sortedReceivers) {
             receiverString = [[receiverString stringByAppendingString:receiver.name] stringByAppendingString:singleCR];
         }
         

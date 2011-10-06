@@ -310,6 +310,8 @@
     [dictionary setValue:NSLocalizedString(@"No", @"mail label") forKey:@"labelNo"];
     [dictionary setValue:NSLocalizedString(@"Currencies used for this trip:", @"mail label") forKey:@"labelCurrenciesUsed"];
     [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
+    [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
+    [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
 
     
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
@@ -488,10 +490,10 @@
         [helpView release];
         
         text = NSLocalizedString(@"help rate updated", @"help bubble last updated toolbar");
-        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, windowHeight - 180, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
+        HelpView *openHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, windowHeight - 190, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"rateLabel"];
         
         text = NSLocalizedString(@"help closed travel", @"help bubble close travel");
-        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, windowHeight - 180, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
+        HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, windowHeight - 190, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
         if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
             if (self.summarySortViewController.segControl.numberOfSegments > 1) {
