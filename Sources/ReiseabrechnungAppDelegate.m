@@ -87,7 +87,7 @@
 - (void)initUserDefaults {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"YES" forKey:@"includeImages"];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"NO" forKey:@"includeImages"];
     [defaults registerDefaults:appDefaults];
     [defaults synchronize];
     

@@ -279,14 +279,9 @@
     
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObject:self.travel forKey:@"travel"];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
+
     if ([userDefaults boolForKey:@"includeImages"]) {
         [dictionary setValue:@"Yes" forKey:@"includeImages"];
-        
-        for (Participant *p in self.travel.participants) {
-            //UIImage * image = [UIImage imageWithData:p.image];
-            //[controller addAttachmentData:UIImageJPEGRepresentation(image, 1) mimeType:@"image/jpg" fileName:[NSString stringWithFormat:@"%@.jpg", p.name]];
-        }
     }
     if ([self.travel.name length] > 0) {
         [dictionary setValue:@"Yes" forKey:@"tripHasName"];
@@ -309,8 +304,6 @@
     [dictionary setValue:NSLocalizedString(@"Yes", @"mail label") forKey:@"labelYes"];
     [dictionary setValue:NSLocalizedString(@"No", @"mail label") forKey:@"labelNo"];
     [dictionary setValue:NSLocalizedString(@"Currencies used for this trip:", @"mail label") forKey:@"labelCurrenciesUsed"];
-    [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
-    [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
     [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
 
     
