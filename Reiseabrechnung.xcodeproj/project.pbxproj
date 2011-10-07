@@ -1396,8 +1396,6 @@
 				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
 				F1CD783413BA405A00D42AA3 /* Sources */,
 				F14B372D13E68B5F00351641 /* UnitTests */,
-				F1A684DB143E310D001B3B90 /* Default.png */,
-				F1A684D8143E2F00001B3B90 /* Default@2x.png */,
 				F1533F1F13D47951008EBE9D /* Data */,
 				F1CD78DC13BC764400D42AA3 /* Images */,
 				F1A6BD1A13D5CF7200161197 /* en.lproj */,
@@ -1481,8 +1479,10 @@
 		F1CD783513BA405B00D42AA3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
+				F1A684DB143E310D001B3B90 /* Default.png */,
+				F1A684D8143E2F00001B3B90 /* Default@2x.png */,
 				940B41EC13EBF18300902B00 /* Icon.png */,
+				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
 				F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */,
 				F15EC60C142BB0C000292326 /* InfoIcon.png */,
 				F1CD783613BA405B00D42AA3 /* Reiseabrechnung-Info.plist */,
