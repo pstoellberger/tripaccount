@@ -305,3 +305,7 @@
 "no network message" = "Keine Verbindung zum Internet";
 
 "all" = "alle";
+
+"network error message" = "Fehler beim Aktualisieren der Wechselkurse";
+
+"network error title" = "Fehler";
