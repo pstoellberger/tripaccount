@@ -47,6 +47,8 @@ static NSIndexPath *_currenciesIndexPath;
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     
+    _autoFillCanBeDone = travel == nil;
+    
     if (self) {
         
         [self initIndexPaths];
@@ -240,6 +242,8 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    _autoFillCanBeDone = NO;
     
     if ([indexPath isEqual:_countryIndexPath]) {
         
@@ -507,22 +511,25 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)locationAquired:(Country *)country city:(NSString *)city {
     
-    int cellsToFlash = [_cellsToReloadAndFlash count];
-    
-    [self selectCountry:country];
-
-    if (![city isEqualToString:country.name]) {
-        [self selectCity:city];
-        _cityWasAutoFilled = YES;  
+    if (_autoFillCanBeDone) {
+        
+        int cellsToFlash = [_cellsToReloadAndFlash count];
+        
+        [self selectCountry:country];
+        
+        if (![city isEqualToString:country.name]) {
+            [self selectCity:city];
+            _cityWasAutoFilled = YES;  
+        }
+        
+        // trigger flash only if the new cells are the only ones
+        // if there are cell to be flashed, updateAndFlash will be called anyway
+        if (cellsToFlash == 0) {
+            [self updateAndFlash:self];
+        }
+        
+        [self checkIfDoneIsPossible];
     }
-
-    // trigger flash only if the new cells are the only ones
-    // if there are cell to be flashed, updateAndFlash will be called anyway
-    if (cellsToFlash == 0) {
-        [self updateAndFlash:self];
-    }
-    
-    [self checkIfDoneIsPossible];
     
 }
 
