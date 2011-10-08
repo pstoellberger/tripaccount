@@ -297,3 +297,7 @@
 "no network message" = "No Internet connection available";
 
 "all" = "all";
+
+"network error message" = "An error has occured while updating currency exchange rates.";
+
+"network error title" = "Error updating rates";

@@ -52,7 +52,7 @@
 - (BOOL)refreshCurrencies {
     
     NSHTTPURLResponse *response;
-    NSError *error;
+    NSError *error = nil;
     BOOL returnValue = NO;
     
     NSString *baseIsoCode = @"EUR";
@@ -65,100 +65,110 @@
 	
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error]; 
     
-    Currency *baseCurrency = nil;
-    for (Currency *currency in _currencies) {
-        if ([currency.code isEqualToString:baseIsoCode]) {
-            baseCurrency = currency;
-            break;
+    if (responseData != nil && error == nil) {
+        
+        Currency *baseCurrency = nil;
+        for (Currency *currency in _currencies) {
+            if ([currency.code isEqualToString:baseIsoCode]) {
+                baseCurrency = currency;
+                break;
+            }
         }
-    }
-    if (!baseCurrency) {
-        NSLog(@"Invalid base currency ISO code %@.", baseIsoCode);
-        return NO;
-    }
-    
-	//get response   
-	NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSLog(@"Response Code: %d", [response statusCode]);
-    
-    int ratesUpdated = 0;
-    
-	if ([response statusCode] >= 200 && [response statusCode] < 300) {
+        if (!baseCurrency) {
+            NSLog(@"Invalid base currency ISO code %@.", baseIsoCode);
+            return NO;
+        }
         
-        NSArray *lines = [result componentsSeparatedByString: @"\n"];
+        //get response   
+        NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        NSLog(@"Response Code: %d", [response statusCode]);
         
-        for (NSString *line in lines) {
-
-            // format is: "EURSTD=X",24378.7051,"7/27/2011","11:22am"
-            NSArray *lineComponents = [line componentsSeparatedByString: @","];
+        int ratesUpdated = 0;
+        
+        if ([response statusCode] >= 200 && [response statusCode] < 300) {
             
-            if ([lineComponents count] > 2) {
+            NSArray *lines = [result componentsSeparatedByString: @"\n"];
+            
+            for (NSString *line in lines) {
                 
-                NSString *firstComponent = [lineComponents objectAtIndex:0];
+                // format is: "EURSTD=X",24378.7051,"7/27/2011","11:22am"
+                NSArray *lineComponents = [line componentsSeparatedByString: @","];
                 
-                if ([firstComponent length] > 6) {
+                if ([lineComponents count] > 2) {
                     
-                    NSString *currencyCode = [firstComponent substringWithRange:NSMakeRange(4, 3)];
-                    double currencyRate = [[lineComponents objectAtIndex:1] doubleValue];
+                    NSString *firstComponent = [lineComponents objectAtIndex:0];
                     
-                    if (currencyRate != 0 && currencyRate != HUGE_VAL  && currencyRate != -HUGE_VAL) {
-                        NSLog(@"%@ = %f", currencyCode, currencyRate);
+                    if ([firstComponent length] > 6) {
                         
-                        for (Currency *counterCurrency in _currencies) {
+                        NSString *currencyCode = [firstComponent substringWithRange:NSMakeRange(4, 3)];
+                        double currencyRate = [[lineComponents objectAtIndex:1] doubleValue];
+                        
+                        if (currencyRate != 0 && currencyRate != HUGE_VAL  && currencyRate != -HUGE_VAL) {
+                            NSLog(@"%@ = %f", currencyCode, currencyRate);
                             
-                            if ([currencyCode isEqualToString:counterCurrency.code]) {
+                            for (Currency *counterCurrency in _currencies) {
                                 
-                                ExchangeRate *updateRate = nil;
-                                for (ExchangeRate *rate in counterCurrency.rates) {
+                                if ([currencyCode isEqualToString:counterCurrency.code]) {
                                     
-                                    if ([rate.baseCurrency.code isEqualToString:baseIsoCode] && [rate.defaultRate intValue] == 1) {
-                                        updateRate = rate;
-                                        break;
+                                    ExchangeRate *updateRate = nil;
+                                    for (ExchangeRate *rate in counterCurrency.rates) {
+                                        
+                                        if ([rate.baseCurrency.code isEqualToString:baseIsoCode] && [rate.defaultRate intValue] == 1) {
+                                            updateRate = rate;
+                                            break;
+                                        }
                                     }
-                                }
-                                
-                                if (updateRate) {
                                     
-                                    updateRate.rate = [NSNumber numberWithDouble:currencyRate];
-                                    updateRate.lastUpdated = [NSDate date];
-                                    
-                                    ratesUpdated++;
-                                } else {
-                                    NSLog(@"no rate object found for %@", counterCurrency.code);
+                                    if (updateRate) {
+                                        
+                                        updateRate.rate = [NSNumber numberWithDouble:currencyRate];
+                                        updateRate.lastUpdated = [NSDate date];
+                                        
+                                        ratesUpdated++;
+                                    } else {
+                                        NSLog(@"no rate object found for %@", counterCurrency.code);
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-        }
-        
-        // tolerance 10
-        if ((ratesUpdated + 10) > [_currencies count]) {
             
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:[NSDate date] forKey:[CurrencyRefresh lastUpdatedKey]];
-            [defaults synchronize];
-        }
-        
-        [ReiseabrechnungAppDelegate saveContext:_context];
-		        
-        //here you get the response
-        returnValue = YES;
-	} else {
-        
-        if (!response) {
+            // tolerance 10
+            if ((ratesUpdated + 10) > [_currencies count]) {
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:[NSDate date] forKey:[CurrencyRefresh lastUpdatedKey]];
+                [defaults synchronize];
+            }
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no network title", @"uialert view") message:NSLocalizedString(@"no network message", @"uialert view") delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"uialert view"), nil] autorelease];
-                [alertView show];
-            });
-
+            [ReiseabrechnungAppDelegate saveContext:_context];
+            
+            //here you get the response
+            returnValue = YES;
+        } else {
+            
+            if (!response) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no network title", @"uialert view") message:NSLocalizedString(@"no network message", @"uialert view") delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"uialert view"), nil] autorelease];
+                    [alertView show];
+                });
+                
+            }
+            
+            returnValue = NO;
         }
+        [result release];
         
-        returnValue = NO;
+    } else {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"network error title", @"uialert view") message:NSLocalizedString(@"network error message", @"uialert view") delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"uialert view"), nil] autorelease];
+            [alertView show];
+        });        
     }
-    [result release];
     
     return returnValue;
 }
