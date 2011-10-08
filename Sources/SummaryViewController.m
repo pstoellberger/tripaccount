@@ -36,7 +36,7 @@
         
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
         req.entity = [NSEntityDescription entityForName:@"Transfer" inManagedObjectContext:[travel managedObjectContext]];
-        req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"debtor.name" ascending:YES selector:@selector(caseInsensitiveCompare:)], nil];
+        req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"debtor.name" ascending:YES selector:@selector(caseInsensitiveCompare:)], [NSSortDescriptor sortDescriptorWithKey:@"debtee.name" ascending:YES selector:@selector(caseInsensitiveCompare:)], nil];
         req.predicate = [NSPredicate predicateWithFormat:@"travel = %@", travel];
         
         self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:[travel managedObjectContext] sectionNameKeyPath:nil cacheName:nil] autorelease];
