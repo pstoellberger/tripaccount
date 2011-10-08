@@ -25,6 +25,7 @@
     BOOL _viewAppeared;
     
     BOOL _cityWasAutoFilled;
+    BOOL _autoFillCanBeDone;
 
 }
 
