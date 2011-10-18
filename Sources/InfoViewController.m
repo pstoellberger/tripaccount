@@ -26,7 +26,7 @@
     if (self) {
         self.view.frame = [[UIScreen mainScreen] applicationFrame];
         
-        UIView *bgView = [UIFactory createBackgroundViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIView *bgView = [UIFactory createBackgroundViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 480)];
         [self.view addSubview:bgView];
         [self.view sendSubviewToBack:bgView];
         self.view.backgroundColor = [UIColor clearColor];
