@@ -466,11 +466,19 @@ static NSIndexPath *_currenciesIndexPath;
         if (addressBook) {
             
             NSString *deviceName = [[UIDevice currentDevice] name];
-            NSRange range = [deviceName rangeOfString:@"iPhone"];
+            NSRange range = [deviceName rangeOfString:@"'s iPhone"];
             
-            if (range.location > 3) {
-                NSString *userName = [deviceName substringToIndex:range.location - 3];
-                
+            NSString *userName = nil;
+            if (range.location > 0 && range.length > 0) {
+                userName = [deviceName substringToIndex:range.location];
+            }
+            
+            // to honour my first customer
+            if ([deviceName isEqualToString:@"black pussy"]) {
+                userName = @"Simon Pucher";
+            } 
+            
+            if (userName) {
                 NSArray *martinPerson = (NSArray *) ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
                 if ([martinPerson lastObject]) {
                     Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
