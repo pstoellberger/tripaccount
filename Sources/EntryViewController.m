@@ -98,10 +98,12 @@
     
     cell.forLabel.text = NSLocalizedString(@"for", @"for label");
     
+    NSLog(@"type is %d", _sortIndex);
+    
     // Set up the cell... 
     Entry *entry = (Entry *) managedObject;
     if (entry.text && [entry.text length] > 0) {
-        if (!entry.type) {
+        if (!entry.type || _sortIndex == 1) {
             cell.top.text = [NSString stringWithFormat:@"%@", entry.text];
         } else {
             cell.top.text = [NSString stringWithFormat:@"%@ (%@)", entry.text, entry.type.nameI18N];
