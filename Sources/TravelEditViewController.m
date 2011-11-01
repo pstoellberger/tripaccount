@@ -466,11 +466,11 @@ static NSIndexPath *_currenciesIndexPath;
         if (addressBook) {
             
             NSString *deviceName = [[UIDevice currentDevice] name];
-            NSRange range = [deviceName rangeOfString:@"'s iPhone"];
+            NSRange range = [deviceName rangeOfString:@"s iPhone"];
             
             NSString *userName = nil;
-            if (range.location > 0 && range.length > 0) {
-                userName = [deviceName substringToIndex:range.location];
+            if (range.location > 1 && range.length > 0) {
+                userName = [deviceName substringToIndex:range.location - 1];
             }
             
             // to honour my first customer
