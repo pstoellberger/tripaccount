@@ -101,7 +101,11 @@
     // Set up the cell... 
     Entry *entry = (Entry *) managedObject;
     if (entry.text && [entry.text length] > 0) {
-        cell.top.text = [NSString stringWithFormat:@"%@ (%@)", entry.text, entry.type.nameI18N];
+        if (!entry.type) {
+            cell.top.text = [NSString stringWithFormat:@"%@", entry.text];
+        } else {
+            cell.top.text = [NSString stringWithFormat:@"%@ (%@)", entry.text, entry.type.nameI18N];
+        }
     } else {
         cell.top.text = entry.type.nameI18N;
     }
