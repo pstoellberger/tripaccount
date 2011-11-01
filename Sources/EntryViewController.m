@@ -98,8 +98,6 @@
     
     cell.forLabel.text = NSLocalizedString(@"for", @"for label");
     
-    NSLog(@"type is %d", _sortIndex);
-    
     // Set up the cell... 
     Entry *entry = (Entry *) managedObject;
     if (entry.text && [entry.text length] > 0) {
