@@ -74,6 +74,8 @@
     self.segControl = segControl;
     
     self.segControl.selectedSegmentIndex = [self.travel.displaySort intValue];
+    // sort required on iOS 5
+    [self sortTable:segControl];
     
     UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
     [segControlView addSubview:segControl];
