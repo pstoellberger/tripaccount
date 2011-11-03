@@ -1,0 +1,3 @@
+group,expense,travel,trip,divide,split,bill,euro,dollar,abrechnung,reise,currency,exchange,rate
+
+gruppe,Ausgabe,reise,trip,aufteilen,abrechnen,preis,euro,dollar,abrechnung,währung,wechselkurs

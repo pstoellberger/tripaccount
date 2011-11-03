@@ -1,0 +1,19 @@
+Warst du jemals mit Freunden auf einem Trip und wolltest die Ausgaben deiner Gruppen organisieren? Diese App macht dies super-einfach! Du kannst die Gruppenausgaben eingeben und die App rechnet aus, wer wem wieviel schuldet. Trip Account unterstützt über 150 vordefinierte Währungen und erkennt automatisch in welchem Land du dich befindest und welche Währung vor Ort verwendet wird. Die Wechselkurse werden automatisch aus dem Internet geladen.
+
+Zuerst erstellst du einen neuen Trip mit dem Reiseziel und den Leuten, die mit dir reisen (z.B. per Selektion aus dem Adressbuch). Danach kannst du beginnen deine und andere Ausgaben einzutragen. Eine Ausgabe besteht aus einen Zahler (die Person, die die Ausgabe getätigt hat) und für wen der Betrag ausgegeben wurde. Du kannst einen freien Text wählen und/oder einen vordefinierten Typ für eine Ausgabe vergeben. 
+
+Die Abrechnung zeigt dir wer wem wieviel schuldet. Du kannst die Abrechnung und die eingetragenen Ausgaben per Email an deine Mitreisenden verschicken. Wenn dein Trip vorbei ist, kannst du mit der App auch verwalten, wer seinen Schuld beglichen hat.
+
+Funktionen:
+- einfach zu bedienen
+- schnelles Eintragen von Ausgaben ohne unnötige Tipparbeit
+- Unterstützung von über 150 Währungen und über 200 Ländern der Welt
+- Verwaltung von mehreren Trips gleichzeitig
+- Unterstützung des Adressbuchs zum Hinzufügen der Reisenden
+- Abrechnungsemail mit einem übersichtlichen Bericht über Ausgaben und Schulden
+- Unterstützung mehrerer Währungen und Wechselkurse und die Option Wechselkurse manuell festzulegen
+- Automatischer Download der aktuellen Wechselkurse aus dem Internet (derzeit die einzige App dieser Art im Appstore mit dieser Funktion)
+- Automatische Erkennung des Landes (sogar ohne Zugang zum Internet)
+- Unterstützung für Hoch- und Querformat
+
+Diese App unterstützt Englisch und Deutsch.
