@@ -22,6 +22,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *featureButton;
 @property (nonatomic, retain) IBOutlet UIButton *licenseButton;
 @property (nonatomic, retain) IBOutlet UIButton *closeButton;
+@property (nonatomic, retain) IBOutlet UIButton *rateButton;
 @property (nonatomic, retain) IBOutlet UIImageView *image;
 
 - (IBAction)cancel;

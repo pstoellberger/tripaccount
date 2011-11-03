@@ -309,3 +309,15 @@
 "network error message" = "Fehler beim Aktualisieren der Wechselkurse";
 
 "network error title" = "Fehler";
+
+"total" = "Gesamtausgaben";
+
+"rate this app" = "Bewertung geben";
+
+"rateMessage" = "Wenn dir %@ gefällt, würde ich mich über eine Bewertung im App-Store freuen. Es dauert nur einen Moment. Danke für deine Unterstützung!";
+
+"rate" = "Bewerte %@";
+
+"remind me later" = "Später erinnern";
+
+"no thanks" = "Nein danke";

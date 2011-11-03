@@ -16,7 +16,9 @@
 @property (nonatomic, retain) EntryViewController *detailViewController;
 
 @property (nonatomic, retain) UISegmentedControl *segControl;
+@property (nonatomic, retain) UILabel *totalLabel;
 
 - (id)initWithTravel:(Travel *) travel;
+- (void)updateTotalValue;
 
 @end

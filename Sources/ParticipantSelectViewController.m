@@ -12,6 +12,7 @@
 #import "I18NSortCategory.h"
 #import "UIFactory.h"
 #import "AlignedStyle2Cell.h"
+#import "ImageCache.h"
 
 @interface ParticipantSelectViewController ()
 
@@ -59,7 +60,7 @@
     
     cell.textLabel.text = p.name;
     cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
-    cell.imageView.image = [UIImage imageWithData:p.image];
+    cell.imageView.image = [[ImageCache instance] getImage:p.image];
     
     if (self.entry.amount && [self.entry.amount doubleValue] != 0 && cell.detailTextLabel) {
         [_amountCells setObject:cell.detailTextLabel forKey:p.name];

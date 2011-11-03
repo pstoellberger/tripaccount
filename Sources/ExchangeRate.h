@@ -2,8 +2,8 @@
 //  ExchangeRate.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 8/4/11.
-//  Copyright (c) 2011 Martin Maier. All rights reserved.
+//  Created by Martin Maier on 01/11/2011.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,16 +11,15 @@
 
 @class Currency, Travel;
 
-@interface ExchangeRate : NSManagedObject {
-@private
-}
-@property (nonatomic, retain) NSDate * lastUpdated;
+@interface ExchangeRate : NSManagedObject
+
 @property (nonatomic, retain) NSNumber * edited;
-@property (nonatomic, retain) NSNumber * rate;
+@property (nonatomic, retain) NSDate * lastUpdated;
 @property (nonatomic, retain) NSNumber * defaultRate;
-@property (nonatomic, retain) Currency *baseCurrency;
+@property (nonatomic, retain) NSNumber * rate;
 @property (nonatomic, retain) Currency *counterCurrency;
 @property (nonatomic, retain) NSSet *travels;
+@property (nonatomic, retain) Currency *baseCurrency;
 @end
 
 @interface ExchangeRate (CoreDataGeneratedAccessors)

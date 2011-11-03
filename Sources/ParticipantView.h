@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "ImageCache.h"
+
 
 @interface ParticipantView : UIView
 
 @property (nonatomic, retain) NSArray *participants;
 
-+ (UIImage *)moreImagesImage;
++ (UIImage *) moreImagesImage;
 
 @end

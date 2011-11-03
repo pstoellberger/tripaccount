@@ -9,6 +9,7 @@
 #import "ParticipantHelperCategory.h"
 #import "Travel.h"
 #import "UIFactory.h"
+#import "ImageCache.h"
 
 @implementation Participant (ParticipantHelper)
 
@@ -55,7 +56,7 @@
                 imgData = (NSData *) ABPersonCopyImageData(recordRef);
             }
             
-            image = [UIImage imageWithData:imgData];
+            image = [[ImageCache instance] getImage:imgData];
             
             if (image) {
                 person.image = UIImagePNGRepresentation(image);

@@ -15,7 +15,7 @@
 
 @implementation EntrySortViewController
 
-@synthesize travel=_travel, detailViewController=_detailViewController, segControl=_segControl;
+@synthesize travel=_travel, detailViewController=_detailViewController, segControl=_segControl, totalLabel=_totalLabel;
 
 - (id)initWithTravel:(Travel *)travel {
     
@@ -63,6 +63,8 @@
 - (void)loadView {
     
     [super loadView];
+    
+    UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
 
     NSArray *segArray = [NSArray arrayWithObjects:NSLocalizedString(@"Payer", @"sort button"), NSLocalizedString(@"Type", @"sort button"), NSLocalizedString(@"Date", @"sort button"), nil];
     UISegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArray andSubTitles:nil]; 
@@ -77,12 +79,68 @@
     // sort required on iOS 5
     [self sortTable:segControl];
     
-    UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
+    UIView *segControlBGView = [[GradientView alloc] initWithFrame:segControlView.frame];
+    [UIFactory addGradientToView:segControlBGView color1:[UIFactory defaultTintColor] color2:[UIFactory defaultLightTintColor]];
+    segControlBGView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    segControlBGView.alpha = 0.4;
+    segControlBGView.contentMode = UIViewContentModeScaleToFill;
+    
+    UIView *segControlLine = [[GradientView alloc] initWithFrame:CGRectMake(0, ENTRY_SORT_HEIGHT-2, [UIScreen mainScreen].applicationFrame.size.width, 1)];
+    segControlLine.autoresizingMask = segControlBGView.autoresizingMask;
+    [UIFactory addGradientToView:segControlLine color1:[UIColor darkGrayColor] color2:[UIColor blackColor] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1)];
+    segControlLine.contentMode = UIViewContentModeScaleToFill;
+    
+    [segControlView addSubview:segControlBGView];
+    [segControlBGView release];
+    [segControlView addSubview:segControlLine];
+    [segControlLine release];
     [segControlView addSubview:segControl];
     [segControl release];
     
     self.detailViewController.tableView.tableHeaderView = segControlView;
     [segControlView release];
+    
+    UIView *totalViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_VIEW_HEIGHT)];
+    totalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    
+    UIView *totalView = [[GradientView alloc] initWithFrame:totalViewContainer.frame];
+    totalView.autoresizingMask = totalViewContainer.autoresizingMask;
+    [UIFactory addGradientToView:totalView color1:[UIFactory defaultDarkTintColor] color2:[UIFactory defaultLightTintColor]];
+    totalView.alpha = 0.4;
+    totalView.contentMode = UIViewContentModeScaleToFill;
+    
+    UIView *line = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, 2)];
+    line.autoresizingMask = totalViewContainer.autoresizingMask;
+    [UIFactory addShadowToView:line];
+    [UIFactory addGradientToView:line color1:[UIColor lightGrayColor] color2:[UIColor blackColor] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1)];
+    line.contentMode = UIViewContentModeScaleToFill;
+    
+    UILabel *totalLabelLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 15, TOTAL_VIEW_HEIGHT - 10)];
+    totalLabelLabel.autoresizingMask = totalViewContainer.autoresizingMask;
+    totalLabelLabel.textColor = [UIColor whiteColor];
+    totalLabelLabel.textAlignment = UITextAlignmentLeft;
+    totalLabelLabel.backgroundColor = [UIColor clearColor];
+    totalLabelLabel.text = NSLocalizedString(@"total", "@total label");
+    
+    self.totalLabel = [[UILabel alloc] initWithFrame:totalLabelLabel.frame];
+    self.totalLabel.autoresizingMask = totalViewContainer.autoresizingMask;
+    self.totalLabel.textColor = [UIColor whiteColor];
+    self.totalLabel.textAlignment = UITextAlignmentRight;
+    self.totalLabel.backgroundColor = [UIColor clearColor];
+
+    [totalViewContainer addSubview:totalView];
+    [totalView release];
+    [totalViewContainer addSubview:line];
+    [line release];
+    [totalViewContainer addSubview:totalLabelLabel];
+    [totalLabelLabel release];
+    
+    [totalViewContainer addSubview:self.totalLabel];
+    
+    [self updateTotalValue];
+    
+    self.detailViewController.tableView.tableFooterView = totalViewContainer;
+    [totalViewContainer release];
     
     self.detailViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height - TABBAR_HEIGHT);
     
@@ -90,6 +148,12 @@
     [detailViewContainer addSubview:self.detailViewController.view];
     self.view = detailViewContainer;
 
+}
+
+- (void)updateTotalValue {
+    
+    self.totalLabel.text = [self.travel totalCostLabel];
+    
 }
 
 - (void)viewDidUnload {

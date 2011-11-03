@@ -12,6 +12,7 @@
 #import "EntryCell.h"
 #import "CoreDataTableViewController.h"
 #import "EntryNotManaged.h"
+#import "ImageCache.h"
 
 @protocol EntryViewControllerDelegate
 - (void)didItemCountChange:(NSUInteger)itemCount;

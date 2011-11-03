@@ -124,6 +124,9 @@
     }
     
     if ([_currencyArray count] > 1) {
+        
+        UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
+        
         MultiLineSegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArrayTitles andSubTitles:segArraySubTitles]; 
         segControl.frame = CGRectMake(5, 5, [[UIScreen mainScreen] applicationFrame].size.width - 10, CURRENCY_SORT_HEIGHT - 10);
         segControl.selectedSegmentIndex = 0;
@@ -135,7 +138,23 @@
         
         self.segControl.selectedSegmentIndex = [_currencyArray indexOfObject:self.travel.displayCurrency];
         
-        UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
+        UIView *segControlBGView = [[GradientView alloc] initWithFrame:segControlView.frame];
+        [UIFactory addGradientToView:segControlBGView color1:[UIFactory defaultDarkTintColor] color2:[UIFactory defaultLightTintColor]];
+        segControlBGView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+        segControlBGView.alpha = 0.4;
+        segControlBGView.contentMode = UIViewContentModeScaleToFill;
+        
+        UIView *segControlLine = [[GradientView alloc] initWithFrame:CGRectMake(0, CURRENCY_SORT_HEIGHT-1, [UIScreen mainScreen].applicationFrame.size.width, 1)];
+        segControlLine.autoresizingMask = segControlBGView.autoresizingMask;
+        [UIFactory addGradientToView:segControlLine color1:[UIColor darkGrayColor] color2:[UIColor blackColor] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1)];
+        segControlLine.contentMode = UIViewContentModeScaleToFill;
+
+        [segControlView addSubview:segControlBGView];
+        [segControlBGView release];
+        
+        [segControlView addSubview:segControlLine];
+        [segControlLine release];
+        
         [segControlView addSubview:segControl];
         [segControl release];
         

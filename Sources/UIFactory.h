@@ -21,6 +21,7 @@
 #define RATE_LABEL_HEIGHT 10
 #define ACTIVITY_VIEW_SIZE 20
 
+#define TOTAL_VIEW_HEIGHT 40
 
 @class HelpView;
 

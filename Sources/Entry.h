@@ -2,7 +2,7 @@
 //  Entry.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 27/08/2011.
+//  Created by Martin Maier on 01/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,15 +11,14 @@
 
 @class Currency, Participant, Travel, Type;
 
-@interface Entry : NSManagedObject {
-@private
-}
+@interface Entry : NSManagedObject
+
 @property (nonatomic, retain) NSNumber * amount;
 @property (nonatomic, retain) NSNumber * checked;
+@property (nonatomic, retain) NSDate * lastUpdated;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSDate * lastUpdated;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Type *type;
 @property (nonatomic, retain) Participant *payer;

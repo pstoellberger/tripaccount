@@ -2,7 +2,7 @@
 //  Transfer.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 25/08/2011.
+//  Created by Martin Maier on 01/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,11 +13,12 @@
 
 
 @implementation Transfer
+
 @dynamic amount;
 @dynamic paid;
 @dynamic travel;
+@dynamic currency;
 @dynamic debtor;
 @dynamic debtee;
-@dynamic currency;
 
 @end

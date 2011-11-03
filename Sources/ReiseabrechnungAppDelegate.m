@@ -18,6 +18,7 @@
 #import "ExchangeRate.h"
 #import "City.h"
 #import "Summary.h"
+#import "Appirater.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -63,6 +64,8 @@
             [rvc release];
             
             [self.window addSubview:self.navController.view];
+            
+            [Appirater appLaunched:YES];
 
         });
     });
@@ -499,6 +502,8 @@
      */
     [self refreshCurrencyRatesIfOutDated];
     [self checkForResetOfHelpBubbles];
+    
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

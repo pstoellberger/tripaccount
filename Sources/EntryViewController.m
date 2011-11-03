@@ -77,7 +77,7 @@
     return UITableViewCellAccessoryNone;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return [UIFactory defaultSectionHeaderCellHeight] + 8;
     } else {
@@ -116,7 +116,7 @@
     cell.rightBottom.hidden = NO;
     cell.right.hidden = NO;
     
-    cell.image.image = [UIImage imageWithData:entry.payer.image];
+    cell.image.image = [[ImageCache instance] getImage:entry.payer.image];
     
     if ([UIFactory dateHasTime:entry.date]) {
         _dateFormatter.timeStyle = NSDateFormatterShortStyle;

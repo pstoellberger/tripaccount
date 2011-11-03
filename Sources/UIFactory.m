@@ -217,20 +217,31 @@ static NSDateFormatter *formatter = nil;
 
 + (void)addGradientToView:(UIView *)cell {
     
-    CAGradientLayer *gradient = [CAGradientLayer layer];
+    CAGradientLayer *gradient = nil;
+    if ([[cell.layer.sublayers objectAtIndex:0] isKindOfClass:[CAGradientLayer class]]) {
+        gradient = [cell.layer.sublayers objectAtIndex:0];
+    } else {
+        gradient = [CAGradientLayer layer];
+    }
+
     gradient.frame = cell.bounds;
     gradient.startPoint = CGPointMake(0.5, 0.5);
     gradient.endPoint = CGPointMake(1, 1);
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:1 alpha:1] CGColor], (id)[[UIColor colorWithWhite:0.8 alpha:1] CGColor], nil];
     gradient.needsDisplayOnBoundsChange = YES;
 
-    
     [cell.layer insertSublayer:gradient atIndex:0];  
 }
 
 + (void)addGradientToView:(UIView *)cell color1:(UIColor *)color1 color2:(UIColor *)color2 {
     
-    CAGradientLayer *gradient = [CAGradientLayer layer];
+    CAGradientLayer *gradient = nil;
+    if ([[cell.layer.sublayers objectAtIndex:0] isKindOfClass:[CAGradientLayer class]]) {
+        gradient = [cell.layer.sublayers objectAtIndex:0];
+    } else {
+        gradient = [CAGradientLayer layer];
+    }
+    
     gradient.frame = cell.bounds;
     gradient.colors = [NSArray arrayWithObjects:(id)[color1 CGColor], (id)[color2 CGColor], nil];
     gradient.needsDisplayOnBoundsChange = YES;

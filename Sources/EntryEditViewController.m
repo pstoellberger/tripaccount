@@ -391,7 +391,7 @@ static NSIndexPath *_dateIndexPath;
         
         [self.tableView beginUpdates];
         for (id indexPath in _cellsToReloadAndFlash) {
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
         [self.tableView endUpdates];
         
@@ -399,6 +399,7 @@ static NSIndexPath *_dateIndexPath;
             [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];                  
         }
+
         [_cellsToReloadAndFlash removeAllObjects];
     }
 }
