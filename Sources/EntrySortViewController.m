@@ -122,7 +122,7 @@
     totalLabelLabel.backgroundColor = [UIColor clearColor];
     totalLabelLabel.text = NSLocalizedString(@"total", "@total label");
     
-    self.totalLabel = [[UILabel alloc] initWithFrame:totalLabelLabel.frame];
+    self.totalLabel = [[[UILabel alloc] initWithFrame:totalLabelLabel.frame] autorelease];
     self.totalLabel.autoresizingMask = totalViewContainer.autoresizingMask;
     self.totalLabel.textColor = [UIColor whiteColor];
     self.totalLabel.textAlignment = UITextAlignmentRight;
