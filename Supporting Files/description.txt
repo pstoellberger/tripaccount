@@ -1,0 +1,20 @@
+Have you ever been on a trip with a bunch of people and wanted to share costs/expense? This app makes it most convenient to manage trip expenses of a group of people and presents you with a nice summary of who owes how much to whom. The app has great support for over 150 pre-defined currencies and will auto-detect your trip's country and currency. Exchange rates will be automatically downloaded from the Internet.
+
+In the app, you first create a trip with its destination and add the people you are traveling with (e.g. from your address book). After that, you can immediately start tracking expenses of your friends and yourself. For every expense you can set a payer (i.e. the person who paid), who and what this expense was used for and an amount. You can use a text description or a predefined expense type to make expense management most convenient.
+
+The summary will show you in detail who owes how much to whom. Finally, you can email a detailed report of the trip to your friends. When you your trip has ended you can track whose debts were paid.
+
+Features:
+- easy to use interface
+- quick expense tracking without any unnecessary typing of text
+- support for over 150 currencies and over 200 countries of the world
+- management of multiple trips
+- address book support for selecting people on the trip
+- automatic computing and displaying exactly who owes what to whom
+- emailing detailed and very clean summary reports about the event to your friends
+- support for multiple currencies and exchange rates with the option to enter rates manually
+- automatic download of the latest currency exchange rates (UNIQUE feature on the App Store for an app of this kind)
+- automatic detection of the trip's country/currency (even without Internet access)
+- full landscape and portrait support
+
+This app supports English and German.

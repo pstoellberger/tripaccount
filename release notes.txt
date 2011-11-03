@@ -1,0 +1,19 @@
+- Adds a new label at the end of the entries list showing the total expense amount for the trip
+- Fixes a problem when adding/canceling a new trip
+- Fixes an incorrect sorting for entries on first view of a trip (iOS 5)
+- Types of entries are no longer shown when entries are sorted by type (duplicated information)
+- Fixes a problem with the name detection of iPhone owner
+- Significant performance improvements when scrolling long lists of entries
+- Optical improvement of the sort buttons
+- The app is now more responsive while cells flash (after a change)
+- You can now rate the app from the Info section
+
+- Anzeige der Gesamtausgaben einer Reise (am Ende der Liste der Ausgaben)
+- Behebt einen Absturz beim Hinzufügen/Abbrechen eines neuen Trips
+- Behebt eine ungültige Sortierung von Ausgaben bei der ersten Anzeige eines Trips (iOS 5)
+- Der Typ einer Ausgabe wird nicht mehr länger angezeigt, wenn bereits nach Typ sortiert wird (doppelte Information)
+- Behebt ein Problem bei der Namenserkennung des iPhone-Besitzers
+- Signifikante Geschwindigkeitsverbesserung beim Scrollen einer langen Liste von Ausgaben
+- Optische Verbesserung von der Sortierknöpfe
+- Die App ist jetzt reaktiver während Zellen nach einer Änderungen blau aufleuchten
+- Die App kann jetzt über die Informationsseite bewertet werden
