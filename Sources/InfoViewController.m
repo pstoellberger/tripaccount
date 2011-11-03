@@ -90,7 +90,7 @@
 
 - (IBAction)rate {
     
-    NSString* url = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", APPIRATER_APP_ID];
+    NSString* url = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", APPIRATER_APP_ID];
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
 }
 
