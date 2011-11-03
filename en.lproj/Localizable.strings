@@ -301,3 +301,15 @@
 "network error message" = "An error has occured while updating currency exchange rates.";
 
 "network error title" = "Error updating rates";
+
+"total" = "Total expenses";
+
+"rate this app" = "Write a review";
+
+"rateMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won't take more than a minute. Thanks for your support!";
+
+"rate" = "Rate %@";
+
+"remind me later" = "Remind me later";
+
+"no thanks" = "No thanks";

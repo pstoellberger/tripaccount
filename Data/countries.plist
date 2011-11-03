@@ -1286,6 +1286,22 @@
 </dict>
 <dict>
 <key>name</key>
+<string>Eureka, Nunavut</string>
+<key>longitude</key>
+<real>-85.950</real>
+<key>latitude</key>
+<real>79.984</real>
+</dict>
+<dict>
+<key>name</key>
+<string>Grise Fiord</string>
+<key>longitude</key>
+<real>-82.884</real>
+<key>latitude</key>
+<real>76.417</real>
+</dict>
+<dict>
+<key>name</key>
 <string>Iqaluit</string>
 <key>longitude</key>
 <real>-68.517</real>
@@ -5621,6 +5637,14 @@
 <string>flag159.png</string>
 <key>cities</key>
 <array>
+<dict>
+<key>name</key>
+<string>Nord, Greenland</string>
+<key>longitude</key>
+<real>-16.667</real>
+<key>latitude</key>
+<real>81.600</real>
+</dict>
 <dict>
 <key>name</key>
 <string>Longyearbyen</string>

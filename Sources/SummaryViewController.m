@@ -15,6 +15,7 @@
 #import "CurrencyHelperCategory.h"
 #import "Transfer.h"
 #import "ReiseabrechnungAppDelegate.h"
+#import "ImageCache.h"
 
 @implementation SummaryViewController
 
@@ -75,9 +76,9 @@
     Transfer *transfer = (Transfer *)managedObject;
 
     cell.debtor.text = transfer.debtor.name;
-    cell.leftImage.image = [UIImage imageWithData:transfer.debtor.image];
+    cell.leftImage.image = [[ImageCache instance] getImage:transfer.debtor.image];
     cell.debtee.text = transfer.debtee.name;
-    cell.rightImage.image = [UIImage imageWithData:transfer.debtee.image];
+    cell.rightImage.image = [[ImageCache instance] getImage:transfer.debtee.image];
     cell.amount.text = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[transfer amountInDisplayCurrency]], self.travel.displayCurrency.code];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.paid.hidden = YES;

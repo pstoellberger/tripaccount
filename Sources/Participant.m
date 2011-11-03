@@ -2,7 +2,7 @@
 //  Participant.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 30/08/2011.
+//  Created by Martin Maier on 01/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,16 +13,17 @@
 
 
 @implementation Participant
+
+@dynamic imageSmall;
 @dynamic name;
 @dynamic image;
 @dynamic email;
 @dynamic yourself;
-@dynamic imageSmall;
 @dynamic travel;
-@dynamic transfersAsDebtor;
 @dynamic lastUsedInTravel;
 @dynamic pays;
-@dynamic transfersAsDebtee;
 @dynamic getPayedFor;
+@dynamic transfersAsDebtee;
+@dynamic transfersAsDebtor;
 
 @end

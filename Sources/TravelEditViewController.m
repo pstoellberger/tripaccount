@@ -122,7 +122,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         [self.tableView beginUpdates];
         for (id indexPath in _cellsToReloadAndFlash) {
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
         [self.tableView endUpdates];
         

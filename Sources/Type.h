@@ -2,7 +2,7 @@
 //  Type.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 31/08/2011.
+//  Created by Martin Maier on 01/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,15 +11,13 @@
 
 @class AppDefaults, Entry;
 
-@interface Type : NSManagedObject {
-@private
-}
+@interface Type : NSManagedObject
+
+@property (nonatomic, retain) NSString * name_de;
 @property (nonatomic, retain) NSNumber * builtIn;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * name_de;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) AppDefaults *defaults;
-
 @end
 
 @interface Type (CoreDataGeneratedAccessors)

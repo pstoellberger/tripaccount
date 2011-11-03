@@ -8,11 +8,12 @@
 
 #import "InfoViewController.h"
 #import "UIFactory.h"
+#import "Appirater.h"
 
 @implementation InfoViewController
 
 @synthesize feedBackLabel=_feedBackLabel, titleLabel=_titleLabel, versionLabel=_versionLabel, copyrightLabel=_copyrightLabel;
-@synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton;
+@synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton, rateButton=_rateButton;
 @synthesize image=_image;
 
 #define CLOSE_LABEL_GAP 6
@@ -36,6 +37,7 @@
         [UIFactory addShadowToView:self.feedbackButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
         [UIFactory addShadowToView:self.licenseButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
         [UIFactory addShadowToView:self.closeButton withColor:[UIColor whiteColor] withOffset:0 andRadius:1.0];
+        [UIFactory addShadowToView:self.rateButton withColor:[UIColor whiteColor] withOffset:0 andRadius:1.0];
         
         self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"versionlabel", @""), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
 
@@ -45,7 +47,8 @@
         [self setButtonTitle:self.closeButton title:NSLocalizedString(@"close", @"info close button")];
         [self setButtonTitle:self.licenseButton title:NSLocalizedString(@"Acknowledgements", @"Acknowledgements")];
         [self setButtonTitle:self.featureButton title:NSLocalizedString(@"Request a feature", @"info feature button")];
-        [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];      
+        [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];
+        [self setButtonTitle:self.rateButton title:NSLocalizedString(@"rate this app", @"rate button")];
         
         [self.closeButton sizeToFit];
         self.closeButton.frame = CGRectMake(self.view.frame.size.width - self.closeButton.frame.size.width - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.view.frame.size.height - self.closeButton.frame.size.height - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.width - CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.height - CLOSE_LABEL_SIZE_REDUCTION);
@@ -83,6 +86,12 @@
     if (_target && _action && [_target respondsToSelector:_action]) {
         [_target performSelector:_action];
     }
+}
+
+- (IBAction)rate {
+    
+    NSString* url = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", APPIRATER_APP_ID];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
 }
 
 - (IBAction)requestFeature {

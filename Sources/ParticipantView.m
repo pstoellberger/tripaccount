@@ -43,7 +43,7 @@ static UIImage *moreImagesImage;
 	
     int counter = 0;
     for (Participant *participant in self.participants) {
-        UIImage *image = [UIImage imageWithData:participant.imageSmall];
+        UIImage *image = [[ImageCache instance] getImage:participant.imageSmall];
         [image drawInRect:CGRectMake(((IMAGE_SIZE+IMAGE_GAP) * counter), 0, IMAGE_SIZE, IMAGE_SIZE)];
         counter++;
         

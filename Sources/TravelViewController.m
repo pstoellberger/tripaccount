@@ -27,6 +27,7 @@
 #import "ICUTemplateMatcher.h"
 #import "ParticipantEditViewController.h"
 #import "NumberFilter.h"
+#import "Appirater.h"
 
 @interface TravelViewController ()
 
@@ -370,6 +371,8 @@
     [self.entrySortViewController.detailViewController.tableView endUpdates];
     
     [self updateSummary];
+    
+    [self.entrySortViewController updateTotalValue];
 }
 
 - (void)selectPerson:(ABRecordRef)abRecordRef withEmail:(NSString *)email {
@@ -382,6 +385,8 @@
 - (void)entryWasDeleted:(Entry *)entry {
     
     [self updateSummary];
+    
+    [self.entrySortViewController updateTotalValue];
 }
 
 - (void)updateSummary {
@@ -441,6 +446,7 @@
             
             if (updated) {
                 [self updateSummary];
+                [self.entrySortViewController updateTotalValue];
             }
         });
         
@@ -640,8 +646,10 @@
     return returnValue;
 }
 
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person 
-								property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker 
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person 
+								property:(ABPropertyID)property 
+                              identifier:(ABMultiValueIdentifier)identifier {
     
     ABMultiValueRef *multiValue = (ABMultiValueRef *) ABRecordCopyValue(person, property);
     CFIndex index = (CFIndex) ABMultiValueGetIndexForIdentifier(multiValue, identifier);
@@ -669,6 +677,14 @@
     
     self.travel.selectedTab = [NSNumber numberWithInt:[tabBarController.viewControllers indexOfObject:viewController]];
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
+    
+    if (viewController == self.entrySortViewController) {
+        [self.entrySortViewController updateTotalValue];
+    }
+    
+    if (viewController == self.summarySortViewController) {
+        [Appirater userDidSignificantEvent:YES];
+    }
     
     [self initHelpBubbleForViewController:viewController];
 }

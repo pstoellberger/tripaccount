@@ -8,12 +8,13 @@
 
 #import "ParticipantCategory.h"
 #import "NSData+Base64.h"
+#import "ImageCache.h"
 
 @implementation Participant (Base64Image)
 
 - (NSString *)base64 {
     
-    UIImage *image = [UIImage imageWithData:self.image];
+    UIImage *image = [[ImageCache instance] getImage:self.image];
     
     CGSize newSize = CGSizeMake(40,40);
     UIGraphicsBeginImageContext(newSize);
