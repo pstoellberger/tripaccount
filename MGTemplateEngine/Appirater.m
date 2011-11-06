@@ -281,9 +281,6 @@ NSString *templateReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZSto
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	[self incrementSignificantEventCount];
-	
-    NSLog(@"%@", [self ratingConditionsHaveBeenMet]);
-    NSLog(@"%@", [self connectedToNetwork]);
     
 	if ([_canPromptForRating boolValue] == YES &&
 		[self ratingConditionsHaveBeenMet] &&
