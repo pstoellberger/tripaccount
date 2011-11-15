@@ -49,6 +49,7 @@
 - (void)initializeSampleTrip;
 - (void)registerHelpBubble:(HelpView *)helpView;
 - (void)initUserDefaults;
+- (NSManagedObjectContext *)createNewManagedObjectContext;
 - (void)performInitialisations:(UIWindow *)window;
 
 @end

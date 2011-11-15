@@ -435,7 +435,8 @@
             [_summarySortViewController.updateIndicator startAnimating];
         });
         
-        CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[self.travel managedObjectContext]];
+        ReiseabrechnungAppDelegate *delegate = (ReiseabrechnungAppDelegate *) [UIApplication sharedApplication].delegate; 
+        CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[delegate createNewManagedObjectContext]];
         NSLog(@"Updating currencies...");
         BOOL updated = [currencyRefresh refreshCurrencies];
         [currencyRefresh release];

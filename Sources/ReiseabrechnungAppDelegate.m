@@ -396,7 +396,7 @@
 
 - (void)refreshCurrencyRatesIfOutDated {
     
-    CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:self.managedObjectContext];
+    CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[self createNewManagedObjectContext]];
     
     NSLog(@"Checking if currency rates are outdated.");
     
@@ -520,6 +520,20 @@
      */
     [ReiseabrechnungAppDelegate saveContext:[self managedObjectContext]];
 }
+                                        
+                                        
+- (NSManagedObjectContext *)createNewManagedObjectContext {
+    
+    @synchronized(self) {
+        NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+        NSManagedObjectContext *managedObjectContext = nil;
+        if (coordinator != nil) {
+            managedObjectContext = [[[NSManagedObjectContext alloc] init] autorelease];
+            [managedObjectContext setPersistentStoreCoordinator:coordinator];
+        }
+        return managedObjectContext;   
+    }
+}
 
 - (NSManagedObjectContext *)managedObjectContext {
     
@@ -527,11 +541,8 @@
         return _managedObjectContext;
     }
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
+    _managedObjectContext = [self createNewManagedObjectContext];
+    
     return _managedObjectContext;
 }
 
