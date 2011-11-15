@@ -14,5 +14,6 @@
     
 + (BOOL)addParticipant:(Participant *)person toTravel:(Travel *)travel withABRecord:(ABRecordRef)recordRef;
 + (BOOL)addParticipant:(Participant *)person toTravel:(Travel *)travel withABRecord:(ABRecordRef)recordRef andEmail:(NSString *)email;
++ (NSData *)createThumbnail:(NSData *)image;
 
 @end
