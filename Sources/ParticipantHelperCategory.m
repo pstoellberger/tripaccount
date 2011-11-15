@@ -68,7 +68,7 @@
         }
         
         // get thumbnail
-        person.imageSmall = UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:person.image] scaledToSize:CGSizeMake(32, 32)]);
+        person.imageSmall = [Participant createThumbnail:person.image];
     }
     
     CFRelease(emailMultiValue);
@@ -77,6 +77,10 @@
     [lastName release];
     
     return addPerson;
+}
+
++ (NSData *)createThumbnail:(NSData *)bigData {
+    return UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:bigData] scaledToSize:CGSizeMake(32, 32)]);
 }
 
 @end

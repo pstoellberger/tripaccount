@@ -237,6 +237,9 @@ static NSIndexPath *_emailIndexPath;
     if (!self.participant.image) {
         self.participant.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"noImage" ofType:@"png"]];
     }
+    if (!self.participant.imageSmall) {
+        self.participant.imageSmall = [Participant createThumbnail:self.participant.image];
+    }
     
     [ReiseabrechnungAppDelegate saveContext:_context];
     
