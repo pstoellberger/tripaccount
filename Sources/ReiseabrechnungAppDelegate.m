@@ -19,6 +19,7 @@
 #import "City.h"
 #import "Summary.h"
 #import "Appirater.h"
+#import "Crittercism.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -61,6 +62,12 @@
             RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
             self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
             self.navController.delegate = rvc;
+            
+            [Crittercism initWithAppID: @"4ec2ddd83f5b31291100000e"
+                                andKey:@"4ec2ddd83f5b31291100000ewufkre3p"
+                             andSecret:@"0ilulrbcdkvhhn38o61neacyfgmgsdzu"
+                 andMainViewController:self.navController];
+            
             [rvc release];
             
             [self.window addSubview:self.navController.view];
@@ -461,6 +468,16 @@
         [ReiseabrechnungAppDelegate saveContext:context];
     }
     return defaultObj;
+}
+
+- (void)onCrash {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Crash"
+                                                    message:@"The App has crashed and will attempt to send a crash report"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 + (void)saveContext:(NSManagedObjectContext *) context {
