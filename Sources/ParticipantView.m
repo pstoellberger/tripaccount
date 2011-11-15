@@ -8,6 +8,8 @@
 
 #import "ParticipantView.h"
 #import "Participant.h"
+#import "ParticipantHelperCategory.h"
+#import "ReiseabrechnungAppDelegate.h"
 
 @implementation ParticipantView
 
@@ -43,6 +45,13 @@ static UIImage *moreImagesImage;
 	
     int counter = 0;
     for (Participant *participant in self.participants) {
+        
+        // work around for inconsistent data
+        if (!participant.imageSmall) {
+            participant.imageSmall = [Participant createThumbnail:participant.image];
+            [ReiseabrechnungAppDelegate saveContext:[participant managedObjectContext]];
+        }
+        
         UIImage *image = [[ImageCache instance] getImage:participant.imageSmall];
         [image drawInRect:CGRectMake(((IMAGE_SIZE+IMAGE_GAP) * counter), 0, IMAGE_SIZE, IMAGE_SIZE)];
         counter++;
