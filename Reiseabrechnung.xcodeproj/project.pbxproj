@@ -495,6 +495,76 @@
 		F1D4B242140CF45200CD2224 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B241140CF45100CD2224 /* information.png */; };
 		F1D4B24C140D394F00CD2224 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B24A140D394F00CD2224 /* Localizable.strings */; };
 		F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
+		F1F08EFF14742B10002ECB4F /* Model-1.2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E7414742B10002ECB4F /* Model-1.2.xcdatamodeld */; };
+		F1F08F0014742B10002ECB4F /* NumberEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E7614742B10002ECB4F /* NumberEditViewController.m */; };
+		F1F08F0114742B10002ECB4F /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E7814742B10002ECB4F /* Participant.m */; };
+		F1F08F0214742B10002ECB4F /* ParticipantEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E7A14742B10002ECB4F /* ParticipantEditViewController.m */; };
+		F1F08F0314742B10002ECB4F /* ReiseabrechnungAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E7B14742B10002ECB4F /* ReiseabrechnungAppDelegate.m */; };
+		F1F08F0414742B10002ECB4F /* AlignedStyle2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E7E14742B10002ECB4F /* AlignedStyle2Cell.m */; };
+		F1F08F0514742B10002ECB4F /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8014742B10002ECB4F /* AppDefaults.m */; };
+		F1F08F0614742B10002ECB4F /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8214742B10002ECB4F /* ArrowView.m */; };
+		F1F08F0714742B10002ECB4F /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8414742B10002ECB4F /* City.m */; };
+		F1F08F0814742B10002ECB4F /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8614742B10002ECB4F /* CoreDataTableViewController.m */; };
+		F1F08F0914742B10002ECB4F /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8814742B10002ECB4F /* Country.m */; };
+		F1F08F0A14742B10002ECB4F /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8A14742B10002ECB4F /* CountryCell.m */; };
+		F1F08F0B14742B10002ECB4F /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8C14742B10002ECB4F /* Currency.m */; };
+		F1F08F0C14742B10002ECB4F /* CurrencyHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E8E14742B10002ECB4F /* CurrencyHelperCategory.m */; };
+		F1F08F0D14742B10002ECB4F /* CurrencyRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9014742B10002ECB4F /* CurrencyRefresh.m */; };
+		F1F08F0E14742B10002ECB4F /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9214742B10002ECB4F /* DateSelectViewController.m */; };
+		F1F08F0F14742B10002ECB4F /* DateSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9414742B10002ECB4F /* DateSortCategory.m */; };
+		F1F08F1014742B10002ECB4F /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9614742B10002ECB4F /* Entry.m */; };
+		F1F08F1114742B10002ECB4F /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9814742B10002ECB4F /* EntryCategory.m */; };
+		F1F08F1214742B10002ECB4F /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9A14742B10002ECB4F /* EntryCell.m */; };
+		F1F08F1314742B10002ECB4F /* EntryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9C14742B10002ECB4F /* EntryEditViewController.m */; };
+		F1F08F1414742B10002ECB4F /* EntryNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08E9E14742B10002ECB4F /* EntryNotManaged.m */; };
+		F1F08F1514742B10002ECB4F /* EntryReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EA014742B10002ECB4F /* EntryReceiver.m */; };
+		F1F08F1614742B10002ECB4F /* EntrySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EA214742B10002ECB4F /* EntrySortViewController.m */; };
+		F1F08F1714742B10002ECB4F /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EA414742B10002ECB4F /* EntryViewController.m */; };
+		F1F08F1814742B10002ECB4F /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EA614742B10002ECB4F /* ExchangeRate.m */; };
+		F1F08F1914742B10002ECB4F /* FirstLetterCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EA814742B10002ECB4F /* FirstLetterCategory.m */; };
+		F1F08F1A14742B10002ECB4F /* GenericSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EAA14742B10002ECB4F /* GenericSelectViewController.m */; };
+		F1F08F1B14742B10002ECB4F /* GradientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EAC14742B10002ECB4F /* GradientCell.m */; };
+		F1F08F1C14742B10002ECB4F /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EAE14742B10002ECB4F /* GradientView.m */; };
+		F1F08F1D14742B10002ECB4F /* HelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EB014742B10002ECB4F /* HelpView.m */; };
+		F1F08F1E14742B10002ECB4F /* I18NSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EB214742B10002ECB4F /* I18NSortCategory.m */; };
+		F1F08F1F14742B10002ECB4F /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EB414742B10002ECB4F /* InfoViewController.m */; };
+		F1F08F2014742B10002ECB4F /* Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EB614742B10002ECB4F /* Locator.m */; };
+		F1F08F2114742B10002ECB4F /* Mapping Model to 1.1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EB714742B10002ECB4F /* Mapping Model to 1.1.xcmappingmodel */; };
+		F1F08F2214742B10002ECB4F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EB814742B10002ECB4F /* Model.xcdatamodeld */; };
+		F1F08F2314742B10002ECB4F /* MultiLineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EBC14742B10002ECB4F /* MultiLineSegmentedControl.m */; };
+		F1F08F2414742B10002ECB4F /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EBE14742B10002ECB4F /* NSData+Base64.m */; };
+		F1F08F2514742B10002ECB4F /* NumberEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EC014742B10002ECB4F /* NumberEditViewController.m */; };
+		F1F08F2614742B10002ECB4F /* NumberFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EC214742B10002ECB4F /* NumberFilter.m */; };
+		F1F08F2714742B10002ECB4F /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EC414742B10002ECB4F /* Participant.m */; };
+		F1F08F2814742B10002ECB4F /* ParticipantCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EC614742B10002ECB4F /* ParticipantCategory.m */; };
+		F1F08F2914742B10002ECB4F /* ParticipantEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EC814742B10002ECB4F /* ParticipantEditViewController.m */; };
+		F1F08F2A14742B10002ECB4F /* ParticipantHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ECA14742B10002ECB4F /* ParticipantHelperCategory.m */; };
+		F1F08F2B14742B10002ECB4F /* ParticipantSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ECC14742B10002ECB4F /* ParticipantSelectViewController.m */; };
+		F1F08F2C14742B10002ECB4F /* ParticipantSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ECE14742B10002ECB4F /* ParticipantSortViewController.m */; };
+		F1F08F2D14742B10002ECB4F /* ParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ED014742B10002ECB4F /* ParticipantView.m */; };
+		F1F08F2E14742B10002ECB4F /* ParticipantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ED214742B10002ECB4F /* ParticipantViewController.m */; };
+		F1F08F2F14742B10002ECB4F /* RateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ED414742B10002ECB4F /* RateCell.m */; };
+		F1F08F3014742B10002ECB4F /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ED614742B10002ECB4F /* RateSelectViewController.m */; };
+		F1F08F3114742B10002ECB4F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08ED814742B10002ECB4F /* Reachability.m */; };
+		F1F08F3214742B10002ECB4F /* ReiseabrechnungAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EDA14742B10002ECB4F /* ReiseabrechnungAppDelegate.m */; };
+		F1F08F3314742B10002ECB4F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EDC14742B10002ECB4F /* RootViewController.m */; };
+		F1F08F3414742B10002ECB4F /* ShadowNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EDE14742B10002ECB4F /* ShadowNavigationController.m */; };
+		F1F08F3514742B10002ECB4F /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EE014742B10002ECB4F /* Summary.m */; };
+		F1F08F3614742B10002ECB4F /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EE214742B10002ECB4F /* SummaryCell.m */; };
+		F1F08F3714742B10002ECB4F /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EE414742B10002ECB4F /* SummarySortViewController.m */; };
+		F1F08F3814742B10002ECB4F /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EE614742B10002ECB4F /* SummaryViewController.m */; };
+		F1F08F3914742B10002ECB4F /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EE814742B10002ECB4F /* TextEditViewController.m */; };
+		F1F08F3A14742B10002ECB4F /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EEA14742B10002ECB4F /* Transfer.m */; };
+		F1F08F3B14742B10002ECB4F /* TransferCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EEC14742B10002ECB4F /* TransferCategory.m */; };
+		F1F08F3C14742B10002ECB4F /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EEE14742B10002ECB4F /* Travel.m */; };
+		F1F08F3D14742B10002ECB4F /* TravelCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EF014742B10002ECB4F /* TravelCategory.m */; };
+		F1F08F3E14742B10002ECB4F /* TravelEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EF214742B10002ECB4F /* TravelEditViewController.m */; };
+		F1F08F3F14742B10002ECB4F /* TravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EF414742B10002ECB4F /* TravelListViewController.m */; };
+		F1F08F4014742B10002ECB4F /* TravelNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EF614742B10002ECB4F /* TravelNotManaged.m */; };
+		F1F08F4114742B10002ECB4F /* TravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EF814742B10002ECB4F /* TravelViewController.m */; };
+		F1F08F4214742B10002ECB4F /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EFA14742B10002ECB4F /* Type.m */; };
+		F1F08F4314742B10002ECB4F /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EFC14742B10002ECB4F /* TypeViewController.m */; };
+		F1F08F4414742B10002ECB4F /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F08EFE14742B10002ECB4F /* UIFactory.m */; };
 		F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */; };
 		F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */; };
 		F1F8FAD313DC2C46009BB4D3 /* FirstLetterCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */; };
@@ -1008,6 +1078,142 @@
 		F1D4B241140CF45100CD2224 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		F1D4B24B140D394F00CD2224 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
+		F1F08E7514742B10002ECB4F /* NumberEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberEditViewController.h; sourceTree = "<group>"; };
+		F1F08E7614742B10002ECB4F /* NumberEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberEditViewController.m; sourceTree = "<group>"; };
+		F1F08E7714742B10002ECB4F /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
+		F1F08E7814742B10002ECB4F /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
+		F1F08E7914742B10002ECB4F /* ParticipantEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantEditViewController.h; sourceTree = "<group>"; };
+		F1F08E7A14742B10002ECB4F /* ParticipantEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantEditViewController.m; sourceTree = "<group>"; };
+		F1F08E7B14742B10002ECB4F /* ReiseabrechnungAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReiseabrechnungAppDelegate.m; sourceTree = "<group>"; };
+		F1F08E7D14742B10002ECB4F /* AlignedStyle2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlignedStyle2Cell.h; sourceTree = "<group>"; };
+		F1F08E7E14742B10002ECB4F /* AlignedStyle2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlignedStyle2Cell.m; sourceTree = "<group>"; };
+		F1F08E7F14742B10002ECB4F /* AppDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefaults.h; sourceTree = "<group>"; };
+		F1F08E8014742B10002ECB4F /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
+		F1F08E8114742B10002ECB4F /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
+		F1F08E8214742B10002ECB4F /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrowView.m; sourceTree = "<group>"; };
+		F1F08E8314742B10002ECB4F /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		F1F08E8414742B10002ECB4F /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		F1F08E8514742B10002ECB4F /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		F1F08E8614742B10002ECB4F /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		F1F08E8714742B10002ECB4F /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		F1F08E8814742B10002ECB4F /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		F1F08E8914742B10002ECB4F /* CountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCell.h; sourceTree = "<group>"; };
+		F1F08E8A14742B10002ECB4F /* CountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCell.m; sourceTree = "<group>"; };
+		F1F08E8B14742B10002ECB4F /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		F1F08E8C14742B10002ECB4F /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		F1F08E8D14742B10002ECB4F /* CurrencyHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelperCategory.h; sourceTree = "<group>"; };
+		F1F08E8E14742B10002ECB4F /* CurrencyHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyHelperCategory.m; sourceTree = "<group>"; };
+		F1F08E8F14742B10002ECB4F /* CurrencyRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyRefresh.h; sourceTree = "<group>"; };
+		F1F08E9014742B10002ECB4F /* CurrencyRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyRefresh.m; sourceTree = "<group>"; };
+		F1F08E9114742B10002ECB4F /* DateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSelectViewController.h; sourceTree = "<group>"; };
+		F1F08E9214742B10002ECB4F /* DateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectViewController.m; sourceTree = "<group>"; };
+		F1F08E9314742B10002ECB4F /* DateSortCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSortCategory.h; sourceTree = "<group>"; };
+		F1F08E9414742B10002ECB4F /* DateSortCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSortCategory.m; sourceTree = "<group>"; };
+		F1F08E9514742B10002ECB4F /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		F1F08E9614742B10002ECB4F /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		F1F08E9714742B10002ECB4F /* EntryCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCategory.h; sourceTree = "<group>"; };
+		F1F08E9814742B10002ECB4F /* EntryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCategory.m; sourceTree = "<group>"; };
+		F1F08E9914742B10002ECB4F /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCell.h; sourceTree = "<group>"; };
+		F1F08E9A14742B10002ECB4F /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCell.m; sourceTree = "<group>"; };
+		F1F08E9B14742B10002ECB4F /* EntryEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryEditViewController.h; sourceTree = "<group>"; };
+		F1F08E9C14742B10002ECB4F /* EntryEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryEditViewController.m; sourceTree = "<group>"; };
+		F1F08E9D14742B10002ECB4F /* EntryNotManaged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryNotManaged.h; sourceTree = "<group>"; };
+		F1F08E9E14742B10002ECB4F /* EntryNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryNotManaged.m; sourceTree = "<group>"; };
+		F1F08E9F14742B10002ECB4F /* EntryReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryReceiver.h; sourceTree = "<group>"; };
+		F1F08EA014742B10002ECB4F /* EntryReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryReceiver.m; sourceTree = "<group>"; };
+		F1F08EA114742B10002ECB4F /* EntrySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntrySortViewController.h; sourceTree = "<group>"; };
+		F1F08EA214742B10002ECB4F /* EntrySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntrySortViewController.m; sourceTree = "<group>"; };
+		F1F08EA314742B10002ECB4F /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
+		F1F08EA414742B10002ECB4F /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
+		F1F08EA514742B10002ECB4F /* ExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRate.h; sourceTree = "<group>"; };
+		F1F08EA614742B10002ECB4F /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
+		F1F08EA714742B10002ECB4F /* FirstLetterCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLetterCategory.h; sourceTree = "<group>"; };
+		F1F08EA814742B10002ECB4F /* FirstLetterCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLetterCategory.m; sourceTree = "<group>"; };
+		F1F08EA914742B10002ECB4F /* GenericSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericSelectViewController.h; sourceTree = "<group>"; };
+		F1F08EAA14742B10002ECB4F /* GenericSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericSelectViewController.m; sourceTree = "<group>"; };
+		F1F08EAB14742B10002ECB4F /* GradientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientCell.h; sourceTree = "<group>"; };
+		F1F08EAC14742B10002ECB4F /* GradientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientCell.m; sourceTree = "<group>"; };
+		F1F08EAD14742B10002ECB4F /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		F1F08EAE14742B10002ECB4F /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		F1F08EAF14742B10002ECB4F /* HelpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpView.h; sourceTree = "<group>"; };
+		F1F08EB014742B10002ECB4F /* HelpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpView.m; sourceTree = "<group>"; };
+		F1F08EB114742B10002ECB4F /* I18NSortCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = I18NSortCategory.h; sourceTree = "<group>"; };
+		F1F08EB214742B10002ECB4F /* I18NSortCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = I18NSortCategory.m; sourceTree = "<group>"; };
+		F1F08EB314742B10002ECB4F /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		F1F08EB414742B10002ECB4F /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		F1F08EB514742B10002ECB4F /* Locator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locator.h; sourceTree = "<group>"; };
+		F1F08EB614742B10002ECB4F /* Locator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Locator.m; sourceTree = "<group>"; };
+		F1F08EB714742B10002ECB4F /* Mapping Model to 1.1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "Mapping Model to 1.1.xcmappingmodel"; sourceTree = "<group>"; };
+		F1F08EB914742B10002ECB4F /* Model 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1.1.xcdatamodel"; sourceTree = "<group>"; };
+		F1F08EBA14742B10002ECB4F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F1F08EBB14742B10002ECB4F /* MultiLineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiLineSegmentedControl.h; sourceTree = "<group>"; };
+		F1F08EBC14742B10002ECB4F /* MultiLineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiLineSegmentedControl.m; sourceTree = "<group>"; };
+		F1F08EBD14742B10002ECB4F /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		F1F08EBE14742B10002ECB4F /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		F1F08EBF14742B10002ECB4F /* NumberEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberEditViewController.h; sourceTree = "<group>"; };
+		F1F08EC014742B10002ECB4F /* NumberEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberEditViewController.m; sourceTree = "<group>"; };
+		F1F08EC114742B10002ECB4F /* NumberFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberFilter.h; sourceTree = "<group>"; };
+		F1F08EC214742B10002ECB4F /* NumberFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberFilter.m; sourceTree = "<group>"; };
+		F1F08EC314742B10002ECB4F /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
+		F1F08EC414742B10002ECB4F /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
+		F1F08EC514742B10002ECB4F /* ParticipantCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantCategory.h; sourceTree = "<group>"; };
+		F1F08EC614742B10002ECB4F /* ParticipantCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantCategory.m; sourceTree = "<group>"; };
+		F1F08EC714742B10002ECB4F /* ParticipantEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantEditViewController.h; sourceTree = "<group>"; };
+		F1F08EC814742B10002ECB4F /* ParticipantEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantEditViewController.m; sourceTree = "<group>"; };
+		F1F08EC914742B10002ECB4F /* ParticipantHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantHelperCategory.h; sourceTree = "<group>"; };
+		F1F08ECA14742B10002ECB4F /* ParticipantHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantHelperCategory.m; sourceTree = "<group>"; };
+		F1F08ECB14742B10002ECB4F /* ParticipantSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantSelectViewController.h; sourceTree = "<group>"; };
+		F1F08ECC14742B10002ECB4F /* ParticipantSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantSelectViewController.m; sourceTree = "<group>"; };
+		F1F08ECD14742B10002ECB4F /* ParticipantSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantSortViewController.h; sourceTree = "<group>"; };
+		F1F08ECE14742B10002ECB4F /* ParticipantSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantSortViewController.m; sourceTree = "<group>"; };
+		F1F08ECF14742B10002ECB4F /* ParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantView.h; sourceTree = "<group>"; };
+		F1F08ED014742B10002ECB4F /* ParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantView.m; sourceTree = "<group>"; };
+		F1F08ED114742B10002ECB4F /* ParticipantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantViewController.h; sourceTree = "<group>"; };
+		F1F08ED214742B10002ECB4F /* ParticipantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantViewController.m; sourceTree = "<group>"; };
+		F1F08ED314742B10002ECB4F /* RateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateCell.h; sourceTree = "<group>"; };
+		F1F08ED414742B10002ECB4F /* RateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateCell.m; sourceTree = "<group>"; };
+		F1F08ED514742B10002ECB4F /* RateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateSelectViewController.h; sourceTree = "<group>"; };
+		F1F08ED614742B10002ECB4F /* RateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateSelectViewController.m; sourceTree = "<group>"; };
+		F1F08ED714742B10002ECB4F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F1F08ED814742B10002ECB4F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		F1F08ED914742B10002ECB4F /* ReiseabrechnungAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReiseabrechnungAppDelegate.h; sourceTree = "<group>"; };
+		F1F08EDA14742B10002ECB4F /* ReiseabrechnungAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReiseabrechnungAppDelegate.m; sourceTree = "<group>"; };
+		F1F08EDB14742B10002ECB4F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		F1F08EDC14742B10002ECB4F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		F1F08EDD14742B10002ECB4F /* ShadowNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowNavigationController.h; sourceTree = "<group>"; };
+		F1F08EDE14742B10002ECB4F /* ShadowNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowNavigationController.m; sourceTree = "<group>"; };
+		F1F08EDF14742B10002ECB4F /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
+		F1F08EE014742B10002ECB4F /* Summary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Summary.m; sourceTree = "<group>"; };
+		F1F08EE114742B10002ECB4F /* SummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryCell.h; sourceTree = "<group>"; };
+		F1F08EE214742B10002ECB4F /* SummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryCell.m; sourceTree = "<group>"; };
+		F1F08EE314742B10002ECB4F /* SummarySortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummarySortViewController.h; sourceTree = "<group>"; };
+		F1F08EE414742B10002ECB4F /* SummarySortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummarySortViewController.m; sourceTree = "<group>"; };
+		F1F08EE514742B10002ECB4F /* SummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryViewController.h; sourceTree = "<group>"; };
+		F1F08EE614742B10002ECB4F /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
+		F1F08EE714742B10002ECB4F /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
+		F1F08EE814742B10002ECB4F /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
+		F1F08EE914742B10002ECB4F /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
+		F1F08EEA14742B10002ECB4F /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
+		F1F08EEB14742B10002ECB4F /* TransferCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferCategory.h; sourceTree = "<group>"; };
+		F1F08EEC14742B10002ECB4F /* TransferCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferCategory.m; sourceTree = "<group>"; };
+		F1F08EED14742B10002ECB4F /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
+		F1F08EEE14742B10002ECB4F /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
+		F1F08EEF14742B10002ECB4F /* TravelCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelCategory.h; sourceTree = "<group>"; };
+		F1F08EF014742B10002ECB4F /* TravelCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelCategory.m; sourceTree = "<group>"; };
+		F1F08EF114742B10002ECB4F /* TravelEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelEditViewController.h; sourceTree = "<group>"; };
+		F1F08EF214742B10002ECB4F /* TravelEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelEditViewController.m; sourceTree = "<group>"; };
+		F1F08EF314742B10002ECB4F /* TravelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelListViewController.h; sourceTree = "<group>"; };
+		F1F08EF414742B10002ECB4F /* TravelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelListViewController.m; sourceTree = "<group>"; };
+		F1F08EF514742B10002ECB4F /* TravelNotManaged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelNotManaged.h; sourceTree = "<group>"; };
+		F1F08EF614742B10002ECB4F /* TravelNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelNotManaged.m; sourceTree = "<group>"; };
+		F1F08EF714742B10002ECB4F /* TravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelViewController.h; sourceTree = "<group>"; };
+		F1F08EF814742B10002ECB4F /* TravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelViewController.m; sourceTree = "<group>"; };
+		F1F08EF914742B10002ECB4F /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		F1F08EFA14742B10002ECB4F /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		F1F08EFB14742B10002ECB4F /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
+		F1F08EFC14742B10002ECB4F /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
+		F1F08EFD14742B10002ECB4F /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
+		F1F08EFE14742B10002ECB4F /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
 		F1F8FAB713DC1F8D009BB4D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F1F8FABC13DC225B009BB4D3 /* ShadowNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowNavigationController.h; sourceTree = "<group>"; };
 		F1F8FABD13DC225B009BB4D3 /* ShadowNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowNavigationController.m; sourceTree = "<group>"; };
@@ -1644,6 +1850,7 @@
 				F1CD783513BA405B00D42AA3 /* Supporting Files */,
 				F1CD782D13BA405A00D42AA3 /* Frameworks */,
 				F1CD782B13BA405A00D42AA3 /* Products */,
+				F1F08E7214742B10002ECB4F /* Ablage */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1788,6 +1995,165 @@
 				F1F8FAF113DC4A5A009BB4D3 /* NumberEditViewController.m */,
 			);
 			name = TravelAdd;
+			sourceTree = "<group>";
+		};
+		F1F08E7214742B10002ECB4F /* Ablage */ = {
+			isa = PBXGroup;
+			children = (
+				F1F08E7314742B10002ECB4F /* 1.2 */,
+				F1F08E7C14742B10002ECB4F /* Sources with new Datamodel */,
+			);
+			path = Ablage;
+			sourceTree = "<group>";
+		};
+		F1F08E7314742B10002ECB4F /* 1.2 */ = {
+			isa = PBXGroup;
+			children = (
+				F1F08E7414742B10002ECB4F /* Model-1.2.xcdatamodeld */,
+				F1F08E7514742B10002ECB4F /* NumberEditViewController.h */,
+				F1F08E7614742B10002ECB4F /* NumberEditViewController.m */,
+				F1F08E7714742B10002ECB4F /* Participant.h */,
+				F1F08E7814742B10002ECB4F /* Participant.m */,
+				F1F08E7914742B10002ECB4F /* ParticipantEditViewController.h */,
+				F1F08E7A14742B10002ECB4F /* ParticipantEditViewController.m */,
+				F1F08E7B14742B10002ECB4F /* ReiseabrechnungAppDelegate.m */,
+			);
+			path = 1.2;
+			sourceTree = "<group>";
+		};
+		F1F08E7C14742B10002ECB4F /* Sources with new Datamodel */ = {
+			isa = PBXGroup;
+			children = (
+				F1F08E7D14742B10002ECB4F /* AlignedStyle2Cell.h */,
+				F1F08E7E14742B10002ECB4F /* AlignedStyle2Cell.m */,
+				F1F08E7F14742B10002ECB4F /* AppDefaults.h */,
+				F1F08E8014742B10002ECB4F /* AppDefaults.m */,
+				F1F08E8114742B10002ECB4F /* ArrowView.h */,
+				F1F08E8214742B10002ECB4F /* ArrowView.m */,
+				F1F08E8314742B10002ECB4F /* City.h */,
+				F1F08E8414742B10002ECB4F /* City.m */,
+				F1F08E8514742B10002ECB4F /* CoreDataTableViewController.h */,
+				F1F08E8614742B10002ECB4F /* CoreDataTableViewController.m */,
+				F1F08E8714742B10002ECB4F /* Country.h */,
+				F1F08E8814742B10002ECB4F /* Country.m */,
+				F1F08E8914742B10002ECB4F /* CountryCell.h */,
+				F1F08E8A14742B10002ECB4F /* CountryCell.m */,
+				F1F08E8B14742B10002ECB4F /* Currency.h */,
+				F1F08E8C14742B10002ECB4F /* Currency.m */,
+				F1F08E8D14742B10002ECB4F /* CurrencyHelperCategory.h */,
+				F1F08E8E14742B10002ECB4F /* CurrencyHelperCategory.m */,
+				F1F08E8F14742B10002ECB4F /* CurrencyRefresh.h */,
+				F1F08E9014742B10002ECB4F /* CurrencyRefresh.m */,
+				F1F08E9114742B10002ECB4F /* DateSelectViewController.h */,
+				F1F08E9214742B10002ECB4F /* DateSelectViewController.m */,
+				F1F08E9314742B10002ECB4F /* DateSortCategory.h */,
+				F1F08E9414742B10002ECB4F /* DateSortCategory.m */,
+				F1F08E9514742B10002ECB4F /* Entry.h */,
+				F1F08E9614742B10002ECB4F /* Entry.m */,
+				F1F08E9714742B10002ECB4F /* EntryCategory.h */,
+				F1F08E9814742B10002ECB4F /* EntryCategory.m */,
+				F1F08E9914742B10002ECB4F /* EntryCell.h */,
+				F1F08E9A14742B10002ECB4F /* EntryCell.m */,
+				F1F08E9B14742B10002ECB4F /* EntryEditViewController.h */,
+				F1F08E9C14742B10002ECB4F /* EntryEditViewController.m */,
+				F1F08E9D14742B10002ECB4F /* EntryNotManaged.h */,
+				F1F08E9E14742B10002ECB4F /* EntryNotManaged.m */,
+				F1F08E9F14742B10002ECB4F /* EntryReceiver.h */,
+				F1F08EA014742B10002ECB4F /* EntryReceiver.m */,
+				F1F08EA114742B10002ECB4F /* EntrySortViewController.h */,
+				F1F08EA214742B10002ECB4F /* EntrySortViewController.m */,
+				F1F08EA314742B10002ECB4F /* EntryViewController.h */,
+				F1F08EA414742B10002ECB4F /* EntryViewController.m */,
+				F1F08EA514742B10002ECB4F /* ExchangeRate.h */,
+				F1F08EA614742B10002ECB4F /* ExchangeRate.m */,
+				F1F08EA714742B10002ECB4F /* FirstLetterCategory.h */,
+				F1F08EA814742B10002ECB4F /* FirstLetterCategory.m */,
+				F1F08EA914742B10002ECB4F /* GenericSelectViewController.h */,
+				F1F08EAA14742B10002ECB4F /* GenericSelectViewController.m */,
+				F1F08EAB14742B10002ECB4F /* GradientCell.h */,
+				F1F08EAC14742B10002ECB4F /* GradientCell.m */,
+				F1F08EAD14742B10002ECB4F /* GradientView.h */,
+				F1F08EAE14742B10002ECB4F /* GradientView.m */,
+				F1F08EAF14742B10002ECB4F /* HelpView.h */,
+				F1F08EB014742B10002ECB4F /* HelpView.m */,
+				F1F08EB114742B10002ECB4F /* I18NSortCategory.h */,
+				F1F08EB214742B10002ECB4F /* I18NSortCategory.m */,
+				F1F08EB314742B10002ECB4F /* InfoViewController.h */,
+				F1F08EB414742B10002ECB4F /* InfoViewController.m */,
+				F1F08EB514742B10002ECB4F /* Locator.h */,
+				F1F08EB614742B10002ECB4F /* Locator.m */,
+				F1F08EB714742B10002ECB4F /* Mapping Model to 1.1.xcmappingmodel */,
+				F1F08EB814742B10002ECB4F /* Model.xcdatamodeld */,
+				F1F08EBB14742B10002ECB4F /* MultiLineSegmentedControl.h */,
+				F1F08EBC14742B10002ECB4F /* MultiLineSegmentedControl.m */,
+				F1F08EBD14742B10002ECB4F /* NSData+Base64.h */,
+				F1F08EBE14742B10002ECB4F /* NSData+Base64.m */,
+				F1F08EBF14742B10002ECB4F /* NumberEditViewController.h */,
+				F1F08EC014742B10002ECB4F /* NumberEditViewController.m */,
+				F1F08EC114742B10002ECB4F /* NumberFilter.h */,
+				F1F08EC214742B10002ECB4F /* NumberFilter.m */,
+				F1F08EC314742B10002ECB4F /* Participant.h */,
+				F1F08EC414742B10002ECB4F /* Participant.m */,
+				F1F08EC514742B10002ECB4F /* ParticipantCategory.h */,
+				F1F08EC614742B10002ECB4F /* ParticipantCategory.m */,
+				F1F08EC714742B10002ECB4F /* ParticipantEditViewController.h */,
+				F1F08EC814742B10002ECB4F /* ParticipantEditViewController.m */,
+				F1F08EC914742B10002ECB4F /* ParticipantHelperCategory.h */,
+				F1F08ECA14742B10002ECB4F /* ParticipantHelperCategory.m */,
+				F1F08ECB14742B10002ECB4F /* ParticipantSelectViewController.h */,
+				F1F08ECC14742B10002ECB4F /* ParticipantSelectViewController.m */,
+				F1F08ECD14742B10002ECB4F /* ParticipantSortViewController.h */,
+				F1F08ECE14742B10002ECB4F /* ParticipantSortViewController.m */,
+				F1F08ECF14742B10002ECB4F /* ParticipantView.h */,
+				F1F08ED014742B10002ECB4F /* ParticipantView.m */,
+				F1F08ED114742B10002ECB4F /* ParticipantViewController.h */,
+				F1F08ED214742B10002ECB4F /* ParticipantViewController.m */,
+				F1F08ED314742B10002ECB4F /* RateCell.h */,
+				F1F08ED414742B10002ECB4F /* RateCell.m */,
+				F1F08ED514742B10002ECB4F /* RateSelectViewController.h */,
+				F1F08ED614742B10002ECB4F /* RateSelectViewController.m */,
+				F1F08ED714742B10002ECB4F /* Reachability.h */,
+				F1F08ED814742B10002ECB4F /* Reachability.m */,
+				F1F08ED914742B10002ECB4F /* ReiseabrechnungAppDelegate.h */,
+				F1F08EDA14742B10002ECB4F /* ReiseabrechnungAppDelegate.m */,
+				F1F08EDB14742B10002ECB4F /* RootViewController.h */,
+				F1F08EDC14742B10002ECB4F /* RootViewController.m */,
+				F1F08EDD14742B10002ECB4F /* ShadowNavigationController.h */,
+				F1F08EDE14742B10002ECB4F /* ShadowNavigationController.m */,
+				F1F08EDF14742B10002ECB4F /* Summary.h */,
+				F1F08EE014742B10002ECB4F /* Summary.m */,
+				F1F08EE114742B10002ECB4F /* SummaryCell.h */,
+				F1F08EE214742B10002ECB4F /* SummaryCell.m */,
+				F1F08EE314742B10002ECB4F /* SummarySortViewController.h */,
+				F1F08EE414742B10002ECB4F /* SummarySortViewController.m */,
+				F1F08EE514742B10002ECB4F /* SummaryViewController.h */,
+				F1F08EE614742B10002ECB4F /* SummaryViewController.m */,
+				F1F08EE714742B10002ECB4F /* TextEditViewController.h */,
+				F1F08EE814742B10002ECB4F /* TextEditViewController.m */,
+				F1F08EE914742B10002ECB4F /* Transfer.h */,
+				F1F08EEA14742B10002ECB4F /* Transfer.m */,
+				F1F08EEB14742B10002ECB4F /* TransferCategory.h */,
+				F1F08EEC14742B10002ECB4F /* TransferCategory.m */,
+				F1F08EED14742B10002ECB4F /* Travel.h */,
+				F1F08EEE14742B10002ECB4F /* Travel.m */,
+				F1F08EEF14742B10002ECB4F /* TravelCategory.h */,
+				F1F08EF014742B10002ECB4F /* TravelCategory.m */,
+				F1F08EF114742B10002ECB4F /* TravelEditViewController.h */,
+				F1F08EF214742B10002ECB4F /* TravelEditViewController.m */,
+				F1F08EF314742B10002ECB4F /* TravelListViewController.h */,
+				F1F08EF414742B10002ECB4F /* TravelListViewController.m */,
+				F1F08EF514742B10002ECB4F /* TravelNotManaged.h */,
+				F1F08EF614742B10002ECB4F /* TravelNotManaged.m */,
+				F1F08EF714742B10002ECB4F /* TravelViewController.h */,
+				F1F08EF814742B10002ECB4F /* TravelViewController.m */,
+				F1F08EF914742B10002ECB4F /* Type.h */,
+				F1F08EFA14742B10002ECB4F /* Type.m */,
+				F1F08EFB14742B10002ECB4F /* TypeViewController.h */,
+				F1F08EFC14742B10002ECB4F /* TypeViewController.m */,
+				F1F08EFD14742B10002ECB4F /* UIFactory.h */,
+				F1F08EFE14742B10002ECB4F /* UIFactory.m */,
+			);
+			path = "Sources with new Datamodel";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2368,6 +2734,76 @@
 				F1B793FB1461B0E8007ED072 /* ImageCache.m in Sources */,
 				F1676D2D14633A4500EEFF25 /* Appirater.m in Sources */,
 				F10CC2271472F4A500714417 /* Participant.m in Sources */,
+				F1F08EFF14742B10002ECB4F /* Model-1.2.xcdatamodeld in Sources */,
+				F1F08F0014742B10002ECB4F /* NumberEditViewController.m in Sources */,
+				F1F08F0114742B10002ECB4F /* Participant.m in Sources */,
+				F1F08F0214742B10002ECB4F /* ParticipantEditViewController.m in Sources */,
+				F1F08F0314742B10002ECB4F /* ReiseabrechnungAppDelegate.m in Sources */,
+				F1F08F0414742B10002ECB4F /* AlignedStyle2Cell.m in Sources */,
+				F1F08F0514742B10002ECB4F /* AppDefaults.m in Sources */,
+				F1F08F0614742B10002ECB4F /* ArrowView.m in Sources */,
+				F1F08F0714742B10002ECB4F /* City.m in Sources */,
+				F1F08F0814742B10002ECB4F /* CoreDataTableViewController.m in Sources */,
+				F1F08F0914742B10002ECB4F /* Country.m in Sources */,
+				F1F08F0A14742B10002ECB4F /* CountryCell.m in Sources */,
+				F1F08F0B14742B10002ECB4F /* Currency.m in Sources */,
+				F1F08F0C14742B10002ECB4F /* CurrencyHelperCategory.m in Sources */,
+				F1F08F0D14742B10002ECB4F /* CurrencyRefresh.m in Sources */,
+				F1F08F0E14742B10002ECB4F /* DateSelectViewController.m in Sources */,
+				F1F08F0F14742B10002ECB4F /* DateSortCategory.m in Sources */,
+				F1F08F1014742B10002ECB4F /* Entry.m in Sources */,
+				F1F08F1114742B10002ECB4F /* EntryCategory.m in Sources */,
+				F1F08F1214742B10002ECB4F /* EntryCell.m in Sources */,
+				F1F08F1314742B10002ECB4F /* EntryEditViewController.m in Sources */,
+				F1F08F1414742B10002ECB4F /* EntryNotManaged.m in Sources */,
+				F1F08F1514742B10002ECB4F /* EntryReceiver.m in Sources */,
+				F1F08F1614742B10002ECB4F /* EntrySortViewController.m in Sources */,
+				F1F08F1714742B10002ECB4F /* EntryViewController.m in Sources */,
+				F1F08F1814742B10002ECB4F /* ExchangeRate.m in Sources */,
+				F1F08F1914742B10002ECB4F /* FirstLetterCategory.m in Sources */,
+				F1F08F1A14742B10002ECB4F /* GenericSelectViewController.m in Sources */,
+				F1F08F1B14742B10002ECB4F /* GradientCell.m in Sources */,
+				F1F08F1C14742B10002ECB4F /* GradientView.m in Sources */,
+				F1F08F1D14742B10002ECB4F /* HelpView.m in Sources */,
+				F1F08F1E14742B10002ECB4F /* I18NSortCategory.m in Sources */,
+				F1F08F1F14742B10002ECB4F /* InfoViewController.m in Sources */,
+				F1F08F2014742B10002ECB4F /* Locator.m in Sources */,
+				F1F08F2114742B10002ECB4F /* Mapping Model to 1.1.xcmappingmodel in Sources */,
+				F1F08F2214742B10002ECB4F /* Model.xcdatamodeld in Sources */,
+				F1F08F2314742B10002ECB4F /* MultiLineSegmentedControl.m in Sources */,
+				F1F08F2414742B10002ECB4F /* NSData+Base64.m in Sources */,
+				F1F08F2514742B10002ECB4F /* NumberEditViewController.m in Sources */,
+				F1F08F2614742B10002ECB4F /* NumberFilter.m in Sources */,
+				F1F08F2714742B10002ECB4F /* Participant.m in Sources */,
+				F1F08F2814742B10002ECB4F /* ParticipantCategory.m in Sources */,
+				F1F08F2914742B10002ECB4F /* ParticipantEditViewController.m in Sources */,
+				F1F08F2A14742B10002ECB4F /* ParticipantHelperCategory.m in Sources */,
+				F1F08F2B14742B10002ECB4F /* ParticipantSelectViewController.m in Sources */,
+				F1F08F2C14742B10002ECB4F /* ParticipantSortViewController.m in Sources */,
+				F1F08F2D14742B10002ECB4F /* ParticipantView.m in Sources */,
+				F1F08F2E14742B10002ECB4F /* ParticipantViewController.m in Sources */,
+				F1F08F2F14742B10002ECB4F /* RateCell.m in Sources */,
+				F1F08F3014742B10002ECB4F /* RateSelectViewController.m in Sources */,
+				F1F08F3114742B10002ECB4F /* Reachability.m in Sources */,
+				F1F08F3214742B10002ECB4F /* ReiseabrechnungAppDelegate.m in Sources */,
+				F1F08F3314742B10002ECB4F /* RootViewController.m in Sources */,
+				F1F08F3414742B10002ECB4F /* ShadowNavigationController.m in Sources */,
+				F1F08F3514742B10002ECB4F /* Summary.m in Sources */,
+				F1F08F3614742B10002ECB4F /* SummaryCell.m in Sources */,
+				F1F08F3714742B10002ECB4F /* SummarySortViewController.m in Sources */,
+				F1F08F3814742B10002ECB4F /* SummaryViewController.m in Sources */,
+				F1F08F3914742B10002ECB4F /* TextEditViewController.m in Sources */,
+				F1F08F3A14742B10002ECB4F /* Transfer.m in Sources */,
+				F1F08F3B14742B10002ECB4F /* TransferCategory.m in Sources */,
+				F1F08F3C14742B10002ECB4F /* Travel.m in Sources */,
+				F1F08F3D14742B10002ECB4F /* TravelCategory.m in Sources */,
+				F1F08F3E14742B10002ECB4F /* TravelEditViewController.m in Sources */,
+				F1F08F3F14742B10002ECB4F /* TravelListViewController.m in Sources */,
+				F1F08F4014742B10002ECB4F /* TravelNotManaged.m in Sources */,
+				F1F08F4114742B10002ECB4F /* TravelViewController.m in Sources */,
+				F1F08F4214742B10002ECB4F /* Type.m in Sources */,
+				F1F08F4314742B10002ECB4F /* TypeViewController.m in Sources */,
+				F1F08F4414742B10002ECB4F /* UIFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2582,6 +3018,25 @@
 				F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */,
 			);
 			currentVersion = F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		F1F08E7414742B10002ECB4F /* Model-1.2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+			);
+			path = "Model-1.2.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		F1F08EB814742B10002ECB4F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F1F08EB914742B10002ECB4F /* Model 1.1.xcdatamodel */,
+				F1F08EBA14742B10002ECB4F /* Model.xcdatamodel */,
+			);
+			currentVersion = F1F08EB914742B10002ECB4F /* Model 1.1.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

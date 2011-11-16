@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "342048926.176682"
+         timestampString = "343088193.468213"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "578"
-         endingLineNumber = "578"
+         startingLineNumber = "612"
+         endingLineNumber = "612"
          landmarkName = "@implementation ReiseabrechnungAppDelegate"
          landmarkType = "3">
       </FileBreakpoint>
@@ -163,11 +163,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "342048926.176682"
+         timestampString = "343087443.176582"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "-initializeStartDatabase:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,12 +177,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/TravelViewController.m"
-         timestampString = "342048592.913953"
+         timestampString = "343070079.203832"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "624"
-         endingLineNumber = "624"
+         startingLineNumber = "625"
+         endingLineNumber = "625"
          landmarkName = "-peoplePickerNavigationController:shouldContinueAfterSelectingPerson:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/ParticipantEditViewController.m"
+         timestampString = "343078591.68675"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
+         landmarkName = "-done:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

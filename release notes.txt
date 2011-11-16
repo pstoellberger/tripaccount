@@ -17,3 +17,7 @@
 - Optische Verbesserung von der Sortierknöpfe
 - Die App ist jetzt reaktiver während Zellen nach einer Änderungen blau aufleuchten
 - Die App kann jetzt über die Informationsseite bewertet werden
+
+++++ Current TRUNK +++++
+
+- fixed a problem detecting iPhone owner name
