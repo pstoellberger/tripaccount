@@ -479,13 +479,27 @@ static NSIndexPath *_currenciesIndexPath;
             } 
             
             if (userName) {
-                NSArray *martinPerson = (NSArray *) ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
-                if ([martinPerson lastObject]) {
-                    Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
-                    newPerson.yourself = [NSNumber numberWithInt:1];
-                    [Participant addParticipant:newPerson toTravel:_travel withABRecord:[martinPerson lastObject]];
+                
+                CFArrayRef martinPersons = ABAddressBookCopyPeopleWithName(addressBook, (CFStringRef) userName);
+                
+                if (martinPersons) {
+                    
+                    for(int i=0; i < CFArrayGetCount(martinPersons); i++) {
+                        
+                        ABRecordRef martinPerson = CFArrayGetValueAtIndex(martinPersons, i);
+                        NSString *firstName = (NSString *) ABRecordCopyValue(martinPerson, kABPersonFirstNameProperty);
+                        NSString *lastName = (NSString *) ABRecordCopyValue(martinPerson, kABPersonLastNameProperty);
+                        NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+                        
+                        if ([userName isEqualToString:fullName]) {
+                            Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
+                            newPerson.yourself = [NSNumber numberWithInt:1];
+                            [Participant addParticipant:newPerson toTravel:_travel withABRecord:martinPerson];
+                            break;
+                        }
+                    }
+                    CFRelease(martinPersons);
                 }
-                [martinPerson release];
             }
             
             CFRelease(addressBook);
