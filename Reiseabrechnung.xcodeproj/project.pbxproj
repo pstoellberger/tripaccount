@@ -994,6 +994,7 @@
 		F1A6C63113D6BFA6005E8388 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		F1A6E518141679CE00FB8C92 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		F1A6E519141679CE00FB8C92 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		F1A6FCD114742FCF00DE06CF /* Model-1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.2.xcdatamodel"; sourceTree = "<group>"; };
 		F1B793F91461B0E8007ED072 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
 		F1B793FA1461B0E8007ED072 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 		F1B820DA13BCD76C00FE329B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -3015,6 +3016,7 @@
 		F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F1A6FCD114742FCF00DE06CF /* Model-1.2.xcdatamodel */,
 				F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */,
 			);
 			currentVersion = F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */;
