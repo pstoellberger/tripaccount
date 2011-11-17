@@ -56,11 +56,36 @@
     return UITableViewCellAccessoryNone;
 }
 
+#define WEIGHT_LABEL_TAG 42
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
-    UITableViewCell *cell = [super tableView:tableView cellForManagedObject:managedObject];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
+    static NSString *ReuseIdentifier = @"ParticipantCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier];
+    
+    UILabel *right = nil;
+    if (cell == nil) {
+        
+        cell = [super tableView:tableView cellForManagedObject:managedObject];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        
+        right = [[[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width - 30, 0, 30, cell.frame.size.height)] autorelease];
+        right.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        right.backgroundColor = [UIColor clearColor];
+        right.font = [UIFont italicSystemFontOfSize:14];
+        right.textColor = [UIColor colorWithRed:0 green:0 blue:0.8 alpha:1];
+        right.tag = WEIGHT_LABEL_TAG;
+        
+        [cell.contentView addSubview:right];
+    }
+    
+    if (!right) {
+        right = (UILabel *) [cell viewWithTag:WEIGHT_LABEL_TAG];
+    }
+    
+    Participant *p = (Participant *)managedObject;
+    right.text = [p.weight stringValue];
     
     cell.textLabel.alpha = 1;
     cell.detailTextLabel.alpha = 1;

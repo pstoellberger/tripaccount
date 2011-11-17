@@ -29,6 +29,7 @@
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSNumber *weight;
 
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Participant *participant;

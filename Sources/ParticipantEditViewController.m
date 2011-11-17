@@ -18,9 +18,11 @@
 #import "TextEditViewController.h"
 #import "AlignedStyle2Cell.h"
 #import "ExchangeRate.h"
+#import "NumberEditViewController.h"
 
 static NSIndexPath *_nameIndexPath;
 static NSIndexPath *_emailIndexPath;
+static NSIndexPath *_weightIndexPath;
 
 @interface ParticipantEditViewController ()
 - (void)initIndexPaths;
@@ -31,7 +33,7 @@ static NSIndexPath *_emailIndexPath;
 
 @implementation ParticipantEditViewController
 
-@synthesize name=_name, email=_email;
+@synthesize name=_name, email=_email, weight=_weight;
 @synthesize travel=_travel, participant=_participant;
 @synthesize editDelegate=_editDelegate;
 
@@ -79,11 +81,14 @@ static NSIndexPath *_emailIndexPath;
             
             self.name = @"";
             self.email = @"";
+            self.weight = [NSNumber numberWithInt:1];
             
         } else {
             
             self.name = participant.name;
             self.email = participant.email;
+            self.weight = participant.weight;
+
         }
     }
     return self;
@@ -92,6 +97,7 @@ static NSIndexPath *_emailIndexPath;
 - (void)initIndexPaths {
     _nameIndexPath = [[NSIndexPath indexPathForRow:0 inSection:0] retain];
     _emailIndexPath = [[NSIndexPath indexPathForRow:1 inSection:0] retain];
+    _weightIndexPath = [[NSIndexPath indexPathForRow:2 inSection:0] retain];
 }
 
 
@@ -120,7 +126,7 @@ static NSIndexPath *_emailIndexPath;
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -144,6 +150,13 @@ static NSIndexPath *_emailIndexPath;
         cell.textLabel.text = NSLocalizedString(@"E-Mail", @"cell caption mail");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.email;
+        
+    } else if ([indexPath isEqual:_weightIndexPath]) {
+        
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell.textLabel.text = NSLocalizedString(@"Weight", @"cell caption weight");
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = [self.weight stringValue];
         
     } else {
         NSLog(@"no indexpath cell found for %@ ", indexPath);
@@ -173,6 +186,11 @@ static NSIndexPath *_emailIndexPath;
         
         self.email = @"";
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_emailIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        
+    } else if (indexPath == _weightIndexPath) {
+        
+        self.weight = [NSNumber numberWithInt:1];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_weightIndexPath] withRowAnimation:UITableViewRowAnimationNone];
     }
     
 }
@@ -194,6 +212,13 @@ static NSIndexPath *_emailIndexPath;
         [textEditViewController setKeyBoardType:UIKeyboardTypeEmailAddress];
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];            
+        
+    } else if ([indexPath isEqual:_weightIndexPath]) {
+        
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.weight withDecimals:YES target:self selector:@selector(selectWeight:)]; 
+        numberEditViewController.title = NSLocalizedString(@"Weight", @"controller title edit weight");
+        [self.navigationController pushViewController:numberEditViewController animated:YES];
+        [numberEditViewController release];            
         
     }
     
@@ -224,6 +249,13 @@ static NSIndexPath *_emailIndexPath;
     }
 }
 
+- (void)selectWeight:(NSNumber *)newWeight {
+    if (![newWeight isEqualToNumber:self.weight]) {
+        self.weight = newWeight;
+        [_cellsToReloadAndFlash addObject:_weightIndexPath];
+    }
+}
+
 - (IBAction)done:(UIBarButtonItem *)sender {
     
     if (!self.participant) {
@@ -233,12 +265,10 @@ static NSIndexPath *_emailIndexPath;
     
     self.participant.name = self.name;
     self.participant.email = self.email;
+    self.participant.weight = [NSDecimalNumber decimalNumberWithDecimal:[self.weight decimalValue]];
     
     if (!self.participant.image) {
         self.participant.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"noImage" ofType:@"png"]];
-    }
-    if (!self.participant.imageSmall) {
-        self.participant.imageSmall = [Participant createThumbnail:self.participant.image];
     }
     
     [ReiseabrechnungAppDelegate saveContext:_context];

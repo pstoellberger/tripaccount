@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "343088193.468213"
+         timestampString = "343167367.831658"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "612"
-         endingLineNumber = "612"
+         startingLineNumber = "616"
+         endingLineNumber = "616"
          landmarkName = "@implementation ReiseabrechnungAppDelegate"
          landmarkType = "3">
       </FileBreakpoint>
@@ -163,11 +163,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "343087443.176582"
+         timestampString = "343167367.831658"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
          landmarkName = "-initializeStartDatabase:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,13 +190,27 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/ParticipantEditViewController.m"
-         timestampString = "343078591.68675"
+         filePath = "Sources/ParticipantCell.m"
+         timestampString = "343166470.717357"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "248"
-         endingLineNumber = "248"
-         landmarkName = "-done:"
+         startingLineNumber = "17"
+         endingLineNumber = "17"
+         landmarkName = "-initWithStyle:reuseIdentifier:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/ParticipantViewController.m"
+         timestampString = "343168722.353462"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-tableView:cellForManagedObject:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

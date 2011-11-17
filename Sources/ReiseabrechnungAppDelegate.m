@@ -62,11 +62,15 @@
             RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
             self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
             self.navController.delegate = rvc;
+     
             
+#if TARGET_IPHONE_SIMULATOR
+#else
             [Crittercism initWithAppID: @"4ec2ddd83f5b31291100000e"
                                 andKey:@"4ec2ddd83f5b31291100000ewufkre3p"
                              andSecret:@"0ilulrbcdkvhhn38o61neacyfgmgsdzu"
                  andMainViewController:self.navController];
+#endif
             
             [rvc release];
             
@@ -592,10 +596,15 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }        
     
     return _persistentStoreCoordinator;
 }
