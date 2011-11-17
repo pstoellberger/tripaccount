@@ -19,6 +19,7 @@
 
 + (BOOL)addParticipant:(Participant *)person toTravel:(Travel *)travel withABRecord:(ABRecordRef)recordRef andEmail:(NSString *)email {
     
+    
     BOOL addPerson = YES;
     
     NSString *firstName = (NSString *) ABRecordCopyValue(recordRef, kABPersonFirstNameProperty);
