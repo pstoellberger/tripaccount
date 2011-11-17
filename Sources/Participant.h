@@ -2,7 +2,7 @@
 //  Participant.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 15/11/2011.
+//  Created by Martin Maier on 16/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,19 +14,30 @@
 @interface Participant : NSManagedObject
 
 @property (nonatomic, retain) NSData * imageSmall;
-@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * yourself;
+@property (nonatomic, retain) NSDecimalNumber * weight;
 @property (nonatomic, retain) NSData * image;
 @property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSNumber * yourself;
-@property (nonatomic, retain) Travel *travel;
-@property (nonatomic, retain) Travel *lastUsedInTravel;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSSet *transfersAsDebtor;
+@property (nonatomic, retain) NSSet *transfersAsDebtee;
 @property (nonatomic, retain) NSSet *pays;
 @property (nonatomic, retain) NSSet *getPayedFor;
-@property (nonatomic, retain) NSSet *transfersAsDebtee;
-@property (nonatomic, retain) NSSet *transfersAsDebtor;
+@property (nonatomic, retain) Travel *travel;
+@property (nonatomic, retain) Travel *lastUsedInTravel;
 @end
 
 @interface Participant (CoreDataGeneratedAccessors)
+
+- (void)addTransfersAsDebtorObject:(Transfer *)value;
+- (void)removeTransfersAsDebtorObject:(Transfer *)value;
+- (void)addTransfersAsDebtor:(NSSet *)values;
+- (void)removeTransfersAsDebtor:(NSSet *)values;
+
+- (void)addTransfersAsDebteeObject:(Transfer *)value;
+- (void)removeTransfersAsDebteeObject:(Transfer *)value;
+- (void)addTransfersAsDebtee:(NSSet *)values;
+- (void)removeTransfersAsDebtee:(NSSet *)values;
 
 - (void)addPaysObject:(Entry *)value;
 - (void)removePaysObject:(Entry *)value;
@@ -37,15 +48,5 @@
 - (void)removeGetPayedForObject:(Entry *)value;
 - (void)addGetPayedFor:(NSSet *)values;
 - (void)removeGetPayedFor:(NSSet *)values;
-
-- (void)addTransfersAsDebteeObject:(Transfer *)value;
-- (void)removeTransfersAsDebteeObject:(Transfer *)value;
-- (void)addTransfersAsDebtee:(NSSet *)values;
-- (void)removeTransfersAsDebtee:(NSSet *)values;
-
-- (void)addTransfersAsDebtorObject:(Transfer *)value;
-- (void)removeTransfersAsDebtorObject:(Transfer *)value;
-- (void)addTransfersAsDebtor:(NSSet *)values;
-- (void)removeTransfersAsDebtor:(NSSet *)values;
 
 @end

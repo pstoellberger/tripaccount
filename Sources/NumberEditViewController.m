@@ -24,6 +24,10 @@
 #define BORDER_GAP 10
 #define FOOTER_HEIGHT 155
 
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals target:(id)target selector:(SEL)selector {
+    return [self initWithNumber:startNumber withDecimals:decimals currency:nil travel:nil target:target selector:selector];
+}
+
 - (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector {
     
     if (self = [super initWithStyle:UITableViewStylePlain]) {

@@ -33,6 +33,7 @@
 @property (nonatomic) int decimals;
 
 - (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector;
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals target:(id)target selector:(SEL)selector;
 - (void)done;
 - (void)refreshConversion;
 
