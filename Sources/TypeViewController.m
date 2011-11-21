@@ -46,7 +46,7 @@
 - (void)openAddPopup {
     
     TextEditViewController *tevc = [[TextEditViewController alloc] initWithText:@"" target:self selector:@selector(addType:)];
-    tevc.title = NSLocalizedString(@"Add type", @"title new type");
+    tevc.title = NSLocalizedString(@"Add Type", @"title new type");
     [self.navigationController pushViewController:tevc animated:YES];
     [tevc release];
 }
@@ -170,13 +170,13 @@
             if ([type.hidden intValue] == 1) {
                 type.hidden = [NSNumber numberWithInt:0];
                 [ReiseabrechnungAppDelegate saveContext:self.context];
-                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self.fetchedResultsController indexPathForObject:type]] withRowAnimation:UITableViewRowAnimationLeft];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self.fetchedResultsController indexPathForObject:type]] withRowAnimation:UITableViewRowAnimationNone];
             } else {
                 type.hidden = [NSNumber numberWithInt:1];
                 [ReiseabrechnungAppDelegate saveContext:self.context];
-                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self.fetchedResultsController indexPathForObject:type]] withRowAnimation:UITableViewRowAnimationRight];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self.fetchedResultsController indexPathForObject:type]] withRowAnimation:UITableViewRowAnimationNone];
             }
-            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];   
         } else {
             [self editType:type];
         }    
