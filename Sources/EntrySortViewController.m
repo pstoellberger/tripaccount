@@ -22,6 +22,8 @@
     if (self = [super init]) {
         self.travel = travel;
         
+        _sortOrderDesc = NO;
+        
         EntryViewController *entryListViewController = [[EntryViewController alloc] initWithTravel:travel];
         self.detailViewController = entryListViewController;
         entryListViewController.delegate = self;
@@ -41,7 +43,12 @@
 }
 
 - (void)sortTable:(UISegmentedControl *)sender {
-    [self.detailViewController sortTable:sender.selectedSegmentIndex];
+    [self.detailViewController sortTable:self.segControl.selectedSegmentIndex desc:_sortOrderDesc];
+}
+
+- (void)toggleSortOrder:(UIGestureRecognizer *)gr {
+    _sortOrderDesc = !_sortOrderDesc;
+    [self sortTable:self.segControl];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -76,6 +83,7 @@
     self.segControl = segControl;
     
     self.segControl.selectedSegmentIndex = [self.travel.displaySort intValue];
+    _sortOrderDesc = [self.travel.displaySortOrderDesc intValue] == 1;
     // sort required on iOS 5
     [self sortTable:segControl];
     
@@ -95,10 +103,16 @@
     [segControlView addSubview:segControlLine];
     [segControlLine release];
     [segControlView addSubview:segControl];
+    
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleSortOrder:)];
+    gr.numberOfTapsRequired = 2;
+    [segControlView addGestureRecognizer:gr];
+    
     [segControl release];
     
     self.detailViewController.tableView.tableHeaderView = segControlView;
     [segControlView release];
+    
     
     UIView *totalViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_VIEW_HEIGHT)];
     totalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;

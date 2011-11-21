@@ -213,6 +213,8 @@
    sort button */
 "Type" = "Type";
 
+"Add Type" = "Add Type";
+
 /* alert item update rates */
 "Update exchange rates" = "Update Exchange Rates";
 

@@ -38,6 +38,7 @@
         
         _travel = travel;
         _sortIndex = 0;
+        _sortDesc = NO;
         
         _sectionKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", @"typeSectionName", @"dateWithOutTime", nil];
         _sortKeyArray = [[NSArray alloc] initWithObjects:@"payer.name", [NSString stringWithFormat:@"type.%@", [Type sortAttributeI18N]], @"date", nil];
@@ -186,7 +187,7 @@
 
 - (void)initFetchResultsController:(NSFetchRequest *)req {
     
-    req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:[_sortKeyArray objectAtIndex:_sortIndex] ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES], nil];
+    req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:[_sortKeyArray objectAtIndex:_sortIndex] ascending:!_sortDesc], [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES], nil];
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
     self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.travel.managedObjectContext sectionNameKeyPath:[_sectionKeyArray objectAtIndex:_sortIndex] cacheName:@"Entries"] autorelease];
@@ -195,13 +196,16 @@
     
 }
 
-- (void)sortTable:(int)sortIndex {
+- (void)sortTable:(int)sortIndex desc:(BOOL)desc {
     
     _sortIndex = sortIndex;
+    _sortDesc = desc;
     
     [self initFetchResultsController:self.fetchRequest];
     
     self.travel.displaySort = [NSNumber numberWithInt:sortIndex];
+    self.travel.displaySortOrderDesc = [NSNumber numberWithBool:desc];
+    
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
 }
 
