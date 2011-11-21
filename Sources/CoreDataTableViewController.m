@@ -103,7 +103,7 @@
 {
 	if (tableView == self.tableView) {
         
-		if (self.fetchedResultsController.fetchRequest.predicate != normalPredicate) {
+		if (self.fetchedResultsController.fetchRequest.predicate != normalPredicate && self.searchKey.length) {
             // reset predicate after search is over
 			[NSFetchedResultsController deleteCacheWithName:self.fetchedResultsController.cacheName];
 			self.fetchedResultsController.fetchRequest.predicate = normalPredicate;

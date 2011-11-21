@@ -2,7 +2,7 @@
 //  Type.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 01/11/2011.
+//  Created by Martin Maier on 21/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * name_de;
 @property (nonatomic, retain) NSNumber * builtIn;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * hidden;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) AppDefaults *defaults;
 @end

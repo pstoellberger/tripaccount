@@ -18,11 +18,12 @@
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context withMultiSelection:(BOOL)multiSelection withSelectedObjects:(NSArray *)selectedObjects target:(id)target action:(SEL)selector {
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:context];
-    fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:[Type sortAttributeI18N] ascending:YES selector:@selector(caseInsensitiveCompare:)]]; 
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    request.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:context];
+    request.predicate = [NSPredicate predicateWithFormat:@"hidden == 0"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:[Type sortAttributeI18N] ascending:YES selector:@selector(caseInsensitiveCompare:)]];
     
-    if (self = [super initInManagedObjectContext:context withMultiSelection:multiSelection withAllNoneButtons:NO withFetchRequest:fetchRequest withSectionKey:nil withSelectedObjects:selectedObjects target:target action:selector]) {
+    if (self = [super initInManagedObjectContext:context withMultiSelection:multiSelection withAllNoneButtons:NO withFetchRequest:request withSectionKey:nil withSelectedObjects:selectedObjects target:target action:selector]) {
         
         
         _editButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEditing)] retain];
@@ -37,7 +38,7 @@
         
     }
     
-    [fetchRequest release];
+    [request release];
     
     return self;
 }
@@ -88,16 +89,33 @@
 }
 
 - (void)toggleEditing {
+        
+    NSFetchedResultsController *resultsController = [self fetchedResultsControllerForTableView:self.tableView];
     
-    [self.tableView setEditing:!self.tableView.editing animated:YES];
-    
-    if (self.tableView.editing) {
+    if (!self.tableView.editing) {
+        
+        resultsController.fetchRequest.predicate = nil;
+        
         [self.navigationItem setRightBarButtonItem:_addButton animated:YES];
         [self.navigationItem setLeftBarButtonItem:_doneButton animated:YES];
+        
     } else {
+        
+        resultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"hidden == 0"];
+        
         [self.navigationItem setRightBarButtonItem:_editButton animated:YES];
         [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     }
+    
+    NSError *error = nil;
+    if (![resultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    
+    [self.tableView reloadData];
+    
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+
 }
 
 
@@ -117,9 +135,21 @@
     }
     
     if ([type.builtIn intValue] == 1) {
-        cell.detailTextLabel.text = NSLocalizedString(@"(built-in)", @"built-in type mark");
+        if ([type.hidden intValue] == 0) {
+            cell.detailTextLabel.text = NSLocalizedString(@"(built-in)", @"built-in type mark");
+        } else {
+            cell.detailTextLabel.text = NSLocalizedString(@"(hidden)", @"built-in type mark");
+        }
     } else {
         cell.detailTextLabel.text = nil;
+    }
+    
+    if ([type.hidden intValue] == 1) {
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    } else {
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.22 green:0.33 blue:0.53 alpha:1];
     }
     
     cell.textLabel.text = type.nameI18N;
@@ -137,6 +167,15 @@
         
         Type *type = (Type *)managedObject;
         if ([type.builtIn intValue] == 1) {
+            if ([type.hidden intValue] == 1) {
+                type.hidden = [NSNumber numberWithInt:0];
+                [ReiseabrechnungAppDelegate saveContext:self.context];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self.fetchedResultsController indexPathForObject:type]] withRowAnimation:UITableViewRowAnimationLeft];
+            } else {
+                type.hidden = [NSNumber numberWithInt:1];
+                [ReiseabrechnungAppDelegate saveContext:self.context];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self.fetchedResultsController indexPathForObject:type]] withRowAnimation:UITableViewRowAnimationRight];
+            }
             [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         } else {
             [self editType:type];
@@ -147,22 +186,35 @@
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
     
     Type *type = (Type *)managedObject;
+   
     for (Entry *entry in type.entries) {
         entry.type = [ReiseabrechnungAppDelegate defaultsObject:self.context].defaultType;
     }
     
     [self.context deleteObject:managedObject];
-    
+
     [ReiseabrechnungAppDelegate saveContext:self.context];
 }
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
+    Type *type = (Type *) managedObject;
+    return [type.builtIn intValue] == 0;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    Type *type = (Type *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    Type *type = (Type *)managedObject;
-    if ([type.builtIn intValue] == 1) {
-        return NO;
+    if ([type.builtIn intValue] == 0) {
+        
+        [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+    
     } else {
-        return YES;
+        
+        type.hidden = [NSNumber numberWithInt:1];
+        [ReiseabrechnungAppDelegate saveContext:self.context];
+        
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 

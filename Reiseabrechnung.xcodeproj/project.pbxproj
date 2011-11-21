@@ -442,6 +442,7 @@
 		F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A6C63113D6BFA6005E8388 /* noImage.png */; };
 		F1A6E51614154B6C00FB8C92 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1509275140E7DE6009C5AB9 /* Localizable.strings */; };
 		F1A6E51A141679CF00FB8C92 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6E519141679CE00FB8C92 /* GradientView.m */; };
+		F1AA5F82147ACEBD000A2339 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F81147ACEBD000A2339 /* Type.m */; };
 		F1B793FB1461B0E8007ED072 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B793FA1461B0E8007ED072 /* ImageCache.m */; };
 		F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B820DA13BCD76C00FE329B /* CoreData.framework */; };
 		F1B8211213BD9F3A00FE329B /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211113BD9F3900FE329B /* CoreDataTableViewController.m */; };
@@ -451,7 +452,6 @@
 		F1BB9D771406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
 		F1BB9D781406703600DA0573 /* EntryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB9D761406703600DA0573 /* EntryCategory.m */; };
 		F1C02B9D14191B9100467C9F /* ParticipantSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C02B9C14191B9100467C9F /* ParticipantSelectViewController.m */; };
-		F1C3985F14604C6C00AB1045 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3985E14604C6C00AB1045 /* Type.m */; };
 		F1C3986214604C6C00AB1045 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3986114604C6C00AB1045 /* Travel.m */; };
 		F1C3986514604C6D00AB1045 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3986414604C6D00AB1045 /* Country.m */; };
 		F1C3986814604C6D00AB1045 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3986714604C6D00AB1045 /* City.m */; };
@@ -923,6 +923,8 @@
 		F1A6E518141679CE00FB8C92 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		F1A6E519141679CE00FB8C92 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		F1A6FCD114742FCF00DE06CF /* Model-1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.2.xcdatamodel"; sourceTree = "<group>"; };
+		F1AA5F80147ACEBD000A2339 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		F1AA5F81147ACEBD000A2339 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F1B793F91461B0E8007ED072 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
 		F1B793FA1461B0E8007ED072 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 		F1B820DA13BCD76C00FE329B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -938,8 +940,6 @@
 		F1BB9D761406703600DA0573 /* EntryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCategory.m; sourceTree = "<group>"; };
 		F1C02B9B14191B9100467C9F /* ParticipantSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantSelectViewController.h; sourceTree = "<group>"; };
 		F1C02B9C14191B9100467C9F /* ParticipantSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantSelectViewController.m; sourceTree = "<group>"; };
-		F1C3985D14604C6C00AB1045 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		F1C3985E14604C6C00AB1045 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F1C3986014604C6C00AB1045 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
 		F1C3986114604C6C00AB1045 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
 		F1C3986314604C6D00AB1045 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
@@ -1530,6 +1530,8 @@
 		F1A6C62A13D5DBD1005E8388 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F1AA5F80147ACEBD000A2339 /* Type.h */,
+				F1AA5F81147ACEBD000A2339 /* Type.m */,
 				F1FA37DD147433DC00E44381 /* Participant.h */,
 				F1FA37DE147433DC00E44381 /* Participant.m */,
 				F1C3987514604C6E00AB1045 /* Transfer.h */,
@@ -1548,8 +1550,6 @@
 				F1C3986414604C6D00AB1045 /* Country.m */,
 				F1C3986014604C6C00AB1045 /* Travel.h */,
 				F1C3986114604C6C00AB1045 /* Travel.m */,
-				F1C3985D14604C6C00AB1045 /* Type.h */,
-				F1C3985E14604C6C00AB1045 /* Type.m */,
 				F1F8FAD113DC2C46009BB4D3 /* FirstLetterCategory.h */,
 				F1F8FAD213DC2C46009BB4D3 /* FirstLetterCategory.m */,
 				F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */,
@@ -2357,7 +2357,6 @@
 				F1567975140E6BE6008A8A33 /* I18NSortCategory.m in Sources */,
 				F1A6E51A141679CF00FB8C92 /* GradientView.m in Sources */,
 				F1C02B9D14191B9100467C9F /* ParticipantSelectViewController.m in Sources */,
-				F1C3985F14604C6C00AB1045 /* Type.m in Sources */,
 				F1C3986214604C6C00AB1045 /* Travel.m in Sources */,
 				F1C3986514604C6D00AB1045 /* Country.m in Sources */,
 				F1C3986814604C6D00AB1045 /* City.m in Sources */,
@@ -2369,6 +2368,7 @@
 				F1B793FB1461B0E8007ED072 /* ImageCache.m in Sources */,
 				F1676D2D14633A4500EEFF25 /* Appirater.m in Sources */,
 				F1FA37DF147433DC00E44381 /* Participant.m in Sources */,
+				F1AA5F82147ACEBD000A2339 /* Type.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

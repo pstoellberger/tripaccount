@@ -4,6 +4,8 @@
 /* built-in type mark */
 "(built-in)" = "(Standardtyp)";
 
+"(hidden)" = "(ausgeblendet)";
+
 /* param1 'and' param2 count:>2 */
 ", and %@" = " und %@";
 
@@ -323,3 +325,7 @@
 "no thanks" = "Nein danke";
 
 "Weight" = "Gewichtung";
+
+"Hide" = "Ausblenden";
+
+"Back" = "Zurück";
