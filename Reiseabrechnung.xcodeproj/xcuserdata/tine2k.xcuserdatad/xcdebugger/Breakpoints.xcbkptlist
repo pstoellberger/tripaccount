@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "343167367.831658"
+         timestampString = "343606156.648529"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "616"
-         endingLineNumber = "616"
+         startingLineNumber = "632"
+         endingLineNumber = "632"
          landmarkName = "@implementation ReiseabrechnungAppDelegate"
          landmarkType = "3">
       </FileBreakpoint>
@@ -92,26 +92,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/EntryViewController.m"
-         timestampString = "341857374.837908"
+         filePath = "Sources/EntrySortViewController.m"
+         timestampString = "343611098.098904"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "189"
-         endingLineNumber = "189"
-         landmarkName = "-initFetchResultsController:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/EntryViewController.m"
-         timestampString = "341857374.837908"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "200"
-         endingLineNumber = "200"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
          landmarkName = "-sortTable:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,25 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/EntrySortViewController.m"
-         timestampString = "341856171.150413"
+         timestampString = "343611098.098904"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
-         landmarkName = "-sortTable:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/EntrySortViewController.m"
-         timestampString = "341947612.648715"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
          landmarkName = "-loadView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -148,26 +120,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/EntryViewController.m"
-         timestampString = "341857374.837908"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "188"
-         endingLineNumber = "188"
-         landmarkName = "-initFetchResultsController:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "343167367.831658"
+         timestampString = "343606156.648529"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
          landmarkName = "-initializeStartDatabase:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -225,6 +183,34 @@
          startingLineNumber = "129"
          endingLineNumber = "129"
          landmarkName = "-fetchedResultsControllerForTableView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/EntryViewController.m"
+         timestampString = "343611552.3226"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "204"
+         endingLineNumber = "204"
+         landmarkName = "-sortTable:desc:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/EntrySortViewController.m"
+         timestampString = "343611676.59044"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "-loadView"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -2,7 +2,7 @@
 //  Travel.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 01/11/2011.
+//  Created by Martin Maier on 22/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -22,16 +22,17 @@
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSNumber * selectedRow;
+@property (nonatomic, retain) NSNumber * displaySortOrderDesc;
 @property (nonatomic, retain) Currency *lastCurrencyUsed;
 @property (nonatomic, retain) NSSet *rates;
 @property (nonatomic, retain) NSSet *participants;
 @property (nonatomic, retain) NSSet *transfers;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) NSSet *currencies;
-@property (nonatomic, retain) Participant *lastParticipantUsed;
+@property (nonatomic, retain) Currency *transferBaseCurrency;
 @property (nonatomic, retain) Currency *displayCurrency;
 @property (nonatomic, retain) Country *country;
-@property (nonatomic, retain) Currency *transferBaseCurrency;
+@property (nonatomic, retain) Participant *lastParticipantUsed;
 @end
 
 @interface Travel (CoreDataGeneratedAccessors)

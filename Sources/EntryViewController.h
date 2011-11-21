@@ -27,6 +27,7 @@
 
 @interface EntryViewController : CoreDataTableViewController {
     int _sortIndex;
+    BOOL _sortDesc;
     NSArray *_sortKeyArray;
     NSArray *_sectionKeyArray;
     NSDateFormatter *_dateFormatter;
@@ -42,7 +43,7 @@
 
 
 - (id)initWithTravel:(Travel *) travel;
-- (void)sortTable:(int)sortIndex;
+- (void)sortTable:(int)sortIndex desc:(BOOL)desc;
 
 - (void)updateTravelOpenOrClosed;
 
