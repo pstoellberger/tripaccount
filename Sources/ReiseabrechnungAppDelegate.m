@@ -95,6 +95,8 @@
     
     [self initializeSampleTrip];
     
+    [self fixUsDollar];
+    
     [self refreshCurrencyRatesIfOutDated];    
 }
 
@@ -105,6 +107,20 @@
     [defaults registerDefaults:appDefaults];
     [defaults synchronize];
     
+}
+
+- (void)fixUsDollar {
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
+    req.predicate = [NSPredicate predicateWithFormat:@"name_de == 'Us-Dollar'"];
+    NSArray *currencies = [self.managedObjectContext executeFetchRequest:req error:nil];    
+    if (currencies && [currencies count] == 1) {
+        Currency *currency = [currencies lastObject];
+        currency.name_de = @"US-Dollar";
+        [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
+    }
+    [req release];
 }
 
 - (void)initializeStartDatabase:(NSBundle *)bundle {        

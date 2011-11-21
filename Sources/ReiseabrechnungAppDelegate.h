@@ -51,5 +51,6 @@
 - (void)initUserDefaults;
 - (NSManagedObjectContext *)createNewManagedObjectContext;
 - (void)performInitialisations:(UIWindow *)window;
+- (void)fixUsDollar;
 
 @end
