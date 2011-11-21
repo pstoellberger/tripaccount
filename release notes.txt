@@ -18,6 +18,7 @@
 - Die App ist jetzt reaktiver während Zellen nach einer Änderungen blau aufleuchten
 - Die App kann jetzt über die Informationsseite bewertet werden
 
-++++ Current TRUNK +++++
+++++ Current TRUNK (1.2) +++++
 
-- fixed a problem detecting iPhone owner name
+- option to hide types
+- better caption of back button during entry edit

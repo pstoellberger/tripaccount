@@ -67,6 +67,12 @@ static NSIndexPath *_dateIndexPath;
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
         
+        self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",@"plain button")
+                                          style:UIBarButtonItemStyleBordered
+                                         target:nil
+                                         action:nil] autorelease];
+
+        
         [self checkIfDoneIsPossible];
     }
     return self;
@@ -310,7 +316,6 @@ static NSIndexPath *_dateIndexPath;
                                                                                       withSelectedObjects:[NSArray arrayWithObjects: self.nmEntry.type ,nil] 
                                                                                                    target:self
                                                                                                    action:@selector(selectType:)];
-        
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
 

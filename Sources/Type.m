@@ -2,7 +2,7 @@
 //  Type.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 01/11/2011.
+//  Created by Martin Maier on 21/11/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @dynamic name_de;
 @dynamic builtIn;
 @dynamic name;
+@dynamic hidden;
 @dynamic entries;
 @dynamic defaults;
 

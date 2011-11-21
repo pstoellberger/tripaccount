@@ -4,6 +4,8 @@
 /* built-in type mark */
 "(built-in)" = "(built-in)";
 
+"(hidden)" = "(hidden)";
+
 /* param1 'and' param2 count:>2 */
 ", and %@" = ", and %@";
 
@@ -315,3 +317,7 @@
 "no thanks" = "No thanks";
 
 "Weight" = "Weight";
+
+"Delete" = "Löschen";
+
+"Back" = "Back";

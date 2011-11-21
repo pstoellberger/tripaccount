@@ -18,6 +18,7 @@
     
     Type *_editedType;
 }
+
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context withMultiSelection:(BOOL)multiSelection withSelectedObjects:(NSArray *)selectedObjects target:(id)target action:(SEL)selector;
 - (void)editType:(Type *)type;
 
