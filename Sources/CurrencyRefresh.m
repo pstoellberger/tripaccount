@@ -10,6 +10,7 @@
 #import "Currency.h"
 #import "ExchangeRate.h"
 #import "ReiseabrechnungAppDelegate.h"
+#import "MTStatusBarOverlay.h"
 
 @interface CurrencyRefresh ()
 
@@ -50,6 +51,11 @@
 }
 
 - (BOOL)refreshCurrencies {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MTStatusBarOverlay *statusBarOverlay = [MTStatusBarOverlay sharedInstance];
+        [statusBarOverlay postMessage:NSLocalizedString(@"Updating currency exchange rates...", @"status text of update toolbar")];
+    });
     
     NSHTTPURLResponse *response;
     NSError *error = nil;
@@ -145,15 +151,18 @@
             
             [ReiseabrechnungAppDelegate saveContext:_context];
             
-            //here you get the response
             returnValue = YES;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"finished", @"statusbar") duration:2 animated:YES];
+            });
+            
         } else {
             
             if (!response) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"no network title", @"uialert view") message:NSLocalizedString(@"no network message", @"uialert view") delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"uialert view"), nil] autorelease];
-                    [alertView show];
+                    [[MTStatusBarOverlay sharedInstance] postErrorMessage:NSLocalizedString(@"no network message", @"uialert view")  duration:2 animated:YES];
                 });
                 
             }
@@ -165,9 +174,8 @@
     } else {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"network error title", @"uialert view") message:NSLocalizedString(@"network error message", @"uialert view") delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"uialert view"), nil] autorelease];
-            [alertView show];
-        });        
+            [[MTStatusBarOverlay sharedInstance] postErrorMessage:NSLocalizedString(@"network error message", @"uialert view")  duration:2 animated:YES];
+        });
     }
     
     return returnValue;

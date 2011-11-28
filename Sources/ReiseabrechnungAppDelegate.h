@@ -23,8 +23,9 @@
 #import "Currency.h"
 #import "AppDefaults.h"
 #import "Locator.h"
+#import "MTStatusBarOverlay.h"
 
-@interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate>
+@interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate, MTStatusBarOverlayDelegate>
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -36,6 +37,8 @@
 @property (nonatomic, retain) Locator *locator;
 
 @property (nonatomic, retain) NSMutableArray *helpBubbles;
+
+@property (nonatomic, retain) MTStatusBarOverlay *statusbarOverlay;
 
 
 - (NSURL *)applicationDocumentsDirectory;

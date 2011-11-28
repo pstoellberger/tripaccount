@@ -228,7 +228,7 @@
 "Updating currency exchange rates..." = "Aktualisiere Wechselkurse...";
 
 /* help bubble sort buttons */
-"help sort" = "Die Buttons über der Tabelle sortieren die Ausgaben.";
+"help sort" = "Diese Buttons sortieren die Ausgaben. Mit Zweimal antippen kann die Sortierreihenfolge umgedreht werden.";
 
 /* help bubble add trip */
 "help add trip" = "Mit diesem Button können neue Trips hinzugefügt werden.";
@@ -302,15 +302,11 @@
 
 "locManager" = "Der Aufenthaltsort wird zum Auto-Ausfüllen des Lands beim Erstellen eines neuen Trips verwendet.";
 
-"no network title" = "Fehler beim Aktualisieren der Wechselkurse";
-
 "no network message" = "Keine Verbindung zum Internet";
 
 "all" = "alle";
 
-"network error message" = "Fehler beim Aktualisieren der Wechselkurse";
-
-"network error title" = "Fehler";
+"network error message" = "Netzwerk-Fehler";
 
 "total" = "Gesamtausgaben";
 
@@ -329,3 +325,5 @@
 "Hide" = "Ausblenden";
 
 "Back" = "Zurück";
+
+"finished" = "Erledigt.";

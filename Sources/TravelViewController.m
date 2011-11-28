@@ -429,12 +429,6 @@
     dispatch_queue_t updateQueue = dispatch_queue_create("UpdateQueue", NULL);
     dispatch_async(updateQueue, ^{
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _summarySortViewController.lastUpdatedLabel.text = NSLocalizedString(@"Updating currency exchange rates...", @"status text of update toolbar");
-            [_summarySortViewController centerRateLabel];
-            [_summarySortViewController.updateIndicator startAnimating];
-        });
-        
         ReiseabrechnungAppDelegate *delegate = (ReiseabrechnungAppDelegate *) [UIApplication sharedApplication].delegate; 
         CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[delegate createNewManagedObjectContext]];
         NSLog(@"Updating currencies...");
@@ -443,7 +437,6 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [_summarySortViewController updateRateLabel:YES];
-            [_summarySortViewController.updateIndicator stopAnimating];
             
             if (updated) {
                 [self updateSummary];
