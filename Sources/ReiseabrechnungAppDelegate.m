@@ -50,8 +50,8 @@
     [self.window makeKeyAndVisible];
     
     self.statusbarOverlay = [MTStatusBarOverlay sharedInstance];
-    self.statusbarOverlay.animation = MTStatusBarOverlayAnimationShrink;  // MTStatusBarOverlayAnimationShrink
-    self.statusbarOverlay.detailViewMode = MTDetailViewModeHistory;         // enable automatic history-tracking and show in detail-view
+    self.statusbarOverlay.animation = MTStatusBarOverlayAnimationNone;  // MTStatusBarOverlayAnimationShrink
+    self.statusbarOverlay.detailViewMode = MTDetailViewModeCustom;         // enable automatic history-tracking and show in detail-view
     self.statusbarOverlay.delegate = self;
 
     [actView startAnimating];
