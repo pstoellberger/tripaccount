@@ -439,7 +439,7 @@
     
     NSLog(@"Checking if currency rates are outdated.");
     
-    if ([currencyRefresh areRatesOutdated] || YES) {
+    if ([currencyRefresh areRatesOutdated]) {
         
         NSLog(@"Refreshing currency rates...");
         
