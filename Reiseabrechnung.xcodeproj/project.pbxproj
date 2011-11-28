@@ -20,6 +20,7 @@
 		F1006C4813E07AF10014CF4B /* HelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1006C4713E07AF10014CF4B /* HelpView.m */; };
 		F100DEBF13E2C5B700BB1E6E /* moreImages.png in Resources */ = {isa = PBXBuildFile; fileRef = F100DEBE13E2C5B700BB1E6E /* moreImages.png */; };
 		F100DEC713E2E5F900BB1E6E /* DateSortCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */; };
+		F10764C7148367E000A06809 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F10764C6148367E000A06809 /* MTStatusBarOverlay.m */; };
 		F10CC2A2147315D900714417 /* Crittercism_v2_9_27.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F10CC24D147315D900714417 /* Crittercism_v2_9_27.a */; };
 		F10CC2A3147315D900714417 /* crittercism-arrow-l.png in Resources */ = {isa = PBXBuildFile; fileRef = F10CC259147315D900714417 /* crittercism-arrow-l.png */; };
 		F10CC2A4147315D900714417 /* crittercism-arrow-l@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F10CC25A147315D900714417 /* crittercism-arrow-l@2x.png */; };
@@ -158,7 +159,6 @@
 		F14B376E13E6906000351641 /* GenericSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE13D113D587DB0079B234 /* GenericSelectViewController.m */; };
 		F14B376F13E6906000351641 /* EntryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAEE13DC498F009BB4D3 /* EntryEditViewController.m */; };
 		F14B377013E6906000351641 /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
-		F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F14ECA77140FEB6F00F7ADFB /* Root.strings in Resources */ = {isa = PBXBuildFile; fileRef = F14ECA75140FEB6F00F7ADFB /* Root.strings */; };
 		F14ECA79140FEB8300F7ADFB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F14ECA73140FEB0600F7ADFB /* Settings.bundle */; };
 		F150936A140EB01B009C5AB9 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = F150927B140EB01B009C5AB9 /* countries.plist */; };
@@ -437,13 +437,14 @@
 		F17B4A4F13F25ED700072F90 /* TravelCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B4A4D13F25ED700072F90 /* TravelCategory.m */; };
 		F1A684D9143E2F00001B3B90 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A684D8143E2F00001B3B90 /* Default@2x.png */; };
 		F1A684DC143E310D001B3B90 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A684DB143E310D001B3B90 /* Default.png */; };
-		F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */; };
 		F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */; };
 		F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A6C63113D6BFA6005E8388 /* noImage.png */; };
 		F1A6E51614154B6C00FB8C92 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1509275140E7DE6009C5AB9 /* Localizable.strings */; };
 		F1A6E51A141679CF00FB8C92 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6E519141679CE00FB8C92 /* GradientView.m */; };
 		F1AA5F82147ACEBD000A2339 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F81147ACEBD000A2339 /* Type.m */; };
 		F1AA5F89147B1824000A2339 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F88147B1824000A2339 /* Travel.m */; };
+		F1AA5F8F147B1C5B000A2339 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F8C147B1C5B000A2339 /* Model.xcdatamodeld */; };
+		F1AA5F90147B1C63000A2339 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F8C147B1C5B000A2339 /* Model.xcdatamodeld */; };
 		F1B793FB1461B0E8007ED072 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B793FA1461B0E8007ED072 /* ImageCache.m */; };
 		F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B820DA13BCD76C00FE329B /* CoreData.framework */; };
 		F1B8211213BD9F3A00FE329B /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B8211113BD9F3900FE329B /* CoreDataTableViewController.m */; };
@@ -517,6 +518,8 @@
 		F100DEBE13E2C5B700BB1E6E /* moreImages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreImages.png; sourceTree = "<group>"; };
 		F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSortCategory.h; sourceTree = "<group>"; };
 		F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSortCategory.m; sourceTree = "<group>"; };
+		F10764C5148367E000A06809 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = tmp/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = "<group>"; };
+		F10764C6148367E000A06809 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = tmp/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		F10CC24C147315D900714417 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		F10CC24D147315D900714417 /* Crittercism_v2_9_27.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = Crittercism_v2_9_27.a; sourceTree = "<group>"; };
 		F10CC24E147315D900714417 /* CrittercismAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismAboutViewController.h; sourceTree = "<group>"; };
@@ -916,17 +919,17 @@
 		F17B4A4D13F25ED700072F90 /* TravelCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelCategory.m; sourceTree = "<group>"; };
 		F1A684D8143E2F00001B3B90 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F1A684DB143E310D001B3B90 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F1A6C62E13D6B71B005E8388 /* ParticipantHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticipantHelperCategory.h; sourceTree = "<group>"; };
 		F1A6C62F13D6B71B005E8388 /* ParticipantHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticipantHelperCategory.m; sourceTree = "<group>"; };
 		F1A6C63113D6BFA6005E8388 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		F1A6E518141679CE00FB8C92 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		F1A6E519141679CE00FB8C92 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
-		F1A6FCD114742FCF00DE06CF /* Model-1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.2.xcdatamodel"; sourceTree = "<group>"; };
 		F1AA5F80147ACEBD000A2339 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		F1AA5F81147ACEBD000A2339 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F1AA5F87147B1824000A2339 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
 		F1AA5F88147B1824000A2339 /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
+		F1AA5F8D147B1C5B000A2339 /* Model-1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.2.xcdatamodel"; sourceTree = "<group>"; };
+		F1AA5F8E147B1C5B000A2339 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F1B793F91461B0E8007ED072 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
 		F1B793FA1461B0E8007ED072 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 		F1B820DA13BCD76C00FE329B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -1090,6 +1093,15 @@
 				F1731B62140774860050D6AC /* SummaryCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		F10764C31483675A00A06809 /* MTStatusBarOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				F10764C5148367E000A06809 /* MTStatusBarOverlay.h */,
+				F10764C6148367E000A06809 /* MTStatusBarOverlay.m */,
+			);
+			name = MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 		F10CC24B147315D900714417 /* CrittercismSDK */ = {
@@ -1633,6 +1645,7 @@
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
+				F10764C31483675A00A06809 /* MTStatusBarOverlay */,
 				F10CC24B147315D900714417 /* CrittercismSDK */,
 				F1676D29146334A100EEFF25 /* Appirater */,
 				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
@@ -1726,8 +1739,8 @@
 				F1A684D8143E2F00001B3B90 /* Default@2x.png */,
 				940B41EC13EBF18300902B00 /* Icon.png */,
 				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
-				F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */,
 				F15EC60C142BB0C000292326 /* InfoIcon.png */,
+				F1AA5F8C147B1C5B000A2339 /* Model.xcdatamodeld */,
 				F1CD783613BA405B00D42AA3 /* Reiseabrechnung-Info.plist */,
 				F17B4A3913F17D2600072F90 /* mailTemplate.html */,
 				F1CD783A13BA405B00D42AA3 /* Reiseabrechnung-Prefix.pch */,
@@ -2264,7 +2277,6 @@
 				F14B376E13E6906000351641 /* GenericSelectViewController.m in Sources */,
 				F14B376F13E6906000351641 /* EntryEditViewController.m in Sources */,
 				F14B377013E6906000351641 /* DateSelectViewController.m in Sources */,
-				F14B377113E690AC00351641 /* Model.xcdatamodeld in Sources */,
 				F127299213E813A10095286D /* TypeViewController.m in Sources */,
 				F127299313E813B30095286D /* SummarySortViewController.m in Sources */,
 				9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */,
@@ -2289,6 +2301,7 @@
 				F1731B68140774860050D6AC /* GradientCell.m in Sources */,
 				F1731B6A140774860050D6AC /* RateCell.m in Sources */,
 				F1731B6C140774860050D6AC /* SummaryCell.m in Sources */,
+				F1AA5F90147B1C63000A2339 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2310,7 +2323,6 @@
 				F1B8216813BE32E000FE329B /* TravelNotManaged.m in Sources */,
 				F1533F1413D433F7008EBE9D /* UIFactory.m in Sources */,
 				F1CE13D213D587DC0079B234 /* GenericSelectViewController.m in Sources */,
-				F1A6C62913D5DAC1005E8388 /* Model.xcdatamodeld in Sources */,
 				F1A6C63013D6B71B005E8388 /* ParticipantHelperCategory.m in Sources */,
 				F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */,
 				F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */,
@@ -2369,6 +2381,8 @@
 				F1FA37DF147433DC00E44381 /* Participant.m in Sources */,
 				F1AA5F82147ACEBD000A2339 /* Type.m in Sources */,
 				F1AA5F89147B1824000A2339 /* Travel.m in Sources */,
+				F1AA5F8F147B1C5B000A2339 /* Model.xcdatamodeld in Sources */,
+				F10764C7148367E000A06809 /* MTStatusBarOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2577,13 +2591,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F1A6C62713D5DAC1005E8388 /* Model.xcdatamodeld */ = {
+		F1AA5F8C147B1C5B000A2339 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F1A6FCD114742FCF00DE06CF /* Model-1.2.xcdatamodel */,
-				F1A6C62813D5DAC1005E8388 /* Model.xcdatamodel */,
+				F1AA5F8D147B1C5B000A2339 /* Model-1.2.xcdatamodel */,
+				F1AA5F8E147B1C5B000A2339 /* Model.xcdatamodel */,
 			);
-			currentVersion = F1A6FCD114742FCF00DE06CF /* Model-1.2.xcdatamodel */;
+			currentVersion = F1AA5F8D147B1C5B000A2339 /* Model-1.2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

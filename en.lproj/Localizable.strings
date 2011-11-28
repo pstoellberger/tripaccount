@@ -222,7 +222,7 @@
 "Updating currency exchange rates..." = "Updating currency exchange rates...";
 
 /* help bubble sort buttons */
-"help sort" = "Use buttons on top of the table to sort the expense entries.";
+"help sort" = "Use these buttons to sort the expense entries. Tap twice to reverse the sort order.";
 
 /* help bubble add trip */
 "help add trip" = "Use this button to add a new trip to start tracking your expenses.";
@@ -282,7 +282,7 @@
 
 "Provide Feedback" = "Provide Feedback";
 
-"feedbackLabel" = "Thanks you for your purchase!\n\nPlease let me know how you think about this app and what you would like to see in future versions.";
+"feedbackLabel" = "Thank you for your purchase!\n\nPlease let me know how you think about this app and what you would like to see in future versions.";
 
 "Feature Request for Trip Account Version " = "Feature Request for Trip Account Version ";
 
@@ -296,15 +296,11 @@
 
 "locManager" = "Your location will be used to autofill the country when a creating a new trip.";
 
-"no network title" = "Error updating exchange rates";
-
 "no network message" = "No Internet connection available";
 
 "all" = "all";
 
-"network error message" = "An error has occured while updating currency exchange rates.";
-
-"network error title" = "Error updating rates";
+"network error message" = "Network error";
 
 "total" = "Total expenses";
 
@@ -323,3 +319,5 @@
 "Delete" = "Löschen";
 
 "Back" = "Back";
+
+"finished" = "Finished.";

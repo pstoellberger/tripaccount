@@ -20,6 +20,7 @@
 #import "Summary.h"
 #import "Appirater.h"
 #import "Crittercism.h"
+#import "MTStatusBarOverlay.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -31,6 +32,7 @@
 @synthesize managedObjectModel=_managedObjectModel;
 @synthesize persistentStoreCoordinator=_persistentStoreCoordinator;
 @synthesize locator=_locator;
+@synthesize statusbarOverlay=_statusbarOverlay;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOption {
     
@@ -46,7 +48,12 @@
     actView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     [self.window addSubview:actView];
     [self.window makeKeyAndVisible];
-        
+    
+    self.statusbarOverlay = [MTStatusBarOverlay sharedInstance];
+    self.statusbarOverlay.animation = MTStatusBarOverlayAnimationShrink;  // MTStatusBarOverlayAnimationShrink
+    self.statusbarOverlay.detailViewMode = MTDetailViewModeHistory;         // enable automatic history-tracking and show in detail-view
+    self.statusbarOverlay.delegate = self;
+
     [actView startAnimating];
     
     dispatch_queue_t updateQueue = dispatch_queue_create("InitQ", NULL);
@@ -65,6 +72,7 @@
      
             
 #if TARGET_IPHONE_SIMULATOR
+            NSLog(@"Crittercism disabled in Simulator.");
 #else
             [Crittercism initWithAppID: @"4ec2ddd83f5b31291100000e"
                                 andKey:@"4ec2ddd83f5b31291100000ewufkre3p"
@@ -97,7 +105,8 @@
     
     [self fixUsDollar];
     
-    [self refreshCurrencyRatesIfOutDated];    
+    [self refreshCurrencyRatesIfOutDated];
+    
 }
 
 - (void)initUserDefaults {
@@ -130,6 +139,8 @@
     NSArray *currencies = [self.managedObjectContext executeFetchRequest:req error:nil];
     
     if (![currencies lastObject]) {
+        
+        [self.statusbarOverlay postMessage:@"Initialising..." duration:1];
         
         NSLog(@"Initialising countries...");
         NSString *pathCountryPlist =[bundle pathForResource:@"countries" ofType:@"plist"];
@@ -219,6 +230,7 @@
         [orderCountryDict release];
         
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
+        
     }
     
     currencies = [self.managedObjectContext executeFetchRequest:req error:nil];
@@ -427,13 +439,16 @@
     
     NSLog(@"Checking if currency rates are outdated.");
     
-    if ([currencyRefresh areRatesOutdated]) {
+    if ([currencyRefresh areRatesOutdated] || YES) {
         
         NSLog(@"Refreshing currency rates...");
         
         dispatch_queue_t updateQueue = dispatch_queue_create("UpdateQueue", NULL);
         
         dispatch_async(updateQueue, ^{
+            
+            [NSThread sleepForTimeInterval:1];
+            
             [currencyRefresh refreshCurrencies];
             [currencyRefresh release];
             
