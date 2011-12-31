@@ -49,7 +49,7 @@
 
 @synthesize travel=_travel, tabBarController=_tabBarController, addButton=_addButton, actionButton=_actionButton;
 @synthesize participantSortViewController=_participantSortViewController, entrySortViewController=_entrySortViewController, summarySortViewController=_summarySortViewController;
-@synthesize mailSendAlertView=_mailSendAlertView, rateRefreshAlertView=_rateRefreshAlertView;
+@synthesize mailSendAlertView=_mailSendAlertView, rateRefreshAlertView=_rateRefreshAlertView, liteWarningAlertView=_liteWarningAlertView;
 
 @synthesize actionSheetAddPerson=_actionSheetAddPerson, actionSheetOpenTravel=_actionSheetOpenTravel, actionSheetClosedTravel=_actionSheetClosedTravel, actionSheetOpenTravelNoCurrency=_actionSheetOpenTravelNoCurrency;
 
@@ -111,6 +111,13 @@
 
 - (void)openEntryAddPopup {
     
+#ifdef LITE_VERSION
+    if ([self.travel.entries count] >= 5) {
+        [self.liteWarningAlertView show];
+        return;
+    }
+#endif
+    
     EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel];
     detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
@@ -118,6 +125,7 @@
     [self presentModalViewController:navController animated:YES];   
     [detailViewController release];
     [navController release];
+
 }
 
 - (void)openEditEntryPopup:(Entry *)entry {
@@ -573,6 +581,11 @@
         
         [self sendSummaryMail];
         
+    } else if (alertView == self.liteWarningAlertView && buttonIndex != self.mailSendAlertView.cancelButtonIndex) {
+        
+        NSString* url = [NSString stringWithFormat: ITUNES_STORE_LINK, TRIP_ACCOUNT_ID];
+        [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
+        
     }
 }
 
@@ -753,6 +766,8 @@
     
     self.mailSendAlertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", @"alert title") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"alert item") otherButtonTitles:NSLocalizedString(@"OK", @"alert item"), nil] autorelease];
     
+    self.liteWarningAlertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"lite title", @"lite title warning") message:NSLocalizedString(@"lite message",@"lite message warning") delegate:self cancelButtonTitle:NSLocalizedString(@"lite no purchase",@"OK button") otherButtonTitles:NSLocalizedString(@"lite purchase",@"OK button"), nil] autorelease];
+    
     self.rateRefreshAlertView = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
     
 }
@@ -790,6 +805,25 @@
 #pragma mark Memory Management
 
 - (void)dealloc {
+    
+    self.liteWarningAlertView = nil;
+    self.tabBarController = nil;
+    self.participantSortViewController = nil;
+    self.entrySortViewController = nil;
+    self.summarySortViewController = nil;
+    
+    self.addButton = nil;
+    self.actionButton = nil;
+    
+    self.rateRefreshAlertView = nil;
+    self.mailSendAlertView = nil;
+    self.liteWarningAlertView = nil;
+    
+    self.actionSheetAddPerson = nil;
+    self.actionSheetClosedTravel = nil;
+    self.actionSheetOpenTravel = nil;
+    self.actionSheetOpenTravelNoCurrency = nil;
+    
     [super dealloc];
 }
 

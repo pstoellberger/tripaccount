@@ -55,6 +55,12 @@
         
         self.copyrightLabel.frame = CGRectMake(COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.origin.y, self.view.frame.size.width - self.closeButton.frame.size.width - COPYRIGHT_LABEL_GAP - COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.size.height);
         
+        self.titleLabel.text = @"Trip Account";
+        
+#ifdef LITE_VERSION
+        self.titleLabel.text = @"Trip Account Lite";        
+#endif
+        
         [UIFactory addShadowToView:self.image];
         
     }
@@ -90,7 +96,7 @@
 
 - (IBAction)rate {
     
-    NSString* url = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", APPIRATER_APP_ID];
+    NSString* url = [NSString stringWithFormat: ITUNES_STORE_RATE_LINK, CURRENT_APP_ID];
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
 }
 

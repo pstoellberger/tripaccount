@@ -324,3 +324,12 @@
 "finished" = "Finished.";
 
 "Reset Weight" = "Reset weights";
+
+"lite message" = "This is a DEMO version of Trip Account. If you want to add more than 5 expense please purchase Trip Account. Do you want to do that now?";
+
+"lite title" = "Lite Version";
+
+"lite purchase" = "Sure!";
+
+"lite no purchase" = "Later :(";
+

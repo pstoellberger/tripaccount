@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import "ReiseabrechnungAppDelegate.h"
 
 @interface InfoViewController : UIViewController <MFMailComposeViewControllerDelegate> {
     SEL _action;

@@ -330,3 +330,11 @@
 "finished" = "Erledigt.";
 
 "Reset Weight" = "Gewichtungen zurücksetzen";
+
+"lite message" = "Dies ist eine DEMO-Version von Trip Account. Bitte hol' dir TRIP ACCOUNT im App Store, um mehr als 5 Ausgaben hinzufügen zu können. Willst du das jetzt tun?";
+
+"lite title" = "Lite Version";
+
+"lite purchase" = "Klar!";
+
+"lite no purchase" = "Später :(";
