@@ -13,6 +13,7 @@
 #import "TextEditViewController.h"
 #import "ReiseabrechnungAppDelegate.h"
 #import "UIFactory.h"
+#import "CustomImageStyle2Cell.h"
 
 @implementation TypeViewController
 
@@ -36,6 +37,9 @@
         
         self.tableView.allowsSelectionDuringEditing = YES;
         
+        _builtInImage = [[UIImage imageNamed:@"component_green.png"] retain];
+        _customImage = [[UIImage imageNamed:@"component_edit.png"] retain];
+        
     }
     
     [request release];
@@ -55,7 +59,7 @@
     
     _editedType = type;
     
-    TextEditViewController *tevc = [[TextEditViewController alloc] initWithText:type.name target:self selector:@selector(updateType:)];
+    TextEditViewController *tevc = [[TextEditViewController alloc] initWithText:type.name target:self selector:@selector(updateType:) andNamedImage:@"component_edit.png"];
     [self.navigationController pushViewController:tevc animated:YES];
     [tevc release];
 }
@@ -67,6 +71,7 @@
         [self.tableView beginUpdates];
         
         _editedType.name = typeName;
+        _editedType.name_de = typeName;
         
         [ReiseabrechnungAppDelegate saveContext:self.context];
         
@@ -123,24 +128,39 @@
     return UITableViewCellAccessoryNone;
 }
 
+#define IMAGE_TAG 4242
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
-    static NSString *reuseIdentifier = @"TypeCell";
+    static NSString *reuseIdentifierCustom = @"CustTypeCell";
+    static NSString *reuseIdentifierBuiltIn = @"BITypeCell";
     
     Type *type = (Type *)managedObject;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    if (cell == nil) {
-        cell = [[[self newUIViewCell] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier] autorelease];
-    }
+    UITableViewCell *cell = nil;
     
     if ([type.builtIn intValue] == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierBuiltIn];
+        if (cell == nil) {
+            cell = [[[CustomImageStyle2Cell alloc] initWithImage:_builtInImage reuseIdentifier:reuseIdentifierBuiltIn] autorelease];
+        }
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCustom];
+        if (cell == nil) {
+            cell = [[[CustomImageStyle2Cell alloc] initWithImage:_customImage reuseIdentifier:reuseIdentifierCustom] autorelease];
+        }        
+    }
+    
+    UIImageView *uiImageView = (UIImageView *) [cell viewWithTag:IMAGE_TAG];
+    if ([type.builtIn intValue] == 1) {
+        uiImageView.image = [UIImage imageNamed:@"component_green.png"];
         if ([type.hidden intValue] == 0) {
             cell.detailTextLabel.text = NSLocalizedString(@"(built-in)", @"built-in type mark");
         } else {
             cell.detailTextLabel.text = NSLocalizedString(@"(hidden)", @"built-in type mark");
         }
     } else {
+        uiImageView.image = [UIImage imageNamed:@"component_edit.png"];
         cell.detailTextLabel.text = nil;
     }
     
@@ -244,6 +264,9 @@
     [_addButton release];
     [_editButton release];
     [_doneButton release];
+    
+    [_builtInImage release];
+    [_customImage release];
     
     [super dealloc];
 }

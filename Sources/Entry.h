@@ -2,14 +2,14 @@
 //  Entry.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 01/11/2011.
+//  Created by Martin Maier on 04/12/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Currency, Participant, Travel, Type;
+@class Currency, Participant, ReceiverWeight, Travel, Type;
 
 @interface Entry : NSManagedObject
 
@@ -24,6 +24,7 @@
 @property (nonatomic, retain) Participant *payer;
 @property (nonatomic, retain) NSSet *receivers;
 @property (nonatomic, retain) Currency *currency;
+@property (nonatomic, retain) NSSet *receiverWeights;
 @end
 
 @interface Entry (CoreDataGeneratedAccessors)
@@ -32,5 +33,10 @@
 - (void)removeReceiversObject:(Participant *)value;
 - (void)addReceivers:(NSSet *)values;
 - (void)removeReceivers:(NSSet *)values;
+
+- (void)addReceiverWeightsObject:(ReceiverWeight *)value;
+- (void)removeReceiverWeightsObject:(ReceiverWeight *)value;
+- (void)addReceiverWeights:(NSSet *)values;
+- (void)removeReceiverWeights:(NSSet *)values;
 
 @end

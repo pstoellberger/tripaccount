@@ -21,6 +21,8 @@
 #import "Appirater.h"
 #import "Crittercism.h"
 #import "MTStatusBarOverlay.h"
+#import "ReceiverWeight.h"
+#import "Participant.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -106,6 +108,8 @@
     [self fixUsDollar];
     
     [self refreshCurrencyRatesIfOutDated];
+    
+    [self upgradeFromVersion1];
     
 }
 
@@ -377,7 +381,10 @@
             
             NSArray *receiverArray = [entryDict objectForKey:@"receivers"];
             for (NSNumber *receiverNumber in receiverArray) {
-                [entry addReceiversObject:[participantArray objectAtIndex:[receiverNumber intValue]]];
+                ReceiverWeight *recWeight = [NSEntityDescription insertNewObjectForEntityForName:@"ReceiverWeight" inManagedObjectContext:self.managedObjectContext];
+                recWeight.weight = [NSNumber numberWithDouble:1.0];
+                recWeight.participant = [participantArray objectAtIndex:[receiverNumber intValue]];
+                [entry addReceiverWeightsObject:recWeight];
             }
         
             if ([[entryDict objectForKey:@"currency"] isEqualToString:@"USD"]) {
@@ -400,6 +407,29 @@
         [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
     }
     
+}
+
+- (void)upgradeFromVersion1 {
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: self.managedObjectContext];
+    NSArray *travels = [self.managedObjectContext executeFetchRequest:req error:nil];
+    [req release];
+    
+    for (Travel* travel in travels) {
+        for (Entry *entry in travel.entries) {
+            if (entry.receivers) {
+                for (Participant *participant in entry.receivers) {
+                    ReceiverWeight *recWeight = [NSEntityDescription insertNewObjectForEntityForName:@"ReceiverWeight" inManagedObjectContext:self.managedObjectContext];
+                    recWeight.participant = participant;
+                    [entry addReceiverWeightsObject:recWeight];
+                }
+                [entry removeReceivers:entry.receivers];
+            }
+        }
+    }
+    
+    [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
 }
 
 - (void)checkForResetOfHelpBubbles {
@@ -478,7 +508,7 @@
     } else {
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
         req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext:context];
-        req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+        req.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"closedDate" ascending:YES]];
         NSArray *travelSet = [context executeFetchRequest:req error:nil];
         [req release];
         

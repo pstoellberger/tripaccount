@@ -21,10 +21,13 @@
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Type *type;
 @property (nonatomic, retain) Participant *payer;
-@property (nonatomic, retain) NSSet *receivers;
+@property (nonatomic, retain) NSMutableSet *receiverWeights;
 @property (nonatomic, retain) Currency *currency;
 @property (nonatomic, readonly) NSArray *sortedReceivers;
 
 - (id)initWithEntry:(Entry *)entry;
+- (BOOL)receiverWeightsDifferFromDefault;
+- (NSArray *)sortedReceivers;
+- (NSArray *)activeReceiverWeights;
 
 @end

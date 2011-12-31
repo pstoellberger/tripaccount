@@ -13,6 +13,7 @@
 
 @interface SummarySortViewController : ShadowNavigationController {
     NSArray *_currencyArray;
+    NSDateFormatter *_dateFormatter;
 }
 
 @property (nonatomic, retain) Travel *travel;

@@ -11,4 +11,8 @@
 
 @interface AlignedStyle2Cell : UITableViewCell
 
+@property (nonatomic, retain) UIView *myImageView;
+
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andNamedImage:(NSString *)namedImage;
+
 @end

@@ -16,16 +16,20 @@
 @property (nonatomic, retain) Participant *payer;
 @property (nonatomic, retain) Participant *receiver;
 
+- (id) initWithReceiver:(Participant *)newReceiver andPayer:(Participant *)newPayer;
+
 @end
 
 @interface Summary : NSObject
 
-@property (nonatomic, retain) NSArray *results;
 @property (nonatomic, retain) Currency *baseCurrency;
-@property (nonatomic, retain, readonly) NSMutableDictionary *accounts;
+@property (nonatomic, retain) NSMutableDictionary *accounts;
 
 + (Summary *)createSummary:(Travel *) travel;
++ (Summary *)createSummary:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts;
 + (void)updateSummaryOfTravel:(Travel *)travel;
++ (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts;
+- (void) eliminateCircularDebts:(NSMutableDictionary *)arrayOfParticipantKeys;
 
 @end
 

@@ -22,3 +22,4 @@
 
 - option to hide types
 - better caption of back button during entry edit
+- better caption for no email warning

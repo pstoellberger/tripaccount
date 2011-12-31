@@ -28,6 +28,8 @@
 #import "ParticipantEditViewController.h"
 #import "NumberFilter.h"
 #import "Appirater.h"
+#import "ReceiverWeightNotManaged.h"
+#import "ReceiverWeight.h"
 
 @interface TravelViewController ()
 
@@ -233,7 +235,12 @@
     }
     
     if ([noMailParticipants count] > 0) {
-        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"There are no email addresses available for the participant%@ %@", @"alert no mail addresses"), ([noMailParticipants count]==1)?@"":NSLocalizedString(@"plural character",@"plural character"), [self prettyPrintListOfStrings:noMailParticipants]];
+        NSString *message = nil;
+        if ([noMailParticipants count] == 1) { 
+            message = [NSString stringWithFormat:NSLocalizedString(@"no mail address singular", @"alert no mail addresses"), [self prettyPrintListOfStrings:noMailParticipants]];
+        } else {
+            message = [NSString stringWithFormat:NSLocalizedString(@"no mail address plural", @"alert no mail addresses"), [self prettyPrintListOfStrings:noMailParticipants]];
+        }
         self.mailSendAlertView.message = message;
         [self.mailSendAlertView show];
     } else {
@@ -305,8 +312,6 @@
     [dictionary setValue:NSLocalizedString(@"Yes", @"mail label") forKey:@"labelYes"];
     [dictionary setValue:NSLocalizedString(@"No", @"mail label") forKey:@"labelNo"];
     [dictionary setValue:NSLocalizedString(@"Currencies used for this trip:", @"mail label") forKey:@"labelCurrenciesUsed"];
-    [dictionary setValue:NSLocalizedString(@"all", @"all") forKey:@"all"];
-
     
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
     engine.matcher = [[[ICUTemplateMatcher alloc] initWithTemplateEngine:engine] autorelease];
@@ -360,11 +365,20 @@
     _entry.amount = nmEntry.amount;
     _entry.currency = nmEntry.currency;
     _entry.date = nmEntry.date;
-    _entry.payer= nmEntry.payer;
-    _entry.receivers= nmEntry.receivers;
+    _entry.payer = nmEntry.payer;
     _entry.type = nmEntry.type;
     _entry.travel = _travel;
     _entry.lastUpdated = [NSDate date];
+    
+    [_entry removeReceiverWeights:_entry.receiverWeights];
+    for (ReceiverWeightNotManaged *recWeightNM in nmEntry.receiverWeights) {
+        if (recWeightNM.active) {
+            ReceiverWeight *recWeight = [NSEntityDescription insertNewObjectForEntityForName: @"ReceiverWeight" inManagedObjectContext: [_travel managedObjectContext]];
+            recWeight.weight = recWeightNM.weight;
+            recWeight.participant = recWeightNM.participant;
+            [_entry addReceiverWeightsObject:recWeight];
+        }
+    }
     
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
     
@@ -503,13 +517,19 @@
 
 - (void)updateTableViewInsets {
     
-    self.participantSortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
+    UIEdgeInsets insets = self.participantSortViewController.detailViewController.tableView.contentInset;
+    insets.top = self.navigationController.navigationBar.frame.size.height;
+    self.participantSortViewController.detailViewController.tableView.contentInset = insets;
     self.participantSortViewController.detailViewController.tableView.scrollIndicatorInsets = self.participantSortViewController.detailViewController.tableView.contentInset;
     
-    self.entrySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
+    insets = self.entrySortViewController.detailViewController.tableView.contentInset;
+    insets.top = self.navigationController.navigationBar.frame.size.height;
+    self.entrySortViewController.detailViewController.tableView.contentInset = insets;
     self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
     
-    self.summarySortViewController.detailViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
+    insets = self.summarySortViewController.detailViewController.tableView.contentInset;
+    insets.top = self.navigationController.navigationBar.frame.size.height;
+    self.summarySortViewController.detailViewController.tableView.contentInset = insets;
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
     
 }

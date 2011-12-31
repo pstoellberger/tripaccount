@@ -112,4 +112,21 @@
     
 }
 
+- (BOOL)isWeightInUse {
+    for (Participant *p in self.participants) {
+        if ([p.weight doubleValue] != 1.0) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (NSNumber *)totalWeight {
+    double totalWeight = 0;
+    for (Participant *p in self.participants) {
+        totalWeight += [p.weight doubleValue];
+    }
+    return [NSNumber numberWithDouble:totalWeight];
+}
+
 @end

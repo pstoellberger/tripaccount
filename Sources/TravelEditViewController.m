@@ -162,7 +162,7 @@ static NSIndexPath *_currenciesIndexPath;
     
     if ([indexPath isEqual:_countryIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"earth.png"] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"Country", @"country cell caption");
         if (self.country) {
@@ -175,21 +175,21 @@ static NSIndexPath *_currenciesIndexPath;
         
     } else if ([indexPath isEqual:_cityIndexPath]) {
                 
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"earth_location.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"City/State", @"city cell caption");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.city;
         
     } else if ([indexPath isEqual:_descriptionIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"pencil.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Description", @"description cell caption");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.name;
 
     } else if ([indexPath isEqual:_currenciesIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"money2.png"] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"Currencies", @"currencies cell caption");
         
@@ -269,7 +269,7 @@ static NSIndexPath *_currenciesIndexPath;
         
     } else if ([indexPath isEqual:_cityIndexPath]) {
         
-        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.city target:self selector:@selector(selectCity:)]; 
+        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.city  target:self selector:@selector(selectCity:) andNamedImage:@"earth_location.png"]; 
         textEditViewController.title = NSLocalizedString(@"City/State", @"edit city title");
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];            
@@ -490,6 +490,8 @@ static NSIndexPath *_currenciesIndexPath;
                         NSString *firstName = (NSString *) ABRecordCopyValue(martinPerson, kABPersonFirstNameProperty);
                         NSString *lastName = (NSString *) ABRecordCopyValue(martinPerson, kABPersonLastNameProperty);
                         NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+                        [firstName release];
+                        [lastName release];
                         
                         if ([userName isEqualToString:fullName]) {
                             Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];

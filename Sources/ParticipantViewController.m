@@ -57,6 +57,7 @@
 }
 
 #define WEIGHT_LABEL_TAG 42
+#define WEIGHT_LABEL_WIDTH 50
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
@@ -70,22 +71,31 @@
         cell = [super tableView:tableView cellForManagedObject:managedObject];
         cell.textLabel.backgroundColor = [UIColor clearColor];
         
-        right = [[[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width - 30, 0, 30, cell.frame.size.height)] autorelease];
-        right.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        right.backgroundColor = [UIColor clearColor];
-        right.font = [UIFont italicSystemFontOfSize:14];
-        right.textColor = [UIColor colorWithRed:0 green:0 blue:0.8 alpha:1];
-        right.tag = WEIGHT_LABEL_TAG;
-        
-        [cell.contentView addSubview:right];
-    }
-    
-    if (!right) {
         right = (UILabel *) [cell viewWithTag:WEIGHT_LABEL_TAG];
+        if (!right) {
+            right = [[[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width - WEIGHT_LABEL_WIDTH - 3, 10, WEIGHT_LABEL_WIDTH, cell.frame.size.height)] autorelease];
+            right.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+            right.backgroundColor = [UIColor clearColor];
+            right.textAlignment = UITextAlignmentRight;
+            right.font = [UIFont italicSystemFontOfSize:12];
+            right.textColor = [UIColor colorWithRed:0 green:0 blue:0.8 alpha:1];
+            right.textColor = [UIColor grayColor];
+            right.tag = WEIGHT_LABEL_TAG;
+            
+            [cell.contentView addSubview:right];
+        }
     }
     
     Participant *p = (Participant *)managedObject;
-    right.text = [p.weight stringValue];
+    
+    if ([self.travel isWeightInUse]) {
+        if (!right) {
+            right = (UILabel *) [cell viewWithTag:WEIGHT_LABEL_TAG];
+        }
+        right.text = [NSString stringWithFormat:@"%@", [p.weight stringValue]];
+    } else {
+        right.text = @"";
+    }
     
     cell.textLabel.alpha = 1;
     cell.detailTextLabel.alpha = 1;

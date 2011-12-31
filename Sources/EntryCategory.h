@@ -12,8 +12,11 @@
 @interface Entry (Sort)
 
 @property (nonatomic, readonly) NSArray *sortedReceivers;
+@property (nonatomic, readonly) NSArray *sortedReceiverWeights;
 @property (nonatomic, readonly) BOOL hasTimeSpecified;
 @property (nonatomic, readonly) NSString *typeSectionName;
 
+- (double)totalReceiverWeights;
+- (BOOL)isWeightInUse;
 
 @end

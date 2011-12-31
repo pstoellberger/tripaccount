@@ -8,13 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/TypeViewController.m"
-         timestampString = "336489798.631317"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "21"
-         endingLineNumber = "21"
-         landmarkName = "-initInManagedObjectContext:withMultiSelection:withSelectedObjects:target:action:"
+         startingLineNumber = "289"
+         endingLineNumber = "289"
+         landmarkName = "-walkPath:andKnoten:andParticipant:andCycle:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -22,13 +22,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/GenericSelectViewController.m"
-         timestampString = "338328431.017718"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
-         landmarkName = "-done"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
+         landmarkName = "-eliminateCircularDebts:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -36,13 +36,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/TravelEditViewController.m"
-         timestampString = "339761641.274753"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "320"
-         endingLineNumber = "320"
-         landmarkName = "-selectCurrencies:"
+         startingLineNumber = "274"
+         endingLineNumber = "274"
+         landmarkName = "-eliminateCircularDebts:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -50,13 +50,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/CoreDataTableViewController.m"
-         timestampString = "338919415.386052"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "255"
-         endingLineNumber = "255"
-         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+         startingLineNumber = "281"
+         endingLineNumber = "281"
+         landmarkName = "-walkPath:andKnoten:andParticipant:andCycle:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -64,13 +64,41 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/EntryCell.m"
-         timestampString = "338919485.057338"
+         filePath = "Sources/EntryCategory.m"
+         timestampString = "346957609.753184"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "29"
+         endingLineNumber = "29"
+         landmarkName = "-sortedReceiverWeights"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/EntryCategory.m"
+         timestampString = "346957609.753184"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
+         landmarkName = "-sortedReceiverWeights"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/EntryCategory.m"
+         timestampString = "346955037.716999"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "18"
          endingLineNumber = "18"
-         landmarkName = "-setEditing:animated:"
+         landmarkName = "-sortedReceivers"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -78,27 +106,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "344201600.257107"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "647"
-         endingLineNumber = "647"
-         landmarkName = "@implementation ReiseabrechnungAppDelegate"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/EntrySortViewController.m"
-         timestampString = "343611098.098904"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "46"
-         endingLineNumber = "46"
-         landmarkName = "-sortTable:"
+         startingLineNumber = "127"
+         endingLineNumber = "127"
+         landmarkName = "+createSummary:eliminateCircularDebts:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -106,13 +120,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/EntrySortViewController.m"
-         timestampString = "343611098.098904"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
-         landmarkName = "-loadView"
+         startingLineNumber = "211"
+         endingLineNumber = "211"
+         landmarkName = "-getAccountOfPerson:withPerson:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -120,13 +134,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/TravelViewController.m"
-         timestampString = "344201394.219757"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "618"
-         endingLineNumber = "618"
-         landmarkName = "-peoplePickerNavigationController:shouldContinueAfterSelectingPerson:"
+         startingLineNumber = "199"
+         endingLineNumber = "199"
+         landmarkName = "-setAccountOfPerson:withPerson:toBalance:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -134,13 +148,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/ParticipantCell.m"
-         timestampString = "343166470.717357"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "17"
-         endingLineNumber = "17"
-         landmarkName = "-initWithStyle:reuseIdentifier:"
+         startingLineNumber = "214"
+         endingLineNumber = "214"
+         landmarkName = "-getAccountOfPerson:withPerson:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -148,55 +162,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/ParticipantViewController.m"
-         timestampString = "343168722.353462"
+         filePath = "Sources/Summary.m"
+         timestampString = "347029340.148706"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
-         landmarkName = "-tableView:cellForManagedObject:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/CoreDataTableViewController.m"
-         timestampString = "343598231.197377"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "129"
-         endingLineNumber = "129"
-         landmarkName = "-fetchedResultsControllerForTableView:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/EntryViewController.m"
-         timestampString = "343611552.3226"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "204"
-         endingLineNumber = "204"
-         landmarkName = "-sortTable:desc:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/EntrySortViewController.m"
-         timestampString = "343611676.59044"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
-         landmarkName = "-loadView"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
+         landmarkName = "+createSummary:eliminateCircularDebts:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

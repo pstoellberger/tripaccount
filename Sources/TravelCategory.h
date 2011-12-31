@@ -19,5 +19,7 @@
 
 - (void)open:(BOOL)useLatestRates;
 - (void)close;
+- (BOOL)isWeightInUse;
+- (NSNumber *)totalWeight;
 
 @end

@@ -48,7 +48,9 @@
         
         [UIFactory initializeTableViewController:self.tableView];
         
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
+        UIEdgeInsets insets = self.tableView.contentInset;
+        insets.top = self.navigationController.navigationBar.frame.size.height;
+        self.tableView.contentInset = insets;
         self.tableView.contentInset = self.tableView.scrollIndicatorInsets;
 
         NSManagedObjectContext *context = [travel managedObjectContext];

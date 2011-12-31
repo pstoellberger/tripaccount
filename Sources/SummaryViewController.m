@@ -32,7 +32,9 @@
         
         [UIFactory initializeTableViewController:self.tableView];
         
-        self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
+        UIEdgeInsets insets = self.tableView.contentInset;
+        insets.top = NAVIGATIONBAR_HEIGHT;
+        self.tableView.contentInset = insets;
         self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
         
         NSFetchRequest *req = [[NSFetchRequest alloc] init];

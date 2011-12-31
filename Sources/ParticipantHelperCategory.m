@@ -85,15 +85,20 @@
         
         CFRelease(emailMultiValue);
         [emailList release];
-        [firstName release];
-        [lastName release];
     }
+    
+    [firstName release];
+    [lastName release];
     
     return addPerson;
 }
 
 + (NSData *)createThumbnail:(NSData *)bigData {
     return UIImagePNGRepresentation([UIFactory imageWithImage:[UIImage imageWithData:bigData] scaledToSize:CGSizeMake(32, 32)]);
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Participant: %@, %@", self.name, [super description]];
 }
 
 @end

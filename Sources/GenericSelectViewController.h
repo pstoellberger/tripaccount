@@ -1,5 +1,5 @@
 //
-//  ParticipantSelectViewController.h
+//  GenericSelectViewController.h
 //  Reiseabrechnung
 //
 //  Created by Martin Maier on 01/07/2011.

@@ -55,5 +55,6 @@
 - (NSManagedObjectContext *)createNewManagedObjectContext;
 - (void)performInitialisations:(UIWindow *)window;
 - (void)fixUsDollar;
+- (void)upgradeFromVersion1;
 
 @end

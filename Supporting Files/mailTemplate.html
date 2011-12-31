@@ -37,28 +37,25 @@
                             {% /if %}
                         </span></td>
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="receiverRow imageRow">
-                        {% for receiver in entry.sortedReceivers %}
+                        
+                        {% for receiverWeight in entry.sortedReceiverWeights %}
                         <span class="imageAndName">
                                 {% if includeImages %}
                                     <img src="data:image/png;base64,{{ receiver.base64 }}" />
                                 {% /if %}
                             
-                                {% if receiver.name equalsstring entry.sortedReceivers.@lastObject.name %}
-                                    {% if entry.sortedReceivers.@count == travel.participants.@count %}
-                                        {{ all }}
-                                    {% else %}
-                                        {{ receiver.name }}
+                                {% if receiverWeight.participant.name equalsstring entry.sortedReceiverWeights.@lastObject.participant.name %}
+                                    {{ receiverWeight.participant.name }}
+                                    {% if entry.isWeightInUse %}
+                                        ({{receiverWeight.weight}})
                                     {% /if %}
-                                {% else %}
-                                    {% if entry.sortedReceivers.@count < travel.participants.@count %} 
-                                        {% if includeImages %}
-                                            {{ receiver.name }}
-                                        {% else %}
-                                            {{ receiver.name }},
-                                        {% /if %}
+                                {% else %}                                    
+                                    {% if entry.isWeightInUse %}
+                                        {{ receiverWeight.participant.name }} ({{receiverWeight.weight}}),
+                                    {% else %}
+                                        {{ receiverWeight.participant.name }},
                                     {% /if %}
                                 {% /if %}
-
                         </span>
                         {% /for %}		
                     </td>

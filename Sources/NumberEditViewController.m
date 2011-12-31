@@ -13,24 +13,28 @@
 #import "UIFactory.h"
 #import "GradientCell.h"
 #import "CurrencyHelperCategory.h"
+#import "AlignedStyle2Cell.h"
 
 @implementation NumberEditViewController
 
 @synthesize target=_target, selector=_selector;
 @synthesize textField=_textField, textCell=_textCell, convertView=_convertView;
 @synthesize travel=_travel, currency=_currency, number=_number, decimals=_decimals;
+@synthesize allowNull=_allowNull, allowZero=_allowZero;
 
 #define TEXTFIELD_LABEL_GAP 15
 #define BORDER_GAP 10
-#define FOOTER_HEIGHT 155
+#define FOOTER_HEIGHT 145
 
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals target:(id)target selector:(SEL)selector {
-    return [self initWithNumber:startNumber withDecimals:decimals currency:nil travel:nil target:target selector:selector];
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector {
+    return [self initWithNumber:startNumber withDecimals:decimals currency:nil travel:nil andNamedImage:namedImage target:target selector:selector];
 }
 
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector {
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector {
     
-    if (self = [super initWithStyle:UITableViewStylePlain]) {
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+        
+        _namedImage = namedImage;
         
         [UIFactory initializeTableViewController:self.tableView];
         
@@ -41,6 +45,9 @@
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        
+        self.allowNull = YES;
+        self.allowZero = YES;
         
         self.travel = travel;
         self.currency = currency;
@@ -166,6 +173,16 @@
     [nf release];
     
     [self refreshConversion];
+    
+    // check if return is possible
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+    if (!self.allowNull && numberString.length == 0) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    if (!self.allowZero && [self.number doubleValue] == 0.0) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
 
     return returnValue;
 }
@@ -173,30 +190,33 @@
 #pragma mark - View lifecycle
 
 
+#define IMAGE_SIZE 24
+#define IMAGE_GAP 10
+#define IMAGE_TEXT_GAP 10
+#define IMAGE_TOP 10
+
 - (void)loadView {
     
     [super loadView];
     
     self.tableView.scrollEnabled = NO;
     
-    self.textCell = [[[GradientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TextEditViewControllerCell"] autorelease];
+    self.textCell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"TextEditViewControllerCell" andNamedImage:_namedImage] autorelease];
+    self.textCell.textLabel.text = @" ";
  
-    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
-    [self.textField sizeToFit];
-    self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(IMAGE_GAP + IMAGE_SIZE + IMAGE_TEXT_GAP, 5, 250, 30)] autorelease];
     self.textField.textAlignment = UITextAlignmentRight;
+    self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
     self.textField.keyboardType = UIKeyboardTypeDecimalPad;
     self.textField.keyboardAppearance = UIKeyboardAppearanceAlert;
     self.textField.font = [UIFont systemFontOfSize:25.0];
-    [self.textField sizeToFit];
-    
     self.textField.delegate = self;
     
-    [self.textCell addSubview:self.textField];
+    [self.textCell.contentView addSubview:self.textField];
     
     [self.textField becomeFirstResponder];
     
-    self.convertView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP, CONVERSION_VIEW_GAP, [[UIScreen mainScreen] applicationFrame].size.width - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP, FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
+    self.convertView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP, 0, [[UIScreen mainScreen] applicationFrame].size.width - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP, FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
     self.convertView.textAlignment = UITextAlignmentRight;
     self.convertView.textColor = [UIColor grayColor];
     self.convertView.editable = NO;

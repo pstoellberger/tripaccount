@@ -9,19 +9,22 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-@interface DateSelectViewController : UIViewController {
+@interface DateSelectViewController : UITableViewController {
     
-    IBOutlet UILabel *_dateLabel;
-    IBOutlet UILabel *_timeDescriptionLabel;
-    IBOutlet UIDatePicker *_picker;
-    IBOutlet UISwitch *_timeSwitch;
-    IBOutlet UIView *_switchSuperView;
-    IBOutlet UIView *_labelSuperView;
+    UILabel *_dateLabel;
+    UILabel *_timeDescriptionLabel;
+    UIDatePicker *_picker;
+    UISwitch *_timeSwitch;
+    UIView *_switchSuperView;
+    UIView *_labelSuperView;
+    UIView *_pickerView;
     
     SEL _action;
     id _target;
     NSDate *_date;
     
+    UITableViewCell *_dateCell;
+    UITableViewCell *_timeCell;
 }
 
 - (id)initWithDate:(NSDate *)date target:(id)target selector:(SEL)action;

@@ -195,7 +195,8 @@
 "help closed travel" = "The trip was closed and can not be changed any more. Exchange rates used for this trip are fixed.";
 
 /* alert no mail addresses */
-"There are no email addresses available for the person%@ %@" = "There are no email addresses available for the participant%1$@ %2$@";
+"no mail address singular" = "%1$@ has no email address.";
+"no mail address plural" = "%1$@ have no email addresses.";
 
 /* help bubble action button */
 "help action" = "This button offers you action like sending the Summary Report Email to the people on the trip. You can also fix or edit currency exchange rates here.";
@@ -321,3 +322,5 @@
 "Back" = "Back";
 
 "finished" = "Finished.";
+
+"Reset Weight" = "Reset weights";
