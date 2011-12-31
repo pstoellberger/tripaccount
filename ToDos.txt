@@ -1,9 +1,0 @@
-Reiseabrechnung ToDos:
-
-Technical:
-- Info
-
-Non technical:
-- Localisation
-- Video
-- Screenshots

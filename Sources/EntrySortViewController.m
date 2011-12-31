@@ -107,6 +107,7 @@
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleSortOrder:)];
     gr.numberOfTapsRequired = 2;
     [segControlView addGestureRecognizer:gr];
+    [gr release];
     
     [segControl release];
     

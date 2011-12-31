@@ -2,20 +2,20 @@
 //  Participant.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 16/11/2011.
+//  Created by Martin Maier on 04/12/2011.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Entry, Transfer, Travel;
+@class Entry, ReceiverWeight, Transfer, Travel;
 
 @interface Participant : NSManagedObject
 
 @property (nonatomic, retain) NSData * imageSmall;
 @property (nonatomic, retain) NSNumber * yourself;
-@property (nonatomic, retain) NSDecimalNumber * weight;
+@property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) NSData * image;
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * name;
@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSSet *getPayedFor;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Travel *lastUsedInTravel;
+@property (nonatomic, retain) NSSet *receiverWeights;
 @end
 
 @interface Participant (CoreDataGeneratedAccessors)
@@ -48,5 +49,10 @@
 - (void)removeGetPayedForObject:(Entry *)value;
 - (void)addGetPayedFor:(NSSet *)values;
 - (void)removeGetPayedFor:(NSSet *)values;
+
+- (void)addReceiverWeightsObject:(ReceiverWeight *)value;
+- (void)removeReceiverWeightsObject:(ReceiverWeight *)value;
+- (void)addReceiverWeights:(NSSet *)values;
+- (void)removeReceiverWeights:(NSSet *)values;
 
 @end

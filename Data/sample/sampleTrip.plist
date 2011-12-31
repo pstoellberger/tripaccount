@@ -109,6 +109,11 @@
 			</array>
 		</dict>
 		<dict>
+			<key>receivers</key>
+			<array>
+				<string>2</string>
+				<integer>0</integer>
+			</array>
 			<key>description</key>
 			<string>Pizza</string>
 			<key>type</key>

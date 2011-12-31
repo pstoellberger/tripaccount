@@ -9,15 +9,28 @@
 #import "TextEditViewController.h"
 #import "UIFactory.h"
 #import "GradientCell.h"
+#import "AlignedStyle2Cell.h"
 
 @implementation TextEditViewController
 
 @synthesize target=_target, selector=_selector;
 @synthesize textField=_textField, textCell=_textCell;
+@synthesize namedImage=_namedImage;
+
 
 - (id)initWithText:(NSString *)text target:(id)target selector:(SEL)selector {
+     return [self initWithText:text target:target selector:selector andNamedImage:nil];
+}
+
+- (id)initWithText:(NSString *)text target:(id)target selector:(SEL)selector andNamedImage:(NSString *)namedImage {
     
-    if (self = [super initWithStyle:UITableViewStylePlain]) {
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+        
+        if (!namedImage) {
+            self.namedImage = @"pencil.png";
+        } else {
+            self.namedImage = namedImage;
+        }
         
         [UIFactory initializeTableViewController:self.tableView];
         
@@ -80,6 +93,12 @@
 
 #pragma mark - View lifecycle
 
+#define IMAGE_SIZE 24
+#define IMAGE_GAP 10
+#define IMAGE_TEXT_GAP 10
+#define TEXT_CELL_TOP 12
+#define TEXT_CELL_HEIGHT 24
+#define IMAGE_TOP 10
 
 - (void)loadView {
     
@@ -87,9 +106,12 @@
     
     self.tableView.scrollEnabled = NO;
     
-    self.textCell = [[[GradientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TextEditViewControllerCell"] autorelease];
+    self.textCell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"TextEditViewControllerCell" andNamedImage:self.namedImage] autorelease];
+    self.textCell.textLabel.text = @" ";
     
-    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(25, 12, self.tableView.bounds.size.width - 25 - 20, 40)] autorelease];
+    int left = IMAGE_SIZE + IMAGE_GAP + IMAGE_TEXT_GAP;
+    int right = 10;
+    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(left, TEXT_CELL_TOP, self.tableView.bounds.size.width - left - right, TEXT_CELL_HEIGHT)] autorelease];
     self.textField.delegate = self;
     
     [self.textCell addSubview:self.textField];
@@ -104,6 +126,8 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
 
+    self.namedImage = nil;
+    
     self.target = nil;
     self.selector = nil;
     

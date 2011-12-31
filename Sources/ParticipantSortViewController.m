@@ -50,7 +50,10 @@
     [super loadView];
     
     self.detailViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height - TABBAR_HEIGHT);
-    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
+    
+    UIEdgeInsets insets = self.detailViewController.tableView.contentInset;
+    insets.top = NAVIGATIONBAR_HEIGHT;
+    self.detailViewController.tableView.contentInset = insets;
     self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
     
     UIView *detailViewContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.detailViewController.view.frame.size.height)] autorelease];

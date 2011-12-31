@@ -139,21 +139,21 @@ static NSIndexPath *_weightIndexPath;
     
     if ([indexPath isEqual:_nameIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"user1.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Name", @"cell caption name");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.name;
         
     } else if ([indexPath isEqual:_emailIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"mail.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"E-Mail", @"cell caption mail");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.email;
         
     } else if ([indexPath isEqual:_weightIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"weight.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Weight", @"cell caption weight");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = [self.weight stringValue];
@@ -199,7 +199,7 @@ static NSIndexPath *_weightIndexPath;
     
     if ([indexPath isEqual:_nameIndexPath]) {
         
-        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.name target:self selector:@selector(selectName:)]; 
+        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.name target:self selector:@selector(selectName:) andNamedImage:@"user1.png"]; 
         textEditViewController.title = NSLocalizedString(@"Name", @"controller title edit name");
         [self.navigationController pushViewController:textEditViewController animated:YES];
         [textEditViewController release];            
@@ -207,7 +207,7 @@ static NSIndexPath *_weightIndexPath;
         
     } else if ([indexPath isEqual:_emailIndexPath]) {
         
-        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.email target:self selector:@selector(selectEmail:)]; 
+        TextEditViewController *textEditViewController = [[TextEditViewController alloc] initWithText:self.email target:self selector:@selector(selectEmail:) andNamedImage:@"mail.png"]; 
         textEditViewController.title = NSLocalizedString(@"E-Mail", @"controller title edit mail");
         [textEditViewController setKeyBoardType:UIKeyboardTypeEmailAddress];
         [self.navigationController pushViewController:textEditViewController animated:YES];
@@ -215,8 +215,10 @@ static NSIndexPath *_weightIndexPath;
         
     } else if ([indexPath isEqual:_weightIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.weight withDecimals:YES target:self selector:@selector(selectWeight:)]; 
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.weight withDecimals:YES andNamedImage:@"weight.png"target:self selector:@selector(selectWeight:)]; 
         numberEditViewController.title = NSLocalizedString(@"Weight", @"controller title edit weight");
+        numberEditViewController.allowZero = NO;
+        numberEditViewController.allowNull = NO;
         [self.navigationController pushViewController:numberEditViewController animated:YES];
         [numberEditViewController release];            
         

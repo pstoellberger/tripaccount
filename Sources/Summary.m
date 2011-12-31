@@ -14,6 +14,9 @@
 #import "CurrencyHelperCategory.h"
 #import "Transfer.h"
 #import "ReiseabrechnungAppDelegate.h"
+#import "EntryCategory.h"
+#import "ReceiverWeight.h"
+#import "TransferCycle.h"
 
 @implementation ParticipantKey
 
@@ -50,11 +53,13 @@
 - (NSNumber *) getAccountOfPerson:(Participant *)person1 withPerson:(Participant *)person2;
 - (void) setAccountOfPerson:(Participant *)person1 withPerson:(Participant *)person2 toBalance:(NSNumber *)balance;
 - (int) getMultiplierFromPerson:(Participant *)person1 withPerson:(Participant *)person2;
+- (void) eliminateCircularDebts:(NSMutableDictionary *)arrayOfTransfers;
+- (TransferCycle *) walkPath:(NSDictionary *)arrayOfParticipantKeys andKnoten:(NSMutableDictionary *)knoten andParticipant:(Participant *)participant andCycle:(TransferCycle *)cycle;
 @end
 
 @implementation Summary
 
-@synthesize results=_results, accounts=_accounts, baseCurrency=_baseCurrency;
+@synthesize accounts=_accounts, baseCurrency=_baseCurrency;
 
 - (id) init {
     self = [super init];
@@ -65,8 +70,12 @@
 }
 
 + (void)updateSummaryOfTravel:(Travel *)travel {
-    
-    Summary *summary = [Summary createSummary:travel];
+    [self updateSummaryOfTravel:travel eliminateCircularDebts:YES];
+}
+
++ (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts {
+        
+    Summary *summary = [Summary createSummary:travel eliminateCircularDebts:performEliminateCircularDebts];
     NSMutableDictionary *dic = summary.accounts;
     
     [travel removeTransfers:travel.transfers];
@@ -88,27 +97,36 @@
     [ReiseabrechnungAppDelegate saveContext:[travel managedObjectContext]];
 }
 
-+ (Summary *)createSummary:(Travel *) travel {
+
++ (Summary *)createSummary:(Travel *)travel {
+    return [self createSummary:travel eliminateCircularDebts:YES];
+}
+
++ (Summary *)createSummary:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts {
     Summary *summary = [[[Summary alloc] init] autorelease];
     
     if (!summary.baseCurrency) {
         summary.baseCurrency = ((Entry *) [travel.entries anyObject]).currency.defaultRate.baseCurrency;
     }
-      
+    
     for (Entry *entry in travel.entries) {
         
-        // convert to base currency
-        double baseAmount = [entry.currency convertTravelAmount:travel currency:summary.baseCurrency amount:[entry.amount doubleValue]];
-        
-        // divide an expense in equal parts
-        double divAmount = baseAmount / [entry.receivers count];
-
-        // add the amount to the 'account' between two people
-        for (Participant *receiver in entry.receivers) {
-            if (![receiver isEqual:entry.payer]) {
-                NSNumber *balance = [summary getAccountOfPerson:entry.payer withPerson:receiver];
-                NSLog(@"Balance between %@ and %@ is %@", entry.payer.name, receiver.name, balance);
-                [summary setAccountOfPerson:entry.payer withPerson:receiver toBalance:[NSNumber numberWithDouble:([balance doubleValue] + divAmount)]];
+        if ([entry.receiverWeights count] > 0) {
+            
+            // convert to base currency
+            double baseAmount = [entry.currency convertTravelAmount:travel currency:summary.baseCurrency amount:[entry.amount doubleValue]];
+            
+            // divide an expense in equal parts
+            double divAmount = baseAmount / [entry.receiverWeights count];
+            
+            // add the amount to the 'account' between two people
+            for (ReceiverWeight *recWeight in entry.receiverWeights) {
+                Participant *receiver = recWeight.participant;
+                if (![receiver isEqual:entry.payer]) {
+                    NSNumber *balance = [summary getAccountOfPerson:entry.payer withPerson:receiver];
+                    NSLog(@"Balance between %@ and %@ is %@", entry.payer.name, receiver.name, balance);
+                    [summary setAccountOfPerson:entry.payer withPerson:receiver toBalance:[NSNumber numberWithDouble:([balance doubleValue] + (divAmount * [recWeight.weight doubleValue]))]];
+                }
             }
         }
     }
@@ -121,7 +139,7 @@
         }
     };
     [summary.accounts removeObjectsForKeys:removeArray];
-  
+    
     [removeArray removeAllObjects];
     NSMutableDictionary *addDict = [NSMutableDictionary dictionary];
     
@@ -145,6 +163,10 @@
     };
     [summary.accounts removeObjectsForKeys:removeArray];
     [summary.accounts addEntriesFromDictionary:addDict];
+    
+    if (performEliminateCircularDebts) {
+        [summary eliminateCircularDebts:summary.accounts];
+    }
     
     return summary;
 }
@@ -185,15 +207,119 @@
     
     int multiplier = [self getMultiplierFromPerson:person1 withPerson:person2];
     ParticipantKey *key = [self createKey:(Participant *)person1 withPerson:(Participant *)person2];
- 
+    
     NSNumber *returnValue = [_accounts objectForKey:key];
     if (!returnValue) {
-        returnValue = [[[NSNumber alloc] initWithInt:0] autorelease];
+        returnValue = [NSNumber numberWithInt:0];
         [_accounts setObject:returnValue forKey:key];
         //NSLog(@"Creating account for %@ and %@", key.payer.name, key.receiver.name);
     }
     return [NSNumber numberWithDouble:([returnValue doubleValue] * multiplier)];
     
+}
+
+/* Transfer circular elimiations */
+
+#define STATE_INIT 0
+#define STATE_IN_PROGRESS 1
+#define STATE_DONE 2
+
+- (void) eliminateCircularDebts:(NSMutableDictionary *)arrayOfParticipantKeys {
+    
+    Participant *startParticipant = nil;
+    NSMutableDictionary *knoten = [NSMutableDictionary dictionaryWithCapacity:[arrayOfParticipantKeys count]];
+    for (ParticipantKey *pKey in arrayOfParticipantKeys.keyEnumerator) {
+        if (!startParticipant) {
+            startParticipant = pKey.receiver;
+        }
+        [knoten setObject:[NSNumber numberWithInt:STATE_INIT] forKey:[pKey.receiver objectID]];
+        [knoten setObject:[NSNumber numberWithInt:STATE_INIT] forKey:[pKey.payer objectID]];
+    }
+    
+    TransferCycle *cycle = [[[TransferCycle alloc] init] autorelease];
+    
+    while(startParticipant && (cycle = [self walkPath:arrayOfParticipantKeys andKnoten:(NSMutableDictionary *)knoten andParticipant:startParticipant andCycle:cycle])) {
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:2];
+        [formatter setRoundingMode: NSNumberFormatterRoundDown];
+        
+        BOOL removed = NO;
+        for (ParticipantKey *key in cycle.participantKeys) {
+            NSNumber *oldValue = (NSNumber *) [arrayOfParticipantKeys objectForKey:key];
+            double newValueDbl = [oldValue doubleValue] - [cycle.minWeight doubleValue];
+            NSNumber *newValue = [formatter numberFromString:[formatter stringFromNumber:[NSNumber numberWithDouble:newValueDbl]]]; 
+            
+            if ([newValue doubleValue] == 0) {
+                [arrayOfParticipantKeys removeObjectForKey:key];
+                removed = YES;
+            } else {
+                [arrayOfParticipantKeys setObject:[NSNumber numberWithDouble:newValueDbl] forKey:key];
+            }
+            
+        }
+        
+        [formatter release];
+        
+        if (!removed) {
+            NSLog(@"This should never happen!");
+            break;
+        }
+        
+        [knoten removeAllObjects];
+        for (ParticipantKey *pKey in arrayOfParticipantKeys.keyEnumerator) {
+            [knoten setObject:[NSNumber numberWithInt:STATE_INIT] forKey:[pKey.receiver objectID]];
+            [knoten setObject:[NSNumber numberWithInt:STATE_INIT] forKey:[pKey.payer objectID]];
+        }
+        cycle = [[[TransferCycle alloc] init] autorelease];
+    }
+    
+}
+
+- (TransferCycle *) walkPath:(NSDictionary *)arrayOfParticipantKeys andKnoten:(NSMutableDictionary *)knoten andParticipant:(Participant *)participant andCycle:(TransferCycle *)cycle {
+    
+    TransferCycle *returnCycle = nil;
+    
+    if ([((NSNumber *) [knoten objectForKey:[participant objectID]]) intValue] == STATE_IN_PROGRESS) {
+        
+        while(![((ParticipantKey *)[cycle.participantKeys objectAtIndex:0]).payer isEqual:participant]) {
+            [cycle.participantKeys removeObjectAtIndex:0];
+        }
+        
+        NSLog(@"Cycle found:");
+        for (ParticipantKey *key in cycle.participantKeys) {
+            NSLog(@"%@ -> %@", key.payer.name, key.receiver.name);
+        }
+        
+        returnCycle = cycle;
+        
+    } else {
+        
+        if ([((NSNumber *) [knoten objectForKey:[participant objectID]]) intValue] == STATE_INIT) {
+            
+            [knoten setObject:[NSNumber numberWithInt:STATE_IN_PROGRESS] forKey:[participant objectID]];
+            
+            for (ParticipantKey *key in [arrayOfParticipantKeys keyEnumerator]) {
+                if ([key.payer isEqual:participant]) {
+                    TransferCycle *newCycle = [[cycle mutableCopyWithZone:nil] autorelease];
+                    [newCycle.participantKeys addObject:key];
+                    if ([[arrayOfParticipantKeys objectForKey:key] doubleValue] < [[cycle minWeight] doubleValue]) {
+                        newCycle.minWeight = [arrayOfParticipantKeys objectForKey:key];     
+                    }
+                    returnCycle = [self walkPath:arrayOfParticipantKeys andKnoten:knoten andParticipant:key.receiver andCycle:newCycle];
+                    
+                    if (returnCycle) {
+                        break;
+                    }
+                }
+            }
+            
+            [knoten setObject:[NSNumber numberWithInt:STATE_DONE] forKey:[participant objectID]];
+        }
+        
+    }
+    
+    return returnCycle;
 }
 
 @end

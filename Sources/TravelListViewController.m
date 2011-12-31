@@ -15,6 +15,7 @@
 #import "UIFactory.h"
 #import "ShadowNavigationController.h"
 #import "HelpView.h"
+#import "GradientView.h"
 
 @implementation TravelListViewController
 

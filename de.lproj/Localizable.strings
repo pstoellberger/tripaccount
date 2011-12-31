@@ -1,5 +1,5 @@
 /* param1 'and' param2 count:2 */
-"%@ and %@" = "%1$@ and %2$@";
+"%@ and %@" = "%1$@ und %2$@";
 
 /* built-in type mark */
 "(built-in)" = "(Standardtyp)";
@@ -199,7 +199,8 @@
 "help closed travel" = "Dieser Trip ist abgeschlossen und kann nicht mehr geändert werden. Die Wechselkurse für diesen Trip sind nun fixiert.";
 
 /* alert no mail addresses */
-"There are no email addresses available for the participant%@ %@" = "Die Personen%1$@ %2$@ besitzen keine Email-Adressen.";
+"no mail address singular" = "%1$@ besitzt keine Email-Adresse.";
+"no mail address plural" = "%1$@ besitzen keine Email-Adressen.";
 
 /* help bubble action button */
 "help action" = "Dieser Button ermöglicht Aktionen wie das Senden des Abrechnungs-Emails. Hier können auch die Wechselkurse fixiert oder händisch editiert werden.";
@@ -327,3 +328,5 @@
 "Back" = "Zurück";
 
 "finished" = "Erledigt.";
+
+"Reset Weight" = "Gewichtungen zurücksetzen";

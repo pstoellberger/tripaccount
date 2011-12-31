@@ -8,6 +8,8 @@
 
 #import "EntryNotManaged.h"
 #import "Entry.h"
+#import "ReceiverWeightNotManaged.h"
+#import "ReceiverWeight.h"
 
 
 @implementation EntryNotManaged
@@ -19,7 +21,7 @@
 @synthesize travel;
 @synthesize type;
 @synthesize payer;
-@synthesize receivers;
+@synthesize receiverWeights;
 @synthesize currency;
 
 
@@ -32,7 +34,7 @@
         self.payer = nil;
         self.amount = 0;
         self.travel = nil;
-        self.receivers = [NSSet set];
+        self.receiverWeights = [NSSet set];
         self.type = nil;
     }
     return self;
@@ -46,8 +48,8 @@
         self.date = entry.date;
         self.payer = entry.payer;
         self.amount = entry.amount;
+        self.receiverWeights = [NSSet set];
         self.travel = entry.travel;
-        self.receivers = entry.receivers;
         self.type = entry.type;
     }
     return self;
@@ -56,7 +58,34 @@
 - (NSArray *)sortedReceivers {
     
     NSArray *allSortDescriptor = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]];
-    return [[self.receivers allObjects] sortedArrayUsingDescriptors:allSortDescriptor];
+    NSMutableArray *receivers = [NSMutableArray arrayWithCapacity:[self.receiverWeights count]];
+    for (ReceiverWeightNotManaged *recWeight in self.receiverWeights) {
+        [receivers addObject:recWeight.participant];
+    }
+    return [receivers sortedArrayUsingDescriptors:allSortDescriptor];
+
+}
+
+- (NSArray *)activeReceiverWeights {
+    
+    NSMutableArray *activeReceiverWeights = [NSMutableArray arrayWithCapacity:[self.receiverWeights count]];
+    for (ReceiverWeightNotManaged *recWeight in self.receiverWeights) {
+        if (recWeight.active) {
+            [activeReceiverWeights addObject:recWeight];
+        }
+    }
+    return activeReceiverWeights;
+}
+
+- (BOOL)receiverWeightsDifferFromDefault {
+    
+    for (ReceiverWeight *recWeight in self.receiverWeights) {
+        if (![recWeight.weight isEqualToNumber:recWeight.participant.weight]) {
+            return YES;
+        }
+    }
+    return NO;
+    
 }
 
 @end

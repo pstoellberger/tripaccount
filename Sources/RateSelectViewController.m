@@ -103,7 +103,7 @@
 
 - (void)selectRate:(ExchangeRate *)rate {
     
-    NumberEditViewController *controller = [[NumberEditViewController alloc] initWithNumber:rate.rate withDecimals:4 currency:nil travel:nil target:self selector:@selector(selectNewRateValue:)];
+    NumberEditViewController *controller = [[NumberEditViewController alloc] initWithNumber:rate.rate withDecimals:4 andNamedImage:@"wallet_open.png" target:self selector:@selector(selectNewRateValue:)];
     self.rateToEdit = rate;
     
     [self.navigationController pushViewController:controller animated:YES];

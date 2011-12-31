@@ -15,7 +15,7 @@
 #define CONVERSION_LABEL_GAP 5
 
 @interface NumberEditViewController : UITableViewController <UITextFieldDelegate> {
-
+    NSString *_namedImage;
 }
 
 @property (nonatomic, retain) id target;
@@ -30,10 +30,13 @@
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Currency *currency;
 
+@property (nonatomic) BOOL allowNull;
+@property (nonatomic) BOOL allowZero;
+
 @property (nonatomic) int decimals;
 
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel target:(id)target selector:(SEL)selector;
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals target:(id)target selector:(SEL)selector;
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector;
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector;
 - (void)done;
 - (void)refreshConversion;
 

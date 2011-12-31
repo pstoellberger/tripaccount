@@ -14,12 +14,12 @@
 }
 
 @property (nonatomic, retain) EntryNotManaged *entry;
+@property (nonatomic, retain) UIView *footerView;
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context
                        withEntry:(EntryNotManaged *)entry
-              withMultiSelection:(BOOL)multiSelection 
                 withFetchRequest:(NSFetchRequest *)fetchRequest
-             withSelectedObjects:(NSArray *)newSelectedObjects
+        withSelectedParticipants:(NSArray *)selectedParticipants
                           target:(id)target 
                           action:(SEL)selector;
 

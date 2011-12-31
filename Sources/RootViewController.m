@@ -36,7 +36,10 @@
           self.tableViewController = [[[TravelListViewController alloc] initInManagedObjectContext:context withRootViewController:self] autorelease];
           self.tableViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
           self.tableViewController.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-          self.tableViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
+          
+          UIEdgeInsets insets = self.tableViewController.tableView.contentInset;
+          insets.top = NAVIGATIONBAR_HEIGHT;
+          self.tableViewController.tableView.contentInset = insets;
           self.tableViewController.tableView.scrollIndicatorInsets = self.tableViewController.tableView.contentInset;
           
           [self.view addSubview:self.tableViewController.view];
@@ -54,7 +57,9 @@
 
 - (void)updateTableViewInsets {
      
-     self.tableViewController.tableView.contentInset = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
+     UIEdgeInsets insets = self.tableViewController.tableView.contentInset;
+     insets.top = self.navigationController.navigationBar.frame.size.height;
+     self.tableViewController.tableView.contentInset = insets;
      self.tableViewController.tableView.scrollIndicatorInsets = self.tableViewController.tableView.contentInset;
 }
 

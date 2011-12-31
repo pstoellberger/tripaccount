@@ -21,7 +21,7 @@
         return amount;
     }
     
-    NSLog(@"converting %@ to %@", self.name, currency.name);
+    //NSLog(@"converting %@ to %@", self.name, currency.name);
     
     if ([self isEqual:currency]) {
         return amount;

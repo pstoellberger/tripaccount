@@ -16,6 +16,8 @@
 #import "DateSelectViewController.h"
 #import "TypeViewController.h"
 #import "ParticipantSelectViewController.h"
+#import "ReceiverWeightNotManaged.h"
+#import "ReceiverWeight.h"
 
 static NSIndexPath *_payerIndexPath;
 static NSIndexPath *_amountIndexPath;
@@ -62,6 +64,25 @@ static NSIndexPath *_dateIndexPath;
         
         if (entryManaged) {
             self.nmEntry = [[[EntryNotManaged alloc] initWithEntry:entryManaged] autorelease];
+            self.nmEntry.travel = travel;
+            
+            NSMutableSet *recWeightsNM = [NSMutableSet setWithCapacity:travel.participants.count];
+            
+            for (Participant *participant in travel.participants) {
+                ReceiverWeightNotManaged *recWeightNM = [[ReceiverWeightNotManaged alloc] initWithParticiant:participant andWeight:participant.weight];
+                recWeightNM.active = NO;
+                
+                for (ReceiverWeight *recWeight in entryManaged.receiverWeights) {
+                    if ([recWeight.participant isEqual:participant]) {
+                        recWeightNM.weight = recWeightNM.weight;
+                        recWeightNM.active = YES;
+                        break;
+                    }
+                }
+                [recWeightsNM addObject:recWeightNM];
+                [recWeightNM release];
+            }
+            self.nmEntry.receiverWeights = recWeightsNM;
         }
         
         self.tableView.backgroundColor = [UIColor clearColor];
@@ -109,9 +130,16 @@ static NSIndexPath *_dateIndexPath;
                 }
             }
             
-            self.nmEntry.receivers = travel.participants;
+            // Create default ReceiverWeights
+            NSMutableSet *recWeightNM = [NSMutableSet setWithCapacity:travel.participants.count];
+            for (Participant *participant in travel.participants) {
+                ReceiverWeightNotManaged *newRecWeight = [[ReceiverWeightNotManaged alloc] initWithParticiant:participant andWeight:participant.weight];
+                [recWeightNM addObject:newRecWeight];
+                [newRecWeight release];
+            }
+            self.nmEntry.receiverWeights = recWeightNM;
+            
             self.nmEntry.date = [UIFactory createDateWithoutTimeFromDate:[NSDate date]];
-            //self.nmEntry.type = [ReiseabrechnungAppDelegate defaultsObject:[travel managedObjectContext]].defaultType;
         }
         
         [self checkIfDoneIsPossible];
@@ -123,27 +151,20 @@ static NSIndexPath *_dateIndexPath;
 
 - (void)initIndexPaths {
     _payerIndexPath = [[NSIndexPath indexPathForRow:0 inSection:0] retain];
-    _dateIndexPath = [[NSIndexPath indexPathForRow:0 inSection:1] retain];
-    _descriptionIndexPath = [[NSIndexPath indexPathForRow:1 inSection:2] retain];
-    _typeIndexPath = [[NSIndexPath indexPathForRow:0 inSection:2] retain];
-    _amountIndexPath = [[NSIndexPath indexPathForRow:0 inSection:3] retain];
-    _currencyIndexPath = [[NSIndexPath indexPathForRow:1 inSection:3] retain];
-    _receiverIndexPath = [[NSIndexPath indexPathForRow:0 inSection:4] retain];
+    _dateIndexPath = [[NSIndexPath indexPathForRow:1 inSection:0] retain];
+    _descriptionIndexPath = [[NSIndexPath indexPathForRow:2 inSection:0] retain];
+    _typeIndexPath = [[NSIndexPath indexPathForRow:3 inSection:0] retain];
+    _amountIndexPath = [[NSIndexPath indexPathForRow:4 inSection:0] retain];
+    _currencyIndexPath = [[NSIndexPath indexPathForRow:5 inSection:0] retain];
+    _receiverIndexPath = [[NSIndexPath indexPathForRow:6 inSection:0] retain];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch(section) {
-        case 0: return 1;
-        case 1: return 1;
-        case 2: return 2;
-        case 3: return 2;
-        case 4: return 1;
-    }
-    return 0;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -152,7 +173,7 @@ static NSIndexPath *_dateIndexPath;
     
     if ([indexPath isEqual:_payerIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"user1.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Payer", @"cell title payer");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
@@ -162,7 +183,7 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_amountIndexPath]) {
 
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"wallet_open.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Amount", @"cell title amount");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
@@ -177,7 +198,7 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_dateIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"date-time.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Date", @"cell title date");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
@@ -193,7 +214,7 @@ static NSIndexPath *_dateIndexPath;
         }
     } else if ([indexPath isEqual:_currencyIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"money2.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Currency", @"cell title currency");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
@@ -203,14 +224,14 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_descriptionIndexPath]) {        
 
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"pencil.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Description", @"cell title description");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.nmEntry.text;
         
     } else if ([indexPath isEqual:_typeIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"components.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Type", @"cell title type");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
@@ -220,15 +241,17 @@ static NSIndexPath *_dateIndexPath;
 
     } else if ([indexPath isEqual:_receiverIndexPath]) {
         
-        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell"] autorelease];
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"users_into.png"] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"Receiver", @"cell title receiver");
         
         NSString *receiverString = @"";
         const unichar cr = '\n';
         NSString *singleCR = [NSString stringWithCharacters:&cr length:1];
-        for (Participant *receiver in self.nmEntry.sortedReceivers) {
-            receiverString = [[receiverString stringByAppendingString:receiver.name] stringByAppendingString:singleCR];
+        for (ReceiverWeightNotManaged *recWeights in self.nmEntry.receiverWeights) {
+            if (recWeights.active) {
+                receiverString = [[receiverString stringByAppendingString:recWeights.participant.name] stringByAppendingString:singleCR];
+            }
         }
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n", [receiverString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
@@ -242,9 +265,10 @@ static NSIndexPath *_dateIndexPath;
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath isEqual:_receiverIndexPath] && [self.nmEntry.receivers count] > 1) {
-        return 40 + (([self.nmEntry.receivers count]-1) * 19.5);
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *activeReceiverWeights = [self.nmEntry activeReceiverWeights];
+    if ([indexPath isEqual:_receiverIndexPath] && [activeReceiverWeights count] > 1) {
+        return 40 + (([activeReceiverWeights count]-1) * 19.5);
     } else {
         return [UIFactory defaultCellHeight];
     }
@@ -273,7 +297,7 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_amountIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withDecimals:2 currency:self.nmEntry.currency travel:self.travel target:self selector:@selector(selectAmount:)]; 
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withDecimals:2 currency:self.nmEntry.currency travel:self.travel andNamedImage:@"wallet_open.png" target:self selector:@selector(selectAmount:)]; 
         numberEditViewController.title = NSLocalizedString(@"Amount", @"controller title amount");
         [self.navigationController pushViewController:numberEditViewController animated:YES];
         [numberEditViewController release]; 
@@ -326,13 +350,19 @@ static NSIndexPath *_dateIndexPath;
         _fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]];
         _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"travel = %@", self.travel];
         
-        ParticipantSelectViewController *selectViewController = [[ParticipantSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext]
-                                                                                                                         withEntry:self.nmEntry
-                                                                                                                 withMultiSelection:YES
+        NSMutableArray *selectedParticipants = [NSMutableArray arrayWithCapacity:self.nmEntry.receiverWeights.count];
+        for (ReceiverWeightNotManaged *recWeightNM in self.nmEntry.receiverWeights) {
+            if (recWeightNM.active) {
+                [selectedParticipants addObject:recWeightNM.participant];
+            }
+        }
+        
+        ParticipantSelectViewController *selectViewController = [[ParticipantSelectViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext] 
+                                                                                                                          withEntry:self.nmEntry
                                                                                                                    withFetchRequest:_fetchRequest 
-                                                                                                                withSelectedObjects:[self.nmEntry.receivers allObjects] 
-                                                                                                                     target:self
-                                                                                                                     action:@selector(selectReceivers:)];
+                                                                                                           withSelectedParticipants:selectedParticipants
+                                                                                                                             target:self
+                                                                                                                             action:@selector(selectReceivers:)];
         
         selectViewController.imageKey = @"image";
         selectViewController.title = NSLocalizedString(@"Receivers", @"controller title receivers");
@@ -419,7 +449,6 @@ static NSIndexPath *_dateIndexPath;
         
         [_cellsToReloadAndFlash addObject:_payerIndexPath];
         [_cellsToReloadAndFlash addObject:_dateIndexPath];
-        [_cellsToReloadAndFlash addObject:_typeIndexPath];
         [_cellsToReloadAndFlash addObject:_currencyIndexPath];
         [_cellsToReloadAndFlash addObject:_receiverIndexPath];
         
@@ -471,8 +500,8 @@ static NSIndexPath *_dateIndexPath;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)selectReceivers:(NSArray *)receivers {
-    self.nmEntry.receivers = [[[NSSet alloc] initWithArray:receivers] autorelease];
+- (void)selectReceivers:(NSArray *)receiverWeights {
+    
     [_cellsToReloadAndFlash addObject:_receiverIndexPath];
     
     [self.navigationController popViewControllerAnimated:YES];

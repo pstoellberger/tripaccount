@@ -7,6 +7,7 @@
 #import "CoreDataTableViewController.h"
 #import "UIFactory.h"
 #import "GradientCell.h"
+#import "GradientView.h"
 
 @interface CoreDataTableViewController () 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
@@ -205,6 +206,9 @@
 	cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
 	UIImage *thumbnail = [self thumbnailImageForManagedObject:managedObject];
 	if (thumbnail) cell.imageView.image = thumbnail;
+    
+    
+    NSLog(@"%f", self.tableView.contentInset.bottom);
 
 	return cell;
 }
@@ -254,6 +258,27 @@
 {
 	NSManagedObject *managedObject = [[self fetchedResultsControllerForTableView:tableView] objectAtIndexPath:indexPath];
 	[self deleteManagedObject:managedObject];
+}
+
+#pragma mark UIView methods
+
+#define FOOTER_HEIGHT 10
+
+- (void)loadView {
+
+    [super loadView];
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, FOOTER_HEIGHT)];
+    footerView.backgroundColor = [UIColor clearColor];
+    [UIFactory addGradientToView:footerView color1:[UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.5] color2:[UIColor clearColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(0, 1)];
+    footerView.contentMode = UIViewContentModeScaleToFill;
+
+    self.tableView.tableFooterView = footerView;
+    
+    UIEdgeInsets inset = self.tableView.contentInset;
+    inset.bottom = -FOOTER_HEIGHT;
+    self.tableView.contentInset = inset;
+    
 }
 
 #pragma mark UIViewController methods

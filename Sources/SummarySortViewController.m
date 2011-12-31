@@ -25,6 +25,10 @@
     if (self = [super init]) {
         self.travel = travel;
         _currencyArray = [self.travel.sortedCurrencies retain];
+
+        _dateFormatter = [[[NSDateFormatter alloc] init] retain];
+        _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        _dateFormatter.timeStyle = NSDateFormatterMediumStyle;
         
         SummaryViewController *evc = [[SummaryViewController alloc] initWithTravel:travel];
         self.detailViewController = evc;
@@ -41,10 +45,6 @@
 }
 
 - (void)updateRateLabel:(BOOL)animate; {
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterMediumStyle;
     
     float animationDuration = 0.5;
     if (!animate) {
@@ -63,12 +63,12 @@
         } else {
             
             NSDate *lastUpdated = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdatedKey]];
-            self.lastUpdatedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Rates last updated at %@", @"status bar last updated"), [formatter stringFromDate:lastUpdated]];
+            self.lastUpdatedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Rates last updated at %@", @"status bar last updated"), [_dateFormatter stringFromDate:lastUpdated]];
         }
             
     } else {
         
-        self.lastUpdatedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Travel closed at %@", @"status bar travel closed"), [formatter stringFromDate:self.travel.closedDate]];
+        self.lastUpdatedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Travel closed at %@", @"status bar travel closed"), [_dateFormatter stringFromDate:self.travel.closedDate]];
         
         if (!CGAffineTransformIsIdentity(self.ratesToolBar.transform)) {
             [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformIdentity; } ];            
@@ -79,7 +79,6 @@
     
     self.detailViewController.view.frame = CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.ratesToolBar.frame.origin.y);
     
-    [formatter release];
 }
 
 - (void)centerRateLabel {
@@ -207,6 +206,7 @@
 
 -(void)dealloc {
     [_currencyArray release];
+    [_dateFormatter release];
     
     [super dealloc];
 }
