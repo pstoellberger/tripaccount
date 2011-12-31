@@ -567,8 +567,8 @@
 		F100DEBE13E2C5B700BB1E6E /* moreImages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreImages.png; sourceTree = "<group>"; };
 		F100DEC513E2E5F800BB1E6E /* DateSortCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSortCategory.h; sourceTree = "<group>"; };
 		F100DEC613E2E5F800BB1E6E /* DateSortCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSortCategory.m; sourceTree = "<group>"; };
-		F10764C5148367E000A06809 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = tmp/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = "<group>"; };
-		F10764C6148367E000A06809 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = tmp/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = "<group>"; };
+		F10764C5148367E000A06809 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
+		F10764C6148367E000A06809 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		F10CC24C147315D900714417 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		F10CC24D147315D900714417 /* Crittercism_v2_9_27.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = Crittercism_v2_9_27.a; sourceTree = "<group>"; };
 		F10CC24E147315D900714417 /* CrittercismAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismAboutViewController.h; sourceTree = "<group>"; };
@@ -1182,7 +1182,7 @@
 				F10764C5148367E000A06809 /* MTStatusBarOverlay.h */,
 				F10764C6148367E000A06809 /* MTStatusBarOverlay.m */,
 			);
-			name = MTStatusBarOverlay;
+			path = MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 		F10CC24B147315D900714417 /* CrittercismSDK */ = {
