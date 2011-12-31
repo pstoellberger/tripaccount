@@ -24,6 +24,20 @@
 #import "AppDefaults.h"
 #import "Locator.h"
 #import "MTStatusBarOverlay.h"
+#import "Appirater.h"
+
+extern NSString *const ITUNES_STORE_LINK;
+extern NSString *const ITUNES_STORE_RATE_LINK;
+
+#define TRIP_ACCOUNT_ID APPIRATER_APP_ID
+#define TRIP_ACCOUNT_LITE_ID 492419567
+
+#ifdef LITE_VERSION
+#define CURRENT_APP_ID TRIP_ACCOUNT_LITE_ID
+#else
+#define CURRENT_APP_ID TRIP_ACCOUNT_ID
+#define
+#endif
 
 @interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate, MTStatusBarOverlayDelegate>
 

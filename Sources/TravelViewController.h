@@ -36,6 +36,7 @@
 
 @property (nonatomic, retain) UIAlertView *rateRefreshAlertView;
 @property (nonatomic, retain) UIAlertView *mailSendAlertView;
+@property (nonatomic, retain) UIAlertView *liteWarningAlertView;
 
 @property (nonatomic, retain) UIActionSheet *actionSheetOpenTravel;
 @property (nonatomic, retain) UIActionSheet *actionSheetOpenTravelNoCurrency;

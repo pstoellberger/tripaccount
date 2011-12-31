@@ -26,6 +26,9 @@
 
 @implementation ReiseabrechnungAppDelegate
 
+NSString *const ITUNES_STORE_LINK = @"itms-apps://itunes.apple.com/us/app/trip-account/id%d?mt=8&uo=4";
+NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d";
+
 @synthesize helpBubbles=_helpBubbles;
 
 @synthesize window=_window;
