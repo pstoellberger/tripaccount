@@ -36,7 +36,6 @@ extern NSString *const ITUNES_STORE_RATE_LINK;
 #define CURRENT_APP_ID TRIP_ACCOUNT_LITE_ID
 #else
 #define CURRENT_APP_ID TRIP_ACCOUNT_ID
-#define
 #endif
 
 @interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate, MTStatusBarOverlayDelegate>
