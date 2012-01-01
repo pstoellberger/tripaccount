@@ -50,6 +50,9 @@
         [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];
         [self setButtonTitle:self.rateButton title:NSLocalizedString(@"rate this app", @"rate button")];
         
+        self.feedbackButton.enabled = [MFMailComposeViewController canSendMail];
+        self.featureButton.enabled = [MFMailComposeViewController canSendMail];
+        
         [self.closeButton sizeToFit];
         self.closeButton.frame = CGRectMake(self.view.frame.size.width - self.closeButton.frame.size.width - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.view.frame.size.height - self.closeButton.frame.size.height - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.width - CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.height - CLOSE_LABEL_SIZE_REDUCTION);
         

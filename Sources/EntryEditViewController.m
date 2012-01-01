@@ -258,10 +258,6 @@ static NSIndexPath *_dateIndexPath;
         cell.detailTextLabel.numberOfLines = 0;
     }
     
-    if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] -1 ) {
-        //[UIFactory addShadowToView:cell];
-    }
-    
     return cell;
 }
 
@@ -379,14 +375,14 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath == _descriptionIndexPath);  
+    return [indexPath isEqual:_descriptionIndexPath];  
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath == _descriptionIndexPath) {
+    if ([indexPath isEqual:_descriptionIndexPath]) {
         self.nmEntry.text = @"";
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
     }
 }
 

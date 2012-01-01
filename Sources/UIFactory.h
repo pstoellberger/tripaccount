@@ -57,5 +57,6 @@
 + (void)replaceHelpViewInView:(NSString *)replaceHelpViewId withView:(HelpView *)helpView toView:(UIView *)view;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 + (NSString *)translateString:(NSString *)dbString;
++ (UITableViewRowAnimation)commitEditingStyleRowAnimation;
 
 @end

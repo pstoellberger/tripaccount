@@ -234,7 +234,7 @@
         type.hidden = [NSNumber numberWithInt:1];
         [ReiseabrechnungAppDelegate saveContext:self.context];
         
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
     }
 }
 
