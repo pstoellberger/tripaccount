@@ -493,7 +493,7 @@
         }
         
         NSString *text = NSLocalizedString(@"help sort", @"help bubble sort buttons");
-        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, navBarHeight + entrySortHeight - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort button entry"];
+        HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(10, navBarHeight + entrySortHeight - 5, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_LEFT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"sort desc asc button entry"];
         [UIFactory addHelpViewToView:helpView toView:viewController.view];
         [helpView release];
         
