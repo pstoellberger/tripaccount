@@ -431,6 +431,9 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
                 [entry removeReceivers:entry.receivers];
             }
         }
+        if ([travel isOpen]) {
+            [Summary updateSummaryOfTravel:travel]; 
+        }
     }
     
     [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];

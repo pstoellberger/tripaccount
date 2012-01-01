@@ -21,5 +21,7 @@
 - (void)close;
 - (BOOL)isWeightInUse;
 - (NSNumber *)totalWeight;
+- (BOOL) isClosed;
+- (BOOL) isOpen;
 
 @end

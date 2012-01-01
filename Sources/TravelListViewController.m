@@ -57,7 +57,7 @@
     
     if (self.tableView.editing) {
         
-        if ([((Travel *)managedObject).closed intValue] != 1) {
+        if ([((Travel *)managedObject) isOpen]) {
             
             TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext withTravel:(Travel *)managedObject];
             detailViewController.editDelegate = self.rootViewController;

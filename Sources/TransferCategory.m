@@ -20,4 +20,8 @@
     
 }
 
+- (BOOL)wasPaid {
+    return [self.paid isEqualToNumber:[NSNumber numberWithInt:1]];
+}
+
 @end

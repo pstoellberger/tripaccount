@@ -89,13 +89,13 @@
     cell.leftImage.alpha = 1;
     
     UIColor *textColor = [UIColor blackColor];
-    if ([self.travel.closed intValue] == 1) {
+    if ([self.travel isClosed]) {
         textColor = [UIColor grayColor];
         cell.rightImage.alpha = 0.6;
         cell.leftImage.alpha = 0.6;
     }
     
-    if ([self.travel.closed intValue] == 1 && [transfer.paid intValue] == 1) {
+    if ([self.travel isClosed] && [transfer.paid intValue] == 1) {
        cell.paid.hidden = NO; 
     }
 
@@ -113,9 +113,9 @@
    
     Transfer *transfer = (Transfer *)managedObject;
     
-    if ([self.travel.closed intValue] == 1) {
+    if ([self.travel isClosed]) {
         
-        if ([transfer.paid intValue] == 1) {
+        if ([transfer wasPaid]) {
             transfer.paid = [NSNumber numberWithInt:0];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[[self fetchedResultsControllerForTableView:self.tableView] indexPathForObject:managedObject]] withRowAnimation:UITableViewRowAnimationLeft];
         } else {
@@ -152,7 +152,7 @@
     
     NSLog(@"recalculate summary.");
 
-    if ([self.travel.closed intValue] != 1) {
+    if ([self.travel isOpen]) {
         
         [Summary updateSummaryOfTravel:self.travel];
     }
