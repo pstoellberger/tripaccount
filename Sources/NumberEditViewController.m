@@ -92,7 +92,10 @@
             if ([self.number doubleValue] != 0) {
                 [self refreshConversion];
             }
-        } 
+        }
+        
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)] autorelease];
     }
     return self;    
 }

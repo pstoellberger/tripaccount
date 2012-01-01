@@ -451,6 +451,8 @@
 		F12C09B214B07A4C00D97DEC /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C09B014B07A4B00D97DEC /* ImageUtils.m */; };
 		F12C09B414B0DC6D00D97DEC /* exchange.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C09B314B0DC6C00D97DEC /* exchange.png */; };
 		F12C09B514B0DC6D00D97DEC /* exchange.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C09B314B0DC6C00D97DEC /* exchange.png */; };
+		F12C09BB14B0FE4700D97DEC /* darkbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C09BA14B0FE4600D97DEC /* darkbackground@2x.png */; };
+		F12C09BC14B0FE4700D97DEC /* darkbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C09BA14B0FE4600D97DEC /* darkbackground@2x.png */; };
 		F12C7A9E13D0F7C600668BF0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */; };
 		F12C7A9F13D0F7C600668BF0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9D13D0F7C600668BF0 /* MapKit.framework */; };
 		F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F14B372013E67BDF00351641 /* CurrencyHelperCategory.m */; };
@@ -916,6 +918,7 @@
 		F12C09AF14B07A4B00D97DEC /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		F12C09B014B07A4B00D97DEC /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		F12C09B314B0DC6C00D97DEC /* exchange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange.png; sourceTree = "<group>"; };
+		F12C09BA14B0FE4600D97DEC /* darkbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "darkbackground@2x.png"; sourceTree = "<group>"; };
 		F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F12C7A9D13D0F7C600668BF0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F14B371F13E67BDF00351641 /* CurrencyHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelperCategory.h; sourceTree = "<group>"; };
@@ -2077,6 +2080,7 @@
 				F1D4B231140CEB2500CD2224 /* scales@2x.png */,
 				F100DEBE13E2C5B700BB1E6E /* moreImages.png */,
 				F159EA3A13E0DA3D00C2D855 /* darkbackground.png */,
+				F12C09BA14B0FE4600D97DEC /* darkbackground@2x.png */,
 				F1A6C63113D6BFA6005E8388 /* noImage.png */,
 			);
 			path = Images;
@@ -2463,6 +2467,7 @@
 				F12C099914AF80E200D97DEC /* Default@2x.png in Resources */,
 				F12C09AA14B05FCA00D97DEC /* photo_portrait.png in Resources */,
 				F12C09B514B0DC6D00D97DEC /* exchange.png in Resources */,
+				F12C09BC14B0FE4700D97DEC /* darkbackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2761,6 +2766,7 @@
 				F117FC6F14900B7D009205C2 /* clock.png in Resources */,
 				F12C09A914B05FCA00D97DEC /* photo_portrait.png in Resources */,
 				F12C09B414B0DC6D00D97DEC /* exchange.png in Resources */,
+				F12C09BB14B0FE4700D97DEC /* darkbackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

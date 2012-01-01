@@ -12,6 +12,7 @@
 
 @interface GenericSelectViewController () 
 - (void)done;
+- (void)cancel;
 - (void)updateSegmentedControl;
 - (UIView *)createTableHeaderSubView;
 @end
@@ -87,7 +88,8 @@
         if (multiSelection) {
             self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
             [self.navigationController.view setNeedsDisplay];
-            [self.navigationItem setHidesBackButton:YES animated:NO];
+            self.navigationItem.hidesBackButton = YES;
+            self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)] autorelease];
         }
         
         if (fetchRequest.predicate) {
@@ -146,6 +148,10 @@
             _segControl.selectedSegmentIndex = UISegmentedControlNoSegment;
         }
     }           
+}
+
+- (void)cancel {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)done {

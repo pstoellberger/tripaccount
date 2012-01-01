@@ -534,12 +534,14 @@
     insets.top = self.navigationController.navigationBar.frame.size.height;
     self.entrySortViewController.detailViewController.tableView.contentInset = insets;
     self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
+    self.entrySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
     
     insets = self.summarySortViewController.detailViewController.tableView.contentInset;
     insets.top = self.navigationController.navigationBar.frame.size.height;
     self.summarySortViewController.detailViewController.tableView.contentInset = insets;
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
-    
+    self.summarySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
+
 }
 
 
@@ -776,7 +778,6 @@
     [self.participantSortViewController viewDidAppear:animated];
     [self.entrySortViewController viewDidAppear:animated];
     [self.summarySortViewController viewDidAppear:animated];
-    
     
     [self initHelpBubbleForViewController:self.tabBarController.selectedViewController];
 }
