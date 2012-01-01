@@ -43,8 +43,7 @@
                                 {% if includeImages %}
                                     <img src="data:image/png;base64,{{ receiver.base64 }}" />
                                 {% /if %}
-                            
-                                {% if receiverWeight.participant.name equalsstring entry.sortedReceiverWeights.@lastObject.participant.name %}
+                                {% if receiverWeight.participant.objectID.description equalsString entry.sortedReceiverWeights.@lastObject.participant.objectID.description %}
                                     {{ receiverWeight.participant.name }}
                                     {% if entry.isWeightInUse %}
                                         ({{receiverWeight.weight}})
