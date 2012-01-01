@@ -450,6 +450,7 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
                 for (Participant *participant in entry.receivers) {
                     ReceiverWeight *recWeight = [NSEntityDescription insertNewObjectForEntityForName:@"ReceiverWeight" inManagedObjectContext:self.managedObjectContext];
                     recWeight.participant = participant;
+                    recWeight.weight = [NSNumber numberWithInt:1];
                     [entry addReceiverWeightsObject:recWeight];
                 }
                 [entry removeReceivers:entry.receivers];

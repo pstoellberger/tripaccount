@@ -176,7 +176,6 @@
 		F12C082814AF76A000D97DEC /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
 		F12C082914AF76A000D97DEC /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A6C63113D6BFA6005E8388 /* noImage.png */; };
 		F12C082A14AF76A000D97DEC /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
-		F12C082B14AF76A000D97DEC /* DateSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */; };
 		F12C082C14AF76A000D97DEC /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */; };
 		F12C082D14AF76A000D97DEC /* darkbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F159EA3A13E0DA3D00C2D855 /* darkbackground.png */; };
 		F12C082E14AF76A000D97DEC /* moreImages.png in Resources */ = {isa = PBXBuildFile; fileRef = F100DEBE13E2C5B700BB1E6E /* moreImages.png */; };
@@ -830,7 +829,6 @@
 		F1CE923513DD54B5009F3B2F /* EntrySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923413DD54B4009F3B2F /* EntrySortViewController.m */; };
 		F1CE923913DDBEDC009F3B2F /* TravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */; };
 		F1CE923D13DEA7B6009F3B2F /* DateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */; };
-		F1CE923E13DEA7B6009F3B2F /* DateSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */; };
 		F1D4B227140CBB7000CD2224 /* sampleTrip.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B226140CBB7000CD2224 /* sampleTrip.plist */; };
 		F1D4B22B140CD6E900CD2224 /* TransferCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B22A140CD6E800CD2224 /* TransferCategory.m */; };
 		F1D4B22E140CDF6D00CD2224 /* ParticipantSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B22D140CDF6800CD2224 /* ParticipantSortViewController.m */; };
@@ -1310,7 +1308,6 @@
 		F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelListViewController.m; sourceTree = "<group>"; };
 		F1CE923A13DEA7B6009F3B2F /* DateSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSelectViewController.h; sourceTree = "<group>"; };
 		F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectViewController.m; sourceTree = "<group>"; };
-		F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateSelectViewController.xib; sourceTree = "<group>"; };
 		F1D4B226140CBB7000CD2224 /* sampleTrip.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleTrip.plist; sourceTree = "<group>"; };
 		F1D4B229140CD6E600CD2224 /* TransferCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferCategory.h; sourceTree = "<group>"; };
 		F1D4B22A140CD6E800CD2224 /* TransferCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferCategory.m; sourceTree = "<group>"; };
@@ -1792,7 +1789,6 @@
 			children = (
 				F1D4B24A140D394F00CD2224 /* Localizable.strings */,
 				F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */,
-				F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */,
 				F1CD784013BA405B00D42AA3 /* MainWindow.xib */,
 				94FFEA6813E99BCA00FC97A4 /* RateCell.xib */,
 				F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */,
@@ -2196,7 +2192,6 @@
 				F12C082814AF76A000D97DEC /* types.plist in Resources */,
 				F12C082914AF76A000D97DEC /* noImage.png in Resources */,
 				F12C082A14AF76A000D97DEC /* SummaryCell.xib in Resources */,
-				F12C082B14AF76A000D97DEC /* DateSelectViewController.xib in Resources */,
 				F12C082C14AF76A000D97DEC /* InfoViewController.xib in Resources */,
 				F12C082D14AF76A000D97DEC /* darkbackground.png in Resources */,
 				F12C082E14AF76A000D97DEC /* moreImages.png in Resources */,
@@ -2494,7 +2489,6 @@
 				F1CE13E413D5C2F40079B234 /* types.plist in Resources */,
 				F1A6C63213D6BFA6005E8388 /* noImage.png in Resources */,
 				F1DB5A7B13D87D69001E3B4A /* SummaryCell.xib in Resources */,
-				F1CE923E13DEA7B6009F3B2F /* DateSelectViewController.xib in Resources */,
 				F159EA2F13E0AF3200C2D855 /* InfoViewController.xib in Resources */,
 				F159EA3B13E0DA3E00C2D855 /* darkbackground.png in Resources */,
 				F100DEBF13E2C5B700BB1E6E /* moreImages.png in Resources */,
