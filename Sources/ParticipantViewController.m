@@ -101,7 +101,7 @@
     cell.detailTextLabel.alpha = 1;
     cell.imageView.alpha = 1;
     
-    if ([self.travel.closed intValue] == 1) {
+    if ([self.travel isClosed]) {
         cell.textLabel.alpha = 0.6;
         cell.detailTextLabel.alpha = 0.6;
         cell.imageView.alpha = 0.6;
@@ -130,7 +130,7 @@
 }
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
-	return [self.travel.closed intValue] != 1;
+	return [self.travel isOpen];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -143,7 +143,7 @@
 }
 
 - (void)updateTravelOpenOrClosed {
-    self.tableView.allowsSelection = ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]];
+    self.tableView.allowsSelection = [self.travel isOpen];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

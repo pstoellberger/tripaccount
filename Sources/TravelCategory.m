@@ -65,6 +65,14 @@
     
 }
 
+- (BOOL) isClosed {
+    return [self.closed isEqualToNumber:[NSNumber numberWithInt:1]];
+}
+
+- (BOOL) isOpen {
+    return ![self isClosed];
+}
+
 - (NSArray *)sortedEntries {
     
     NSSortDescriptor *sortNameDescriptor = nil;

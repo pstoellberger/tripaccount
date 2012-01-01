@@ -171,7 +171,7 @@
 
 - (void)openActionPopup {
     
-    if ([self.travel.closed intValue] == 1) {
+    if ([self.travel isClosed]) {
         [self.actionSheetClosedTravel showInView:self.view];
     } else {
         if ([self.travel.currencies count] == 1) {
@@ -442,7 +442,7 @@
         self.navigationItem.rightBarButtonItem = self.addButton;
     }
     
-    self.addButton.enabled = [self.travel.closed intValue] != 1;
+    self.addButton.enabled = [self.travel isOpen];
     
 }
 
@@ -476,7 +476,7 @@
     double windowWidth = self.view.frame.size.width;
     double windowHeight = self.view.frame.size.height;
     
-    if (viewController == self.participantSortViewController && ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
+    if (viewController == self.participantSortViewController && [self.travel isOpen]) {
         
         NSString *text = NSLocalizedString(@"help add people", @"help bubble add travelers");
         HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(windowWidth - 102, navBarHeight, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"traveler add"];
@@ -485,7 +485,7 @@
         
     } else if (viewController == self.entrySortViewController) {
         
-        if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) {
+        if ([self.travel isOpen]) {
             NSString *text = NSLocalizedString(@"help add entries", @"help bubble add expenses");
             HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(windowWidth - 102, navBarHeight, 100, 100) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_TOP uniqueIdentifier:@"entry add"];
             [UIFactory addHelpViewToView:helpView toView:viewController.view];
@@ -510,7 +510,7 @@
         text = NSLocalizedString(@"help closed travel", @"help bubble close travel");
         HelpView *closedHelpView = [[HelpView alloc] initWithFrame:CGRectMake(110, windowHeight - 190, 100, 100) text:text arrowPosition:ARROWPOSITION_BOTTOM_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"travelClosedLabel"];
         
-        if (![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]]) { // is open
+        if ([self.travel isOpen]) { // is open
             if (self.summarySortViewController.segControl.numberOfSegments > 1) {
                 [UIFactory replaceHelpViewInView:closedHelpView.uniqueIdentifier withView:openHelpView toView:viewController.view];
             }
@@ -603,7 +603,7 @@
                 
             } else if (buttonIndex == 1) {
                 
-                if ([self.travel.closed intValue] == 1) {
+                if ([self.travel isClosed]) {
                     
                     if ([self.travel.currencies count] == 1) {
                         [self openTravel:YES];

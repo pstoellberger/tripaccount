@@ -13,4 +13,6 @@
 
 @property (nonatomic, readonly) NSNumber *amountInDisplayCurrency;
 
+- (BOOL)wasPaid;
+
 @end

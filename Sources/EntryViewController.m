@@ -133,7 +133,7 @@
     cell.forLabel.alpha = 1;
     
     UIColor *textColor = [UIColor blackColor];
-    if ([self.travel.closed intValue] == 1) {
+    if ([self.travel isClosed]) {
         textColor = [UIColor grayColor];
         cell.image.alpha = 0.6;
         cell.bottom.alpha = 0.6;
@@ -150,7 +150,7 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    if ([self.travel.closed intValue] != 1) {
+    if ([self.travel isOpen]) {
         
         [self.editDelegate openEditEntryPopup:(Entry *)managedObject];
         
@@ -179,7 +179,7 @@
 }
 
 - (BOOL)canDeleteManagedObject:(NSManagedObject *)managedObject {
-	return [self.travel.closed intValue] != 1;
+	return [self.travel isOpen];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -235,7 +235,7 @@
 }
 
 - (void)updateTravelOpenOrClosed {
-    self.tableView.allowsSelection = ![self.travel.closed isEqualToNumber:[NSNumber numberWithInt:1]];
+    self.tableView.allowsSelection = [self.travel isOpen];
 }
 
 #pragma mark - BadgeValue update 

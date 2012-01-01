@@ -51,7 +51,7 @@
         animationDuration = 0;
     }
     
-    if (![self.travel.closed isEqual:[NSNumber numberWithInt:1] ]) {
+    if ([self.travel isOpen]) {
         
         if (self.segControl.numberOfSegments <= 1) {
             
