@@ -40,6 +40,7 @@
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
         
+        self.tableView.tableFooterView = nil;
     }
     return self;
 }
@@ -150,6 +151,13 @@
         }
         [_cellsToReloadAndFlash removeAllObjects];
     }
+}
+
+-(void)loadView {
+    [super loadView];
+    UIEdgeInsets inset = self.tableView.contentInset;
+    inset.bottom = 0;
+    self.tableView.contentInset = inset;
 }
 
 #pragma mark Memory management
