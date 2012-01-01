@@ -28,5 +28,24 @@
 @synthesize currencies;
 @synthesize lastCurrencyUsed;
 
+- (void)dealloc {
+    [name release];
+    [notes release];
+    [city release];
+    [created release];
+    [selectedRow release];
+    [selectedTab release];
+    [rates release];
+    [participants release];
+    [transfers release];
+    [entries release];
+    [lastParticipantUsed release];
+    [transferBaseCurrency release];
+    [country release];
+    [currencies release];
+    [lastCurrencyUsed release];
+    [super dealloc];
+}
+
 
 @end

@@ -1752,13 +1752,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		F1676D271463349900EEFF25 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		F1676D29146334A100EEFF25 /* Appirater */ = {
 			isa = PBXGroup;
 			children = (
@@ -1799,7 +1792,6 @@
 			children = (
 				F1D4B24A140D394F00CD2224 /* Localizable.strings */,
 				F159EA2D13E0AF3100C2D855 /* InfoViewController.xib */,
-				F1676D271463349900EEFF25 /* New Group */,
 				F1CE923C13DEA7B6009F3B2F /* DateSelectViewController.xib */,
 				F1CD784013BA405B00D42AA3 /* MainWindow.xib */,
 				94FFEA6813E99BCA00FC97A4 /* RateCell.xib */,

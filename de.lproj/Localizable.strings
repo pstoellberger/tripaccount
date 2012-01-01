@@ -206,7 +206,7 @@
 "help action" = "Dieser Button ermöglicht Aktionen wie das Senden des Abrechnungs-Emails. Hier können auch die Wechselkurse fixiert oder händisch editiert werden.";
 
 /* alert view explain why can not delete */
-"This traveler has expensens on this trip. Please delete those expenses first." = "Diese Person hat Ausgaben zugeordnent. Bitte lösche diese zuerst.";
+"This traveler has expensens on this trip. Please delete those expenses first." = "Diese Person hat Ausgaben zugeordnet. Bitte lösche diese zuerst.";
 
 /* status bar travel closed */
 "Travel closed at %@" = "Trip abgeschlossen am %@";
@@ -229,7 +229,7 @@
 "Updating currency exchange rates..." = "Aktualisiere Wechselkurse...";
 
 /* help bubble sort buttons */
-"help sort" = "Diese Buttons sortieren die Ausgaben. Mit Zweimal antippen kann die Sortierreihenfolge umgedreht werden.";
+"help sort" = "Diese Buttons sortieren die Ausgaben. Zweimal antippen dreht die Sortierreihenfolge um.";
 
 /* help bubble add trip */
 "help add trip" = "Mit diesem Button können neue Trips hinzugefügt werden.";
@@ -346,3 +346,7 @@
 "image camera" = "Neues Foto schießen";
 
 "image iphone" = "Foto aus Bibliothek auswählen";
+
+"purchase app" = "Trip Account jetzt kaufen!";
+
+"lite version info text" = "Dies ist die Lite-Version von Trip Account.\n\n\n\n";

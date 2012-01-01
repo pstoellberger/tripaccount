@@ -201,6 +201,11 @@
     [_geocoder release];
     [_locale release];
     
+    [_locManager release];
+    [_reachability release];
+    [_lastKnowLocation release];
+    [_context release];
+    
     [super dealloc];
 }
 

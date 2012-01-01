@@ -66,5 +66,10 @@ static UIImage *moreImagesImage;
     
 }
 
+- (void)dealloc {
+    self.participants = nil;
+    [super dealloc];
+}
+
 
 @end

@@ -190,8 +190,8 @@
 }
 
 - (void)dealloc {
-    [_context release];
     [_currencies release];
+    [_context release];
     
     [super dealloc];
 }

@@ -30,6 +30,7 @@
     }
     return self;
 }
+
 - (BOOL)isEqual:(id)object {
     if (![object isKindOfClass:[ParticipantKey class]]) {
         return false;
@@ -38,11 +39,19 @@
         return ([self.payer isEqual:compareObject.payer] && [self.receiver isEqual:compareObject.receiver]);
     }
 }
+
 - (NSUInteger)hash {
     return self.payer.hash + self.receiver.hash;
 }
+
 - (id)copyWithZone:(NSZone *)zone {
     return [[ParticipantKey alloc] initWithReceiver:self.receiver andPayer:self.payer];
+}
+
+- (void)dealloc {
+    self.payer = nil;
+    self.receiver = nil;
+    [super dealloc];
 }
 
 @end
@@ -59,15 +68,7 @@
 
 @implementation Summary
 
-@synthesize accounts=_accounts, baseCurrency=_baseCurrency;
-
-- (id) init {
-    self = [super init];
-    if (self) {
-        _accounts = nil;
-    }
-    return self;
-}
+@synthesize accounts=_accountsX, baseCurrency=_baseCurrency;
 
 + (void)updateSummaryOfTravel:(Travel *)travel {
     [self updateSummaryOfTravel:travel eliminateCircularDebts:YES];
@@ -196,22 +197,24 @@
     ParticipantKey *key = [self createKey:(Participant *)person1 withPerson:(Participant *)person2];
     int multiplier = [self getMultiplierFromPerson:person1 withPerson:person2];
     //NSLog(@"Balance between %@ and %@ is %@ with multiplier %d", person1.name, person2.name, balance, multiplier);
-    [_accounts setObject:[NSNumber numberWithDouble:([balance doubleValue] * multiplier)] forKey:key];
+    [self.accounts setObject:[NSNumber numberWithDouble:([balance doubleValue] * multiplier)] forKey:key];
 }
 
 - (NSNumber *) getAccountOfPerson:(Participant *)person1 withPerson:(Participant *)person2 {
     
-    if (!_accounts) {
-        _accounts = [[NSMutableDictionary alloc] init];
+    if (!self.accounts) {
+        NSMutableDictionary *newAccounts = [[NSMutableDictionary alloc] init];
+        self.accounts = newAccounts;
+        [newAccounts release];
     }
     
     int multiplier = [self getMultiplierFromPerson:person1 withPerson:person2];
     ParticipantKey *key = [self createKey:(Participant *)person1 withPerson:(Participant *)person2];
     
-    NSNumber *returnValue = [_accounts objectForKey:key];
+    NSNumber *returnValue = [self.accounts objectForKey:key];
     if (!returnValue) {
         returnValue = [NSNumber numberWithInt:0];
-        [_accounts setObject:returnValue forKey:key];
+        [self.accounts setObject:returnValue forKey:key];
         //NSLog(@"Creating account for %@ and %@", key.payer.name, key.receiver.name);
     }
     return [NSNumber numberWithDouble:([returnValue doubleValue] * multiplier)];
@@ -320,6 +323,12 @@
     }
     
     return returnCycle;
+}
+
+- (void)dealloc {
+    self.baseCurrency = nil;
+    self.accounts = nil;
+    [super dealloc];
 }
 
 @end

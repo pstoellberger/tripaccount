@@ -25,7 +25,7 @@
 
     if (self = [super initWithStyle:UITableViewStylePlain]) {
     
-        _travel = travel;
+        self.travel = travel;
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -177,6 +177,7 @@
 #pragma mark - Memory management
 
 - (void)dealloc {
+    [_travel release];
     [super dealloc];
 }
 

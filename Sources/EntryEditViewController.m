@@ -542,6 +542,7 @@ static NSIndexPath *_dateIndexPath;
 
 - (void)dealloc {
     [_cellsToReloadAndFlash release];
+    [_travel release];
     
     [super dealloc];
 }

@@ -29,7 +29,7 @@
         
         [UIFactory initializeTableViewController:self.tableView];
         
-        _managedObjectContext = managedObjectContext;
+        _managedObjectContext = [managedObjectContext retain];
         _rootViewController = rootViewController;
         
         NSFetchRequest *req = [[NSFetchRequest alloc] init];
@@ -215,6 +215,9 @@
 
 - (void)dealloc {
     [_managedObjectContext release];
+    [_rootViewController release];
+    [_openTripAlert release];
+    [_refreshRatesAlert release];
 
     [super dealloc];
 }

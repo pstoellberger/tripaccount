@@ -32,7 +32,6 @@ static NSIndexPath *_imageIndexPath;
 - (void)updateAndFlash:(UIViewController *)viewController;
 - (void)selectEmail:(NSString *)newEmail;
 - (void)selectName:(NSString *)newName;
-- (UIImage *)resizeImage:(UIImage *)image width:(int)width height:(int)height;
 @end
 
 @implementation ParticipantEditViewController
@@ -54,7 +53,7 @@ static NSIndexPath *_imageIndexPath;
         
         _cellsToReloadAndFlash = [[[NSMutableArray alloc] init] retain];
         
-        _context = context;
+        _context = [context retain];
         
         [UIFactory initializeTableViewController:self.tableView];
         
@@ -135,25 +134,6 @@ static NSIndexPath *_imageIndexPath;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
-}
-
-- (UIImage *)resizeImage:(UIImage *)image width:(int)width height:(int)height {
-	
-	CGImageRef imageRef = [image CGImage];
-	CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
-	
-	//if (alphaInfo == kCGImageAlphaNone)
-    alphaInfo = kCGImageAlphaNoneSkipLast;
-	
-	CGContextRef bitmap = CGBitmapContextCreate(NULL, width, height, CGImageGetBitsPerComponent(imageRef), 4 * width, CGImageGetColorSpace(imageRef), alphaInfo);
-	CGContextDrawImage(bitmap, CGRectMake(0, 0, width, height), imageRef);
-	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
-	UIImage *result = [UIImage imageWithCGImage:ref];
-	
-	CGContextRelease(bitmap);
-	CGImageRelease(ref);
-	
-	return result;	
 }
 
 #pragma mark UITableViewDataSource
@@ -434,14 +414,18 @@ static NSIndexPath *_imageIndexPath;
 
 - (void)dealloc {
     
+    [_context release];
     [_cellsToReloadAndFlash release];
+    [_travel release];
     
     [_nameIndexPath release];
     [_emailIndexPath release];
     [_weightIndexPath release];
     [_imageIndexPath release];
+    [_image release];
     
-    self.imageActionSheet = nil;
+    [_participant release];
+    [_imageActionSheet release];
     
     [super dealloc];
 }

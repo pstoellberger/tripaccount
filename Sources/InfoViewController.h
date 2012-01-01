@@ -24,12 +24,14 @@
 @property (nonatomic, retain) IBOutlet UIButton *licenseButton;
 @property (nonatomic, retain) IBOutlet UIButton *closeButton;
 @property (nonatomic, retain) IBOutlet UIButton *rateButton;
+@property (nonatomic, retain) IBOutlet UIButton *purchaseButton;
 @property (nonatomic, retain) IBOutlet UIImageView *image;
 
 - (IBAction)cancel;
 - (IBAction)requestFeature;
 - (IBAction)sendFeedback;
 - (IBAction)licenseNotes;
+- (IBAction)purchaseApp;
 - (void)openEmailPopup:(NSString *)subject withTitle:(NSString *)title withMailName:(NSString *)mailName;
 - (void)setButtonTitle:(UIButton *)button title:(NSString *)title;
 - (void)setCloseAction:(id)target action:(SEL)action;

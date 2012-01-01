@@ -43,4 +43,9 @@
     _gradient.frame = self.bounds;
 }
 
+- (void)dealloc {
+    [_gradient release];
+    [super dealloc];
+}
+
 @end

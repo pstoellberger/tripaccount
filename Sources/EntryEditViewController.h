@@ -25,8 +25,8 @@
 
 @property (nonatomic, assign) id <EntryEditViewControllerDelegate> editDelegate;
 
-- (id)initWithTravel: (Travel *) travel;
-- (id)initWithTravel: (Travel *) travel andEntry:(Entry *)entry;
+- (id)initWithTravel:(Travel *) travel;
+- (id)initWithTravel:(Travel *) travel andEntry:(Entry *)entry;
 
 - (IBAction)done:(UIBarButtonItem *)sender;
 - (IBAction)cancel:(UIBarButtonItem *)sender;

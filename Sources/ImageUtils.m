@@ -55,8 +55,8 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     CGImageRef ref = CGBitmapContextCreateImage(bitmap);
     UIImage* newImage = [UIImage imageWithCGImage:ref];
     
-    //CGContextRelease(bitmap);
-    //CGImageRelease(ref);
+    CGContextRelease(bitmap);
+    CGImageRelease(ref);
     
     return newImage; 
 }

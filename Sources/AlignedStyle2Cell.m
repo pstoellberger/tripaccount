@@ -86,4 +86,9 @@
     }
 }
 
+- (void)dealloc {
+    self.myImageView = nil;
+    [super dealloc];
+}
+
 @end

@@ -119,6 +119,8 @@ static NSInteger LABEL_TAG = 0x555;
 - (void)dealloc {
     [subLabels release];
     [titles release];
+    [viewLabelMap release];
+    self.subTitles = nil;
     [super dealloc];
 }
 

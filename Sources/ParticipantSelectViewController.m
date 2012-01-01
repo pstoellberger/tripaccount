@@ -276,6 +276,7 @@
 - (void)dealloc {
     [_amountCells release];
     [_footerView release];
+    [_entry release];
     [super dealloc];
 }
 

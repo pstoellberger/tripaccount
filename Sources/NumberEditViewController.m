@@ -239,4 +239,13 @@
     self.textField = nil;
 }
 
+- (void)dealloc {
+    [_textCell release];
+    [_textField release];
+    [_convertView release];
+    [_number release];
+    [_currency release];
+    [super dealloc];
+}
+
 @end
