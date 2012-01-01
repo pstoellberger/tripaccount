@@ -215,20 +215,20 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath == _cityIndexPath || indexPath == _descriptionIndexPath);  
+    return [indexPath isEqual:_cityIndexPath] || [indexPath isEqual:_descriptionIndexPath];  
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath == _cityIndexPath) {
+    if ([indexPath isEqual:_cityIndexPath]) {
         
         self.city = @"";
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_cityIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_cityIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
         
-    } else if (indexPath == _descriptionIndexPath) {
+    } else if ([indexPath isEqual:_descriptionIndexPath]) {
         
         self.name = @"";
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
     }
     
 }

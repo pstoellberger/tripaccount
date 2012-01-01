@@ -223,24 +223,24 @@ static NSIndexPath *_imageIndexPath;
     if ([indexPath isEqual:_nameIndexPath]) {
         
         self.name = @"";
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_nameIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_nameIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
         
         [self checkIfDoneIsPossible];
         
     } else if ([indexPath isEqual:_emailIndexPath]) {
         
         self.email = @"";
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_emailIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_emailIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
         
     } else if ([indexPath isEqual:_weightIndexPath]) {
         
         self.weight = [NSNumber numberWithInt:1];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_weightIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_weightIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
     
     } else if ([indexPath isEqual:_imageIndexPath]) {
     
         self.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"noImage" ofType:@"png"]];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_imageIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_imageIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
         
     }
     

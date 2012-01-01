@@ -89,6 +89,30 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
             [rvc release];
             
             [self.window addSubview:self.navController.view];
+            self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 320, 0);
+            [UIView animateWithDuration:0.5
+                                  delay:0 
+                                options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
+                             animations:^{
+                                 self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -10, 0);
+                             } 
+                             completion:^(BOOL finished){
+                                 [UIView animateWithDuration:0.2
+                                                       delay:0 
+                                                     options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
+                                                  animations:^{
+                                                      self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 5, 0);
+                                                  } 
+                                                  completion:^(BOOL finished){
+                                                      [UIView animateWithDuration:0.2
+                                                                            delay:0 
+                                                                          options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
+                                                                       animations:^{
+                                                                           self.navController.view.transform = CGAffineTransformIdentity;
+                                                                       }
+                                                                       completion:nil];
+                                                  }]; 
+                             }];
             
             [Appirater appLaunched:YES];
 

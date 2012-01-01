@@ -341,4 +341,8 @@ static NSDateFormatter *formatter = nil;
     return [[NSBundle mainBundle] localizedStringForKey:dbString value:dbString table:nil];    
 }
 
++ (UITableViewRowAnimation)commitEditingStyleRowAnimation {
+    return UITableViewRowAnimationRight;
+}
+
 @end
