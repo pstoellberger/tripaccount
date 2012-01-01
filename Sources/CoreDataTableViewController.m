@@ -207,9 +207,6 @@
 	UIImage *thumbnail = [self thumbnailImageForManagedObject:managedObject];
 	if (thumbnail) cell.imageView.image = thumbnail;
     
-    
-    NSLog(@"%f", self.tableView.contentInset.bottom);
-
 	return cell;
 }
 
@@ -274,6 +271,7 @@
     footerView.contentMode = UIViewContentModeScaleToFill;
 
     self.tableView.tableFooterView = footerView;
+    [footerView release];
     
     UIEdgeInsets inset = self.tableView.contentInset;
     inset.bottom = -FOOTER_HEIGHT;

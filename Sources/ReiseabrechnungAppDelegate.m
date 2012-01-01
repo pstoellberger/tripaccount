@@ -23,6 +23,7 @@
 #import "MTStatusBarOverlay.h"
 #import "ReceiverWeight.h"
 #import "Participant.h"
+#import "ImageCache.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -604,6 +605,11 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
      See also applicationDidEnterBackground:.
      */
     [ReiseabrechnungAppDelegate saveContext:[self managedObjectContext]];
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    
+    [ImageCache evictCache];
 }
                                         
                                         

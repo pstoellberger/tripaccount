@@ -61,7 +61,7 @@
     if (self) {
         _travel = travel;
         
-        self.actionSheetClosedTravel = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose your action", @"close travel action sheet title")
+        self.actionSheetClosedTravel = [[[UIActionSheet alloc] initWithTitle:nil
                                                                     delegate:self
                                                            cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                       destructiveButtonTitle:nil
@@ -69,7 +69,7 @@
         self.actionSheetClosedTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         
         
-        self.actionSheetOpenTravel = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose your action", @"open travel action sheet title")
+        self.actionSheetOpenTravel = [[[UIActionSheet alloc] initWithTitle:nil
                                                                   delegate:self
                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                     destructiveButtonTitle:nil
@@ -77,14 +77,14 @@
         self.actionSheetOpenTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;        
         
         
-        self.actionSheetOpenTravelNoCurrency = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose your action", @"open travel action sheet title")
+        self.actionSheetOpenTravelNoCurrency = [[[UIActionSheet alloc] initWithTitle:nil
                                                                   delegate:self
                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                     destructiveButtonTitle:nil
                                                          otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), nil] autorelease];
         self.actionSheetOpenTravelNoCurrency.actionSheetStyle = UIActionSheetStyleBlackTranslucent;   
         
-        self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Where is the person?", @"add person action sheet title")
+        self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle:nil
                                                                  delegate:self
                                                         cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                    destructiveButtonTitle:nil

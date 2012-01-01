@@ -75,7 +75,7 @@
 "Country" = "Country";
 
 /* alert item new person */
-"Create new person" = "Create new Person";
+"Create new person" = "Create New Person";
 
 /* currencies cell caption */
 "Currencies" = "Currencies";
@@ -119,7 +119,7 @@
 "help rate updated" = "Find here the date of the last update of the currency exchange rates. Use the action above to update them now.";
 
 /* alert item address book */
-"From Address Book" = "From Address Book";
+"From Address Book" = "Choose From Address Book";
 
 /* help bubble sample trip */
 "help sample trip" = "Have a look at the sample trip to see how the app works.";
@@ -317,6 +317,8 @@
 
 "Weight" = "Weight";
 
+"Image" = "Image";
+
 "Delete" = "Löschen";
 
 "Back" = "Back";
@@ -333,3 +335,8 @@
 
 "lite no purchase" = "Later :(";
 
+"Reset" = "Reset";
+
+"image camera" = "Take Photo with Camera";
+
+"image iphone" = "Choose from Library";
