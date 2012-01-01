@@ -21,4 +21,18 @@
     self.paid.transform = CGAffineTransformMakeRotation( -M_PI/6 ); // = 45 degrees
 }
 
+- (void)dealloc {
+    
+    self.debtor = nil;
+    self.debtee = nil;
+    self.amount = nil;
+    self.leftImage = nil;
+    self.rightImage = nil;
+    self.paid = nil;
+    self.paidLabel = nil;
+    self.owes = nil;
+    self.to = nil;
+    [super dealloc];
+}
+
 @end

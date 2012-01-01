@@ -30,4 +30,11 @@
     return self;
 }
 
+- (void)dealloc {
+    [_weight release];
+    [_participant release];
+    [_entry release];
+    [super dealloc];
+}
+
 @end

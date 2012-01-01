@@ -135,4 +135,13 @@
     self.textField = nil;
 }
 
+- (void)dealloc {
+    
+    [_textCell release];
+    [_textField release];
+    [_namedImage release];
+    
+    [super dealloc];
+}
+
 @end

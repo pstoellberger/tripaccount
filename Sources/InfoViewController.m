@@ -13,7 +13,7 @@
 @implementation InfoViewController
 
 @synthesize feedBackLabel=_feedBackLabel, titleLabel=_titleLabel, versionLabel=_versionLabel, copyrightLabel=_copyrightLabel;
-@synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton, rateButton=_rateButton;
+@synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton, rateButton=_rateButton, purchaseButton=_purchaseButton;
 @synthesize image=_image;
 
 #define CLOSE_LABEL_GAP 6
@@ -38,6 +38,7 @@
         [UIFactory addShadowToView:self.licenseButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
         [UIFactory addShadowToView:self.closeButton withColor:[UIColor whiteColor] withOffset:0 andRadius:1.0];
         [UIFactory addShadowToView:self.rateButton withColor:[UIColor whiteColor] withOffset:0 andRadius:1.0];
+        [UIFactory addShadowToView:self.purchaseButton withColor:[UIColor redColor] withOffset:0 andRadius:3.0];
         
         self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"versionlabel", @""), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
 
@@ -49,6 +50,7 @@
         [self setButtonTitle:self.featureButton title:NSLocalizedString(@"Request a feature", @"info feature button")];
         [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];
         [self setButtonTitle:self.rateButton title:NSLocalizedString(@"rate this app", @"rate button")];
+        [self setButtonTitle:self.purchaseButton title:NSLocalizedString(@"purchase app", @"purchase button")];
         
         self.feedbackButton.enabled = [MFMailComposeViewController canSendMail];
         self.featureButton.enabled = [MFMailComposeViewController canSendMail];
@@ -61,7 +63,9 @@
         self.titleLabel.text = @"Trip Account";
         
 #ifdef LITE_VERSION
-        self.titleLabel.text = @"Trip Account Lite";        
+        self.feedBackLabel.text = NSLocalizedString(@"lite version info text",@"purchase text");
+        self.titleLabel.text = @"Trip Account Lite";   
+        self.purchaseButton.hidden = NO;
 #endif
         
         [UIFactory addShadowToView:self.image];
@@ -101,6 +105,11 @@
     
     NSString* url = [NSString stringWithFormat: ITUNES_STORE_RATE_LINK, CURRENT_APP_ID];
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
+}
+
+- (IBAction)purchaseApp {
+    NSString* url = [NSString stringWithFormat: ITUNES_STORE_LINK, TRIP_ACCOUNT_ID];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];    
 }
 
 - (IBAction)requestFeature {
@@ -145,5 +154,19 @@
 }
 
 #pragma mark - View lifecycle
+
+- (void)dealloc {
+    [_feedBackLabel release];
+    [_titleLabel release];
+    [_versionLabel release];
+    [_copyrightLabel release];
+    [_feedbackButton release];
+    [_featureButton release];
+    [_licenseButton release];
+    [_closeButton release];
+    [_rateButton release];
+    [_image release];
+    [super dealloc];
+}
 
 @end

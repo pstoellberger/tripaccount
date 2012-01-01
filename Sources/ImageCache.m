@@ -43,5 +43,10 @@ static ImageCache *gInstance = NULL;
     gInstance = NULL;
 }
 
+- (void)dealloc {
+    [dic release];
+    [super dealloc];
+}
+
 
 @end

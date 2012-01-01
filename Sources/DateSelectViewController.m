@@ -171,7 +171,17 @@
 
 - (void)dealloc {
     
-    [_date release];   
+    [_date release];
+    [_dateLabel release];
+    [_timeDescriptionLabel release];
+    [_picker release];
+    [_timeSwitch release];
+    [_switchSuperView release];
+    [_labelSuperView release];
+    [_pickerView release];
+    [_date release];
+    [_dateCell release];
+    [_timeCell release];
     
     [super dealloc];
 }

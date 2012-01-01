@@ -88,4 +88,16 @@
     
 }
 
+- (void)dealloc {
+    [amount release];
+    [checked release];
+    [date release];
+    [text release];
+    [travel release];
+    [type release];
+    [payer release];
+    [receiverWeights release];
+    [currency release];
+    [super dealloc];
+}
 @end

@@ -156,6 +156,7 @@
 
 - (void)dealloc {
     [_cellsToReloadAndFlash release];
+    [_rateToEdit release];
     [super dealloc];
 }
 

@@ -78,4 +78,16 @@
     }
 }
 
+- (void)dealloc {
+    
+    self.top = nil;
+    self.bottom = nil;
+    self.right = nil;
+    self.image = nil;
+    self.rightBottom = nil;
+    self.forLabel = nil;
+    
+    [super dealloc];
+}
+
 @end

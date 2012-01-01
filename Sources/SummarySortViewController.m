@@ -207,6 +207,12 @@
 -(void)dealloc {
     [_currencyArray release];
     [_dateFormatter release];
+    [_travel release];
+    
+    [_detailViewController release];
+    [_lastUpdatedLabel release];
+    [_updateIndicator release];
+    [_segControl release];
     
     [super dealloc];
 }

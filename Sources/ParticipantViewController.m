@@ -11,6 +11,7 @@
 #import "ReiseabrechnungAppDelegate.h"
 #import "ParticipantEditViewController.h"
 #import "ShadowNavigationController.h"
+#import "ReceiverWeight.h"
 
 @implementation ParticipantViewController
 
@@ -121,9 +122,15 @@
         [alertView release];
         
     } else {
-    
-        [_travel.managedObjectContext deleteObject:managedObject];
-        [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
+        
+        NSManagedObjectContext *context = [_travel managedObjectContext];
+        
+        for (ReceiverWeight *recWeight in participant.receiverWeights) {
+            [context deleteObject:recWeight];
+        }
+        
+        [context deleteObject:managedObject];
+        [ReiseabrechnungAppDelegate saveContext:context];
 
         [self.editDelegate participantWasDeleted:participant];
     }

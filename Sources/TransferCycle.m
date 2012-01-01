@@ -30,4 +30,10 @@
     return newCycle;
 }
 
+- (void)dealloc {
+    [participantKeys release];
+    [minWeight release];
+    [super dealloc];
+}
+
 @end

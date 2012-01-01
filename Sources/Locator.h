@@ -28,7 +28,7 @@
 @property (nonatomic, retain) Reachability *reachability;
 @property (retain) CLLocation *lastKnowLocation;
 
-@property (nonatomic, retain) id <LocatorDelegate> locationDelegate;
+@property (nonatomic, assign) id <LocatorDelegate> locationDelegate;
 
 @property (nonatomic, retain) NSManagedObjectContext *context;
 

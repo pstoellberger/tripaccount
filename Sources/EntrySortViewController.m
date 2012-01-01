@@ -180,6 +180,10 @@
 #pragma mark Memory management
 
 - (void)dealloc {
+    [_detailViewController release];
+    [_segControl release];
+    [_totalLabel release];
+    [_travel release];
     [super dealloc];
 }
 

@@ -36,7 +36,7 @@
         _headerDateFormatter = [[NSDateFormatter alloc] init];
         _headerDateFormatter.dateStyle = NSDateFormatterMediumStyle;
         
-        _travel = travel;
+        self.travel = travel;
         _sortIndex = 0;
         _sortDesc = NO;
         
@@ -267,6 +267,10 @@
     [_headerDateFormatter release];
     [_sortKeyArray release];
     [_sectionKeyArray release];
+    [_travel release];
+    
+    [_fetchRequest release];
+    
     [super dealloc];
 }
 

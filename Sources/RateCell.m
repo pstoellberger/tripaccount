@@ -49,4 +49,13 @@
     }
 }
 
+- (void)dealloc {
+    
+    self.subTextLabel = nil;
+    self.nameLabel = nil;
+    self.rateLabel = nil;
+    
+    [super dealloc];
+}
+
 @end

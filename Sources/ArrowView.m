@@ -72,4 +72,10 @@
     }
 }
 
+- (void)dealloc {
+    self.arrowColor = nil;
+    self.borderColor = nil;
+    [super dealloc];
+}
+
 @end

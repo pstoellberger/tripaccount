@@ -31,7 +31,7 @@
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
      
      if (self = [super init]) {
-          _managedObjectContext = context;
+          _managedObjectContext = [context retain];
           
           self.tableViewController = [[[TravelListViewController alloc] initInManagedObjectContext:context withRootViewController:self] autorelease];
           self.tableViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -222,6 +222,16 @@
 }
 
 - (void)dealloc {
+     
+     [_addButton release];
+     [_editButton release];
+     [_doneButton release];
+     
+     [_tableViewController release];
+     [_managedObjectContext release];
+     
+     [_infoButton release];
+     [_infoViewController release];
      
      [super dealloc];
 }

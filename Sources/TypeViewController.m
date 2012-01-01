@@ -26,7 +26,6 @@
     
     if (self = [super initInManagedObjectContext:context withMultiSelection:multiSelection withAllNoneButtons:NO withFetchRequest:request withSectionKey:nil withSelectedObjects:selectedObjects target:target action:selector]) {
         
-        
         _editButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEditing)] retain];
         _addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openAddPopup)] retain];
         _doneButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(toggleEditing)] retain];
@@ -267,6 +266,8 @@
     
     [_builtInImage release];
     [_customImage release];
+    
+    [_editedType release];
     
     [super dealloc];
 }

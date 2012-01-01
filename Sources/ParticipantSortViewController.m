@@ -71,6 +71,10 @@
 #pragma mark Memory management
 
 - (void)dealloc {
+    
+    [_detailViewController release];
+    [_travel release];
+    
     [super dealloc];
 }
 

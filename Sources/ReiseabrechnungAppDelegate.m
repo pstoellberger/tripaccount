@@ -711,14 +711,17 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 /**
  Returns the URL to the application's Documents directory.
  */
-- (NSURL *)applicationDocumentsDirectory
-{
+- (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 
-- (void)dealloc
-{
+- (void)dealloc {
+    
+    [_locator release];
+    [_helpBubbles release];
+    [_statusbarOverlay release];
+    
     [_window release];
 	[_navController release];
     [_managedObjectContext release];

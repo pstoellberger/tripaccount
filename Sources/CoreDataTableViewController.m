@@ -405,9 +405,10 @@
 	_fetchedResultsController.delegate = nil;
 	[_fetchedResultsController release];
     
+    [_dataSearchController release];
+    
 	[searchKey release];
 	[titleKey release];
-	[currentSearchText release];
 	[normalPredicate release];
     [super dealloc];
 }

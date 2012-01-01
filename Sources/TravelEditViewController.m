@@ -58,7 +58,7 @@ static NSIndexPath *_currenciesIndexPath;
         
         _cellsToReloadAndFlash = [[[NSMutableSet alloc] init] retain];
         
-        _context = context;
+        _context = [context retain];
         
         [UIFactory initializeTableViewController:self.tableView];
         
@@ -591,7 +591,9 @@ static NSIndexPath *_currenciesIndexPath;
 - (void)dealloc {
     
     [_cellsToReloadAndFlash release];
-    
+    [_country release];
+    [_currencies release];
+    [_context release];
     [super dealloc];
 }
 

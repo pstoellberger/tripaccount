@@ -294,7 +294,9 @@
     
     [_segControl release];
     [_segControlView release];
-    
+    [_context release];
+    [_selectedObjects release];
+    [_cellClass release];
     [super dealloc];
 }
 
