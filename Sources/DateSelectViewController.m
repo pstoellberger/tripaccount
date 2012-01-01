@@ -12,7 +12,6 @@
 #import "UIFactory.h"
 #import "AlignedStyle2Cell.h"
 #import "TimeCell.h"
-#import "DatePickerContainerView.h"
 
 @implementation DateSelectViewController
 
@@ -58,8 +57,9 @@
                 
         self.tableView.tableFooterView = _picker;
         self.tableView.scrollEnabled = NO;
-        self.tableView.canCancelContentTouches = NO;
-        self.tableView.delaysContentTouches = NO;
+        
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)] autorelease];
         
     }
     return self;
@@ -70,6 +70,10 @@
         [_target performSelector:_action withObject:_picker.date];
     }    
     
+    [self.navigationController popViewControllerAnimated:YES];    
+}
+
+- (void)cancel { 
     [self.navigationController popViewControllerAnimated:YES];    
 }
 

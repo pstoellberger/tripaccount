@@ -36,7 +36,7 @@ static NSDateFormatter *formatter = nil;
 
 + (UIView *)createBackgroundViewWithFrame:(CGRect)rect {
     UIView *backgroundView = [[[UIView alloc] initWithFrame:rect] autorelease];
-    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"darkbackground.png"]];   
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"darkbackground" ofType:@"png"]]];   
     return backgroundView;
 }
 
