@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "DatePickerContainerView.h"
 
 @interface DateSelectViewController : UITableViewController {
     
@@ -17,7 +18,6 @@
     UISwitch *_timeSwitch;
     UIView *_switchSuperView;
     UIView *_labelSuperView;
-    UIView *_pickerView;
     
     SEL _action;
     id _target;

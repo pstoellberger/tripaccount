@@ -12,14 +12,11 @@
 #import "UIFactory.h"
 #import "AlignedStyle2Cell.h"
 #import "TimeCell.h"
-
-@interface DateSelectViewController()
--(void)setGap:(UIInterfaceOrientation)interfaceOrientation;
-@end
+#import "DatePickerContainerView.h"
 
 @implementation DateSelectViewController
 
-#define GAP 45
+#define GAP 55
 
 - (id)initWithDate:(NSDate *)date target:(id)target selector:(SEL)action {
     
@@ -33,12 +30,10 @@
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
         
-        _pickerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 0)] retain];
-        _picker = [[[UIDatePicker alloc] initWithFrame:CGRectMake(0, GAP, 0, 0)] retain];
-        _picker.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _picker = [[[UIDatePicker alloc] initWithFrame:CGRectMake(0, GAP, 320, 160)] retain];
+        _picker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [_picker addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventValueChanged];
         [_picker setDate:_date animated:NO];
-        [_pickerView addSubview:_picker];
         
         _timeSwitch = [[[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] retain];
         [_timeSwitch addTarget:self action:@selector(toggleTime:) forControlEvents:UIControlEventValueChanged];
@@ -61,10 +56,11 @@
         
         [self selectDate:_picker];
                 
-        self.tableView.tableFooterView = _pickerView;
+        self.tableView.tableFooterView = _picker;
         self.tableView.scrollEnabled = NO;
+        self.tableView.canCancelContentTouches = NO;
+        self.tableView.delaysContentTouches = NO;
         
-        [self setGap:[[UIApplication sharedApplication] statusBarOrientation]];
     }
     return self;
 }
@@ -103,19 +99,7 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [self setGap:interfaceOrientation];
     return YES;
-}
-
-- (void)setGap:(UIInterfaceOrientation)interfaceOrientation {
-    
-    if (interfaceOrientation == UIInterfaceOrientationPortrait) {
-        _picker.frame = CGRectMake(0, GAP, 0, 0);
-        self.tableView.contentInset = UIEdgeInsetsMake(44 + GAP, 0, 0, 0);
-    } else {
-        _picker.frame = CGRectMake(0, 0, 0, 0);
-        self.tableView.contentInset = UIEdgeInsetsMake(32, 0, 0, 0);
-    }
 }
 
 #pragma mark - TableView
@@ -129,7 +113,19 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0;
+    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
+        return GAP;
+    } else {
+        return 0;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
+        return GAP;
+    } else {
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -160,7 +156,6 @@
     _timeDescriptionLabel = nil;
     
     [_picker release];
-    [_pickerView release];
     [_timeSwitch release];
     
     [_dateCell release];
@@ -178,7 +173,6 @@
     [_timeSwitch release];
     [_switchSuperView release];
     [_labelSuperView release];
-    [_pickerView release];
     [_date release];
     [_dateCell release];
     [_timeCell release];
