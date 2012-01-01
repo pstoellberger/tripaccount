@@ -18,8 +18,41 @@
 - Die App ist jetzt reaktiver während Zellen nach einer Änderungen blau aufleuchten
 - Die App kann jetzt über die Informationsseite bewertet werden
 
-++++ Current TRUNK (1.2) +++++
+++++ Version 2.0 +++++
 
-- option to hide types
-- better caption of back button during entry edit
-- better caption for no email warning
+This is a HUGE release! It includes the following new features:
+- Weightings of expenses for uneven splits. For an expense you can now select the weighting of each receiver as well as a default weighting for a person.
+- Double tap to change to sort order of expenses
+- Cyclic debts (A->B->C->A) are now removed/minimised
+- Option to hide the types you don't need.
+- Select or change photos for a person
+
+Trip Account 2.0 has many optical improvements all over the place: 
+- All edit screens have now gorgeous icons
+- The update of exchange rates will now show in the status bar
+- New animations on several spots
+- New date select screen
+- Shadows for table cells
+
+It also fixes several typos, glitches and stability problems.
+
+Furthermore, there is now the free Trip Account Lite to demo the features and functionality of Trip Account. 
+
+Dies ist ein GROSSES Release. Es enthält die folgenden neuen Features:
+- Gewichtungen von Ausgaben zum Aufteilen nach ungleichen Teilen. Für jede Ausgabe kannst du nun die Gewichtung für jeden Empfänger auswählen, sowie einen Standardeinstellung für jede Person.
+- Double-Tap um die Sortierreihenfolge der Ausgaben zu ändern
+- Zyklische Schulden (A->B->C->A) werden jetzt entfernt/miniert
+- Nicht benötigte Typen können jetzt versteckt werden
+- Auswahl oder Änderung von Fotos für Personen
+
+Trip Account 2.0 hat viele optische Verbesserung überall:
+- Alle Editierseiten haben jetzt super-hübsche Ions
+- Das Aktualisieren der Wechselkurse wird jetzt un der Statusbar angezeigt
+- Neue Animationen an vielen Stellen
+- Neue Datumauswahlseite
+- Schatten für Tabellen#
+
+Es wurden mehrere Tippfehler und Stabilitätsprobleme behoben.
+
+Des weiteren, gibt es jetzt Trip Account Lite um die Funktionen von Trip Account zu präsentieren.
+
