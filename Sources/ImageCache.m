@@ -38,5 +38,10 @@ static ImageCache *gInstance = NULL;
     
 }
 
++ (void)evictCache {
+    [gInstance release];
+    gInstance = NULL;
+}
+
 
 @end

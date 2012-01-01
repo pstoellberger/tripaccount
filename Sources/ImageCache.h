@@ -12,5 +12,6 @@
 
 + (ImageCache *)instance;
 - (UIImage *)getImage:(NSData *)data;
++ (void)evictCache;
 
 @end

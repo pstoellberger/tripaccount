@@ -16,7 +16,7 @@
 - (void)openParticipantPopup:(Participant *)participant;
 @end
 
-@interface ParticipantEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate> {
+@interface ParticipantEditViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate> {
     
     NSManagedObjectContext *_context;
     
@@ -30,9 +30,12 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *email;
 @property (nonatomic, retain) NSNumber *weight;
+@property (nonatomic, retain) NSData *image;
 
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Participant *participant;
+
+@property (nonatomic, retain) UIActionSheet *imageActionSheet;
 
 @property (nonatomic, assign) id <ParticipantEditViewControllerEditDelegate> editDelegate;
 
