@@ -193,7 +193,7 @@
     Participant *participant = (Participant *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     _accessorySelectedParticipant = participant;
     
-    NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:[self receiverWeightForParticipant:participant].weight withDecimals:YES andNamedImage:@"weight.png" target:self selector:@selector(selectWeight:)]; 
+    NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:[self receiverWeightForParticipant:participant].weight withDecimals:YES andNamedImage:@"weight.png" description:NSLocalizedString(@"weight info",@"weight description") target:self selector:@selector(selectWeight:)]; 
     numberEditViewController.title = NSLocalizedString(@"Weight", @"controller title edit weight");
     numberEditViewController.allowZero = NO;
     numberEditViewController.allowNull = NO;

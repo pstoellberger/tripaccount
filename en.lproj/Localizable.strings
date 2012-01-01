@@ -315,7 +315,9 @@
 
 "no thanks" = "No thanks";
 
-"Weight" = "Weight";
+"Weight" = "Weighting";
+
+"Default Weight" = "Default Weighting";
 
 "Image" = "Image";
 
@@ -325,7 +327,7 @@
 
 "finished" = "Finished.";
 
-"Reset Weight" = "Reset weights";
+"Reset Weight" = "Reset weightings";
 
 "lite message" = "This is a DEMO version of Trip Account. If you want to add more than 5 expense please purchase Trip Account. Do you want to do that now?";
 
@@ -344,3 +346,5 @@
 "purchase app" = "Buy Trip Account now!";
 
 "lite version info text" = "This is the Lite version of Trip Account.\n\n\n\n";
+
+"weight info" = "Weightings describe the parts for each receiver an expense amount is split into. Weightings can be configure for each expense individually. A person has a default weighting that is used when being assigned to a new expense.\nExample: The split of an expense amount of 20$ with weightings 1:2:1 is 5$:10$:5$.";
