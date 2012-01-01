@@ -18,7 +18,7 @@
 @implementation NumberEditViewController
 
 @synthesize target=_target, selector=_selector;
-@synthesize textField=_textField, textCell=_textCell, convertView=_convertView;
+@synthesize textField=_textField, textCell=_textCell, convertView=_convertView, infoImageView=_infoImageView;
 @synthesize travel=_travel, currency=_currency, number=_number, decimals=_decimals;
 @synthesize allowNull=_allowNull, allowZero=_allowZero;
 
@@ -26,31 +26,32 @@
 #define BORDER_GAP 10
 #define FOOTER_HEIGHT 145
 
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector {
-    return [self initWithNumber:startNumber withDecimals:decimals currency:nil travel:nil andNamedImage:namedImage target:target selector:selector];
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector {
+    return [self initWithNumber:startNumber withDecimals:decimals currency:nil travel:nil andNamedImage:namedImage description:description target:target selector:selector];
 }
 
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector {
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector {
     
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         
         _namedImage = namedImage;
-        
-        [UIFactory initializeTableViewController:self.tableView];
+        _description = description;
         
         self.decimals = decimals;
         
         self.target = target;
         self.selector = selector;
         
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        
         self.allowNull = YES;
         self.allowZero = YES;
         
         self.travel = travel;
         self.currency = currency;
+        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        
+        [UIFactory initializeTableViewController:self.tableView];
         
         self.number = [[startNumber copy] autorelease];
         self.textField.text = [UIFactory formatNumberWithoutThSep:startNumber withDecimals:decimals];        
@@ -62,8 +63,7 @@
             self.textField.frame = CGRectMake(BORDER_GAP, (self.textCell.bounds.size.height - self.textField.bounds.size.height) / 2, self.tableView.bounds.size.width - BORDER_GAP - BORDER_GAP, self.textField.bounds.size.height);            
             
             UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
-            
-            label.text = currency.code;
+            label.text = currency.code;            
             label.font = self.textField.font;
             [label sizeToFit];
             
@@ -80,14 +80,17 @@
             self.textField.frame = CGRectMake(self.textField.frame.origin.x, (self.textCell.frame.size.height - self.textField.frame.size.height) / 2, self.textCell.frame.size.width - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.frame.size.height);
         }
         
-        if (currency && [travel.currencies count] > 1) {
+        if (description || (currency && [travel.currencies count] > 1)) {
+            
             self.tableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, FOOTER_HEIGHT)] autorelease];
             
             [self.tableView.tableFooterView addSubview:self.convertView];
-
+            
+            self.convertView.text = _description;
+            [self.tableView.tableFooterView addSubview:self.infoImageView];
+            
             if ([self.number doubleValue] != 0) {
                 [self refreshConversion];
-
             }
         } 
     }
@@ -108,24 +111,26 @@
 
 - (void)refreshConversion {
     
-    if ([self.number intValue] != 0) {
-        const unichar cr = '\n';
-        NSString *singleCR = [NSString stringWithCharacters:&cr length:1];    
-        
-        NSString *conversionString = @"";
-        for (Currency *currency in self.travel.currencies) {
+    if (self.currency) {
+        if ([self.number intValue] != 0) {
+            const unichar cr = '\n';
+            NSString *singleCR = [NSString stringWithCharacters:&cr length:1];    
             
-            if (![currency isEqual:self.currency]) {
-                NSString *line = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]]] withDecimals:self.decimals],currency.code];
-                conversionString = [[conversionString stringByAppendingString:line] stringByAppendingString:singleCR];
+            NSString *conversionString = @"";
+            for (Currency *currency in self.travel.currencies) {
+                
+                if (![currency isEqual:self.currency]) {
+                    NSString *line = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]]] withDecimals:self.decimals],currency.code];
+                    conversionString = [[conversionString stringByAppendingString:line] stringByAppendingString:singleCR];
+                }
             }
+            
+            self.convertView.text = [conversionString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            
+            [self.convertView flashScrollIndicators];
+        } else {
+            self.convertView.text = @"";
         }
-        
-        self.convertView.text = [conversionString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-        
-        [self.convertView flashScrollIndicators];
-    } else {
-        self.convertView.text = @"";
     }
 }
 
@@ -194,6 +199,8 @@
 #define IMAGE_GAP 10
 #define IMAGE_TEXT_GAP 10
 #define IMAGE_TOP 10
+#define INFO_IMAGE_SIZE 24
+#define INFO_IMAGE_GAP 4
 
 - (void)loadView {
     
@@ -216,15 +223,28 @@
     
     [self.textField becomeFirstResponder];
     
-    self.convertView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP, 0, [[UIScreen mainScreen] applicationFrame].size.width - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP, FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
-    self.convertView.textAlignment = UITextAlignmentRight;
+    self.convertView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP, 0, [[UIScreen mainScreen] applicationFrame].size.width - (CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP+CONVERSION_VIEW_GAP), FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
+    self.convertView.textAlignment = UITextAlignmentLeft;
     self.convertView.textColor = [UIColor grayColor];
     self.convertView.editable = NO;
-    self.convertView.font = [UIFont systemFontOfSize:18.0];
+    self.convertView.font = [UIFont systemFontOfSize:11];
+    if (self.currency) {
+        self.convertView.font = [UIFont systemFontOfSize:18.0];
+        self.convertView.textAlignment = UITextAlignmentRight;
+    }
     self.convertView.userInteractionEnabled = YES;
     self.convertView.contentInset = UIEdgeInsetsMake(0,0,0,0);
     self.convertView.layer.cornerRadius = 5;
     self.convertView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    NSString *infoImageName = @"information.png";
+    if (self.currency) {
+        infoImageName = @"exchange.png";
+    }
+    
+    self.infoImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:infoImageName]] autorelease];
+    self.infoImageView.frame = CGRectMake(CONVERSION_VIEW_GAP+INFO_IMAGE_GAP, INFO_IMAGE_GAP, INFO_IMAGE_SIZE, INFO_IMAGE_SIZE);
+    self.infoImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     
 }
 
@@ -243,6 +263,7 @@
     [_textCell release];
     [_textField release];
     [_convertView release];
+    [_infoImageView release];
     [_number release];
     [_currency release];
     [super dealloc];

@@ -449,6 +449,8 @@
 		F12C09AE14B0615300D97DEC /* Style2ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C09AC14B0615300D97DEC /* Style2ImageCell.m */; };
 		F12C09B114B07A4C00D97DEC /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C09B014B07A4B00D97DEC /* ImageUtils.m */; };
 		F12C09B214B07A4C00D97DEC /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C09B014B07A4B00D97DEC /* ImageUtils.m */; };
+		F12C09B414B0DC6D00D97DEC /* exchange.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C09B314B0DC6C00D97DEC /* exchange.png */; };
+		F12C09B514B0DC6D00D97DEC /* exchange.png in Resources */ = {isa = PBXBuildFile; fileRef = F12C09B314B0DC6C00D97DEC /* exchange.png */; };
 		F12C7A9E13D0F7C600668BF0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */; };
 		F12C7A9F13D0F7C600668BF0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C7A9D13D0F7C600668BF0 /* MapKit.framework */; };
 		F14B372113E67BE000351641 /* CurrencyHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F14B372013E67BDF00351641 /* CurrencyHelperCategory.m */; };
@@ -913,6 +915,7 @@
 		F12C09AC14B0615300D97DEC /* Style2ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Style2ImageCell.m; sourceTree = "<group>"; };
 		F12C09AF14B07A4B00D97DEC /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		F12C09B014B07A4B00D97DEC /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
+		F12C09B314B0DC6C00D97DEC /* exchange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange.png; sourceTree = "<group>"; };
 		F12C7A9C13D0F7C600668BF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F12C7A9D13D0F7C600668BF0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F14B371F13E67BDF00351641 /* CurrencyHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelperCategory.h; sourceTree = "<group>"; };
@@ -1914,6 +1917,7 @@
 				F1C126D8148D3B0900A61386 /* components.png */,
 				F1C126D6148D3A3B00A61386 /* wallet_open.png */,
 				F1C126D4148D393300A61386 /* date-time.png */,
+				F12C09B314B0DC6C00D97DEC /* exchange.png */,
 				F1C126D2148D382400A61386 /* user1.png */,
 				F1C126E0148EA4E000A61386 /* component_edit.png */,
 				F117FC6E14900B7D009205C2 /* clock.png */,
@@ -2458,6 +2462,7 @@
 				F12C099814AF80E200D97DEC /* Default.png in Resources */,
 				F12C099914AF80E200D97DEC /* Default@2x.png in Resources */,
 				F12C09AA14B05FCA00D97DEC /* photo_portrait.png in Resources */,
+				F12C09B514B0DC6D00D97DEC /* exchange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2755,6 +2760,7 @@
 				F117FC6C14900B66009205C2 /* calendar.png in Resources */,
 				F117FC6F14900B7D009205C2 /* clock.png in Resources */,
 				F12C09A914B05FCA00D97DEC /* photo_portrait.png in Resources */,
+				F12C09B414B0DC6D00D97DEC /* exchange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

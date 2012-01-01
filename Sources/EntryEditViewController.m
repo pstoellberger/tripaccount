@@ -293,7 +293,7 @@ static NSIndexPath *_dateIndexPath;
         
     } else if ([indexPath isEqual:_amountIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withDecimals:2 currency:self.nmEntry.currency travel:self.travel andNamedImage:@"wallet_open.png" target:self selector:@selector(selectAmount:)]; 
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withDecimals:2 currency:self.nmEntry.currency travel:self.travel andNamedImage:@"wallet_open.png" description:nil target:self selector:@selector(selectAmount:)]; 
         numberEditViewController.title = NSLocalizedString(@"Amount", @"controller title amount");
         [self.navigationController pushViewController:numberEditViewController animated:YES];
         [numberEditViewController release]; 

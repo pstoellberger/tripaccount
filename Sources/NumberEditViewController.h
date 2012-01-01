@@ -16,6 +16,7 @@
 
 @interface NumberEditViewController : UITableViewController <UITextFieldDelegate> {
     NSString *_namedImage;
+    NSString *_description;
 }
 
 @property (nonatomic, retain) id target;
@@ -25,18 +26,20 @@
 @property (nonatomic, retain) UITextField *textField;
 
 @property (nonatomic, retain) UITextView *convertView;
+@property (nonatomic, retain) UIImageView *infoImageView;
 
 @property (nonatomic, retain) NSNumber *number;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Currency *currency;
+
 
 @property (nonatomic) BOOL allowNull;
 @property (nonatomic) BOOL allowZero;
 
 @property (nonatomic) int decimals;
 
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector;
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage target:(id)target selector:(SEL)selector;
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector;
+- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector;
 - (void)done;
 - (void)refreshConversion;
 

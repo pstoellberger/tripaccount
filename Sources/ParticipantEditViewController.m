@@ -167,7 +167,7 @@ static NSIndexPath *_imageIndexPath;
     } else if ([indexPath isEqual:_weightIndexPath]) {
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"weight.png"] autorelease];
-        cell.textLabel.text = NSLocalizedString(@"Weight", @"cell caption weight");
+        cell.textLabel.text = NSLocalizedString(@"Default Weight", @"cell caption weight");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = [self.weight stringValue];
                 
@@ -249,7 +249,7 @@ static NSIndexPath *_imageIndexPath;
         
     } else if ([indexPath isEqual:_weightIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.weight withDecimals:YES andNamedImage:@"weight.png"target:self selector:@selector(selectWeight:)]; 
+        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.weight withDecimals:YES andNamedImage:@"weight.png"  description:NSLocalizedString(@"weight info",@"weight description") target:self selector:@selector(selectWeight:)]; 
         numberEditViewController.title = NSLocalizedString(@"Weight", @"controller title edit weight");
         numberEditViewController.allowZero = NO;
         numberEditViewController.allowNull = NO;
