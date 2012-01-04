@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F12C07C414AF76A000D97DEC"
-               BuildableName = "Trip Account Lite.app"
+               BuildableName = "Trip Acc. Lite.app"
                BlueprintName = "Trip Account Lite"
                ReferencedContainer = "container:Reiseabrechnung.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F12C07C414AF76A000D97DEC"
-            BuildableName = "Trip Account Lite.app"
+            BuildableName = "Trip Acc. Lite.app"
             BlueprintName = "Trip Account Lite"
             ReferencedContainer = "container:Reiseabrechnung.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F12C07C414AF76A000D97DEC"
-            BuildableName = "Trip Account Lite.app"
+            BuildableName = "Trip Acc. Lite.app"
             BlueprintName = "Trip Account Lite"
             ReferencedContainer = "container:Reiseabrechnung.xcodeproj">
          </BuildableReference>
@@ -79,7 +79,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F12C07C414AF76A000D97DEC"
-            BuildableName = "Trip Account Lite.app"
+            BuildableName = "Trip Acc. Lite.app"
             BlueprintName = "Trip Account Lite"
             ReferencedContainer = "container:Reiseabrechnung.xcodeproj">
          </BuildableReference>

@@ -551,6 +551,8 @@
     
     [self.participantSortViewController.detailViewController.tableView deselectRowAtIndexPath:[self.participantSortViewController.detailViewController.tableView indexPathForSelectedRow] animated:YES];
     
+    [self.entrySortViewController.detailViewController.tableView reloadData];
+    
 }
 
 - (void)openParticipantPopup:(Participant *)participant {
