@@ -30,6 +30,10 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ (weight %@, participant %@)", [super description], self.weight, self.participant.name]; 
+}
+
 - (void)dealloc {
     [_weight release];
     [_participant release];

@@ -69,12 +69,13 @@ static NSIndexPath *_dateIndexPath;
             NSMutableSet *recWeightsNM = [NSMutableSet setWithCapacity:travel.participants.count];
             
             for (Participant *participant in travel.participants) {
+                
                 ReceiverWeightNotManaged *recWeightNM = [[ReceiverWeightNotManaged alloc] initWithParticiant:participant andWeight:participant.weight];
                 recWeightNM.active = NO;
                 
                 for (ReceiverWeight *recWeight in entryManaged.receiverWeights) {
                     if ([recWeight.participant isEqual:participant]) {
-                        recWeightNM.weight = recWeightNM.weight;
+                        recWeightNM.weight = recWeight.weight;
                         recWeightNM.active = YES;
                         break;
                     }
@@ -426,7 +427,6 @@ static NSIndexPath *_dateIndexPath;
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissModalViewControllerAnimated:YES];
     
-    NSLog(@"%@",self.entryManaged);
     [self.editDelegate editWasCanceled:self.entryManaged];
 }
 
