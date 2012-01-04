@@ -13,7 +13,7 @@
 @implementation InfoViewController
 
 @synthesize feedBackLabel=_feedBackLabel, titleLabel=_titleLabel, versionLabel=_versionLabel, copyrightLabel=_copyrightLabel;
-@synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton, rateButton=_rateButton, purchaseButton=_purchaseButton;
+@synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton, rateButton=_rateButton, purchaseButton=_purchaseButton, twitterLogo=_twitterLogo;
 @synthesize image=_image;
 
 #define CLOSE_LABEL_GAP 6
@@ -69,6 +69,7 @@
 #endif
         
         [UIFactory addShadowToView:self.image];
+        [UIFactory addShadowToView:self.twitterLogo];
         
     }
     return self;
@@ -166,6 +167,7 @@
     [_closeButton release];
     [_rateButton release];
     [_image release];
+    [_twitterLogo release];
     [super dealloc];
 }
 

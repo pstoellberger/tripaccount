@@ -26,6 +26,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *rateButton;
 @property (nonatomic, retain) IBOutlet UIButton *purchaseButton;
 @property (nonatomic, retain) IBOutlet UIImageView *image;
+@property (nonatomic, retain) IBOutlet UIImageView *twitterLogo;
 
 - (IBAction)cancel;
 - (IBAction)requestFeature;
