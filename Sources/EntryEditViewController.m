@@ -371,18 +371,34 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NSLocalizedString(@"Clear", @"remove button clear cell");
+    
+    if ([indexPath isEqual:_dateIndexPath]) {
+        return NSLocalizedString(@"Reset", @"date button clear cell");
+    } else {
+        return NSLocalizedString(@"Clear", @"remove button clear cell");
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [indexPath isEqual:_descriptionIndexPath];  
+    return [indexPath isEqual:_descriptionIndexPath] || [indexPath isEqual:_typeIndexPath] || [indexPath isEqual:_dateIndexPath];  
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([indexPath isEqual:_descriptionIndexPath]) {
+        
         self.nmEntry.text = @"";
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
+        
+    } else if ([indexPath isEqual:_typeIndexPath]) {
+        
+        self.nmEntry.type = nil;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_typeIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
+        
+    } else if ([indexPath isEqual:_dateIndexPath]) {
+        
+        self.nmEntry.date = [UIFactory createDateWithoutTimeFromDate:[NSDate date]];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_dateIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
     }
 }
 
