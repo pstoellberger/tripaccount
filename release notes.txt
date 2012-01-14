@@ -56,3 +56,7 @@ Es wurden mehrere Tippfehler und Stabilitätsprobleme behoben.
 
 Des weiteren, gibt es jetzt Trip Account Lite um die Funktionen von Trip Account zu präsentieren.
 
++++ Version 2.0.1 +++
+
+- Fixed Malta Flag
+
