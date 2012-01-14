@@ -75,6 +75,8 @@
 }
 
 + (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"updateSummaryOrTravel"]];
         
     Summary *summary = [Summary createSummary:travel eliminateCircularDebts:performEliminateCircularDebts];
     NSMutableDictionary *dic = summary.accounts;
@@ -228,6 +230,8 @@
 #define STATE_DONE 2
 
 - (void) eliminateCircularDebts:(NSMutableDictionary *)arrayOfParticipantKeys {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"eliminateCircularDebts"]];
     
     Participant *startParticipant = nil;
     NSMutableDictionary *knoten = [NSMutableDictionary dictionaryWithCapacity:[arrayOfParticipantKeys count]];

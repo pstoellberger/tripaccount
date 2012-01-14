@@ -45,6 +45,8 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel {
     
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: init"];
+    
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     _autoFillCanBeDone = travel == nil;
@@ -220,6 +222,8 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: commitEditingStyle"];
+    
     if ([indexPath isEqual:_cityIndexPath]) {
         
         self.city = @"";
@@ -242,6 +246,8 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: didSelectRowAtIndexPath"];
     
     _autoFillCanBeDone = NO;
     
@@ -317,6 +323,8 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)selectCurrencies:(NSArray *)newCurrencies {
     
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectCurrencies"];
+    
     NSMutableSet *addCurrArray = [NSMutableSet set];
     for (Entry *entry in self.travel.entries) {
         if (![newCurrencies containsObject:entry.currency]) {
@@ -342,6 +350,8 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (void)selectCountry:(Country *)newCountry {
+    
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectCountry"];
     
     if (![newCountry isEqual:self.country]) {
         
@@ -381,6 +391,8 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)selectName:(NSString *)newName {
     
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectName"];
+    
     if (![newName isEqualToString:self.name]) {
         self.name = newName;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -410,6 +422,8 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (void)selectCity:(NSString *)newCity {
     
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectCity"];
+    
     if (![newCity isEqualToString:self.city]) {
         
         self.city = newCity;
@@ -421,6 +435,8 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (IBAction)done:(UIBarButtonItem *)sender {
+    
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: done"];
     
     BOOL newTravel = !self.travel;
     
@@ -516,6 +532,9 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
+    
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: cancel"];
+    
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissModalViewControllerAnimated:YES];
     

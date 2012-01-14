@@ -43,6 +43,8 @@ static NSIndexPath *_imageIndexPath;
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel withParticipant:(Participant *)participant {
     
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: initInManagedObjectContext"];
+    
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     if (self) {
@@ -148,6 +150,8 @@ static NSIndexPath *_imageIndexPath;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: cellForRowAtIndexPath"];
+    
     UITableViewCell *cell = nil;
     
     if ([indexPath isEqual:_nameIndexPath]) {
@@ -200,6 +204,8 @@ static NSIndexPath *_imageIndexPath;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: commitEditingStyle"];
+    
     if ([indexPath isEqual:_nameIndexPath]) {
         
         self.name = @"";
@@ -227,6 +233,8 @@ static NSIndexPath *_imageIndexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: didSelectRowAtIndexPath"];
     
     if ([indexPath isEqual:_nameIndexPath]) {
         
@@ -269,6 +277,8 @@ static NSIndexPath *_imageIndexPath;
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: actionSheet clickedButtonAtIndex"];
     
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         
@@ -328,6 +338,8 @@ static NSIndexPath *_imageIndexPath;
 
 - (void)selectName:(NSString *)newName {
     
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectName"];
+    
     if (![newName isEqualToString:self.name]) {
         self.name = newName;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_nameIndexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -336,6 +348,9 @@ static NSIndexPath *_imageIndexPath;
 }
 
 - (void)selectEmail:(NSString *)newEmail {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectEmail"];
+    
     if (![newEmail isEqualToString:self.email]) {
         self.email = newEmail;
         [_cellsToReloadAndFlash addObject:_emailIndexPath];
@@ -343,6 +358,9 @@ static NSIndexPath *_imageIndexPath;
 }
 
 - (void)selectWeight:(NSNumber *)newWeight {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectWeight"];
+    
     if (![newWeight isEqualToNumber:self.weight]) {
         self.weight = newWeight;
         [_cellsToReloadAndFlash addObject:_weightIndexPath];
@@ -350,6 +368,8 @@ static NSIndexPath *_imageIndexPath;
 }
 
 - (IBAction)done:(UIBarButtonItem *)sender {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: done"];
     
     if (!self.participant) {
         self.participant = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext:_context];
@@ -371,6 +391,8 @@ static NSIndexPath *_imageIndexPath;
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: cancel"];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissModalViewControllerAnimated:YES];

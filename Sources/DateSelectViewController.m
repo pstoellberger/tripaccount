@@ -19,6 +19,8 @@
 
 - (id)initWithDate:(NSDate *)date target:(id)target selector:(SEL)action {
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init"]];
+    
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     if (self) {
@@ -66,6 +68,9 @@
 }
 
 - (void)done {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"done"]];
+    
     if ([_target respondsToSelector:_action]) {
         [_target performSelector:_action withObject:_picker.date];
     }    
@@ -74,6 +79,9 @@
 }
 
 - (void)cancel { 
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"cancel"]];
+    
     [self.navigationController popViewControllerAnimated:YES];    
 }
 
@@ -90,6 +98,8 @@
 
 - (void)selectDate:(id)sender {
 
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectDate"]];
+    
     UIDatePicker *datePicker = (UIDatePicker *) sender;
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
     if (_timeSwitch.on) {

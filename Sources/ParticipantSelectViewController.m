@@ -47,6 +47,8 @@
                           target:(id)target 
                           action:(SEL)selector {
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init"]];
+    
     if (self = [super initInManagedObjectContext:context 
                               withMultiSelection:YES 
                                 withFetchRequest:fetchRequest 
@@ -85,7 +87,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
-    
+        
     static NSString *ReuseIdentifier = @"ParticipantCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier];
@@ -142,6 +144,8 @@
 
 - (void)updateAllSplitAmountsForTableView:(UITableView *)tableView {
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"updateAllSplitAmountsForTableView"]];
+    
     if (self.entry.amount && [self.entry.amount doubleValue] != 0) {
         
         if ([self.selectedObjects count] != 0) {
@@ -166,6 +170,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didSelectRowAtIndexPath"]];
     
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
@@ -214,6 +220,8 @@
 
 - (void)selectWeight:(NSNumber *)number {
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectWeight"]];
+    
     ReceiverWeightNotManaged *recWeight = [self receiverWeightForParticipant:_accessorySelectedParticipant];
     
     if (![recWeight.weight isEqualToNumber:number]) {
@@ -258,6 +266,9 @@
 }
 
 - (void)selectAll:(id)sender {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectAll"]];
+    
     [super selectAll:sender];
     for (ReceiverWeightNotManaged *recWeight in self.entry.receiverWeights) {
         recWeight.active = YES;
@@ -266,6 +277,9 @@
 }
 
 - (void)selectNone:(id)sender {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectNone"]];
+    
     [super selectNone:sender];
     for (ReceiverWeightNotManaged *recWeight in self.entry.receiverWeights) {
         recWeight.active = NO;

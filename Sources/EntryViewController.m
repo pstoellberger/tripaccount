@@ -28,6 +28,8 @@
 
 - (id)initWithTravel:(Travel *) travel {
     
+    [Crittercism leaveBreadcrumb:@"EntryViewController: init"];
+    
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         
         _dateFormatter = [[NSDateFormatter alloc] init];
@@ -150,6 +152,8 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
+    [Crittercism leaveBreadcrumb:@"EntryViewController: managedObjectSelected"];
+    
     if ([self.travel isOpen]) {
         
         [self.editDelegate openEditEntryPopup:(Entry *)managedObject];
@@ -172,6 +176,8 @@
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
     
+    [Crittercism leaveBreadcrumb:@"EntryViewController: deleteManagedObject"];
+    
     [_travel.managedObjectContext deleteObject:managedObject];
     [ReiseabrechnungAppDelegate saveContext:_travel.managedObjectContext];
     
@@ -189,6 +195,8 @@
 
 - (void)initFetchResultsController:(NSFetchRequest *)req {
     
+    [Crittercism leaveBreadcrumb:@"EntryViewController: initFetchResultsController"];
+    
     req.sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:[_sortKeyArray objectAtIndex:_sortIndex] ascending:!_sortDesc], [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES], nil];
     
     [NSFetchedResultsController deleteCacheWithName:@"Entries"];
@@ -199,6 +207,8 @@
 }
 
 - (void)sortTable:(int)sortIndex desc:(BOOL)desc {
+    
+    [Crittercism leaveBreadcrumb:@"EntryViewController: sortTable"];
     
     _sortIndex = sortIndex;
     _sortDesc = desc;
@@ -241,6 +251,9 @@
 #pragma mark - BadgeValue update 
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+
+    [Crittercism leaveBreadcrumb:@"EntryViewController: controllerDidChangeContent"];
+    
     [super controllerDidChangeContent:controller];    
     [self.delegate didItemCountChange:[self.fetchedResultsController.fetchedObjects count]];
 }

@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ParticipantViewController.m"
-         timestampString = "347126875.037499"
+         timestampString = "348242864.741895"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
          landmarkName = "-deleteManagedObject:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -23,21 +23,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "347129986.979933"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "442"
-         endingLineNumber = "442"
-         landmarkName = "-upgradeFromVersion1"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "347130138.601465"
+         timestampString = "348243613.241051"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "460"
@@ -50,12 +36,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/NumberEditViewController.m"
-         timestampString = "347142237.321348"
+         filePath = "Sources/ReiseabrechnungAppDelegate.m"
+         timestampString = "348243613.241051"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "244"
-         endingLineNumber = "244"
+         startingLineNumber = "478"
+         endingLineNumber = "478"
+         landmarkName = "-upgradeFromVersion1"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/NumberEditViewController.m"
+         timestampString = "348240638.792813"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "252"
+         endingLineNumber = "252"
          landmarkName = "-loadView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -65,11 +65,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/NumberEditViewController.m"
-         timestampString = "347136011.084917"
+         timestampString = "348240638.792813"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
          landmarkName = "-initWithNumber:withDecimals:currency:travel:andNamedImage:description:target:selector:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/DateSelectViewController.m"
-         timestampString = "347142131.018956"
+         timestampString = "348242864.741895"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
          landmarkName = "-selectDate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,11 +121,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/TravelViewController.m"
-         timestampString = "347387921.285862"
+         timestampString = "348241890.72707"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "707"
-         endingLineNumber = "707"
+         startingLineNumber = "770"
+         endingLineNumber = "770"
          landmarkName = "-tabBarController:didSelectViewController:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -135,11 +135,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ParticipantSelectViewController.m"
-         timestampString = "347389016.09023"
+         timestampString = "348242864.741895"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
+         startingLineNumber = "179"
+         endingLineNumber = "179"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -149,11 +149,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/ParticipantSelectViewController.m"
-         timestampString = "347389053.003564"
+         timestampString = "348242864.741895"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "217"
-         endingLineNumber = "217"
+         startingLineNumber = "225"
+         endingLineNumber = "225"
          landmarkName = "-selectWeight:"
          landmarkType = "5">
       </FileBreakpoint>

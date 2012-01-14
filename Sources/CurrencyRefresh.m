@@ -11,6 +11,7 @@
 #import "ExchangeRate.h"
 #import "ReiseabrechnungAppDelegate.h"
 #import "MTStatusBarOverlay.h"
+#import "Crittercism.h"
 
 @interface CurrencyRefresh ()
 
@@ -51,6 +52,8 @@
 }
 
 - (BOOL)refreshCurrencies {
+    
+    [Crittercism leaveBreadcrumb:@"CurrencyRefresh: refreshCurrencies"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         MTStatusBarOverlay *statusBarOverlay = [MTStatusBarOverlay sharedInstance];
