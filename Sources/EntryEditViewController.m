@@ -49,6 +49,8 @@ static NSIndexPath *_dateIndexPath;
 // designated initializer!
 - (id)initWithTravel:(Travel *)travel andEntry:(Entry *)entryManaged {
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init travel entry"]];
+    
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     if (self) {
@@ -101,6 +103,8 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (id)initWithTravel: (Travel *)travel {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init travel"]];
     
     self = [self initWithTravel:travel andEntry:nil];
     
@@ -169,6 +173,8 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"cellForRowAtIndexPath"]];
     
     UITableViewCell *cell = nil;
     
@@ -272,6 +278,8 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didSelectRowAtIndexPath"]];
     
     if ([indexPath isEqual:_payerIndexPath]) {
         
@@ -386,6 +394,8 @@ static NSIndexPath *_dateIndexPath;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"commitEditingStyle"]];
+    
     if ([indexPath isEqual:_descriptionIndexPath]) {
         
         self.nmEntry.text = @"";
@@ -418,11 +428,15 @@ static NSIndexPath *_dateIndexPath;
 
 - (IBAction)done:(UIBarButtonItem *)sender {
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"done"]];
+    
     [self.editDelegate addOrEditEntryWithParameters:self.nmEntry andEntry:self.entryManaged];
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
+
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"cancel"]];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissModalViewControllerAnimated:YES];
@@ -472,6 +486,9 @@ static NSIndexPath *_dateIndexPath;
 #pragma mark Select methods
 
 - (void)selectType:(Type *)type {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectType"]];
+    
     self.nmEntry.type = type;
     [self checkIfDoneIsPossible];
     [_cellsToReloadAndFlash addObject:_typeIndexPath];
@@ -480,6 +497,9 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (void)selectPayer:(Participant *)payer {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectPayer"]];
+    
     self.nmEntry.payer = payer;
     [_cellsToReloadAndFlash addObject:_payerIndexPath];
     
@@ -487,21 +507,32 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (void)selectAmount:(NSNumber *)amount {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectAmount"]];
+    
     self.nmEntry.amount = amount;
     [_cellsToReloadAndFlash addObject:_amountIndexPath];
 }
 
 - (void)selectText:(NSString *)text {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectText"]];
+    
     self.nmEntry.text = text;
     [_cellsToReloadAndFlash addObject:_descriptionIndexPath];
 }
 
 - (void)selectDate:(NSDate *)date {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectDate"]];
+    
     self.nmEntry.date = date;
     [_cellsToReloadAndFlash addObject:_dateIndexPath];
 }
 
 - (void)selectCurrency:(Currency *)currency {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectCurrency"]];
     self.nmEntry.currency = currency;
     
     if (self.nmEntry.amount) {
@@ -513,6 +544,8 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (void)selectReceivers:(NSArray *)receiverWeights {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectReceivers"]];
     
     [_cellsToReloadAndFlash addObject:_receiverIndexPath];
     

@@ -56,6 +56,8 @@
 
 - (id)initWithTravel:(Travel *) travel {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: init"];
+    
     self = [self init];
     
     if (self) {
@@ -102,6 +104,8 @@
 
 - (void)openAddPopup {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openAddPopup"];
+    
     if ([[[self tabBarController] selectedViewController] isEqual:self.participantSortViewController]) {
         [self openPersonChooseOrCreatePopup];
     } else if ([[[self tabBarController] selectedViewController] isEqual:self.entrySortViewController]) {
@@ -110,6 +114,8 @@
 }
 
 - (void)openEntryAddPopup {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openEntryAddPopup"];
     
 #ifdef LITE_VERSION
     if ([self.travel.entries count] >= 5) {
@@ -130,6 +136,8 @@
 
 - (void)openEditEntryPopup:(Entry *)entry {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openEditEntryPopup"];
+    
     EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel andEntry:entry];
     detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
@@ -140,6 +148,8 @@
 }
 
 - (void)openPersonAddPopup {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openPersonAddPopup"];
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
@@ -156,6 +166,8 @@
 
 - (void)openRateEditPopup {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openRateEditPopup"];
+    
     RateSelectViewController *rateSelectViewController = [[RateSelectViewController alloc] initWithTravel:self.travel];
     rateSelectViewController.closeDelegate = self;
     
@@ -171,6 +183,8 @@
 
 - (void)openActionPopup {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openActionPopup"];
+    
     if ([self.travel isClosed]) {
         [self.actionSheetClosedTravel showInView:self.view];
     } else {
@@ -184,6 +198,8 @@
 
 - (void)openPersonChooseOrCreatePopup {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openPersonChooseOrCreatePopup"];
+    
     [self.actionSheetAddPerson showInView:self.view];
     
 }
@@ -191,6 +207,8 @@
 #pragma mark Travel logic
 
 - (void)closeTravel {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: closeTravel"];
     
     // close
     [self.travel close];
@@ -209,6 +227,8 @@
 }
 
 - (void)openTravel:(BOOL)useLatestRates {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openTravel"];
     
     // open
     [self.travel open:useLatestRates];
@@ -230,10 +250,15 @@
 }
 
 - (void)askToRefreshRatesWhenOpening {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: askToRefreshRatesWhenOpening"];
+    
     [self.rateRefreshAlertView show];
 }
 
 - (void)askToSendEmail {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: askToSendEmail"];
     
     NSMutableArray *noMailParticipants = [NSMutableArray array];
     for (Participant *participant in self.travel.participants) {
@@ -289,6 +314,8 @@
 }
 
 - (void)sendSummaryMail {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: sendSummaryMail"];
     
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.navigationBar.barStyle = UIBarStyleBlack;
@@ -358,6 +385,8 @@
 
 - (void)addOrEditEntryWithParameters:(EntryNotManaged *)nmEntry andEntry:(Entry *)entry {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: addOrEditEntryWithParameters"];
+    
     [self.entrySortViewController.detailViewController.tableView beginUpdates];
     
     Entry *_entry = nil;
@@ -399,6 +428,8 @@
 
 - (void)selectPerson:(ABRecordRef)abRecordRef withEmail:(NSString *)email {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: selectPerson"];
+    
     Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
     [Participant addParticipant:newPerson toTravel:_travel withABRecord:abRecordRef andEmail:email];
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];    
@@ -406,12 +437,16 @@
 
 - (void)entryWasDeleted:(Entry *)entry {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: entryWasDeleted"];
+    
     [self updateSummary];
     
     [self.entrySortViewController updateTotalValue];
 }
 
 - (void)updateSummary {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: updateSummary"];
     
     //    dispatch_queue_t updateQueue = dispatch_queue_create("UpdateSummary", NULL);
     //    dispatch_async(updateQueue, ^{
@@ -429,12 +464,16 @@
 
 - (void)editWasCanceled:(Entry *)entry {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: editWasCanceled"];
+    
     if (entry) {
         [self.entrySortViewController.detailViewController.tableView deselectRowAtIndexPath:[[self.entrySortViewController.detailViewController fetchedResultsControllerForTableView:self.entrySortViewController.detailViewController.tableView] indexPathForObject:entry] animated:YES];
     }
 }
 
 - (void)updateStateOfNavigationController:(UIViewController *)selectedViewController {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: updateStateOfNavigationController"];
     
     if ([selectedViewController isEqual:_summarySortViewController]) {
         self.navigationItem.rightBarButtonItem = self.actionButton;
@@ -447,6 +486,8 @@
 }
 
 - (void)refreshExchangeRates {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: refreshExchangeRates"];
     
     dispatch_queue_t updateQueue = dispatch_queue_create("UpdateQueue", NULL);
     dispatch_async(updateQueue, ^{
@@ -549,6 +590,8 @@
 
 - (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: participantEditFinished"];
+    
     [self.participantSortViewController.detailViewController.tableView deselectRowAtIndexPath:[self.participantSortViewController.detailViewController.tableView indexPathForSelectedRow] animated:YES];
     
     [self.entrySortViewController.detailViewController.tableView reloadData];
@@ -556,6 +599,8 @@
 }
 
 - (void)openParticipantPopup:(Participant *)participant {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: openParticipantPopup"];
     
     ParticipantEditViewController *detailViewController = [[ParticipantEditViewController alloc] initInManagedObjectContext:[self.travel managedObjectContext] withTravel:self.travel withParticipant:participant];
     detailViewController.editDelegate = self;
@@ -569,6 +614,8 @@
 #pragma mark - ParticipantViewControllerEditDelegate
 
 - (void)participantWasDeleted:(Participant *)participant {
+
+    [Crittercism leaveBreadcrumb:@"TravelViewController: participantWasDeleted"];
     
     [self updateSummary];   
 }
@@ -576,6 +623,8 @@
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    [Crittercism leaveBreadcrumb:@"TravelViewController: alertView clickedButtonAtIndex"];
     
     if (alertView == self.rateRefreshAlertView) {
         
@@ -596,6 +645,8 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: actionSheet clickedButtonAtIndex"];
     
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         
@@ -643,12 +694,17 @@
 #pragma mark - RateSelectViewControllerDelegate
 
 - (void)willDisappearWithChanges {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: willDisappearWithChanges"];
+    
     [self updateSummary];
 }
 
 #pragma mark - ABPeoplePickerNavigationControllerDelegate
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: peoplePickerNavigationController1"];
     
     BOOL returnValue = YES;
     
@@ -682,6 +738,8 @@
 								property:(ABPropertyID)property 
                               identifier:(ABMultiValueIdentifier)identifier {
     
+    [Crittercism leaveBreadcrumb:@"TravelViewController: peoplePickerNavigationController2"];
+    
     ABMultiValueRef *multiValue = (ABMultiValueRef *) ABRecordCopyValue(person, property);
     CFIndex index = (CFIndex) ABMultiValueGetIndexForIdentifier(multiValue, identifier);
     NSString *email = (NSString *) ABMultiValueCopyValueAtIndex(multiValue, index);
@@ -696,6 +754,9 @@
 }
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker; {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: peoplePickerNavigationControllerDidCancel"];
+    
     peoplePicker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[self dismissModalViewControllerAnimated:YES];
 }
@@ -703,6 +764,8 @@
 #pragma mark - UITabBarControllerDelegate
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: tabBarController"];
     
     [self updateStateOfNavigationController:viewController];
     
@@ -729,6 +792,9 @@
 #pragma mark - MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    
+    [Crittercism leaveBreadcrumb:@"TravelViewController: mailComposeController"];
+    
     if (result == MFMailComposeResultSent) {
         NSLog(@"It's away!");
     }

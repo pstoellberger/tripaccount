@@ -19,6 +19,8 @@
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context withMultiSelection:(BOOL)multiSelection withSelectedObjects:(NSArray *)selectedObjects target:(id)target action:(SEL)selector {
     
+    [Crittercism leaveBreadcrumb:@"TypeViewController: init"];
+    
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     request.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:context];
     request.predicate = [NSPredicate predicateWithFormat:@"hidden == 0"];
@@ -48,6 +50,8 @@
 
 - (void)openAddPopup {
     
+    [Crittercism leaveBreadcrumb:@"TypeViewController: openAddPopup"];
+    
     TextEditViewController *tevc = [[TextEditViewController alloc] initWithText:@"" target:self selector:@selector(addType:)];
     tevc.title = NSLocalizedString(@"Add Type", @"title new type");
     [self.navigationController pushViewController:tevc animated:YES];
@@ -55,6 +59,8 @@
 }
 
 - (void)editType:(Type *)type {
+    
+    [Crittercism leaveBreadcrumb:@"TypeViewController: editType"];
     
     _editedType = type;
     
@@ -64,6 +70,8 @@
 }
 
 - (void)updateType:(NSString *)typeName {
+    
+    [Crittercism leaveBreadcrumb:@"TypeViewController: updateType"];
 
     if (_editedType) {
         
@@ -80,6 +88,8 @@
 
 - (void)addType:(NSString *)typeName {
     
+    [Crittercism leaveBreadcrumb:@"TypeViewController: addType"];
+    
     [self.tableView beginUpdates];
     
     Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext: self.context];
@@ -94,6 +104,8 @@
 
 - (void)toggleEditing {
         
+    [Crittercism leaveBreadcrumb:@"TypeViewController: toggleEditing"];
+    
     NSFetchedResultsController *resultsController = [self fetchedResultsControllerForTableView:self.tableView];
     
     if (!self.tableView.editing) {
@@ -178,6 +190,8 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
+    [Crittercism leaveBreadcrumb:@"TypeViewController: managedObjectSelected"];
+    
     if (!self.tableView.editing) {
         
         [super managedObjectSelected:managedObject];
@@ -204,6 +218,8 @@
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
     
+    [Crittercism leaveBreadcrumb:@"TypeViewController: deleteManagedObject"];
+    
     Type *type = (Type *)managedObject;
    
     for (Entry *entry in type.entries) {
@@ -222,6 +238,8 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    [Crittercism leaveBreadcrumb:@"TypeViewController: commitEditingStyle"];
+    
     Type *type = (Type *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if ([type.builtIn intValue] == 0) {

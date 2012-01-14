@@ -42,6 +42,18 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOption {
     
+    
+#if TARGET_IPHONE_SIMULATOR
+    NSLog(@"Crittercism disabled in Simulator.");
+#else
+    [Crittercism initWithAppID: @"4ec2ddd83f5b31291100000e"
+                        andKey:@"4ec2ddd83f5b31291100000ewufkre3p"
+                     andSecret:@"0ilulrbcdkvhhn38o61neacyfgmgsdzu"
+         andMainViewController:self.navController];
+#endif
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didFinishLaunchingWithOptions"]];
+    
     [self initUserDefaults];
     
     self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
@@ -62,6 +74,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 
     [actView startAnimating];
     
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"ActivityIndicator start animate"]];
+    
     dispatch_queue_t updateQueue = dispatch_queue_create("InitQ", NULL);
     
     dispatch_async(updateQueue, ^{
@@ -75,16 +89,6 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
             RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
             self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
             self.navController.delegate = rvc;
-     
-            
-#if TARGET_IPHONE_SIMULATOR
-            NSLog(@"Crittercism disabled in Simulator.");
-#else
-            [Crittercism initWithAppID: @"4ec2ddd83f5b31291100000e"
-                                andKey:@"4ec2ddd83f5b31291100000ewufkre3p"
-                             andSecret:@"0ilulrbcdkvhhn38o61neacyfgmgsdzu"
-                 andMainViewController:self.navController];
-#endif
             
             [rvc release];
             
@@ -127,6 +131,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 
 - (void)performInitialisations:(UIWindow *)window {
     
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: performInitialisations start"];
+    
     [self checkForResetOfHelpBubbles];
     
     [self initializeStartDatabase:[NSBundle mainBundle]];
@@ -138,6 +144,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     [self refreshCurrencyRatesIfOutDated];
     
     [self upgradeFromVersion1];
+    
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: performInitialisations end"];
     
 }
 
@@ -152,6 +160,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 
 - (void)fixUsDollar {
     
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: fixUsDollar"];
+    
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
     req.predicate = [NSPredicate predicateWithFormat:@"name_de == 'Us-Dollar'"];
@@ -164,7 +174,9 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     [req release];
 }
 
-- (void)initializeStartDatabase:(NSBundle *)bundle {        
+- (void)initializeStartDatabase:(NSBundle *)bundle {
+    
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: initializeStartDatabase start"];
     
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: self.managedObjectContext];
@@ -274,6 +286,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
         }
     }
     
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: initializeStartDatabase initTypes"];
+    
     NSFetchRequest *reqType = [[NSFetchRequest alloc] init];
     reqType.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext: self.managedObjectContext];
     NSArray *types = [self.managedObjectContext executeFetchRequest:reqType error:nil];
@@ -318,6 +332,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 }
 
 - (void)initializeSampleTrip {
+    
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: initializeSampleTrip"];
     
     if (![[ReiseabrechnungAppDelegate defaultsObject:self.managedObjectContext].sampleTravelCreated isEqual:[NSNumber numberWithInt:1]]) {
         
@@ -439,6 +455,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 
 - (void)upgradeFromVersion1 {
     
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: upgradeFromVersion1"];
+    
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: self.managedObjectContext];
     NSArray *travels = [self.managedObjectContext executeFetchRequest:req error:nil];
@@ -496,6 +514,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 }
 
 - (void)refreshCurrencyRatesIfOutDated {
+    
+    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: refreshCurrencyRatesIfOutDated"];
     
     CurrencyRefresh *currencyRefresh = [[CurrencyRefresh alloc] initInManagedContext:[self createNewManagedObjectContext]];
     

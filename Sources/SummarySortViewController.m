@@ -22,6 +22,8 @@
 
 - (id)initWithTravel:(Travel *)travel {
     
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: init"];
+    
     if (self = [super init]) {
         self.travel = travel;
         _currencyArray = [self.travel.sortedCurrencies retain];
@@ -45,6 +47,8 @@
 }
 
 - (void)updateRateLabel:(BOOL)animate; {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: updateRateLabel"];
     
     float animationDuration = 0.5;
     if (!animate) {
@@ -108,6 +112,8 @@
 #pragma mark - View lifecycle
 
 - (void)loadView {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: loadView"];
     
     [super loadView];
     

@@ -23,8 +23,11 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     
+    [Crittercism leaveBreadcrumb:@"InfoViewController: init"];
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
         self.view.frame = [[UIScreen mainScreen] applicationFrame];
         
         UIView *bgView = [UIFactory createBackgroundViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 480)];
@@ -96,6 +99,8 @@
 }
 
 - (IBAction)cancel {
+    
+    [Crittercism leaveBreadcrumb:@"InfoViewController: cancel"];
     
     if (_target && _action && [_target respondsToSelector:_action]) {
         [_target performSelector:_action];

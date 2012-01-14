@@ -24,6 +24,8 @@
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext withRootViewController:(UIViewController <TravelEditViewControllerDelegate> *)rootViewController {
     
+    [Crittercism leaveBreadcrumb:@"TravelListViewController: init"];
+    
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         
@@ -54,6 +56,8 @@
 }
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
+    
+    [Crittercism leaveBreadcrumb:@"TravelListViewController: managedObjectSelected"];
     
     if (self.tableView.editing) {
         
@@ -92,6 +96,8 @@
 }
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
+    
+    [Crittercism leaveBreadcrumb:@"TravelListViewController: deleteManagedObject"];
     
     [self.managedObjectContext deleteObject:managedObject];
     [ReiseabrechnungAppDelegate saveContext:self.managedObjectContext];
@@ -165,6 +171,8 @@
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [Crittercism leaveBreadcrumb:@"TravelListViewController: alertView clickedButtonAtIndex"];
     
     if (alertView == self.openTripAlert) {
         

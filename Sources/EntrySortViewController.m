@@ -19,6 +19,8 @@
 
 - (id)initWithTravel:(Travel *)travel {
     
+    [Crittercism leaveBreadcrumb:@"EntrySortViewController: init"];
+    
     if (self = [super init]) {
         self.travel = travel;
         

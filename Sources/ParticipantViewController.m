@@ -19,6 +19,8 @@
 
 - (id)initWithTravel:(Travel *) travel {
     
+    [Crittercism leaveBreadcrumb:@"ParticipantViewController: init"];
+    
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         
         _travel = travel;
@@ -113,6 +115,8 @@
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
     
+    [Crittercism leaveBreadcrumb:@"ParticipantViewController: deleteManagedObject"];
+    
     Participant *participant = (Participant *)managedObject;
     
     if ([participant.pays count] > 0) {
@@ -146,6 +150,8 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
+    [Crittercism leaveBreadcrumb:@"ParticipantViewController: managedObjectSelected"];
+    
     [self.editDelegate openParticipantPopup:(Participant *)managedObject];
 }
 
@@ -154,6 +160,8 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    
+    [Crittercism leaveBreadcrumb:@"ParticipantViewController: controllerDidChangeContent"];
     
     [super controllerDidChangeContent:controller];  
     

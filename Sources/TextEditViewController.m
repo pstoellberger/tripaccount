@@ -24,6 +24,8 @@
 
 - (id)initWithText:(NSString *)text target:(id)target selector:(SEL)selector andNamedImage:(NSString *)namedImage {
     
+    [Crittercism leaveBreadcrumb:@"TextEditViewController: init"];
+    
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         
         if (!namedImage) {
@@ -56,6 +58,9 @@
 }
 
 - (void)done {
+    
+    [Crittercism leaveBreadcrumb:@"TextEditViewController: done"];
+    
     if ([_target respondsToSelector:_selector]) {
         [_target performSelector:_selector withObject:[_textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     }    
@@ -64,6 +69,9 @@
 }
 
 - (void)cancel {
+    
+    [Crittercism leaveBreadcrumb:@"TextEditViewController: cancel"];
+    
     [[self navigationController] popViewControllerAnimated:YES];
 }
 

@@ -32,6 +32,8 @@
 
 - (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector {
     
+    [Crittercism leaveBreadcrumb:@"NumberEditViewController: init"];
+    
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         
         _namedImage = namedImage;
@@ -101,6 +103,9 @@
 }
 
 - (void)done {
+    
+    [Crittercism leaveBreadcrumb:@"NumberEditViewController: done"];
+    
     if ([_target respondsToSelector:_selector]) {
         [_target performSelector:_selector withObject:self.number];
     }    
@@ -109,6 +114,9 @@
 }
 
 - (void)cancel {
+    
+    [Crittercism leaveBreadcrumb:@"NumberEditViewController: cancel"];
+    
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
