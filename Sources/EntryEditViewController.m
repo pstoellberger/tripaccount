@@ -18,6 +18,7 @@
 #import "ParticipantSelectViewController.h"
 #import "ReceiverWeightNotManaged.h"
 #import "ReceiverWeight.h"
+#import "NotesEditViewController.h"
 
 static NSIndexPath *_payerIndexPath;
 static NSIndexPath *_amountIndexPath;
@@ -26,6 +27,7 @@ static NSIndexPath *_receiverIndexPath;
 static NSIndexPath *_descriptionIndexPath;
 static NSIndexPath *_typeIndexPath;
 static NSIndexPath *_dateIndexPath;
+static NSIndexPath *_notesIndexPath;
 
 @interface EntryEditViewController () 
 
@@ -158,10 +160,11 @@ static NSIndexPath *_dateIndexPath;
     _payerIndexPath = [[NSIndexPath indexPathForRow:0 inSection:0] retain];
     _dateIndexPath = [[NSIndexPath indexPathForRow:1 inSection:0] retain];
     _descriptionIndexPath = [[NSIndexPath indexPathForRow:2 inSection:0] retain];
-    _typeIndexPath = [[NSIndexPath indexPathForRow:3 inSection:0] retain];
-    _amountIndexPath = [[NSIndexPath indexPathForRow:4 inSection:0] retain];
-    _currencyIndexPath = [[NSIndexPath indexPathForRow:5 inSection:0] retain];
-    _receiverIndexPath = [[NSIndexPath indexPathForRow:6 inSection:0] retain];
+    _typeIndexPath = [[NSIndexPath indexPathForRow:4 inSection:0] retain];
+    _amountIndexPath = [[NSIndexPath indexPathForRow:5 inSection:0] retain];
+    _currencyIndexPath = [[NSIndexPath indexPathForRow:6 inSection:0] retain];
+    _receiverIndexPath = [[NSIndexPath indexPathForRow:7 inSection:0] retain];
+    _notesIndexPath = [[NSIndexPath indexPathForRow:3 inSection:0] retain];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -169,7 +172,7 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -263,6 +266,14 @@ static NSIndexPath *_dateIndexPath;
         
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n", [receiverString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
         cell.detailTextLabel.numberOfLines = 0;
+        
+    }  else if ([indexPath isEqual:_notesIndexPath]) {        
+        
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"notebook.png"] autorelease];
+        cell.textLabel.text = NSLocalizedString(@"Notes", @"cell title notes");
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = self.nmEntry.notes;
+        
     }
     
     return cell;
@@ -374,6 +385,14 @@ static NSIndexPath *_dateIndexPath;
         
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
+        
+    }  else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        NotesEditViewController *textEditViewController = [[NotesEditViewController alloc] initWithText:self.nmEntry.notes target:self selector:@selector(selectNotes:)]; 
+        textEditViewController.title = NSLocalizedString(@"Notes", @"controller title notes");
+        [self.navigationController pushViewController:textEditViewController animated:YES];
+        [textEditViewController release];    
+        
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -389,7 +408,7 @@ static NSIndexPath *_dateIndexPath;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [indexPath isEqual:_descriptionIndexPath] || [indexPath isEqual:_typeIndexPath] || [indexPath isEqual:_dateIndexPath];  
+    return [indexPath isEqual:_descriptionIndexPath] || [indexPath isEqual:_typeIndexPath] || [indexPath isEqual:_dateIndexPath] || [indexPath isEqual:_notesIndexPath];  
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -410,6 +429,11 @@ static NSIndexPath *_dateIndexPath;
         
         self.nmEntry.date = [UIFactory createDateWithoutTimeFromDate:[NSDate date]];
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_dateIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
+        
+    }  else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        self.nmEntry.notes = @"";
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_notesIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
     }
 }
 
@@ -520,6 +544,14 @@ static NSIndexPath *_dateIndexPath;
     
     self.nmEntry.text = text;
     [_cellsToReloadAndFlash addObject:_descriptionIndexPath];
+}
+
+- (void)selectNotes:(NSString *)notes {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectNotes"]];
+    
+    self.nmEntry.notes = notes;
+    [_cellsToReloadAndFlash addObject:_notesIndexPath];
 }
 
 - (void)selectDate:(NSDate *)date {

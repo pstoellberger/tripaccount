@@ -326,6 +326,13 @@
     if ([userDefaults boolForKey:@"includeImages"]) {
         [dictionary setValue:@"Yes" forKey:@"includeImages"];
     }
+    if ([userDefaults boolForKey:@"includePersons"]) {
+        [dictionary setValue:@"Yes" forKey:@"includePersons"];
+    }
+    if ([userDefaults boolForKey:@"includeEntries"]) {
+        [dictionary setValue:@"Yes" forKey:@"includeEntries"];
+    }
+    
     if ([self.travel.name length] > 0) {
         [dictionary setValue:@"Yes" forKey:@"tripHasName"];
     }
@@ -346,6 +353,8 @@
     [dictionary setValue:NSLocalizedString(@"already paid", @"mail label") forKey:@"labelAlreadyPaid"];
     [dictionary setValue:NSLocalizedString(@"Yes", @"mail label") forKey:@"labelYes"];
     [dictionary setValue:NSLocalizedString(@"No", @"mail label") forKey:@"labelNo"];
+    [dictionary setValue:NSLocalizedString(@"Name", @"mail label") forKey:@"labelName"];
+    [dictionary setValue:NSLocalizedString(@"Notes", @"mail label") forKey:@"labelNotes"];
     [dictionary setValue:NSLocalizedString(@"Currencies used for this trip:", @"mail label") forKey:@"labelCurrenciesUsed"];
     
     MGTemplateEngine *engine = [[MGTemplateEngine alloc] init];
@@ -402,6 +411,7 @@
     _entry.amount = nmEntry.amount;
     _entry.currency = nmEntry.currency;
     _entry.date = nmEntry.date;
+    _entry.notes = nmEntry.notes;
     _entry.payer = nmEntry.payer;
     _entry.type = nmEntry.type;
     _entry.travel = _travel;

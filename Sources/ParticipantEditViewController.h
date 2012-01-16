@@ -28,6 +28,7 @@
 }
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *notes;
 @property (nonatomic, retain) NSString *email;
 @property (nonatomic, retain) NSNumber *weight;
 @property (nonatomic, retain) NSData *image;

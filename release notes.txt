@@ -60,3 +60,9 @@ Des weiteren, gibt es jetzt Trip Account Lite um die Funktionen von Trip Account
 
 - Fixed Malta Flag
 
++++ Version 2.1 +++
+
+- Notes for Expenses, Participants and Trips
+- Settings für Personen/Trips in Report einstellen
+
+

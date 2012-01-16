@@ -15,8 +15,9 @@
 
 #define ICON_SIZE 24
 #define ICON_GAP 5
+#define ICON_TOP 8
 
-@synthesize myImageView=_myImageView;
+@synthesize myImageView=_myImageView, imageOnTop=_imageOnTop;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andNamedImage:(NSString *)namedImage {
     
@@ -45,13 +46,17 @@
     self.detailTextLabel.textAlignment = UITextAlignmentRight;
     self.detailTextLabel.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + GAP_BETWEEN_CELLS, self.detailTextLabel.frame.origin.y, self.bounds.size.width - (self.textLabel.frame.origin.x + self.textLabel.frame.size.width + GAP_BETWEEN_CELLS + ACCESSORY_SPACE), self.detailTextLabel.frame.size.height);
     self.textLabel.textAlignment = UITextAlignmentLeft;
-    
-    self.myImageView.frame = CGRectMake(ICON_GAP, self.textLabel.frame.origin.y + ((self.textLabel.frame.size.height - ICON_SIZE) / 2), ICON_SIZE, ICON_SIZE);
+    if (!_imageOnTop) {
+        self.myImageView.frame = CGRectMake(ICON_GAP, self.textLabel.frame.origin.y + ((self.textLabel.frame.size.height - ICON_SIZE) / 2), ICON_SIZE, ICON_SIZE);
+    } else {
+        self.myImageView.frame = CGRectMake(ICON_GAP, ICON_TOP, ICON_SIZE, ICON_SIZE);
+    }
     
     self.detailTextLabel.backgroundColor = [UIColor clearColor];
     self.textLabel.backgroundColor = [UIColor clearColor];
     
 }
+
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     

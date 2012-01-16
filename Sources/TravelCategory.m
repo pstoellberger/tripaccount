@@ -137,4 +137,42 @@
     return [NSNumber numberWithDouble:totalWeight];
 }
 
+- (BOOL)hasEntriesWithNotes {
+    BOOL returnValue = NO;
+    for (Entry *e in self.entries) {
+        if (e.notes && e.notes.length > 0) {
+            returnValue = YES;
+            break;
+        }
+    }
+    return returnValue;
+}
+
+- (BOOL)hasEntriesWithText {
+    BOOL returnValue = NO;
+    for (Entry *e in self.entries) {
+        if (e.text && e.text.length > 0) {
+            returnValue = YES;
+            break;
+        }
+    }
+    return returnValue;
+}
+
+- (BOOL)hasParticipantsWithNotes {
+    BOOL returnValue = NO;
+    for (Participant *p in self.participants) {
+        if (p.notes && p.notes.length > 0) {
+            returnValue = YES;
+            break;
+        }
+    }
+    return returnValue;
+}
+
+- (NSString *)notesHTML {
+    return [self.notes stringByReplacingOccurrencesOfString:@"\n" withString:@"<br />"];
+}
+
+
 @end

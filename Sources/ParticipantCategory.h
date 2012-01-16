@@ -10,5 +10,8 @@
 #import "Participant.h"
 
 @interface Participant (Base64Image)
+
+@property (nonatomic, readonly) NSString *notesHTML;
+
 - (NSString *)base64;
 @end
