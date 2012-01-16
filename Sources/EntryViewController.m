@@ -15,6 +15,8 @@
 #import "EntryEditViewController.h"
 #import "ShadowNavigationController.h"
 #import "DateSortCategory.h"
+#import "UIFactory.h"
+#import "GradientView.h"
 
 @interface EntryViewController ()
 - (void)initFetchResultsController:(NSFetchRequest *)req;    
@@ -90,6 +92,17 @@
     }
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    
+    NSInteger itemCount = [tableView.dataSource tableView:tableView numberOfRowsInSection:section];
+    if (itemCount <= 1 || ![[NSUserDefaults standardUserDefaults] boolForKey:@"showTotals"]) {
+        return 0;
+    } else {
+        return 20;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
     
     static NSString *reuseIdentifier = @"EntryCell";
@@ -147,6 +160,46 @@
     cell.top.textColor = textColor;
     
     return cell;
+}
+
+#define TOTAL_CELL_HEIGHT 20
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    NSInteger itemCount = [tableView.dataSource tableView:tableView numberOfRowsInSection:section];
+    if (itemCount <= 1 || ![[NSUserDefaults standardUserDefaults] boolForKey:@"showTotals"]) {
+        return nil;
+    }
+
+    double totalValue = 0;
+    for (int counter=0; counter < itemCount; counter++) {
+        Entry *entry = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:section]];
+        totalValue += [entry.currency convertTravelAmount:self.travel currency:self.travel.displayCurrency amount:[entry.amount doubleValue]];
+    }
+    
+    UIView *totalViewContainer = [[[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_CELL_HEIGHT) andColor1:[UIFactory defaultDarkTintColor] andColor2:[UIFactory defaultTintColor]] autorelease];
+    totalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_CELL_HEIGHT)];
+    label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = UITextAlignmentRight;
+    label.font = [UIFont systemFontOfSize:10];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = [NSString stringWithFormat:@"%@ (%@):   %@ %@    ", NSLocalizedString(@"total", "@total label"), [self tableView:tableView titleForHeaderInSection:section], [UIFactory formatNumber:[NSNumber numberWithDouble:totalValue]], [self.travel.displayCurrency code]];
+    [totalViewContainer addSubview:label];
+    [label release];
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, 1)];
+    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    line.autoresizingMask = totalViewContainer.autoresizingMask;
+    line.backgroundColor = [UIColor darkGrayColor];
+
+    [totalViewContainer addSubview:line];
+    [line release];
+
+    return totalViewContainer;
+     
 }
 
 
