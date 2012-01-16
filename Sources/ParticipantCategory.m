@@ -26,4 +26,8 @@
     return UIImagePNGRepresentation(newImage).base64EncodedString;
 }
 
+- (NSString *)notesHTML {
+    return [self.notes stringByReplacingOccurrencesOfString:@"\n" withString:@"<br />"];
+}
+
 @end

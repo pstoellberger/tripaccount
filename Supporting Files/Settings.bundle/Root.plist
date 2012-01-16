@@ -9,6 +9,8 @@
 			<string>Help</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>HelpFooterText</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
@@ -25,6 +27,28 @@
 			<string>Summary email</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>IncludeImagesFooterText</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Key</key>
+			<string>includePersons</string>
+			<key>Title</key>
+			<string>Include Persons</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Key</key>
+			<string>includeEntries</string>
+			<key>Title</key>
+			<string>Include Entries</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>

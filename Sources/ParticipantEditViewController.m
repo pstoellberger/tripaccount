@@ -21,22 +21,25 @@
 #import "NumberEditViewController.h"
 #import "Style2ImageCell.h"
 #import "ImageUtils.h"
+#import "NotesEditViewController.h"
 
 static NSIndexPath *_nameIndexPath;
 static NSIndexPath *_emailIndexPath;
 static NSIndexPath *_weightIndexPath;
 static NSIndexPath *_imageIndexPath;
+static NSIndexPath *_notesIndexPath;
 
 @interface ParticipantEditViewController ()
 - (void)initIndexPaths;
 - (void)updateAndFlash:(UIViewController *)viewController;
 - (void)selectEmail:(NSString *)newEmail;
 - (void)selectName:(NSString *)newName;
+- (void)selectNotes:(NSString *)notes;
 @end
 
 @implementation ParticipantEditViewController
 
-@synthesize name=_name, email=_email, weight=_weight, image=_image;
+@synthesize name=_name, email=_email, weight=_weight, image=_image, notes=_notes;
 @synthesize travel=_travel, participant=_participant;
 @synthesize editDelegate=_editDelegate;
 @synthesize imageActionSheet=_imageActionSheet;
@@ -84,6 +87,7 @@ static NSIndexPath *_imageIndexPath;
         
         if (!participant) {
             
+            self.notes = @"";
             self.name = @"";
             self.email = @"";
             self.weight = [NSNumber numberWithInt:1];
@@ -91,6 +95,7 @@ static NSIndexPath *_imageIndexPath;
             
         } else {
             
+            self.notes = participant.notes;
             self.name = participant.name;
             self.email = participant.email;
             self.weight = participant.weight;
@@ -113,6 +118,7 @@ static NSIndexPath *_imageIndexPath;
     _emailIndexPath = [[NSIndexPath indexPathForRow:1 inSection:0] retain];
     _weightIndexPath = [[NSIndexPath indexPathForRow:2 inSection:0] retain];
     _imageIndexPath = [[NSIndexPath indexPathForRow:3 inSection:0] retain];
+    _notesIndexPath = [[NSIndexPath indexPathForRow:4 inSection:0] retain];
 }
 
 
@@ -141,7 +147,7 @@ static NSIndexPath *_imageIndexPath;
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -182,6 +188,13 @@ static NSIndexPath *_imageIndexPath;
         imageCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         imageCell.rightImage = self.image;
         cell = imageCell;
+        
+    } else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"notebook.png"] autorelease];
+        cell.textLabel.text = NSLocalizedString(@"Notes", @"cell caption notes");
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = self.notes;
         
     } else {
         NSLog(@"no indexpath cell found for %@ ", indexPath);
@@ -228,6 +241,11 @@ static NSIndexPath *_imageIndexPath;
         self.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"noImage" ofType:@"png"]];
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_imageIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
         
+    } else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        self.notes = @"";
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_notesIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
+        
     }
     
 }
@@ -266,11 +284,20 @@ static NSIndexPath *_imageIndexPath;
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-    }  else if ([indexPath isEqual:_imageIndexPath]) {
+    } else if ([indexPath isEqual:_imageIndexPath]) {
         
         [self.imageActionSheet showInView:self.view];           
         
-    }
+    } else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        NotesEditViewController *textEditViewController = [[NotesEditViewController alloc] initWithText:self.notes target:self selector:@selector(selectNotes:)]; 
+        textEditViewController.title = NSLocalizedString(@"Notes", @"controller title edit notes");
+        [self.navigationController pushViewController:textEditViewController animated:YES];
+        [textEditViewController release]; 
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+    } 
     
 }
 
@@ -367,6 +394,16 @@ static NSIndexPath *_imageIndexPath;
     }
 }
 
+- (void)selectNotes:(NSString *)notes {
+    
+    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectNotes"];
+    
+    if (![notes isEqual:self.notes]) {
+        self.notes = notes;
+        [_cellsToReloadAndFlash addObject:_notesIndexPath];
+    }
+}
+
 - (IBAction)done:(UIBarButtonItem *)sender {
     
     [Crittercism leaveBreadcrumb:@"SummarySortViewController: done"];
@@ -377,6 +414,7 @@ static NSIndexPath *_imageIndexPath;
     }
     
     self.participant.name = self.name;
+    self.participant.notes = self.notes;
     self.participant.email = self.email;
     self.participant.weight = [NSDecimalNumber decimalNumberWithDecimal:[self.weight decimalValue]];
     self.participant.image = self.image;
@@ -444,6 +482,7 @@ static NSIndexPath *_imageIndexPath;
     [_emailIndexPath release];
     [_weightIndexPath release];
     [_imageIndexPath release];
+    [_notesIndexPath release];
     [_image release];
     
     [_participant release];

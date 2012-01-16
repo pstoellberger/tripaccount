@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) NSArray *sortedReceiverWeights;
 @property (nonatomic, readonly) BOOL hasTimeSpecified;
 @property (nonatomic, readonly) NSString *typeSectionName;
+@property (nonatomic, readonly) NSString *notesHTML;
 
 - (double)totalReceiverWeights;
 - (BOOL)isWeightInUse;

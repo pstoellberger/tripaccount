@@ -18,22 +18,25 @@
 #import "TextEditViewController.h"
 #import "AlignedStyle2Cell.h"
 #import "ExchangeRate.h"
+#import "NotesEditViewController.h"
 
 static NSIndexPath *_countryIndexPath;
 static NSIndexPath *_cityIndexPath;
 static NSIndexPath *_descriptionIndexPath;
 static NSIndexPath *_currenciesIndexPath;
+static NSIndexPath *_notesIndexPath;
 
 @interface TravelEditViewController ()
 - (void)initIndexPaths;
 - (void)updateAndFlash:(UIViewController *)viewController;
 - (void)selectCity:(NSString *)newCity;
 - (void)selectName:(NSString *)newName;
+- (void)selectNotes:(NSString *)notes;
 @end
 
 @implementation TravelEditViewController
 
-@synthesize name=_name, travel=_travel, country=_country, currencies=_currencies, city=_city;
+@synthesize name=_name, travel=_travel, country=_country, currencies=_currencies, city=_city, notes=_notes;
 @synthesize editDelegate=_editDelegate;
 
 
@@ -91,6 +94,7 @@ static NSIndexPath *_currenciesIndexPath;
             self.currencies = [NSArray arrayWithObject:[ReiseabrechnungAppDelegate defaultsObject:context].homeCurrency];
             [_cellsToReloadAndFlash addObject:_currenciesIndexPath];
             self.name = @"";
+            self.notes = @"";
             self.city = @"";
             self.country = nil;
             
@@ -102,6 +106,7 @@ static NSIndexPath *_currenciesIndexPath;
         } else {
 
             self.name = travel.name;
+            self.notes = travel.notes;
             self.city = travel.city;
             self.country = travel.country;
             self.currencies = [travel.currencies allObjects];
@@ -111,10 +116,14 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (void)initIndexPaths {
+    
     _descriptionIndexPath = [[NSIndexPath indexPathForRow:0 inSection:0] retain];
+    _notesIndexPath = [[NSIndexPath indexPathForRow:1 inSection:0] retain];
+    
     _countryIndexPath = [[NSIndexPath indexPathForRow:0 inSection:1] retain];
     _cityIndexPath = [[NSIndexPath indexPathForRow:1 inSection:1] retain];
     _currenciesIndexPath = [[NSIndexPath indexPathForRow:2 inSection:1] retain];
+
 }
 
 
@@ -148,7 +157,7 @@ static NSIndexPath *_currenciesIndexPath;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-        case 0: return 1;
+        case 0: return 2;
         case 1: return 3;
     }
     return 0;
@@ -205,6 +214,13 @@ static NSIndexPath *_currenciesIndexPath;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n", [currenciesString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
         cell.detailTextLabel.numberOfLines = 0;
 
+    } else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil andNamedImage:@"notebook.png"] autorelease];
+        cell.textLabel.text = NSLocalizedString(@"Notes", @"note cell caption");
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = self.notes; 
+    
     } else {
         NSLog(@"no indexpath cell found for %@ ", indexPath);
     }
@@ -217,7 +233,7 @@ static NSIndexPath *_currenciesIndexPath;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [indexPath isEqual:_cityIndexPath] || [indexPath isEqual:_descriptionIndexPath];  
+    return [indexPath isEqual:_cityIndexPath] || [indexPath isEqual:_descriptionIndexPath] || [indexPath isEqual:_notesIndexPath];  
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -233,6 +249,11 @@ static NSIndexPath *_currenciesIndexPath;
         
         self.name = @"";
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_descriptionIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
+        
+    } else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        self.notes = @"";
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_notesIndexPath] withRowAnimation:[UIFactory commitEditingStyleRowAnimation]];
     }
     
 }
@@ -308,6 +329,12 @@ static NSIndexPath *_currenciesIndexPath;
         selectViewController.title = NSLocalizedString(@"Currencies", "controller title");
         [self.navigationController pushViewController:selectViewController animated:YES];
         [selectViewController release];
+        
+    } else if ([indexPath isEqual:_notesIndexPath]) {
+        
+        NotesEditViewController *textEditViewController = [[NotesEditViewController alloc] initWithText:self.notes target:self selector:@selector(selectNotes:)];        textEditViewController.title = NSLocalizedString(@"Notes", @"edit notes title");
+        [self.navigationController pushViewController:textEditViewController animated:YES];
+        [textEditViewController release];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -420,6 +447,17 @@ static NSIndexPath *_currenciesIndexPath;
     }
 }
 
+- (void)selectNotes:(NSString *)notes {
+    
+    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectNotes"];
+    
+    if (![notes isEqualToString:self.notes]) {
+        self.notes = notes;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_notesIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_cellsToReloadAndFlash addObject:_notesIndexPath];
+    }
+}
+
 - (void)selectCity:(NSString *)newCity {
     
     [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectCity"];
@@ -446,6 +484,7 @@ static NSIndexPath *_currenciesIndexPath;
     }
     
     self.travel.name = self.name;
+    self.travel.notes = self.notes;
     self.travel.country = self.country;
     self.travel.city = self.city;
     self.travel.closed = [NSNumber numberWithInt:0];

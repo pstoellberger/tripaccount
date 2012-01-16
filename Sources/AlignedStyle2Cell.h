@@ -12,6 +12,7 @@
 @interface AlignedStyle2Cell : UITableViewCell
 
 @property (nonatomic, retain) UIView *myImageView;
+@property (nonatomic) BOOL imageOnTop;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andNamedImage:(NSString *)namedImage;
 

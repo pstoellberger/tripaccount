@@ -127,7 +127,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
+    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait 
+        || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         return GAP;
     } else {
         return 0;
@@ -135,7 +136,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
+    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait 
+        || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         return GAP;
     } else {
         return 0;

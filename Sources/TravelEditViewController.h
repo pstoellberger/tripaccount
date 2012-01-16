@@ -34,6 +34,7 @@
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Country *country;
 @property (nonatomic, retain) NSArray *currencies;
+@property (nonatomic, retain) NSString *notes;
 
 @property (nonatomic, assign) id <TravelEditViewControllerDelegate> editDelegate;
 

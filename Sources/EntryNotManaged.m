@@ -21,6 +21,7 @@
 @synthesize travel;
 @synthesize type;
 @synthesize payer;
+@synthesize notes;
 @synthesize receiverWeights;
 @synthesize currency;
 
@@ -36,6 +37,7 @@
         self.travel = nil;
         self.receiverWeights = [NSSet set];
         self.type = nil;
+        self.notes = nil;
     }
     return self;
 }
@@ -51,6 +53,7 @@
         self.receiverWeights = [NSSet set];
         self.travel = entry.travel;
         self.type = entry.type;
+        self.notes = entry.notes;
     }
     return self;
 }
@@ -95,6 +98,7 @@
     [text release];
     [travel release];
     [type release];
+    [notes release];
     [payer release];
     [receiverWeights release];
     [currency release];

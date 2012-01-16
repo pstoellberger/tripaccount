@@ -42,6 +42,10 @@
     return returnValue;
 }
 
+- (NSString *)notesHTML {
+    return [self.notes stringByReplacingOccurrencesOfString:@"\n" withString:@"<br />"];
+}
+
 - (double)totalReceiverWeights {
     
     double total = 0;

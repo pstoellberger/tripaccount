@@ -4,12 +4,50 @@
     
     <body>
         
+        {%if travel.notes.length > 0 %}
+        <p> {{travel.notesHTML}} </p>
+        {%/if%}
+        
+        {%if includePersons %}
+        
+        <table style="border: 1px #333 solid;border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
+                    <th class="nameRow" style="background: #2D549C; color: #FFF; font-size:11pt;" height="20">{{ labelName }}</th>
+                    {%if travel.hasParticipantsWithNotes %} <th class="notesRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelNotes }}</th> {%/if%}
+                </tr>
+            </thead>
+            <tbody>
+                {% for participant in travel.participants %}
+                <tr {%if currentLoop.currentIndex % 2%}class="odd" style="background: #DDD" {%else%}class="even"{%/if%}>
+                    
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="nameRow imageRow">
+                        {% if includeImages %}
+                        <img src="data:image/png;base64,{{ entry.payer.base64 }}" /> 
+                        {% /if %}
+                        {{ participant.name }}
+                    </td>
+                    {%if travel.hasParticipantsWithNotes %}
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="notesRow">{{ participant.notesHTML }}</td>
+                    {%/if%}
+                </tr>
+                {% /for %}
+            </tbody>
+        </table>
+        
+        <br /><br />
+        
+        {% /if %}
+        
+        {%if includeEntries %}
+        
         <table style="border: 1px #333 solid;border-collapse: collapse;" cellspacing="0" cellpadding="0">
             <thead>
                 <tr {%if currentLoop.currentIndex % 2%}class="odd"{%else%}class="even"{%/if%}>
                     <th class="imageRow" style="background: #2D549C; color: #FFF; font-size:11pt;" height="20">{{ labelPayer }}</th>
                     <th class="typeRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelType }}</th>
-                    <th class="textRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelText }}</th>        
+                    {%if travel.hasEntriesWithText %} <th class="textRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelText }}</th> {%/if%}
+                    {%if travel.hasEntriesWithNotes %} <th class="notesRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelNotes }}</th> {%/if%}
                     <th class="amountRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelAmount }}</th>
                     <th class="dateRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelDate }}</th>
                     <th class="imageRow" style="background: #2D549C; color: #FFF; font-size:11pt;">{{ labelReceivers }}</th>
@@ -26,7 +64,12 @@
                         {{ entry.payer.name }}
                     </td>
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="typeRow">{{ entry.type.nameI18N }}</td>
+                    {%if travel.hasEntriesWithText %}
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="textRow">{{ entry.text }}</td>
+                    {%/if%}
+                    {%if travel.hasEntriesWithNotes %}
+                    <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;" class="textRow">{{ entry.notesHTML }}</td>
+                    {%/if%}
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px; text-align:right; font-weight:bold;" class="amountRow">{{ entry.amount | decimalNumber }} {{ entry.currency.code }}</td>
                     <td style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px; text-align:right;" class="dateRow">
                         <span>
@@ -63,12 +106,14 @@
             </tbody>
             <tfooter>
                 <tr>
-                    <th colspan="6" class="title" height="30" style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;background: #2D549C; color: #FFF; font-size:11pt;">{{ labelTotal }}: {{ travel.totalCostLabel }}</th>
+                    <th colspan="8" class="title" height="30" style="border: 1px #333 solid;border-collapse: collapse; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px;background: #2D549C; color: #FFF; font-size:11pt;">{{ labelTotal }}: {{ travel.totalCostLabel }}</th>
                 </tr>
             </tfooter>
         </table>
         
         <br /><br />
+        
+         {% /if %}
         
         <table style="border: 1px #333 solid;border-collapse: collapse;" cellspacing="0" cellpadding="0">
             <thead>

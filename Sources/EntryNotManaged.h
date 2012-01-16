@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSNumber * checked;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Type *type;
 @property (nonatomic, retain) Participant *payer;

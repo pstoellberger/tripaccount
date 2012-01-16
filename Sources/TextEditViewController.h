@@ -20,7 +20,6 @@
 @property (nonatomic, retain) UITextField *textField;
 @property (nonatomic, retain) NSString *namedImage;
 
-
 - (id)initWithText:(NSString *)text target:(id)target selector:(SEL)selector;
 - (id)initWithText:(NSString *)text target:(id)target selector:(SEL)selector andNamedImage:(NSString *)namedImage;
 
