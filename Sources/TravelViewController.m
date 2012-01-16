@@ -398,6 +398,8 @@
     
     [self.entrySortViewController.detailViewController.tableView beginUpdates];
     
+    NSIndexPath *oldPath = [self.entrySortViewController.detailViewController.fetchedResultsController indexPathForObject:entry];
+    
     Entry *_entry = nil;
     if (!entry) {
         _entry = [NSEntityDescription insertNewObjectForEntityForName: @"Entry" inManagedObjectContext: [_travel managedObjectContext]];
@@ -429,7 +431,12 @@
     
     [ReiseabrechnungAppDelegate saveContext:[_travel managedObjectContext]];
     
+    NSIndexPath *newPath = [self.entrySortViewController.detailViewController.fetchedResultsController indexPathForObject:entry];
+    
     [self.entrySortViewController.detailViewController.tableView endUpdates];
+    
+    [self.entrySortViewController.detailViewController.tableView reloadSections:[NSIndexSet indexSetWithIndex:oldPath.section] withRowAnimation:UITableViewRowAnimationNone];
+    [self.entrySortViewController.detailViewController.tableView reloadSections:[NSIndexSet indexSetWithIndex:newPath.section] withRowAnimation:UITableViewRowAnimationNone];
     
     [self updateSummary];
     
@@ -450,6 +457,9 @@
     [Crittercism leaveBreadcrumb:@"TravelViewController: entryWasDeleted"];
     
     [self updateSummary];
+    
+    NSIndexPath *path = [self.entrySortViewController.detailViewController.fetchedResultsController indexPathForObject:entry];
+    [self.entrySortViewController.detailViewController.tableView reloadSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationNone];
     
     [self.entrySortViewController updateTotalValue];
 }

@@ -121,11 +121,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Sources/TravelViewController.m"
-         timestampString = "348329189.033832"
+         timestampString = "348443654.444678"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "780"
-         endingLineNumber = "780"
+         startingLineNumber = "790"
+         endingLineNumber = "790"
          landmarkName = "-tabBarController:didSelectViewController:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -169,6 +169,48 @@
          startingLineNumber = "69"
          endingLineNumber = "69"
          landmarkName = "-shouldAutorotateToInterfaceOrientation:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/RootViewController.m"
+         timestampString = "348444597.99193"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/EntryViewController.m"
+         timestampString = "348444931.865094"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
+         landmarkName = "-tableView:viewForFooterInSection:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Sources/EntryViewController.m"
+         timestampString = "348445073.09868"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "175"
+         endingLineNumber = "175"
+         landmarkName = "-tableView:viewForFooterInSection:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

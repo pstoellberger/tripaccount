@@ -265,10 +265,7 @@
 
     [super loadView];
     
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, FOOTER_HEIGHT)];
-    footerView.backgroundColor = [UIColor clearColor];
-    [UIFactory addGradientToView:footerView color1:[UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.5] color2:[UIColor clearColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(0, 1)];
-    footerView.contentMode = UIViewContentModeScaleToFill;
+    UIView *footerView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, FOOTER_HEIGHT) andColor1:[UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.5] andColor2:[UIColor clearColor]];
 
     self.tableView.tableFooterView = footerView;
     [footerView release];

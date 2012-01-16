@@ -12,5 +12,10 @@
 
 @interface GradientView : UIView {
     CAGradientLayer *_gradient;
+    UIColor *_color1;
+    UIColor *_color2;
 }
+
+- (id)initWithFrame:(CGRect)frame andColor1:(UIColor *)color1 andColor2:(UIColor *)color2;
+
 @end

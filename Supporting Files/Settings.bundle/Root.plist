@@ -6,19 +6,19 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Help</string>
+			<string>showTotalsTitle</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>FooterText</key>
-			<string>HelpFooterText</string>
+			<string>showTotalsFooterText</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 			<key>Key</key>
-			<string>resetBubbles</string>
+			<string>showTotals</string>
 			<key>Title</key>
-			<string>Reset help information</string>
+			<string>showTotalsText</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>
@@ -57,6 +57,24 @@
 			<string>includeImages</string>
 			<key>Title</key>
 			<string>Include images</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Help</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>HelpFooterText</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Key</key>
+			<string>resetBubbles</string>
+			<key>Title</key>
+			<string>Reset help information</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>
