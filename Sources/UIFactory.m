@@ -298,10 +298,6 @@ static NSDateFormatter *formatter = nil;
         }
     }
     
-#if TARGET_IPHONE_SIMULATOR
-    alreadyAdded = YES;
-#endif
-    
     if (!alreadyAdded) {
         [view addSubview:helpView];
     }

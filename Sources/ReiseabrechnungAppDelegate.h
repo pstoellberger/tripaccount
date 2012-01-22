@@ -59,15 +59,11 @@ extern NSString *const ITUNES_STORE_RATE_LINK;
 + (void)saveContext:(NSManagedObjectContext *) context;
 + (Currency *)defaultCurrency:(NSManagedObjectContext *) context;
 + (AppDefaults *)defaultsObject:(NSManagedObjectContext *) context;
-- (void)initializeStartDatabase:(NSBundle *)bundle;
 - (void)refreshCurrencyRatesIfOutDated;
 - (void)checkForResetOfHelpBubbles;
-- (void)initializeSampleTrip;
 - (void)registerHelpBubble:(HelpView *)helpView;
 - (void)initUserDefaults;
 - (NSManagedObjectContext *)createNewManagedObjectContext;
-- (void)performInitialisations:(UIWindow *)window;
-- (void)fixUsDollar;
-- (void)upgradeFromVersion1;
+- (void)userdefaults:(NSUserDefaults *)defaults setIfDoesNotExist:(BOOL)value forKey:(NSString *)key;
 
 @end

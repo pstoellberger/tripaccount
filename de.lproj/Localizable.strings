@@ -356,3 +356,5 @@
 "weight info" = "Gewichtungen beschreiben zu welchen Teilen der Betrag einer Ausgabe unter den Empfängern aufgeteilt wird. Die Gewichtungen können pro Ausgabe eingestellt werden. Jede Person hat eine voreingestellte Gewichtung, die bei der Zuweisung zu einer Ausgabe verwendet wird.\nBeispiel: Die Aufteilung eines Betrags von 20€ mit Gewichtungen 1:2:1 ist 5€:10€:5€.";
 
 "Notes" = "Notizen";
+
+"Initialising..." = "Initialisierung...";

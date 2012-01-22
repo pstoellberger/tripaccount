@@ -622,7 +622,7 @@ static NSIndexPath *_notesIndexPath;
     _viewAppeared = YES;
     
     NSString *text = NSLocalizedString(@"help currencies", @"help bubble currencies enter");
-    HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(240, 192, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
+    HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(240, 236, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
     [UIFactory addHelpViewToView:helpView toView:self.view];
     [helpView release];
     

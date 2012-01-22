@@ -62,7 +62,25 @@ Des weiteren, gibt es jetzt Trip Account Lite um die Funktionen von Trip Account
 
 +++ Version 2.1 +++
 
-- Notes for Expenses, Participants and Trips
-- Settings für Personen/Trips in Report einstellen
+EN
+New features:
+- You can now use notes on trips, expenses and participants. For instance, this can be used to share bank details of the persons on the trip. 
+- Improved settings that allow you to specify what should be in the summary email.
+- The expenses list shows now subtotals for the sections in the list. This feature can disabled in the settings.
+- During amount edit you can now quick change the used currency.
 
+Fixes:
+- Fixed a crash that can occur during the first start of the app.
+- Malta has now the correct flag (thanks to York).
+
+DE
+Neue Funktionen:
+- Du kannst jetzt Notizen für Trips, Ausgaben und Personen vergeben. Zum Beispiel kann man damit Bankverbindungen über das Abrechnungsemail verteilen.
+- Verbesserte Einstellungen, mit denen man steuern kann, was im Abrechnungsemail enthalten sein soll.
+- Die Ausgabenliste enthält nun Zwischensummen. Diese Funktion kann in den Einstellungen deaktiviert werden.
+- Während der Eingabe des Ausgabenbetrag kann nun die Währung geändert werden. 
+
+Problembehebungen:
+- Behebt einen Absturz der App, der beim ersten Starten passieren kann.
+- Malta hat nun die richtige Flagge (Danke, York).
 

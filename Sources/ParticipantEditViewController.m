@@ -22,6 +22,7 @@
 #import "Style2ImageCell.h"
 #import "ImageUtils.h"
 #import "NotesEditViewController.h"
+#import "ParticipantView.h"
 
 static NSIndexPath *_nameIndexPath;
 static NSIndexPath *_emailIndexPath;
@@ -419,6 +420,7 @@ static NSIndexPath *_notesIndexPath;
     self.participant.weight = [NSDecimalNumber decimalNumberWithDecimal:[self.weight decimalValue]];
     self.participant.image = self.image;
     self.participant.imageSmall = [Participant createThumbnail:self.image];
+    [ParticipantView evictCache];
     
     [ReiseabrechnungAppDelegate saveContext:_context];
     

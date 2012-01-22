@@ -75,6 +75,10 @@
 		F122F10E1494F85700ECF5BF /* currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = F150927C140EB01B009C5AB9 /* currencies.plist */; };
 		F122F11114966AD000ECF5BF /* TransferCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = F122F11014966ACD00ECF5BF /* TransferCycle.m */; };
 		F122F11214966AD000ECF5BF /* TransferCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = F122F11014966ACD00ECF5BF /* TransferCycle.m */; };
+		F1241DA914CAE66B000927A7 /* DataInitialiser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DA814CAE66A000927A7 /* DataInitialiser.m */; };
+		F1241DAA14CAE66B000927A7 /* DataInitialiser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DA814CAE66A000927A7 /* DataInitialiser.m */; };
+		F1241DAD14CBFF66000927A7 /* AmountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */; };
+		F1241DAE14CBFF66000927A7 /* AmountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */; };
 		F127299213E813A10095286D /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
 		F12C07C614AF76A000D97DEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783B13BA405B00D42AA3 /* main.m */; };
 		F12C07C714AF76A000D97DEC /* ReiseabrechnungAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */; };
@@ -896,6 +900,10 @@
 		F11FB36613E6E73A00115D12 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
 		F122F10F14966ACB00ECF5BF /* TransferCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferCycle.h; sourceTree = "<group>"; };
 		F122F11014966ACD00ECF5BF /* TransferCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferCycle.m; sourceTree = "<group>"; };
+		F1241DA714CAE669000927A7 /* DataInitialiser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataInitialiser.h; sourceTree = "<group>"; };
+		F1241DA814CAE66A000927A7 /* DataInitialiser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataInitialiser.m; sourceTree = "<group>"; };
+		F1241DAB14CBFF66000927A7 /* AmountEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmountEditViewController.h; sourceTree = "<group>"; };
+		F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmountEditViewController.m; sourceTree = "<group>"; };
 		F12C07C214AF759C00D97DEC /* TripAccountLite-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TripAccountLite-Info.plist"; sourceTree = "<group>"; };
 		F12C098114AF76A000D97DEC /* Trip Acc. Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Acc. Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12C098914AF77D200D97DEC /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -1825,11 +1833,11 @@
 				F1CADAE9148BAED100274627 /* ReceiverWeight.m */,
 				F1CADAE5148BAECF00274627 /* Travel.h */,
 				F1CADAE6148BAECF00274627 /* Travel.m */,
+				F1C3986C14604C6D00AB1045 /* AppDefaults.h */,
 				F1AA5F80147ACEBD000A2339 /* Type.h */,
 				F1AA5F81147ACEBD000A2339 /* Type.m */,
 				F1C3987514604C6E00AB1045 /* Transfer.h */,
 				F1C3987614604C6E00AB1045 /* Transfer.m */,
-				F1C3986C14604C6D00AB1045 /* AppDefaults.h */,
 				F1C3986D14604C6D00AB1045 /* AppDefaults.m */,
 				F1C3986914604C6D00AB1045 /* Currency.h */,
 				F1C3986A14604C6D00AB1045 /* Currency.m */,
@@ -1874,6 +1882,8 @@
 				F1CE923B13DEA7B6009F3B2F /* DateSelectViewController.m */,
 				F1C02B9B14191B9100467C9F /* ParticipantSelectViewController.h */,
 				F1C02B9C14191B9100467C9F /* ParticipantSelectViewController.m */,
+				F1241DAB14CBFF66000927A7 /* AmountEditViewController.h */,
+				F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */,
 			);
 			name = EntryEdit;
 			sourceTree = "<group>";
@@ -2001,6 +2011,8 @@
 				F1B8212B13BE01C000FE329B /* View Helper */,
 				F1CD783D13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.h */,
 				F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */,
+				F1241DA714CAE669000927A7 /* DataInitialiser.h */,
+				F1241DA814CAE66A000927A7 /* DataInitialiser.m */,
 				F1B8211013BD9F3700FE329B /* CoreDataTableViewController.h */,
 				F1B8211113BD9F3900FE329B /* CoreDataTableViewController.m */,
 				F1006C2F13E0539F0014CF4B /* CurrencyRefresh.h */,
@@ -2892,6 +2904,8 @@
 				F19C83EB14C2C7EB00329308 /* Participant.m in Sources */,
 				F19C83EF14C2C7EB00329308 /* Entry.m in Sources */,
 				F19C83F314C2CC4500329308 /* NotesEditViewController.m in Sources */,
+				F1241DAA14CAE66B000927A7 /* DataInitialiser.m in Sources */,
+				F1241DAE14CBFF66000927A7 /* AmountEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3065,6 +3079,8 @@
 				F19C83EA14C2C7EB00329308 /* Participant.m in Sources */,
 				F19C83EE14C2C7EB00329308 /* Entry.m in Sources */,
 				F19C83F214C2CC4500329308 /* NotesEditViewController.m in Sources */,
+				F1241DA914CAE66B000927A7 /* DataInitialiser.m in Sources */,
+				F1241DAD14CBFF66000927A7 /* AmountEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

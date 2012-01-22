@@ -15,22 +15,18 @@
 #import "CurrencyHelperCategory.h"
 #import "AlignedStyle2Cell.h"
 
+@interface NumberEditViewController ()
+    - (NSString *)getInfoImageName;
+@end
+
 @implementation NumberEditViewController
 
 @synthesize target=_target, selector=_selector;
 @synthesize textField=_textField, textCell=_textCell, convertView=_convertView, infoImageView=_infoImageView;
-@synthesize travel=_travel, currency=_currency, number=_number, decimals=_decimals;
+@synthesize number=_number, decimals=_decimals;
 @synthesize allowNull=_allowNull, allowZero=_allowZero;
 
-#define TEXTFIELD_LABEL_GAP 15
-#define BORDER_GAP 10
-#define FOOTER_HEIGHT 145
-
 - (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector {
-    return [self initWithNumber:startNumber withDecimals:decimals currency:nil travel:nil andNamedImage:namedImage description:description target:target selector:selector];
-}
-
-- (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals currency:(Currency *)currency travel:(Travel *)travel andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector {
     
     [Crittercism leaveBreadcrumb:@"NumberEditViewController: init"];
     
@@ -47,9 +43,6 @@
         self.allowNull = YES;
         self.allowZero = YES;
         
-        self.travel = travel;
-        self.currency = currency;
-        
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         
@@ -60,29 +53,10 @@
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
         
         self.tableView.allowsSelection = NO;
+                    
+        self.textField.frame = CGRectMake(self.textField.frame.origin.x, (self.textCell.frame.size.height - self.textField.frame.size.height) / 2, self.textCell.frame.size.width - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.frame.size.height);
         
-        if (currency) {
-            self.textField.frame = CGRectMake(BORDER_GAP, (self.textCell.bounds.size.height - self.textField.bounds.size.height) / 2, self.tableView.bounds.size.width - BORDER_GAP - BORDER_GAP, self.textField.bounds.size.height);            
-            
-            UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
-            label.text = currency.code;            
-            label.font = self.textField.font;
-            [label sizeToFit];
-            
-            label.frame = CGRectMake(self.textCell.contentView.bounds.size.width - label.bounds.size.width - BORDER_GAP, (self.textCell.contentView.bounds.size.height - label.bounds.size.height) / 2, label.bounds.size.width, label.bounds.size.height);
-            label.backgroundColor = [UIColor clearColor];
-            label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-            
-            self.textField.frame = CGRectMake(self.textField.frame.origin.x, (self.textCell.frame.size.height - self.textField.frame.size.height) / 2, label.frame.origin.x - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.bounds.size.height);
-            
-            [self.textCell.contentView addSubview:label]; 
-            
-        } else {
-            
-            self.textField.frame = CGRectMake(self.textField.frame.origin.x, (self.textCell.frame.size.height - self.textField.frame.size.height) / 2, self.textCell.frame.size.width - self.textField.frame.origin.x - TEXTFIELD_LABEL_GAP, self.textField.frame.size.height);
-        }
-        
-        if (description || (currency && [travel.currencies count] > 1)) {
+        if (description) {
             
             self.tableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, FOOTER_HEIGHT)] autorelease];
             
@@ -90,10 +64,6 @@
             
             self.convertView.text = _description;
             [self.tableView.tableFooterView addSubview:self.infoImageView];
-            
-            if ([self.number doubleValue] != 0) {
-                [self refreshConversion];
-            }
         }
         
         self.navigationItem.hidesBackButton = YES;
@@ -118,31 +88,6 @@
     [Crittercism leaveBreadcrumb:@"NumberEditViewController: cancel"];
     
     [[self navigationController] popViewControllerAnimated:YES];
-}
-
-- (void)refreshConversion {
-    
-    if (self.currency) {
-        if ([self.number intValue] != 0) {
-            const unichar cr = '\n';
-            NSString *singleCR = [NSString stringWithCharacters:&cr length:1];    
-            
-            NSString *conversionString = @"";
-            for (Currency *currency in self.travel.currencies) {
-                
-                if (![currency isEqual:self.currency]) {
-                    NSString *line = [NSString stringWithFormat:@"%@ %@", [UIFactory formatNumber:[NSNumber numberWithDouble:[self.currency convertTravelAmount:self.travel currency:currency amount:[self.number doubleValue]]] withDecimals:self.decimals],currency.code];
-                    conversionString = [[conversionString stringByAppendingString:line] stringByAppendingString:singleCR];
-                }
-            }
-            
-            self.convertView.text = [conversionString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-            
-            [self.convertView flashScrollIndicators];
-        } else {
-            self.convertView.text = @"";
-        }
-    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -188,8 +133,6 @@
     }
     [nf release];
     
-    [self refreshConversion];
-    
     // check if return is possible
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
@@ -201,6 +144,10 @@
     }
 
     return returnValue;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    return NO;
 }
 
 #pragma mark - View lifecycle
@@ -239,24 +186,19 @@
     self.convertView.textColor = [UIColor grayColor];
     self.convertView.editable = NO;
     self.convertView.font = [UIFont systemFontOfSize:11];
-    if (self.currency) {
-        self.convertView.font = [UIFont systemFontOfSize:18.0];
-        self.convertView.textAlignment = UITextAlignmentRight;
-    }
     self.convertView.userInteractionEnabled = YES;
     self.convertView.contentInset = UIEdgeInsetsMake(0,0,0,0);
     self.convertView.layer.cornerRadius = 5;
     self.convertView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    NSString *infoImageName = @"information.png";
-    if (self.currency) {
-        infoImageName = @"exchange.png";
-    }
-    
-    self.infoImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:infoImageName]] autorelease];
+    self.infoImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:[self getInfoImageName]]] autorelease];
     self.infoImageView.frame = CGRectMake(CONVERSION_VIEW_GAP+INFO_IMAGE_GAP, INFO_IMAGE_GAP, INFO_IMAGE_SIZE, INFO_IMAGE_SIZE);
     self.infoImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     
+}
+
+- (NSString *)getInfoImageName {
+    return @"information.png";
 }
 
 
@@ -276,7 +218,6 @@
     [_convertView release];
     [_infoImageView release];
     [_number release];
-    [_currency release];
     [super dealloc];
 }
 

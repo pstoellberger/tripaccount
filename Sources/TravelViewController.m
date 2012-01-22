@@ -411,12 +411,20 @@
     }
     _entry.text = nmEntry.text;
     _entry.amount = nmEntry.amount;
-    _entry.currency = nmEntry.currency;
+    if (![_entry.currency isEqual:nmEntry.currency]) {
+        _entry.currency = nmEntry.currency;
+    }
     _entry.date = nmEntry.date;
     _entry.notes = nmEntry.notes;
-    _entry.payer = nmEntry.payer;
-    _entry.type = nmEntry.type;
-    _entry.travel = _travel;
+    if (![entry.payer isEqual:nmEntry.payer]) {
+        _entry.payer = nmEntry.payer;
+    }
+    if (![_entry.type isEqual:nmEntry.type]) {
+        _entry.type = nmEntry.type;
+    }
+    if (![_entry.travel isEqual:_travel]) {
+        _entry.travel = _travel;
+    }
     _entry.lastUpdated = [NSDate date];
     
     [_entry removeReceiverWeights:_entry.receiverWeights];
