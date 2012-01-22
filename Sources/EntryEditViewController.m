@@ -12,7 +12,7 @@
 #import "ReiseabrechnungAppDelegate.h"
 #import "AlignedStyle2Cell.h"
 #import "TextEditViewController.h"
-#import "NumberEditViewController.h"
+#import "AmountEditViewController.h"
 #import "DateSelectViewController.h"
 #import "TypeViewController.h"
 #import "ParticipantSelectViewController.h"
@@ -313,10 +313,10 @@ static NSIndexPath *_notesIndexPath;
         
     } else if ([indexPath isEqual:_amountIndexPath]) {
         
-        NumberEditViewController *numberEditViewController = [[NumberEditViewController alloc] initWithNumber:self.nmEntry.amount withDecimals:2 currency:self.nmEntry.currency travel:self.travel andNamedImage:@"wallet_open.png" description:nil target:self selector:@selector(selectAmount:)]; 
-        numberEditViewController.title = NSLocalizedString(@"Amount", @"controller title amount");
-        [self.navigationController pushViewController:numberEditViewController animated:YES];
-        [numberEditViewController release]; 
+        AmountEditViewController *amountEditViewController = [[AmountEditViewController alloc] initWithNumber:self.nmEntry.amount withDecimals:2 currency:self.nmEntry.currency travel:self.travel andNamedImage:@"wallet_open.png" description:nil target:self selectorAmount:@selector(selectAmount:) selectorCurrency:@selector(selectCurrency:) ]; 
+        amountEditViewController.title = NSLocalizedString(@"Amount", @"controller title amount");
+        [self.navigationController pushViewController:amountEditViewController animated:YES];
+        [amountEditViewController release]; 
         
     } else if ([indexPath isEqual:_dateIndexPath]) {
         
@@ -568,7 +568,9 @@ static NSIndexPath *_notesIndexPath;
     self.nmEntry.currency = currency;
     
     if (self.nmEntry.amount) {
-        [_cellsToReloadAndFlash addObject:_amountIndexPath];
+        if (![_cellsToReloadAndFlash containsObject:_amountIndexPath]) {
+            [_cellsToReloadAndFlash addObject:_amountIndexPath];
+        }
     }
     [_cellsToReloadAndFlash addObject:_currencyIndexPath];
     

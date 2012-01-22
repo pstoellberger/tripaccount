@@ -8,13 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/ParticipantViewController.m"
-         timestampString = "348242864.741895"
+         filePath = "Sources/EntryViewController.m"
+         timestampString = "348843974.889536"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
-         landmarkName = "-deleteManagedObject:"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
+         landmarkName = "-tableView:viewForFooterInSection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -22,13 +22,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "348245052.542952"
+         filePath = "Sources/EntryViewController.m"
+         timestampString = "348843992.39751"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "460"
-         endingLineNumber = "460"
-         landmarkName = "-upgradeFromVersion1"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
+         landmarkName = "-tableView:heightForFooterInSection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -36,13 +36,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/ReiseabrechnungAppDelegate.m"
-         timestampString = "348245052.542952"
+         filePath = "Sources/AmountEditViewController.m"
+         timestampString = "348916700.483224"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "478"
-         endingLineNumber = "478"
-         landmarkName = "-upgradeFromVersion1"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
+         landmarkName = "-circleCurrency"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -50,12 +50,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/NumberEditViewController.m"
-         timestampString = "348240638.792813"
+         filePath = "Sources/AmountEditViewController.m"
+         timestampString = "348916700.483224"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "252"
-         endingLineNumber = "252"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
          landmarkName = "-loadView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -64,13 +64,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/NumberEditViewController.m"
-         timestampString = "348240638.792813"
+         filePath = "Sources/AmountEditViewController.m"
+         timestampString = "348916700.483224"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
-         landmarkName = "-initWithNumber:withDecimals:currency:travel:andNamedImage:description:target:selector:"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
+         landmarkName = "-initWithNumber:withDecimals:currency:travel:andNamedImage:description:target:selectorAmount:selectorCurrency:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -78,41 +78,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/DateSelectViewController.m"
-         timestampString = "348242864.741895"
+         filePath = "Sources/AmountEditViewController.m"
+         timestampString = "348920801.448719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "99"
-         endingLineNumber = "99"
-         landmarkName = "-selectDate:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/DatePickerContainerView.m"
-         timestampString = "347140418.811274"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "21"
-         endingLineNumber = "21"
-         landmarkName = "-touchesBegan:withEvent:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/DatePickerContainerView.m"
-         timestampString = "347140420.925801"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
-         landmarkName = "-touchesEnded:withEvent:"
+         startingLineNumber = "150"
+         endingLineNumber = "150"
+         landmarkName = "-done"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -120,97 +92,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/TravelViewController.m"
-         timestampString = "348443654.444678"
+         filePath = "Sources/ReiseabrechnungAppDelegate.m"
+         timestampString = "348922104.656249"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "790"
-         endingLineNumber = "790"
-         landmarkName = "-tabBarController:didSelectViewController:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/ParticipantSelectViewController.m"
-         timestampString = "348242864.741895"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "179"
-         endingLineNumber = "179"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/ParticipantSelectViewController.m"
-         timestampString = "348242864.741895"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "225"
-         endingLineNumber = "225"
-         landmarkName = "-selectWeight:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/NotesEditViewController.m"
-         timestampString = "348312811.412924"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "-shouldAutorotateToInterfaceOrientation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/RootViewController.m"
-         timestampString = "348444597.99193"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "221"
-         endingLineNumber = "221"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/EntryViewController.m"
-         timestampString = "348444931.865094"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
-         landmarkName = "-tableView:viewForFooterInSection:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/EntryViewController.m"
-         timestampString = "348445073.09868"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
-         landmarkName = "-tableView:viewForFooterInSection:"
+         startingLineNumber = "149"
+         endingLineNumber = "149"
+         landmarkName = "-initUserDefaults"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -10,11 +10,15 @@
 #import <Foundation/Foundation.h>
 #import "ImageCache.h"
 
-
-@interface ParticipantView : UIView
+@interface ParticipantView : UIView {
+    NSArray *_participants;
+}
 
 @property (nonatomic, retain) NSArray *participants;
 
+- (id)initWithFrame:(CGRect)frame andParticipants:(NSArray *)participants;
+
 + (UIImage *) moreImagesImage;
++ (void)evictCache;
 
 @end
