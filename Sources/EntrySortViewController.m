@@ -171,6 +171,10 @@
     
     self.totalLabel.text = [self.travel totalCostLabel];
     
+    if (![self.detailViewController.displayCurrency isEqual:self.detailViewController.travel.displayCurrency]) {
+        [self.detailViewController.tableView reloadData];
+    }
+    
 }
 
 - (void)viewDidUnload {

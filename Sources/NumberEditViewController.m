@@ -22,7 +22,7 @@
 @implementation NumberEditViewController
 
 @synthesize target=_target, selector=_selector;
-@synthesize textField=_textField, textCell=_textCell, convertView=_convertView, infoImageView=_infoImageView;
+@synthesize textField=_textField, textCell=_textCell, detailView=_detailView, infoImageView=_infoImageView;
 @synthesize number=_number, decimals=_decimals;
 @synthesize allowNull=_allowNull, allowZero=_allowZero;
 
@@ -31,6 +31,8 @@
     [Crittercism leaveBreadcrumb:@"NumberEditViewController: init"];
     
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+        
+        _donePressed = NO;
         
         _namedImage = namedImage;
         _description = description;
@@ -60,9 +62,9 @@
             
             self.tableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, FOOTER_HEIGHT)] autorelease];
             
-            [self.tableView.tableFooterView addSubview:self.convertView];
+            [self.tableView.tableFooterView addSubview:self.detailView];
             
-            self.convertView.text = _description;
+            self.detailView.text = _description;
             [self.tableView.tableFooterView addSubview:self.infoImageView];
         }
         
@@ -76,6 +78,8 @@
     
     [Crittercism leaveBreadcrumb:@"NumberEditViewController: done"];
     
+    _donePressed = YES;
+    
     if ([_target respondsToSelector:_selector]) {
         [_target performSelector:_selector withObject:self.number];
     }    
@@ -85,9 +89,11 @@
 
 - (void)cancel {
     
+    _donePressed = YES;
+    
     [Crittercism leaveBreadcrumb:@"NumberEditViewController: cancel"];
     
-    [[self navigationController] popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -112,6 +118,10 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self done];
     return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    return _donePressed;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -146,10 +156,6 @@
     return returnValue;
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    return NO;
-}
-
 #pragma mark - View lifecycle
 
 
@@ -166,7 +172,7 @@
     
     self.tableView.scrollEnabled = NO;
     
-    self.textCell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"TextEditViewControllerCell" andNamedImage:_namedImage] autorelease];
+    self.textCell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil andNamedImage:_namedImage] autorelease];
     self.textCell.textLabel.text = @" ";
  
     self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(IMAGE_GAP + IMAGE_SIZE + IMAGE_TEXT_GAP, 5, 250, 30)] autorelease];
@@ -181,15 +187,15 @@
     
     [self.textField becomeFirstResponder];
     
-    self.convertView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP, 0, [[UIScreen mainScreen] applicationFrame].size.width - (CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP+CONVERSION_VIEW_GAP), FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
-    self.convertView.textAlignment = UITextAlignmentLeft;
-    self.convertView.textColor = [UIColor grayColor];
-    self.convertView.editable = NO;
-    self.convertView.font = [UIFont systemFontOfSize:11];
-    self.convertView.userInteractionEnabled = YES;
-    self.convertView.contentInset = UIEdgeInsetsMake(0,0,0,0);
-    self.convertView.layer.cornerRadius = 5;
-    self.convertView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.detailView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP, 0, [[UIScreen mainScreen] applicationFrame].size.width - (CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP+CONVERSION_VIEW_GAP), FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
+    self.detailView.textAlignment = UITextAlignmentLeft;
+    self.detailView.textColor = self.textField.backgroundColor;
+    self.detailView.editable = NO;
+    self.detailView.font = [UIFont systemFontOfSize:11];
+    self.detailView.userInteractionEnabled = YES;
+    self.detailView.contentInset = UIEdgeInsetsMake(0,0,0,0);
+    self.detailView.layer.cornerRadius = 5;
+    self.detailView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.infoImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:[self getInfoImageName]]] autorelease];
     self.infoImageView.frame = CGRectMake(CONVERSION_VIEW_GAP+INFO_IMAGE_GAP, INFO_IMAGE_GAP, INFO_IMAGE_SIZE, INFO_IMAGE_SIZE);
@@ -203,19 +209,20 @@
 
 
 - (void)viewDidUnload {
+    
     [super viewDidUnload];
     
     self.target = nil;
     self.selector = nil;
     
     self.textCell = nil;
+    self.textField.delegate = nil;
     self.textField = nil;
 }
 
 - (void)dealloc {
-    [_textCell release];
-    [_textField release];
-    [_convertView release];
+    
+    [_detailView release];
     [_infoImageView release];
     [_number release];
     [super dealloc];

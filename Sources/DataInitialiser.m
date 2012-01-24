@@ -19,12 +19,16 @@
 @implementation DataInitialiser
 
 - (void)performDataInitialisations:(UIWindow *)window inContext:(NSManagedObjectContext *)context {
+    [self performDataInitialisations:window inContext:context withBundle:[NSBundle mainBundle]];
+}
+
+- (void)performDataInitialisations:(UIWindow *)window inContext:(NSManagedObjectContext *)context withBundle:(NSBundle *)bundle {
 
     [Crittercism leaveBreadcrumb:@"DataInitialiser: performDataInitialisations start"];
 
     _context = [context retain];
 
-    [self initializeStartDatabase:[NSBundle mainBundle]];
+    [self initializeStartDatabase:bundle];
     
     [self initializeSampleTrip];
     
