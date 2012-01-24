@@ -79,6 +79,14 @@
 		F1241DAA14CAE66B000927A7 /* DataInitialiser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DA814CAE66A000927A7 /* DataInitialiser.m */; };
 		F1241DAD14CBFF66000927A7 /* AmountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */; };
 		F1241DAE14CBFF66000927A7 /* AmountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */; };
+		F1241DB014CC2C3E000927A7 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1241DAF14CC2C3D000927A7 /* DropboxSDK.framework */; };
+		F1241DB114CC2C3E000927A7 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1241DAF14CC2C3D000927A7 /* DropboxSDK.framework */; };
+		F1241DB314CC2CAE000927A7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1241DB214CC2CAE000927A7 /* Security.framework */; };
+		F1241DB414CC2CBA000927A7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1241DB214CC2CAE000927A7 /* Security.framework */; };
+		F1241DC014CC33E2000927A7 /* DropBoxShare.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DBF14CC33E2000927A7 /* DropBoxShare.m */; };
+		F1241DC114CC33E2000927A7 /* DropBoxShare.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DBF14CC33E2000927A7 /* DropBoxShare.m */; };
+		F1241DC614CC5382000927A7 /* Serialiser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DC514CC5382000927A7 /* Serialiser.m */; };
+		F1241DC714CC5382000927A7 /* Serialiser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DC514CC5382000927A7 /* Serialiser.m */; };
 		F127299213E813A10095286D /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
 		F12C07C614AF76A000D97DEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783B13BA405B00D42AA3 /* main.m */; };
 		F12C07C714AF76A000D97DEC /* ReiseabrechnungAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */; };
@@ -904,6 +912,13 @@
 		F1241DA814CAE66A000927A7 /* DataInitialiser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataInitialiser.m; sourceTree = "<group>"; };
 		F1241DAB14CBFF66000927A7 /* AmountEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmountEditViewController.h; sourceTree = "<group>"; };
 		F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmountEditViewController.m; sourceTree = "<group>"; };
+		F1241DAF14CC2C3D000927A7 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		F1241DB214CC2CAE000927A7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F1241DBE14CC33E1000927A7 /* DropBoxShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxShare.h; sourceTree = "<group>"; };
+		F1241DBF14CC33E2000927A7 /* DropBoxShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxShare.m; sourceTree = "<group>"; };
+		F1241DC414CC5382000927A7 /* Serialiser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serialiser.h; sourceTree = "<group>"; };
+		F1241DC514CC5382000927A7 /* Serialiser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Serialiser.m; sourceTree = "<group>"; };
+		F1241DC814CC5C94000927A7 /* Model-3.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-3.0.xcdatamodel"; sourceTree = "<group>"; };
 		F12C07C214AF759C00D97DEC /* TripAccountLite-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TripAccountLite-Info.plist"; sourceTree = "<group>"; };
 		F12C098114AF76A000D97DEC /* Trip Acc. Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Acc. Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12C098914AF77D200D97DEC /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -1361,6 +1376,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1241DB414CC2CBA000927A7 /* Security.framework in Frameworks */,
 				F12C081614AF76A000D97DEC /* libicucore.dylib in Frameworks */,
 				F12C081714AF76A000D97DEC /* CoreFoundation.framework in Frameworks */,
 				F12C081814AF76A000D97DEC /* SystemConfiguration.framework in Frameworks */,
@@ -1376,6 +1392,7 @@
 				F12C082214AF76A000D97DEC /* AddressBookUI.framework in Frameworks */,
 				F12C082314AF76A000D97DEC /* CoreData.framework in Frameworks */,
 				F12C099C14B04B6E00D97DEC /* Crittercism_v2_9_34.a in Frameworks */,
+				F1241DB114CC2C3E000927A7 /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,6 +1422,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1241DB314CC2CAE000927A7 /* Security.framework in Frameworks */,
 				F17B4A4313F1812000072F90 /* libicucore.dylib in Frameworks */,
 				F17B4A4113F180CB00072F90 /* CoreFoundation.framework in Frameworks */,
 				F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */,
@@ -1420,6 +1438,7 @@
 				F1CD78F713BC8BB900D42AA3 /* AddressBookUI.framework in Frameworks */,
 				F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */,
 				F12C099B14B04B6E00D97DEC /* Crittercism_v2_9_34.a in Frameworks */,
+				F1241DB014CC2C3E000927A7 /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1507,6 +1526,15 @@
 				F11A5212140541B000B983B8 /* ParticipantEditViewController.m */,
 			);
 			name = ParticipantEdit;
+			sourceTree = "<group>";
+		};
+		F1241DC314CC5366000927A7 /* Serialiser */ = {
+			isa = PBXGroup;
+			children = (
+				F1241DC414CC5382000927A7 /* Serialiser.h */,
+				F1241DC514CC5382000927A7 /* Serialiser.m */,
+			);
+			name = Serialiser;
 			sourceTree = "<group>";
 		};
 		F12C098414AF77D200D97DEC /* Lite */ = {
@@ -1957,6 +1985,7 @@
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
+				F1241DB214CC2CAE000927A7 /* Security.framework */,
 				F10764C31483675A00A06809 /* MTStatusBarOverlay */,
 				F10CC24B147315D900714417 /* CrittercismSDK */,
 				F1676D29146334A100EEFF25 /* Appirater */,
@@ -1986,6 +2015,7 @@
 		F1CD782D13BA405A00D42AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1241DAF14CC2C3D000927A7 /* DropboxSDK.framework */,
 				F1676D2F14633A8000EEFF25 /* CFNetwork.framework */,
 				F17B4A4213F1811F00072F90 /* libicucore.dylib */,
 				F17B4A4013F180CB00072F90 /* CoreFoundation.framework */,
@@ -2043,6 +2073,8 @@
 				F1B8211C13BDFC8700FE329B /* EntryEdit */,
 				94F97EE013E981B200662ADB /* RateEdit */,
 				F1CD78BD13BB8C0900D42AA3 /* Model */,
+				F1241DBE14CC33E1000927A7 /* DropBoxShare.h */,
+				F1241DBF14CC33E2000927A7 /* DropBoxShare.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -2071,6 +2103,7 @@
 		F1CD78BD13BB8C0900D42AA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F1241DC314CC5366000927A7 /* Serialiser */,
 				F1A6C62A13D5DBD1005E8388 /* Domain */,
 				F1B8211913BDE2D400FE329B /* Summary.h */,
 				F1B8211A13BDE2D400FE329B /* Summary.m */,
@@ -2906,6 +2939,8 @@
 				F19C83F314C2CC4500329308 /* NotesEditViewController.m in Sources */,
 				F1241DAA14CAE66B000927A7 /* DataInitialiser.m in Sources */,
 				F1241DAE14CBFF66000927A7 /* AmountEditViewController.m in Sources */,
+				F1241DC114CC33E2000927A7 /* DropBoxShare.m in Sources */,
+				F1241DC714CC5382000927A7 /* Serialiser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3081,6 +3116,8 @@
 				F19C83F214C2CC4500329308 /* NotesEditViewController.m in Sources */,
 				F1241DA914CAE66B000927A7 /* DataInitialiser.m in Sources */,
 				F1241DAD14CBFF66000927A7 /* AmountEditViewController.m in Sources */,
+				F1241DC014CC33E2000927A7 /* DropBoxShare.m in Sources */,
+				F1241DC614CC5382000927A7 /* Serialiser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3355,6 +3392,7 @@
 		F1AA5F8C147B1C5B000A2339 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F1241DC814CC5C94000927A7 /* Model-3.0.xcdatamodel */,
 				F19C83DB14C2C30700329308 /* Model-2.1.xcdatamodel */,
 				F1AA5F8D147B1C5B000A2339 /* Model-1.2.xcdatamodel */,
 				F1AA5F8E147B1C5B000A2339 /* Model.xcdatamodel */,

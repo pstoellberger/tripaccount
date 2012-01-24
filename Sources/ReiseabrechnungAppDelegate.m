@@ -26,6 +26,7 @@
 #import "ImageCache.h"
 #import "ParticipantView.h"
 #import "DataInitialiser.h"
+#import "DropBoxShare.h"
 
 @implementation ReiseabrechnungAppDelegate
 
@@ -403,6 +404,20 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Dropbox SDK
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+
+	if ([[DBSession sharedSession] handleOpenURL:url]) {
+		if ([[DBSession sharedSession] isLinked]) {
+			NSLog(@"Account linked!");
+            [[DropBoxShare sharedInstance] continueAction];
+        }
+		return YES;
+	}
+	
+	return NO;
+}
 
 - (void)dealloc {
     
