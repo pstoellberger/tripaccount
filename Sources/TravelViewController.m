@@ -30,6 +30,7 @@
 #import "Appirater.h"
 #import "ReceiverWeightNotManaged.h"
 #import "ReceiverWeight.h"
+#import "DropBoxShare.h"
 
 @interface TravelViewController ()
 
@@ -67,7 +68,7 @@
                                                                     delegate:self
                                                            cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                       destructiveButtonTitle:nil
-                                                           otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Open this trip", @"alert item open trip"), nil] autorelease];
+                                                           otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"DROPBOX", @"alert item mail"), NSLocalizedString(@"Open this trip", @"alert item open trip"), nil] autorelease];
         self.actionSheetClosedTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         
         
@@ -75,7 +76,7 @@
                                                                   delegate:self
                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                     destructiveButtonTitle:nil
-                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), NSLocalizedString(@"Update exchange rates", @"alert item update rates"), NSLocalizedString(@"Manually edit rates", @"alert title edit rate"), nil] autorelease];
+                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"DROPBOX", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), NSLocalizedString(@"Update exchange rates", @"alert item update rates"), NSLocalizedString(@"Manually edit rates", @"alert title edit rate"), nil] autorelease];
         self.actionSheetOpenTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;        
         
         
@@ -83,7 +84,7 @@
                                                                   delegate:self
                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                     destructiveButtonTitle:nil
-                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), nil] autorelease];
+                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"DROPBOX", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), nil] autorelease];
         self.actionSheetOpenTravelNoCurrency.actionSheetStyle = UIActionSheetStyleBlackTranslucent;   
         
         self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle:nil
@@ -639,6 +640,11 @@
     [navController release];    
 }
 
+- (void)shareDropbox {
+    
+    [[DropBoxShare sharedInstance] share:self.travel];
+}
+
 #pragma mark - ParticipantViewControllerEditDelegate
 
 - (void)participantWasDeleted:(Participant *)participant {
@@ -684,7 +690,11 @@
                 
                 [self askToSendEmail];
                 
-            } else if (buttonIndex == 1) {
+            } if (buttonIndex == 1) {
+                
+                [self shareDropbox];
+                
+            } else if (buttonIndex == 2) {
                 
                 if ([self.travel isClosed]) {
                     
@@ -697,11 +707,11 @@
                 } else {
                     [self closeTravel];
                 }
-            } else if (buttonIndex == 2) {
+            } else if (buttonIndex == 3) {
                 
                 [self refreshExchangeRates];
                 
-            } else if (buttonIndex == 3) {
+            } else if (buttonIndex == 4) {
                 
                 [self openRateEditPopup];
             }
