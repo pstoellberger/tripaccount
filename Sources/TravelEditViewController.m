@@ -551,6 +551,7 @@ static NSIndexPath *_notesIndexPath;
                         if ([userName isEqualToString:fullName]) {
                             Participant *newPerson = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext: [_travel managedObjectContext]];
                             newPerson.yourself = [NSNumber numberWithInt:1];
+                            _travel.cashier = newPerson;
                             [Participant addParticipant:newPerson toTravel:_travel withABRecord:martinPerson];
                             break;
                         }

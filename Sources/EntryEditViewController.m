@@ -163,11 +163,11 @@ static NSIndexPath *_notesIndexPath;
     _payerIndexPath = [[NSIndexPath indexPathForRow:0 inSection:0] retain];
     _dateIndexPath = [[NSIndexPath indexPathForRow:1 inSection:0] retain];
     _descriptionIndexPath = [[NSIndexPath indexPathForRow:2 inSection:0] retain];
-    _typeIndexPath = [[NSIndexPath indexPathForRow:4 inSection:0] retain];
-    _amountIndexPath = [[NSIndexPath indexPathForRow:5 inSection:0] retain];
-    _currencyIndexPath = [[NSIndexPath indexPathForRow:6 inSection:0] retain];
-    _receiverIndexPath = [[NSIndexPath indexPathForRow:7 inSection:0] retain];
-    _notesIndexPath = [[NSIndexPath indexPathForRow:3 inSection:0] retain];
+    _typeIndexPath = [[NSIndexPath indexPathForRow:3 inSection:0] retain];
+    _amountIndexPath = [[NSIndexPath indexPathForRow:4 inSection:0] retain];
+    _currencyIndexPath = [[NSIndexPath indexPathForRow:5 inSection:0] retain];
+    _receiverIndexPath = [[NSIndexPath indexPathForRow:6 inSection:0] retain];
+    _notesIndexPath = [[NSIndexPath indexPathForRow:7 inSection:0] retain];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -196,6 +196,7 @@ static NSIndexPath *_notesIndexPath;
 
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"wallet_open.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Amount", @"cell title amount");
+        cell.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:1.0 alpha:1];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         
@@ -243,6 +244,7 @@ static NSIndexPath *_notesIndexPath;
         
         cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"AlignedStyle2Cell" andNamedImage:@"components.png"] autorelease];
         cell.textLabel.text = NSLocalizedString(@"Type", @"cell title type");
+        cell.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:1.0 alpha:1];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = nil;
         if (self.nmEntry.type) {

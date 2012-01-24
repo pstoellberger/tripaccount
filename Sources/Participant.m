@@ -2,8 +2,8 @@
 //  Participant.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 15/01/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Martin Maier on 26/09/2012.
+//
 //
 
 #import "Participant.h"
@@ -18,10 +18,10 @@
 @dynamic imageSmall;
 @dynamic yourself;
 @dynamic weight;
+@dynamic notes;
 @dynamic image;
 @dynamic email;
 @dynamic name;
-@dynamic notes;
 @dynamic transfersAsDebtor;
 @dynamic transfersAsDebtee;
 @dynamic pays;
@@ -29,5 +29,6 @@
 @dynamic receiverWeights;
 @dynamic travel;
 @dynamic lastUsedInTravel;
+@dynamic isCashierForTravel;
 
 @end

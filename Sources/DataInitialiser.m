@@ -106,8 +106,24 @@
     [defaults setBool:YES forKey:@"travelInitialised"];
     [defaults synchronize];
     
+    
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     NSString *dataInitkey = [NSString stringWithFormat:@"dataInitForVersion%@", version];
+    
+    if (![defaults objectForKey:@"dataInitForVersion2.2.0"]) {
+        
+        // update all travel summaries (because algorithm changed)
+        NSFetchRequest *req = [[NSFetchRequest alloc] init];
+        req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: _context];
+        NSArray *travels = [_context executeFetchRequest:req error:nil];
+        [req release];
+        for (Travel* travel in travels) {
+            if (![travel.closed isEqual:[NSNumber numberWithInt:1]]) {
+                [Summary updateSummaryOfTravel:travel];
+                NSLog(@"Refreshing summary of travel %@", travel.name);
+            }
+        }
+    }
     
     if (![defaults objectForKey:dataInitkey]) {
         
@@ -136,9 +152,9 @@
             if (!_newCountry) {
                 // create new country if required
                 _newCountry = [NSEntityDescription insertNewObjectForEntityForName:@"Country" inManagedObjectContext:_context];
-                NSLog(@"Creating new country: %@", [countryItem valueForKey:@"name"]);
+                //NSLog(@"Creating new country: %@", [countryItem valueForKey:@"name"]);
             } else {
-                NSLog(@"Country already exists: %@", _newCountry.name);
+                //NSLog(@"Country already exists: %@", _newCountry.name);
             }
             _newCountry.name = [countryItem valueForKey:@"name"];
             _newCountry.name_de = [countryItem valueForKey:@"name_de"];
@@ -155,9 +171,9 @@
                 if (!_newCity) {
                     // create new city if required
                     _newCity = [NSEntityDescription insertNewObjectForEntityForName:@"City" inManagedObjectContext:_context];
-                    NSLog(@"Creating new city: %@", [cityItem valueForKey:@"name"]);
+                    //NSLog(@"Creating new city: %@", [cityItem valueForKey:@"name"]);
                 } else {
-                    NSLog(@"City already exists: %@", _newCity.name);
+                    //NSLog(@"City already exists: %@", _newCity.name);
                 }
                 _newCity.name = [cityItem valueForKey:@"name"];
                 _newCity.latitude = [cityItem valueForKey:@"latitude"];
@@ -190,9 +206,9 @@
                 if (!_currency) {
                     // create new country if required
                     _currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:_context];
-                    NSLog(@"Creating new currency: %@", [currencyItem valueForKey:@"name"]);
+                    //NSLog(@"Creating new currency: %@", [currencyItem valueForKey:@"name"]);
                 } else {
-                    NSLog(@"Currency already exists: %@", _currency.name);
+                    //NSLog(@"Currency already exists: %@", _currency.name);
                 }
                 
                 [newCurrencies setObject:_currency forKey:currencyIsoCode];
@@ -243,8 +259,6 @@
         
         [defaults setBool:TRUE forKey:dataInitkey];
         [defaults synchronize];
-        
-        [ReiseabrechnungAppDelegate saveContext:_context];
     
         currencies = [_context executeFetchRequest:reqCurrencies error:nil];
         [reqCountries release];
@@ -255,6 +269,8 @@
                 NSLog(@"no rate for currency %@", c.name);
             }
         }
+        
+        [ReiseabrechnungAppDelegate saveContext:_context];
     }
     
     [Crittercism leaveBreadcrumb:@"DataInitialiser: initializeStartDatabase initTypes"];

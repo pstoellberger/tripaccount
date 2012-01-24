@@ -29,6 +29,7 @@ static NSIndexPath *_emailIndexPath;
 static NSIndexPath *_weightIndexPath;
 static NSIndexPath *_imageIndexPath;
 static NSIndexPath *_notesIndexPath;
+static NSIndexPath *_cashierIndexPath;
 
 @interface ParticipantEditViewController ()
 - (void)initIndexPaths;
@@ -86,6 +87,8 @@ static NSIndexPath *_notesIndexPath;
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = [UIFactory createBackgroundViewWithFrame:self.view.frame];
         
+        _toggleSwitch = [[UISwitch alloc] init];
+        
         if (!participant) {
             
             self.notes = @"";
@@ -93,6 +96,7 @@ static NSIndexPath *_notesIndexPath;
             self.email = @"";
             self.weight = [NSNumber numberWithInt:1];
             self.image = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"noImage" ofType:@"png"]];
+            _toggleSwitch.on = FALSE;
             
         } else {
             
@@ -100,7 +104,8 @@ static NSIndexPath *_notesIndexPath;
             self.name = participant.name;
             self.email = participant.email;
             self.weight = participant.weight;
-            self.image = participant.image; 
+            self.image = participant.image;
+            _toggleSwitch.on = [self.travel.cashier isEqual:participant];
 
         }
         
@@ -110,6 +115,7 @@ static NSIndexPath *_notesIndexPath;
                                                       destructiveButtonTitle:nil
                                                            otherButtonTitles:NSLocalizedString(@"image iphone", @"alert image from iphone"), NSLocalizedString(@"image camera", @"alert image from camera"), nil] autorelease];
         self.imageActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+
     }
     return self;
 }
@@ -120,6 +126,7 @@ static NSIndexPath *_notesIndexPath;
     _weightIndexPath = [[NSIndexPath indexPathForRow:2 inSection:0] retain];
     _imageIndexPath = [[NSIndexPath indexPathForRow:3 inSection:0] retain];
     _notesIndexPath = [[NSIndexPath indexPathForRow:4 inSection:0] retain];
+    _cashierIndexPath = [[NSIndexPath indexPathForRow:5 inSection:0] retain];
 }
 
 
@@ -148,7 +155,7 @@ static NSIndexPath *_notesIndexPath;
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -197,6 +204,16 @@ static NSIndexPath *_notesIndexPath;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = self.notes;
         
+    } else if ([indexPath isEqual:_cashierIndexPath]) {
+        
+        cell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"cashierToggleCell" andNamedImage:@"cashier.png"] autorelease];
+        cell.textLabel.text = NSLocalizedString(@"Cashier", @"cell caption cashier");
+        
+        UIView *newSwitch= [[UIView alloc] initWithFrame:_toggleSwitch.frame];
+        [newSwitch addSubview:_toggleSwitch];
+        cell.accessoryView = newSwitch;
+        [newSwitch release];
+        
     } else {
         NSLog(@"no indexpath cell found for %@ ", indexPath);
     }
@@ -213,7 +230,14 @@ static NSIndexPath *_notesIndexPath;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;  
+    return ![indexPath isEqual:_cashierIndexPath];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (![indexPath isEqual:_cashierIndexPath]) {
+        return indexPath;
+    }
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -420,13 +444,25 @@ static NSIndexPath *_notesIndexPath;
     self.participant.weight = [NSDecimalNumber decimalNumberWithDecimal:[self.weight decimalValue]];
     self.participant.image = self.image;
     self.participant.imageSmall = [Participant createThumbnail:self.image];
+    
+    BOOL cashierChanged = FALSE;
+    if (_toggleSwitch.on) {
+        self.travel.cashier = self.participant;
+        cashierChanged = TRUE;
+    } else {
+        if ([self.travel.cashier isEqual:self.participant]) {
+            self.travel.cashier = nil;
+            cashierChanged = TRUE;
+        }
+    }
+    
     [ParticipantView evictCache];
     
     [ReiseabrechnungAppDelegate saveContext:_context];
     
     [self dismissModalViewControllerAnimated:YES];
     
-    [self.editDelegate participantEditFinished:self.participant wasSaved:YES];
+    [self.editDelegate participantEditFinished:self.participant wasSaved:YES cashierChanged:cashierChanged];
 
 }
 
@@ -437,7 +473,7 @@ static NSIndexPath *_notesIndexPath;
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissModalViewControllerAnimated:YES];
     
-    [self.editDelegate participantEditFinished:self.participant wasSaved:NO];
+    [self.editDelegate participantEditFinished:self.participant wasSaved:NO cashierChanged:NO];
 }
 
 - (void)checkIfDoneIsPossible {
@@ -486,6 +522,7 @@ static NSIndexPath *_notesIndexPath;
     [_imageIndexPath release];
     [_notesIndexPath release];
     [_image release];
+    [_toggleSwitch release];
     
     [_participant release];
     [_imageActionSheet release];
