@@ -120,7 +120,7 @@
             double baseAmount = [entry.currency convertTravelAmount:travel currency:summary.baseCurrency amount:[entry.amount doubleValue]];
             
             // divide an expense in equal parts
-            double divAmount = baseAmount / [entry.receiverWeights count];
+            double divAmount = baseAmount / entry.totalReceiverWeights;
             
             // add the amount to the 'account' between two people
             for (ReceiverWeight *recWeight in entry.receiverWeights) {

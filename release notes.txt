@@ -70,8 +70,9 @@ New features:
 - During amount edit you can now quick change the used currency.
 
 Fixes:
+- Fixes a nasty bug in the calculation of debt with weighted expenses (Thanks to Thomas).
 - Fixed a crash that can occur during the first start of the app.
-- Malta has now the correct flag (thanks to York).
+- Malta has now the correct flag (Thanks to York).
 
 DE
 Neue Funktionen:
@@ -81,6 +82,7 @@ Neue Funktionen:
 - Während der Eingabe des Ausgabenbetrag kann nun die Währung geändert werden. 
 
 Problembehebungen:
+- Behebt einen ärgerlichen Fehler bei der Schuldenberechnung unter Verwendung von Gewichtungen (Danke, Thomas).
 - Behebt einen Absturz der App, der beim ersten Starten passieren kann.
 - Malta hat nun die richtige Flagge (Danke, York).
 

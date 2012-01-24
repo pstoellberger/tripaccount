@@ -45,9 +45,9 @@
             
             self.tableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, FOOTER_HEIGHT)] autorelease];
             
-            [self.tableView.tableFooterView addSubview:self.convertView];
+            [self.tableView.tableFooterView addSubview:self.detailView];
             
-            self.convertView.text = _description;
+            self.detailView.text = _description;
             [self.tableView.tableFooterView addSubview:self.infoImageView];
         }
         
@@ -77,11 +77,11 @@
             }
         }
         
-        self.convertView.text = [conversionString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        self.detailView.text = [conversionString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         
-        [self.convertView flashScrollIndicators];
+        [self.detailView flashScrollIndicators];
     } else {
-        self.convertView.text = @"";
+        self.detailView.text = @"";
     }
 }
 
@@ -124,14 +124,14 @@
 - (void)loadView {
     
     [super loadView];
-    self.convertView.font = [UIFont systemFontOfSize:18.0];
-    self.convertView.textAlignment = UITextAlignmentRight;
+    self.detailView.font = [UIFont systemFontOfSize:18.0];
+    self.detailView.textAlignment = UITextAlignmentRight;
     
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(circleCurrency)];
     gr.numberOfTapsRequired = 1;
-    //self.convertView.userInteractionEnabled = YES;
-    //self.convertView.se
-    [self.convertView addGestureRecognizer:gr];
+    //self.detailView.userInteractionEnabled = YES;
+    //self.detailView.se
+    [self.detailView addGestureRecognizer:gr];
     [gr release];
     
     UILabel *codeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
