@@ -31,5 +31,6 @@
 }
 
 - (void)performDataInitialisations:(UIWindow *)window inContext:(NSManagedObjectContext *)context;
+- (void)performDataInitialisations:(UIWindow *)window inContext:(NSManagedObjectContext *)context withBundle:(NSBundle *)bundle;
 
 @end

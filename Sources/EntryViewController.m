@@ -27,6 +27,7 @@
 @synthesize entryCell=_entryCell;
 @synthesize travel=_travel, fetchRequest=_fetchRequest;
 @synthesize delegate=_delegate, editDelegate=_editDelegate;
+@synthesize displayCurrency=_displayCurrency;
 
 - (id)initWithTravel:(Travel *) travel {
     
@@ -41,6 +42,7 @@
         _headerDateFormatter.dateStyle = NSDateFormatterMediumStyle;
         
         self.travel = travel;
+        _displayCurrency = [self.travel.displayCurrency retain];
         _sortIndex = 0;
         _sortDesc = NO;
         
@@ -166,6 +168,10 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
+    if (![_displayCurrency isEqual:self.travel.displayCurrency]) {
+        _displayCurrency = [self.travel.displayCurrency retain];
+    }
+    
     NSInteger itemCount = [tableView.dataSource tableView:tableView numberOfRowsInSection:section];
     if (itemCount <= 1 || ![[NSUserDefaults standardUserDefaults] boolForKey:@"showTotals"]) {
         return nil;
@@ -174,7 +180,7 @@
     double totalValue = 0;
     for (int counter=0; counter < itemCount; counter++) {
         Entry *entry = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:counter inSection:section]];
-        totalValue += [entry.currency convertTravelAmount:self.travel currency:self.travel.displayCurrency amount:[entry.amount doubleValue]];
+        totalValue += [entry.currency convertTravelAmount:self.travel currency:_displayCurrency amount:[entry.amount doubleValue]];
     }
     
     UIView *totalViewContainer = [[[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_CELL_HEIGHT) andColor1:[UIFactory defaultDarkTintColor] andColor2:[UIFactory defaultTintColor]] autorelease];
@@ -186,7 +192,7 @@
     label.textAlignment = UITextAlignmentRight;
     label.font = [UIFont systemFontOfSize:10];
     label.backgroundColor = [UIColor clearColor];
-    label.text = [NSString stringWithFormat:@"%@ (%@):   %@ %@    ", NSLocalizedString(@"total", "@total label"), [self tableView:tableView titleForHeaderInSection:section], [UIFactory formatNumber:[NSNumber numberWithDouble:totalValue]], [self.travel.displayCurrency code]];
+    label.text = [NSString stringWithFormat:@"%@ (%@):   %@ %@    ", NSLocalizedString(@"total", "@total label"), [self tableView:tableView titleForHeaderInSection:section], [UIFactory formatNumber:[NSNumber numberWithDouble:totalValue]], [_displayCurrency code]];
     [totalViewContainer addSubview:label];
     [label release];
     
@@ -334,6 +340,7 @@
     [_sortKeyArray release];
     [_sectionKeyArray release];
     [_travel release];
+    [_displayCurrency release];
     
     [_fetchRequest release];
     

@@ -41,6 +41,13 @@
 		F11FB34013E6983F00115D12 /* types.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CE13E313D5C2F40079B234 /* types.plist */; };
 		F11FB34B13E6B01F00115D12 /* SummarySortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */; };
 		F11FB36713E6E73A00115D12 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
+		F121C84714CF2C3F00EFD4B0 /* DataInitialiser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DA814CAE66A000927A7 /* DataInitialiser.m */; };
+		F121C84914CF2C5F00EFD4B0 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F19C83ED14C2C7EB00329308 /* Entry.m */; };
+		F121C84A14CF2C6400EFD4B0 /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = F19C83E914C2C7EB00329308 /* Participant.m */; };
+		F121C84B14CF2C9A00EFD4B0 /* AmountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */; };
+		F121C84C14CF2C9E00EFD4B0 /* NotesEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19C83F114C2CC4500329308 /* NotesEditViewController.m */; };
+		F121C84D14CF2CB100EFD4B0 /* Style2ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F12C09AC14B0615300D97DEC /* Style2ImageCell.m */; };
+		F121C84E14CF2CDD00EFD4B0 /* Crittercism_v2_9_34.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F12C099A14B04B6E00D97DEC /* Crittercism_v2_9_34.a */; };
 		F122F0EB1494028900ECF5BF /* ReceiverWeightNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAE3148BAC9600274627 /* ReceiverWeightNotManaged.m */; };
 		F122F0EE1494029600ECF5BF /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAEF148BAED200274627 /* ExchangeRate.m */; };
 		F122F0F01494029C00ECF5BF /* ReceiverWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAE9148BAED100274627 /* ReceiverWeight.m */; };
@@ -1398,6 +1405,7 @@
 				F14B372B13E68B5F00351641 /* Foundation.framework in Frameworks */,
 				F14B372C13E68B5F00351641 /* CoreGraphics.framework in Frameworks */,
 				F14B372913E68B5F00351641 /* SenTestingKit.framework in Frameworks */,
+				F121C84E14CF2CDD00EFD4B0 /* Crittercism_v2_9_34.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1834,11 +1842,11 @@
 				F1CADAE5148BAECF00274627 /* Travel.h */,
 				F1CADAE6148BAECF00274627 /* Travel.m */,
 				F1C3986C14604C6D00AB1045 /* AppDefaults.h */,
+				F1C3986D14604C6D00AB1045 /* AppDefaults.m */,
 				F1AA5F80147ACEBD000A2339 /* Type.h */,
 				F1AA5F81147ACEBD000A2339 /* Type.m */,
 				F1C3987514604C6E00AB1045 /* Transfer.h */,
 				F1C3987614604C6E00AB1045 /* Transfer.m */,
-				F1C3986D14604C6D00AB1045 /* AppDefaults.m */,
 				F1C3986914604C6D00AB1045 /* Currency.h */,
 				F1C3986A14604C6D00AB1045 /* Currency.m */,
 				F1C3986614604C6D00AB1045 /* City.h */,
@@ -2990,6 +2998,12 @@
 				F122F1081494038200ECF5BF /* CustomImageStyle2Cell.m in Sources */,
 				F122F1091494038200ECF5BF /* TimeCell.m in Sources */,
 				F122F11214966AD000ECF5BF /* TransferCycle.m in Sources */,
+				F121C84714CF2C3F00EFD4B0 /* DataInitialiser.m in Sources */,
+				F121C84914CF2C5F00EFD4B0 /* Entry.m in Sources */,
+				F121C84A14CF2C6400EFD4B0 /* Participant.m in Sources */,
+				F121C84B14CF2C9A00EFD4B0 /* AmountEditViewController.m in Sources */,
+				F121C84C14CF2C9E00EFD4B0 /* NotesEditViewController.m in Sources */,
+				F121C84D14CF2CB100EFD4B0 /* Style2ImageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3205,6 +3219,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CrittercismSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -3224,6 +3242,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CrittercismSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;

@@ -35,9 +35,11 @@
 }
 
 @property (nonatomic, retain) Travel *travel;
+@property (nonatomic, retain, readonly) Currency *displayCurrency;
 @property (nonatomic, retain) NSFetchRequest *fetchRequest;
 @property (nonatomic, assign) id <EntryViewControllerDelegate> delegate;
 @property (nonatomic, assign) id <EntryViewControllerEditDelegate> editDelegate;
+
 
 @property (nonatomic, assign) IBOutlet EntryCell *entryCell;
 

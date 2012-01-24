@@ -14,6 +14,7 @@
 #import "ReceiverWeight.h"
 #import "Summary.h"
 #import "Transfer.h"
+#import "DataInitialiser.h"
 
 @implementation UnitTests
 
@@ -36,7 +37,9 @@
     
     ReiseabrechnungAppDelegate *appDelegate = [[ReiseabrechnungAppDelegate alloc] init];
     appDelegate.managedObjectContext = context;
-    [appDelegate initializeStartDatabase:[NSBundle bundleForClass:[self class]]];
+    
+    DataInitialiser *di = [[DataInitialiser alloc] init];
+    [di performDataInitialisations:appDelegate.window inContext:appDelegate.managedObjectContext withBundle:[NSBundle bundleForClass:[self class]]];
 }
 
 - (void) tearDown {
@@ -90,6 +93,13 @@
     return rw;
 }
 
+- (ReceiverWeight *)newReceiverWeight:(Participant *)particpant withAmount:(NSNumber *)amount {
+    ReceiverWeight *rw = [NSEntityDescription insertNewObjectForEntityForName:@"ReceiverWeight" inManagedObjectContext:context];
+    rw.participant = particpant;
+    rw.weight = amount;
+    return rw;
+}
+
 - (void)assertTransfer:(NSSet *)transfers fromParticipant:(Participant *)p1 toParticipant:(Participant *)p2 withAmount:(NSNumber *)amount {
 
     BOOL returnValue = NO;
@@ -109,6 +119,70 @@
         }
     }
     STAssertTrue(returnValue, [NSString stringWithFormat:@"Could not find person %@ owes %@ to %@ (found value: %@)", p1.name, amount, p2.name, foundValue]);
+    
+}
+
+- (void)testCalculationWeight {
+    
+    Currency *eur = [self currencyWithCode:@"EUR"];
+    
+    Travel *travel = [NSEntityDescription insertNewObjectForEntityForName:@"Travel" inManagedObjectContext:context];
+    [travel addCurrenciesObject:eur];
+    
+    Participant *p1 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:context];
+    p1.name = @"p1";
+    Participant *p2 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:context];
+    p2.name = @"p2";
+    Participant *p3 = [NSEntityDescription insertNewObjectForEntityForName:@"Participant" inManagedObjectContext:context];
+    p3.name = @"p3";
+    
+    [travel addParticipantsObject:p1];
+    [travel addParticipantsObject:p2];
+    [travel addParticipantsObject:p3];
+    
+    Entry *e1 = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:context];
+    e1.payer = p1;
+    e1.currency = eur;
+    e1.amount = [NSNumber numberWithInt:28];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p1 withAmount:[NSNumber numberWithInt:7]]];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p2 withAmount:[NSNumber numberWithInt:9]]];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p3 withAmount:[NSNumber numberWithInt:12]]];
+    [travel addEntriesObject:e1];
+    
+    [Summary updateSummaryOfTravel:travel];
+    
+    [self assertTransfer:travel.transfers fromParticipant:p2 toParticipant:p1 withAmount:[NSNumber numberWithDouble:9]];
+    [self assertTransfer:travel.transfers fromParticipant:p3 toParticipant:p1 withAmount:[NSNumber numberWithDouble:12]];
+    
+    
+    e1 = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:context];
+    e1.payer = p2;
+    e1.currency = eur;
+    e1.amount = [NSNumber numberWithInt:100];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p1 withAmount:[NSNumber numberWithDouble:1.5]]];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p2 withAmount:[NSNumber numberWithInt:10]]];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p3 withAmount:[NSNumber numberWithInt:1]]];
+    [travel addEntriesObject:e1];
+    
+    [Summary updateSummaryOfTravel:travel];
+    
+    [self assertTransfer:travel.transfers fromParticipant:p1 toParticipant:p2 withAmount:[NSNumber numberWithDouble:3]];
+    [self assertTransfer:travel.transfers fromParticipant:p3 toParticipant:p1 withAmount:[NSNumber numberWithDouble:12]];
+    [self assertTransfer:travel.transfers fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithDouble:8]];
+    
+    e1 = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:context];
+    e1.payer = p3;
+    e1.currency = eur;
+    e1.amount = [NSNumber numberWithInt:12];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p1 withAmount:[NSNumber numberWithDouble:1.5]]];
+    [e1 addReceiverWeightsObject:[self newReceiverWeight:p2 withAmount:[NSNumber numberWithDouble:0.5]]];
+    [travel addEntriesObject:e1];
+    
+    [Summary updateSummaryOfTravel:travel];
+    
+    [self assertTransfer:travel.transfers fromParticipant:p1 toParticipant:p2 withAmount:[NSNumber numberWithDouble:3]];
+    [self assertTransfer:travel.transfers fromParticipant:p3 toParticipant:p1 withAmount:[NSNumber numberWithDouble:3]];
+    [self assertTransfer:travel.transfers fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithDouble:5]];
     
 }
 
@@ -297,23 +371,25 @@
     
     ParticipantKey *key = [[ParticipantKey alloc] initWithReceiver:p1 andPayer:p3];
     [dict setObject:[NSNumber numberWithInt:100] forKey:key];
+    
     key = [[ParticipantKey alloc] initWithReceiver:p2 andPayer:p1];
     [dict setObject:[NSNumber numberWithInt:200] forKey:key];
+    
     key = [[ParticipantKey alloc] initWithReceiver:p3 andPayer:p2];
     [dict setObject:[NSNumber numberWithInt:1000] forKey:key];
-    key = [[ParticipantKey alloc] initWithReceiver:p3 andPayer:p4];
+    
+    key = [[ParticipantKey alloc] initWithReceiver:p4 andPayer:p3];
     [dict setObject:[NSNumber numberWithInt:400] forKey:key];
-    key = [[ParticipantKey alloc] initWithReceiver:p4 andPayer:p2];
+    
+    key = [[ParticipantKey alloc] initWithReceiver:p2 andPayer:p4];
     [dict setObject:[NSNumber numberWithInt:500] forKey:key];
     
     [summary eliminateCircularDebts:dict];
     
-    STAssertEquals([dict count], (NSUInteger) 2, nil);
+    STAssertEquals([dict count], (NSUInteger) 3, nil);
     [self assertDebtAmount:dict fromParticipant:p2 toParticipant:p1 withAmount:[NSNumber numberWithInt:100]];
-    [self assertDebtAmount:dict fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithInt:200]];
-    [self assertDebtAmount:dict fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithInt:200]];
-    [self assertDebtAmount:dict fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithInt:200]];    
-    [self assertDebtAmount:dict fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithInt:200]];
+    [self assertDebtAmount:dict fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithInt:500]];
+    [self assertDebtAmount:dict fromParticipant:p2 toParticipant:p4 withAmount:[NSNumber numberWithInt:100]];
 }
 
 @end

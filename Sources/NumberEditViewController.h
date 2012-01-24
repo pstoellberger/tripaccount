@@ -21,6 +21,7 @@
 @interface NumberEditViewController : UITableViewController <UITextFieldDelegate> {
     NSString *_namedImage;
     NSString *_description;
+    BOOL _donePressed;
 }
 
 @property (nonatomic, retain) id target;
@@ -29,7 +30,7 @@
 @property (nonatomic, retain) UITableViewCell *textCell;
 @property (nonatomic, retain) UITextField *textField;
 
-@property (nonatomic, retain) UITextView *convertView;
+@property (nonatomic, retain) UITextView *detailView;
 @property (nonatomic, retain) UIImageView *infoImageView;
 
 @property (nonatomic, retain) NSNumber *number;
