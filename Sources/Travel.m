@@ -2,8 +2,8 @@
 //  Travel.m
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 04/12/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Martin Maier on 26/09/2012.
+//
 //
 
 #import "Travel.h"
@@ -32,10 +32,11 @@
 @dynamic displayCurrency;
 @dynamic country;
 @dynamic lastParticipantUsed;
-@dynamic entries;
 @dynamic currencies;
+@dynamic entries;
 @dynamic lastCurrencyUsed;
 @dynamic rates;
 @dynamic transfers;
+@dynamic cashier;
 
 @end

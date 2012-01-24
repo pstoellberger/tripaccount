@@ -2,8 +2,8 @@
 //  Participant.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 15/01/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Martin Maier on 26/09/2012.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -16,10 +16,10 @@
 @property (nonatomic, retain) NSData * imageSmall;
 @property (nonatomic, retain) NSNumber * yourself;
 @property (nonatomic, retain) NSNumber * weight;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSData * image;
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSSet *transfersAsDebtor;
 @property (nonatomic, retain) NSSet *transfersAsDebtee;
 @property (nonatomic, retain) NSSet *pays;
@@ -27,6 +27,7 @@
 @property (nonatomic, retain) NSSet *receiverWeights;
 @property (nonatomic, retain) Travel *travel;
 @property (nonatomic, retain) Travel *lastUsedInTravel;
+@property (nonatomic, retain) Travel *isCashierForTravel;
 @end
 
 @interface Participant (CoreDataGeneratedAccessors)

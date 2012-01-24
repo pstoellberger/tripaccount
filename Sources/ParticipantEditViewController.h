@@ -11,7 +11,7 @@
 #import "Participant.h"
 
 @protocol ParticipantEditViewControllerEditDelegate
-- (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved;
+- (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved cashierChanged:(BOOL)cashierChanged;
 @optional
 - (void)openParticipantPopup:(Participant *)participant;
 @end
@@ -25,6 +25,7 @@
     BOOL _isFirstView;
     BOOL _viewAppeared;
     
+    UISwitch *_toggleSwitch;
 }
 
 @property (nonatomic, retain) NSString *name;

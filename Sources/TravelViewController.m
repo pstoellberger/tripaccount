@@ -618,13 +618,17 @@
 
 #pragma mark - ParticipantViewControllerEditDelegate
 
-- (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved {
+- (void)participantEditFinished:(Participant *)participant wasSaved:(BOOL)wasSaved cashierChanged:(BOOL)cashierChanged {
     
     [Crittercism leaveBreadcrumb:@"TravelViewController: participantEditFinished"];
     
     [self.participantSortViewController.detailViewController.tableView deselectRowAtIndexPath:[self.participantSortViewController.detailViewController.tableView indexPathForSelectedRow] animated:YES];
     
     [self.entrySortViewController.detailViewController.tableView reloadData];
+    
+    if (cashierChanged) {
+        [self updateSummary];
+    }
     
 }
 
