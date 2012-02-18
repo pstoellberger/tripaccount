@@ -1,2 +1,6 @@
-Ablage/* .DS_Store
+Ablage/* 
+.DS_Store
 !.gitignore
+.metadata/
+eclipseWorkSpace/.metadata/**
+classes/
