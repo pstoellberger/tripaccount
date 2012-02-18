@@ -28,6 +28,8 @@
 
 @property (nonatomic, retain) InfoViewController *infoViewController;
 
+@property (nonatomic) BOOL animationOngoing;
+
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 - (void)openTravelEditViewController;
