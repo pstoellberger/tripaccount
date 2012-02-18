@@ -43,7 +43,7 @@ static NSIndexPath *_notesIndexPath;
 
 @end
 
-@implementation EntryEditViewController
+@implementation EntryEditViewController 
 
 @synthesize entryManaged=_entryManaged, travel=_travel, nmEntry=_nmEntry;
 @synthesize editDelegate=_editDelegate;
@@ -58,6 +58,9 @@ static NSIndexPath *_notesIndexPath;
     if (self) {
         
         [self initIndexPaths];
+        
+        _formatter = [[[NSDateFormatter alloc] init] retain];
+        _formatter.dateStyle = NSDateFormatterMediumStyle;
         
         _isFirstView = YES;
         
@@ -177,8 +180,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"cellForRowAtIndexPath"]];
-    
     UITableViewCell *cell = nil;
     
     if ([indexPath isEqual:_payerIndexPath]) {
@@ -214,13 +215,12 @@ static NSIndexPath *_notesIndexPath;
         cell.detailTextLabel.text = nil;
         
         if (self.nmEntry.date) {
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateStyle = NSDateFormatterMediumStyle;
             if ([UIFactory dateHasTime:self.nmEntry.date]) {
-                formatter.timeStyle = NSDateFormatterShortStyle;
+                _formatter.timeStyle = NSDateFormatterShortStyle;
+            } else {
+                _formatter.timeStyle = NSDateFormatterNoStyle;
             }
-            cell.detailTextLabel.text = [formatter stringFromDate:self.nmEntry.date];
-            [formatter release];
+            cell.detailTextLabel.text = [_formatter stringFromDate:self.nmEntry.date];
         }
     } else if ([indexPath isEqual:_currencyIndexPath]) {
         
@@ -625,6 +625,7 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)dealloc {
     [_cellsToReloadAndFlash release];
+    [_formatter release];
     [_travel release];
     
     [super dealloc];

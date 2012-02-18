@@ -468,7 +468,9 @@
     [self updateSummary];
     
     NSIndexPath *path = [self.entrySortViewController.detailViewController.fetchedResultsController indexPathForObject:entry];
-    [self.entrySortViewController.detailViewController.tableView reloadSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationNone];
+    if (path) {
+        [self.entrySortViewController.detailViewController.tableView reloadSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationNone];
+    }
     
     [self.entrySortViewController updateTotalValue];
 }

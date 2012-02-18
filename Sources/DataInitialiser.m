@@ -11,6 +11,8 @@
 
 @interface DataInitialiser ()
 - (void)fixUsDollar;
+- (void)fixGibPfund;
+- (void)fixHongKongDollar;
 - (void)upgradeFromVersion1;
 - (void)initializeSampleTrip;
 - (void)initializeStartDatabase:(NSBundle *)bundle;
@@ -34,6 +36,10 @@
     
     [self fixUsDollar];
 
+    [self fixGibPfund];
+    
+    [self fixHongKongDollar];
+    
     [self upgradeFromVersion1];
     
     [Crittercism leaveBreadcrumb:@"DataInitialiser: performDataInitialisations end"];
@@ -56,6 +62,37 @@
     [req release];
 }
 
+- (void)fixHongKongDollar {
+    
+    [Crittercism leaveBreadcrumb:@"DataInitialiser: fixHongKongDollar"];
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
+    req.predicate = [NSPredicate predicateWithFormat:@"name_de == 'Indische Rupie' && code == 'HKD'"];
+    NSArray *currencies = [_context executeFetchRequest:req error:nil];    
+    if (currencies && [currencies count] == 1) {
+        Currency *currency = [currencies lastObject];
+        currency.name_de = @"Hong Kong Dollar";
+        [ReiseabrechnungAppDelegate saveContext:_context];
+    }
+    [req release];
+}
+
+- (void)fixGibPfund {
+    
+    [Crittercism leaveBreadcrumb:@"DataInitialiser: fixGibPfund"];
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
+    req.predicate = [NSPredicate predicateWithFormat:@"name_de == 'Gibraltar -Pfund'"];
+    NSArray *currencies = [_context executeFetchRequest:req error:nil];    
+    if (currencies && [currencies count] == 1) {
+        Currency *currency = [currencies lastObject];
+        currency.name_de = @"Gibraltar-Pfund";
+        [ReiseabrechnungAppDelegate saveContext:_context];
+    }
+    [req release];
+}
 
 
 - (void)initializeStartDatabase:(NSBundle *)bundle {
