@@ -19,6 +19,7 @@
 
     NSMutableArray* _cellsToReloadAndFlash;
     BOOL _isFirstView;
+    NSDateFormatter *_formatter;
 }
 
 @property (nonatomic, retain, readonly) Travel *travel;

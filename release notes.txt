@@ -86,3 +86,12 @@ Problembehebungen:
 - Behebt einen Absturz der App, der beim ersten Starten passieren kann.
 - Malta hat nun die richtige Flagge (Danke, York).
 
+++ Version 2.1.1 ++
+
+DE
+- Die Währung HKD trägt jetzt die richtige Beschriftung: Hongkong Dollar
+- Behebt ein Problem beim Wechseln von Hoch- auf Querformat direkt beim Starten 
+- Behebt ein Problem, wenn die einzige Ausgabe, die im Trip vorhanden ist, gelöscht wird 
+
+EN
+- Fixes a problem when deleting the only existing expense of a trip
