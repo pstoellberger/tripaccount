@@ -27,6 +27,7 @@
 @synthesize tableViewController=_tableViewController, infoViewController=_infoViewController;
 @synthesize addButton=_addButton, editButton=_editButton, doneButton=_doneButton;
 @synthesize infoButton=_infoButton;
+@synthesize animationOngoing=_animationOngoing;
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
      
@@ -155,7 +156,7 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-     return self.infoViewController.view.superview == nil;
+     return self.infoViewController.view.superview == nil && !self.animationOngoing;
 }
 
 - (void)changeToEditMode {

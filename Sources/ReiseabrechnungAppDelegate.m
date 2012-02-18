@@ -98,8 +98,7 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
             RootViewController *rvc = [[RootViewController alloc] initInManagedObjectContext:self.managedObjectContext];
             self.navController = [[[ShadowNavigationController alloc] initWithRootViewController:rvc] autorelease];
             self.navController.delegate = rvc;
-            
-            [rvc release];
+            rvc.animationOngoing = YES;
             
             [self.window addSubview:self.navController.view];
             self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 320, 0);
@@ -123,11 +122,15 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
                                                                        animations:^{
                                                                            self.navController.view.transform = CGAffineTransformIdentity;
                                                                        }
-                                                                       completion:nil];
+                                                                       completion:^(BOOL finished){
+                                                                           rvc.animationOngoing = NO;
+                                                                       }];
                                                   }]; 
                              }];
             
             [Appirater appLaunched:YES];
+            
+            [rvc release];
 
         });
     });
