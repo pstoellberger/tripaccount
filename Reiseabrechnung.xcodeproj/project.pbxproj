@@ -1811,6 +1811,15 @@
 			path = MGTemplateEngine;
 			sourceTree = "<group>";
 		};
+		F16C090B14F1719800F3084A /* Dropbox */ = {
+			isa = PBXGroup;
+			children = (
+				F1241DBE14CC33E1000927A7 /* DropBoxShare.h */,
+				F1241DBF14CC33E2000927A7 /* DropBoxShare.m */,
+			);
+			name = Dropbox;
+			sourceTree = "<group>";
+		};
 		F17B49E613F17D0900072F90 /* MGTemplateEngine */ = {
 			isa = PBXGroup;
 			children = (
@@ -1985,7 +1994,6 @@
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
-				F1241DB214CC2CAE000927A7 /* Security.framework */,
 				F10764C31483675A00A06809 /* MTStatusBarOverlay */,
 				F10CC24B147315D900714417 /* CrittercismSDK */,
 				F1676D29146334A100EEFF25 /* Appirater */,
@@ -2015,6 +2023,7 @@
 		F1CD782D13BA405A00D42AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1241DB214CC2CAE000927A7 /* Security.framework */,
 				F1241DAF14CC2C3D000927A7 /* DropboxSDK.framework */,
 				F1676D2F14633A8000EEFF25 /* CFNetwork.framework */,
 				F17B4A4213F1811F00072F90 /* libicucore.dylib */,
@@ -2071,10 +2080,9 @@
 				F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */,
 				F11A52101405418600B983B8 /* ParticipantEdit */,
 				F1B8211C13BDFC8700FE329B /* EntryEdit */,
+				F16C090B14F1719800F3084A /* Dropbox */,
 				94F97EE013E981B200662ADB /* RateEdit */,
 				F1CD78BD13BB8C0900D42AA3 /* Model */,
-				F1241DBE14CC33E1000927A7 /* DropBoxShare.h */,
-				F1241DBF14CC33E2000927A7 /* DropBoxShare.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
