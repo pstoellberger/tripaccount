@@ -95,3 +95,7 @@ DE
 
 EN
 - Fixes a problem when deleting the only existing expense of a trip
+
+++ Version 2.1.2 ++
+
+- Behebt ein Anzeigeproblem, bei dem Knöpfe unter der Statusbar verschwinden

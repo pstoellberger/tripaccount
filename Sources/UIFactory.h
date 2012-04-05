@@ -13,7 +13,6 @@
 #import "Crittercism.h"
 
 #define NAVIGATIONBAR_HEIGHT 44
-#define STATUSBAR_HEIGHT 20
 #define TABBAR_HEIGHT 49
 #define ENTRY_SORT_HEIGHT 40
 #define CURRENCY_SORT_HEIGHT 45

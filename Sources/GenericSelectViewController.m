@@ -202,7 +202,7 @@
         [_segControl addTarget:self action:@selector(selectParticipants:) forControlEvents:UIControlEventValueChanged];
         _segControl.selectedSegmentIndex = UISegmentedControlNoSegment;
         
-        _segControlView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, HEADER_VIEW_HEIGHT + HEADER_VIEW_HEIGHT_GAP + HEADER_VIEW_HEIGHT_GAP)] retain];
+        _segControlView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, HEADER_VIEW_HEIGHT + HEADER_VIEW_HEIGHT_GAP + HEADER_VIEW_HEIGHT_GAP)] retain];
         _segControlView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [_segControlView addSubview:_segControl];
         

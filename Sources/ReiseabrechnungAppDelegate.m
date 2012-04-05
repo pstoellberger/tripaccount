@@ -109,24 +109,29 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
                                  self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -10, 0);
                              } 
                              completion:^(BOOL finished){
-                                 [UIView animateWithDuration:0.2
-                                                       delay:0 
-                                                     options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
-                                                  animations:^{
-                                                      self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 5, 0);
-                                                  } 
-                                                  completion:^(BOOL finished){
-                                                      [UIView animateWithDuration:0.2
-                                                                            delay:0 
-                                                                          options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
-                                                                       animations:^{
-                                                                           self.navController.view.transform = CGAffineTransformIdentity;
-                                                                       }
-                                                                       completion:^(BOOL finished){
-                                                                           rvc.animationOngoing = NO;
-                                                                       }];
-                                                  }]; 
+                                 if (finished) {
+                                     [UIView animateWithDuration:0.2
+                                                           delay:0 
+                                                         options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
+                                                      animations:^{
+                                                          self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 5, 0);
+                                                      } 
+                                                      completion:^(BOOL finished){
+                                                          if (finished) {
+                                                              [UIView animateWithDuration:0.2
+                                                                                    delay:0 
+                                                                                  options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState)
+                                                                               animations:^{
+                                                                                   self.navController.view.transform = CGAffineTransformIdentity;
+                                                                               }
+                                                                               completion:^(BOOL finished){
+                                                                                   rvc.animationOngoing = NO;
+                                                                               }];
+                                                          }
+                                                      }]; 
+                                 }
                              }];
+                             
             
             [Appirater appLaunched:YES];
             
