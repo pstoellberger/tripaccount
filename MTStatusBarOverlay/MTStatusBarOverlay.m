@@ -452,6 +452,7 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
     
 	delegate_ = nil;
+    [super dealloc];
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -50,8 +50,7 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 #else
     [Crittercism initWithAppID: @"4ec2ddd83f5b31291100000e"
                         andKey:@"4ec2ddd83f5b31291100000ewufkre3p"
-                     andSecret:@"0ilulrbcdkvhhn38o61neacyfgmgsdzu"
-         andMainViewController:self.navController];
+                     andSecret:@"0ilulrbcdkvhhn38o61neacyfgmgsdzu"];
 #endif
     
     [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didFinishLaunchingWithOptions"]];
