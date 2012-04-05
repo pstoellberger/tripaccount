@@ -156,7 +156,17 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-     return self.infoViewController.view.superview == nil && !self.animationOngoing;
+     return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+     NSLog(@"willRotateToInterfaceOrientation");
+     if (self.infoViewController.view.superview == nil && !self.animationOngoing) {
+
+          NSLog(@"willRotateToInterfaceOrientation remove");
+          
+     }
+               [self.navigationController.view.layer removeAllAnimations];
 }
 
 - (void)changeToEditMode {
