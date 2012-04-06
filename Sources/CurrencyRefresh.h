@@ -19,5 +19,6 @@
 - (id)initInManagedContext:(NSManagedObjectContext *)context;
 - (BOOL)refreshCurrencies;
 - (BOOL)areRatesOutdated;
+- (BOOL)shouldRetry:(BOOL)retryEnabled;
 
 @end

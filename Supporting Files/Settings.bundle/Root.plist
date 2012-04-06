@@ -6,6 +6,34 @@
 	<array>
 		<dict>
 			<key>Title</key>
+			<string>updateRates</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>updateRatesFooterText</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Key</key>
+			<string>updateRates</string>
+			<key>Title</key>
+			<string>updateRatesText</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Key</key>
+			<string>retryUpdateOnFailure</string>
+			<key>Title</key>
+			<string>retryUpdateOnFailureText</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
 			<string>showTotalsTitle</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
