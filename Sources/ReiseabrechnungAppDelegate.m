@@ -154,6 +154,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     [self userdefaults:appDefaults setIfDoesNotExist:YES forKey:@"includeEntries"];
     [self userdefaults:appDefaults setIfDoesNotExist:NO forKey:@"resetBubbles"];
     [self userdefaults:appDefaults setIfDoesNotExist:NO forKey:@"travelInitialised"];
+    [self userdefaults:appDefaults setIfDoesNotExist:YES forKey:@"updateRates"];
+    [self userdefaults:appDefaults setIfDoesNotExist:NO forKey:@"retryUpdateOnFailure"];
     [appDefaults synchronize];
 }
 
@@ -208,7 +210,12 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
         
         NSLog(@"Checking if currency rates are outdated.");
         
-        if ([currencyRefresh areRatesOutdated]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults synchronize];
+        BOOL updateRates = [defaults boolForKey:@"updateRates"];
+        BOOL retryUpdateOnFailure = [defaults boolForKey:@"retryUpdateOnFailure"];
+        
+        if (updateRates && [currencyRefresh areRatesOutdated] && [currencyRefresh shouldRetry:retryUpdateOnFailure]) {
             
             NSLog(@"Refreshing currency rates...");
             

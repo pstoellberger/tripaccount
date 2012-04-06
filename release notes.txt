@@ -98,4 +98,10 @@ EN
 
 ++ Version 2.1.2 ++
 
-- Behebt ein Anzeigeproblem, bei dem Knöpfe unter der Statusbar verschwinden
+DE
+- Behebt ein Anzeigeproblem, bei dem die Navigationsknöpfe unter der Statusbar verschwinden
+- Neue Einstellung zum automatischen Aktualisieren der Wechselkurse
+
+EN
+- Fixes a display problem of the navigation buttons and the status bar
+- New settings for a better control of refreshing the currency rates

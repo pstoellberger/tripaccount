@@ -41,6 +41,10 @@
     return @"lastUpdated";
 }
 
++ (NSString *)lastUpdateTryKey {
+    return @"lastUpdateTryKey";
+}
+
 - (NSString *)buildURL:(NSManagedObjectContext *)context baseIsoCode:(NSString *)baseCurrencyCode {
     
     NSMutableString *url = [NSMutableString stringWithString:@"http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1d1t1&s="];
@@ -54,6 +58,10 @@
 - (BOOL)refreshCurrencies {
     
     [Crittercism leaveBreadcrumb:@"CurrencyRefresh: refreshCurrencies"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSDate date] forKey:[CurrencyRefresh lastUpdateTryKey]];
+    [defaults synchronize];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         MTStatusBarOverlay *statusBarOverlay = [MTStatusBarOverlay sharedInstance];
@@ -147,7 +155,6 @@
             // tolerance 10
             if ((ratesUpdated + 10) > [_currencies count]) {
                 
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setObject:[NSDate date] forKey:[CurrencyRefresh lastUpdatedKey]];
                 [defaults synchronize];
             }
@@ -190,6 +197,20 @@
     NSDate *updateFrom = [lastUpdate dateByAddingTimeInterval:60 * 60 * 24]; // = 1 day
     
     return [[NSDate date] earlierDate:updateFrom] == updateFrom;
+}
+
+- (BOOL)shouldRetry:(BOOL)retryEnabled {
+    
+    BOOL returnValue = YES;
+    
+    NSDate *lastUpdateTry = [[NSUserDefaults standardUserDefaults] objectForKey:[CurrencyRefresh lastUpdateTryKey]];
+    
+    if (!retryEnabled && lastUpdateTry) {
+        NSDate *updateFrom = [lastUpdateTry dateByAddingTimeInterval:60 * 60 * 24]; // = 1 day
+        returnValue = [[NSDate date] earlierDate:updateFrom] == updateFrom;
+    }
+    
+    return returnValue;
 }
 
 - (void)dealloc {
