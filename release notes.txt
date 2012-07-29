@@ -105,3 +105,13 @@ DE
 EN
 - Fixes a display problem of the navigation buttons and the status bar
 - New settings for a better control of refreshing the currency rates
+
+++ Version 2.1.3 ++
+
+DE
+- Unterstützung für Macao und die Währung Macao-Pataca
+- Bereit für iOS 6
+
+EN
+- Support for Macau and the currency Macanese pataca
+- Ready for iOS 6

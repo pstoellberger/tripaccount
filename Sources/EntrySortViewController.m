@@ -10,7 +10,6 @@
 #import "UIFactory.h"
 #import "ReiseabrechnungAppDelegate.h"
 #import "Currency.h"
-#import "MultiLineSegmentedControl.h"
 #import "GradientView.h"
 
 @implementation EntrySortViewController
@@ -76,7 +75,7 @@
     UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, ENTRY_SORT_HEIGHT)];
 
     NSArray *segArray = [NSArray arrayWithObjects:NSLocalizedString(@"Payer", @"sort button"), NSLocalizedString(@"Type", @"sort button"), NSLocalizedString(@"Date", @"sort button"), nil];
-    UISegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArray andSubTitles:nil]; 
+    UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArray];
     segControl.frame = CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 10, ENTRY_SORT_HEIGHT - 10);
     [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
     segControl.segmentedControlStyle = UISegmentedControlStyleBar;

@@ -16,6 +16,9 @@
 - (void)upgradeFromVersion1;
 - (void)initializeSampleTrip;
 - (void)initializeStartDatabase:(NSBundle *)bundle;
+- (Country *)getCountryWithName:(NSString *)name fromArray:(NSArray *)countries;
+- (City *)getCityWithName:(NSString *)name fromArray:(NSSet *)cities;
+- (Currency *)getCurrencyWithCode:(NSString *)code fromArray:(NSArray *)currencies;
 @end
 
 @implementation DataInitialiser
@@ -98,60 +101,100 @@
 - (void)initializeStartDatabase:(NSBundle *)bundle {
     
     [Crittercism leaveBreadcrumb:@"DataInitialiser: initializeStartDatabase start"];
-    
-    NSFetchRequest *req = [[NSFetchRequest alloc] init];
-    req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
-    NSArray *currencies = [_context executeFetchRequest:req error:nil];
 
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"travelInitialised"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"travelInitialised"];
+    [defaults synchronize];
     
-    if (![currencies lastObject]) {
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString *dataInitkey = [NSString stringWithFormat:@"dataInitForVersion%@", version];
+    
+    if (![defaults objectForKey:dataInitkey]) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Initialising...", @"DataInitialiser") animated:YES];
         });
         
         NSLog(@"Initialising countries...");
+        
+        // get countries from DB
+        NSFetchRequest *reqCountries = [[NSFetchRequest alloc] init];
+        reqCountries.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext: _context];
+        NSArray *countries = [_context executeFetchRequest:reqCountries error:nil];
+        
+        // load countries from PList
         NSString *pathCountryPlist =[bundle pathForResource:@"countries" ofType:@"plist"];
-        NSDictionary* countryDict = [[NSDictionary alloc] initWithContentsOfFile:pathCountryPlist];
-        NSArray *countries = [countryDict valueForKey:@"countries"];
+        NSDictionary* countryDict = [NSDictionary dictionaryWithContentsOfFile:pathCountryPlist];
+        NSArray *countriesItem = [countryDict valueForKey:@"countries"];
         
-        NSMutableDictionary *orderCountryDict = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *orderCountryDict = [NSMutableDictionary dictionary];
         
-        for (NSDictionary *countryItem in countries) {
-            Country *_country = [NSEntityDescription insertNewObjectForEntityForName:@"Country" inManagedObjectContext:_context];
-            _country.name = [countryItem valueForKey:@"name"];
-            _country.name_de = [countryItem valueForKey:@"name_de"];
-            _country.image = [countryItem valueForKey:@"image"];
+        for (NSDictionary *countryItem in countriesItem) {
+            
+            Country *_newCountry = [self getCountryWithName:[countryItem valueForKey:@"name"] fromArray:countries];
+            
+            if (!_newCountry) {
+                // create new country if required
+                _newCountry = [NSEntityDescription insertNewObjectForEntityForName:@"Country" inManagedObjectContext:_context];
+                NSLog(@"Creating new country: %@", [countryItem valueForKey:@"name"]);
+            } else {
+                NSLog(@"Country already exists: %@", _newCountry.name);
+            }
+            _newCountry.name = [countryItem valueForKey:@"name"];
+            _newCountry.name_de = [countryItem valueForKey:@"name_de"];
+            _newCountry.image = [countryItem valueForKey:@"image"];
             
             NSString *countryId = [NSString stringWithFormat:@"%@", [countryItem valueForKey:@"id"]];
-            [orderCountryDict setValue:_country forKey:countryId];
+            [orderCountryDict setValue:_newCountry forKey:countryId];
             
             NSDictionary *cities = [countryItem valueForKey:@"cities"];
             for (NSDictionary *cityItem in cities) {
-                City *_city = [NSEntityDescription insertNewObjectForEntityForName:@"City" inManagedObjectContext:_context];
-                _city.name = [cityItem valueForKey:@"name"];
-                _city.latitude = [cityItem valueForKey:@"latitude"];
-                _city.longitude = [cityItem valueForKey:@"longitude"];
-                _city.country = _country;
+                
+                City *_newCity = [self getCityWithName:[cityItem valueForKey:@"name"] fromArray:_newCountry.cities];
+                
+                if (!_newCity) {
+                    // create new city if required
+                    _newCity = [NSEntityDescription insertNewObjectForEntityForName:@"City" inManagedObjectContext:_context];
+                    NSLog(@"Creating new city: %@", [cityItem valueForKey:@"name"]);
+                } else {
+                    NSLog(@"City already exists: %@", _newCity.name);
+                }
+                _newCity.name = [cityItem valueForKey:@"name"];
+                _newCity.latitude = [cityItem valueForKey:@"latitude"];
+                _newCity.longitude = [cityItem valueForKey:@"longitude"];
+                _newCity.country = _newCountry;
+                
             }
         }
-        [countryDict release];
         
         NSLog(@"Initialising currencies...");
+        
+        // get currencies from DB
+        NSFetchRequest *reqCurrencies = [[NSFetchRequest alloc] init];
+        reqCurrencies.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
+        NSArray *currencies = [_context executeFetchRequest:reqCurrencies error:nil];
+        
+        // load currencies from PList
         NSString *pathCurrencyPlist =[bundle pathForResource:@"currencies" ofType:@"plist"];
-        NSDictionary* currencyDict = [[NSDictionary alloc] initWithContentsOfFile:pathCurrencyPlist];
-        NSArray *currencies = [currencyDict valueForKey:@"currencies"];
+        NSDictionary* currencyDict = [NSDictionary dictionaryWithContentsOfFile:pathCurrencyPlist];
+        NSArray *currenciesItem = [currencyDict valueForKey:@"currencies"];
         
         NSMutableDictionary *newCurrencies = [NSMutableDictionary dictionary];
         
-        for (NSDictionary *currencyItem in currencies) {
+        for (NSDictionary *currencyItem in currenciesItem) {
             
             NSString *currencyIsoCode = [[currencyItem valueForKey:@"code"] uppercaseString];
             Currency *_currency = [newCurrencies objectForKey:currencyIsoCode];
             if (!_currency) {
-                _currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:_context];
+                _currency = [self getCurrencyWithCode:currencyIsoCode fromArray:currencies];
+                if (!_currency) {
+                    // create new country if required
+                    _currency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:_context];
+                    NSLog(@"Creating new currency: %@", [currencyItem valueForKey:@"name"]);
+                } else {
+                    NSLog(@"Currency already exists: %@", _currency.name);
+                }
+                
                 [newCurrencies setObject:_currency forKey:currencyIsoCode];
             }
             _currency.code = currencyIsoCode;
@@ -165,50 +208,52 @@
                 [_currency addCountriesObject:(Country *)[orderCountryDict objectForKey:countryId]];
             }
             
-            NSDictionary *ratesForCurrency = [currencyItem valueForKey:@"rates"];
-            NSEnumerator *ratesForCurrencyEnum = [ratesForCurrency keyEnumerator];
-            for (NSString *ratesForCurrencyKey in [ratesForCurrencyEnum allObjects]) {
-                
-                if ([ratesForCurrencyKey isEqualToString:@"EUR"]) {
-                    ratesForCurrencyKey = [ratesForCurrencyKey uppercaseString];
-                    ExchangeRate *rate = [NSEntityDescription insertNewObjectForEntityForName:@"ExchangeRate" inManagedObjectContext:_context];
+            if (_currency.rates.count == 0) {
+                NSDictionary *ratesForCurrency = [currencyItem valueForKey:@"rates"];
+                NSEnumerator *ratesForCurrencyEnum = [ratesForCurrency keyEnumerator];
+                for (NSString *ratesForCurrencyKey in [ratesForCurrencyEnum allObjects]) {
                     
-                    rate.counterCurrency = _currency;
-                    rate.rate = [ratesForCurrency valueForKey:ratesForCurrencyKey];
-                    rate.defaultRate = [NSNumber numberWithInt:1];
-                    
-                    Currency *baseCurrency = [newCurrencies objectForKey:ratesForCurrencyKey];
-                    if (!baseCurrency) {
-                        baseCurrency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:_context];
-                        baseCurrency.code = ratesForCurrencyKey;
-                        [newCurrencies setObject:baseCurrency forKey:ratesForCurrencyKey];
+                    if ([ratesForCurrencyKey isEqualToString:@"EUR"]) {
+                        ratesForCurrencyKey = [ratesForCurrencyKey uppercaseString];
+                        ExchangeRate *rate = [NSEntityDescription insertNewObjectForEntityForName:@"ExchangeRate" inManagedObjectContext:_context];
+                        
+                        rate.counterCurrency = _currency;
+                        rate.rate = [ratesForCurrency valueForKey:ratesForCurrencyKey];
+                        rate.defaultRate = [NSNumber numberWithInt:1];
+                        
+                        Currency *baseCurrency = [newCurrencies objectForKey:ratesForCurrencyKey];
+                        if (!baseCurrency) {
+                            baseCurrency = [NSEntityDescription insertNewObjectForEntityForName:@"Currency" inManagedObjectContext:_context];
+                            baseCurrency.code = ratesForCurrencyKey;
+                            [newCurrencies setObject:baseCurrency forKey:ratesForCurrencyKey];
+                        }
+                        rate.baseCurrency = baseCurrency;
+                        
+                        //[_currency addRatesObject:rate];
                     }
-                    rate.baseCurrency = baseCurrency;
-                    
-                    //[_currency addRatesObject:rate];
                 }
+            } else {
+                NSLog(@"Rate(s) already exists for currency: %@", _currency.name);
             }
         }
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
         if (![defaults objectForKey:[CurrencyRefresh lastUpdatedKey]]) {
             [defaults setObject:[currencyDict valueForKey:@"lastUpdated"] forKey:[CurrencyRefresh lastUpdatedKey]];
-            [defaults synchronize];                
         }
         
-        [currencyDict release];
-        [orderCountryDict release];
+        [defaults setBool:TRUE forKey:dataInitkey];
+        [defaults synchronize];
         
         [ReiseabrechnungAppDelegate saveContext:_context];
+    
+        currencies = [_context executeFetchRequest:reqCurrencies error:nil];
+        [reqCountries release];
+        [reqCurrencies release];
         
-    }
-    
-    currencies = [_context executeFetchRequest:req error:nil];
-    [req release];
-    
-    for (Currency *c in currencies) {
-        if ([c.rates count] == 0){
-            NSLog(@"no rate for currency %@", c.name);
+        for (Currency *c in currencies) {
+            if ([c.rates count] == 0){
+                NSLog(@"no rate for currency %@", c.name);
+            }
         }
     }
     
@@ -256,6 +301,36 @@
         [ReiseabrechnungAppDelegate saveContext:_context];
     }
     
+}
+                
+- (Country *)getCountryWithName:(NSString *)name fromArray:(NSArray *)countries {
+
+    for (Country *_country in countries) {
+        if ([_country.name isEqualToString:name]) {
+            return _country;
+        }
+    }
+    return nil;
+}
+
+- (City *)getCityWithName:(NSString *)name fromArray:(NSSet *)cities {
+    
+    for (City *_city in cities) {
+        if ([_city.name isEqualToString:name]) {
+            return _city;
+        }
+    }
+    return nil;
+}
+                
+- (Currency *)getCurrencyWithCode:(NSString *)code fromArray:(NSArray *)currencies {
+    
+    for (Currency *_currency in currencies) {
+        if ([_currency.code isEqualToString:code]) {
+            return _currency;
+        }
+    }
+    return nil;
 }
 
 - (void)initializeSampleTrip {

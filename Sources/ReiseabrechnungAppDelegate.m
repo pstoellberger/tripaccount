@@ -222,15 +222,20 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
             [NSThread sleepForTimeInterval:1];
             
             [currencyRefresh refreshCurrencies];
-            [currencyRefresh release];
             
             NSLog(@"Refresh finished.");
             
         } else {
             
-            [currencyRefresh release];
+            // hide statusbar if necessary
+            // this case occurs only if data was initialised but the the currency rates are not (yet) outdated (-> development only)
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[MTStatusBarOverlay sharedInstance] hide];
+            });
         }
-        
+
+        [currencyRefresh release];
+                 
     });
 }
 

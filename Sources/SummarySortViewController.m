@@ -10,7 +10,6 @@
 #import "UIFactory.h"
 #import "Currency.h"
 #import "CurrencyRefresh.h"
-#import "MultiLineSegmentedControl.h"
 #import "TravelCategory.h"
 #import "I18NSortCategory.h"
 #import "GradientView.h"
@@ -132,7 +131,7 @@
         
         UIView *segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, CURRENCY_SORT_HEIGHT)];
         
-        MultiLineSegmentedControl *segControl = [[MultiLineSegmentedControl alloc] initWithItems:segArrayTitles andSubTitles:segArraySubTitles]; 
+        UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segArrayTitles];
         segControl.frame = CGRectMake(5, 5, [[UIScreen mainScreen] applicationFrame].size.width - 10, CURRENCY_SORT_HEIGHT - 10);
         segControl.selectedSegmentIndex = 0;
         [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
