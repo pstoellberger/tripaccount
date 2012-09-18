@@ -99,7 +99,10 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
             self.navController.delegate = rvc;
             rvc.animationOngoing = YES;
             
-            [self.window addSubview:self.navController.view];
+            // änderung in ios6, beim dem das drehen nicht mehr funktioniert
+            //[self.window addSubview:self.navController.view];
+            
+            self.window.rootViewController = self.navController;
             self.navController.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 320, 0);
             [UIView animateWithDuration:0.5
                                   delay:0 
