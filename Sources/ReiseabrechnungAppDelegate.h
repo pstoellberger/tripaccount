@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <DropboxSDK/DropboxSDK.h>
 
 #import "FirstLetterCategory.h"
 #import "DateSortCategory.h"
