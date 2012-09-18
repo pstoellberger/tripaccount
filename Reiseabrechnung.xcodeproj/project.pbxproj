@@ -788,9 +788,6 @@
 		F1AA5F82147ACEBD000A2339 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F81147ACEBD000A2339 /* Type.m */; };
 		F1AA5F8F147B1C5B000A2339 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F8C147B1C5B000A2339 /* Model.xcdatamodeld */; };
 		F1AA5F90147B1C63000A2339 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1AA5F8C147B1C5B000A2339 /* Model.xcdatamodeld */; };
-		F1B02AAC152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B02A92152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a */; };
-		F1B02AAD152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B02A92152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a */; };
-		F1B02AAE152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B02A92152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a */; };
 		F1B02AB1152E150A0084513E /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B02AB0152E150A0084513E /* MTStatusBarOverlay.m */; };
 		F1B02AB2152E150A0084513E /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B02AB0152E150A0084513E /* MTStatusBarOverlay.m */; };
 		F1B02AB3152E150A0084513E /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B02AB0152E150A0084513E /* MTStatusBarOverlay.m */; };
@@ -822,6 +819,10 @@
 		F1C3986B14604C6D00AB1045 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3986A14604C6D00AB1045 /* Currency.m */; };
 		F1C3986E14604C6D00AB1045 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3986D14604C6D00AB1045 /* AppDefaults.m */; };
 		F1C3987714604C6E00AB1045 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3987614604C6E00AB1045 /* Transfer.m */; };
+		F1C682B31608CC3B00C5715E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C682B21608CC3B00C5715E /* Default-568h@2x.png */; };
+		F1C682B51608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */; };
+		F1C682B61608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */; };
+		F1C682B71608D11200C5715E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C682B21608CC3B00C5715E /* Default-568h@2x.png */; };
 		F1CADAE4148BAC9600274627 /* ReceiverWeightNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAE3148BAC9600274627 /* ReceiverWeightNotManaged.m */; };
 		F1CADAE7148BAED000274627 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAE6148BAECF00274627 /* Travel.m */; };
 		F1CADAEA148BAED100274627 /* ReceiverWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAE9148BAED100274627 /* ReceiverWeight.m */; };
@@ -1243,7 +1244,6 @@
 		F1B02A8F152DB4F30084513E /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		F1B02A90152DB4F30084513E /* CrittercismJSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismJSONKit.h; sourceTree = "<group>"; };
 		F1B02A91152DB4F30084513E /* CrittercismReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismReachability.h; sourceTree = "<group>"; };
-		F1B02A92152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercismCrashOnly_v3_1_5.a; sourceTree = "<group>"; };
 		F1B02A93152DB4F30084513E /* PLCrashAsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashAsync.h; sourceTree = "<group>"; };
 		F1B02A94152DB4F30084513E /* PLCrashAsyncImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashAsyncImage.h; sourceTree = "<group>"; };
 		F1B02A95152DB4F30084513E /* PLCrashAsyncSignalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashAsyncSignalInfo.h; sourceTree = "<group>"; };
@@ -1311,6 +1311,8 @@
 		F1C3986D14604C6D00AB1045 /* AppDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDefaults.m; sourceTree = "<group>"; };
 		F1C3987514604C6E00AB1045 /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
 		F1C3987614604C6E00AB1045 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
+		F1C682B21608CC3B00C5715E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercismCrashOnly_v3_3_3.a; sourceTree = "<group>"; };
 		F1CADAE2148BAC9600274627 /* ReceiverWeightNotManaged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverWeightNotManaged.h; sourceTree = "<group>"; };
 		F1CADAE3148BAC9600274627 /* ReceiverWeightNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverWeightNotManaged.m; sourceTree = "<group>"; };
 		F1CADAE5148BAECF00274627 /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
@@ -1399,7 +1401,7 @@
 				F12C082114AF76A000D97DEC /* AddressBook.framework in Frameworks */,
 				F12C082214AF76A000D97DEC /* AddressBookUI.framework in Frameworks */,
 				F12C082314AF76A000D97DEC /* CoreData.framework in Frameworks */,
-				F1B02AAD152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a in Frameworks */,
+				F1C682B61608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1422,7 +1424,6 @@
 				F14B372B13E68B5F00351641 /* Foundation.framework in Frameworks */,
 				F14B372C13E68B5F00351641 /* CoreGraphics.framework in Frameworks */,
 				F14B372913E68B5F00351641 /* SenTestingKit.framework in Frameworks */,
-				F1B02AAE152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1444,7 +1445,7 @@
 				F1CD78F613BC8BB900D42AA3 /* AddressBook.framework in Frameworks */,
 				F1CD78F713BC8BB900D42AA3 /* AddressBookUI.framework in Frameworks */,
 				F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */,
-				F1B02AAC152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a in Frameworks */,
+				F1C682B51608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1879,11 +1880,11 @@
 		F1B02A8D152DB4F30084513E /* CrittercismSDK */ = {
 			isa = PBXGroup;
 			children = (
+				F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */,
 				F1B02A8E152DB4F30084513E /* CrashReporter.h */,
 				F1B02A8F152DB4F30084513E /* Crittercism.h */,
 				F1B02A90152DB4F30084513E /* CrittercismJSONKit.h */,
 				F1B02A91152DB4F30084513E /* CrittercismReachability.h */,
-				F1B02A92152DB4F30084513E /* libCrittercismCrashOnly_v3_1_5.a */,
 				F1B02A93152DB4F30084513E /* PLCrashAsync.h */,
 				F1B02A94152DB4F30084513E /* PLCrashAsyncImage.h */,
 				F1B02A95152DB4F30084513E /* PLCrashAsyncSignalInfo.h */,
@@ -2095,6 +2096,7 @@
 				F12C098414AF77D200D97DEC /* Lite */,
 				F1A684DB143E310D001B3B90 /* Default.png */,
 				F1A684D8143E2F00001B3B90 /* Default@2x.png */,
+				F1C682B21608CC3B00C5715E /* Default-568h@2x.png */,
 				940B41EC13EBF18300902B00 /* Icon.png */,
 				940B41EF13EBF18B00902B00 /* Icon@2x.png */,
 				F15EC60C142BB0C000292326 /* InfoIcon.png */,
@@ -2538,6 +2540,7 @@
 				F1E74CE714B4CFC60095672A /* twitter_g.png in Resources */,
 				F19C83DF14C2C59B00329308 /* notebook.png in Resources */,
 				F11BBE4015C42FA20076BF75 /* flag127.png in Resources */,
+				F1C682B71608D11200C5715E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2841,6 +2844,7 @@
 				F1E74CE614B4CFC60095672A /* twitter_g.png in Resources */,
 				F19C83DE14C2C59B00329308 /* notebook.png in Resources */,
 				F11BBE3F15C42FA20076BF75 /* flag127.png in Resources */,
+				F1C682B31608CC3B00C5715E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

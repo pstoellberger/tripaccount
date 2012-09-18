@@ -30,7 +30,7 @@
         
         self.view.frame = [[UIScreen mainScreen] applicationFrame];
         
-        UIView *bgView = [UIFactory createBackgroundViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 480)];
+        UIView *bgView = [UIFactory createBackgroundViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         [self.view addSubview:bgView];
         [self.view sendSubviewToBack:bgView];
         self.view.backgroundColor = [UIColor clearColor];
@@ -57,9 +57,6 @@
         
         self.feedbackButton.enabled = [MFMailComposeViewController canSendMail];
         self.featureButton.enabled = [MFMailComposeViewController canSendMail];
-        
-        [self.closeButton sizeToFit];
-        self.closeButton.frame = CGRectMake(self.view.frame.size.width - self.closeButton.frame.size.width - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.view.frame.size.height - self.closeButton.frame.size.height - CLOSE_LABEL_GAP + CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.width - CLOSE_LABEL_SIZE_REDUCTION, self.closeButton.frame.size.height - CLOSE_LABEL_SIZE_REDUCTION);
         
         self.copyrightLabel.frame = CGRectMake(COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.origin.y, self.view.frame.size.width - self.closeButton.frame.size.width - COPYRIGHT_LABEL_GAP - COPYRIGHT_LABEL_GAP, self.copyrightLabel.frame.size.height);
         
