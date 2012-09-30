@@ -2,8 +2,8 @@
 //  Travel.h
 //  Reiseabrechnung
 //
-//  Created by Martin Maier on 04/12/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Martin Maier on 26/09/2012.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -28,11 +28,12 @@
 @property (nonatomic, retain) Currency *displayCurrency;
 @property (nonatomic, retain) Country *country;
 @property (nonatomic, retain) Participant *lastParticipantUsed;
-@property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) NSSet *currencies;
+@property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) Currency *lastCurrencyUsed;
 @property (nonatomic, retain) NSSet *rates;
 @property (nonatomic, retain) NSSet *transfers;
+@property (nonatomic, retain) Participant *cashier;
 @end
 
 @interface Travel (CoreDataGeneratedAccessors)
@@ -42,15 +43,15 @@
 - (void)addParticipants:(NSSet *)values;
 - (void)removeParticipants:(NSSet *)values;
 
-- (void)addEntriesObject:(Entry *)value;
-- (void)removeEntriesObject:(Entry *)value;
-- (void)addEntries:(NSSet *)values;
-- (void)removeEntries:(NSSet *)values;
-
 - (void)addCurrenciesObject:(Currency *)value;
 - (void)removeCurrenciesObject:(Currency *)value;
 - (void)addCurrencies:(NSSet *)values;
 - (void)removeCurrencies:(NSSet *)values;
+
+- (void)addEntriesObject:(Entry *)value;
+- (void)removeEntriesObject:(Entry *)value;
+- (void)addEntries:(NSSet *)values;
+- (void)removeEntries:(NSSet *)values;
 
 - (void)addRatesObject:(ExchangeRate *)value;
 - (void)removeRatesObject:(ExchangeRate *)value;

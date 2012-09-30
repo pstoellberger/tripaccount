@@ -24,12 +24,15 @@
 
 @property (nonatomic, retain) Currency *baseCurrency;
 @property (nonatomic, retain) NSMutableDictionary *accounts;
+@property (nonatomic, retain) NSNumberFormatter *formatter;
 
-+ (Summary *)createSummary:(Travel *) travel;
-+ (Summary *)createSummary:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts;
++ (Summary *)createSummary:(Travel *)travel;
++ (Summary *)createSummary:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts applyCashierOption:(BOOL)applyCashierOption;
 + (void)updateSummaryOfTravel:(Travel *)travel;
-+ (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts;
-- (void) eliminateCircularDebts:(NSMutableDictionary *)arrayOfParticipantKeys;
++ (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts applyCashierOption:(BOOL)applyCashierOption;
+- (void)eliminateCircularDebts:(NSMutableDictionary *)arrayOfParticipantKeys;
+- (void)applyCashierOption:(Participant *)cashier withParticipants:(NSSet *)participants;
+- (Participant *)decideCashier:(Travel *)travel;
 
 @end
 

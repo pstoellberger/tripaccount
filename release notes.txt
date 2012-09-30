@@ -115,3 +115,15 @@ DE
 EN
 - Support for Macau and the currency Macanese pataca
 - Ready for iOS 6
+
+++ Version 2.2.0 ++
+
+- DE
+Neue, verbesserte Schulden-Berechnung: Eine Person ist der Kassier. Alle Schulden werden über diese Person beglichen. Dadurch reduziert sich die Anzahl der Zahlungen erheblich (vielen dank an Daniel).
+
+- EN
+New and improved way of calculating debt: one persons acts as a cashier. All debts are resolved with this person. Thus the amount of debt payments is heavily reduced (special thanks to Daniel).
+
+
+
+ 

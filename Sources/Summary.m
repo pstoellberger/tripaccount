@@ -44,6 +44,10 @@
     return self.payer.hash + self.receiver.hash;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"P: %@ -> R: %@", payer.name, receiver.name];
+}
+
 - (id)copyWithZone:(NSZone *)zone {
     return [[ParticipantKey alloc] initWithReceiver:self.receiver andPayer:self.payer];
 }
@@ -62,8 +66,10 @@
 - (NSNumber *) getAccountOfPerson:(Participant *)person1 withPerson:(Participant *)person2;
 - (void) setAccountOfPerson:(Participant *)person1 withPerson:(Participant *)person2 toBalance:(NSNumber *)balance;
 - (int) getMultiplierFromPerson:(Participant *)person1 withPerson:(Participant *)person2;
+- (NSNumber *)roundNumber:(NSNumber *)input;
 - (void) eliminateCircularDebts:(NSMutableDictionary *)arrayOfTransfers;
 - (TransferCycle *) walkPath:(NSDictionary *)arrayOfParticipantKeys andKnoten:(NSMutableDictionary *)knoten andParticipant:(Participant *)participant andCycle:(TransferCycle *)cycle;
+- (Participant *)getParticipant:(NSSet *)participants byObjectId:(NSManagedObjectID *)participantId;
 @end
 
 @implementation Summary
@@ -71,14 +77,14 @@
 @synthesize accounts=_accountsX, baseCurrency=_baseCurrency;
 
 + (void)updateSummaryOfTravel:(Travel *)travel {
-    [self updateSummaryOfTravel:travel eliminateCircularDebts:YES];
+    [self updateSummaryOfTravel:travel eliminateCircularDebts:YES applyCashierOption:YES];
 }
 
-+ (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts {
++ (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts applyCashierOption:(BOOL)applyCashierOption {
     
     [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"updateSummaryOrTravel"]];
         
-    Summary *summary = [Summary createSummary:travel eliminateCircularDebts:performEliminateCircularDebts];
+    Summary *summary = [Summary createSummary:travel eliminateCircularDebts:performEliminateCircularDebts applyCashierOption:applyCashierOption];
     NSMutableDictionary *dic = summary.accounts;
     
     [travel removeTransfers:travel.transfers];
@@ -102,10 +108,10 @@
 
 
 + (Summary *)createSummary:(Travel *)travel {
-    return [self createSummary:travel eliminateCircularDebts:YES];
+    return [self createSummary:travel eliminateCircularDebts:YES applyCashierOption:YES];
 }
 
-+ (Summary *)createSummary:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts {
++ (Summary *)createSummary:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts applyCashierOption:(BOOL)applyCashierOption {
     Summary *summary = [[[Summary alloc] init] autorelease];
     
     if (!summary.baseCurrency) {
@@ -171,7 +177,28 @@
         [summary eliminateCircularDebts:summary.accounts];
     }
     
+    if (applyCashierOption) {
+        [summary applyCashierOption:[summary decideCashier:travel] withParticipants:travel.participants];
+    }
+    
+    if (performEliminateCircularDebts) {
+        [summary eliminateCircularDebts:summary.accounts];
+    }
+    
     return summary;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        NSNumberFormatter *newFormatter = [[NSNumberFormatter alloc] init];
+        [newFormatter setMaximumFractionDigits:2];
+        [newFormatter setRoundingMode: NSNumberFormatterRoundDown];
+        
+        self.formatter = newFormatter;
+        [newFormatter release];
+    }
+    return self;
 }
 
 - (ParticipantKey *)createKey:(Participant *)person1 withPerson:(Participant *)person2 {
@@ -247,15 +274,11 @@
     
     while(startParticipant && (cycle = [self walkPath:arrayOfParticipantKeys andKnoten:(NSMutableDictionary *)knoten andParticipant:startParticipant andCycle:cycle])) {
         
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setMaximumFractionDigits:2];
-        [formatter setRoundingMode: NSNumberFormatterRoundDown];
-        
         BOOL removed = NO;
         for (ParticipantKey *key in cycle.participantKeys) {
             NSNumber *oldValue = (NSNumber *) [arrayOfParticipantKeys objectForKey:key];
             double newValueDbl = [oldValue doubleValue] - [cycle.minWeight doubleValue];
-            NSNumber *newValue = [formatter numberFromString:[formatter stringFromNumber:[NSNumber numberWithDouble:newValueDbl]]]; 
+            NSNumber *newValue = [self roundNumber:[NSNumber numberWithDouble:newValueDbl]];
             
             if ([newValue doubleValue] == 0) {
                 [arrayOfParticipantKeys removeObjectForKey:key];
@@ -265,8 +288,6 @@
             }
             
         }
-        
-        [formatter release];
         
         if (!removed) {
             NSLog(@"This should never happen!");
@@ -281,6 +302,10 @@
         cycle = [[[TransferCycle alloc] init] autorelease];
     }
     
+}
+
+- (NSNumber *)roundNumber:(NSNumber *)input {
+    return [self.formatter numberFromString:[self.formatter stringFromNumber:input]];
 }
 
 - (TransferCycle *) walkPath:(NSDictionary *)arrayOfParticipantKeys andKnoten:(NSMutableDictionary *)knoten andParticipant:(Participant *)participant andCycle:(TransferCycle *)cycle {
@@ -329,9 +354,96 @@
     return returnCycle;
 }
 
+- (void) applyCashierOption:(Participant *)cashier withParticipants:(NSSet *)participants {
+    
+    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"applyCashierOption"]];
+    
+    NSMutableDictionary *clearingService = [NSMutableDictionary dictionary];
+    for (ParticipantKey* key in [self.accounts keyEnumerator]) {
+        NSNumber *value = (NSNumber *) [self.accounts objectForKey:key];
+        NSNumber *payerAccount = (NSNumber *) [clearingService objectForKey:[key.payer objectID]];
+        if (!payerAccount) {
+            [clearingService setObject:value forKey:[key.payer objectID]];
+        } else {
+            double newValueDbl = [payerAccount doubleValue] + [value doubleValue];
+            NSNumber *newValue = [NSNumber numberWithDouble:newValueDbl];
+            [clearingService setObject:newValue forKey:[key.payer objectID]];
+        }
+        NSNumber *receiverAccount = (NSNumber *) [clearingService objectForKey:[key.receiver objectID]];
+        if (!receiverAccount) {
+            NSNumber *negNumber = [NSNumber numberWithDouble:([value doubleValue] * -1)];
+            [clearingService setObject:negNumber forKey:[key.receiver objectID]];
+        } else {
+            double newValueDbl = [receiverAccount doubleValue] - [value doubleValue];
+            NSNumber *newValue = [NSNumber numberWithDouble:newValueDbl];
+            [clearingService setObject:newValue forKey:[key.receiver objectID]];
+        }
+    }
+    
+    [self.accounts removeAllObjects];
+    for (NSManagedObjectID* participantId in [clearingService keyEnumerator]) {
+        Participant *participant = [self getParticipant:participants byObjectId:participantId];
+        if (![participant isEqual:cashier]) {
+            NSNumber *value = (NSNumber *) [clearingService objectForKey:participantId];
+            if ([value doubleValue] > 0) {
+                ParticipantKey *key = [[ParticipantKey alloc] initWithReceiver:cashier andPayer:participant];
+                [self.accounts setObject:value forKey:key];
+                [key release];
+            } else if ([value doubleValue] < 0) {
+                ParticipantKey *key = [[ParticipantKey alloc] initWithReceiver:participant andPayer:cashier];
+                NSNumber *posNumber = [NSNumber numberWithDouble:([value doubleValue]* -1)];
+                [self.accounts setObject:posNumber forKey:key];
+                [key release];
+            }
+            // skip case amount == 0
+        }
+    }
+}
+
+- (Participant *)getParticipant:(NSSet *)participants byObjectId:(NSManagedObjectID *)participantId {
+    for (Participant *participantOfList in participants) {
+        if ([participantOfList.objectID isEqual:participantId]) {
+            return participantOfList;
+        }
+    }
+    return nil;
+}
+
+// decide who should be used as cashier
+// the person with the most expenses is the cashier
+- (Participant *)decideCashier:(Travel *)travel {
+    
+    if (travel.cashier) {
+        return travel.cashier;
+    }
+    
+    NSMutableDictionary *payerStats = [NSMutableDictionary dictionary];
+    for (Entry* entry in [travel.entries allObjects]) {
+        NSNumber *value = (NSNumber *) [payerStats objectForKey:entry.payer.objectID];
+        if (!value) {
+            [payerStats setObject:[NSNumber numberWithInt:1] forKey:entry.payer.objectID];
+        } else {
+            [payerStats setObject:[NSNumber numberWithInt:([value intValue] + 1)] forKey:entry.payer.objectID];
+        }
+    }
+    
+    NSManagedObjectID* participantId = nil;
+    int highestValue = 0;
+    for (NSManagedObjectID* objectId in [payerStats keyEnumerator]) {
+        if ([[payerStats objectForKey:objectId] intValue] > highestValue) {
+            highestValue = [[payerStats objectForKey:objectId] intValue];
+            participantId = objectId;
+        }
+    }
+    
+    return [self getParticipant:travel.participants byObjectId:participantId];
+}
+
+
 - (void)dealloc {
     self.baseCurrency = nil;
     self.accounts = nil;
+    self.formatter = nil;
     [super dealloc];
 }
 
