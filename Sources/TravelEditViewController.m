@@ -19,6 +19,7 @@
 #import "AlignedStyle2Cell.h"
 #import "ExchangeRate.h"
 #import "NotesEditViewController.h"
+#import "DateCell.h"
 
 static NSIndexPath *_countryIndexPath;
 static NSIndexPath *_cityIndexPath;
@@ -496,8 +497,6 @@ static NSIndexPath *_notesIndexPath;
     if ([self.travel.currencies containsObject:self.travel.displayCurrency]) {
         self.travel.displayCurrency = [self.currencies objectAtIndex:0]; 
     }
-    
-
     
     NSMutableArray *ratesToDelete = [NSMutableArray arrayWithArray:[self.travel.rates allObjects]];
     for (Currency *currency in self.currencies) {

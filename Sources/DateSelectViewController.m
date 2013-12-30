@@ -46,8 +46,7 @@
         }
         [self toggleTime:_timeSwitch];
         
-        _dateCell = [[[AlignedStyle2Cell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil andNamedImage:@"calendar.png"] retain];
-        _dateCell.textLabel.minimumScaleFactor = 1; // CHECK?!
+        _dateCell = [[[DateCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil andNamedImage:@"calendar.png"] retain];
         _dateCell.textLabel.adjustsFontSizeToFitWidth = YES;
         _dateCell.selectionStyle = UITableViewCellSelectionStyleNone;
         

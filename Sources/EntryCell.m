@@ -78,6 +78,13 @@
     }
 }
 
+- (void)layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    self.separatorInset = UIEdgeInsetsMake(0, 44, 0, 0);
+}
+
 - (void)dealloc {
     
     self.top = nil;

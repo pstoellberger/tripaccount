@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "DateCell.h"
 
 @interface DateSelectViewController : UITableViewController {
     
@@ -22,7 +23,7 @@
     id _target;
     NSDate *_date;
     
-    UITableViewCell *_dateCell;
+    DateCell *_dateCell;
     UITableViewCell *_timeCell;
 }
 

@@ -26,9 +26,11 @@
     
     [super layoutSubviews];
     
-    _insertedView.frame = CGRectMake(self.myImageView.frame.origin.x + self.myImageView.frame.size.width + GAP, self.myImageView.frame.origin.y, _insertedView.frame.size.width, _insertedView.frame.size.height);
-    self.textLabel.frame = CGRectMake(_insertedView.frame.origin.x + _insertedView.frame.size.width + GAP, self.textLabel.frame.origin.y, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
+    _insertedView.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - _insertedView.frame.size.width - GAP, (self.frame.size.height - _insertedView.frame.size.height) / 2, _insertedView.frame.size.width, _insertedView.frame.size.height);
     
+    self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, self.textLabel.frame.origin.y, [[UIScreen mainScreen] bounds].size.width - self.textLabel.frame.origin.x - GAP - _insertedView.frame.size.width - GAP, self.textLabel.frame.size.height);
+    
+    self.textLabel.textAlignment = NSTextAlignmentRight;
 }
 
 - (void)dealloc {

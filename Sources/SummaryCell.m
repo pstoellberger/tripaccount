@@ -21,6 +21,13 @@
     self.paid.transform = CGAffineTransformMakeRotation( -M_PI/6 ); // = 45 degrees
 }
 
+- (void)layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
 - (void)dealloc {
     
     self.debtor = nil;

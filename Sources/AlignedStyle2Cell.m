@@ -42,7 +42,6 @@
     self.textLabel.frame = CGRectMake(ICON_SIZE + ICON_GAP + ICON_GAP, self.textLabel.frame.origin.y, self.textLabel.bounds.size.width, self.textLabel.bounds.size.height); 
     [self.textLabel.layer removeAllAnimations];
     
-    
     self.detailTextLabel.textAlignment = NSTextAlignmentRight;
     self.detailTextLabel.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + GAP_BETWEEN_CELLS, self.detailTextLabel.frame.origin.y, self.bounds.size.width - (self.textLabel.frame.origin.x + self.textLabel.frame.size.width + GAP_BETWEEN_CELLS + ACCESSORY_SPACE), self.detailTextLabel.frame.size.height);
     self.textLabel.textAlignment = NSTextAlignmentLeft;
@@ -55,6 +54,7 @@
     self.detailTextLabel.backgroundColor = [UIColor clearColor];
     self.textLabel.backgroundColor = [UIColor clearColor];
     
+    self.separatorInset = UIEdgeInsetsMake(0, ICON_GAP + ICON_SIZE + ICON_GAP, 0, 0);
 }
 
 
