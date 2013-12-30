@@ -457,7 +457,7 @@ static NSIndexPath *_notesIndexPath;
     [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"done"]];
     
     [self.editDelegate addOrEditEntryWithParameters:self.nmEntry andEntry:self.entryManaged];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
@@ -465,7 +465,7 @@ static NSIndexPath *_notesIndexPath;
     [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"cancel"]];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
     [self.editDelegate editWasCanceled:self.entryManaged];
 }

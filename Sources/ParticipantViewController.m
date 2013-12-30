@@ -79,7 +79,7 @@
             right = [[[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width - WEIGHT_LABEL_WIDTH - 3, 10, WEIGHT_LABEL_WIDTH, cell.frame.size.height)] autorelease];
             right.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
             right.backgroundColor = [UIColor clearColor];
-            right.textAlignment = UITextAlignmentRight;
+            right.textAlignment = NSTextAlignmentRight;
             right.font = [UIFont italicSystemFontOfSize:12];
             right.textColor = [UIColor colorWithRed:0 green:0 blue:0.8 alpha:1];
             right.textColor = [UIColor grayColor];

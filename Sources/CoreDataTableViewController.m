@@ -6,8 +6,7 @@
 
 #import "CoreDataTableViewController.h"
 #import "UIFactory.h"
-#import "GradientCell.h"
-#import "GradientView.h"
+#import "CustomImageStyle2Cell.h"
 
 @interface CoreDataTableViewController () 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
@@ -28,7 +27,7 @@
 			UISearchBar *searchBar = [[[UISearchBar alloc] init] autorelease];
             searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             searchBar.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 38);
-            searchBar.tintColor = [UIFactory defaultTintColor];
+            searchBar.tintColor = [UIFactory defaultDarkTintColor];
             searchBar.delegate = self;
             
 			self.dataSearchController = [[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] autorelease];
@@ -171,7 +170,7 @@
 }
 
 - (UITableViewCell *)newUIViewCell {
-    return [GradientCell alloc];
+    return [UITableViewCell alloc];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject {
@@ -189,6 +188,8 @@
             [UIFactory initializeCell:cell];
         }
     }
+    
+    cell.imageView.image = nil;
 	
 	if (self.titleKey) cell.textLabel.text = [self cascadedObject:managedObject withKey:self.titleKey];
 	if (self.subtitleKey) cell.detailTextLabel.text = [self cascadedObject:managedObject withKey:self.subtitleKey];
@@ -205,7 +206,9 @@
     }
 	cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
 	UIImage *thumbnail = [self thumbnailImageForManagedObject:managedObject];
-	if (thumbnail) cell.imageView.image = thumbnail;
+	if (thumbnail) {
+        cell.imageView.image = thumbnail;
+    }
     
 	return cell;
 }
@@ -265,7 +268,7 @@
 
     [super loadView];
     
-    UIView *footerView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, FOOTER_HEIGHT) andColor1:[UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.5] andColor2:[UIColor clearColor]];
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, FOOTER_HEIGHT)];
 
     self.tableView.tableFooterView = footerView;
     [footerView release];
@@ -278,8 +281,7 @@
 
 #pragma mark UIViewController methods
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
 	[self createSearchBar];
 }
 

@@ -234,6 +234,9 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 - (void)applicationDidBecomeActive:(NSNotification *)notifaction;
 - (void)applicationWillResignActive:(NSNotification *)notifaction;
 
+// returns the current frame for the detail view depending on the interface orientation
+- (CGRect)backgroundViewFrameForStatusBarInterfaceOrientation;
+
 @end
 
 
@@ -344,7 +347,8 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		[self addSubview:detailView_];
         
         // Create view that stores all the content
-        backgroundView_ = [[UIView alloc] initWithFrame:statusBarFrame];
+        CGRect backgroundFrame = [self backgroundViewFrameForStatusBarInterfaceOrientation];
+        backgroundView_ = [[UIView alloc] initWithFrame:backgroundFrame];
 		backgroundView_.clipsToBounds = YES;
 		backgroundView_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         oldBackgroundViewFrame_ = backgroundView_.frame;
@@ -367,7 +371,6 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
         
 		// Background-Image of the Content View
 		statusBarBackgroundImageView_ = [[UIImageView alloc] initWithFrame:backgroundView_.frame];
-		statusBarBackgroundImageView_.backgroundColor = [UIColor blackColor];
 		statusBarBackgroundImageView_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		[self addSubviewToBackgroundView:statusBarBackgroundImageView_];
         
@@ -389,7 +392,11 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		finishedLabel_.backgroundColor = [UIColor clearColor];
 		finishedLabel_.hidden = YES;
 		finishedLabel_.text = kFinishedText;
+#ifdef __IPHONE_6_0
+		finishedLabel_.textAlignment = NSTextAlignmentCenter;
+#else
 		finishedLabel_.textAlignment = UITextAlignmentCenter;
+#endif
 		finishedLabel_.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kFinishedFontSize];
         finishedLabel_.adjustsFontSizeToFitWidth = YES;
 		[self addSubviewToBackgroundView:finishedLabel_];
@@ -399,9 +406,14 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		statusLabel1_.backgroundColor = [UIColor clearColor];
 		statusLabel1_.shadowOffset = CGSizeMake(0.f, 1.f);
 		statusLabel1_.font = [UIFont boldSystemFontOfSize:kStatusLabelSize];
-		statusLabel1_.textAlignment = UITextAlignmentCenter;
 		statusLabel1_.numberOfLines = 1;
+#ifdef __IPHONE_6_0
+		statusLabel1_.textAlignment = NSTextAlignmentCenter;
+		statusLabel1_.lineBreakMode = NSLineBreakByTruncatingTail;
+#else
+		statusLabel1_.textAlignment = UITextAlignmentCenter;
 		statusLabel1_.lineBreakMode = UILineBreakModeTailTruncation;
+#endif
 		statusLabel1_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		[self addSubviewToBackgroundView:statusLabel1_];
         
@@ -410,9 +422,14 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		statusLabel2_.shadowOffset = CGSizeMake(0.f, 1.f);
 		statusLabel2_.backgroundColor = [UIColor clearColor];
 		statusLabel2_.font = [UIFont boldSystemFontOfSize:kStatusLabelSize];
-		statusLabel2_.textAlignment = UITextAlignmentCenter;
 		statusLabel2_.numberOfLines = 1;
+#ifdef __IPHONE_6_0
+		statusLabel2_.textAlignment = NSTextAlignmentCenter;
+		statusLabel2_.lineBreakMode = NSLineBreakByTruncatingTail;
+#else
+		statusLabel2_.textAlignment = UITextAlignmentCenter;
 		statusLabel2_.lineBreakMode = UILineBreakModeTailTruncation;
+#endif
 		statusLabel2_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		[self addSubviewToBackgroundView:statusLabel2_];
         
@@ -436,13 +453,16 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 												 selector:@selector(didChangeStatusBarFrame:)
 													 name:UIApplicationWillChangeStatusBarFrameNotification object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self 
+        [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationDidBecomeActive:)
                                                      name:UIApplicationDidBecomeActiveNotification object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self 
+        [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationWillResignActive:)
                                                      name:UIApplicationWillResignActiveNotification object:nil];
+        
+        // initial rotation, fixes the issue with a wrong bar appearance in landscape only mode
+        [self rotateToStatusBarFrame:nil];
     }
     
 	return self;
@@ -453,6 +473,15 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
     
 	delegate_ = nil;
     [super dealloc];
+}
+
+////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark UIWindow
+////////////////////////////////////////////////////////////////////////
+
+- (UIViewController *)rootViewController {
+    return [UIApplication sharedApplication].delegate.window.rootViewController;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -777,14 +806,17 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 	[self setDetailViewHidden:YES animated:YES];
     
 	// hide status bar overlay with animation
-	[UIView animateWithDuration:self.shrinked ? 0. : kAppearAnimationDuration animations:^{
-		[self setHidden:YES useAlpha:YES];
-	} completion:^(BOOL finished) {
-		// call delegate
-		if ([self.delegate respondsToSelector:@selector(statusBarOverlayDidHide)]) {
-			[self.delegate statusBarOverlayDidHide];
-		}
-	}];
+    [UIView animateWithDuration:self.shrinked ? 0. : kAppearAnimationDuration
+                          delay:0
+                        options:UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         [self setHidden:YES useAlpha:YES];
+                     } completion:^(BOOL finished) {
+                         // call delegate
+                         if ([self.delegate respondsToSelector:@selector(statusBarOverlayDidHide)]) {
+                             [self.delegate statusBarOverlayDidHide];
+                         }
+                     }];
 }
 
 - (void)hideTemporary {
@@ -859,6 +891,8 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		self.frame = CGRectMake(0.f,kScreenHeight - kStatusBarHeight,kScreenWidth,kStatusBarHeight);
 		self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.f, kWidthSmall, self.frame.size.height);
 	}
+    
+    self.backgroundView.frame = [self backgroundViewFrameForStatusBarInterfaceOrientation];
     
 	// if the statusBar is currently shrinked, update the frames for the new rotation state
 	if (shrinkedBeforeTransformation) {
@@ -1138,7 +1172,7 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 
 - (void)applicationWillResignActive:(NSNotification *)notifaction {
     // We hide temporary when the application resigns active s.t the overlay
-    // doesn't overlay the Notification Center. Let's hope this helps AppStore 
+    // doesn't overlay the Notification Center. Let's hope this helps AppStore
     // Approval ...
     [self hideTemporary];
 }
@@ -1162,11 +1196,12 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		} else {
 			self.statusBarBackgroundImageView.image = [self.defaultStatusBarImage stretchableImageWithLeftCapWidth:2.0f topCapHeight:0.0f];
 		}
+		statusBarBackgroundImageView_.backgroundColor = [UIColor clearColor];
 	}
-    
 	// black status bar? -> no image
 	else {
 		self.statusBarBackgroundImageView.image = nil;
+		statusBarBackgroundImageView_.backgroundColor = [UIColor blackColor];
 	}
 }
 
@@ -1219,19 +1254,19 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		// set color of labels depending on messageType
         switch(messageType) {
             case MTMessageTypeFinish:
-                self.statusLabel1.textColor = kDarkThemeFinishedMessageTextColor;
-                self.statusLabel2.textColor = kDarkThemeFinishedMessageTextColor;
-                self.finishedLabel.textColor = kDarkThemeFinishedMessageTextColor;
+                self.statusLabel1.textColor = self.customTextColor ? self.customTextColor: kDarkThemeFinishedMessageTextColor;
+                self.statusLabel2.textColor = self.customTextColor ? self.customTextColor: kDarkThemeFinishedMessageTextColor;
+                self.finishedLabel.textColor = self.customTextColor ? self.customTextColor: kDarkThemeFinishedMessageTextColor;
                 break;
             case MTMessageTypeError:
-                self.statusLabel1.textColor = kDarkThemeErrorMessageTextColor;
-                self.statusLabel2.textColor = kDarkThemeErrorMessageTextColor;
-                self.finishedLabel.textColor = kDarkThemeErrorMessageTextColor;
+                self.statusLabel1.textColor = self.customTextColor ? self.customTextColor: kDarkThemeErrorMessageTextColor;
+                self.statusLabel2.textColor = self.customTextColor ? self.customTextColor: kDarkThemeErrorMessageTextColor;
+                self.finishedLabel.textColor = self.customTextColor ? self.customTextColor: kDarkThemeErrorMessageTextColor;
                 break;
             default:
-                self.statusLabel1.textColor = kDarkThemeTextColor;
-                self.statusLabel2.textColor = kDarkThemeTextColor;
-                self.finishedLabel.textColor = kDarkThemeTextColor;
+                self.statusLabel1.textColor = self.customTextColor ? self.customTextColor: kDarkThemeTextColor;
+                self.statusLabel2.textColor = self.customTextColor ? self.customTextColor: kDarkThemeTextColor;
+                self.finishedLabel.textColor = self.customTextColor ? self.customTextColor: kDarkThemeTextColor;
                 break;
         }
         self.statusLabel1.shadowColor = nil;
@@ -1354,6 +1389,15 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
     }
 }
 
+- (CGRect)backgroundViewFrameForStatusBarInterfaceOrientation{
+    
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    return (UIInterfaceOrientationIsLandscape(interfaceOrientation) ?
+            CGRectMake(0, 0, kScreenHeight, kStatusBarHeight) :
+            CGRectMake(0, 0, kScreenWidth, kStatusBarHeight));
+}
+
 ////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark History Tracking
@@ -1426,11 +1470,11 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 
 + (MTStatusBarOverlay *)sharedInstance {
     static dispatch_once_t pred;
-    __strong static MTStatusBarOverlay *sharedOverlay = nil; 
+    __strong static MTStatusBarOverlay *sharedOverlay = nil;
     
-    dispatch_once(&pred, ^{ 
-        sharedOverlay = [[MTStatusBarOverlay alloc] init]; 
-    }); 
+    dispatch_once(&pred, ^{
+        sharedOverlay = [[MTStatusBarOverlay alloc] init];
+    });
     
 	return sharedOverlay;
 }

@@ -43,9 +43,9 @@
     [self.textLabel.layer removeAllAnimations];
     
     
-    self.detailTextLabel.textAlignment = UITextAlignmentRight;
+    self.detailTextLabel.textAlignment = NSTextAlignmentRight;
     self.detailTextLabel.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + GAP_BETWEEN_CELLS, self.detailTextLabel.frame.origin.y, self.bounds.size.width - (self.textLabel.frame.origin.x + self.textLabel.frame.size.width + GAP_BETWEEN_CELLS + ACCESSORY_SPACE), self.detailTextLabel.frame.size.height);
-    self.textLabel.textAlignment = UITextAlignmentLeft;
+    self.textLabel.textAlignment = NSTextAlignmentLeft;
     if (!_imageOnTop) {
         self.myImageView.frame = CGRectMake(ICON_GAP, self.textLabel.frame.origin.y + ((self.textLabel.frame.size.height - ICON_SIZE) / 2), ICON_SIZE, ICON_SIZE);
     } else {

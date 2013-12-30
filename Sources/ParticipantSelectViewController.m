@@ -92,7 +92,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier];
     if (cell == nil) {
-        cell = [[[GradientCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ReuseIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ReuseIdentifier] autorelease];
         
         if (tableView.style == UITableViewStylePlain) {
             [UIFactory initializeCell:cell];

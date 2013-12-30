@@ -15,8 +15,6 @@
 #import "UIFactory.h"
 #import "ShadowNavigationController.h"
 #import "HelpView.h"
-#import "GradientView.h"
-
 @implementation TravelListViewController
 
 @synthesize managedObjectContext=_managedObjectContext, fetchedResultsController=_fetchedResultsController, rootViewController=_rootViewController;
@@ -67,7 +65,7 @@
             detailViewController.editDelegate = self.rootViewController;
             UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
             navController.delegate = detailViewController;
-            [self.rootViewController.navigationController presentModalViewController:navController animated:YES];   
+            [self.rootViewController.navigationController presentViewController:navController animated:YES completion:NULL];   
             [detailViewController release];
             [navController release];
             

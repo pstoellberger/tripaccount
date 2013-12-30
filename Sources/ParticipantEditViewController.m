@@ -351,7 +351,7 @@ static NSIndexPath *_cashierIndexPath;
                 [self.tableView deselectRowAtIndexPath:_imageIndexPath animated:YES];
             }        
         }
-        [self presentModalViewController:picker animated:YES];
+        [self presentViewController:picker animated:YES completion:NULL];
         [picker release];
         
     } else {
@@ -368,14 +368,14 @@ static NSIndexPath *_cashierIndexPath;
     UIImage *origImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     self.image = UIImagePNGRepresentation([origImage imageByScalingToSize:CGSizeMake(IMAGE_WIDTH, IMAGE_WIDTH)]);
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_imageIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
     [_cellsToReloadAndFlash addObject:_imageIndexPath];
     
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
     
     [self.tableView deselectRowAtIndexPath:_imageIndexPath animated:YES];
 }
@@ -460,7 +460,7 @@ static NSIndexPath *_cashierIndexPath;
     
     [ReiseabrechnungAppDelegate saveContext:_context];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
     [self.editDelegate participantEditFinished:self.participant wasSaved:YES cashierChanged:cashierChanged];
 
@@ -471,7 +471,7 @@ static NSIndexPath *_cashierIndexPath;
     [Crittercism leaveBreadcrumb:@"SummarySortViewController: cancel"];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
     [self.editDelegate participantEditFinished:self.participant wasSaved:NO cashierChanged:NO];
 }

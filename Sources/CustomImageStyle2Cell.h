@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GradientCell.h"
 
-@interface CustomImageStyle2Cell : GradientCell
+@interface CustomImageStyle2Cell : UITableViewCell
 
 - (id)initWithImage:(UIImage *)imageName reuseIdentifier:(NSString *)reuseIdentifier;
 

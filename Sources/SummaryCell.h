@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GradientCell.h"
 
-@interface SummaryCell : GradientCell {
+@interface SummaryCell : UITableViewCell {
 
 }
 

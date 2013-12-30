@@ -40,12 +40,8 @@
           self.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
           
           self.tableViewController = [[[TravelListViewController alloc] initInManagedObjectContext:context withRootViewController:self] autorelease];
-          self.tableViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
           self.tableViewController.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
           
-          UIEdgeInsets insets = self.tableViewController.tableView.contentInset;
-          insets.top = NAVIGATIONBAR_HEIGHT;
-          self.tableViewController.tableView.contentInset = insets;
           self.tableViewController.tableView.scrollIndicatorInsets = self.tableViewController.tableView.contentInset;
           
           [self.view addSubview:self.tableViewController.view];
@@ -99,7 +95,7 @@
      UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
      navController.delegate = detailViewController;
      
-     [self.navigationController presentModalViewController:navController animated:YES];   
+     [self.navigationController presentViewController:navController animated:YES completion:NULL];
      [detailViewController release];
      [navController release];
 }
@@ -212,7 +208,7 @@
      
      [super loadView];
      
-     UIButton *iButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+     UIButton *iButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
      iButton.frame = CGRectMake(self.view.frame.size.width - iButton.frame.size.width - 10, self.view.frame.size.height - iButton.frame.size.height - 10, iButton.frame.size.width, iButton.frame.size.height);
      iButton.adjustsImageWhenHighlighted = YES;
      iButton.adjustsImageWhenDisabled = YES;
@@ -229,7 +225,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
      
-     double navBarHeight = self.navigationController.navigationBar.frame.size.height;
+     double navBarHeight = self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height;
      double windowWidth = self.view.frame.size.width;
      
      NSString *text = NSLocalizedString(@"help add trip", @"help bubble add trip");

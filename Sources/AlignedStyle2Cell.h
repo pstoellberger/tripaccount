@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GradientCell.h"
 
 @interface AlignedStyle2Cell : UITableViewCell
 

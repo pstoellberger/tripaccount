@@ -16,7 +16,6 @@
 #import "ShadowNavigationController.h"
 #import "DateSortCategory.h"
 #import "UIFactory.h"
-#import "GradientView.h"
 
 @interface EntryViewController ()
 - (void)initFetchResultsController:(NSFetchRequest *)req;    
@@ -53,11 +52,6 @@
         self.tableView.dataSource = self;
         
         [UIFactory initializeTableViewController:self.tableView];
-        
-        UIEdgeInsets insets = self.tableView.contentInset;
-        insets.top = self.navigationController.navigationBar.frame.size.height;
-        self.tableView.contentInset = insets;
-        self.tableView.contentInset = self.tableView.scrollIndicatorInsets;
 
         NSManagedObjectContext *context = [travel managedObjectContext];
         
@@ -161,6 +155,8 @@
     cell.rightBottom.textColor = textColor;
     cell.top.textColor = textColor;
     
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    
     return cell;
 }
 
@@ -183,26 +179,19 @@
         totalValue += [entry.currency convertTravelAmount:self.travel currency:_displayCurrency amount:[entry.amount doubleValue]];
     }
     
-    UIView *totalViewContainer = [[[GradientView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_CELL_HEIGHT) andColor1:[UIFactory defaultDarkTintColor] andColor2:[UIFactory defaultTintColor]] autorelease];
+    UIView *totalViewContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_CELL_HEIGHT)] autorelease];
     totalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    totalViewContainer.backgroundColor = [UIFactory defaultLightTintColor];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_CELL_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    label.textColor = [UIColor whiteColor];
-    label.textAlignment = UITextAlignmentRight;
+    label.textColor = [UIColor blackColor];
+    label.textAlignment = NSTextAlignmentRight;
     label.font = [UIFont systemFontOfSize:10];
     label.backgroundColor = [UIColor clearColor];
     label.text = [NSString stringWithFormat:@"%@ (%@):   %@ %@    ", NSLocalizedString(@"total", "@total label"), [self tableView:tableView titleForHeaderInSection:section], [UIFactory formatNumber:[NSNumber numberWithDouble:totalValue]], [_displayCurrency code]];
     [totalViewContainer addSubview:label];
     [label release];
-    
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, 1)];
-    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-    line.autoresizingMask = totalViewContainer.autoresizingMask;
-    line.backgroundColor = [UIColor darkGrayColor];
-
-    [totalViewContainer addSubview:line];
-    [line release];
 
     return totalViewContainer;
      
@@ -322,6 +311,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -128,7 +128,7 @@
     if (![defaults objectForKey:dataInitkey]) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Initialising...", @"DataInitialiser") animated:YES];
+            //[[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Initialising...", @"DataInitialiser") animated:YES];
         });
         
         NSLog(@"Initialising countries...");

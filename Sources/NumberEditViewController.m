@@ -11,7 +11,6 @@
 #import <Foundation/Foundation.h>
 #import "NumberEditViewController.h"
 #import "UIFactory.h"
-#import "GradientCell.h"
 #import "CurrencyHelperCategory.h"
 #import "AlignedStyle2Cell.h"
 
@@ -176,7 +175,7 @@
     self.textCell.textLabel.text = @" ";
  
     self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(IMAGE_GAP + IMAGE_SIZE + IMAGE_TEXT_GAP, 5, 250, 30)] autorelease];
-    self.textField.textAlignment = UITextAlignmentRight;
+    self.textField.textAlignment = NSTextAlignmentRight;
     self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
     self.textField.keyboardType = UIKeyboardTypeDecimalPad;
     self.textField.keyboardAppearance = UIKeyboardAppearanceAlert;
@@ -188,7 +187,7 @@
     [self.textField becomeFirstResponder];
     
     self.detailView = [[[UITextView alloc] initWithFrame:CGRectMake(CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP, 0, [[UIScreen mainScreen] applicationFrame].size.width - (CONVERSION_VIEW_GAP+INFO_IMAGE_GAP+INFO_IMAGE_SIZE+INFO_IMAGE_GAP+CONVERSION_VIEW_GAP), FOOTER_HEIGHT - CONVERSION_VIEW_GAP - CONVERSION_VIEW_GAP)] autorelease];
-    self.detailView.textAlignment = UITextAlignmentLeft;
+    self.detailView.textAlignment = NSTextAlignmentRight;
     self.detailView.textColor = self.textField.backgroundColor;
     self.detailView.editable = NO;
     self.detailView.font = [UIFont systemFontOfSize:11];

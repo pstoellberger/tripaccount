@@ -29,7 +29,7 @@
     
     self.imageView.frame = CGRectMake(GAP, TOP, IMAGE_SIZE, IMAGE_SIZE);
     self.textLabel.frame = CGRectMake(GAP + IMAGE_SIZE + GAP, self.textLabel.frame.origin.y, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
-    
+
 }
 
 @end

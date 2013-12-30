@@ -34,15 +34,7 @@
         [self.view addSubview:bgView];
         [self.view sendSubviewToBack:bgView];
         self.view.backgroundColor = [UIColor clearColor];
-        
-        [UIFactory addShadowToView:self.titleLabel withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
-        [UIFactory addShadowToView:self.featureButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
-        [UIFactory addShadowToView:self.feedbackButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
-        [UIFactory addShadowToView:self.licenseButton withColor:[UIColor whiteColor] withOffset:0 andRadius:2.0];
-        [UIFactory addShadowToView:self.closeButton withColor:[UIColor whiteColor] withOffset:0 andRadius:1.0];
-        [UIFactory addShadowToView:self.rateButton withColor:[UIColor whiteColor] withOffset:0 andRadius:1.0];
-        [UIFactory addShadowToView:self.purchaseButton withColor:[UIColor redColor] withOffset:0 andRadius:3.0];
-        
+
         self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"versionlabel", @""), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
 
         self.feedBackLabel.text = NSLocalizedString(@"feedbackLabel", @"info feedbackLabel");
@@ -67,9 +59,6 @@
         self.titleLabel.text = @"Trip Account Lite";   
         self.purchaseButton.hidden = NO;
 #endif
-        
-        [UIFactory addShadowToView:self.image];
-        [UIFactory addShadowToView:self.twitterLogo];
         
     }
     return self;
@@ -133,7 +122,7 @@
     [controller setToRecipients:[NSArray arrayWithObject:[NSString stringWithFormat:@"Trip Account %@ <tripaccount@martinmaier.name>", mailName]]];
     
     if (controller)  {
-        [self presentModalViewController:controller animated:YES];
+        [self presentViewController:controller animated:YES completion:NULL];
         [controller becomeFirstResponder];
     }
     [controller release];
@@ -153,7 +142,7 @@
     if (result == MFMailComposeResultSent) {
         NSLog(@"It's away!");
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - View lifecycle

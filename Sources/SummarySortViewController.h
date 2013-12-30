@@ -22,7 +22,7 @@
 @property (nonatomic, retain) UIActivityIndicatorView *updateIndicator;
 @property (nonatomic, retain) UISegmentedControl *segControl;
 
-@property (nonatomic, retain) UIToolbar *ratesToolBar;
+@property (nonatomic, retain) UIView *ratesView;
 
 - (id)initWithTravel:(Travel *) travel;
 - (void)updateRateLabel:(BOOL)animate; 

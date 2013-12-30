@@ -29,7 +29,6 @@
     
 }
 
-+ (UIView *)createDefaultTableSectionHeader:(id <UITableViewDataSource>)tableViewDataSource andTableView:(UITableView *)tableView andSection:(NSInteger)section;
 + (void)initializeTableViewController:(UITableView *)controller;
 + (void)initializeCell:(UITableViewCell *)cell;
 + (void)addGradientToView:(UIView *)cell;

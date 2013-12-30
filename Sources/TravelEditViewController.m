@@ -566,7 +566,7 @@ static NSIndexPath *_notesIndexPath;
     
     [ReiseabrechnungAppDelegate saveContext:_context];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
     [self.editDelegate travelEditFinished:self.travel wasSaved:YES];
 }
@@ -576,7 +576,7 @@ static NSIndexPath *_notesIndexPath;
     [Crittercism leaveBreadcrumb:@"TravelEditViewController: cancel"];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
     [self.editDelegate travelEditFinished:self.travel wasSaved:NO];
 }
@@ -622,8 +622,10 @@ static NSIndexPath *_notesIndexPath;
     
     _viewAppeared = YES;
     
+    double statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    
     NSString *text = NSLocalizedString(@"help currencies", @"help bubble currencies enter");
-    HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(240, 236, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
+    HelpView *helpView = [[HelpView alloc] initWithFrame:CGRectMake(240, statusBarHeight + 250, 50, 50) text:text arrowPosition:ARROWPOSITION_TOP_RIGHT enterStage:ENTER_STAGE_FROM_BOTTOM uniqueIdentifier:@"trip currency edit"];
     [UIFactory addHelpViewToView:helpView toView:self.view];
     [helpView release];
     

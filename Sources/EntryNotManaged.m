@@ -35,7 +35,7 @@
         self.payer = nil;
         self.amount = 0;
         self.travel = nil;
-        self.receiverWeights = [NSSet set];
+        self.receiverWeights = [NSMutableSet set];
         self.type = nil;
         self.notes = nil;
     }
@@ -50,7 +50,7 @@
         self.date = entry.date;
         self.payer = entry.payer;
         self.amount = entry.amount;
-        self.receiverWeights = [NSSet set];
+        self.receiverWeights = [NSMutableSet set];
         self.travel = entry.travel;
         self.type = entry.type;
         self.notes = entry.notes;

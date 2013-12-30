@@ -30,7 +30,6 @@
 #import "Appirater.h"
 #import "ReceiverWeightNotManaged.h"
 #import "ReceiverWeight.h"
-#import "DropBoxShare.h"
 
 @interface TravelViewController ()
 
@@ -68,7 +67,7 @@
                                                                     delegate:self
                                                            cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                       destructiveButtonTitle:nil
-                                                           otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"DROPBOX", @"alert item mail"), NSLocalizedString(@"Open this trip", @"alert item open trip"), nil] autorelease];
+                                                           otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Open this trip", @"alert item open trip"), nil] autorelease];
         self.actionSheetClosedTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         
         
@@ -76,7 +75,7 @@
                                                                   delegate:self
                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                     destructiveButtonTitle:nil
-                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"DROPBOX", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), NSLocalizedString(@"Update exchange rates", @"alert item update rates"), NSLocalizedString(@"Manually edit rates", @"alert title edit rate"), nil] autorelease];
+                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), NSLocalizedString(@"Update exchange rates", @"alert item update rates"), NSLocalizedString(@"Manually edit rates", @"alert title edit rate"), nil] autorelease];
         self.actionSheetOpenTravel.actionSheetStyle = UIActionSheetStyleBlackTranslucent;        
         
         
@@ -84,7 +83,7 @@
                                                                   delegate:self
                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                                     destructiveButtonTitle:nil
-                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"DROPBOX", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), nil] autorelease];
+                                                         otherButtonTitles:NSLocalizedString(@"Send summary e-mail", @"alert item mail"), NSLocalizedString(@"Close this trip", @"alert item close trip"), nil] autorelease];
         self.actionSheetOpenTravelNoCurrency.actionSheetStyle = UIActionSheetStyleBlackTranslucent;   
         
         self.actionSheetAddPerson = [[[UIActionSheet alloc] initWithTitle:nil
@@ -129,7 +128,7 @@
     detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
     navController.delegate = detailViewController;
-    [self presentModalViewController:navController animated:YES];   
+    [self presentViewController:navController animated:YES completion:NULL];
     [detailViewController release];
     [navController release];
 
@@ -143,7 +142,7 @@
     detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
     navController.delegate = detailViewController;
-    [self presentModalViewController:navController animated:YES];   
+    [self presentViewController:navController animated:YES completion:NULL];
     [detailViewController release];
     [navController release];    
 }
@@ -157,7 +156,7 @@
     picker.navigationBar.barStyle = UIBarStyleBlack;
     picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
     
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:NULL];
     
     [UIFactory setColorOfSearchBarInABPicker:picker color:[UIFactory defaultTintColor]];
     
@@ -174,7 +173,7 @@
     
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:rateSelectViewController];
     navController.delegate = rateSelectViewController;
-    [self.navigationController presentModalViewController:navController animated:YES];
+    [self.navigationController presentViewController:navController animated:YES completion:NULL];
     
     [navController release];
     [rateSelectViewController release];
@@ -387,7 +386,7 @@
     
     
     if (controller)  {
-        [self presentModalViewController:controller animated:YES];
+        [self presentViewController:controller animated:YES completion:NULL];
     }
     [controller release];
     
@@ -543,7 +542,7 @@
 
 - (void)initHelpBubbleForViewController:(UIViewController *)viewController {
     
-    double navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    double navBarHeight = self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height;
     double entrySortHeight = self.entrySortViewController.detailViewController.tableView.tableHeaderView.frame.size.height;
     double windowWidth = self.view.frame.size.width;
     double windowHeight = self.view.frame.size.height;
@@ -597,22 +596,23 @@
 
 - (void)updateTableViewInsets {
     
+    int statusBarHeight = + [[UIApplication sharedApplication] statusBarFrame].size.height;
     UIEdgeInsets insets = self.participantSortViewController.detailViewController.tableView.contentInset;
-    insets.top = self.navigationController.navigationBar.frame.size.height;
+    insets.top = self.navigationController.navigationBar.frame.size.height + statusBarHeight;
     self.participantSortViewController.detailViewController.tableView.contentInset = insets;
     self.participantSortViewController.detailViewController.tableView.scrollIndicatorInsets = self.participantSortViewController.detailViewController.tableView.contentInset;
     
     insets = self.entrySortViewController.detailViewController.tableView.contentInset;
-    insets.top = self.navigationController.navigationBar.frame.size.height;
+    insets.top = self.navigationController.navigationBar.frame.size.height + statusBarHeight;
     self.entrySortViewController.detailViewController.tableView.contentInset = insets;
     self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
-    self.entrySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
+    //self.entrySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
     
     insets = self.summarySortViewController.detailViewController.tableView.contentInset;
-    insets.top = self.navigationController.navigationBar.frame.size.height;
+    insets.top = self.navigationController.navigationBar.frame.size.height + statusBarHeight;
     self.summarySortViewController.detailViewController.tableView.contentInset = insets;
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
-    self.summarySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
+    //self.summarySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
 
 }
 
@@ -641,14 +641,9 @@
     detailViewController.editDelegate = self;
     UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
     navController.delegate = detailViewController;
-    [self presentModalViewController:navController animated:YES];   
+    [self presentViewController:navController animated:YES completion:NULL];   
     [detailViewController release];
     [navController release];    
-}
-
-- (void)shareDropbox {
-    
-    [[DropBoxShare sharedInstance] share:self.travel];
 }
 
 #pragma mark - ParticipantViewControllerEditDelegate
@@ -696,11 +691,7 @@
                 
                 [self askToSendEmail];
                 
-            } if (buttonIndex == 1) {
-                
-                [self shareDropbox];
-                
-            } else if (buttonIndex == 2) {
+            } else if (buttonIndex == 1) {
                 
                 if ([self.travel isClosed]) {
                     
@@ -763,7 +754,7 @@
         }
         
         [self selectPerson:person withEmail:email];
-        [[self navigationController] dismissModalViewControllerAnimated:YES];
+        [[self navigationController] dismissViewControllerAnimated:YES completion:NULL];
         
         returnValue = NO;
     }
@@ -789,7 +780,7 @@
     NSString *email = (NSString *) ABMultiValueCopyValueAtIndex(multiValue, index);
     
     [self selectPerson:person withEmail:email];
-    [[self navigationController] dismissModalViewControllerAnimated:YES];
+    [[self navigationController] dismissViewControllerAnimated:YES completion:NULL];
     
     CFRelease(multiValue);
     CFRelease(email);
@@ -802,7 +793,7 @@
     [Crittercism leaveBreadcrumb:@"TravelViewController: peoplePickerNavigationControllerDidCancel"];
     
     peoplePicker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - UITabBarControllerDelegate
@@ -842,7 +833,7 @@
     if (result == MFMailComposeResultSent) {
         NSLog(@"It's away!");
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - View lifecycle
@@ -856,7 +847,6 @@
     
     self.actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openActionPopup)] autorelease]; 
     
-    self.view.frame = CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height - NAVIGATIONBAR_HEIGHT);    
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.participantSortViewController = [[[ParticipantSortViewController alloc] initWithTravel:_travel] autorelease];
@@ -870,8 +860,6 @@
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.delegate = self;
     [self.tabBarController setViewControllers:[NSArray arrayWithObjects:self.participantSortViewController, self.entrySortViewController, self.summarySortViewController, nil] animated:NO];
-    self.tabBarController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.tabBarController.tabBar.frame = CGRectMake(0, self.tabBarController.view.frame.size.height - TABBAR_HEIGHT, self.view.frame.size.width, TABBAR_HEIGHT);
     
     self.tabBarController.selectedIndex = [self.travel.selectedTab intValue];
     [self updateStateOfNavigationController:self.tabBarController.selectedViewController];

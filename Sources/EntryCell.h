@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ParticipantView.h"
-#import "GradientCell.h"
 
-@interface EntryCell : GradientCell {
+@interface EntryCell : UITableViewCell {
     
 }
 

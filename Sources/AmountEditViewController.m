@@ -125,7 +125,7 @@
     
     [super loadView];
     self.detailView.font = [UIFont systemFontOfSize:18.0];
-    self.detailView.textAlignment = UITextAlignmentRight;
+    self.detailView.textAlignment = NSTextAlignmentRight;
     
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(circleCurrency)];
     gr.numberOfTapsRequired = 1;

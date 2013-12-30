@@ -59,6 +59,7 @@
         bodyView.opaque = NO;
         bodyView.layer.borderColor = gradColor1.CGColor;
         bodyView.layer.borderWidth = 1.0f;
+        bodyView.backgroundColor = gradColor2;
         
         UIImage *infoImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"information" ofType:@"png"]];
         UIImageView *infoImageView = [[UIImageView alloc] initWithImage:infoImage];
@@ -79,7 +80,7 @@
         UILabel *dismissLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, label.frame.size.height + LABEL_GAP, labelLeft + label.frame.size.width, 10 + LABEL_GAP)];
         dismissLabel.font = [UIFont italicSystemFontOfSize:9];
         dismissLabel.textColor = [UIFactory defaultDarkTintColor];
-        dismissLabel.textAlignment = UITextAlignmentCenter;
+        dismissLabel.textAlignment = NSTextAlignmentCenter;
         dismissLabel.backgroundColor = [UIColor clearColor];
         dismissLabel.text = NSLocalizedString(@"Tap to dismiss", @"help bubble bottom text");
         
@@ -89,8 +90,6 @@
         [dismissLabel release];
         
         bodyView.frame = CGRectMake(bodyView.frame.origin.x, bodyView.frame.origin.y, labelLeft + label.frame.size.width + LABEL_GAP, label.frame.size.height + LABEL_GAP + dismissLabel.frame.size.height + LABEL_GAP); 
-        
-        [UIFactory addGradientToView:bodyView color1:gradColor1 color2:gradColor2 startPoint:CGPointMake(0, 1) endPoint:CGPointMake(1,0)];
         
         [label release];  
         
@@ -108,28 +107,25 @@
             if (arrowPosition == ARROWPOSITION_TOP_RIGHT) {
                 
                 arrowView = [[ArrowView alloc] initWithFrame:CGRectMake(self.frame.size.width - ARROW_WIDTH - ARROW_BORDERSPACE, 0, ARROW_WIDTH, ARROW_HEIGHT + ARROW_MARGIN)];
-                arrowView.arrowColor = gradColor2;
                 
             } else if (arrowPosition == ARROWPOSITION_TOP_LEFT) {
                 
                 arrowView = [[ArrowView alloc] initWithFrame:CGRectMake(ARROW_BORDERSPACE, 0, ARROW_WIDTH, ARROW_HEIGHT + ARROW_MARGIN)];
-                arrowView.arrowColor = [self crossColors:gradColor1 color2:gradColor2];
                 
             } else if (arrowPosition == ARROWPOSITION_BOTTOM_RIGHT) {
                 
                 arrowView = [[ArrowView alloc] initWithFrame:CGRectMake(self.frame.size.width - ARROW_WIDTH - ARROW_BORDERSPACE, self.frame.size.height - ARROW_HEIGHT - ARROW_MARGIN, ARROW_WIDTH, ARROW_HEIGHT + ARROW_MARGIN)];
                 arrowView.upsideDown = YES;
-                arrowView.arrowColor = [self crossColors:gradColor1 color2:gradColor2];
                 
             } else if (arrowPosition == ARROWPOSITION_BOTTOM_LEFT) {
                 
                 arrowView = [[ArrowView alloc] initWithFrame:CGRectMake(ARROW_BORDERSPACE, self.frame.size.height - ARROW_HEIGHT - ARROW_MARGIN, ARROW_WIDTH, ARROW_HEIGHT + ARROW_MARGIN)];
                 arrowView.upsideDown = YES;
-                arrowView.arrowColor = gradColor1;
-            }        
+            }
             
             arrowView.opaque = YES;
             arrowView.borderColor = gradColor1;
+            arrowView.arrowColor = gradColor2;
             arrowView.arrowBottomGap = ARROW_MARGIN;
             
             [self addSubview:arrowView];
@@ -148,13 +144,11 @@
             self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         }    
   
-        [UIFactory addShadowToView:self];
-        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         #if TARGET_IPHONE_SIMULATOR
-        //[defaults removeObjectForKey:DICTIONARY_KEY];        
-        //NSLog(@"Removing userdefaults because we are in the simulator");
+        [defaults removeObjectForKey:@"HelpViewClickedAway"];
+        NSLog(@"Removing userdefaults because we are in the simulator");
         #endif
         
         NSDictionary *dictionary = [defaults dictionaryForKey:[HelpView DICTIONARY_KEY]];

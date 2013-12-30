@@ -12,12 +12,11 @@
 #import "CurrencyRefresh.h"
 #import "TravelCategory.h"
 #import "I18NSortCategory.h"
-#import "GradientView.h"
 
 @implementation SummarySortViewController
 
 @synthesize travel=_travel, detailViewController=_detailViewController, lastUpdatedLabel=_lastUpdatedLabel, updateIndicator=_updateIndicator;
-@synthesize segControl=_segControl, ratesToolBar=_ratesToolBa;
+@synthesize segControl=_segControl, ratesView=_ratesView;
 
 - (id)initWithTravel:(Travel *)travel {
     
@@ -58,10 +57,10 @@
         
         if (self.segControl.numberOfSegments <= 1) {
             
-            if (CGAffineTransformIsIdentity(self.ratesToolBar.transform)) {
-                [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformTranslate(self.ratesToolBar.transform, 0, self.ratesToolBar.frame.size.height); } ];
+            if (CGAffineTransformIsIdentity(self.ratesView.transform)) {
+                [UIView animateWithDuration:animationDuration animations:^{ self.ratesView.transform = CGAffineTransformTranslate(self.ratesView.transform, 0, self.ratesView.frame.size.height); } ];
             } else {
-                [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformIdentity; } ];
+                [UIView animateWithDuration:animationDuration animations:^{ self.ratesView.transform = CGAffineTransformIdentity; } ];
             }
         } else {
             
@@ -73,14 +72,14 @@
         
         self.lastUpdatedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Travel closed at %@", @"status bar travel closed"), [_dateFormatter stringFromDate:self.travel.closedDate]];
         
-        if (!CGAffineTransformIsIdentity(self.ratesToolBar.transform)) {
-            [UIView animateWithDuration:animationDuration animations:^{ self.ratesToolBar.transform = CGAffineTransformIdentity; } ];            
+        if (!CGAffineTransformIsIdentity(self.ratesView.transform)) {
+            [UIView animateWithDuration:animationDuration animations:^{ self.ratesView.transform = CGAffineTransformIdentity; } ];
         }
     }
     
     [self centerRateLabel];
     
-    self.detailViewController.view.frame = CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.ratesToolBar.frame.origin.y);
+    self.detailViewController.view.frame = CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.ratesView.frame.origin.y);
     
 }
 
@@ -88,9 +87,9 @@
     
     [self.lastUpdatedLabel sizeToFit];
     
-    self.lastUpdatedLabel.frame = CGRectMake((self.ratesToolBar.frame.size.width - self.lastUpdatedLabel.frame.size.width) / 2, (self.ratesToolBar.frame.size.height - self.lastUpdatedLabel.frame.size.height) / 2, self.lastUpdatedLabel.frame.size.width, self.lastUpdatedLabel.frame.size.height);
+    self.lastUpdatedLabel.frame = CGRectMake((self.ratesView.frame.size.width - self.lastUpdatedLabel.frame.size.width) / 2, (self.ratesView.frame.size.height - self.lastUpdatedLabel.frame.size.height) / 2, self.lastUpdatedLabel.frame.size.width, self.lastUpdatedLabel.frame.size.height);
     
-    self.updateIndicator.frame = CGRectMake(self.lastUpdatedLabel.frame.origin.x + self.lastUpdatedLabel.frame.size.width + ACTIVITY_VIEW_SIZE, (self.ratesToolBar.frame.size.height - ACTIVITY_VIEW_SIZE) / 2, ACTIVITY_VIEW_SIZE, ACTIVITY_VIEW_SIZE);
+    self.updateIndicator.frame = CGRectMake(self.lastUpdatedLabel.frame.origin.x + self.lastUpdatedLabel.frame.size.width + ACTIVITY_VIEW_SIZE, (self.ratesView.frame.size.height - ACTIVITY_VIEW_SIZE) / 2, ACTIVITY_VIEW_SIZE, ACTIVITY_VIEW_SIZE);
     
 }
 
@@ -135,22 +134,17 @@
         segControl.frame = CGRectMake(5, 5, [[UIScreen mainScreen] applicationFrame].size.width - 10, CURRENCY_SORT_HEIGHT - 10);
         segControl.selectedSegmentIndex = 0;
         [segControl addTarget:self action:@selector(sortTable:) forControlEvents:UIControlEventValueChanged];
-        segControl.segmentedControlStyle = UISegmentedControlStyleBar;
         segControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        segControl.tintColor = [UIFactory defaultDarkTintColor];
         self.segControl = segControl;
         
         self.segControl.selectedSegmentIndex = [_currencyArray indexOfObject:self.travel.displayCurrency];
         
-        UIView *segControlBGView = [[GradientView alloc] initWithFrame:segControlView.frame];
-        [UIFactory addGradientToView:segControlBGView color1:[UIFactory defaultDarkTintColor] color2:[UIFactory defaultLightTintColor]];
+        UIView *segControlBGView = [[UIView alloc] initWithFrame:segControlView.frame];
         segControlBGView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
-        segControlBGView.alpha = 0.4;
         segControlBGView.contentMode = UIViewContentModeScaleToFill;
         
-        UIView *segControlLine = [[GradientView alloc] initWithFrame:CGRectMake(0, CURRENCY_SORT_HEIGHT-1, [UIScreen mainScreen].applicationFrame.size.width, 1)];
+        UIView *segControlLine = [[UIView alloc] initWithFrame:CGRectMake(0, CURRENCY_SORT_HEIGHT-1, [UIScreen mainScreen].applicationFrame.size.width, 1)];
         segControlLine.autoresizingMask = segControlBGView.autoresizingMask;
-        [UIFactory addGradientToView:segControlLine color1:[UIColor darkGrayColor] color2:[UIColor blackColor] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1)];
         segControlLine.contentMode = UIViewContentModeScaleToFill;
 
         [segControlView addSubview:segControlBGView];
@@ -166,29 +160,29 @@
         [segControlView release];
         
     }
-
-    UIToolbar *ratestoolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - RATE_SORT_TOOLBAR_HEIGHT, newView.frame.size.width, RATE_SORT_TOOLBAR_HEIGHT)];
-    ratestoolbar.barStyle = UIBarStyleBlack;
-    ratestoolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    self.ratesToolBar = ratestoolbar;
+    
+    UIView *ratesView = [[UIView alloc] initWithFrame:CGRectMake(0, newView.frame.size.height - RATE_SORT_TOOLBAR_HEIGHT, newView.frame.size.width, RATE_SORT_TOOLBAR_HEIGHT)];
+    ratesView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    self.ratesView = ratesView;
+    self.ratesView.backgroundColor = [UIFactory defaultLightTintColor];
     
     UILabel *ratesUpdated = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     self.lastUpdatedLabel = ratesUpdated;
 
     ratesUpdated.backgroundColor = [UIColor clearColor];
     ratesUpdated.font = [UIFont systemFontOfSize:10];
-    ratesUpdated.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
-    ratesUpdated.textAlignment = UITextAlignmentCenter;
+    ratesUpdated.textColor = [UIColor blackColor];
+    ratesUpdated.textAlignment = NSTextAlignmentRight;
     ratesUpdated.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [ratestoolbar addSubview:ratesUpdated];
+    [ratesView addSubview:ratesUpdated];
     
     self.updateIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
     self.updateIndicator.frame = CGRectMake(ratesUpdated.frame.origin.x + ratesUpdated.frame.size.width + ACTIVITY_VIEW_SIZE, ratesUpdated.frame.origin.y, ACTIVITY_VIEW_SIZE, ACTIVITY_VIEW_SIZE);
     self.updateIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [ratestoolbar addSubview:self.updateIndicator];
+    [ratesView addSubview:self.updateIndicator];
 
     [newView addSubview:self.detailViewController.view];
-    [newView addSubview:ratestoolbar];
+    [newView addSubview:ratesView];
     
     self.detailViewController.view.frame = CGRectMake(0, 0, newView.frame.size.width, newView.frame.size.height);
     
@@ -197,7 +191,7 @@
     [self updateRateLabel:NO];
     
     [ratesUpdated release];
-    [ratestoolbar release];
+    [ratesView release];
     [newView release];
 }
 

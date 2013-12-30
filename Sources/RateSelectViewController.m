@@ -105,7 +105,7 @@
     
     [self.closeDelegate willDisappearWithChanges];
     
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)selectRate:(ExchangeRate *)rate {

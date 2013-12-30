@@ -8,7 +8,6 @@
 
 #import "TextEditViewController.h"
 #import "UIFactory.h"
-#import "GradientCell.h"
 #import "AlignedStyle2Cell.h"
 
 @implementation TextEditViewController

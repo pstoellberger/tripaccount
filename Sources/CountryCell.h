@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GradientCell.h"
 
 #define IMAGE_CELL_WIDTH 80
 #define IMAGE_TEXT_GAP 10
 
-@interface CountryCell : GradientCell {
+@interface CountryCell : UITableViewCell {
     
 }
 
