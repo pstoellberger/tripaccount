@@ -354,3 +354,5 @@
 "Initialising..." = "Initialising...";
 
 "Cashier" = "Cashier";
+
+"Purchase error" = "The purchase could not be completed. :(";

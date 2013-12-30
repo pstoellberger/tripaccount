@@ -58,6 +58,8 @@
     
     [Crittercism leaveBreadcrumb:@"TravelViewController: init"];
     
+    _purchaseManager = [[InAppPurchaseManager alloc] init];
+    
     self = [self init];
     
     if (self) {
@@ -117,12 +119,10 @@
     
     [Crittercism leaveBreadcrumb:@"TravelViewController: openEntryAddPopup"];
     
-#ifdef LITE_VERSION
-    if ([self.travel.entries count] >= 5) {
+    if (![((ReiseabrechnungAppDelegate *) [UIApplication sharedApplication].delegate) isFullVersion] && [self.travel.entries count] >= 5) {
         [self.liteWarningAlertView show];
         return;
     }
-#endif
     
     EntryEditViewController *detailViewController = [[EntryEditViewController alloc] initWithTravel:_travel];
     detailViewController.editDelegate = self;
@@ -605,13 +605,11 @@
     insets.top = self.navigationController.navigationBar.frame.size.height + STATUSBAR_HEIGHT;
     self.entrySortViewController.detailViewController.tableView.contentInset = insets;
     self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
-    //self.entrySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
     
     insets = self.summarySortViewController.detailViewController.tableView.contentInset;
     insets.top = self.navigationController.navigationBar.frame.size.height + STATUSBAR_HEIGHT;
     self.summarySortViewController.detailViewController.tableView.contentInset = insets;
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
-    //self.summarySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
 
 }
 
@@ -669,10 +667,9 @@
         [self sendSummaryMail];
         
     } else if (alertView == self.liteWarningAlertView && buttonIndex != self.mailSendAlertView.cancelButtonIndex) {
-        
-        NSString* url = [NSString stringWithFormat: ITUNES_STORE_LINK, TRIP_ACCOUNT_ID];
-        [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
-        
+     
+        [_purchaseManager requestPayment];
+    
     }
 }
 
@@ -871,6 +868,8 @@
     
     self.rateRefreshAlertView = [UIFactory createAlterViewForRefreshingRatesOnOpeningTravel:self];
     
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -923,6 +922,8 @@
     self.actionSheetClosedTravel = nil;
     self.actionSheetOpenTravel = nil;
     self.actionSheetOpenTravelNoCurrency = nil;
+    
+    [_purchaseManager release];
     
     [super dealloc];
 }

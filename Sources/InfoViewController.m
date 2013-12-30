@@ -95,7 +95,7 @@
 
 - (IBAction)rate {
     
-    NSString* url = [NSString stringWithFormat: ITUNES_STORE_RATE_LINK, CURRENT_APP_ID];
+    NSString* url = [NSString stringWithFormat: ITUNES_STORE_RATE_LINK, TRIP_ACCOUNT_ID];
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
 }
 

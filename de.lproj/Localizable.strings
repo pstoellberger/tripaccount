@@ -335,7 +335,7 @@
 
 "Reset Weight" = "Gewichtungen zurücksetzen";
 
-"lite message" = "Dies ist eine DEMO-Version von Trip Account. Bitte hol' dir TRIP ACCOUNT im App Store, um mehr als 5 Ausgaben hinzufügen zu können. Willst du das jetzt tun?";
+"lite message" = "Du kannst derzeit maximal 5 Ausgaben pro Trip verwalten. Für unbegrenzte Einschränkungen bitte kaufen!";
 
 "lite title" = "Lite Version";
 
@@ -360,3 +360,5 @@
 "Initialising..." = "Initialisierung...";
 
 "Cashier" = "Kassier";
+
+"Purchase error" = "The Kauf konnte nicht durchgeführt werden. :(";

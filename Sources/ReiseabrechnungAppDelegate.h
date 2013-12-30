@@ -30,13 +30,6 @@ extern NSString *const ITUNES_STORE_LINK;
 extern NSString *const ITUNES_STORE_RATE_LINK;
 
 #define TRIP_ACCOUNT_ID APPIRATER_APP_ID
-#define TRIP_ACCOUNT_LITE_ID 492419567
-
-#ifdef LITE_VERSION
-#define CURRENT_APP_ID TRIP_ACCOUNT_LITE_ID
-#else
-#define CURRENT_APP_ID TRIP_ACCOUNT_ID
-#endif
 
 @interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate, MTStatusBarOverlayDelegate>
 
@@ -65,5 +58,6 @@ extern NSString *const ITUNES_STORE_RATE_LINK;
 - (void)initUserDefaults;
 - (NSManagedObjectContext *)createNewManagedObjectContext;
 - (void)userdefaults:(NSUserDefaults *)defaults setIfDoesNotExist:(BOOL)value forKey:(NSString *)key;
+- (BOOL)isFullVersion;
 
 @end

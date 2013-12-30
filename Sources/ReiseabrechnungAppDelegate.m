@@ -242,6 +242,10 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     });
 }
 
+- (BOOL) isFullVersion {
+    return NO;
+}
+
 + (Currency *)defaultCurrency:(NSManagedObjectContext *) context {
     
     NSLocale *theLocale = [NSLocale currentLocale];
