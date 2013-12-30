@@ -12,8 +12,8 @@
 #import "HelpView.h"
 #import "Crittercism.h"
 
-#define NAVIGATIONBAR_HEIGHT 44
-#define TABBAR_HEIGHT 49
+#define NAVIGATIONBAR_HEIGHT 45
+#define TABBAR_HEIGHT 50
 #define ENTRY_SORT_HEIGHT 40
 #define CURRENCY_SORT_HEIGHT 45
 

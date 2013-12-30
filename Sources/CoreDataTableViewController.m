@@ -25,15 +25,13 @@
         if (self.searchKey.length) {
             
 			UISearchBar *searchBar = [[[UISearchBar alloc] init] autorelease];
-            searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-            searchBar.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 38);
-            searchBar.tintColor = [UIFactory defaultDarkTintColor];
             searchBar.delegate = self;
             
 			self.dataSearchController = [[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self] autorelease];
 			self.dataSearchController.searchResultsDelegate = self;
 			self.dataSearchController.searchResultsDataSource = self;
 			self.dataSearchController.delegate = self;
+            self.dataSearchController.displaysSearchBarInNavigationBar = YES;
             
             UIView *subView = [self createTableHeaderSubView];
             
@@ -44,8 +42,6 @@
                 [comboView addSubview:searchBar];
                 self.tableView.tableHeaderView = comboView;
                 [comboView release];
-            } else {
-                self.tableView.tableHeaderView = self.dataSearchController.searchBar;
             }
         } else {
             UIView *subView = [self createTableHeaderSubView];
