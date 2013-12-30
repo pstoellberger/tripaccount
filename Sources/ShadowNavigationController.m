@@ -16,8 +16,7 @@
 - (void)viewWillAppear:(BOOL)animated {   
     [super viewWillAppear:animated];   
     
-    //self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    //self.navigationBar.barTintColor = [UIColor redColor];
+    //self.navigationBar.barTintColor = [UIColor colorWithRed:16.0f/255.0f green:124.0f/255.0f blue:192.0f/255.0f alpha:1];
 } 
 
 @end

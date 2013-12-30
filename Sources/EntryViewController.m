@@ -183,7 +183,7 @@
     totalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     totalViewContainer.backgroundColor = [UIFactory defaultLightTintColor];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_CELL_HEIGHT)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width - 10, TOTAL_CELL_HEIGHT)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentRight;

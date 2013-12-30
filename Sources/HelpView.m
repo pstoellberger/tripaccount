@@ -147,7 +147,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         #if TARGET_IPHONE_SIMULATOR
-        [defaults removeObjectForKey:@"HelpViewClickedAway"];
+        //[defaults removeObjectForKey:@"HelpViewClickedAway"];
         NSLog(@"Removing userdefaults because we are in the simulator");
         #endif
         

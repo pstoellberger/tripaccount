@@ -111,29 +111,29 @@
     
     UIView *totalViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, TOTAL_VIEW_HEIGHT)];
     totalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    totalViewContainer.backgroundColor = [UIFactory defaultLightTintColor];
     
     UIView *totalView = [[UIView alloc] initWithFrame:totalViewContainer.frame];
     totalView.autoresizingMask = totalViewContainer.autoresizingMask;
-    [UIFactory addGradientToView:totalView color1:[UIFactory defaultDarkTintColor] color2:[UIFactory defaultLightTintColor]];
+    totalView.backgroundColor = [UIColor clearColor];
     totalView.alpha = 0.4;
     totalView.contentMode = UIViewContentModeScaleToFill;
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, 2)];
     line.autoresizingMask = totalViewContainer.autoresizingMask;
-    [UIFactory addShadowToView:line];
     [UIFactory addGradientToView:line color1:[UIColor lightGrayColor] color2:[UIColor blackColor] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1)];
     line.contentMode = UIViewContentModeScaleToFill;
     
     UILabel *totalLabelLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, [UIScreen mainScreen].applicationFrame.size.width - 15, TOTAL_VIEW_HEIGHT - 10)];
     totalLabelLabel.autoresizingMask = totalViewContainer.autoresizingMask;
-    totalLabelLabel.textColor = [UIColor whiteColor];
-    totalLabelLabel.textAlignment = NSTextAlignmentRight;
+    totalLabelLabel.textColor = [UIColor blackColor];
+    totalLabelLabel.textAlignment = NSTextAlignmentLeft;
     totalLabelLabel.backgroundColor = [UIColor clearColor];
     totalLabelLabel.text = NSLocalizedString(@"total", "@total label");
     
     self.totalLabel = [[[UILabel alloc] initWithFrame:totalLabelLabel.frame] autorelease];
     self.totalLabel.autoresizingMask = totalViewContainer.autoresizingMask;
-    self.totalLabel.textColor = [UIColor whiteColor];
+    self.totalLabel.textColor = [UIColor blackColor];
     self.totalLabel.textAlignment = NSTextAlignmentRight;
     self.totalLabel.backgroundColor = [UIColor clearColor];
 
@@ -151,7 +151,9 @@
     self.detailViewController.tableView.tableFooterView = totalViewContainer;
     [totalViewContainer release];
     
-    self.detailViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height - TABBAR_HEIGHT);
+    self.detailViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height);
+    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(TABBAR_HEIGHT,0,TABBAR_HEIGHT,0);
+    self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
     
     UIView *detailViewContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.detailViewController.view.frame.size.height)] autorelease];
     [detailViewContainer addSubview:self.detailViewController.view];
@@ -166,13 +168,10 @@
     if (![self.detailViewController.displayCurrency isEqual:self.detailViewController.travel.displayCurrency]) {
         [self.detailViewController.tableView reloadData];
     }
-    
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 #pragma mark Memory management
