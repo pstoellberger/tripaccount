@@ -596,20 +596,19 @@
 
 - (void)updateTableViewInsets {
     
-    int statusBarHeight = + [[UIApplication sharedApplication] statusBarFrame].size.height;
     UIEdgeInsets insets = self.participantSortViewController.detailViewController.tableView.contentInset;
-    insets.top = self.navigationController.navigationBar.frame.size.height + statusBarHeight;
+    insets.top = self.navigationController.navigationBar.frame.size.height + STATUSBAR_HEIGHT;
     self.participantSortViewController.detailViewController.tableView.contentInset = insets;
     self.participantSortViewController.detailViewController.tableView.scrollIndicatorInsets = self.participantSortViewController.detailViewController.tableView.contentInset;
     
     insets = self.entrySortViewController.detailViewController.tableView.contentInset;
-    insets.top = self.navigationController.navigationBar.frame.size.height + statusBarHeight;
+    insets.top = self.navigationController.navigationBar.frame.size.height + STATUSBAR_HEIGHT;
     self.entrySortViewController.detailViewController.tableView.contentInset = insets;
     self.entrySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.entrySortViewController.detailViewController.tableView.contentInset;
     //self.entrySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);
     
     insets = self.summarySortViewController.detailViewController.tableView.contentInset;
-    insets.top = self.navigationController.navigationBar.frame.size.height + statusBarHeight;
+    insets.top = self.navigationController.navigationBar.frame.size.height + STATUSBAR_HEIGHT;
     self.summarySortViewController.detailViewController.tableView.contentInset = insets;
     self.summarySortViewController.detailViewController.tableView.scrollIndicatorInsets = self.summarySortViewController.detailViewController.tableView.contentInset;
     //self.summarySortViewController.detailViewController.tableView.contentOffset = CGPointMake(0, -self.navigationController.navigationBar.frame.size.height);

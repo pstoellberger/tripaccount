@@ -60,7 +60,7 @@
 - (void)updateTableViewInsets {
      
      UIEdgeInsets insets = self.tableViewController.tableView.contentInset;
-     insets.top = self.navigationController.navigationBar.frame.size.height;
+     insets.top = NAVIGATIONBAR_HEIGHT;
      self.tableViewController.tableView.contentInset = insets;
      self.tableViewController.tableView.scrollIndicatorInsets = self.tableViewController.tableView.contentInset;
 }
@@ -93,6 +93,7 @@
      TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext];
      detailViewController.editDelegate = self;
      UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
+
      navController.delegate = detailViewController;
      
      [self.navigationController presentViewController:navController animated:YES completion:NULL];

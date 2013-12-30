@@ -152,12 +152,15 @@
     [totalViewContainer release];
     
     self.detailViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height);
-    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(TABBAR_HEIGHT,0,TABBAR_HEIGHT,0);
+    self.detailViewController.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT+STATUSBAR_HEIGHT,0,TABBAR_HEIGHT,0);
     self.detailViewController.tableView.scrollIndicatorInsets = self.detailViewController.tableView.contentInset;
     
     UIView *detailViewContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.detailViewController.view.frame.size.width, self.detailViewController.view.frame.size.height)] autorelease];
     [detailViewContainer addSubview:self.detailViewController.view];
     self.view = detailViewContainer;
+    
+    
+    [self.detailViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 
 }
 

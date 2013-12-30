@@ -65,7 +65,8 @@
             detailViewController.editDelegate = self.rootViewController;
             UINavigationController *navController = [[ShadowNavigationController alloc] initWithRootViewController:detailViewController];
             navController.delegate = detailViewController;
-            [self.rootViewController.navigationController presentViewController:navController animated:YES completion:NULL];   
+            [self.rootViewController.navigationController presentViewController:navController animated:YES completion:NULL];
+
             [detailViewController release];
             [navController release];
             
@@ -87,7 +88,8 @@
             detailViewController.title = travel.country.nameI18N;
         }
         [self.rootViewController.navigationController pushViewController:detailViewController animated:YES];
-        [detailViewController release]; 
+
+        [detailViewController release];
         
     }
 
