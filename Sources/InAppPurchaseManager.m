@@ -8,9 +8,11 @@
 
 #import "InAppPurchaseManager.h"
 
-#define PURCHASE_ID @"FULL_VERSION"
-
 @implementation InAppPurchaseManager
+
+- (BOOL) isFullVersion {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:PURCHASE_ID];
+}
 
 - (void)requestPayment {
     
@@ -26,8 +28,7 @@
     
     NSLog(@"Failed to load list of products: %@", error);
     
-    [[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase error", @"purchase error") message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"alert item"), nil] autorelease] show];
-    
+    [[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase error", @"purchase error") message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", @"alert item"), nil] autorelease] show];    
 }
 
 //

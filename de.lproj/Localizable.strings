@@ -335,11 +335,11 @@
 
 "Reset Weight" = "Gewichtungen zurücksetzen";
 
-"lite message" = "Du kannst derzeit maximal 5 Ausgaben pro Trip verwalten. Für unbegrenzte Einschränkungen bitte kaufen!";
+"lite message" = "Trip Account ist KOSTENLOS. Mit einer winzigen Spende kannst du die Entwicklung unterstützen. Willst du das jetzt tun?";
 
-"lite title" = "Lite Version";
+"lite title" = "Spende";
 
-"lite purchase" = "Klar!";
+"lite purchase" = "Klar! :)";
 
 "lite no purchase" = "Später :(";
 
@@ -361,8 +361,8 @@
 
 "Cashier" = "Kassier";
 
-"Purchase error" = "The Kauf konnte nicht durchgeführt werden. :(";
+"Purchase error" = "Dein Spende konnte nicht durchgeführt werden. :(";
 
-"Purchase success" = "Vielen Dank für deinen Kauf! :)\nDu kannst Trip Account jetzt im vollen Umfang verwenden.";
+"Purchase success" = "Vielen Dank für deine Spende! :)\nDu bist der Wahnsinn!";
 
 "You are welcome" = "Gern geschehen";

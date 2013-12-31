@@ -55,6 +55,8 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     
     [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didFinishLaunchingWithOptions"]];
     
+    _purchaseManager = [[InAppPurchaseManager alloc] init];
+    
     [self initUserDefaults];
     
     self.locator = [[[Locator alloc] initInManagedObjectContext:self.managedObjectContext] autorelease];
@@ -142,7 +144,20 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
         });
     });
     
+    [ReiseabrechnungAppDelegate askForDonation:@"askDonationStartup"];
+    
     return YES;
+    
+}
+
++ (void) askForDonation: (NSString *)askKey  {
+    
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:askKey]) {
+        [[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"lite title", @"lite title warning") message:NSLocalizedString(@"lite message",@"lite message warning") delegate:self cancelButtonTitle:NSLocalizedString(@"lite no purchase",@"OK button") otherButtonTitles:NSLocalizedString(@"lite purchase",@"OK button"), nil] autorelease] show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:askKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
 }
 
@@ -167,8 +182,6 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
         [defaults setBool:value forKey:key];
     }
 }
-
-
 
 - (void)checkForResetOfHelpBubbles {
     
@@ -240,10 +253,6 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
         [currencyRefresh release];
                  
     });
-}
-
-- (BOOL) isFullVersion {
-    return NO;
 }
 
 + (Currency *)defaultCurrency:(NSManagedObjectContext *) context {
@@ -440,6 +449,9 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     [_managedObjectContext release];
     [_managedObjectModel release];
     [_persistentStoreCoordinator release];
+    
+    [_purchaseManager release];
+    
     [super dealloc];
 }
 

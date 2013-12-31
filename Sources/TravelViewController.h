@@ -22,12 +22,8 @@
 #import "EntryEditViewController.h"
 #import "ParticipantEditViewController.h"
 #import "ParticipantSortViewController.h"
-#import "InAppPurchaseManager.h"
 
-@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate, EntryEditViewControllerDelegate, ParticipantViewControllerEditDelegate, ParticipantEditViewControllerEditDelegate> {
-    
-    InAppPurchaseManager *_purchaseManager;
-}
+@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate, EntryEditViewControllerDelegate, ParticipantViewControllerEditDelegate, ParticipantEditViewControllerEditDelegate>
 
 @property (nonatomic, retain, readonly) IBOutlet Travel *travel;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
@@ -40,7 +36,6 @@
 
 @property (nonatomic, retain) UIAlertView *rateRefreshAlertView;
 @property (nonatomic, retain) UIAlertView *mailSendAlertView;
-@property (nonatomic, retain) UIAlertView *liteWarningAlertView;
 
 @property (nonatomic, retain) UIActionSheet *actionSheetOpenTravel;
 @property (nonatomic, retain) UIActionSheet *actionSheetOpenTravelNoCurrency;

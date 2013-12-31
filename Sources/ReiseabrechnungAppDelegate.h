@@ -25,13 +25,16 @@
 #import "Locator.h"
 #import "MTStatusBarOverlay.h"
 #import "Appirater.h"
+#import "InAppPurchaseManager.h"
 
 extern NSString *const ITUNES_STORE_LINK;
 extern NSString *const ITUNES_STORE_RATE_LINK;
 
 #define TRIP_ACCOUNT_ID APPIRATER_APP_ID
 
-@interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate, MTStatusBarOverlayDelegate>
+@interface ReiseabrechnungAppDelegate : NSObject <UIApplicationDelegate, MTStatusBarOverlayDelegate> {
+    InAppPurchaseManager *_purchaseManager;
+}
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -52,12 +55,12 @@ extern NSString *const ITUNES_STORE_RATE_LINK;
 + (void)saveContext:(NSManagedObjectContext *) context;
 + (Currency *)defaultCurrency:(NSManagedObjectContext *) context;
 + (AppDefaults *)defaultsObject:(NSManagedObjectContext *) context;
++ (void)askForDonation:(NSString *) askKey;
 - (void)refreshCurrencyRatesIfOutDated;
 - (void)checkForResetOfHelpBubbles;
 - (void)registerHelpBubble:(HelpView *)helpView;
 - (void)initUserDefaults;
 - (NSManagedObjectContext *)createNewManagedObjectContext;
 - (void)userdefaults:(NSUserDefaults *)defaults setIfDoesNotExist:(BOOL)value forKey:(NSString *)key;
-- (BOOL)isFullVersion;
 
 @end

@@ -329,11 +329,11 @@
 
 "Reset Weight" = "Reset weightings";
 
-"lite message" = "This is a DEMO version of Trip Account. If you want to add more than 5 expense please purchase Trip Account. Do you want to do that now?";
+"lite message" = "Trip Account is FREE. To support its developement, a tiny donation is greatly appreciated. Do you want to support now?";
 
-"lite title" = "Lite Version";
+"lite title" = "Donation";
 
-"lite purchase" = "Sure!";
+"lite purchase" = "Sure! :)";
 
 "lite no purchase" = "Later :(";
 
@@ -355,8 +355,8 @@
 
 "Cashier" = "Cashier";
 
-"Purchase error" = "The purchase could not be completed. :(";
+"Purchase error" = "Your donation could not be completed. :(";
 
-"Purchase success" = "Thank you for your purchase! :) \nYou can now use Trip Account's full functionality.";
+"Purchase success" = "Thank you for your donation! :) You are awesome!";
 
 "You are welcome" = "You are welcome";

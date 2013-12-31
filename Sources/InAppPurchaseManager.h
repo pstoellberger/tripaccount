@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 
+#define PURCHASE_ID @"FULL_VERSION"
+
 @interface InAppPurchaseManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
+- (BOOL)isFullVersion;
 - (void)requestPayment;
 
 @end
