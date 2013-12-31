@@ -159,9 +159,7 @@
     [detailViewContainer addSubview:self.detailViewController.view];
     self.view = detailViewContainer;
     
-    
-    [self.detailViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-
+    [self.detailViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)updateTotalValue {
