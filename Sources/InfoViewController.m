@@ -15,6 +15,7 @@
 @synthesize feedBackLabel=_feedBackLabel, titleLabel=_titleLabel, versionLabel=_versionLabel, copyrightLabel=_copyrightLabel;
 @synthesize feedbackButton=_feedbackButton, featureButton=_featureButton, licenseButton=_licenseButton, closeButton=_closeButton, rateButton=_rateButton, purchaseButton=_purchaseButton, twitterLogo=_twitterLogo;
 @synthesize image=_image;
+@synthesize bottomView=_bottomView, topView=_topView;
 
 #define CLOSE_LABEL_GAP 6
 #define CLOSE_LABEL_SIZE_REDUCTION 10
@@ -41,7 +42,7 @@
         self.copyrightLabel.text = NSLocalizedString(@"copyrightLabel", @"info feedback button");
         
         [self setButtonTitle:self.closeButton title:NSLocalizedString(@"close", @"info close button")];
-        [self setButtonTitle:self.licenseButton title:NSLocalizedString(@"Acknowledgements", @"Acknowledgements")];
+        [self setButtonTitle:self.licenseButton title:NSLocalizedString(@"Donate", @"Donate")];
         [self setButtonTitle:self.featureButton title:NSLocalizedString(@"Request a feature", @"info feature button")];
         [self setButtonTitle:self.feedbackButton title:NSLocalizedString(@"Provide Feedback", @"info feedback button")];
         [self setButtonTitle:self.rateButton title:NSLocalizedString(@"rate this app", @"rate button")];
@@ -54,12 +55,9 @@
         
         self.titleLabel.text = @"Trip Account";
         
-#ifdef LITE_VERSION
-        self.feedBackLabel.text = NSLocalizedString(@"lite version info text",@"purchase text");
-        self.titleLabel.text = @"Trip Account Lite";   
-        self.purchaseButton.hidden = NO;
-#endif
-        
+        self.topView.backgroundColor = [UIFactory defaultLightTintColor];
+        self.bottomView.backgroundColor = [UIFactory defaultLightTintColor];
+        //self.bottomView.frame = CGRectMake(self.bottomView.frame.origin.x, [UIScreen mainScreen].bounds.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     }
     return self;
 }
@@ -129,11 +127,9 @@
     
 }
 
-- (IBAction)licenseNotes {
+- (IBAction)donateNow {
     
-    UIAlertView *license = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Acknowledgements", @"Acknowledgements") message:NSLocalizedString(@"This app includes MGTemplateEnige by Matt Gemmell.", @"ack text") delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-    [license show];
-    [license release];
+    [ReiseabrechnungAppDelegate askForDonation:nil];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate

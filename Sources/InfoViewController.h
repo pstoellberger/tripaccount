@@ -19,6 +19,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *versionLabel;
 @property (nonatomic, retain) IBOutlet UILabel *copyrightLabel;
+@property (nonatomic, retain) IBOutlet UIView *bottomView;
+@property (nonatomic, retain) IBOutlet UIView *topView;
 @property (nonatomic, retain) IBOutlet UIButton *feedbackButton;
 @property (nonatomic, retain) IBOutlet UIButton *featureButton;
 @property (nonatomic, retain) IBOutlet UIButton *licenseButton;
@@ -31,7 +33,7 @@
 - (IBAction)cancel;
 - (IBAction)requestFeature;
 - (IBAction)sendFeedback;
-- (IBAction)licenseNotes;
+- (IBAction)donateNow;
 - (IBAction)purchaseApp;
 - (void)openEmailPopup:(NSString *)subject withTitle:(NSString *)title withMailName:(NSString *)mailName;
 - (void)setButtonTitle:(UIButton *)button title:(NSString *)title;

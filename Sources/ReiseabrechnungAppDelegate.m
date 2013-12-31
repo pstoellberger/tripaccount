@@ -152,11 +152,14 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 
 + (void) askForDonation: (NSString *)askKey  {
     
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:askKey]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:PURCHASE_ID] && (askKey == nil || ![[NSUserDefaults standardUserDefaults] valueForKey:askKey])) {
+        
         [[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"lite title", @"lite title warning") message:NSLocalizedString(@"lite message",@"lite message warning") delegate:self cancelButtonTitle:NSLocalizedString(@"lite no purchase",@"OK button") otherButtonTitles:NSLocalizedString(@"lite purchase",@"OK button"), nil] autorelease] show];
         
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:askKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        if (askKey != nil) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:askKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }
     
 }

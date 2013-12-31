@@ -271,19 +271,17 @@
 
 "versionlabel" = "version: %@";
 
-"copyrightLabel" = "© 2011 Martin Maier, all rights reserved.";
+"copyrightLabel" = "© 2013 Martin Maier-Moessner, all rights reserved.";
 
 "close" = "Close";
 
-"Acknowledgements" = "Acknowledgements";
-
-"This app includes MGTemplateEnige by Matt Gemmell." = "This app includes MGTemplateEngine by Matt Gemmell.";
+"Donate" = "Donate";
 
 "Request a feature" = "Request a Feature";
 
 "Provide Feedback" = "Provide Feedback";
 
-"feedbackLabel" = "Thank you for your purchase!\n\nPlease let me know how you think about this app and what you would like to see in future versions.";
+"feedbackLabel" = "Trip Account is free of charge!\n\nPlease support its development by giving a donation.";
 
 "Feature Request for Trip Account Version " = "Feature Request for Trip Account Version ";
 
@@ -344,8 +342,6 @@
 "image iphone" = "Choose from Library";
 
 "purchase app" = "Buy Trip Account now!";
-
-"lite version info text" = "This is the Lite version of Trip Account.\n\n\n\n";
 
 "weight info" = "Weightings describe the parts for each receiver an expense amount is split into. Weightings can be configure for each expense individually. A person has a default weighting that is used when being assigned to a new expense.\nExample: The split of an expense amount of 20$ with weightings 1:2:1 is 5$:10$:5$.";
 

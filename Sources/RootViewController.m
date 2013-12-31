@@ -122,7 +122,7 @@
      self.infoViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
      [self.infoViewController setCloseAction:self action:@selector(closeInfoPopup)];
      
-     self.infoViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [[UIScreen mainScreen] applicationFrame].size.height);
+     self.infoViewController.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
      
      [UIView beginAnimations:nil context:nil];
      [UIView setAnimationDuration:0.8];

@@ -277,19 +277,17 @@
 
 "versionlabel" = "Version: %@";
 
-"copyrightLabel" = "© 2011 Martin Maier, alle Rechte vorbehalten.";
+"copyrightLabel" = "© 2013 Martin Maier-Moessner, alle Rechte vorbehalten.";
 
 "close" = "Schließen";
 
-"Acknowledgements" = "Lizenzinformationen";
-
-"This app includes MGTemplateEnige by Matt Gemmell." = "Diese App verwendet MGTemplateEngine von Matt Gemmell.";
+"Donate" = "Spenden";
 
 "Request a feature" = "Funktion wünschen";
 
 "Provide Feedback" = "Feedback geben";
 
-"feedbackLabel" = "Vielen Dank für den Kauf dieser App!\n\nBitte gib mir Feedback und lass mich wissen, was du in zukünftigen Versionen sehen möchtest.";
+"feedbackLabel" = "Trip Account ist kostenlos!\n\nBitte unterstütze die Entwicklung mit einer kleinen Spende.";
 
 "Feature Request for Trip Account Version " = "Neue Funktion für Trip Account Version ";
 
@@ -350,8 +348,6 @@
 "image iphone" = "Foto aus Bibliothek auswählen";
 
 "purchase app" = "Trip Account jetzt kaufen!";
-
-"lite version info text" = "Dies ist die Lite-Version von Trip Account.\n\n\n\n";
 
 "weight info" = "Gewichtungen beschreiben zu welchen Teilen der Betrag einer Ausgabe unter den Empfängern aufgeteilt wird. Die Gewichtungen können pro Ausgabe eingestellt werden. Jede Person hat eine voreingestellte Gewichtung, die bei der Zuweisung zu einer Ausgabe verwendet wird.\nBeispiel: Die Aufteilung eines Betrags von 20€ mit Gewichtungen 1:2:1 ist 5€:10€:5€.";
 
