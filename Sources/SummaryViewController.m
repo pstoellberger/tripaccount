@@ -69,8 +69,7 @@
         cell.paid.layer.cornerRadius = 4;
         cell.paid.layer.masksToBounds = YES;
         [UIFactory addGradientToView:cell.paid color1:[UIColor colorWithRed:1 green:0.2 blue:0.2 alpha:1] color2:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]];
-        [UIFactory addShadowToView:cell.paid];
-        cell.paid.alpha = 0.5;
+        cell.paid.alpha = 0.7;
         cell.paidLabel.text = NSLocalizedString(@"PAID", @"red label uppercase");
     }
     
