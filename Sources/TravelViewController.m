@@ -692,11 +692,11 @@
                 } else {
                     [self closeTravel];
                 }
-            } else if (buttonIndex == 3) {
+            } else if (buttonIndex == 2) {
                 
                 [self refreshExchangeRates];
                 
-            } else if (buttonIndex == 4) {
+            } else if (buttonIndex == 3) {
                 
                 [self openRateEditPopup];
             }
