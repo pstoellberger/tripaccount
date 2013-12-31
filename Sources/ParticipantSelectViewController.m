@@ -105,7 +105,7 @@
     cell.imageView.image = [[ImageCache instance] getImage:p.image];    
     
     if ([self.selectedObjects containsObject:managedObject]) {
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.accessoryType = UITableViewCellAccessoryDetailButton;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
