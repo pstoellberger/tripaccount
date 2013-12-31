@@ -30,31 +30,25 @@
     
 }
 
-- (void)recordTransaction:(SKPaymentTransaction *)transaction {
-    if ([transaction.payment.productIdentifier isEqualToString:PURCHASE_ID]) {
-        // save the transaction receipt to disk
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:PURCHASE_ID];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
-
 //
 // called when the transaction was successful
 //
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"Transaction: COMPLETED!");
-    [self recordTransaction:transaction];
-    [self provideContent:transaction.payment.productIdentifier];
+    [self enableProFeaturesWithProductId:transaction.payment.productIdentifier];
     [self finishTransaction:transaction wasSuccessful:YES];
+    
+    [[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase success", @"purchase success") message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"You are welcome", @"welcome message"), nil] autorelease] show];
 }
 
 //
 // called when a transaction has been restored and and successfully completed
 //
+// Purchases können 'restored' werden, nachdem die App neu installiert wurde (via [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];)
+//
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"Transaction: RESTORED!");
-    [self recordTransaction:transaction.originalTransaction];
-    [self provideContent:transaction.originalTransaction.payment.productIdentifier];
+    [self enableProFeaturesWithProductId:transaction.originalTransaction.payment.productIdentifier];
     [self finishTransaction:transaction wasSuccessful:YES];
 }
 
@@ -87,7 +81,7 @@
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 
-- (void)provideContent:(NSString *)productId {
+- (void)enableProFeaturesWithProductId:(NSString *)productId {
     if ([productId isEqualToString:PURCHASE_ID]) {
         // enable the pro features
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:PURCHASE_ID ];

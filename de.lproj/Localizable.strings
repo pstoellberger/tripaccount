@@ -362,3 +362,7 @@
 "Cashier" = "Kassier";
 
 "Purchase error" = "The Kauf konnte nicht durchgeführt werden. :(";
+
+"Purchase success" = "Vielen Dank für deinen Kauf! :)\nDu kannst Trip Account jetzt im vollen Umfang verwenden.";
+
+"You are welcome" = "Gern geschehen";

@@ -356,3 +356,7 @@
 "Cashier" = "Cashier";
 
 "Purchase error" = "The purchase could not be completed. :(";
+
+"Purchase success" = "Thank you for your purchase! :) \nYou can now use Trip Account's full functionality.";
+
+"You are welcome" = "You are welcome";
