@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		832D9DA719D463AE0083ECAB /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 832D9DA519D463AE0083ECAB /* dsym_upload.sh */; };
 		832D9DA819D463AE0083ECAB /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		83F172D019D478BA00F84CE8 /* Paris.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F172CF19D478BA00F84CE8 /* Paris.jpg */; };
+		83F172D219D479FA00F84CE8 /* Paris2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F172D119D479FA00F84CE8 /* Paris2.jpg */; };
 		9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
 		940B41ED13EBF18300902B00 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EC13EBF18300902B00 /* Icon.png */; };
 		940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EF13EBF18B00902B00 /* Icon@2x.png */; };
@@ -546,6 +548,8 @@
 		832D9DA419D463AE0083ECAB /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		832D9DA519D463AE0083ECAB /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
+		83F172CF19D478BA00F84CE8 /* Paris.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paris.jpg; sourceTree = "<group>"; };
+		83F172D119D479FA00F84CE8 /* Paris2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paris2.jpg; sourceTree = "<group>"; };
 		940B41EC13EBF18300902B00 /* Icon.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = Icon.png; sourceTree = "<group>"; };
 		940B41EF13EBF18B00902B00 /* Icon@2x.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		940B41F113EBF39800902B00 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
@@ -1095,6 +1099,9 @@
 		832D9DA019D463AE0083ECAB /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F10764C31483675A00A06809 /* MTStatusBarOverlay */,
+				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
+				F1676D29146334A100EEFF25 /* Appirater */,
 				832D9DA119D463AE0083ECAB /* CrittercismSDK */,
 			);
 			name = Libraries;
@@ -1212,7 +1219,8 @@
 				F1B02AAF152E150A0084513E /* MTStatusBarOverlay.h */,
 				F1B02AB0152E150A0084513E /* MTStatusBarOverlay.m */,
 			);
-			path = MTStatusBarOverlay;
+			name = MTStatusBarOverlay;
+			path = ../../MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 		F10CC9A014080C0400A8DD31 /* sample */ = {
@@ -1495,7 +1503,7 @@
 				F1676D2C14633A4500EEFF25 /* README.md */,
 			);
 			name = Appirater;
-			path = MGTemplateEngine;
+			path = ../../MGTemplateEngine;
 			sourceTree = "<group>";
 		};
 		F17B49E613F17D0900072F90 /* MGTemplateEngine */ = {
@@ -1519,7 +1527,8 @@
 				F17B4A0313F17D0900072F90 /* RegexKitLite.h */,
 				F17B4A0413F17D0900072F90 /* RegexKitLite.m */,
 			);
-			path = MGTemplateEngine;
+			name = MGTemplateEngine;
+			path = ../../MGTemplateEngine;
 			sourceTree = "<group>";
 		};
 		F1A6BD1A13D5CF7200161197 /* en.lproj */ = {
@@ -1670,9 +1679,6 @@
 			isa = PBXGroup;
 			children = (
 				832D9DA019D463AE0083ECAB /* Libraries */,
-				F10764C31483675A00A06809 /* MTStatusBarOverlay */,
-				F1676D29146334A100EEFF25 /* Appirater */,
-				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
 				F1CD783413BA405A00D42AA3 /* Sources */,
 				F14B372D13E68B5F00351641 /* UnitTests */,
 				F1533F1F13D47951008EBE9D /* Data */,
@@ -1722,6 +1728,12 @@
 			isa = PBXGroup;
 			children = (
 				F1B8212B13BE01C000FE329B /* View Helper */,
+				F1EAFCC413D974A700759FB9 /* TravelAdd */,
+				F1B8211D13BDFC9D00FE329B /* TravelEdit */,
+				F11A52101405418600B983B8 /* ParticipantEdit */,
+				F1B8211C13BDFC8700FE329B /* EntryEdit */,
+				94F97EE013E981B200662ADB /* RateEdit */,
+				F1CD78BD13BB8C0900D42AA3 /* Model */,
 				F1CD783D13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.h */,
 				F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */,
 				F1241DA714CAE669000927A7 /* DataInitialiser.h */,
@@ -1736,8 +1748,6 @@
 				F1CE923813DDBEDB009F3B2F /* TravelListViewController.m */,
 				F159EA2B13E0AF3000C2D855 /* InfoViewController.h */,
 				F159EA3013E0AFCA00C2D855 /* InfoViewController.m */,
-				F1EAFCC413D974A700759FB9 /* TravelAdd */,
-				F1B8211D13BDFC9D00FE329B /* TravelEdit */,
 				F1CD78D213BC705C00D42AA3 /* TravelViewController.h */,
 				F1CD78D313BC705C00D42AA3 /* TravelViewController.m */,
 				F1CD78C613BC6A7C00D42AA3 /* ParticipantViewController.h */,
@@ -1754,10 +1764,6 @@
 				F11FB34A13E6B01E00115D12 /* SummarySortViewController.m */,
 				945D26381871EA9800B1ADC2 /* InAppPurchaseManager.h */,
 				945D26391871EA9800B1ADC2 /* InAppPurchaseManager.m */,
-				F11A52101405418600B983B8 /* ParticipantEdit */,
-				F1B8211C13BDFC8700FE329B /* EntryEdit */,
-				94F97EE013E981B200662ADB /* RateEdit */,
-				F1CD78BD13BB8C0900D42AA3 /* Model */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1803,6 +1809,8 @@
 		F1CD78DC13BC764400D42AA3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				83F172D119D479FA00F84CE8 /* Paris2.jpg */,
+				83F172CF19D478BA00F84CE8 /* Paris.jpg */,
 				F1C126C5148D34BF00A61386 /* cell images */,
 				940B41F113EBF39800902B00 /* group.png */,
 				F1D4B22F140CE79B00CD2224 /* group@2x.png */,
@@ -2115,6 +2123,7 @@
 				F15093DB140EB01B009C5AB9 /* flag113.png in Resources */,
 				F15093DC140EB01B009C5AB9 /* flag114.png in Resources */,
 				F15093DD140EB01B009C5AB9 /* flag115.png in Resources */,
+				83F172D219D479FA00F84CE8 /* Paris2.jpg in Resources */,
 				F15093DE140EB01B009C5AB9 /* flag116.png in Resources */,
 				F15093DF140EB01B009C5AB9 /* flag117.png in Resources */,
 				F15093E0140EB01B009C5AB9 /* flag118.png in Resources */,
@@ -2267,6 +2276,7 @@
 				F19C83DE14C2C59B00329308 /* notebook.png in Resources */,
 				F11BBE3F15C42FA20076BF75 /* flag127.png in Resources */,
 				F1C682B31608CC3B00C5715E /* Default-568h@2x.png in Resources */,
+				83F172D019D478BA00F84CE8 /* Paris.jpg in Resources */,
 				F129782C16136D9000ECD818 /* cashier.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2619,6 +2629,7 @@
 				GCC_PREFIX_HEADER = "Supporting Files/TripAccount-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Supporting Files/TripAccount-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CrittercismSDK\"",
@@ -2626,6 +2637,7 @@
 				);
 				PRODUCT_NAME = TripAccount;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2645,6 +2657,7 @@
 				GCC_PREFIX_HEADER = "Supporting Files/TripAccount-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Supporting Files/TripAccount-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CrittercismSDK\"",
@@ -2652,6 +2665,7 @@
 				);
 				PRODUCT_NAME = TripAccount;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

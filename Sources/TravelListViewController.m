@@ -46,11 +46,27 @@
         self.subtitleKey = @"country.nameI18N";
         self.imageKey = @"country.image";
 
+        // background image
+        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Paris2.jpg"]];
+        tempImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [tempImageView setFrame:self.tableView.frame];
+        
+        self.tableView.backgroundView = tempImageView;
+        [tempImageView release];
+        
         self.clearsSelectionOnViewWillAppear = YES;
         
         [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     }
     return self;
+}
+
+// clear cell background on ios >= 7
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
 }
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {

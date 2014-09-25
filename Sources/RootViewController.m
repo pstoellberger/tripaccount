@@ -53,6 +53,7 @@
           
           self.navigationItem.rightBarButtonItem = self.addButton;
           self.navigationItem.leftBarButtonItem = self.editButton;
+          
      }
      return self;
 }

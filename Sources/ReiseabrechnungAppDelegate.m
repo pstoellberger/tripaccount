@@ -52,7 +52,7 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 #endif
     
     [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didFinishLaunchingWithOptions"]];
-    
+
     _purchaseManager = [[InAppPurchaseManager alloc] init];
     
     [self initUserDefaults];
