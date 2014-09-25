@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		832D9DA719D463AE0083ECAB /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 832D9DA519D463AE0083ECAB /* dsym_upload.sh */; };
+		832D9DA819D463AE0083ECAB /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
 		940B41ED13EBF18300902B00 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EC13EBF18300902B00 /* Icon.png */; };
 		940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EF13EBF18B00902B00 /* Icon@2x.png */; };
@@ -125,7 +127,6 @@
 		F1241DA914CAE66B000927A7 /* DataInitialiser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DA814CAE66A000927A7 /* DataInitialiser.m */; };
 		F1241DAD14CBFF66000927A7 /* AmountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1241DAC14CBFF66000927A7 /* AmountEditViewController.m */; };
 		F127299213E813A10095286D /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11FB36613E6E73A00115D12 /* TypeViewController.m */; };
-		F129781316122F7A00ECD818 /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */; };
 		F12978151612304A00ECD818 /* sampleTrip.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1D4B226140CBB7000CD2224 /* sampleTrip.plist */; };
 		F129782316136C0200ECD818 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F129782216136C0100ECD818 /* Travel.m */; };
 		F129782516136C0200ECD818 /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = F129782216136C0100ECD818 /* Travel.m */; };
@@ -495,7 +496,6 @@
 		F1C3986E14604C6D00AB1045 /* AppDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3986D14604C6D00AB1045 /* AppDefaults.m */; };
 		F1C3987714604C6E00AB1045 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3987614604C6E00AB1045 /* Transfer.m */; };
 		F1C682B31608CC3B00C5715E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C682B21608CC3B00C5715E /* Default-568h@2x.png */; };
-		F1C682B51608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */; };
 		F1CADAE4148BAC9600274627 /* ReceiverWeightNotManaged.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAE3148BAC9600274627 /* ReceiverWeightNotManaged.m */; };
 		F1CADAEA148BAED100274627 /* ReceiverWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAE9148BAED100274627 /* ReceiverWeight.m */; };
 		F1CADAF0148BAED300274627 /* ExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CADAEF148BAED200274627 /* ExchangeRate.m */; };
@@ -541,6 +541,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		832D9DA219D463AE0083ECAB /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		832D9DA319D463AE0083ECAB /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		832D9DA419D463AE0083ECAB /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		832D9DA519D463AE0083ECAB /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
 		940B41EC13EBF18300902B00 /* Icon.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = Icon.png; sourceTree = "<group>"; };
 		940B41EF13EBF18B00902B00 /* Icon@2x.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		940B41F113EBF39800902B00 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
@@ -928,35 +933,6 @@
 		F1AA5F81147ACEBD000A2339 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		F1AA5F8D147B1C5B000A2339 /* Model-1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-1.2.xcdatamodel"; sourceTree = "<group>"; };
 		F1AA5F8E147B1C5B000A2339 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		F1B02A8E152DB4F30084513E /* CrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashReporter.h; sourceTree = "<group>"; };
-		F1B02A8F152DB4F30084513E /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		F1B02A90152DB4F30084513E /* CrittercismJSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismJSONKit.h; sourceTree = "<group>"; };
-		F1B02A91152DB4F30084513E /* CrittercismReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismReachability.h; sourceTree = "<group>"; };
-		F1B02A93152DB4F30084513E /* PLCrashAsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashAsync.h; sourceTree = "<group>"; };
-		F1B02A94152DB4F30084513E /* PLCrashAsyncImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashAsyncImage.h; sourceTree = "<group>"; };
-		F1B02A95152DB4F30084513E /* PLCrashAsyncSignalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashAsyncSignalInfo.h; sourceTree = "<group>"; };
-		F1B02A96152DB4F30084513E /* PLCrashFrameWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashFrameWalker.h; sourceTree = "<group>"; };
-		F1B02A97152DB4F30084513E /* PLCrashFrameWalker_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashFrameWalker_arm.h; sourceTree = "<group>"; };
-		F1B02A98152DB4F30084513E /* PLCrashFrameWalker_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashFrameWalker_i386.h; sourceTree = "<group>"; };
-		F1B02A99152DB4F30084513E /* PLCrashFrameWalker_ppc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashFrameWalker_ppc.h; sourceTree = "<group>"; };
-		F1B02A9A152DB4F30084513E /* PLCrashFrameWalker_x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashFrameWalker_x86_64.h; sourceTree = "<group>"; };
-		F1B02A9B152DB4F30084513E /* PLCrashLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashLogWriter.h; sourceTree = "<group>"; };
-		F1B02A9C152DB4F30084513E /* PLCrashLogWriterEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashLogWriterEncoding.h; sourceTree = "<group>"; };
-		F1B02A9D152DB4F30084513E /* PLCrashReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReport.h; sourceTree = "<group>"; };
-		F1B02A9E152DB4F30084513E /* PLCrashReportApplicationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportApplicationInfo.h; sourceTree = "<group>"; };
-		F1B02A9F152DB4F30084513E /* PLCrashReportBinaryImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportBinaryImageInfo.h; sourceTree = "<group>"; };
-		F1B02AA0152DB4F30084513E /* PLCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReporter.h; sourceTree = "<group>"; };
-		F1B02AA1152DB4F30084513E /* PLCrashReportExceptionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportExceptionInfo.h; sourceTree = "<group>"; };
-		F1B02AA2152DB4F30084513E /* PLCrashReportFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportFormatter.h; sourceTree = "<group>"; };
-		F1B02AA3152DB4F30084513E /* PLCrashReportMachineInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportMachineInfo.h; sourceTree = "<group>"; };
-		F1B02AA4152DB4F30084513E /* PLCrashReportProcessInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportProcessInfo.h; sourceTree = "<group>"; };
-		F1B02AA5152DB4F30084513E /* PLCrashReportProcessorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportProcessorInfo.h; sourceTree = "<group>"; };
-		F1B02AA6152DB4F30084513E /* PLCrashReportSignalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportSignalInfo.h; sourceTree = "<group>"; };
-		F1B02AA7152DB4F30084513E /* PLCrashReportSystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportSystemInfo.h; sourceTree = "<group>"; };
-		F1B02AA8152DB4F30084513E /* PLCrashReportTextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportTextFormatter.h; sourceTree = "<group>"; };
-		F1B02AA9152DB4F30084513E /* PLCrashReportThreadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportThreadInfo.h; sourceTree = "<group>"; };
-		F1B02AAA152DB4F30084513E /* PLCrashSignalHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashSignalHandler.h; sourceTree = "<group>"; };
-		F1B02AAB152DB4F30084513E /* PLCrashSysctl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashSysctl.h; sourceTree = "<group>"; };
 		F1B02AAF152E150A0084513E /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		F1B02AB0152E150A0084513E /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		F1B793F91461B0E8007ED072 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
@@ -1000,7 +976,6 @@
 		F1C3987514604C6E00AB1045 /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
 		F1C3987614604C6E00AB1045 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
 		F1C682B21608CC3B00C5715E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercismCrashOnly_v3_3_3.a; sourceTree = "<group>"; };
 		F1CADAE2148BAC9600274627 /* ReceiverWeightNotManaged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverWeightNotManaged.h; sourceTree = "<group>"; };
 		F1CADAE3148BAC9600274627 /* ReceiverWeightNotManaged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverWeightNotManaged.m; sourceTree = "<group>"; };
 		F1CADAE8148BAED000274627 /* ReceiverWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverWeight.h; sourceTree = "<group>"; };
@@ -1088,7 +1063,6 @@
 				F14B372B13E68B5F00351641 /* Foundation.framework in Frameworks */,
 				F14B372C13E68B5F00351641 /* CoreGraphics.framework in Frameworks */,
 				F14B372913E68B5F00351641 /* SenTestingKit.framework in Frameworks */,
-				F129781316122F7A00ECD818 /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1073,7 @@
 				945D26371871DE9200B1ADC2 /* StoreKit.framework in Frameworks */,
 				F17B4A4313F1812000072F90 /* libicucore.dylib in Frameworks */,
 				F17B4A4113F180CB00072F90 /* CoreFoundation.framework in Frameworks */,
+				832D9DA819D463AE0083ECAB /* libCrittercism_v4_3_7.a in Frameworks */,
 				F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */,
 				F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */,
 				F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */,
@@ -1111,13 +1086,33 @@
 				F1CD78F613BC8BB900D42AA3 /* AddressBook.framework in Frameworks */,
 				F1CD78F713BC8BB900D42AA3 /* AddressBookUI.framework in Frameworks */,
 				F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */,
-				F1C682B51608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		832D9DA019D463AE0083ECAB /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				832D9DA119D463AE0083ECAB /* CrittercismSDK */,
+			);
+			name = Libraries;
+			path = Screenies/Libraries;
+			sourceTree = "<group>";
+		};
+		832D9DA119D463AE0083ECAB /* CrittercismSDK */ = {
+			isa = PBXGroup;
+			children = (
+				832D9DA219D463AE0083ECAB /* CRFilter.h */,
+				832D9DA319D463AE0083ECAB /* Crittercism.h */,
+				832D9DA419D463AE0083ECAB /* CrittercismDelegate.h */,
+				832D9DA519D463AE0083ECAB /* dsym_upload.sh */,
+				832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */,
+			);
+			path = CrittercismSDK;
+			sourceTree = "<group>";
+		};
 		948A52491872E42100411930 /* Screenies */ = {
 			isa = PBXGroup;
 			children = (
@@ -1589,43 +1584,6 @@
 			name = Domain;
 			sourceTree = "<group>";
 		};
-		F1B02A8D152DB4F30084513E /* CrittercismSDK */ = {
-			isa = PBXGroup;
-			children = (
-				F1C682B41608CDA200C5715E /* libCrittercismCrashOnly_v3_3_3.a */,
-				F1B02A8E152DB4F30084513E /* CrashReporter.h */,
-				F1B02A8F152DB4F30084513E /* Crittercism.h */,
-				F1B02A90152DB4F30084513E /* CrittercismJSONKit.h */,
-				F1B02A91152DB4F30084513E /* CrittercismReachability.h */,
-				F1B02A93152DB4F30084513E /* PLCrashAsync.h */,
-				F1B02A94152DB4F30084513E /* PLCrashAsyncImage.h */,
-				F1B02A95152DB4F30084513E /* PLCrashAsyncSignalInfo.h */,
-				F1B02A96152DB4F30084513E /* PLCrashFrameWalker.h */,
-				F1B02A97152DB4F30084513E /* PLCrashFrameWalker_arm.h */,
-				F1B02A98152DB4F30084513E /* PLCrashFrameWalker_i386.h */,
-				F1B02A99152DB4F30084513E /* PLCrashFrameWalker_ppc.h */,
-				F1B02A9A152DB4F30084513E /* PLCrashFrameWalker_x86_64.h */,
-				F1B02A9B152DB4F30084513E /* PLCrashLogWriter.h */,
-				F1B02A9C152DB4F30084513E /* PLCrashLogWriterEncoding.h */,
-				F1B02A9D152DB4F30084513E /* PLCrashReport.h */,
-				F1B02A9E152DB4F30084513E /* PLCrashReportApplicationInfo.h */,
-				F1B02A9F152DB4F30084513E /* PLCrashReportBinaryImageInfo.h */,
-				F1B02AA0152DB4F30084513E /* PLCrashReporter.h */,
-				F1B02AA1152DB4F30084513E /* PLCrashReportExceptionInfo.h */,
-				F1B02AA2152DB4F30084513E /* PLCrashReportFormatter.h */,
-				F1B02AA3152DB4F30084513E /* PLCrashReportMachineInfo.h */,
-				F1B02AA4152DB4F30084513E /* PLCrashReportProcessInfo.h */,
-				F1B02AA5152DB4F30084513E /* PLCrashReportProcessorInfo.h */,
-				F1B02AA6152DB4F30084513E /* PLCrashReportSignalInfo.h */,
-				F1B02AA7152DB4F30084513E /* PLCrashReportSystemInfo.h */,
-				F1B02AA8152DB4F30084513E /* PLCrashReportTextFormatter.h */,
-				F1B02AA9152DB4F30084513E /* PLCrashReportThreadInfo.h */,
-				F1B02AAA152DB4F30084513E /* PLCrashSignalHandler.h */,
-				F1B02AAB152DB4F30084513E /* PLCrashSysctl.h */,
-			);
-			path = CrittercismSDK;
-			sourceTree = "<group>";
-		};
 		F1B8211C13BDFC8700FE329B /* EntryEdit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1711,8 +1669,8 @@
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
+				832D9DA019D463AE0083ECAB /* Libraries */,
 				F10764C31483675A00A06809 /* MTStatusBarOverlay */,
-				F1B02A8D152DB4F30084513E /* CrittercismSDK */,
 				F1676D29146334A100EEFF25 /* Appirater */,
 				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
 				F1CD783413BA405A00D42AA3 /* Sources */,
@@ -1905,7 +1863,7 @@
 			name = UnitTests;
 			productName = UnitTests;
 			productReference = F14B372713E68B5F00351641 /* UnitTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		F1CD782913BA405A00D42AA3 /* TripAccount */ = {
 			isa = PBXNativeTarget;
@@ -1933,7 +1891,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					F1CD782913BA405A00D42AA3 = {
-						DevelopmentTeam = AM282N8YUM;
+						DevelopmentTeam = N966XU6FRQ;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -2269,6 +2227,7 @@
 				F150944D140EB01B009C5AB9 /* flag227.png in Resources */,
 				F150944E140EB01B009C5AB9 /* flag228.png in Resources */,
 				F150944F140EB01B009C5AB9 /* flag229.png in Resources */,
+				832D9DA719D463AE0083ECAB /* dsym_upload.sh in Resources */,
 				948A52881872E42100411930 /* trips.png in Resources */,
 				F1509450140EB01B009C5AB9 /* flag230.png in Resources */,
 				F1509451140EB01B009C5AB9 /* flag231.png in Resources */,
@@ -2648,8 +2607,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Celine Juyou (AU8K6UL25V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Celine Juyou (AU8K6UL25V)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2663,6 +2622,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CrittercismSDK\"",
+					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
 				);
 				PRODUCT_NAME = TripAccount;
 				PROVISIONING_PROFILE = "";
@@ -2674,8 +2634,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Celine Juyou (N966XU6FRQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Celine Juyou (N966XU6FRQ)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2688,6 +2648,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CrittercismSDK\"",
+					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
 				);
 				PRODUCT_NAME = TripAccount;
 				PROVISIONING_PROFILE = "";
