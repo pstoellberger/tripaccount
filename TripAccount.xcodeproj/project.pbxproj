@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		832D9DA719D463AE0083ECAB /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 832D9DA519D463AE0083ECAB /* dsym_upload.sh */; };
-		832D9DA819D463AE0083ECAB /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		83F172D019D478BA00F84CE8 /* Paris.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F172CF19D478BA00F84CE8 /* Paris.jpg */; };
+		836A289F19D5AF2E00CA959A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836A289E19D5AF2E00CA959A /* iAd.framework */; };
+		8389410319D4AB170094452B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8389410219D4AB170094452B /* Images.xcassets */; };
+		8389410D19D5A6080094452B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */; };
+		83AE587719D5B80800BCD8C7 /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */; };
+		83AE587919D5B89700BCD8C7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE587819D5B89700BCD8C7 /* StoreKit.framework */; };
 		83F172D219D479FA00F84CE8 /* Paris2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F172D119D479FA00F84CE8 /* Paris2.jpg */; };
+		83FB6FD619F2D8DD009DB071 /* iAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB6FD519F2D8DD009DB071 /* iAdViewController.m */; };
 		9408120913EAD0FC003D7B3E /* RateSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F97EE213E9831C00662ADB /* RateSelectViewController.m */; };
 		940B41ED13EBF18300902B00 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EC13EBF18300902B00 /* Icon.png */; };
 		940B41F013EBF18B00902B00 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41EF13EBF18B00902B00 /* Icon@2x.png */; };
@@ -20,7 +24,6 @@
 		940B41F713EBF39800902B00 /* scales.png in Resources */ = {isa = PBXBuildFile; fileRef = 940B41F213EBF39800902B00 /* scales.png */; };
 		945D26341871BAA700B1ADC2 /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D26331871BAA700B1ADC2 /* DateCell.m */; };
 		945D26351871BAA700B1ADC2 /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D26331871BAA700B1ADC2 /* DateCell.m */; };
-		945D26371871DE9200B1ADC2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 945D26361871DE9200B1ADC2 /* StoreKit.framework */; };
 		945D263A1871EA9800B1ADC2 /* InAppPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D26391871EA9800B1ADC2 /* InAppPurchaseManager.m */; };
 		945D263B1871EA9800B1ADC2 /* InAppPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D26391871EA9800B1ADC2 /* InAppPurchaseManager.m */; };
 		948A52481872E09E00411930 /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB5A7A13D87D69001E3B4A /* SummaryCell.xib */; };
@@ -542,21 +545,44 @@
 		F1F8FAF213DC4A5A009BB4D3 /* NumberEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F8FAF113DC4A5A009BB4D3 /* NumberEditViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8389410619D4AD420094452B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1CD782113BA405A00D42AA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1CD782913BA405A00D42AA3;
+			remoteInfo = TripAccount;
+		};
+		8389410B19D5A52B0094452B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1CD782113BA405A00D42AA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1CD782913BA405A00D42AA3;
+			remoteInfo = TripAccount;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		832D9DA219D463AE0083ECAB /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		832D9DA319D463AE0083ECAB /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		832D9DA419D463AE0083ECAB /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		832D9DA519D463AE0083ECAB /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
-		83F172CF19D478BA00F84CE8 /* Paris.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paris.jpg; sourceTree = "<group>"; };
+		836A289E19D5AF2E00CA959A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		8389410219D4AB170094452B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TripAccount/Images.xcassets; sourceTree = "<group>"; };
+		8389410419D4AB770094452B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8389410519D4ACA90094452B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		8389410819D4CD360094452B /* Trip Account.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Trip Account.entitlements"; path = "TripAccount/Trip Account.entitlements"; sourceTree = "<group>"; };
+		83AE587819D5B89700BCD8C7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		83F172D119D479FA00F84CE8 /* Paris2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paris2.jpg; sourceTree = "<group>"; };
+		83FB6FD419F2D8A1009DB071 /* iAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iAdViewController.h; sourceTree = "<group>"; };
+		83FB6FD519F2D8DD009DB071 /* iAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iAdViewController.m; sourceTree = "<group>"; };
 		940B41EC13EBF18300902B00 /* Icon.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = Icon.png; sourceTree = "<group>"; };
 		940B41EF13EBF18B00902B00 /* Icon@2x.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		940B41F113EBF39800902B00 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
 		940B41F213EBF39800902B00 /* scales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scales.png; sourceTree = "<group>"; };
 		945D26321871BAA700B1ADC2 /* DateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCell.h; sourceTree = "<group>"; };
 		945D26331871BAA700B1ADC2 /* DateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCell.m; sourceTree = "<group>"; };
-		945D26361871DE9200B1ADC2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		945D26381871EA9800B1ADC2 /* InAppPurchaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchaseManager.h; sourceTree = "<group>"; };
 		945D26391871EA9800B1ADC2 /* InAppPurchaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppPurchaseManager.m; sourceTree = "<group>"; };
 		948A524B1872E42100411930 /* entries.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = entries.png; sourceTree = "<group>"; };
@@ -986,7 +1012,7 @@
 		F1CADAE9148BAED100274627 /* ReceiverWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverWeight.m; sourceTree = "<group>"; };
 		F1CADAEE148BAED200274627 /* ExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRate.h; sourceTree = "<group>"; };
 		F1CADAEF148BAED200274627 /* ExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRate.m; sourceTree = "<group>"; };
-		F1CD782A13BA405A00D42AA3 /* TripAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CD782A13BA405A00D42AA3 /* Trip Account.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Account.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CD782E13BA405A00D42AA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1CD783013BA405A00D42AA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1CD783213BA405A00D42AA3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -995,7 +1021,6 @@
 		F1CD783B13BA405B00D42AA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1CD783D13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReiseabrechnungAppDelegate.h; sourceTree = "<group>"; };
 		F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReiseabrechnungAppDelegate.m; sourceTree = "<group>"; };
-		F1CD784113BA405B00D42AA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		F1CD784313BA405B00D42AA3 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		F1CD784413BA405B00D42AA3 /* RootViewController.m */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		F1CD78B813BB8BF200D42AA3 /* TravelEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelEditViewController.h; sourceTree = "<group>"; };
@@ -1052,6 +1077,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8389410D19D5A6080094452B /* libCrittercism_v4_3_7.a in Frameworks */,
 				F122F10A149403B000ECF5BF /* CFNetwork.framework in Frameworks */,
 				F122F10B149403B000ECF5BF /* libicucore.dylib in Frameworks */,
 				F122F10C149403B000ECF5BF /* CoreFoundation.framework in Frameworks */,
@@ -1074,10 +1100,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				945D26371871DE9200B1ADC2 /* StoreKit.framework in Frameworks */,
+				836A289F19D5AF2E00CA959A /* iAd.framework in Frameworks */,
 				F17B4A4313F1812000072F90 /* libicucore.dylib in Frameworks */,
 				F17B4A4113F180CB00072F90 /* CoreFoundation.framework in Frameworks */,
-				832D9DA819D463AE0083ECAB /* libCrittercism_v4_3_7.a in Frameworks */,
+				83AE587719D5B80800BCD8C7 /* libCrittercism_v4_3_7.a in Frameworks */,
 				F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */,
 				F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */,
 				F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */,
@@ -1088,6 +1114,7 @@
 				F1CD783113BA405A00D42AA3 /* Foundation.framework in Frameworks */,
 				F1CD783313BA405A00D42AA3 /* CoreGraphics.framework in Frameworks */,
 				F1CD78F613BC8BB900D42AA3 /* AddressBook.framework in Frameworks */,
+				83AE587919D5B89700BCD8C7 /* StoreKit.framework in Frameworks */,
 				F1CD78F713BC8BB900D42AA3 /* AddressBookUI.framework in Frameworks */,
 				F1B820DB13BCD76C00FE329B /* CoreData.framework in Frameworks */,
 			);
@@ -1678,6 +1705,8 @@
 		F1CD781F13BA405A00D42AA3 = {
 			isa = PBXGroup;
 			children = (
+				8389410819D4CD360094452B /* Trip Account.entitlements */,
+				8389410219D4AB170094452B /* Images.xcassets */,
 				832D9DA019D463AE0083ECAB /* Libraries */,
 				F1CD783413BA405A00D42AA3 /* Sources */,
 				F14B372D13E68B5F00351641 /* UnitTests */,
@@ -1695,7 +1724,7 @@
 		F1CD782B13BA405A00D42AA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1CD782A13BA405A00D42AA3 /* TripAccount.app */,
+				F1CD782A13BA405A00D42AA3 /* Trip Account.app */,
 				F14B372713E68B5F00351641 /* UnitTests.octest */,
 			);
 			name = Products;
@@ -1704,7 +1733,8 @@
 		F1CD782D13BA405A00D42AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				945D26361871DE9200B1ADC2 /* StoreKit.framework */,
+				83AE587819D5B89700BCD8C7 /* StoreKit.framework */,
+				836A289E19D5AF2E00CA959A /* iAd.framework */,
 				F1676D2F14633A8000EEFF25 /* CFNetwork.framework */,
 				F17B4A4213F1811F00072F90 /* libicucore.dylib */,
 				F17B4A4013F180CB00072F90 /* CoreFoundation.framework */,
@@ -1736,6 +1766,8 @@
 				F1CD78BD13BB8C0900D42AA3 /* Model */,
 				F1CD783D13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.h */,
 				F1CD783E13BA405B00D42AA3 /* ReiseabrechnungAppDelegate.m */,
+				83FB6FD419F2D8A1009DB071 /* iAdViewController.h */,
+				83FB6FD519F2D8DD009DB071 /* iAdViewController.m */,
 				F1241DA714CAE669000927A7 /* DataInitialiser.h */,
 				F1241DA814CAE66A000927A7 /* DataInitialiser.m */,
 				F1B8211013BD9F3700FE329B /* CoreDataTableViewController.h */,
@@ -1810,7 +1842,6 @@
 			isa = PBXGroup;
 			children = (
 				83F172D119D479FA00F84CE8 /* Paris2.jpg */,
-				83F172CF19D478BA00F84CE8 /* Paris.jpg */,
 				F1C126C5148D34BF00A61386 /* cell images */,
 				940B41F113EBF39800902B00 /* group.png */,
 				F1D4B22F140CE79B00CD2224 /* group@2x.png */,
@@ -1867,6 +1898,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				8389410719D4AD420094452B /* PBXTargetDependency */,
+				8389410C19D5A52B0094452B /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
@@ -1887,7 +1920,7 @@
 			);
 			name = TripAccount;
 			productName = Reiseabrechnung;
-			productReference = F1CD782A13BA405A00D42AA3 /* TripAccount.app */;
+			productReference = F1CD782A13BA405A00D42AA3 /* Trip Account.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1898,11 +1931,19 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
+					F14B372613E68B5F00351641 = {
+						TestTargetID = F1CD782913BA405A00D42AA3;
+					};
 					F1CD782913BA405A00D42AA3 = {
-						DevelopmentTeam = N966XU6FRQ;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
 							};
 						};
 					};
@@ -1917,6 +1958,8 @@
 				German,
 				English,
 				de,
+				fr,
+				Base,
 			);
 			mainGroup = F1CD781F13BA405A00D42AA3;
 			productRefGroup = F1CD782B13BA405A00D42AA3 /* Products */;
@@ -2266,6 +2309,7 @@
 				F1C126DF148D3D3D00A61386 /* weight.png in Resources */,
 				F1C126E2148EA4E000A61386 /* component_edit.png in Resources */,
 				F1C126E3148EA4E000A61386 /* component_green.png in Resources */,
+				8389410319D4AB170094452B /* Images.xcassets in Resources */,
 				F117FC6C14900B66009205C2 /* calendar.png in Resources */,
 				F117FC6F14900B7D009205C2 /* clock.png in Resources */,
 				F12C09A914B05FCA00D97DEC /* photo_portrait.png in Resources */,
@@ -2276,7 +2320,6 @@
 				F19C83DE14C2C59B00329308 /* notebook.png in Resources */,
 				F11BBE3F15C42FA20076BF75 /* flag127.png in Resources */,
 				F1C682B31608CC3B00C5715E /* Default-568h@2x.png in Resources */,
-				83F172D019D478BA00F84CE8 /* Paris.jpg in Resources */,
 				F129782C16136D9000ECD818 /* cashier.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2412,6 +2455,7 @@
 				F111CB2013D99BE8002C08AC /* TextEditViewController.m in Sources */,
 				F1F8FABE13DC225B009BB4D3 /* ShadowNavigationController.m in Sources */,
 				F1F8FAD313DC2C46009BB4D3 /* FirstLetterCategory.m in Sources */,
+				83FB6FD619F2D8DD009DB071 /* iAdViewController.m in Sources */,
 				F1F8FAEF13DC498F009BB4D3 /* EntryEditViewController.m in Sources */,
 				F1F8FAF213DC4A5A009BB4D3 /* NumberEditViewController.m in Sources */,
 				F1CE923513DD54B5009F3B2F /* EntrySortViewController.m in Sources */,
@@ -2481,6 +2525,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8389410719D4AD420094452B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1CD782913BA405A00D42AA3 /* TripAccount */;
+			targetProxy = 8389410619D4AD420094452B /* PBXContainerItemProxy */;
+		};
+		8389410C19D5A52B0094452B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1CD782913BA405A00D42AA3 /* TripAccount */;
+			targetProxy = 8389410B19D5A52B0094452B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		F14B373013E68B5F00351641 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -2510,7 +2567,7 @@
 		F1CD784013BA405B00D42AA3 /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F1CD784113BA405B00D42AA3 /* en */,
+				8389410519D4ACA90094452B /* Base */,
 			);
 			name = MainWindow.xib;
 			path = ..;
@@ -2520,6 +2577,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F1D4B24B140D394F00CD2224 /* en */,
+				8389410419D4AB770094452B /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2549,8 +2607,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CrittercismSDK\"",
+					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trip Account.app/Trip Account";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -2572,8 +2632,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CrittercismSDK\"",
+					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trip Account.app/Trip Account";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;
 			};
@@ -2593,6 +2655,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "afac0960-8643-41d6-93fd-bee149f217b3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2608,7 +2671,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "afac0960-8643-41d6-93fd-bee149f217b3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "afac0960-8643-41d6-93fd-bee149f217b3";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2617,8 +2681,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Celine Juyou (AU8K6UL25V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Celine Juyou (AU8K6UL25V)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2629,14 +2695,13 @@
 				GCC_PREFIX_HEADER = "Supporting Files/TripAccount-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Supporting Files/TripAccount-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/CrittercismSDK\"",
-					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
+					"\"$(SRCROOT)/Libraries/CrittercismSDK\"",
 				);
-				PRODUCT_NAME = TripAccount;
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = "Trip Account";
+				PROVISIONING_PROFILE = "6ec4c326-3cbe-424d-9ca4-f46c5b82a3d6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2646,8 +2711,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Celine Juyou (N966XU6FRQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Celine Juyou (N966XU6FRQ)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2657,14 +2724,13 @@
 				GCC_PREFIX_HEADER = "Supporting Files/TripAccount-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Supporting Files/TripAccount-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/CrittercismSDK\"",
-					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
+					"\"$(SRCROOT)/Libraries/CrittercismSDK\"",
 				);
-				PRODUCT_NAME = TripAccount;
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = "Trip Account";
+				PROVISIONING_PROFILE = "6ec4c326-3cbe-424d-9ca4-f46c5b82a3d6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

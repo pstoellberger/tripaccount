@@ -22,8 +22,17 @@
 #import "EntryEditViewController.h"
 #import "ParticipantEditViewController.h"
 #import "ParticipantSortViewController.h"
+#import <iAd/iAd.h>
 
-@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate, EntryEditViewControllerDelegate, ParticipantViewControllerEditDelegate, ParticipantEditViewControllerEditDelegate>
+@interface TravelViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, UITabBarControllerDelegate, UIActionSheetDelegate, EntryViewControllerEditDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, RatesSelectViewControllerDelegate, EntryEditViewControllerDelegate, ParticipantViewControllerEditDelegate, ParticipantEditViewControllerEditDelegate, ADInterstitialAdDelegate>{
+    
+    ADInterstitialAd *interstitial;
+    BOOL requestingAd;
+    UIView *_adPlaceholderView;
+}
+
+-(void)showFullScreenAd;
+
 
 @property (nonatomic, retain, readonly) IBOutlet Travel *travel;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;

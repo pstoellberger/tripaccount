@@ -1,0 +1,231 @@
+/* param1 'and' param2 count:2 */
+"%@ and %@" = "%1$@ et %2$@";
+/* built-in type mark */
+"(built-in)" = "(Type standard)";
+"(hidden)" = "(Caché)";
+/* param1 'and' param2 count:>2 */
+", and %@" = " et %@";
+/* help bubble add expenses */
+"help add entries" = "Ajouter de nouvelles éditions ici.";
+/* help bubble add travelers */
+"help add people" = "Ajouter de nouvelles personnes ici.";
+/* controller person add title */
+"Add Person" = "Nouvelle personne";
+/* controller person edit title */
+"Edit Person" = "Modifier";
+/* trip add title */
+"Add Trip" = "Nouveau voyage";
+/* trip edit title */
+"Edit Trip" = "Modifier TripAdvisor";
+/* expense add title */
+"Add Expense" = "Nouvelle édition";
+/* expense edit title */
+"Edit Expense" = "Modifier";
+/* select button add */
+"All" = "Tous";
+/* cell title amount
+ controller title amount */
+"Amount" = "Montant";
+/* alert view can not delete */
+"Can not delete traveler" = "La personne ne peut pas être supprimé";
+/* alert item
+ Cancel */
+"Cancel" = "Abandonner";
+/* close travel action sheet title
+ open travel action sheet title */
+"Choose your action" = "Choisissez votre action";
+/* edit city title */
+"City" = "Ville";
+/* city cell caption */
+"City/State" = "Ville / Localité";
+/* caption of red delete button to clear
+ delete button title clear text cell
+ remove button clear cell */
+"Clear" = "Supprimer";
+/* alert item close trip */
+"Close this trip" = "Voyage complet";
+/* section trip list for closed trips */
+"Closed Trips" = "Voyages terminés";
+/* alert view question to open trip */
+"Closed trips can not be edited. Do you want to open the trip now?" = "Voyages remplis peuvent pas être modifiés. Vous voulez ouvrir le trajet tout de suite?";
+/* country cell caption */
+"Country" = "Pays";
+/* alert item new person */
+"Create new person" = "Créer une nouvelle personne";
+/* currencies cell caption */
+"Currencies" = "Devises";
+/* cell title currency */
+"Currency" = "Monnaie";
+/* cell title date
+ controller title date
+ sort button */
+"Date" = "Date";
+"Currencies used for this trip:" = "Devises utilisés";
+/* cell title description
+ controller title description
+ description cell caption
+ edit description title */
+"Description" = "Description";
+/* when opening travel */
+"Do you want to assign the latest currency exchange rates to this travel?" = "Vous voulez utiliser les taux de change actuels pour ce voyage?";
+/* cell caption mail
+ controller title edit mail */
+"E-Mail" = "Émail";
+/* help bubble currencies enter */
+"help currencies" = "Sélectionnez la devise que vous souhaitez utiliser pour ce voyage.";
+/* tabbar expenses */
+"Expenses" = "Dépense";
+/* mail label */
+"Expenses of trip" = "Dépenses de voyage";
+/* mail subject */
+"Expenses summary report for trip '%@'" = "Sortie comptabilité pour le voyage ' %@ '";
+/* mail subject with no travel name */
+"Expenses summary report for trip to %@" = "Sortie comptabilité pour le voyage à %@";
+/* help bubble last updated toolbar */
+"help rate updated" = "Voici trouver la date de la dernière mise à jour des taux de change. À propos du bouton d'action (ci-dessus), cela peut sont mises à jour.";
+/* alert item address book */
+"From Address Book" = "Dans le carnet d'adresses";
+/* help bubble sample trip */
+"help sample trip" = "Cet exemple voyage, vous pouvez apprendre à connaître l'application.";
+/* alert title edit rate */
+"Manually edit rates" = "Modifier Taux de change";
+/* cell caption name
+ controller title edit name */
+"Name" = "Nom";
+/* alert title answer
+ answer no */
+"No" = "Aucun";
+/* select button none */
+"None" = "Aucun";
+/* alert item
+ alert view ok */
+"OK" = "Dáccord";
+/* alert item open trip */
+"Open this trip" = "Développer ce voyage";
+/* section trip list for open trips */
+"Open Trips" = "Voyages actuels";
+/* red label uppercase */
+"PAID" = "PAYÉ";
+/* cell title payer
+ controller title payer */
+"Payer" = "Payeur";
+/* tabbar people */
+"People" = "Personnes";
+/* sort button */
+"Person" = "Personne";
+/* status bar last updated */
+"Rates last updated at %@" = "Les taux de change sur la dernière aktualisert %@";
+/* cell title receiver */
+"Receiver" = "Récepteur";
+/* controller title receivers */
+"Receivers" = "Récepteur";
+/* alert view title */
+"Refresh rates" = "Mise à jour Taux de change";
+/* red button title clear rate */
+"Reset rate" = "Arrière";
+/* sample trip name */
+"Sample Trip" = "Exemple-voyage";
+/* alert item mail */
+"Send summary e-mail" = "Envoyer facturation électronique";
+/* specify time label */
+"Specify time" = "Régler l'heure de la journée";
+/* tabbar summary */
+"Summary" = "Déclaration";
+/* help bubble bottom text */
+"Tap to dismiss" = "Appuyez sur pour supprimer";
+/* help bubble close travel */
+"help closed travel" = "Ce voyage est complet et ne peut être modifié. Les taux de change pour ce voyage sont maintenant fixés.";
+/* alert no mail addresses */
+"no mail address singular" = "%1$@ n'a pas d'adresse e-mail.";
+"no mail address plural" = "%1$@ n'ont pas d'adresse e-mail.";
+/* help bubble action button */
+"help action" = "Ce bouton permet des actions telles que l'envoi d'e-mails de facturation. Ici aussi, le taux de change peut être fixe ou modifié manuellement.";
+/* alert view explain why can not delete */
+"This traveler has expensens on this trip. Please delete those expenses first." = "Cette personne a alloué dépenses. S'il vous plaît d'abord le supprimer.";
+/* status bar travel closed */
+"Travel closed at %@" = "TripAdvisor achevée le %@";
+/* alert view title */
+"Trip is closed." = "Ce voyage est terminé.";
+/* cell title type
+ sort button */
+"Type" = "Type";
+"Add Type" = "Nouveau Type";
+"Exchange rate" = "Modifier Taux de change";
+/* alert item update rates */
+"Update exchange rates" = "Mise à jour Taux de change";
+/* status text of update toolbar */
+"Updating currency exchange rates..." = "Mise à jour des taux de change ...";
+/* help bubble sort buttons */
+"help sort" = "Ces boutons de trier les questions. Appuyez deux fois va inverser l'ordre de tri.";
+/* help bubble add trip */
+"help add trip" = "Avec ce bouton, vous pouvez ajouter de nouveaux voyages.";
+/* sampe trip Stadt */
+"Vienna" = "Vienne";
+/* alert title */
+"Warning" = "Avertissement";
+/* add person action sheet title */
+"Where is the person?" = "Comment devrait être ajouté à la personne?";
+/* alert title answer
+ answer yes */
+"Yes" = "Oui";
+"plural character" = "";
+/* mail label */
+"how much" = "Combien?";
+/* mail label */
+"to" = "à";
+/* mail label */
+"to whom" = "Qui?";
+/* mail label */
+"total costs" = "Coût total";
+/* mail label */
+"who owes" = "Qui doit?";
+"for" = "pour";
+"owes" = "le doit";
+/* mail label */
+"already paid" = "Déjà payé?";
+"(owes) to" = "";
+"currency can be removed" = "Devises qui sont utilisés pour les frais de ce voyage, ne peuvent pas être supprimés.";
+"versionlabel" = "Version: %@";
+"copyrightLabel" = "© 2013 Martin Maier-Moessner, tous droits réservés.";
+"close" = "Fermer";
+"Donate" = "Donner";
+"Request a feature" = "fonction de choix";
+"Provide Feedback" = "Fournir des commentaires";
+"feedbackLabel" = "Compte TripAdvisor est gratuit! S'il vous plaît soutenir le développement d'un petit don.";
+"Feature Request for Trip Account Version " = "Nouvelle fonctionnalité pour la version voyage compte ";
+"Feature Request" = "Nouvelle fonctionnalité";
+"Feedback for Trip Account Version " = "Commentaires pour compte de voyage Version ";
+"Feedback" = "Réaction";
+"<no type>" = "<Aucun type>";
+"locManager" = "L'emplacement est utilisé pour l'auto-remplissage du pays lors de la création d'une nouvelle vérité.";
+"no network message" = "Aucune connexion à l'Internet";
+"all" = "tous";
+"network error message" = "Erreur réseau";
+"total" = "Total des dépenses";
+"rate this app" = "Donnez note";
+"rateMessage" = "Si vous %@ comme, je vous en serais reconnaissant un examen dans l'App Store. Il ne prend qu'un instant. Merci pour votre soutien!";
+"rate" = "Taux %@";
+"remind me later" = "Rappelez-moi plus tard";
+"no thanks" = "Non merci";
+"Weight" = "Pondération";
+"Default Weight" = "pondération par défaut";
+"Image" = "Photo";
+"Hide" = "Disparaître";
+"Back" = "Arrière";
+"finished" = "Terminé.";
+"Reset Weight" = "Remettre les";
+"lite message" = "Compte TripAdvisor est GRATUIT. Avec un petit don, vous pouvez le développement. Allez-vous faire maintenant?";
+"lite title" = "Don";
+"lite purchase" = "Clair! :)";
+"lite no purchase" = "Plus tard :(";
+"Reset" = "Arrière";
+"image camera" = "Nouvelle séance photo";
+"image iphone" = "Sélectionnez une photo de la bibliothèque";
+"purchase app" = "Compte TripAdvisor acheter maintenant!";
+"weight info" = "Poids pour décrire quelle partie de la quantité de sortie est divisé entre les récepteurs. Les poids peuvent être ajustés par numéro. Chaque personne dispose d'un pré-pondération est utilisé dans l'attribution à une sortie. Exemple: L'allocation d'un montant de 20 € avec des poids 1: 2: 1 5 € 10 € 5 €.";
+"Notes" = "Remarques";
+"Initialising..." = "Initialisation ...";
+"Cashier" = "Trésorier";
+"Purchase error" = "Votre don ne peut être réalisée. :(";
+"Purchase success" = "Merci pour votre don! :) Vous êtes incroyable!";
+"You are welcome" = "Vous êtes les bienvenus";
