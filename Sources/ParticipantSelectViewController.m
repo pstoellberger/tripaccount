@@ -47,7 +47,6 @@
                           target:(id)target 
                           action:(SEL)selector {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init"]];
     
     if (self = [super initInManagedObjectContext:context 
                               withMultiSelection:YES 
@@ -144,7 +143,6 @@
 
 - (void)updateAllSplitAmountsForTableView:(UITableView *)tableView {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"updateAllSplitAmountsForTableView"]];
     
     if (self.entry.amount && [self.entry.amount doubleValue] != 0) {
         
@@ -171,7 +169,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didSelectRowAtIndexPath"]];
     
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
@@ -220,7 +217,6 @@
 
 - (void)selectWeight:(NSNumber *)number {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectWeight"]];
     
     ReceiverWeightNotManaged *recWeight = [self receiverWeightForParticipant:_accessorySelectedParticipant];
     
@@ -267,7 +263,6 @@
 
 - (void)selectAll:(id)sender {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectAll"]];
     
     [super selectAll:sender];
     for (ReceiverWeightNotManaged *recWeight in self.entry.receiverWeights) {
@@ -278,7 +273,6 @@
 
 - (void)selectNone:(id)sender {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectNone"]];
     
     [super selectNone:sender];
     for (ReceiverWeightNotManaged *recWeight in self.entry.receiverWeights) {

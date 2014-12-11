@@ -48,7 +48,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel withParticipant:(Participant *)participant {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: initInManagedObjectContext"];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     
@@ -164,7 +163,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: cellForRowAtIndexPath"];
     
     UITableViewCell *cell = nil;
     
@@ -242,7 +240,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: commitEditingStyle"];
     
     if ([indexPath isEqual:_nameIndexPath]) {
         
@@ -277,7 +274,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: didSelectRowAtIndexPath"];
     
     if ([indexPath isEqual:_nameIndexPath]) {
         
@@ -330,7 +326,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: actionSheet clickedButtonAtIndex"];
     
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         
@@ -390,7 +385,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (void)selectName:(NSString *)newName {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectName"];
     
     if (![newName isEqualToString:self.name]) {
         self.name = newName;
@@ -401,7 +395,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (void)selectEmail:(NSString *)newEmail {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectEmail"];
     
     if (![newEmail isEqualToString:self.email]) {
         self.email = newEmail;
@@ -411,7 +404,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (void)selectWeight:(NSNumber *)newWeight {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectWeight"];
     
     if (![newWeight isEqualToNumber:self.weight]) {
         self.weight = newWeight;
@@ -421,7 +413,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (void)selectNotes:(NSString *)notes {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: selectNotes"];
     
     if (![notes isEqual:self.notes]) {
         self.notes = notes;
@@ -431,7 +422,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (IBAction)done:(UIBarButtonItem *)sender {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: done"];
     
     if (!self.participant) {
         self.participant = [NSEntityDescription insertNewObjectForEntityForName: @"Participant" inManagedObjectContext:_context];
@@ -468,7 +458,6 @@ static NSIndexPath *_cashierIndexPath;
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: cancel"];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissViewControllerAnimated:YES completion:NULL];

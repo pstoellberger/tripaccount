@@ -51,7 +51,6 @@ static NSIndexPath *_notesIndexPath;
 // designated initializer!
 - (id)initWithTravel:(Travel *)travel andEntry:(Entry *)entryManaged {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init travel entry"]];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     
@@ -109,7 +108,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (id)initWithTravel: (Travel *)travel {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init travel"]];
     
     self = [self initWithTravel:travel andEntry:nil];
     
@@ -292,7 +290,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didSelectRowAtIndexPath"]];
     
     if ([indexPath isEqual:_payerIndexPath]) {
         
@@ -415,7 +412,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"commitEditingStyle"]];
     
     if ([indexPath isEqual:_descriptionIndexPath]) {
         
@@ -454,7 +450,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (IBAction)done:(UIBarButtonItem *)sender {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"done"]];
     
     [self.editDelegate addOrEditEntryWithParameters:self.nmEntry andEntry:self.entryManaged];
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -462,7 +457,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
 
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"cancel"]];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -513,7 +507,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectType:(Type *)type {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectType"]];
     
     self.nmEntry.type = type;
     [self checkIfDoneIsPossible];
@@ -524,7 +517,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectPayer:(Participant *)payer {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectPayer"]];
     
     self.nmEntry.payer = payer;
     [_cellsToReloadAndFlash addObject:_payerIndexPath];
@@ -534,7 +526,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectAmount:(NSNumber *)amount {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectAmount"]];
     
     self.nmEntry.amount = amount;
     [_cellsToReloadAndFlash addObject:_amountIndexPath];
@@ -542,15 +533,12 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectText:(NSString *)text {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectText"]];
-    
     self.nmEntry.text = text;
     [_cellsToReloadAndFlash addObject:_descriptionIndexPath];
 }
 
 - (void)selectNotes:(NSString *)notes {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectNotes"]];
     
     self.nmEntry.notes = notes;
     [_cellsToReloadAndFlash addObject:_notesIndexPath];
@@ -558,7 +546,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectDate:(NSDate *)date {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectDate"]];
     
     self.nmEntry.date = date;
     [_cellsToReloadAndFlash addObject:_dateIndexPath];
@@ -566,7 +553,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectCurrency:(Currency *)currency {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectCurrency"]];
     self.nmEntry.currency = currency;
     
     if (self.nmEntry.amount) {
@@ -581,7 +567,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectReceivers:(NSArray *)receiverWeights {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectReceivers"]];
     
     [_cellsToReloadAndFlash addObject:_receiverIndexPath];
     

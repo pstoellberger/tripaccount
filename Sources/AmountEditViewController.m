@@ -149,7 +149,6 @@
     
     [super done];
     
-    [Crittercism leaveBreadcrumb:@"NumberEditViewController: done"];
     
     if ([self.target respondsToSelector:_selectorCurrency]) {
         [self.target performSelector:_selectorCurrency withObject:self.currency];

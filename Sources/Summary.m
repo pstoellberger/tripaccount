@@ -82,8 +82,7 @@
 
 + (void)updateSummaryOfTravel:(Travel *)travel eliminateCircularDebts:(BOOL)performEliminateCircularDebts applyCashierOption:(BOOL)applyCashierOption {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"updateSummaryOrTravel"]];
-        
+    
     Summary *summary = [Summary createSummary:travel eliminateCircularDebts:performEliminateCircularDebts applyCashierOption:applyCashierOption];
     NSMutableDictionary *dic = summary.accounts;
     
@@ -258,7 +257,6 @@
 
 - (void) eliminateCircularDebts:(NSMutableDictionary *)arrayOfParticipantKeys {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"eliminateCircularDebts"]];
     
     Participant *startParticipant = nil;
     NSMutableDictionary *knoten = [NSMutableDictionary dictionaryWithCapacity:[arrayOfParticipantKeys count]];
@@ -356,7 +354,6 @@
 
 - (void) applyCashierOption:(Participant *)cashier withParticipants:(NSSet *)participants {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"applyCashierOption"]];
     
     NSMutableDictionary *clearingService = [NSMutableDictionary dictionary];
     for (ParticipantKey* key in [self.accounts keyEnumerator]) {

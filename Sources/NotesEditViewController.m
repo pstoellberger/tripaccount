@@ -22,7 +22,6 @@
 
 - (id)initWithText:(NSString *)text target:(id)target selector:(SEL)selector {
     
-    [Crittercism leaveBreadcrumb:@"NotesEditViewController: init"];
     
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         
@@ -48,7 +47,6 @@
 
 - (void)done {
     
-    [Crittercism leaveBreadcrumb:@"NotesEditViewController: done"];
     
     if ([_target respondsToSelector:_selector]) {
         [_target performSelector:_selector withObject:[_textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
@@ -59,7 +57,6 @@
 
 - (void)cancel {
     
-    [Crittercism leaveBreadcrumb:@"NotesEditViewController: cancel"];
     
     [[self navigationController] popViewControllerAnimated:YES];
 }

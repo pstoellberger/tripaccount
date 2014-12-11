@@ -27,7 +27,6 @@
 
 - (id)initWithNumber:(NSNumber *)startNumber withDecimals:(int)decimals andNamedImage:(NSString *)namedImage description:(NSString *)description target:(id)target selector:(SEL)selector {
     
-    [Crittercism leaveBreadcrumb:@"NumberEditViewController: init"];
     
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         
@@ -75,7 +74,6 @@
 
 - (void)done {
     
-    [Crittercism leaveBreadcrumb:@"NumberEditViewController: done"];
     
     _donePressed = YES;
     
@@ -90,7 +88,6 @@
     
     _donePressed = YES;
     
-    [Crittercism leaveBreadcrumb:@"NumberEditViewController: cancel"];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

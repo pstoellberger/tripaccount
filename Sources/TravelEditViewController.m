@@ -49,7 +49,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *)context withTravel:(Travel *)travel {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: init"];
     
     self = [super initWithStyle:UITableViewStyleGrouped];
     
@@ -239,8 +238,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: commitEditingStyle"];
-    
     if ([indexPath isEqual:_cityIndexPath]) {
         
         self.city = @"";
@@ -269,7 +266,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: didSelectRowAtIndexPath"];
     
     _autoFillCanBeDone = NO;
     
@@ -351,7 +347,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectCurrencies:(NSArray *)newCurrencies {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectCurrencies"];
     
     NSMutableSet *addCurrArray = [NSMutableSet set];
     for (Entry *entry in self.travel.entries) {
@@ -379,7 +374,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectCountry:(Country *)newCountry {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectCountry"];
     
     if (![newCountry isEqual:self.country]) {
         
@@ -419,7 +413,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectName:(NSString *)newName {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectName"];
     
     if (![newName isEqualToString:self.name]) {
         self.name = newName;
@@ -450,7 +443,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectNotes:(NSString *)notes {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectNotes"];
     
     if (![notes isEqualToString:self.notes]) {
         self.notes = notes;
@@ -461,7 +453,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (void)selectCity:(NSString *)newCity {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: selectCity"];
     
     if (![newCity isEqualToString:self.city]) {
         
@@ -475,7 +466,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (IBAction)done:(UIBarButtonItem *)sender {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: done"];
     
     BOOL newTravel = !self.travel;
     
@@ -572,7 +562,6 @@ static NSIndexPath *_notesIndexPath;
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     
-    [Crittercism leaveBreadcrumb:@"TravelEditViewController: cancel"];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissViewControllerAnimated:YES completion:NULL];

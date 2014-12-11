@@ -11,7 +11,6 @@
 #import "ExchangeRate.h"
 #import "ReiseabrechnungAppDelegate.h"
 #import "MTStatusBarOverlay.h"
-#import "Crittercism.h"
 
 @interface CurrencyRefresh ()
 
@@ -57,7 +56,6 @@
 
 - (BOOL)refreshCurrencies {
     
-    [Crittercism leaveBreadcrumb:@"CurrencyRefresh: refreshCurrencies"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSDate date] forKey:[CurrencyRefresh lastUpdateTryKey]];

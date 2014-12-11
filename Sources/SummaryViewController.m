@@ -23,7 +23,6 @@
 
 - (id)initWithTravel:(Travel *) travel {
     
-    [Crittercism leaveBreadcrumb:@"SummaryViewController: init"];
 
     if (self = [super initWithStyle:UITableViewStylePlain]) {
     
@@ -112,7 +111,6 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    [Crittercism leaveBreadcrumb:@"SummaryViewController: managedObjectSelected"];
    
     Transfer *transfer = (Transfer *)managedObject;
     
@@ -153,7 +151,6 @@
 
 - (void)recalculateSummary {
     
-    [Crittercism leaveBreadcrumb:@"SummaryViewController: recalculateSummary"];
 
     if ([self.travel isOpen]) {
         

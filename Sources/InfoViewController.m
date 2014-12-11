@@ -24,7 +24,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     
-    [Crittercism leaveBreadcrumb:@"InfoViewController: init"];
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -84,7 +83,6 @@
 
 - (IBAction)cancel {
     
-    [Crittercism leaveBreadcrumb:@"InfoViewController: cancel"];
     
     if (_target && _action && [_target respondsToSelector:_action]) {
         [_target performSelector:_action];

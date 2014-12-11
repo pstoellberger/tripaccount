@@ -20,7 +20,6 @@
 
 - (id)initWithTravel:(Travel *)travel {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: init"];
     
     if (self = [super init]) {
         self.travel = travel;
@@ -46,7 +45,6 @@
 
 - (void)updateRateLabel:(BOOL)animate; {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: updateRateLabel"];
     
     float animationDuration = 0.5;
     if (!animate) {
@@ -111,7 +109,6 @@
 
 - (void)loadView {
     
-    [Crittercism leaveBreadcrumb:@"SummarySortViewController: loadView"];
     
     [super loadView];
     

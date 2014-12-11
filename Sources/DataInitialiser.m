@@ -7,7 +7,6 @@
 //
 
 #import "DataInitialiser.h"
-#import "Crittercism.h"
 
 @interface DataInitialiser ()
 - (void)fixUsDollar;
@@ -29,7 +28,6 @@
 
 - (void)performDataInitialisations:(UIWindow *)window inContext:(NSManagedObjectContext *)context withBundle:(NSBundle *)bundle {
 
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: performDataInitialisations start"];
 
     _context = [context retain];
 
@@ -45,13 +43,11 @@
     
     [self upgradeFromVersion1];
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: performDataInitialisations end"];
     
 }
 
 - (void)fixUsDollar {
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: fixUsDollar"];
     
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
@@ -67,7 +63,6 @@
 
 - (void)fixHongKongDollar {
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: fixHongKongDollar"];
     
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
@@ -83,7 +78,6 @@
 
 - (void)fixGibPfund {
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: fixGibPfund"];
     
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Currency" inManagedObjectContext: _context];
@@ -100,7 +94,6 @@
 
 - (void)initializeStartDatabase:(NSBundle *)bundle {
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: initializeStartDatabase start"];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"travelInitialised"];
@@ -273,7 +266,6 @@
         [ReiseabrechnungAppDelegate saveContext:_context];
     }
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: initializeStartDatabase initTypes"];
     
     NSFetchRequest *reqType = [[NSFetchRequest alloc] init];
     reqType.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext: _context];
@@ -351,7 +343,6 @@
 
 - (void)initializeSampleTrip {
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: initializeSampleTrip"];
     
     if (![[ReiseabrechnungAppDelegate defaultsObject:_context].sampleTravelCreated isEqual:[NSNumber numberWithInt:1]]) {
         
@@ -474,7 +465,6 @@
 
 - (void)upgradeFromVersion1 {
     
-    [Crittercism leaveBreadcrumb:@"DataInitialiser: upgradeFromVersion1"];
     
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
     req.entity = [NSEntityDescription entityForName:@"Travel" inManagedObjectContext: _context];

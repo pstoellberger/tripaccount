@@ -66,7 +66,6 @@
                           action:(SEL)selector {
     
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init"]];
     
     if (self = [super initWithStyle:style]) {
         
@@ -108,7 +107,6 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"managedObjectSelected"]];
     
     if (!self.multiSelectionAllowed) {
         [self.selectedObjects removeAllObjects];
@@ -144,7 +142,6 @@
 
 - (void)updateSegmentedControl {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"updateSegmentedControl"]];
     
     if (_segControl) {
         if ([self.selectedObjects count] == [self.fetchedResultsController.fetchedObjects count]) {
@@ -158,14 +155,12 @@
 }
 
 - (void)cancel {
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"cancel"]];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)done {
 
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"done"]];
     
     if ([_target respondsToSelector:_selector]) {
         if (!self.multiSelectionAllowed) {
@@ -190,7 +185,6 @@
 
 - (UIView *)createTableHeaderSubView {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"createTableHeaderSubView"]];
     
     if (self.allNoneButtons) {
         NSString *selectAllButton = NSLocalizedString(@"All", @"select button add");
@@ -243,8 +237,6 @@
 
 - (void)selectAll:(id)sender {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectAll"]];
-    
     NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
     for (id obj in self.fetchedResultsController.fetchedObjects) {
         if (![self.selectedObjects containsObject:obj]) {
@@ -266,7 +258,6 @@
 
 - (void)selectNone:(id)sender {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectNone"]];
     
     NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
     for (id obj in self.fetchedResultsController.fetchedObjects) {

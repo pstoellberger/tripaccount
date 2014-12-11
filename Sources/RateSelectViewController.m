@@ -22,7 +22,6 @@
 
 - (id)initWithTravel:(Travel *)travel {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"init"]];
     
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
     fetchRequest.entity = [NSEntityDescription entityForName:@"ExchangeRate" inManagedObjectContext:[travel managedObjectContext]];
@@ -80,7 +79,6 @@
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"deleteManagedObject"]];
     
     ExchangeRate *rate = (ExchangeRate *)managedObject;
     [self.travel addRatesObject:rate.counterCurrency.defaultRate];
@@ -101,7 +99,6 @@
 
 - (void)doneWithEditing {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"doneWithEditing"]];
     
     [self.closeDelegate willDisappearWithChanges];
     
@@ -110,7 +107,6 @@
 
 - (void)selectRate:(ExchangeRate *)rate {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectRate"]];
     
     NumberEditViewController *controller = [[NumberEditViewController alloc] initWithNumber:rate.rate withDecimals:4 andNamedImage:@"wallet_open.png" description:nil target:self selector:@selector(selectNewRateValue:)];
     self.rateToEdit = rate;
@@ -121,7 +117,6 @@
 
 - (void)selectNewRateValue:(NSNumber *)newRateValue {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"selectNewRateValue"]];
     
     if ([self.rateToEdit.edited intValue] != 1) {
         // create copy of rate
@@ -147,7 +142,6 @@
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didShowViewController"]];
     
     if (viewController == self) {
         

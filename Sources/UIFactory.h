@@ -10,7 +10,6 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import "HelpView.h"
-#import "Crittercism.h"
 
 #define NAVIGATIONBAR_HEIGHT 45
 #define TABBAR_HEIGHT 50

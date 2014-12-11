@@ -31,7 +31,6 @@
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *) context {
      
-     [Crittercism leaveBreadcrumb:@"RootViewController: init"];
      
      if (self = [super init]) {
           
@@ -89,7 +88,6 @@
 
 - (void)openTravelEditViewController {
      
-     [Crittercism leaveBreadcrumb:@"RootViewController: openTravelEditViewController"];
      
      TravelEditViewController *detailViewController = [[TravelEditViewController alloc] initInManagedObjectContext:self.managedObjectContext];
      detailViewController.editDelegate = self;
@@ -104,7 +102,6 @@
 
 - (void)travelEditFinished:(Travel *)travel wasSaved:(BOOL)wasSaved {
      
-     [Crittercism leaveBreadcrumb:@"RootViewController: travelEditFinished"];
      
      [self.tableViewController.tableView deselectRowAtIndexPath:[self.tableViewController.tableView indexPathForSelectedRow] animated:YES];
      
@@ -115,7 +112,6 @@
 
 - (void)openInfoPopup {
      
-     [Crittercism leaveBreadcrumb:@"RootViewController: openInfoPopup"];
      
      self.infoButton.hidden = YES;
      
@@ -138,7 +134,6 @@
 
 - (void)closeInfoPopup {
      
-     [Crittercism leaveBreadcrumb:@"RootViewController: closeInfoPopup"];
      
      self.infoButton.hidden = NO;
 

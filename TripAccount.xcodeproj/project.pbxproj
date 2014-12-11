@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		832D9DA719D463AE0083ECAB /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 832D9DA519D463AE0083ECAB /* dsym_upload.sh */; };
 		836A289F19D5AF2E00CA959A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836A289E19D5AF2E00CA959A /* iAd.framework */; };
 		8389410319D4AB170094452B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8389410219D4AB170094452B /* Images.xcassets */; };
-		8389410D19D5A6080094452B /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */; };
-		83AE587719D5B80800BCD8C7 /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */; };
 		83AE587919D5B89700BCD8C7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE587819D5B89700BCD8C7 /* StoreKit.framework */; };
 		83F172D219D479FA00F84CE8 /* Paris2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F172D119D479FA00F84CE8 /* Paris2.jpg */; };
 		83FB6FD619F2D8DD009DB071 /* iAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB6FD519F2D8DD009DB071 /* iAdViewController.m */; };
@@ -564,10 +561,6 @@
 
 /* Begin PBXFileReference section */
 		832D9DA219D463AE0083ECAB /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
-		832D9DA319D463AE0083ECAB /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		832D9DA419D463AE0083ECAB /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
-		832D9DA519D463AE0083ECAB /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
-		832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
 		836A289E19D5AF2E00CA959A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8389410219D4AB170094452B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TripAccount/Images.xcassets; sourceTree = "<group>"; };
 		8389410419D4AB770094452B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1077,7 +1070,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8389410D19D5A6080094452B /* libCrittercism_v4_3_7.a in Frameworks */,
 				F122F10A149403B000ECF5BF /* CFNetwork.framework in Frameworks */,
 				F122F10B149403B000ECF5BF /* libicucore.dylib in Frameworks */,
 				F122F10C149403B000ECF5BF /* CoreFoundation.framework in Frameworks */,
@@ -1103,7 +1095,6 @@
 				836A289F19D5AF2E00CA959A /* iAd.framework in Frameworks */,
 				F17B4A4313F1812000072F90 /* libicucore.dylib in Frameworks */,
 				F17B4A4113F180CB00072F90 /* CoreFoundation.framework in Frameworks */,
-				83AE587719D5B80800BCD8C7 /* libCrittercism_v4_3_7.a in Frameworks */,
 				F17B44B313F01D7000072F90 /* SystemConfiguration.framework in Frameworks */,
 				F159EA4013E19B0F00C2D855 /* MessageUI.framework in Frameworks */,
 				F1F8FAB813DC1F8D009BB4D3 /* QuartzCore.framework in Frameworks */,
@@ -1129,22 +1120,9 @@
 				F10764C31483675A00A06809 /* MTStatusBarOverlay */,
 				F17B49E613F17D0900072F90 /* MGTemplateEngine */,
 				F1676D29146334A100EEFF25 /* Appirater */,
-				832D9DA119D463AE0083ECAB /* CrittercismSDK */,
 			);
 			name = Libraries;
 			path = Screenies/Libraries;
-			sourceTree = "<group>";
-		};
-		832D9DA119D463AE0083ECAB /* CrittercismSDK */ = {
-			isa = PBXGroup;
-			children = (
-				832D9DA219D463AE0083ECAB /* CRFilter.h */,
-				832D9DA319D463AE0083ECAB /* Crittercism.h */,
-				832D9DA419D463AE0083ECAB /* CrittercismDelegate.h */,
-				832D9DA519D463AE0083ECAB /* dsym_upload.sh */,
-				832D9DA619D463AE0083ECAB /* libCrittercism_v4_3_7.a */,
-			);
-			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
 		948A52491872E42100411930 /* Screenies */ = {
@@ -2279,7 +2257,6 @@
 				F150944D140EB01B009C5AB9 /* flag227.png in Resources */,
 				F150944E140EB01B009C5AB9 /* flag228.png in Resources */,
 				F150944F140EB01B009C5AB9 /* flag229.png in Resources */,
-				832D9DA719D463AE0083ECAB /* dsym_upload.sh in Resources */,
 				948A52881872E42100411930 /* trips.png in Resources */,
 				F1509450140EB01B009C5AB9 /* flag230.png in Resources */,
 				F1509451140EB01B009C5AB9 /* flag231.png in Resources */,
@@ -2606,8 +2583,6 @@
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/CrittercismSDK\"",
-					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trip Account.app/Trip Account";
@@ -2631,8 +2606,6 @@
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/CrittercismSDK\"",
-					"$(PROJECT_DIR)/Screenies/Libraries/CrittercismSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trip Account.app/Trip Account";
@@ -2698,7 +2671,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = "Trip Account";
 				PROVISIONING_PROFILE = "6ec4c326-3cbe-424d-9ca4-f46c5b82a3d6";
@@ -2727,7 +2699,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = "Trip Account";
 				PROVISIONING_PROFILE = "6ec4c326-3cbe-424d-9ca4-f46c5b82a3d6";

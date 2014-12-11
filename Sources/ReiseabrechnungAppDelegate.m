@@ -19,7 +19,6 @@
 #import "City.h"
 #import "Summary.h"
 #import "Appirater.h"
-#import "Crittercism.h"
 #import "MTStatusBarOverlay.h"
 #import "ReceiverWeight.h"
 #import "Participant.h"
@@ -45,13 +44,6 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOption {
     
     
-#if TARGET_IPHONE_SIMULATOR
-    NSLog(@"Crittercism disabled in Simulator.");
-#else
-    [Crittercism enableWithAppID: @"4ec2ddd83f5b31291100000e"];
-#endif
-    
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"didFinishLaunchingWithOptions"]];
 
     _purchaseManager = [[InAppPurchaseManager alloc] init];
     
@@ -74,9 +66,7 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
     self.statusbarOverlay.delegate = self;
 
     [actView startAnimating];
-    
-    [Crittercism leaveBreadcrumb:[NSString stringWithFormat:@"%@: %@ ", self.class, @"ActivityIndicator start animate"]];
-    
+        
     dispatch_queue_t updateQueue = dispatch_queue_create("InitQ", NULL);
     
     dispatch_async(updateQueue, ^{
@@ -217,8 +207,6 @@ NSString *const ITUNES_STORE_RATE_LINK = @"itms-apps://ax.itunes.apple.com/WebOb
 
 - (void)refreshCurrencyRatesIfOutDated {
     
-    [Crittercism leaveBreadcrumb:@"ReiseabrechungAppDelegate: refreshCurrencyRatesIfOutDated"];
-
     dispatch_queue_t updateQueue = dispatch_queue_create("UpdateQueue", NULL);
     
     dispatch_async(updateQueue, ^{

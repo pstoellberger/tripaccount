@@ -19,7 +19,6 @@
 
 - (id)initInManagedObjectContext:(NSManagedObjectContext *)context withMultiSelection:(BOOL)multiSelection withSelectedObjects:(NSArray *)selectedObjects target:(id)target action:(SEL)selector {
     
-    [Crittercism leaveBreadcrumb:@"TypeViewController: init"];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     request.entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:context];
@@ -50,7 +49,6 @@
 
 - (void)openAddPopup {
     
-    [Crittercism leaveBreadcrumb:@"TypeViewController: openAddPopup"];
     
     TextEditViewController *tevc = [[TextEditViewController alloc] initWithText:@"" target:self selector:@selector(addType:)];
     tevc.title = NSLocalizedString(@"Add Type", @"title new type");
@@ -60,7 +58,6 @@
 
 - (void)editType:(Type *)type {
     
-    [Crittercism leaveBreadcrumb:@"TypeViewController: editType"];
     
     _editedType = type;
     
@@ -71,7 +68,6 @@
 
 - (void)updateType:(NSString *)typeName {
     
-    [Crittercism leaveBreadcrumb:@"TypeViewController: updateType"];
 
     if (_editedType) {
         
@@ -88,7 +84,6 @@
 
 - (void)addType:(NSString *)typeName {
     
-    [Crittercism leaveBreadcrumb:@"TypeViewController: addType"];
     
     [self.tableView beginUpdates];
     
@@ -104,7 +99,6 @@
 
 - (void)toggleEditing {
         
-    [Crittercism leaveBreadcrumb:@"TypeViewController: toggleEditing"];
     
     NSFetchedResultsController *resultsController = [self fetchedResultsControllerForTableView:self.tableView];
     
@@ -190,7 +184,6 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject {
     
-    [Crittercism leaveBreadcrumb:@"TypeViewController: managedObjectSelected"];
     
     if (!self.tableView.editing) {
         
@@ -218,7 +211,6 @@
 
 - (void)deleteManagedObject:(NSManagedObject *)managedObject {
     
-    [Crittercism leaveBreadcrumb:@"TypeViewController: deleteManagedObject"];
     
     Type *type = (Type *)managedObject;
    
@@ -238,7 +230,6 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    [Crittercism leaveBreadcrumb:@"TypeViewController: commitEditingStyle"];
     
     Type *type = (Type *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     
