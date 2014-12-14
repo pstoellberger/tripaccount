@@ -584,7 +584,7 @@ static NSIndexPath *_notesIndexPath;
     
     if (_autoFillCanBeDone) {
         
-        int cellsToFlash = [_cellsToReloadAndFlash count];
+        int cellsToFlash = (int)[_cellsToReloadAndFlash count];
         
         [self selectCountry:country];
         

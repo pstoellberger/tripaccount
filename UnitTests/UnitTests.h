@@ -6,12 +6,12 @@
 //  Copyright 2011 Martin Maier. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 #import "Currency.h"
 
-@interface UnitTests : SenTestCase  {
+@interface UnitTests : XCTestCase  {
     NSManagedObjectModel *model;
     NSPersistentStoreCoordinator *coordinator;
     NSManagedObjectContext *context;

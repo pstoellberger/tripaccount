@@ -286,7 +286,7 @@
 		}
 	} else {
 		// Try iterative checking for array indices.
-		int numKeys = [dotBits count];
+		int numKeys = (int)[dotBits count];
 		if (numKeys > 1) { // otherwise no point in checking
 			NSObject *thisParent = currObj;
 			NSString *thisKey = nil;
@@ -411,7 +411,7 @@
 	_outputDisabledCount = 0;
 	[templateContents release];
 	templateContents = [templateString retain];
-	_templateLength = [templateString length];
+	_templateLength = (int)[templateString length];
 	[_templateVariables release];
 	_templateVariables = [variables deepMutableCopy];
 	remainingRange = NSMakeRange(0, [templateString length]);
@@ -618,7 +618,7 @@ but current block was started by \"%@\" marker",
 			}
 			
 			// Check to see if there are open blocks left over.
-			int openBlocks = [_openBlocksStack count];
+			int openBlocks = (int)[_openBlocksStack count];
 			if (openBlocks > 0) {
 				NSString *errMsg = [NSString stringWithFormat:@"Finished processing template, but %d %@ left open (%@).", 
 									openBlocks, 

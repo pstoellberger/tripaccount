@@ -42,7 +42,7 @@
 }
 
 - (void)sortTable:(UISegmentedControl *)sender {
-    [self.detailViewController sortTable:self.segControl.selectedSegmentIndex desc:_sortOrderDesc];
+    [self.detailViewController sortTable:(int)self.segControl.selectedSegmentIndex desc:_sortOrderDesc];
 }
 
 - (void)toggleSortOrder:(UIGestureRecognizer *)gr {
@@ -60,7 +60,7 @@
     if (itemCount == 0) {
         self.tabBarItem.badgeValue = nil;
     } else {
-        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", itemCount];
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu", itemCount];
     }   
 }
 

@@ -40,7 +40,7 @@
     if (itemCount == 0) {
         self.tabBarItem.badgeValue = nil;
     } else {
-        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", itemCount];
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu", (unsigned long)itemCount];
     }   
 }
 

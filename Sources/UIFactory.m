@@ -76,7 +76,7 @@ static NSDateFormatter *formatter = nil;
     int eg=0;
     for (id seg in [segControl subviews]) {
         
-        int gg=segControl.selectedSegmentIndex;
+        int gg= (int)segControl.selectedSegmentIndex;
         if(gg==2)
             gg=0;
         else if(gg==0)

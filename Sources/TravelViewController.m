@@ -767,7 +767,7 @@
     
     [self updateStateOfNavigationController:viewController];
     
-    self.travel.selectedTab = [NSNumber numberWithInt:[tabBarController.viewControllers indexOfObject:viewController]];
+    self.travel.selectedTab = [tabBarController.viewControllers indexOfObject:viewController];
     [ReiseabrechnungAppDelegate saveContext:[self.travel managedObjectContext]];
     
     if (viewController == self.entrySortViewController) {

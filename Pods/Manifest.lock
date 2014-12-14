@@ -1,0 +1,13 @@
+PODS:
+  - Appirater (2.0.4)
+  - MTStatusBarOverlay (0.9.1)
+
+DEPENDENCIES:
+  - Appirater
+  - MTStatusBarOverlay (~> 0.9)
+
+SPEC CHECKSUMS:
+  Appirater: cbdb7f305562cfde585300bfff86da01ae559deb
+  MTStatusBarOverlay: f1fef7143ed3e9ce3d2c6ee3f297079e5cab905f
+
+COCOAPODS: 0.35.0

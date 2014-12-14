@@ -17,12 +17,7 @@
 - (void)locationAquired:(Country *) country city:(NSString *)city;
 @end
 
-@interface Locator : NSObject <CLLocationManagerDelegate, MKReverseGeocoderDelegate> {
-    MKReverseGeocoder *_geocoder;
-    BOOL alreadyProcessed;
-    int geoCoderRetries;
-    id _locale;
-}
+@interface Locator : NSObject <CLLocationManagerDelegate> 
 
 @property (nonatomic, retain) CLLocationManager *locManager;
 @property (nonatomic, retain) Reachability *reachability;

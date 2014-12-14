@@ -96,7 +96,7 @@
         
         //get response   
         NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-        NSLog(@"Response Code: %d", [response statusCode]);
+        NSLog(@"Response Code: %ld", (long)[response statusCode]);
         
         int ratesUpdated = 0;
         

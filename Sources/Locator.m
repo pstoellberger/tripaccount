@@ -9,7 +9,12 @@
 #import "Reachability.h"
 #import "Locator.h"
 
-@interface Locator () 
+@interface Locator ()
+
+@property BOOL alreadyProcessed;
+@property int geoCoderRetries;
+@property id locale;
+@property (nonatomic, strong) CLGeocoder *geocoder;
 - (void)performOfflineLocalisation:(CLLocation *)newLocation;
 - (void)startReverseGeoCoding;
 @end
@@ -27,10 +32,10 @@
         
         self.context = context;
         
-        alreadyProcessed = NO;
-        geoCoderRetries = 0;
+        self.alreadyProcessed = NO;
+        self.geoCoderRetries = 0;
         
-        _locale = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+        self.locale = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
         
         // init location manager
         self.locManager = [[[CLLocationManager alloc] init] autorelease];
@@ -52,8 +57,8 @@
 
 - (void)startLocating {
     
-    geoCoderRetries = 0;
-    alreadyProcessed = NO;
+    self.geoCoderRetries = 0;
+    self.alreadyProcessed = NO;
     self.lastKnowLocation = nil;
     
     [self.locManager startUpdatingLocation];
@@ -64,30 +69,76 @@
     [self.locManager stopUpdatingLocation];
 }
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
-	NSLog(@"Reverse geocoder error: %@", [error description]);
-    geoCoderRetries++;
-    
-    [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
-    
-    if (geoCoderRetries < 3) {
-        [self startReverseGeoCoding];
-    } else {
-        [self performOfflineLocalisation:self.lastKnowLocation];
-    }
-}
+//- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
+//	NSLog(@"Reverse geocoder error: %@", [error description]);
+//    self.geoCoderRetries++;
+//    
+//    [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
+//    
+//    if (self.geoCoderRetries < 3) {
+//        [self startReverseGeoCoding];
+//    } else {
+//        [self performOfflineLocalisation:self.lastKnowLocation];
+//    }
+//}
 
 - (void)startReverseGeoCoding {
     
     [[NSUserDefaults standardUserDefaults] setObject: [NSArray arrayWithObjects:@"en", nil] forKey:@"AppleLanguages"];
     
-    if (!_geocoder) {
-        _geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:self.lastKnowLocation.coordinate];
-        _geocoder.delegate = self;
-        [_geocoder retain];
+    if (!self.geocoder) {
+        self.geocoder = [[CLGeocoder alloc] init];
     }
-    
-    [_geocoder start];    
+    [self.geocoder reverseGeocodeLocation:self.lastKnowLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"Reverse geocoder error: %@", [error description]);
+            self.geoCoderRetries++;
+            
+            [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
+            
+            if (self.geoCoderRetries < 3) {
+                [self startReverseGeoCoding];
+            } else {
+                [self performOfflineLocalisation:self.lastKnowLocation];
+            }
+
+        } else {
+            [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
+            
+            CLPlacemark *placemark = (CLPlacemark *)placemarks[0];
+            
+            NSLog(@"%@",[placemark.addressDictionary description]);
+            
+            NSString *city = nil;
+            if ([placemark locality]) {
+                city = [placemark locality];
+            }
+            
+            Country *country = nil;
+            if ([placemark country]) {
+                NSFetchRequest *_fetchRequest = [[NSFetchRequest alloc] init];
+                _fetchRequest.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext:self.context];
+                _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name = %@", [placemark country]];
+                NSArray *countries = [self.context executeFetchRequest:_fetchRequest error:nil];
+                [_fetchRequest release];
+                
+                country = [countries lastObject];
+            }
+            
+            if (country) {
+                self.alreadyProcessed = YES;
+                [self.locationDelegate locationAquired:country city:city];
+            }
+
+        }
+    }];
+//    if (!geocoder) {
+//        _geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:self.lastKnowLocation.coordinate];
+//        _geocoder.delegate = self;
+//        [_geocoder retain];
+//    }
+//    
+//    [_geocoder start];    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {  
@@ -104,7 +155,7 @@
             self.lastKnowLocation = newLocation;
         }
         
-        if (!alreadyProcessed) {
+        if (!self.alreadyProcessed) {
             
             NetworkStatus netStatus = [self.reachability currentReachabilityStatus];
             
@@ -159,40 +210,40 @@
         }
     }
     
-    alreadyProcessed = YES;
+    self.alreadyProcessed = YES;
     [self.locationDelegate locationAquired:country city:city.name];
     
 }
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
-    
-    [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
-    
-    [geocoder cancel];
-    
-    NSLog(@"%@",[placemark.addressDictionary description]);
-	
-    NSString *city = nil;
-    if ([placemark locality]) {
-        city = [placemark locality];
-    }
-    
-    Country *country = nil;
-    if ([placemark country]) {
-        NSFetchRequest *_fetchRequest = [[NSFetchRequest alloc] init];
-        _fetchRequest.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext:self.context];
-        _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name = %@", [placemark country]];
-        NSArray *countries = [self.context executeFetchRequest:_fetchRequest error:nil];
-        [_fetchRequest release];
-        
-        country = [countries lastObject];
-    }
-    
-    if (country) {
-        alreadyProcessed = YES;
-        [self.locationDelegate locationAquired:country city:city];
-    }
-}
+//- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+//    
+//    [[NSUserDefaults standardUserDefaults] setObject:_locale forKey:@"AppleLanguages"];
+//    
+//    [geocoder cancel];
+//    
+//    NSLog(@"%@",[placemark.addressDictionary description]);
+//	
+//    NSString *city = nil;
+//    if ([placemark locality]) {
+//        city = [placemark locality];
+//    }
+//    
+//    Country *country = nil;
+//    if ([placemark country]) {
+//        NSFetchRequest *_fetchRequest = [[NSFetchRequest alloc] init];
+//        _fetchRequest.entity = [NSEntityDescription entityForName:@"Country" inManagedObjectContext:self.context];
+//        _fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name = %@", [placemark country]];
+//        NSArray *countries = [self.context executeFetchRequest:_fetchRequest error:nil];
+//        [_fetchRequest release];
+//        
+//        country = [countries lastObject];
+//    }
+//    
+//    if (country) {
+//        self.alreadyProcessed = YES;
+//        [self.locationDelegate locationAquired:country city:city];
+//    }
+//}
 
 #pragma mark Memory management
 

@@ -66,17 +66,17 @@
     [travel addRatesObject:usd.defaultRate];
     
     
-    STAssertEquals([chf convertTravelAmount:travel currency:chf amount:2.2], 2.2, nil);
-    STAssertEquals([eur convertTravelAmount:travel currency:eur amount:2.2], 2.2, nil);
+    XCTAssertEqual([chf convertTravelAmount:travel currency:chf amount:2.2], 2.2);
+    XCTAssertEqual([eur convertTravelAmount:travel currency:eur amount:2.2], 2.2);
     
-    STAssertEquals([chf convertTravelAmount:travel currency:eur amount:2], 2 / 1.1, nil); // = 1.8
-    STAssertEquals([eur convertTravelAmount:travel currency:chf amount:2], 2 * 1.1, nil); // = 2.2
+    XCTAssertEqual([chf convertTravelAmount:travel currency:eur amount:2], 2 / 1.1); // = 1.8
+    XCTAssertEqual([eur convertTravelAmount:travel currency:chf amount:2], 2 * 1.1); // = 2.2
     
-    STAssertEquals([usd convertTravelAmount:travel currency:eur amount:2], 2 / 1.5, nil); 
-    STAssertEquals([eur convertTravelAmount:travel currency:usd amount:2], 2 * 1.5, nil); 
+    XCTAssertEqual([usd convertTravelAmount:travel currency:eur amount:2], 2 / 1.5); 
+    XCTAssertEqual([eur convertTravelAmount:travel currency:usd amount:2], 2 * 1.5); 
     
-    STAssertEquals([chf convertTravelAmount:travel currency:usd amount:2], 2 / 1.1 * 1.5, nil);
-    STAssertEquals([usd convertTravelAmount:travel currency:chf amount:2], 2 / 1.5 * 1.1, nil);
+    XCTAssertEqual([chf convertTravelAmount:travel currency:usd amount:2], 2 / 1.1 * 1.5);
+    XCTAssertEqual([usd convertTravelAmount:travel currency:chf amount:2], 2 / 1.5 * 1.1);
 
 }
 
@@ -121,7 +121,7 @@
             }
         }
     }
-    STAssertTrue(returnValue, [NSString stringWithFormat:@"Could not find person %@ owes %@ to %@ (found value: %@)", p1.name, amount, p2.name, foundValue]);
+    XCTAssertTrue(returnValue, [NSString stringWithFormat:@"Could not find person %@ owes %@ to %@ (found value: %@)", p1.name, amount, p2.name, foundValue]);
     
 }
 
@@ -303,9 +303,9 @@
 - (void)assertDebtAmount:(NSDictionary *)dict fromParticipant:(Participant *)p1 toParticipant:(Participant *)p2 withAmount:(NSNumber *)amount {
 
     ParticipantKey *key = [[ParticipantKey alloc] initWithReceiver:p1 andPayer:p2];
-    STAssertTrue([dict objectForKey:key] != nil, [NSString stringWithFormat:@"Could not find person %@ owes to %@", p1.name, p2.name]);
+    XCTAssertTrue([dict objectForKey:key] != nil, [NSString stringWithFormat:@"Could not find person %@ owes to %@", p1.name, p2.name]);
     
-    STAssertTrue([self firstDouble:[amount doubleValue] isEqualTo:[[dict objectForKey:key] doubleValue]], [NSString stringWithFormat:@"Amount for debt between %@ and %@ is not %@ (as expected) but %@", p1.name, p2.name, amount, [dict objectForKey:key]]);
+    XCTAssertTrue([self firstDouble:[amount doubleValue] isEqualTo:[[dict objectForKey:key] doubleValue]], [NSString stringWithFormat:@"Amount for debt between %@ and %@ is not %@ (as expected) but %@", p1.name, p2.name, amount, [dict objectForKey:key]]);
     
 }
 
@@ -343,7 +343,7 @@
     
     [summary eliminateCircularDebts:dict];
     
-    STAssertEquals([dict count], (NSUInteger) 2, nil);
+    XCTAssertEqual([dict count], (NSUInteger) 2);
     [self assertDebtAmount:dict fromParticipant:p2 toParticipant:p1 withAmount:[NSNumber numberWithInt:100]];
     [self assertDebtAmount:dict fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithInt:200]];
 }
@@ -390,7 +390,7 @@
     
     [summary eliminateCircularDebts:dict];
     
-    STAssertEquals([dict count], (NSUInteger) 3, nil);
+    XCTAssertEqual([dict count], (NSUInteger) 3);
     [self assertDebtAmount:dict fromParticipant:p2 toParticipant:p1 withAmount:[NSNumber numberWithInt:100]];
     [self assertDebtAmount:dict fromParticipant:p3 toParticipant:p2 withAmount:[NSNumber numberWithInt:500]];
     [self assertDebtAmount:dict fromParticipant:p2 toParticipant:p4 withAmount:[NSNumber numberWithInt:100]];
@@ -530,7 +530,7 @@
     
     [summary applyCashierOption:pDan withParticipants:travel.participants];
     
-    STAssertEquals([dict count], (NSUInteger) 7, nil);
+    XCTAssertEqual([dict count], (NSUInteger) 7);
     
     [self assertDebtAmount:dict fromParticipant:pEvicka toParticipant:pDan withAmount:[NSNumber numberWithDouble:2185.9]];
     [self assertDebtAmount:dict fromParticipant:pHonza toParticipant:pDan withAmount:[NSNumber numberWithDouble:4867.7]];
@@ -586,7 +586,7 @@
     
     Summary *summary = [Summary createSummary:travel]; 
     
-    STAssertEquals(summary.accounts.count, (NSUInteger) 3, nil);
+    XCTAssertEqual(summary.accounts.count, (NSUInteger) 3);
 }
 
 - (void)testCashierDetection {
@@ -644,13 +644,13 @@
     
     Summary *summary = [Summary createSummary:travel];
     
-    STAssertEquals([summary decideCashier:travel], p2, nil);
+    XCTAssertEqual([summary decideCashier:travel], p2);
     
     travel.cashier = p1;
-    STAssertEquals([summary decideCashier:travel], p1, nil);
+    XCTAssertEqual([summary decideCashier:travel], p1);
     
     travel.cashier = p2;
-    STAssertEquals([summary decideCashier:travel], p2, nil);
+    XCTAssertEqual([summary decideCashier:travel], p2);
 }
 
 - (void)testCashierOptionGenericCompare {
@@ -707,7 +707,7 @@
         for (Participant *p in travel.participants) {
             double account1 = [self accountForParticipant:p fromSummary:summary];
             double account2 = [self accountForParticipant:p fromSummary:summaryWO];
-            STAssertTrue([self firstDouble:account1 isEqualTo:account2], nil);
+            XCTAssertTrue([self firstDouble:account1 isEqualTo:account2]);
         }
     }
 }

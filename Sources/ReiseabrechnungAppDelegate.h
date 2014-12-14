@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-
+#import "MTStatusBarOverlay.h"
 #import "FirstLetterCategory.h"
 #import "DateSortCategory.h"
 #import "CurrencyHelperCategory.h"
@@ -18,13 +18,11 @@
 #import "EntryCategory.h"
 #import "TransferCategory.h"
 #import "I18NSortCategory.h"
-
+#import "Appirater.h"
 #import "UIFactory.h"
 #import "Currency.h"
 #import "AppDefaults.h"
 #import "Locator.h"
-#import "MTStatusBarOverlay.h"
-#import "Appirater.h"
 #import "InAppPurchaseManager.h"
 
 extern NSString *const ITUNES_STORE_LINK;

@@ -107,7 +107,7 @@
 
 - (void)circleCurrency {
     
-    int currencyIndex = [[self.travel.currencies allObjects] indexOfObject:self.currency];
+    int currencyIndex = (int)[[self.travel.currencies allObjects] indexOfObject:self.currency];
     currencyIndex++;
     
     if (currencyIndex >= [self.travel.currencies count]) {
